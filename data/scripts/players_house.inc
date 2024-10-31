@@ -8,7 +8,6 @@ PlayersHouse_2F_EventScript_BlockStairsUntilClockIsSet::
 	return
 
 PlayersHouse_1F_EventScript_EnterHouseMovingIn::
-	msgbox PlayersHouse_1F_Text_IsntItNiceInHere, MSGBOX_DEFAULT
 	applymovement VAR_0x8004, Common_Movement_FacePlayer
 	waitmovement 0
 	call_if_eq VAR_0x8005, MALE, PlayersHouse_1F_EventScript_MomFacePlayerMovingInMale
@@ -61,15 +60,10 @@ PlayersHouse_2F_EventScript_WallClock::
 	goto_if_set FLAG_SET_WALL_CLOCK, PlayersHouse_2F_EventScript_CheckWallClock
 	msgbox PlayersHouse_2F_Text_ClockIsStopped, MSGBOX_DEFAULT
 	call PlayersHouse_2F_EventScript_SetWallClock
-	delay 30
 	setvar VAR_LITTLEROOT_INTRO_STATE, 6
 	setflag FLAG_SET_WALL_CLOCK
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_1
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_2
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, PlayersHouse_2F_EventScript_MomComesUpstairsMale
-	call_if_eq VAR_RESULT, FEMALE, PlayersHouse_2F_EventScript_MomComesUpstairsFemale
-	playse SE_EXIT
 	removeobject VAR_0x8008
 	releaseall
 	end
@@ -393,24 +387,28 @@ PlayersHouse_1F_EventScript_Vigoroth2::
 	end
 
 PlayersHouse_1F_Movement_PlayerApproachTVForGymMale:
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_left
+	walk_fast_down
+	walk_fast_down
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	jump_in_place_left
 	step_end
+	
 
 PlayersHouse_1F_Movement_PlayerMoveToTVMale:
 	walk_left
 	step_end
 
 PlayersHouse_1F_Movement_PlayerApproachTVForGymFemale:
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	walk_right
+	walk_fast_down
+	walk_fast_down
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	jump_in_place_right
 	step_end
+	
 
 PlayersHouse_1F_Movement_PlayerMoveToTVFemale:
 	walk_right
