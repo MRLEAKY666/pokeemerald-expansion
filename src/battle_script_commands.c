@@ -65,6 +65,8 @@
 #include "constants/pokemon.h"
 #include "config/battle.h"
 #include "data/battle_move_effects.h"
+#include "field_weather.h" //added wiz1989
+#include "constants/weather.h" //added wiz1989
 
 // table to avoid ugly powing on gba (courtesy of doesnt)
 // this returns (i^2.5)/4
@@ -1156,6 +1158,20 @@ static bool32 TryAegiFormChange(void)
     return TRUE;
 }
 
+bool32 IsCastform(u32 battler)
+{
+    u32 species;
+    species = gBattleMons[battler].species;
+
+    if (species == SPECIES_CASTFORM || species == SPECIES_CASTFORM_SUNNY || species == SPECIES_CASTFORM_RAINY 
+        || species == SPECIES_CASTFORM_SNOWY || species == SPECIES_CASTFORM_SANDSTORM)
+    {
+        return TRUE;
+    }
+    return FALSE;
+}
+//enhancement end
+
 bool32 ProteanTryChangeType(u32 battler, u32 ability, u32 move, u32 moveType)
 {
       if ((ability == ABILITY_PROTEAN || ability == ABILITY_LIBERO)
@@ -1167,7 +1183,8 @@ bool32 ProteanTryChangeType(u32 battler, u32 ability, u32 move, u32 moveType)
     {
         SET_BATTLER_TYPE(battler, moveType);
         return TRUE;
-    }
+    }    
+    
     return FALSE;
 }
 
