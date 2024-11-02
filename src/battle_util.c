@@ -4098,6 +4098,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
 {
     u32 effect = 0;
     u32 moveType, move;
+    u32 species;
     u32 side;
     u32 i, j;
     u32 partner;
@@ -4335,6 +4336,9 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     break;
                 }
             }
+            //enhancement wiz1989
+            ChangeWeather(battler, ability);
+            //enhancement end
         }
         if (effect != 0)
         break;
@@ -11763,6 +11767,26 @@ u8 GetBattlerType(u32 battler, u8 typeIndex, bool32 ignoreTera)
 
     return types[typeIndex];
 }
+
+//enhancement wiz1989
+void ChangeWeather(u32 battler, u32 ability)
+{
+    u32 species;
+
+    species = gBattleMons[battler].species;
+    //special handling for CASTFORM weather change
+    if (IsCastform(battler) && ability == ABILITY_FORECAST)
+    {
+        FlagSet(FLAG_INBATTLE_WEATHER_CHANGED);
+        gBattleCommunication[MULTISTRING_CHOOSER] = GetCurrentWeather();
+        BattleScriptPushCursorAndCallback(BattleScript_CastformWeatherStarts);
+    }
+    else {
+        gBattleCommunication[MULTISTRING_CHOOSER] = GetCurrentWeather();
+        BattleScriptPushCursorAndCallback(BattleScript_OverworldWeatherStarts);
+    }
+}
+//enhancement end
 
 void RemoveBattlerType(u32 battler, u8 type)
 {

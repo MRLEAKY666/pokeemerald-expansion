@@ -18,6 +18,8 @@
 #include "battle_terastal.h"
 #include "battle_gimmick.h"
 #include "random.h" // for rng_value_t
+#include "field_weather.h" //added wiz1989
+#include "constants/weather.h" //added wiz1989
 
 // Helper for accessing command arguments and advancing gBattlescriptCurrInstr.
 //
