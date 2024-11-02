@@ -881,7 +881,9 @@ static void Task_ShowWinnerMonBanner(u8 taskId)
     u8 spriteId;
     u16 species;
     bool8 isShiny;
-    u32 personality;
+    u32 personality, otId;
+    const u32 *pokePal;
+    struct BoxPokemon boxMon;
 
     switch (gTasks[taskId].tState)
     {
@@ -893,12 +895,21 @@ static void Task_ShowWinnerMonBanner(u8 taskId)
         species = gContestMons[i].species;
         personality = gContestMons[i].personality;
         isShiny = gContestMons[i].isShiny;
+        otId = gContestMons[i].otId;
         HandleLoadSpecialPokePic(TRUE,
                                 gMonSpritesGfxPtr->spritesGfx[B_POSITION_OPPONENT_LEFT],
                                 species,
                                 personality);
 
-        LoadCompressedSpritePaletteWithTag(GetMonSpritePalFromSpeciesAndPersonality(species, isShiny, personality), species);
+        pokePal = GetMonSpritePalFromSpeciesAndPersonality(species, isShiny, personality);
+
+        // If you are going to use SOURCE_IVS, you'll need to load those stats somewhere during Contests
+        // For SOURCE_NICKNAME_OT, OT Name should be loaded somewhere during Contests
+        CreateBoxMon(&boxMon, species, 5, USE_RANDOM_IVS, TRUE, personality, OT_ID_PRESET, otId);
+        SetBoxMonData(&boxMon, MON_DATA_NICKNAME, gContestMons[i].nickname);
+        SetBoxMonData(&boxMon, MON_DATA_OT_NAME, gContestMons[i].trainerName);
+        LoadCompressedUniqueSpritePalette(pokePal, &boxMon);
+
         SetMultiuseSpriteTemplateToPokemon(species, B_POSITION_OPPONENT_LEFT);
         gMultiuseSpriteTemplate.paletteTag = species;
         spriteId = CreateSprite(&gMultiuseSpriteTemplate, DISPLAY_WIDTH + 32, DISPLAY_HEIGHT / 2, 10);
@@ -2558,12 +2569,14 @@ bool8 IsContestDebugActive(void)
 
 void ShowContestEntryMonPic(void)
 {
-    u32 personality;
+    u32 personality, otId;
     u16 species;
     u8 spriteId;
     u8 taskId;
     u8 left, top;
     bool32 isShiny;
+    struct BoxPokemon boxMon;
+    const u32 *palette;
 
     if (FindTaskIdByFunc(Task_ShowContestEntryMonPic) == TASK_NONE)
     {
@@ -2573,12 +2586,21 @@ void ShowContestEntryMonPic(void)
         species = gContestMons[gSpecialVar_0x8006].species;
         personality = gContestMons[gSpecialVar_0x8006].personality;
         isShiny = gContestMons[gSpecialVar_0x8006].isShiny;
+        otId = gContestMons[gSpecialVar_0x8006].otId;
         taskId = CreateTask(Task_ShowContestEntryMonPic, 0x50);
         gTasks[taskId].data[0] = 0;
         gTasks[taskId].data[1] = species;
         HandleLoadSpecialPokePic(TRUE, gMonSpritesGfxPtr->spritesGfx[B_POSITION_OPPONENT_LEFT], species, personality);
 
-        LoadCompressedSpritePaletteWithTag(GetMonSpritePalFromSpeciesAndPersonality(species, isShiny, personality), species);
+        palette = GetMonSpritePalFromSpeciesAndPersonality(species, isShiny, personality);
+
+        // If you are going to use SOURCE_IVS, you'll need to load those stats somewhere during Contests
+        // For SOURCE_NICKNAME_OT, OT Name should be loaded somewhere during Contests
+        CreateBoxMon(&boxMon, species, 5, USE_RANDOM_IVS, TRUE, personality, OT_ID_PRESET, otId);
+        SetBoxMonData(&boxMon, MON_DATA_NICKNAME, gContestMons[gSpecialVar_0x8006].nickname);
+        SetBoxMonData(&boxMon, MON_DATA_NICKNAME, gContestMons[gSpecialVar_0x8006].trainerName);
+        LoadCompressedUniqueSpritePalette(palette, &boxMon);
+
         SetMultiuseSpriteTemplateToPokemon(species, B_POSITION_OPPONENT_LEFT);
         gMultiuseSpriteTemplate.paletteTag = species;
         spriteId = CreateSprite(&gMultiuseSpriteTemplate, (left + 1) * 8 + 32, (top * 8) + 40, 0);

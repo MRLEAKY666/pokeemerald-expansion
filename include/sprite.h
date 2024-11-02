@@ -332,4 +332,8 @@ void ClearSpriteCopyRequests(void);
 void ResetAffineAnimData(void);
 u32 GetSpanPerImage(u32 shape, u32 size);
 
+struct BoxPokemon;
+
+u8 LoadUniqueSpritePalette(const struct SpritePalette *palette, struct BoxPokemon *boxMon);
+
 #endif //GUARD_SPRITE_H

@@ -98,7 +98,7 @@ static void PrintContestantMonName(u8);
 static void PrintContestantMonNameWithColor(u8, u8);
 static u8 CreateJudgeSprite(void);
 static u8 CreateJudgeSpeechBubbleSprite(void);
-static u8 CreateContestantSprite(u16, bool8, u32, u32);
+static u8 CreateContestantSprite(u16, bool8, u32, u32, u32);
 static void PrintContestMoveDescription(u16);
 static u16 SanitizeSpecies(u16);
 static void ContestClearGeneralTextWindow(void);
@@ -1886,6 +1886,7 @@ static void Task_DoAppeals(u8 taskId)
             gContestMons[eContest.currentContestant].species,
             gContestMons[eContest.currentContestant].isShiny,
             gContestMons[eContest.currentContestant].personality,
+            gContestMons[eContest.currentContestant].otId,
             eContest.currentContestant);
         gSprites[spriteId].x2 = 120;
         gSprites[spriteId].callback = SpriteCB_MonSlideIn;
@@ -3218,14 +3219,25 @@ static u8 CreateJudgeSpeechBubbleSprite(void)
     return spriteId;
 }
 
-static u8 CreateContestantSprite(u16 species, bool8 isShiny, u32 personality, u32 index)
+static u8 CreateContestantSprite(u16 species, bool8 isShiny, u32 personality, u32 otId, u32 index)
 {
     u8 spriteId;
+    struct BoxPokemon boxMon;
+
     species = SanitizeSpecies(species);
 
     HandleLoadSpecialPokePic(FALSE, gMonSpritesGfxPtr->spritesGfx[B_POSITION_PLAYER_LEFT], species, personality);
 
     LoadCompressedPalette(GetMonSpritePalFromSpeciesAndPersonality(species, isShiny, personality), OBJ_PLTT_ID(2), PLTT_SIZE_4BPP);
+
+    // If you are going to use SOURCE_IVS, you'll need to load those stats somewhere during Contests
+    // For SOURCE_NICKNAME_OT, OT Name should be loaded somewhere during Contests
+    CreateBoxMon(&boxMon, species, 5, USE_RANDOM_IVS, TRUE, personality, OT_ID_PRESET, otId);
+    SetBoxMonData(&boxMon, MON_DATA_NICKNAME, gContestMons[eContest.currentContestant].nickname);
+    SetBoxMonData(&boxMon, MON_DATA_OT_NAME, gContestMons[eContest.currentContestant].trainerName);
+    UniquePalette(OBJ_PLTT_ID(2), &boxMon);
+    CpuCopy32(&gPlttBufferFaded[OBJ_PLTT_ID(2)], &gPlttBufferUnfaded[OBJ_PLTT_ID(2)], PLTT_SIZE_4BPP);
+
     SetMultiuseSpriteTemplateToPokemon(species, B_POSITION_PLAYER_LEFT);
 
     spriteId = CreateSprite(&gMultiuseSpriteTemplate, 0x70, GetBattlerSpriteFinal_Y(2, species, FALSE), 30);

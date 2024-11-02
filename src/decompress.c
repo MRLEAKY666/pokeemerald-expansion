@@ -345,3 +345,13 @@ bool8 LoadCompressedSpritePaletteUsingHeap(const struct CompressedSpritePalette 
     Free(buffer);
     return FALSE;
 }
+
+void LoadCompressedUniqueSpritePalette(const u32 *src, struct BoxPokemon *boxMon)
+{
+    struct SpritePalette dest;
+
+    LZ77UnCompWram(src, gDecompressionBuffer);
+    dest.data = (void*) gDecompressionBuffer;
+    dest.tag = GetBoxMonData(boxMon, MON_DATA_SPECIES);
+    LoadUniqueSpritePalette(&dest, boxMon);
+}

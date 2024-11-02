@@ -618,6 +618,11 @@ void BattleLoadMonSpriteGfx(struct Pokemon *mon, u32 battler)
     LoadPalette(gDecompressionBuffer, paletteOffset, PLTT_SIZE_4BPP);
     LoadPalette(gDecompressionBuffer, BG_PLTT_ID(8) + BG_PLTT_ID(battler), PLTT_SIZE_4BPP);
 
+    UniquePalette(paletteOffset, &mon->box);
+    CpuCopy32(&gPlttBufferFaded[paletteOffset], &gPlttBufferUnfaded[paletteOffset], PLTT_SIZEOF(16));
+    UniquePalette(BG_PLTT_ID(8) + BG_PLTT_ID(battler), &mon->box);
+    CpuCopy32(&gPlttBufferFaded[BG_PLTT_ID(8) + BG_PLTT_ID(battler)], &gPlttBufferUnfaded[BG_PLTT_ID(8) + BG_PLTT_ID(battler)], PLTT_SIZEOF(16));
+
     // transform's pink color
     if (gBattleSpritesDataPtr->battlerData[battler].transformSpecies != SPECIES_NONE)
     {
@@ -869,10 +874,13 @@ void CopyBattleSpriteInvisibility(u8 battler)
 
 void HandleSpeciesGfxDataChange(u8 battlerAtk, u8 battlerDef, bool32 megaEvo, bool8 trackEnemyPersonality)
 {
-    u32 personalityValue, position, paletteOffset, targetSpecies;
+    u32 personalityValue, position, paletteOffset, targetSpecies, otId, ivs;
     bool8 isShiny;
     const void *lzPaletteData, *src;
     void *dst;
+    struct BoxPokemon boxMon;
+    u8 nickname[POKEMON_NAME_LENGTH + 1];
+    u8 otName[PLAYER_NAME_LENGTH + 1];
 
     if (IsContest())
     {
@@ -880,6 +888,7 @@ void HandleSpeciesGfxDataChange(u8 battlerAtk, u8 battlerDef, bool32 megaEvo, bo
         targetSpecies = gContestResources->moveAnim->targetSpecies;
         personalityValue = gContestResources->moveAnim->personality;
         isShiny = gContestResources->moveAnim->isShiny;
+        otId = gContestResources->moveAnim->otId;
 
         HandleLoadSpecialPokePic(FALSE,
                                  gMonSpritesGfxPtr->spritesGfx[position],
@@ -901,11 +910,13 @@ void HandleSpeciesGfxDataChange(u8 battlerAtk, u8 battlerDef, bool32 megaEvo, bo
             {
                 personalityValue = GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerDef]], MON_DATA_PERSONALITY);
                 isShiny = GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerDef]], MON_DATA_IS_SHINY);
+                otId = GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_ID);
             }
             else
             {
                 personalityValue = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_PERSONALITY);
                 isShiny = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_IS_SHINY);
+                otId = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_ID);
             }
 
             HandleLoadSpecialPokePic(FALSE,
@@ -919,11 +930,13 @@ void HandleSpeciesGfxDataChange(u8 battlerAtk, u8 battlerDef, bool32 megaEvo, bo
             {
                 personalityValue = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerDef]], MON_DATA_PERSONALITY);
                 isShiny = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerDef]], MON_DATA_IS_SHINY);
+                otId = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_ID);
             }
             else
             {
                 personalityValue = GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_PERSONALITY);
                 isShiny = GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_IS_SHINY);
+                otId = GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_ID);
             }
 
             HandleLoadSpecialPokePic(TRUE,
@@ -939,6 +952,39 @@ void HandleSpeciesGfxDataChange(u8 battlerAtk, u8 battlerDef, bool32 megaEvo, bo
     lzPaletteData = GetMonSpritePalFromSpeciesAndPersonality(targetSpecies, isShiny, personalityValue);
     LZDecompressWram(lzPaletteData, gDecompressionBuffer);
     LoadPalette(gDecompressionBuffer, paletteOffset, PLTT_SIZE_4BPP);
+
+    if (IsContest())
+    {
+        // If you are going to use SOURCE_IVS, you'll need to load those stats somewhere during Contests
+        // For SOURCE_NICKNAME_OT, OT Name should be loaded somewhere during Contests
+        CreateBoxMon(&boxMon, targetSpecies, 5, USE_RANDOM_IVS, TRUE, personalityValue, OT_ID_PRESET, otId);
+        SetBoxMonData(&boxMon, MON_DATA_NICKNAME, gContestMons[gContestResources->moveAnim->contestant].nickname);
+        SetBoxMonData(&boxMon, MON_DATA_OT_NAME, gContestMons[gContestResources->moveAnim->contestant].trainerName);
+    }
+    else
+    {
+        CreateBoxMon(&boxMon, targetSpecies, 5, USE_RANDOM_IVS, TRUE, personalityValue, OT_ID_PRESET, otId);
+
+        if (GetBattlerSide(battlerAtk) == B_SIDE_PLAYER)
+        {
+            ivs = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_IVS);
+            GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_NICKNAME, nickname);
+            GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_NAME, otName);
+        }
+        else if (GetBattlerSide(battlerAtk) == B_SIDE_OPPONENT)
+        {
+            ivs = GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_IVS);
+            GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_NICKNAME, nickname);
+            GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_NAME, otName);
+        }
+
+        SetBoxMonData(&boxMon, MON_DATA_IVS, &ivs);
+        SetBoxMonData(&boxMon, MON_DATA_NICKNAME, nickname);
+        SetBoxMonData(&boxMon, MON_DATA_OT_NAME, otName);
+    }
+    
+    UniquePalette(paletteOffset, &boxMon);
+    CpuCopy32(&gPlttBufferFaded[paletteOffset], &gPlttBufferUnfaded[paletteOffset], PLTT_SIZEOF(16));
 
     if (!megaEvo)
     {
