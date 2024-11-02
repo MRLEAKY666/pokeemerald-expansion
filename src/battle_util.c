@@ -4336,11 +4336,13 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     break;
                 }
             }
+        }
+        if (effect != 0)
+        {
             //enhancement wiz1989
             ChangeWeather(battler, ability);
             //enhancement end
         }
-        if (effect != 0)
         break;
     case ABILITYEFFECT_ON_SWITCHIN:
         gBattleScripting.battler = battler;
