@@ -1,0 +1,987 @@
+From 28798c054c3531667346d43850c15e87cabc6ebc Mon Sep 17 00:00:00 2001
+From: citrusbolt <zac@citrusbolt.net>
+Date: Sat, 2 Nov 2024 14:10:04 -0600
+Subject: [PATCH] Merge remote-tracking branch 'cb/helios_color-variation'
+
+---
+ include/decompress.h         |   3 +
+ include/sprite.h             |   4 +
+ include/util.h               |   1 +
+ src/battle_factory_screen.c  |  18 ++-
+ src/battle_gfx_sfx_util.c    |  48 +++++-
+ src/contest.c                |  16 +-
+ src/contest_util.c           |  30 +++-
+ src/decompress.c             |  10 ++
+ src/egg_hatch.c              |   2 +-
+ src/evolution_scene.c        |  42 +++++-
+ src/pokemon_storage_system.c |   5 +
+ src/pokemon_summary_screen.c |   4 +-
+ src/sprite.c                 |  19 +++
+ src/trade.c                  |   2 +-
+ src/util.c                   | 340 +++++++++++++++++++++++++++++++++++++++++++
+ 15 files changed, 527 insertions(+), 17 deletions(-)
+
+diff --git a/include/decompress.h b/include/decompress.h
+index 178ab9a6e..2f25982d5 100644
+--- a/include/decompress.h
++++ b/include/decompress.h
+@@ -2,6 +2,7 @@
+ #define GUARD_DECOMPRESS_H
+ 
+ #include "sprite.h"
++#include "pokemon.h"
+ 
+ extern u8 ALIGNED(4) gDecompressionBuffer[0x4000];
+ 
+@@ -28,4 +29,6 @@ void LoadSpecialPokePic(void *dest, s32 species, u32 personality, bool8 isFrontP
+ 
+ u32 GetDecompressedDataSize(const u32 *ptr);
+ 
++void LoadCompressedUniqueSpritePalette(const u32 *src, struct BoxPokemon *boxMon);
++
+ #endif // GUARD_DECOMPRESS_H
+diff --git a/include/sprite.h b/include/sprite.h
+index 6a3084add..27def27f1 100644
+--- a/include/sprite.h
++++ b/include/sprite.h
+@@ -332,4 +332,8 @@ void ClearSpriteCopyRequests(void);
+ void ResetAffineAnimData(void);
+ u32 GetSpanPerImage(u32 shape, u32 size);
+ 
++struct BoxPokemon;
++
++u8 LoadUniqueSpritePalette(const struct SpritePalette *palette, struct BoxPokemon *boxMon);
++
+ #endif //GUARD_SPRITE_H
+diff --git a/include/util.h b/include/util.h
+index 3c90f136a..41dea2ff6 100644
+--- a/include/util.h
++++ b/include/util.h
+@@ -17,5 +17,6 @@ void BlendPalette(u16 palOffset, u16 numEntries, u8 coeff, u32 blendColor);
+ void DoBgAffineSet(struct BgAffineDstData *dest, u32 texX, u32 texY, s16 scrX, s16 scrY, s16 sx, s16 sy, u16 alpha);
+ void CopySpriteTiles(u8 shape, u8 size, u8 *tiles, u16 *tilemap, u8 *output);
+ 
++void UniquePalette(u16 palOffset, struct BoxPokemon *boxMon);
+ 
+ #endif // GUARD_UTIL_H
+diff --git a/src/battle_factory_screen.c b/src/battle_factory_screen.c
+index 4119db47b..dea77d0d6 100644
+--- a/src/battle_factory_screen.c
++++ b/src/battle_factory_screen.c
+@@ -1999,6 +1999,7 @@ static void Select_CreateMonSprite(void)
+     bool8 isShiny = GetMonData(mon, MON_DATA_IS_SHINY, NULL);
+ 
+     sFactorySelectScreen->monPics[1].monSpriteId = CreateMonPicSprite(species, isShiny, personality, TRUE, 88, 32, 15, TAG_NONE);
++    UniquePalette(OBJ_PLTT_ID(15), &mon->box);
+     gSprites[sFactorySelectScreen->monPics[1].monSpriteId].centerToCornerVecX = 0;
+     gSprites[sFactorySelectScreen->monPics[1].monSpriteId].centerToCornerVecY = 0;
+ 
+@@ -2014,7 +2015,7 @@ static void Select_ReshowMonSprite(void)
+ {
+     struct Pokemon *mon;
+     u16 species;
+-    u32 personality;
++    u32 personality, i;
+     bool8 isShiny;
+ 
+     sFactorySelectScreen->monPics[1].bgSpriteId = CreateSprite(&sSpriteTemplate_Select_MonPicBgAnim, 120, 64, 1);
+@@ -2026,6 +2027,11 @@ static void Select_ReshowMonSprite(void)
+     isShiny = GetMonData(mon, MON_DATA_IS_SHINY, NULL);
+ 
+     sFactorySelectScreen->monPics[1].monSpriteId = CreateMonPicSprite(species, isShiny, personality, TRUE, 88, 32, 15, TAG_NONE);
++    UniquePalette(OBJ_PLTT_ID(15), &mon->box);
++    for (i = OBJ_PLTT_ID(15); i < OBJ_PLTT_ID(15) + 0x10; i++)
++    {
++        gPlttBufferUnfaded[i] = gPlttBufferFaded[i];
++    }
+     gSprites[sFactorySelectScreen->monPics[1].monSpriteId].centerToCornerVecX = 0;
+     gSprites[sFactorySelectScreen->monPics[1].monSpriteId].centerToCornerVecY = 0;
+ 
+@@ -2357,9 +2363,13 @@ static void CopySwappedMonData(void)
+ 
+ static void Swap_Task_OpenSummaryScreen(u8 taskId)
+ {
++    u32 i;
++
+     switch (gTasks[taskId].tState)
+     {
+     case STATE_SUMMARY_FADE:
++        for (i = OBJ_PLTT_ID(15); i < OBJ_PLTT_ID(15) + 0x10; i++)
++            gPlttBufferUnfaded[i] = gPlttBufferFaded[i];
+         BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+         gTasks[taskId].tState = STATE_SUMMARY_CLEAN;
+         break;
+@@ -4056,7 +4066,7 @@ static void Swap_ShowSummaryMonSprite(void)
+ {
+     struct Pokemon *mon;
+     u16 species;
+-    u32 personality;
++    u32 personality, i;
+     bool8 isShiny;
+ 
+     sFactorySwapScreen->monPic.bgSpriteId = CreateSprite(&sSpriteTemplate_Swap_MonPicBgAnim, 120, 64, 1);
+@@ -4068,6 +4078,9 @@ static void Swap_ShowSummaryMonSprite(void)
+     isShiny = GetMonData(mon, MON_DATA_IS_SHINY, NULL);
+ 
+     sFactorySwapScreen->monPic.monSpriteId = CreateMonPicSprite(species, isShiny, personality, TRUE, 88, 32, 15, TAG_NONE);
++    UniquePalette(OBJ_PLTT_ID(15), &mon->box);
++    for (i = OBJ_PLTT_ID(15); i < OBJ_PLTT_ID(15) + 0x10; i++)
++        gPlttBufferUnfaded[i] = gPlttBufferFaded[i];
+     gSprites[sFactorySwapScreen->monPic.monSpriteId].centerToCornerVecX = 0;
+     gSprites[sFactorySwapScreen->monPic.monSpriteId].centerToCornerVecY = 0;
+ 
+@@ -4285,6 +4298,7 @@ static void Swap_CreateMonSprite(void)
+     isShiny = GetMonData(mon, MON_DATA_IS_SHINY, NULL);
+ 
+     sFactorySwapScreen->monPic.monSpriteId = CreateMonPicSprite(species, isShiny, personality, TRUE, 88, 32, 15, TAG_NONE);
++    UniquePalette(OBJ_PLTT_ID(15), &mon->box);
+     gSprites[sFactorySwapScreen->monPic.monSpriteId].centerToCornerVecX = 0;
+     gSprites[sFactorySwapScreen->monPic.monSpriteId].centerToCornerVecY = 0;
+ 
+diff --git a/src/battle_gfx_sfx_util.c b/src/battle_gfx_sfx_util.c
+index aa47a7354..6a15ece0c 100644
+--- a/src/battle_gfx_sfx_util.c
++++ b/src/battle_gfx_sfx_util.c
+@@ -618,6 +618,11 @@ void BattleLoadMonSpriteGfx(struct Pokemon *mon, u32 battler)
+     LoadPalette(gDecompressionBuffer, paletteOffset, PLTT_SIZE_4BPP);
+     LoadPalette(gDecompressionBuffer, BG_PLTT_ID(8) + BG_PLTT_ID(battler), PLTT_SIZE_4BPP);
+ 
++    UniquePalette(paletteOffset, &mon->box);
++    CpuCopy32(&gPlttBufferFaded[paletteOffset], &gPlttBufferUnfaded[paletteOffset], PLTT_SIZEOF(16));
++    UniquePalette(BG_PLTT_ID(8) + BG_PLTT_ID(battler), &mon->box);
++    CpuCopy32(&gPlttBufferFaded[BG_PLTT_ID(8) + BG_PLTT_ID(battler)], &gPlttBufferUnfaded[BG_PLTT_ID(8) + BG_PLTT_ID(battler)], PLTT_SIZEOF(16));
++
+     // transform's pink color
+     if (gBattleSpritesDataPtr->battlerData[battler].transformSpecies != SPECIES_NONE)
+     {
+@@ -869,10 +874,13 @@ void CopyBattleSpriteInvisibility(u8 battler)
+ 
+ void HandleSpeciesGfxDataChange(u8 battlerAtk, u8 battlerDef, bool32 megaEvo, bool8 trackEnemyPersonality)
+ {
+-    u32 personalityValue, position, paletteOffset, targetSpecies;
++    u32 personalityValue, position, paletteOffset, targetSpecies, otId, ivs;
+     bool8 isShiny;
+     const void *lzPaletteData, *src;
+     void *dst;
++    struct BoxPokemon boxMon;
++    u8 nickname[POKEMON_NAME_LENGTH + 1];
++    u8 otName[PLAYER_NAME_LENGTH + 1];
+ 
+     if (IsContest())
+     {
+@@ -880,6 +888,7 @@ void HandleSpeciesGfxDataChange(u8 battlerAtk, u8 battlerDef, bool32 megaEvo, bo
+         targetSpecies = gContestResources->moveAnim->targetSpecies;
+         personalityValue = gContestResources->moveAnim->personality;
+         isShiny = gContestResources->moveAnim->isShiny;
++        otId = gContestResources->moveAnim->otId;
+ 
+         HandleLoadSpecialPokePic(FALSE,
+                                  gMonSpritesGfxPtr->spritesGfx[position],
+@@ -901,11 +910,13 @@ void HandleSpeciesGfxDataChange(u8 battlerAtk, u8 battlerDef, bool32 megaEvo, bo
+             {
+                 personalityValue = GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerDef]], MON_DATA_PERSONALITY);
+                 isShiny = GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerDef]], MON_DATA_IS_SHINY);
++                otId = GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_ID);
+             }
+             else
+             {
+                 personalityValue = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_PERSONALITY);
+                 isShiny = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_IS_SHINY);
++                otId = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_ID);
+             }
+ 
+             HandleLoadSpecialPokePic(FALSE,
+@@ -919,11 +930,13 @@ void HandleSpeciesGfxDataChange(u8 battlerAtk, u8 battlerDef, bool32 megaEvo, bo
+             {
+                 personalityValue = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerDef]], MON_DATA_PERSONALITY);
+                 isShiny = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerDef]], MON_DATA_IS_SHINY);
++                otId = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_ID);
+             }
+             else
+             {
+                 personalityValue = GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_PERSONALITY);
+                 isShiny = GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_IS_SHINY);
++                otId = GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_ID);
+             }
+ 
+             HandleLoadSpecialPokePic(TRUE,
+@@ -940,6 +953,39 @@ void HandleSpeciesGfxDataChange(u8 battlerAtk, u8 battlerDef, bool32 megaEvo, bo
+     LZDecompressWram(lzPaletteData, gDecompressionBuffer);
+     LoadPalette(gDecompressionBuffer, paletteOffset, PLTT_SIZE_4BPP);
+ 
++    if (IsContest())
++    {
++        // If you are going to use SOURCE_IVS, you'll need to load those stats somewhere during Contests
++        // For SOURCE_NICKNAME_OT, OT Name should be loaded somewhere during Contests
++        CreateBoxMon(&boxMon, targetSpecies, 5, USE_RANDOM_IVS, TRUE, personalityValue, OT_ID_PRESET, otId);
++        SetBoxMonData(&boxMon, MON_DATA_NICKNAME, gContestMons[gContestResources->moveAnim->contestant].nickname);
++        SetBoxMonData(&boxMon, MON_DATA_OT_NAME, gContestMons[gContestResources->moveAnim->contestant].trainerName);
++    }
++    else
++    {
++        CreateBoxMon(&boxMon, targetSpecies, 5, USE_RANDOM_IVS, TRUE, personalityValue, OT_ID_PRESET, otId);
++
++        if (GetBattlerSide(battlerAtk) == B_SIDE_PLAYER)
++        {
++            ivs = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_IVS);
++            GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_NICKNAME, nickname);
++            GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_NAME, otName);
++        }
++        else if (GetBattlerSide(battlerAtk) == B_SIDE_OPPONENT)
++        {
++            ivs = GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_IVS);
++            GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_NICKNAME, nickname);
++            GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_NAME, otName);
++        }
++
++        SetBoxMonData(&boxMon, MON_DATA_IVS, &ivs);
++        SetBoxMonData(&boxMon, MON_DATA_NICKNAME, nickname);
++        SetBoxMonData(&boxMon, MON_DATA_OT_NAME, otName);
++    }
++    
++    UniquePalette(paletteOffset, &boxMon);
++    CpuCopy32(&gPlttBufferFaded[paletteOffset], &gPlttBufferUnfaded[paletteOffset], PLTT_SIZEOF(16));
++
+     if (!megaEvo)
+     {
+         BlendPalette(paletteOffset, 16, 6, RGB_WHITE);
+diff --git a/src/contest.c b/src/contest.c
+index 16e5fde9a..9e97c4df7 100644
+--- a/src/contest.c
++++ b/src/contest.c
+@@ -98,7 +98,7 @@ static void PrintContestantMonName(u8);
+ static void PrintContestantMonNameWithColor(u8, u8);
+ static u8 CreateJudgeSprite(void);
+ static u8 CreateJudgeSpeechBubbleSprite(void);
+-static u8 CreateContestantSprite(u16, bool8, u32, u32);
++static u8 CreateContestantSprite(u16, bool8, u32, u32, u32);
+ static void PrintContestMoveDescription(u16);
+ static u16 SanitizeSpecies(u16);
+ static void ContestClearGeneralTextWindow(void);
+@@ -1886,6 +1886,7 @@ static void Task_DoAppeals(u8 taskId)
+             gContestMons[eContest.currentContestant].species,
+             gContestMons[eContest.currentContestant].isShiny,
+             gContestMons[eContest.currentContestant].personality,
++            gContestMons[eContest.currentContestant].otId,
+             eContest.currentContestant);
+         gSprites[spriteId].x2 = 120;
+         gSprites[spriteId].callback = SpriteCB_MonSlideIn;
+@@ -3218,14 +3219,25 @@ static u8 CreateJudgeSpeechBubbleSprite(void)
+     return spriteId;
+ }
+ 
+-static u8 CreateContestantSprite(u16 species, bool8 isShiny, u32 personality, u32 index)
++static u8 CreateContestantSprite(u16 species, bool8 isShiny, u32 personality, u32 otId, u32 index)
+ {
+     u8 spriteId;
++    struct BoxPokemon boxMon;
++
+     species = SanitizeSpecies(species);
+ 
+     HandleLoadSpecialPokePic(FALSE, gMonSpritesGfxPtr->spritesGfx[B_POSITION_PLAYER_LEFT], species, personality);
+ 
+     LoadCompressedPalette(GetMonSpritePalFromSpeciesAndPersonality(species, isShiny, personality), OBJ_PLTT_ID(2), PLTT_SIZE_4BPP);
++
++    // If you are going to use SOURCE_IVS, you'll need to load those stats somewhere during Contests
++    // For SOURCE_NICKNAME_OT, OT Name should be loaded somewhere during Contests
++    CreateBoxMon(&boxMon, species, 5, USE_RANDOM_IVS, TRUE, personality, OT_ID_PRESET, otId);
++    SetBoxMonData(&boxMon, MON_DATA_NICKNAME, gContestMons[eContest.currentContestant].nickname);
++    SetBoxMonData(&boxMon, MON_DATA_OT_NAME, gContestMons[eContest.currentContestant].trainerName);
++    UniquePalette(OBJ_PLTT_ID(2), &boxMon);
++    CpuCopy32(&gPlttBufferFaded[OBJ_PLTT_ID(2)], &gPlttBufferUnfaded[OBJ_PLTT_ID(2)], PLTT_SIZE_4BPP);
++
+     SetMultiuseSpriteTemplateToPokemon(species, B_POSITION_PLAYER_LEFT);
+ 
+     spriteId = CreateSprite(&gMultiuseSpriteTemplate, 0x70, GetBattlerSpriteFinal_Y(2, species, FALSE), 30);
+diff --git a/src/contest_util.c b/src/contest_util.c
+index 3938fcd38..d683e8c97 100644
+--- a/src/contest_util.c
++++ b/src/contest_util.c
+@@ -881,7 +881,9 @@ static void Task_ShowWinnerMonBanner(u8 taskId)
+     u8 spriteId;
+     u16 species;
+     bool8 isShiny;
+-    u32 personality;
++    u32 personality, otId;
++    const u32 *pokePal;
++    struct BoxPokemon boxMon;
+ 
+     switch (gTasks[taskId].tState)
+     {
+@@ -893,12 +895,21 @@ static void Task_ShowWinnerMonBanner(u8 taskId)
+         species = gContestMons[i].species;
+         personality = gContestMons[i].personality;
+         isShiny = gContestMons[i].isShiny;
++        otId = gContestMons[i].otId;
+         HandleLoadSpecialPokePic(TRUE,
+                                 gMonSpritesGfxPtr->spritesGfx[B_POSITION_OPPONENT_LEFT],
+                                 species,
+                                 personality);
+ 
+-        LoadCompressedSpritePaletteWithTag(GetMonSpritePalFromSpeciesAndPersonality(species, isShiny, personality), species);
++        pokePal = GetMonSpritePalFromSpeciesAndPersonality(species, isShiny, personality);
++
++        // If you are going to use SOURCE_IVS, you'll need to load those stats somewhere during Contests
++        // For SOURCE_NICKNAME_OT, OT Name should be loaded somewhere during Contests
++        CreateBoxMon(&boxMon, species, 5, USE_RANDOM_IVS, TRUE, personality, OT_ID_PRESET, otId);
++        SetBoxMonData(&boxMon, MON_DATA_NICKNAME, gContestMons[i].nickname);
++        SetBoxMonData(&boxMon, MON_DATA_OT_NAME, gContestMons[i].trainerName);
++        LoadCompressedUniqueSpritePalette(pokePal, &boxMon);
++
+         SetMultiuseSpriteTemplateToPokemon(species, B_POSITION_OPPONENT_LEFT);
+         gMultiuseSpriteTemplate.paletteTag = species;
+         spriteId = CreateSprite(&gMultiuseSpriteTemplate, DISPLAY_WIDTH + 32, DISPLAY_HEIGHT / 2, 10);
+@@ -2558,12 +2569,14 @@ bool8 IsContestDebugActive(void)
+ 
+ void ShowContestEntryMonPic(void)
+ {
+-    u32 personality;
++    u32 personality, otId;
+     u16 species;
+     u8 spriteId;
+     u8 taskId;
+     u8 left, top;
+     bool32 isShiny;
++    struct BoxPokemon boxMon;
++    const u32 *palette;
+ 
+     if (FindTaskIdByFunc(Task_ShowContestEntryMonPic) == TASK_NONE)
+     {
+@@ -2573,12 +2586,21 @@ void ShowContestEntryMonPic(void)
+         species = gContestMons[gSpecialVar_0x8006].species;
+         personality = gContestMons[gSpecialVar_0x8006].personality;
+         isShiny = gContestMons[gSpecialVar_0x8006].isShiny;
++        otId = gContestMons[gSpecialVar_0x8006].otId;
+         taskId = CreateTask(Task_ShowContestEntryMonPic, 0x50);
+         gTasks[taskId].data[0] = 0;
+         gTasks[taskId].data[1] = species;
+         HandleLoadSpecialPokePic(TRUE, gMonSpritesGfxPtr->spritesGfx[B_POSITION_OPPONENT_LEFT], species, personality);
+ 
+-        LoadCompressedSpritePaletteWithTag(GetMonSpritePalFromSpeciesAndPersonality(species, isShiny, personality), species);
++        palette = GetMonSpritePalFromSpeciesAndPersonality(species, isShiny, personality);
++
++        // If you are going to use SOURCE_IVS, you'll need to load those stats somewhere during Contests
++        // For SOURCE_NICKNAME_OT, OT Name should be loaded somewhere during Contests
++        CreateBoxMon(&boxMon, species, 5, USE_RANDOM_IVS, TRUE, personality, OT_ID_PRESET, otId);
++        SetBoxMonData(&boxMon, MON_DATA_NICKNAME, gContestMons[gSpecialVar_0x8006].nickname);
++        SetBoxMonData(&boxMon, MON_DATA_NICKNAME, gContestMons[gSpecialVar_0x8006].trainerName);
++        LoadCompressedUniqueSpritePalette(palette, &boxMon);
++
+         SetMultiuseSpriteTemplateToPokemon(species, B_POSITION_OPPONENT_LEFT);
+         gMultiuseSpriteTemplate.paletteTag = species;
+         spriteId = CreateSprite(&gMultiuseSpriteTemplate, (left + 1) * 8 + 32, (top * 8) + 40, 0);
+diff --git a/src/decompress.c b/src/decompress.c
+index 30337f5a8..7fed30ca3 100644
+--- a/src/decompress.c
++++ b/src/decompress.c
+@@ -345,3 +345,13 @@ bool8 LoadCompressedSpritePaletteUsingHeap(const struct CompressedSpritePalette
+     Free(buffer);
+     return FALSE;
+ }
++
++void LoadCompressedUniqueSpritePalette(const u32 *src, struct BoxPokemon *boxMon)
++{
++    struct SpritePalette dest;
++
++    LZ77UnCompWram(src, gDecompressionBuffer);
++    dest.data = (void*) gDecompressionBuffer;
++    dest.tag = GetBoxMonData(boxMon, MON_DATA_SPECIES);
++    LoadUniqueSpritePalette(&dest, boxMon);
++}
+diff --git a/src/egg_hatch.c b/src/egg_hatch.c
+index 88f2b329e..65ac9dbb4 100644
+--- a/src/egg_hatch.c
++++ b/src/egg_hatch.c
+@@ -447,7 +447,7 @@ static u8 EggHatchCreateMonSprite(u8 useAlt, u8 state, u8 partyId, u16 *speciesL
+             HandleLoadSpecialPokePic(TRUE,
+                                      gMonSpritesGfxPtr->spritesGfx[(useAlt * 2) + B_POSITION_OPPONENT_LEFT],
+                                      species, pid);
+-            LoadCompressedSpritePaletteWithTag(GetMonFrontSpritePal(mon), species);
++            LoadCompressedUniqueSpritePalette(GetMonFrontSpritePal(mon), &mon->box);
+             *speciesLoc = species;
+         }
+         break;
+diff --git a/src/evolution_scene.c b/src/evolution_scene.c
+index e52e5b9a4..f28d8c57b 100644
+--- a/src/evolution_scene.c
++++ b/src/evolution_scene.c
+@@ -212,6 +212,8 @@ void EvolutionScene(struct Pokemon *mon, u16 postEvoSpecies, bool8 canStopEvo, u
+     u32 personality;
+     bool32 isShiny;
+     u8 id;
++    struct BoxPokemon boxMon2;
++    const u32 *pokePal;
+ 
+     SetHBlankCallback(NULL);
+     SetVBlankCallback(NULL);
+@@ -262,7 +264,10 @@ void EvolutionScene(struct Pokemon *mon, u16 postEvoSpecies, bool8 canStopEvo, u
+                         currSpecies,
+                         personality,
+                         TRUE);
+-    LoadCompressedPalette(GetMonSpritePalFromSpeciesAndPersonality(currSpecies, isShiny, personality), OBJ_PLTT_ID(1), PLTT_SIZE_4BPP);
++    pokePal = GetMonSpritePalFromSpeciesAndPersonality(currSpecies, isShiny, personality);
++    LoadCompressedPalette(pokePal, OBJ_PLTT_ID(1), PLTT_SIZE_4BPP);
++    UniquePalette(OBJ_PLTT_ID(1), &mon->box);
++    CpuCopy32(&gPlttBufferFaded[OBJ_PLTT_ID(1)], &gPlttBufferUnfaded[OBJ_PLTT_ID(1)], PLTT_SIZE_4BPP);
+ 
+     SetMultiuseSpriteTemplateToPokemon(currSpecies, B_POSITION_OPPONENT_LEFT);
+     gMultiuseSpriteTemplate.affineAnims = gDummySpriteAffineAnimTable;
+@@ -277,7 +282,12 @@ void EvolutionScene(struct Pokemon *mon, u16 postEvoSpecies, bool8 canStopEvo, u
+                         postEvoSpecies,
+                         personality,
+                         TRUE);
+-    LoadCompressedPalette(GetMonSpritePalFromSpeciesAndPersonality(postEvoSpecies, isShiny, personality), OBJ_PLTT_ID(2), PLTT_SIZE_4BPP);
++    pokePal = GetMonSpritePalFromSpeciesAndPersonality(postEvoSpecies, isShiny, personality);
++    LoadCompressedPalette(pokePal, OBJ_PLTT_ID(2), PLTT_SIZE_4BPP);
++    CopyMon(&boxMon2, &mon->box, sizeof(boxMon2));
++    SetBoxMonData(&boxMon2, MON_DATA_SPECIES, &postEvoSpecies);
++    UniquePalette(OBJ_PLTT_ID(2), &boxMon2);
++    CpuCopy32(&gPlttBufferFaded[OBJ_PLTT_ID(2)], &gPlttBufferUnfaded[OBJ_PLTT_ID(2)], PLTT_SIZE_4BPP);
+ 
+     SetMultiuseSpriteTemplateToPokemon(postEvoSpecies, B_POSITION_OPPONENT_RIGHT);
+     gMultiuseSpriteTemplate.affineAnims = gDummySpriteAffineAnimTable;
+@@ -314,6 +324,8 @@ static void CB2_EvolutionSceneLoadGraphics(void)
+     u32 personality;
+     struct Pokemon *mon = &gPlayerParty[gTasks[sEvoStructPtr->evoTaskId].tPartyId];
+     bool8 isShiny;
++    struct BoxPokemon boxMon2;
++    const u32 *pokePal;
+ 
+     postEvoSpecies = gTasks[sEvoStructPtr->evoTaskId].tPostEvoSpecies;
+     isShiny = GetMonData(mon, MON_DATA_IS_SHINY);
+@@ -354,7 +366,13 @@ static void CB2_EvolutionSceneLoadGraphics(void)
+                         postEvoSpecies,
+                         personality,
+                         TRUE);
+-    LoadCompressedPalette(GetMonSpritePalFromSpeciesAndPersonality(postEvoSpecies, isShiny, personality), OBJ_PLTT_ID(2), PLTT_SIZE_4BPP);
++    pokePal = GetMonSpritePalFromSpeciesAndPersonality(postEvoSpecies, isShiny, personality);
++
++    LoadCompressedPalette(pokePal, OBJ_PLTT_ID(2), PLTT_SIZE_4BPP);
++    CopyMon(&boxMon2, &mon->box, sizeof(boxMon2));
++    SetBoxMonData(&boxMon2, MON_DATA_SPECIES, &postEvoSpecies);
++    UniquePalette(OBJ_PLTT_ID(2), &boxMon2);
++    CpuCopy32(&gPlttBufferFaded[OBJ_PLTT_ID(2)], &gPlttBufferUnfaded[OBJ_PLTT_ID(2)], PLTT_SIZE_4BPP);
+ 
+     SetMultiuseSpriteTemplateToPokemon(postEvoSpecies, B_POSITION_OPPONENT_RIGHT);
+     gMultiuseSpriteTemplate.affineAnims = gDummySpriteAffineAnimTable;
+@@ -381,6 +399,8 @@ static void CB2_TradeEvolutionSceneLoadGraphics(void)
+ {
+     struct Pokemon *mon = &gPlayerParty[gTasks[sEvoStructPtr->evoTaskId].tPartyId];
+     u16 postEvoSpecies = gTasks[sEvoStructPtr->evoTaskId].tPostEvoSpecies;
++    struct BoxPokemon boxMon2;
++    const u32 *pokePal;
+ 
+     switch (gMain.state)
+     {
+@@ -424,7 +444,12 @@ static void CB2_TradeEvolutionSceneLoadGraphics(void)
+                                 postEvoSpecies,
+                                 personality,
+                                 TRUE);
+-            LoadCompressedPalette(GetMonSpritePalFromSpeciesAndPersonality(postEvoSpecies, isShiny, personality), OBJ_PLTT_ID(2), PLTT_SIZE_4BPP);
++            pokePal = GetMonSpritePalFromSpeciesAndPersonality(postEvoSpecies, isShiny, personality);
++            LoadCompressedPalette(pokePal, OBJ_PLTT_ID(2), PLTT_SIZE_4BPP);
++            CopyMon(&boxMon2, &mon->box, sizeof(boxMon2));
++            SetBoxMonData(&boxMon2, MON_DATA_SPECIES, &postEvoSpecies);
++            UniquePalette(OBJ_PLTT_ID(2), &boxMon2);
++            CpuCopy32(&gPlttBufferFaded[OBJ_PLTT_ID(2)], &gPlttBufferUnfaded[OBJ_PLTT_ID(2)], PLTT_SIZE_4BPP);
+             gMain.state++;
+         }
+         break;
+@@ -469,6 +494,8 @@ void TradeEvolutionScene(struct Pokemon *mon, u16 postEvoSpecies, u8 preEvoSprit
+     u32 personality;
+     u8 id;
+     bool8 isShiny;
++    struct BoxPokemon boxMon2;
++    const u32 *pokePal;
+ 
+     GetMonData(mon, MON_DATA_NICKNAME, name);
+     StringCopy_Nickname(gStringVar1, name);
+@@ -489,7 +516,12 @@ void TradeEvolutionScene(struct Pokemon *mon, u16 postEvoSpecies, u8 preEvoSprit
+                         personality,
+                         TRUE);
+ 
+-    LoadCompressedPalette(GetMonSpritePalFromSpeciesAndPersonality(postEvoSpecies, isShiny, personality), OBJ_PLTT_ID(2), PLTT_SIZE_4BPP);
++    pokePal = GetMonSpritePalFromSpeciesAndPersonality(postEvoSpecies, isShiny, personality);
++    LoadCompressedPalette(pokePal, OBJ_PLTT_ID(2), PLTT_SIZE_4BPP);
++    CopyMon(&boxMon2, &mon->box, sizeof(boxMon2));
++    SetBoxMonData(&boxMon2, MON_DATA_SPECIES, &postEvoSpecies);
++    UniquePalette(OBJ_PLTT_ID(2), &boxMon2);
++    CpuCopy32(&gPlttBufferFaded[OBJ_PLTT_ID(2)], &gPlttBufferUnfaded[OBJ_PLTT_ID(2)], PLTT_SIZE_4BPP);
+ 
+     SetMultiuseSpriteTemplateToPokemon(postEvoSpecies, B_POSITION_OPPONENT_LEFT);
+     gMultiuseSpriteTemplate.affineAnims = gDummySpriteAffineAnimTable;
+diff --git a/src/pokemon_storage_system.c b/src/pokemon_storage_system.c
+index 2c0b52780..ac3dcfd34 100644
+--- a/src/pokemon_storage_system.c
++++ b/src/pokemon_storage_system.c
+@@ -43,6 +43,7 @@
+ #include "constants/rgb.h"
+ #include "constants/songs.h"
+ #include "constants/pokemon_icon.h"
++#include "util.h"
+ 
+ /*
+     NOTE: This file is large. Some general groups of functions have
+@@ -589,6 +590,7 @@ EWRAM_DATA static u8 sMovingMonOrigBoxId = 0;
+ EWRAM_DATA static u8 sMovingMonOrigBoxPos = 0;
+ EWRAM_DATA static bool8 sAutoActionOn = 0;
+ EWRAM_DATA static bool8 sJustOpenedBag = 0;
++EWRAM_DATA static struct BoxPokemon sCurrentBoxPokemon = {0};
+ 
+ // Main tasks
+ static void Task_InitPokeStorage(u8);
+@@ -4015,6 +4017,7 @@ static void LoadDisplayMonGfx(u16 species, u32 pid)
+         LZ77UnCompWram(sStorage->displayMonPalette, sStorage->displayMonPalBuffer);
+         CpuCopy32(sStorage->tileBuffer, sStorage->displayMonTilePtr, MON_PIC_SIZE);
+         LoadPalette(sStorage->displayMonPalBuffer, sStorage->displayMonPalOffset, PLTT_SIZE_4BPP);
++        UniquePalette(sStorage->displayMonPalOffset, &sCurrentBoxPokemon);
+         sStorage->displayMonSprite->invisible = FALSE;
+     }
+     else
+@@ -6969,6 +6972,7 @@ static void SetDisplayMonData(void *pokemon, u8 mode)
+     {
+         struct Pokemon *mon = (struct Pokemon *)pokemon;
+ 
++        CopyMon(&sCurrentBoxPokemon, &mon->box, sizeof(sCurrentBoxPokemon));
+         sStorage->displayMonSpecies = GetMonData(mon, MON_DATA_SPECIES_OR_EGG);
+         if (sStorage->displayMonSpecies != SPECIES_NONE)
+         {
+@@ -6992,6 +6996,7 @@ static void SetDisplayMonData(void *pokemon, u8 mode)
+     {
+         struct BoxPokemon *boxMon = (struct BoxPokemon *)pokemon;
+ 
++        CopyMon(&sCurrentBoxPokemon, &boxMon, sizeof(sCurrentBoxPokemon));
+         sStorage->displayMonSpecies = GetBoxMonData(pokemon, MON_DATA_SPECIES_OR_EGG);
+         if (sStorage->displayMonSpecies != SPECIES_NONE)
+         {
+diff --git a/src/pokemon_summary_screen.c b/src/pokemon_summary_screen.c
+index f8e0af18d..df73b2a7f 100644
+--- a/src/pokemon_summary_screen.c
++++ b/src/pokemon_summary_screen.c
+@@ -4020,6 +4020,7 @@ static void SwapMovesTypeSprites(u8 moveIndex1, u8 moveIndex2)
+ static u8 LoadMonGfxAndSprite(struct Pokemon *mon, s16 *state)
+ {
+     struct PokeSummary *summary = &sMonSummaryScreen->summary;
++    const u32 *pal;
+ 
+     switch (*state)
+     {
+@@ -4053,7 +4054,8 @@ static u8 LoadMonGfxAndSprite(struct Pokemon *mon, s16 *state)
+         (*state)++;
+         return 0xFF;
+     case 1:
+-        LoadCompressedSpritePaletteWithTag(GetMonSpritePalFromSpeciesAndPersonality(summary->species2, summary->isShiny, summary->pid), summary->species2);
++        pal = GetMonSpritePalFromSpeciesAndPersonality(summary->species2, summary->isShiny, summary->pid);
++        LoadCompressedUniqueSpritePalette(pal, &sMonSummaryScreen->currentMon.box);
+         SetMultiuseSpriteTemplateToPokemon(summary->species2, B_POSITION_OPPONENT_LEFT);
+         (*state)++;
+         return 0xFF;
+diff --git a/src/sprite.c b/src/sprite.c
+index a2a01d6d9..c92775a7e 100644
+--- a/src/sprite.c
++++ b/src/sprite.c
+@@ -2,6 +2,7 @@
+ #include "sprite.h"
+ #include "main.h"
+ #include "palette.h"
++#include "util.h"
+ 
+ #define MAX_SPRITE_COPY_REQUESTS 64
+ 
+@@ -1764,3 +1765,21 @@ u32 GetSpanPerImage(u32 shape, u32 size)
+ {
+     return sSpanPerImage[shape][size];
+ }
++
++u8 LoadUniqueSpritePalette(const struct SpritePalette *palette, struct BoxPokemon *boxMon)
++{
++    u8 index = IndexOfSpritePaletteTag(0xFFFF);
++
++    if (index == 0xFF)
++    {
++        return 0xFF;
++    }
++    else
++    {
++        sSpritePaletteTags[index] = palette->tag;
++        DoLoadSpritePalette(palette->data, PLTT_ID(index));
++        UniquePalette(OBJ_PLTT_ID(index), boxMon);
++        CpuCopy32(&gPlttBufferFaded[OBJ_PLTT_ID(index)], &gPlttBufferUnfaded[OBJ_PLTT_ID(index)], PLTT_SIZEOF(16));
++        return index;
++    }
++}
+diff --git a/src/trade.c b/src/trade.c
+index 04b1977c1..51c505c30 100644
+--- a/src/trade.c
++++ b/src/trade.c
+@@ -2790,7 +2790,7 @@ static void LoadTradeMonPic(u8 whichParty, u8 state)
+ 
+         HandleLoadSpecialPokePic(TRUE, gMonSpritesGfxPtr->spritesGfx[whichParty * 2 + B_POSITION_OPPONENT_LEFT], species, personality);
+ 
+-        LoadCompressedSpritePaletteWithTag(GetMonFrontSpritePal(mon), species);
++        LoadCompressedUniqueSpritePalette(GetMonFrontSpritePal(mon), &mon->box);
+         sTradeAnim->monSpecies[whichParty] = species;
+         sTradeAnim->monPersonalities[whichParty] = personality;
+         break;
+diff --git a/src/util.c b/src/util.c
+index 77d9cde2f..112072f23 100644
+--- a/src/util.c
++++ b/src/util.c
+@@ -3,6 +3,7 @@
+ #include "sprite.h"
+ #include "palette.h"
+ #include "constants/rgb.h"
++#include "pokemon.h"
+ 
+ const u32 gBitTable[] =
+ {
+@@ -116,6 +117,123 @@ static const u16 sCrc16Table[] =
+ 
+ const u8 gMiscBlank_Gfx[] = INCBIN_U8("graphics/interface/blank.4bpp");
+ 
++#define HUE_SHIFT_RANGE_NORMAL  40
++#define HUE_SHITFT_RANGE_SHINY  30
++
++#define NORMAL_HUE_NEGATIVE_SHINY_HUE_POSITIVE     -1
++#define NORMAL_HUE_BOTH_WAYS_SHINY_HUE_BOTH_WAYS    0
++#define NORMAL_HUE_POSITIVE_SHINY_HUE_NEGATIVE      1
++#define NORMAL_RGB_MODULATION_SHINY_HUE_BOTH_WAYS   2
++#define NORMAL_HUE_BOTH_WAYS_SHINY_RGB_MODULATION   3
++#define NORMAL_RGB_MODULATION_SHINY_RGB_MODULATION  4
++
++#define SOURCE_PID          0
++#define SOURCE_IVS          1
++#define SOURCE_NICKNAME_OT  2
++
++#define INDIVIDUALITY_SOURCE SOURCE_PID
++
++static const s8 sColorVariationModes[NUM_SPECIES] =
++{
++    [SPECIES_CHARIZARD]     = NORMAL_HUE_BOTH_WAYS_SHINY_RGB_MODULATION,
++    [SPECIES_PIKACHU]       = NORMAL_HUE_POSITIVE_SHINY_HUE_NEGATIVE,
++    [SPECIES_RAICHU]        = NORMAL_HUE_POSITIVE_SHINY_HUE_NEGATIVE,
++    [SPECIES_CLEFAIRY]      = NORMAL_HUE_BOTH_WAYS_SHINY_RGB_MODULATION,
++    [SPECIES_CLEFABLE]      = NORMAL_HUE_BOTH_WAYS_SHINY_RGB_MODULATION,
++    [SPECIES_VULPIX]        = NORMAL_HUE_BOTH_WAYS_SHINY_RGB_MODULATION,
++    [SPECIES_NINETALES]     = NORMAL_HUE_BOTH_WAYS_SHINY_RGB_MODULATION,
++    [SPECIES_JIGGLYPUFF]    = NORMAL_HUE_BOTH_WAYS_SHINY_RGB_MODULATION,
++    [SPECIES_WIGGLYTUFF]    = NORMAL_HUE_BOTH_WAYS_SHINY_RGB_MODULATION,
++    [SPECIES_PARAS]         = NORMAL_HUE_POSITIVE_SHINY_HUE_NEGATIVE,
++    [SPECIES_PARASECT]      = NORMAL_HUE_NEGATIVE_SHINY_HUE_POSITIVE,
++    [SPECIES_MEOWTH]        = NORMAL_HUE_POSITIVE_SHINY_HUE_NEGATIVE,
++    [SPECIES_PERSIAN]       = NORMAL_HUE_NEGATIVE_SHINY_HUE_POSITIVE,
++    [SPECIES_PSYDUCK]       = NORMAL_HUE_BOTH_WAYS_SHINY_RGB_MODULATION,
++    [SPECIES_GOLDUCK]       = NORMAL_HUE_BOTH_WAYS_SHINY_RGB_MODULATION,
++    [SPECIES_GROWLITHE]     = NORMAL_HUE_POSITIVE_SHINY_HUE_NEGATIVE,
++    [SPECIES_ARCANINE]      = NORMAL_HUE_POSITIVE_SHINY_HUE_NEGATIVE,
++    [SPECIES_POLIWAG]       = NORMAL_HUE_POSITIVE_SHINY_HUE_NEGATIVE,
++    [SPECIES_POLIWHIRL]     = NORMAL_HUE_POSITIVE_SHINY_HUE_NEGATIVE,
++    [SPECIES_ABRA]          = NORMAL_HUE_NEGATIVE_SHINY_HUE_POSITIVE,
++    [SPECIES_KADABRA]       = NORMAL_HUE_NEGATIVE_SHINY_HUE_POSITIVE,
++    [SPECIES_MACHOP]        = NORMAL_RGB_MODULATION_SHINY_RGB_MODULATION,
++    [SPECIES_MACHOKE]       = NORMAL_RGB_MODULATION_SHINY_RGB_MODULATION,
++    [SPECIES_MACHAMP]       = NORMAL_RGB_MODULATION_SHINY_RGB_MODULATION,
++    [SPECIES_MAGNEMITE]     = NORMAL_RGB_MODULATION_SHINY_RGB_MODULATION,
++    [SPECIES_MAGNETON]      = NORMAL_RGB_MODULATION_SHINY_RGB_MODULATION,
++    [SPECIES_SEEL]          = NORMAL_RGB_MODULATION_SHINY_RGB_MODULATION,
++    [SPECIES_DEWGONG]       = NORMAL_RGB_MODULATION_SHINY_RGB_MODULATION,
++    [SPECIES_GRIMER]        = NORMAL_RGB_MODULATION_SHINY_HUE_BOTH_WAYS,
++    [SPECIES_MUK]           = NORMAL_RGB_MODULATION_SHINY_HUE_BOTH_WAYS,
++    [SPECIES_SHELLDER]      = NORMAL_RGB_MODULATION_SHINY_HUE_BOTH_WAYS,
++    [SPECIES_CLOYSTER]      = NORMAL_RGB_MODULATION_SHINY_HUE_BOTH_WAYS,
++    [SPECIES_GASTLY]        = NORMAL_RGB_MODULATION_SHINY_RGB_MODULATION,
++    [SPECIES_HAUNTER]       = NORMAL_RGB_MODULATION_SHINY_RGB_MODULATION,
++    [SPECIES_GENGAR]        = NORMAL_RGB_MODULATION_SHINY_RGB_MODULATION,
++    [SPECIES_ONIX]          = NORMAL_RGB_MODULATION_SHINY_RGB_MODULATION,
++    [SPECIES_RHYHORN]       = NORMAL_RGB_MODULATION_SHINY_HUE_BOTH_WAYS,
++    [SPECIES_RHYDON]        = NORMAL_RGB_MODULATION_SHINY_HUE_BOTH_WAYS,
++    [SPECIES_SCYTHER]       = NORMAL_HUE_POSITIVE_SHINY_HUE_NEGATIVE,
++    [SPECIES_ELECTABUZZ]    = NORMAL_HUE_POSITIVE_SHINY_HUE_NEGATIVE,
++    [SPECIES_MAGIKARP]      = NORMAL_HUE_NEGATIVE_SHINY_HUE_POSITIVE,
++    [SPECIES_LAPRAS]        = NORMAL_HUE_NEGATIVE_SHINY_HUE_POSITIVE,
++    [SPECIES_DITTO]         = NORMAL_RGB_MODULATION_SHINY_RGB_MODULATION,
++    [SPECIES_EEVEE]         = NORMAL_HUE_BOTH_WAYS_SHINY_RGB_MODULATION,
++    [SPECIES_FLAREON]       = NORMAL_HUE_NEGATIVE_SHINY_HUE_POSITIVE,
++    [SPECIES_AERODACTYL]    = NORMAL_RGB_MODULATION_SHINY_HUE_BOTH_WAYS,
++    [SPECIES_SNORLAX]       = NORMAL_HUE_POSITIVE_SHINY_HUE_NEGATIVE,
++    [SPECIES_ZAPDOS]        = NORMAL_HUE_POSITIVE_SHINY_HUE_NEGATIVE,
++    [SPECIES_MEWTWO]        = NORMAL_RGB_MODULATION_SHINY_HUE_BOTH_WAYS,
++    [SPECIES_HOOTHOOT]      = NORMAL_HUE_NEGATIVE_SHINY_HUE_POSITIVE,
++    [SPECIES_NOCTOWL]       = NORMAL_HUE_NEGATIVE_SHINY_HUE_POSITIVE,
++    [SPECIES_LEDYBA]        = NORMAL_HUE_NEGATIVE_SHINY_HUE_POSITIVE,
++    [SPECIES_LEDIAN]        = NORMAL_HUE_NEGATIVE_SHINY_HUE_POSITIVE,
++    [SPECIES_PICHU]         = NORMAL_HUE_POSITIVE_SHINY_HUE_NEGATIVE,
++    [SPECIES_TOGEPI]        = NORMAL_RGB_MODULATION_SHINY_RGB_MODULATION,
++    [SPECIES_TOGETIC]       = NORMAL_RGB_MODULATION_SHINY_RGB_MODULATION,
++    [SPECIES_SUNKERN]       = NORMAL_HUE_POSITIVE_SHINY_HUE_NEGATIVE,
++    [SPECIES_UMBREON]       = NORMAL_HUE_BOTH_WAYS_SHINY_RGB_MODULATION,
++    [SPECIES_MURKROW]       = NORMAL_RGB_MODULATION_SHINY_HUE_BOTH_WAYS,
++    [SPECIES_MISDREAVUS]    = NORMAL_RGB_MODULATION_SHINY_HUE_BOTH_WAYS,
++    [SPECIES_UNOWN]         = NORMAL_RGB_MODULATION_SHINY_RGB_MODULATION,
++    [SPECIES_STEELIX]       = NORMAL_RGB_MODULATION_SHINY_RGB_MODULATION,
++    [SPECIES_SHUCKLE]       = NORMAL_HUE_BOTH_WAYS_SHINY_RGB_MODULATION,
++    [SPECIES_SNEASEL]       = NORMAL_RGB_MODULATION_SHINY_HUE_BOTH_WAYS,
++    [SPECIES_SWINUB]        = NORMAL_HUE_BOTH_WAYS_SHINY_RGB_MODULATION,
++    [SPECIES_PILOSWINE]     = NORMAL_HUE_NEGATIVE_SHINY_HUE_POSITIVE,
++    [SPECIES_MANTINE]       = NORMAL_RGB_MODULATION_SHINY_HUE_BOTH_WAYS,
++    [SPECIES_PHANPY]        = NORMAL_RGB_MODULATION_SHINY_HUE_BOTH_WAYS,
++    [SPECIES_DONPHAN]       = NORMAL_RGB_MODULATION_SHINY_HUE_BOTH_WAYS,
++    [SPECIES_SMEARGLE]      = NORMAL_RGB_MODULATION_SHINY_RGB_MODULATION,
++    [SPECIES_ELEKID]        = NORMAL_HUE_POSITIVE_SHINY_HUE_NEGATIVE,
++    [SPECIES_MILTANK]       = NORMAL_HUE_BOTH_WAYS_SHINY_RGB_MODULATION,
++    [SPECIES_LARVITAR]      = NORMAL_HUE_POSITIVE_SHINY_HUE_NEGATIVE,
++    [SPECIES_PUPITAR]       = NORMAL_HUE_NEGATIVE_SHINY_HUE_POSITIVE,
++    [SPECIES_LUGIA]         = NORMAL_RGB_MODULATION_SHINY_RGB_MODULATION,
++    [SPECIES_POOCHYENA]     = NORMAL_RGB_MODULATION_SHINY_HUE_BOTH_WAYS,
++    [SPECIES_MIGHTYENA]     = NORMAL_RGB_MODULATION_SHINY_HUE_BOTH_WAYS,
++    [SPECIES_ZIGZAGOON]     = NORMAL_RGB_MODULATION_SHINY_HUE_BOTH_WAYS,
++    [SPECIES_LINOONE]       = NORMAL_RGB_MODULATION_SHINY_HUE_BOTH_WAYS,
++    [SPECIES_SABLEYE]       = NORMAL_RGB_MODULATION_SHINY_RGB_MODULATION,
++    [SPECIES_ARON]          = NORMAL_RGB_MODULATION_SHINY_RGB_MODULATION,
++    [SPECIES_LAIRON]        = NORMAL_RGB_MODULATION_SHINY_RGB_MODULATION,
++    [SPECIES_AGGRON]        = NORMAL_RGB_MODULATION_SHINY_RGB_MODULATION,
++    [SPECIES_SPOINK]        = NORMAL_RGB_MODULATION_SHINY_HUE_BOTH_WAYS,
++    [SPECIES_GRUMPIG]       = NORMAL_RGB_MODULATION_SHINY_HUE_BOTH_WAYS,
++    [SPECIES_TRAPINCH]      = NORMAL_HUE_BOTH_WAYS_SHINY_RGB_MODULATION,
++    [SPECIES_CRAWDAUNT]     = NORMAL_HUE_NEGATIVE_SHINY_HUE_POSITIVE,
++    [SPECIES_FEEBAS]        = NORMAL_HUE_BOTH_WAYS_SHINY_RGB_MODULATION,
++    [SPECIES_CASTFORM]      = NORMAL_RGB_MODULATION_SHINY_RGB_MODULATION,
++    [SPECIES_SHUPPET]       = NORMAL_RGB_MODULATION_SHINY_HUE_BOTH_WAYS,
++    [SPECIES_BANETTE]       = NORMAL_RGB_MODULATION_SHINY_HUE_BOTH_WAYS,
++    [SPECIES_DUSKULL]       = NORMAL_RGB_MODULATION_SHINY_HUE_BOTH_WAYS,
++    [SPECIES_DUSCLOPS]      = NORMAL_RGB_MODULATION_SHINY_HUE_BOTH_WAYS,
++    [SPECIES_ABSOL]         = NORMAL_RGB_MODULATION_SHINY_RGB_MODULATION,
++    [SPECIES_REGISTEEL]     = NORMAL_RGB_MODULATION_SHINY_RGB_MODULATION,
++    [SPECIES_LATIAS]        = NORMAL_HUE_NEGATIVE_SHINY_HUE_POSITIVE,
++    [SPECIES_RAYQUAZA]      = NORMAL_HUE_BOTH_WAYS_SHINY_RGB_MODULATION
++};
++
+ u8 CreateInvisibleSpriteWithCallback(void (*callback)(struct Sprite *))
+ {
+     u8 sprite = CreateSprite(&sInvisibleSpriteTemplate, DISPLAY_WIDTH + 8, DISPLAY_HEIGHT + 8, 14);
+@@ -277,3 +395,225 @@ void BlendPalette(u16 palOffset, u16 numEntries, u8 coeff, u32 blendColor)
+                                       b + (((data2->b - b) * coeff) >> 4));
+     }
+ }
++
++void UniquePalette(u16 palOffset, struct BoxPokemon *boxMon)
++{
++    u32 i;
++    u32 value;
++    s32 shift;
++    u8 otId[4];
++    u8 otName[PLAYER_NAME_LENGTH + 1];
++    u8 nickname[POKEMON_NAME_LENGTH + 1];
++    s32 variationMode = sColorVariationModes[GetBoxMonData(boxMon, MON_DATA_SPECIES)];
++    bool32 isShiny = GetBoxMonData(boxMon, MON_DATA_IS_SHINY);
++    bool32 willHueShift = TRUE;
++
++    #if INDIVIDUALITY_SOURCE == SOURCE_PID
++    value = (GetBoxMonData(boxMon, MON_DATA_PERSONALITY) >> 8) & 0xFFFF;
++    #elif INDIVIDUALITY_SOURCE == SOURCE_IVS
++    value = GetBoxMonData(boxMon, MON_DATA_IVS);
++    #elif INDIVIDUALITY_SOURCE == SOURCE_NICKNAME_OT
++    (u32)*otId = GetBoxMonData(boxMon, MON_DATA_OT_ID);
++    GetBoxMonData(boxMon, MON_DATA_OT_NAME, otName);
++    GetBoxMonData(boxMon, MON_DATA_NICKNAME, nickname);
++    value = 0;
++
++    for (i = 0; i < 4; i++)
++        value += otId[i];
++
++    for (i = 0; i < PLAYER_NAME_LENGTH + 1; i++)
++    {
++        if (otName[i] == 0xFF)
++            break;
++        value += otName[i];
++    }
++
++    for (i = 0; i < POKEMON_NAME_LENGTH + 1; i++)
++    {
++        if (nickname[i] == 0xFF)
++            break;
++        value += nickname[i];
++    }
++    #endif
++
++    if (isShiny)
++    {
++        switch (variationMode)
++        {
++            case NORMAL_HUE_NEGATIVE_SHINY_HUE_POSITIVE:
++                shift = value % (HUE_SHITFT_RANGE_SHINY + 1);
++                break;
++            case NORMAL_HUE_BOTH_WAYS_SHINY_HUE_BOTH_WAYS:
++            case NORMAL_RGB_MODULATION_SHINY_HUE_BOTH_WAYS:
++            default:
++                shift = (value % (HUE_SHITFT_RANGE_SHINY * 2 + 1)) - HUE_SHITFT_RANGE_SHINY;
++                break;
++            case NORMAL_HUE_POSITIVE_SHINY_HUE_NEGATIVE:
++                shift = (value % (HUE_SHITFT_RANGE_SHINY + 1)) - HUE_SHITFT_RANGE_SHINY;
++                break;
++            case NORMAL_HUE_BOTH_WAYS_SHINY_RGB_MODULATION:
++            case NORMAL_RGB_MODULATION_SHINY_RGB_MODULATION:
++                willHueShift = FALSE;
++                break;
++        }
++    }
++    else
++    {
++        switch (variationMode)
++        {
++            case NORMAL_HUE_NEGATIVE_SHINY_HUE_POSITIVE:
++                shift = (value % (HUE_SHIFT_RANGE_NORMAL + 1)) - HUE_SHIFT_RANGE_NORMAL;
++                break;
++            case NORMAL_HUE_BOTH_WAYS_SHINY_HUE_BOTH_WAYS:
++            case NORMAL_HUE_BOTH_WAYS_SHINY_RGB_MODULATION:
++            default:
++                shift = (value % (HUE_SHIFT_RANGE_NORMAL * 2 + 1)) - HUE_SHIFT_RANGE_NORMAL;
++                break;
++            case NORMAL_HUE_POSITIVE_SHINY_HUE_NEGATIVE:
++                shift = value % (HUE_SHIFT_RANGE_NORMAL + 1);
++                break;
++            case NORMAL_RGB_MODULATION_SHINY_HUE_BOTH_WAYS:
++            case NORMAL_RGB_MODULATION_SHINY_RGB_MODULATION:
++                willHueShift = FALSE;
++                break;
++        }
++    }
++
++    if (willHueShift == FALSE)
++    {
++        s8 dr = ((value >> 8) & 0xF) % 5;
++        s8 dg = ((value >> 4) & 0xF) % 5;
++        s8 db = (value & 0xF) % 5;
++
++        for (i = 0; i < 16; i++)
++        {
++            u32 index = i + palOffset;
++            struct PlttData *data1 = (struct PlttData *)&gPlttBufferUnfaded[index];
++            s8 r = data1->r + dr - 2;
++            s8 g = data1->g + dg - 2;
++            s8 b = data1->b + db - 2;
++
++            if (r > 31)
++                r = 31 - dr / 2;
++            if (g > 31)
++                g = 31 - dg / 2;
++            if (b > 31)
++                b = 31 - db / 2;
++            if (r < 0)
++                r = dr / 2;
++            if (g < 0)
++                g = dg / 2;
++            if (b < 0)
++                b = db / 2;
++
++            gPlttBufferFaded[index] = RGB(r, g, b);
++        }
++    }
++    else
++    {
++        for (i = 0; i < 16; i++)
++        {
++            u32 index = i + palOffset;
++            struct PlttData *data1 = (struct PlttData *)&gPlttBufferUnfaded[index];
++            s32 r = (data1->r * 1000) / 31;
++            s32 g = (data1->g * 1000) / 31;
++            s32 b = (data1->b * 1000) / 31;
++            s32 maxv, minv, d, h, s, l, o, p, q;
++
++            if (r > g)
++                maxv = r;
++            else
++                maxv = g;
++            if (b > maxv)
++                maxv = b;
++            if (r < g)
++                minv = r;
++            else
++                minv = g;
++            if (b < minv)
++                minv = b;
++
++            d = maxv - minv;
++            h = 0;
++            s = 0;
++            l = (maxv + minv) / 2;
++
++            if  (maxv != minv)
++            {
++                if (l > 500)
++                    s = 1000 * d / (2000 - maxv - minv);
++                else
++                    s = 1000 * d / (maxv + minv);
++                if (maxv == r)
++                {
++                    if (g < b)
++                        h = 1000 * (g - b) / d + 6000;
++                    else
++                        h = 1000 * (g - b) / d;
++                }
++                else if (maxv == g)
++                {
++                    h = 1000 * (b - r) / d + 2000;
++                }
++                else
++                {
++                    h = 1000 * (r - g) / d + 4000;
++                }
++                h /= 6;
++            }
++
++            h = (h + shift + 1000) % 1000;
++
++            if (s != 0)
++            {
++                o = (h + 333) % 1000;
++
++                if (l < 500)
++                    p = l * (s + 1000) / 1000;
++                else
++                    p = l + s - l * s / 1000;
++
++                q = l * 2 - p;
++
++                if (o < 167)
++                    r = q + (p - q) * o * 6 / 1000;
++                else if (o < 500)
++                    r = p;
++                else if (o < 667)
++                    r = q + (p - q) * (667 - o) * 6 / 1000;
++                else
++                    r = q;
++
++                o = h;
++
++                if (o < 167)
++                    g = q + (p - q) * o * 6 / 1000;
++                else if (o < 500)
++                    g = p;
++                else if (o < 667)
++                    g = q + (p - q) * (667 - o) * 6 / 1000;
++                else
++                    g = q;
++
++                o = (h + 1000 - 333) % 1000;
++
++                if (o < 167)
++                    b = q + (p - q) * o * 6 / 1000;
++                else if (o < 500)
++                    b = p;
++                else if (o < 667)
++                    b = q + (p - q) * (667 - o) * 6 / 1000;
++                else
++                    b = q;
++            }
++            else
++            {
++                r = l;
++                g = l;
++                b = l;
++            }
++
++            gPlttBufferFaded[index] = RGB((u8)(r * 31 / 1000), (u8)(g * 31 / 1000), (u8)(b * 31 / 1000));
++        }
++    }
++}
