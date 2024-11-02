@@ -1301,16 +1301,6 @@ static void Cmd_attackcanceler(void)
         return;
     }
 
-    //enhancement @wiz1989
-    // Check Castform weather change
-    if (CastformTriggerWeatherChange(gBattlerAttacker, attackerAbility, gCurrentMove))
-    {
-        //this function sets the weather and brings up the battle strings
-        if (AbilityBattleEffects(ABILITYEFFECT_SWITCH_IN_WEATHER, gBattlerAttacker, attackerAbility, 0, 0))
-            return;
-    }
-    //enhancement end
-
     // Check Protean activation.
     if (ProteanTryChangeType(gBattlerAttacker, attackerAbility, gCurrentMove, moveType))
     {
