@@ -712,6 +712,7 @@
 #define STRINGID_FOGLIFTED                            710
 #define STRINGID_PKMNMADESHELLGLEAM                   711
 #define STRINGID_FICKLEBEAMDOUBLED                    712
+#define STRINGID_CASTFORMCHANGEDWEATHER               713
 
 #define BATTLESTRINGS_COUNT                           713
 

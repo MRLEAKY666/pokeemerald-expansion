@@ -6288,13 +6288,6 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         switch (gLastUsedAbility)
         {
         case ABILITY_FORECAST:
-            if ((IsBattlerWeatherAffected(battler, gBattleWeather)
-                 || gBattleWeather == B_WEATHER_NONE
-                 || !WEATHER_HAS_EFFECT) // Air Lock active
-                 && TryBattleFormChange(battler, FORM_CHANGE_BATTLE_WEATHER)) 
-            FlagClear(FLAG_INBATTLE_WEATHER_CHANGED); //always reset the flag
-            //enhancement end
-            break;
         case ABILITY_FLOWER_GIFT:
             if ((IsBattlerWeatherAffected(battler, gBattleWeather)
              || gBattleWeather == B_WEATHER_NONE
