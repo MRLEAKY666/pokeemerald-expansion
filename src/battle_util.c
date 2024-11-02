@@ -6288,6 +6288,29 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         switch (gLastUsedAbility)
         {
         case ABILITY_FORECAST:
+            if ((IsBattlerWeatherAffected(battler, gBattleWeather)
+                 || gBattleWeather == B_WEATHER_NONE
+                 || !WEATHER_HAS_EFFECT) // Air Lock active
+                 && TryBattleFormChange(battler, FORM_CHANGE_BATTLE_WEATHER)) 
+            {
+                //enhancement wiz1989
+                //differentiate between regular forecast and self inflicted weather change
+                if (FlagGet(FLAG_INBATTLE_WEATHER_CHANGED)) {
+                    //BS is skipping some texts and popups as they have already been shown earlier
+                    BattleScriptPushCursorAndCallback(BattleScript_CastformFormChangeWithStringEnd3);
+
+                    effect++;
+                }
+                //regular forecast handling
+                else {
+                    BattleScriptPushCursorAndCallback(BattleScript_BattlerFormChangeWithStringEnd3);
+
+                    effect++;
+                }
+            }
+            FlagClear(FLAG_INBATTLE_WEATHER_CHANGED); //always reset the flag
+            //enhancement end
+            break;
         case ABILITY_FLOWER_GIFT:
             if ((IsBattlerWeatherAffected(battler, gBattleWeather)
              || gBattleWeather == B_WEATHER_NONE
