@@ -68,6 +68,7 @@
 #include "constants/songs.h"
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
+#include "reload_save.h"
 
 struct CableClubPlayer
 {
@@ -364,7 +365,7 @@ void DoWhiteOut(void)
         SetMoney(&gSaveBlock1Ptr->money, GetMoney(&gSaveBlock1Ptr->money) / 2);
     HealPlayerParty();
     Overworld_ResetStateAfterWhiteOut();
-    DoSoftReset();
+    ReloadSave();
 }
 
 void Overworld_ResetStateAfterFly(void)
