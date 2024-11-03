@@ -601,7 +601,7 @@ Route101_Text_YouSavedMe:
 # 301 "data//maps/Route101/scripts.pory"
 	.string "This is a dangerous place to chat, so\n"
 # 302 "data//maps/Route101/scripts.pory"
-	.string "come by my POKéMON LAB later, okay?$"
+	.string "lets off to my POKéMON LAB, okay?$"
 # 303 "data//maps/Route101/scripts.pory"
 
 # 304 "data//maps/Route101/scripts.pory"

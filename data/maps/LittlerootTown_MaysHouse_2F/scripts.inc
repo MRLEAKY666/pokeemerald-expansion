@@ -663,9 +663,9 @@ RivalsHouse_2F_Text_BrendanGettingReady:
 # 332 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 RivalsHouse_2F_Text_ItsRivalsPokeBall:
 # 333 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "It's {RIVAL}'s POKé BALL!\p"
+	.string "Isn't this Birch's POKé BALL?\p"
 # 334 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "Better leave it right where it is.$"
+	.string "What is {RIVAL} doing with it?$"
 # 335 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 
 # 336 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"

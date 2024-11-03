@@ -710,15 +710,12 @@ LittlerootTown_ProfessorBirchsLab_Text_GetRivalToTeachYou:
 
 LittlerootTown_ProfessorBirchsLab_Text_DontBeThatWay:
 	.string "PROF. BIRCH: Oh, don't be that way.\n"
-	.string "You should go meet my kid.$"
+	.string "Go fetch {RIVAL} and come back here.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchRivalGoneHome:
-	.string "PROF. BIRCH: {RIVAL}?\n"
-	.string "Gone home, I think.\p"
-	.string "Or maybe that kid's scrabbling around\n"
-	.string "in tall grass again somewhere…\p"
-	.string "If you or your POKéMON get tired,\n"
-	.string "you should get some rest at home.$"
+	.string "PROF. BIRCH: {RIVAL}!?\n"
+	.string "{RIVAL} snatched my POKéMON!\p"
+	.string "Go fetch {RIVAL} and come back here.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex:
 	.string "PROF. BIRCH: {PLAYER}{KUN} . . .\p"
