@@ -39,7 +39,7 @@ SootopolisCity_Mart_Pokemart:
 # 20 "data//maps/SootopolisCity_Mart/scripts.pory"
 	.2byte ITEM_FULL_HEAL
 # 21 "data//maps/SootopolisCity_Mart/scripts.pory"
-	.2byte ITEM_REVIVE
+	.2byte ITEM_DUSK_BALL
 # 22 "data//maps/SootopolisCity_Mart/scripts.pory"
 	.2byte ITEM_MAX_REPEL
 # 23 "data//maps/SootopolisCity_Mart/scripts.pory"

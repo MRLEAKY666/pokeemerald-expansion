@@ -43,7 +43,7 @@ LavaridgeTown_Mart_Pokemart:
 # 22 "data//maps/LavaridgeTown_Mart/scripts.pory"
 	.2byte ITEM_BURN_HEAL
 # 23 "data//maps/LavaridgeTown_Mart/scripts.pory"
-	.2byte ITEM_REVIVE
+	.2byte ITEM_LUM_BERRY
 # 24 "data//maps/LavaridgeTown_Mart/scripts.pory"
 	.2byte ITEM_SUPER_REPEL
 # 25 "data//maps/LavaridgeTown_Mart/scripts.pory"

@@ -41,7 +41,7 @@ MossdeepCity_Mart_Pokemart:
 # 21 "data//maps/MossdeepCity_Mart/scripts.pory"
 	.2byte ITEM_FULL_HEAL
 # 22 "data//maps/MossdeepCity_Mart/scripts.pory"
-	.2byte ITEM_REVIVE
+	.2byte ITEM_SITRUS_BERRY
 # 23 "data//maps/MossdeepCity_Mart/scripts.pory"
 	.2byte ITEM_MAX_REPEL
 # 24 "data//maps/MossdeepCity_Mart/scripts.pory"

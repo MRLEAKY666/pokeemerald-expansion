@@ -37,7 +37,7 @@ LavaridgeTown_HerbShop_Pokemart:
 # 19 "data//maps/LavaridgeTown_HerbShop/scripts.pory"
 	.2byte ITEM_HEAL_POWDER
 # 20 "data//maps/LavaridgeTown_HerbShop/scripts.pory"
-	.2byte ITEM_REVIVAL_HERB
+	.2byte ITEM_SALAC_BERRY
 # 21 "data//maps/LavaridgeTown_HerbShop/scripts.pory"
 	.2byte ITEM_NONE
 # 22 "data//maps/LavaridgeTown_HerbShop/scripts.pory"

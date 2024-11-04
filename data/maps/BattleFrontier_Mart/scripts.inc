@@ -45,7 +45,7 @@ BattleFrontier_Mart_Pokemart:
 # 23 "data//maps/BattleFrontier_Mart/scripts.pory"
 	.2byte ITEM_FULL_HEAL
 # 24 "data//maps/BattleFrontier_Mart/scripts.pory"
-	.2byte ITEM_REVIVE
+	.2byte ITEM_MOON_BALL
 # 25 "data//maps/BattleFrontier_Mart/scripts.pory"
 	.2byte ITEM_MAX_REPEL
 # 26 "data//maps/BattleFrontier_Mart/scripts.pory"

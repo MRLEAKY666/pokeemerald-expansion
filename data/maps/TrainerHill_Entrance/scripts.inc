@@ -571,7 +571,7 @@ TrainerHill_Entrance_Pokemart_Expanded:
 # 286 "data//maps/TrainerHill_Entrance/scripts.pory"
 	.2byte ITEM_FULL_HEAL
 # 287 "data//maps/TrainerHill_Entrance/scripts.pory"
-	.2byte ITEM_REVIVE
+	.2byte ITEM_LIECHI_BERRY
 # 288 "data//maps/TrainerHill_Entrance/scripts.pory"
 	.2byte ITEM_X_SPEED
 # 289 "data//maps/TrainerHill_Entrance/scripts.pory"

@@ -117,7 +117,7 @@ LilycoveCity_DepartmentStore_2F_Pokemart2:
 # 59 "data//maps/LilycoveCity_DepartmentStore_2F/scripts.pory"
 	.2byte ITEM_MAX_POTION
 # 60 "data//maps/LilycoveCity_DepartmentStore_2F/scripts.pory"
-	.2byte ITEM_REVIVE
+	.2byte ITEM_CHESTO_BERRY
 # 61 "data//maps/LilycoveCity_DepartmentStore_2F/scripts.pory"
 	.2byte ITEM_REPEL
 # 62 "data//maps/LilycoveCity_DepartmentStore_2F/scripts.pory"

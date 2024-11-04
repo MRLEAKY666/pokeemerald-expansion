@@ -45,7 +45,7 @@ FortreeCity_Mart_Pokemart:
 # 23 "data//maps/FortreeCity_Mart/scripts.pory"
 	.2byte ITEM_AWAKENING
 # 24 "data//maps/FortreeCity_Mart/scripts.pory"
-	.2byte ITEM_REVIVE
+	.2byte ITEM_FULL_HEAL
 # 25 "data//maps/FortreeCity_Mart/scripts.pory"
 	.2byte ITEM_SUPER_REPEL
 # 26 "data//maps/FortreeCity_Mart/scripts.pory"
