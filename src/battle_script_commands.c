@@ -4054,6 +4054,8 @@ static void Cmd_tryfaintmon(void)
             gBattlescriptCurrInstr = faintScript;
             if (GetBattlerSide(battler) == B_SIDE_PLAYER)
             {
+                bool8 dead = TRUE;
+                SetMonData(&gPlayerParty[gBattlerPartyIndexes[battler]], MON_DATA_DEAD, &dead);
                 gHitMarker |= HITMARKER_PLAYER_FAINTED;
                 if (gBattleResults.playerFaintCounter < 255)
                     gBattleResults.playerFaintCounter++;

@@ -1852,6 +1852,11 @@ void BoxMonToMon(const struct BoxPokemon *src, struct Pokemon *dest)
     CalculateMonStats(dest);
     value = GetMonData(dest, MON_DATA_MAX_HP) - value;
     SetMonData(dest, MON_DATA_HP, &value);
+    if (GetMonData(dest, MON_DATA_DEAD) == TRUE)
+    {
+        value = 0;
+        SetMonData(dest, MON_DATA_HP, &value);
+    }
 }
 
 u8 GetLevelFromMonExp(struct Pokemon *mon)
@@ -2803,6 +2808,9 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
             evoTracker.asField.unused = 0;
             retVal = evoTracker.value;
             break;
+        case MON_DATA_DEAD:
+            retVal = boxMon->dead;
+            break;
         default:
             break;
         }
@@ -3238,6 +3246,9 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
             substruct1->evolutionTracker2 = evoTracker.asField.b;
             break;
         }
+        case MON_DATA_DEAD:
+            SET8(boxMon->dead);
+            break;
         default:
             break;
         }
@@ -6844,6 +6855,7 @@ void UpdateMonPersonality(struct BoxPokemon *boxMon, u32 personality)
 void HealPokemon(struct Pokemon *mon)
 {
     u32 data;
+    u8 dead;
 
     data = GetMonData(mon, MON_DATA_MAX_HP);
     SetMonData(mon, MON_DATA_HP, &data);
@@ -6852,6 +6864,12 @@ void HealPokemon(struct Pokemon *mon)
     SetMonData(mon, MON_DATA_STATUS, &data);
 
     MonRestorePP(mon);
+
+    dead = GetMonData(mon, MON_DATA_DEAD);
+    if (dead == TRUE){
+        data = 0;
+        SetMonData(mon, MON_DATA_HP, &data);
+    }
 }
 
 void HealBoxPokemon(struct BoxPokemon *boxMon)
