@@ -30,7 +30,7 @@ static const u8 sPokeDollDesc[]       = _("Use to flee from\n"
                                           "any battle with\n"
                                           "a wild Pokémon.");
 
-static const u8 sMaxReviveDesc[]      = _("Revives a fainted\n"
+static const u8 sMaxReviveDesc[]      = _("Revives a dead\n"
                                           "Pokémon with all\n"
                                           "its HP.");
 
@@ -704,7 +704,7 @@ const struct Item gItemsInfo[] =
         .name = _("Revive"),
         .price = (I_PRICE >= GEN_7) ? 2000 : 1500,
         .description = COMPOUND_STRING(
-            "Revives a fainted\n"
+            "Revives a dead\n"
             "Pokémon with half\n"
             "its HP."),
         .pocket = POCKET_ITEMS,
@@ -895,7 +895,7 @@ const struct Item gItemsInfo[] =
         .description = COMPOUND_STRING(
             "A very bitter herb\n"
             "that revives a\n"
-            "fainted Pokémon."),
+            "dead Pokémon."),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
