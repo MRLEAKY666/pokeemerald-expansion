@@ -4,6 +4,7 @@ DewfordTown_Gym_MapScripts::
 	.byte 0
 
 DewfordTown_Gym_OnTransition:
+	clearflag FLAG_SYS_SAVE_GET
 	call DewfordTown_Gym_EventScript_SetFlashLevel
 	end
 

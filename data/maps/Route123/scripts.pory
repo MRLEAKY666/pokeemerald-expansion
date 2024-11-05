@@ -4,6 +4,7 @@ Route123_MapScripts::
 	.byte 0
 
 Route123_OnTransition:
+	clearflag FLAG_SYS_SAVE_GET
 	special SetRoute123Weather
 	end
 

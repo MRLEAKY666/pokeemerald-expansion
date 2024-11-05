@@ -5,6 +5,7 @@ FortreeCity_Gym_MapScripts::
 	.byte 0
 
 FortreeCity_Gym_OnTransition:
+	clearflag FLAG_SYS_SAVE_GET
 	special RotatingGate_InitPuzzle
 	setflag FLAG_TEMP_HIDE_FOLLOWER @ Hide follower bc of rotating gates
 	end

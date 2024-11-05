@@ -13,6 +13,10 @@ MauvilleCity_Gym_OnLoad:
 	case 4, MauvilleCity_Gym_EventScript_Switch4Pressed
 	end
 
+MauvilleCity_Gym_OnTransition:
+	clearflag FLAG_SYS_SAVE_GET
+	end
+
 MauvilleCity_Gym_EventScript_UpdateBarriers::
 	goto_if_set FLAG_MAUVILLE_GYM_BARRIERS_STATE, MauvilleCity_Gym_EventScript_SetAltBarriers
 	end

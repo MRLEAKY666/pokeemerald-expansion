@@ -4,6 +4,7 @@ ArtisanCave_B1F_MapScripts::
 	.byte 0
 
 ArtisanCave_B1F_OnTransition:
+	clearflag FLAG_SYS_SAVE_GET
 	setflag FLAG_LANDMARK_ARTISAN_CAVE
 	end
 

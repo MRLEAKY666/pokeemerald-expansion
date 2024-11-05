@@ -8,6 +8,7 @@ OldaleTown_MapScripts::
 	.byte 0
 
 OldaleTown_OnTransition:
+	setflag FLAG_SYS_SAVE_GET
 	call Common_EventScript_SetupRivalGfxId
 	setflag FLAG_VISITED_OLDALE_TOWN
 	call_if_unset FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_BlockWestEntrance

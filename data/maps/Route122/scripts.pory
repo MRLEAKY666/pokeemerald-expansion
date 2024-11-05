@@ -2,4 +2,8 @@ raw `
 Route122_MapScripts::
 	.byte 0
 
+Route122_OnTransition:
+	clearflag FLAG_SYS_SAVE_GET
+	end
+	
 `

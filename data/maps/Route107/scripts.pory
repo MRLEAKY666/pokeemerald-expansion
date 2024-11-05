@@ -2,6 +2,10 @@ raw `
 Route107_MapScripts::
 	.byte 0
 
+Route107_OnTransition:
+	clearflag FLAG_SYS_SAVE_GET
+	end
+
 Route107_EventScript_Darrin::
 	trainerbattle_single TRAINER_DARRIN, Route107_Text_DarrinIntro, Route107_Text_DarrinDefeated
 	msgbox Route107_Text_DarrinPostBattle, MSGBOX_AUTOCLOSE

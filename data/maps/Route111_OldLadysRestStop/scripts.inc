@@ -11,90 +11,92 @@ Route111_OldLadysRestStop_MapScripts::
 # 6 "data//maps/Route111_OldLadysRestStop/scripts.pory"
 Route111_OldLadysRestStop_OnTransition:
 # 7 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-	setflag FLAG_LANDMARK_OLD_LADY_REST_SHOP
+	setflag FLAG_SYS_SAVE_GET
 # 8 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-	end
+	setflag FLAG_LANDMARK_OLD_LADY_REST_SHOP
 # 9 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-
+	end
 # 10 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-Route111_OldLadysRestStop_EventScript_OldLady::
+
 # 11 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-	lock
+Route111_OldLadysRestStop_EventScript_OldLady::
 # 12 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-	faceplayer
+	lock
 # 13 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-	msgbox Route111_OldLadysRestStop_Text_RestUpHere, MSGBOX_YESNO
+	faceplayer
 # 14 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-	goto_if_eq VAR_RESULT, YES, Route111_OldLadysRestStop_EventScript_Rest
+	msgbox Route111_OldLadysRestStop_Text_RestUpHere, MSGBOX_YESNO
 # 15 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-	goto_if_eq VAR_RESULT, NO, Route111_OldLadysRestStop_EventScript_DeclineRest
-# 16 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-	end
-# 17 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-
-# 18 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-Route111_OldLadysRestStop_EventScript_Rest::
-# 19 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-	msgbox Route111_OldLadysRestStop_Text_TakeYourTimeRestUp, MSGBOX_DEFAULT
-# 20 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-	closemessage
-# 21 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-	call Common_EventScript_OutOfCenterPartyHeal
-# 22 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-	msgbox Route111_OldLadysRestStop_Text_StillTiredTakeAnotherRest, MSGBOX_YESNO
-# 23 "data//maps/Route111_OldLadysRestStop/scripts.pory"
 	goto_if_eq VAR_RESULT, YES, Route111_OldLadysRestStop_EventScript_Rest
-# 24 "data//maps/Route111_OldLadysRestStop/scripts.pory"
+# 16 "data//maps/Route111_OldLadysRestStop/scripts.pory"
 	goto_if_eq VAR_RESULT, NO, Route111_OldLadysRestStop_EventScript_DeclineRest
+# 17 "data//maps/Route111_OldLadysRestStop/scripts.pory"
+	end
+# 18 "data//maps/Route111_OldLadysRestStop/scripts.pory"
+
+# 19 "data//maps/Route111_OldLadysRestStop/scripts.pory"
+Route111_OldLadysRestStop_EventScript_Rest::
+# 20 "data//maps/Route111_OldLadysRestStop/scripts.pory"
+	msgbox Route111_OldLadysRestStop_Text_TakeYourTimeRestUp, MSGBOX_DEFAULT
+# 21 "data//maps/Route111_OldLadysRestStop/scripts.pory"
+	closemessage
+# 22 "data//maps/Route111_OldLadysRestStop/scripts.pory"
+	call Common_EventScript_OutOfCenterPartyHeal
+# 23 "data//maps/Route111_OldLadysRestStop/scripts.pory"
+	msgbox Route111_OldLadysRestStop_Text_StillTiredTakeAnotherRest, MSGBOX_YESNO
+# 24 "data//maps/Route111_OldLadysRestStop/scripts.pory"
+	goto_if_eq VAR_RESULT, YES, Route111_OldLadysRestStop_EventScript_Rest
 # 25 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-	end
+	goto_if_eq VAR_RESULT, NO, Route111_OldLadysRestStop_EventScript_DeclineRest
 # 26 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-
-# 27 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-Route111_OldLadysRestStop_EventScript_DeclineRest::
-# 28 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-	msgbox Route111_OldLadysRestStop_Text_DontNeedToBeShy, MSGBOX_DEFAULT
-# 29 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-	release
-# 30 "data//maps/Route111_OldLadysRestStop/scripts.pory"
 	end
+# 27 "data//maps/Route111_OldLadysRestStop/scripts.pory"
+
+# 28 "data//maps/Route111_OldLadysRestStop/scripts.pory"
+Route111_OldLadysRestStop_EventScript_DeclineRest::
+# 29 "data//maps/Route111_OldLadysRestStop/scripts.pory"
+	msgbox Route111_OldLadysRestStop_Text_DontNeedToBeShy, MSGBOX_DEFAULT
+# 30 "data//maps/Route111_OldLadysRestStop/scripts.pory"
+	release
 # 31 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-
+	end
 # 32 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-Route111_OldLadysRestStop_Text_RestUpHere:
+
 # 33 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-	.string "Oh, dear, dear.\n"
+Route111_OldLadysRestStop_Text_RestUpHere:
 # 34 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-	.string "Aren't your POKéMON exhausted?\p"
-# 35 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-	.string "If you'd like, rest up here.\n"
-# 36 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-	.string "That's a fine idea! You should do that.$"
-# 37 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-
-# 38 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-Route111_OldLadysRestStop_Text_TakeYourTimeRestUp:
-# 39 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-	.string "That's right.\n"
-# 40 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-	.string "Take your time and rest up!$"
-# 41 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-
-# 42 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-Route111_OldLadysRestStop_Text_StillTiredTakeAnotherRest:
-# 43 "data//maps/Route111_OldLadysRestStop/scripts.pory"
 	.string "Oh, dear, dear.\n"
-# 44 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-	.string "Are your POKéMON still tired?\p"
-# 45 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-	.string "You should take another rest here.\n"
-# 46 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-	.string "That's a fine idea. You should do that.$"
-# 47 "data//maps/Route111_OldLadysRestStop/scripts.pory"
+# 35 "data//maps/Route111_OldLadysRestStop/scripts.pory"
+	.string "Aren't your POKéMON exhausted?\p"
+# 36 "data//maps/Route111_OldLadysRestStop/scripts.pory"
+	.string "If you'd like, rest up here.\n"
+# 37 "data//maps/Route111_OldLadysRestStop/scripts.pory"
+	.string "That's a fine idea! You should do that.$"
+# 38 "data//maps/Route111_OldLadysRestStop/scripts.pory"
 
+# 39 "data//maps/Route111_OldLadysRestStop/scripts.pory"
+Route111_OldLadysRestStop_Text_TakeYourTimeRestUp:
+# 40 "data//maps/Route111_OldLadysRestStop/scripts.pory"
+	.string "That's right.\n"
+# 41 "data//maps/Route111_OldLadysRestStop/scripts.pory"
+	.string "Take your time and rest up!$"
+# 42 "data//maps/Route111_OldLadysRestStop/scripts.pory"
+
+# 43 "data//maps/Route111_OldLadysRestStop/scripts.pory"
+Route111_OldLadysRestStop_Text_StillTiredTakeAnotherRest:
+# 44 "data//maps/Route111_OldLadysRestStop/scripts.pory"
+	.string "Oh, dear, dear.\n"
+# 45 "data//maps/Route111_OldLadysRestStop/scripts.pory"
+	.string "Are your POKéMON still tired?\p"
+# 46 "data//maps/Route111_OldLadysRestStop/scripts.pory"
+	.string "You should take another rest here.\n"
+# 47 "data//maps/Route111_OldLadysRestStop/scripts.pory"
+	.string "That's a fine idea. You should do that.$"
 # 48 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-Route111_OldLadysRestStop_Text_DontNeedToBeShy:
+
 # 49 "data//maps/Route111_OldLadysRestStop/scripts.pory"
-	.string "Is that so?\n"
+Route111_OldLadysRestStop_Text_DontNeedToBeShy:
 # 50 "data//maps/Route111_OldLadysRestStop/scripts.pory"
+	.string "Is that so?\n"
+# 51 "data//maps/Route111_OldLadysRestStop/scripts.pory"
 	.string "You don't need to be shy about it.$"

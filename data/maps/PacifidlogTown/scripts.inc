@@ -13,96 +13,98 @@ PacifidlogTown_MapScripts::
 # 7 "data//maps/PacifidlogTown/scripts.pory"
 PacifidlogTown_OnTransition:
 # 8 "data//maps/PacifidlogTown/scripts.pory"
-	setflag FLAG_VISITED_PACIFIDLOG_TOWN
+	setflag FLAG_SYS_SAVE_GET
 # 9 "data//maps/PacifidlogTown/scripts.pory"
-	end
+	setflag FLAG_VISITED_PACIFIDLOG_TOWN
 # 10 "data//maps/PacifidlogTown/scripts.pory"
-
+	end
 # 11 "data//maps/PacifidlogTown/scripts.pory"
-PacifidlogTown_OnResume:
+
 # 12 "data//maps/PacifidlogTown/scripts.pory"
-	setstepcallback STEP_CB_PACIFIDLOG_BRIDGE
+PacifidlogTown_OnResume:
 # 13 "data//maps/PacifidlogTown/scripts.pory"
-	end
+	setstepcallback STEP_CB_PACIFIDLOG_BRIDGE
 # 14 "data//maps/PacifidlogTown/scripts.pory"
-
+	end
 # 15 "data//maps/PacifidlogTown/scripts.pory"
-PacifidlogTown_EventScript_NinjaBoy::
+
 # 16 "data//maps/PacifidlogTown/scripts.pory"
-	msgbox PacifidlogTown_Text_NeatHousesOnWater, MSGBOX_NPC
+PacifidlogTown_EventScript_NinjaBoy::
 # 17 "data//maps/PacifidlogTown/scripts.pory"
-	end
+	msgbox PacifidlogTown_Text_NeatHousesOnWater, MSGBOX_NPC
 # 18 "data//maps/PacifidlogTown/scripts.pory"
-
+	end
 # 19 "data//maps/PacifidlogTown/scripts.pory"
-PacifidlogTown_EventScript_Girl::
+
 # 20 "data//maps/PacifidlogTown/scripts.pory"
-	msgbox PacifidlogTown_Text_FastRunningCurrent, MSGBOX_NPC
+PacifidlogTown_EventScript_Girl::
 # 21 "data//maps/PacifidlogTown/scripts.pory"
-	end
+	msgbox PacifidlogTown_Text_FastRunningCurrent, MSGBOX_NPC
 # 22 "data//maps/PacifidlogTown/scripts.pory"
-
+	end
 # 23 "data//maps/PacifidlogTown/scripts.pory"
-PacifidlogTown_EventScript_Fisherman::
+
 # 24 "data//maps/PacifidlogTown/scripts.pory"
-	msgbox PacifidlogTown_Text_SkyPillarTooScary, MSGBOX_NPC
+PacifidlogTown_EventScript_Fisherman::
 # 25 "data//maps/PacifidlogTown/scripts.pory"
-	end
+	msgbox PacifidlogTown_Text_SkyPillarTooScary, MSGBOX_NPC
 # 26 "data//maps/PacifidlogTown/scripts.pory"
-
-# 27 "data//maps/PacifidlogTown/scripts.pory"
-PacifidlogTown_EventScript_TownSign::
-# 28 "data//maps/PacifidlogTown/scripts.pory"
-	msgbox PacifidlogTown_Text_TownSign, MSGBOX_SIGN
-# 29 "data//maps/PacifidlogTown/scripts.pory"
 	end
+# 27 "data//maps/PacifidlogTown/scripts.pory"
+
+# 28 "data//maps/PacifidlogTown/scripts.pory"
+PacifidlogTown_EventScript_TownSign::
+# 29 "data//maps/PacifidlogTown/scripts.pory"
+	msgbox PacifidlogTown_Text_TownSign, MSGBOX_SIGN
 # 30 "data//maps/PacifidlogTown/scripts.pory"
-
+	end
 # 31 "data//maps/PacifidlogTown/scripts.pory"
-PacifidlogTown_Text_FastRunningCurrent:
+
 # 32 "data//maps/PacifidlogTown/scripts.pory"
-	.string "The sea between PACIFIDLOG and\n"
+PacifidlogTown_Text_FastRunningCurrent:
 # 33 "data//maps/PacifidlogTown/scripts.pory"
-	.string "SLATEPORT has a fast-running tide.\p"
+	.string "The sea between PACIFIDLOG and\n"
 # 34 "data//maps/PacifidlogTown/scripts.pory"
-	.string "If you decide to SURF, you could end\n"
+	.string "SLATEPORT has a fast-running tide.\p"
 # 35 "data//maps/PacifidlogTown/scripts.pory"
-	.string "up swept away somewhere else.$"
+	.string "If you decide to SURF, you could end\n"
 # 36 "data//maps/PacifidlogTown/scripts.pory"
-
+	.string "up swept away somewhere else.$"
 # 37 "data//maps/PacifidlogTown/scripts.pory"
-PacifidlogTown_Text_NeatHousesOnWater:
+
 # 38 "data//maps/PacifidlogTown/scripts.pory"
-	.string "See, isn't it neat?\n"
+PacifidlogTown_Text_NeatHousesOnWater:
 # 39 "data//maps/PacifidlogTown/scripts.pory"
-	.string "These houses are on water!\p"
+	.string "See, isn't it neat?\n"
 # 40 "data//maps/PacifidlogTown/scripts.pory"
-	.string "I was born here!$"
+	.string "These houses are on water!\p"
 # 41 "data//maps/PacifidlogTown/scripts.pory"
-
+	.string "I was born here!$"
 # 42 "data//maps/PacifidlogTown/scripts.pory"
-PacifidlogTown_Text_SkyPillarTooScary:
-# 43 "data//maps/PacifidlogTown/scripts.pory"
-	.string "The SKY PILLAR?\p"
-# 44 "data//maps/PacifidlogTown/scripts.pory"
-	.string "…Oh, you must mean that tall, tall\n"
-# 45 "data//maps/PacifidlogTown/scripts.pory"
-	.string "tower a little further out.\p"
-# 46 "data//maps/PacifidlogTown/scripts.pory"
-	.string "If you asked me, I wouldn't climb it.\n"
-# 47 "data//maps/PacifidlogTown/scripts.pory"
-	.string "It's too scary to get up that high.\p"
-# 48 "data//maps/PacifidlogTown/scripts.pory"
-	.string "Life at sea level in PACIFIDLOG,\n"
-# 49 "data//maps/PacifidlogTown/scripts.pory"
-	.string "that suits me fine.$"
-# 50 "data//maps/PacifidlogTown/scripts.pory"
 
+# 43 "data//maps/PacifidlogTown/scripts.pory"
+PacifidlogTown_Text_SkyPillarTooScary:
+# 44 "data//maps/PacifidlogTown/scripts.pory"
+	.string "The SKY PILLAR?\p"
+# 45 "data//maps/PacifidlogTown/scripts.pory"
+	.string "…Oh, you must mean that tall, tall\n"
+# 46 "data//maps/PacifidlogTown/scripts.pory"
+	.string "tower a little further out.\p"
+# 47 "data//maps/PacifidlogTown/scripts.pory"
+	.string "If you asked me, I wouldn't climb it.\n"
+# 48 "data//maps/PacifidlogTown/scripts.pory"
+	.string "It's too scary to get up that high.\p"
+# 49 "data//maps/PacifidlogTown/scripts.pory"
+	.string "Life at sea level in PACIFIDLOG,\n"
+# 50 "data//maps/PacifidlogTown/scripts.pory"
+	.string "that suits me fine.$"
 # 51 "data//maps/PacifidlogTown/scripts.pory"
-PacifidlogTown_Text_TownSign:
+
 # 52 "data//maps/PacifidlogTown/scripts.pory"
-	.string "PACIFIDLOG TOWN\p"
+PacifidlogTown_Text_TownSign:
 # 53 "data//maps/PacifidlogTown/scripts.pory"
-	.string "“Where the morning sun smiles upon\n"
+	.string "PACIFIDLOG TOWN\p"
 # 54 "data//maps/PacifidlogTown/scripts.pory"
+	.string "“Where the morning sun smiles upon\n"
+# 55 "data//maps/PacifidlogTown/scripts.pory"
 	.string "the waters.”$"

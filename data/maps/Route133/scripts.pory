@@ -2,6 +2,10 @@ raw `
 Route133_MapScripts::
 	.byte 0
 
+Route133_OnTransition:
+	clearflag FLAG_SYS_SAVE_GET
+	end
+
 Route133_EventScript_Franklin::
 	trainerbattle_single TRAINER_FRANKLIN, Route133_Text_FranklinIntro, Route133_Text_FranklinDefeat
 	msgbox Route133_Text_FranklinPostBattle, MSGBOX_AUTOCLOSE

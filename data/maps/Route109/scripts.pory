@@ -5,6 +5,10 @@ raw `
 Route109_MapScripts::
 	.byte 0
 
+Route109_OnTransition:
+	clearflag FLAG_SYS_SAVE_GET
+	end
+
 Route109_EventScript_StartDepartForDewford::
 	call EventScript_BackupMrBrineyLocation
 	setobjectsubpriority LOCALID_BRINEY_R109, MAP_ROUTE109, 0

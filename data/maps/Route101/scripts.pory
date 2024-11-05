@@ -8,6 +8,7 @@ Route101_MapScripts::
 	.byte 0
 
 Route101_OnTransition:
+	clearflag FLAG_SYS_SAVE_GET
 	call ProfBirch_EventScript_UpdateLocation
 	end
 

@@ -1018,6 +1018,14 @@ EventScript_VsSeekerChargingDone::
 	releaseall
 	end
 
+Common_EventScript_EnterSafeArea::
+	setflag FLAG_SYS_SAVE_GET 
+	end
+
+Common_EventScript_ExitSafeArea::
+	clearflag FLAG_SYS_SAVE_GET
+	end
+
 	.include "data/scripts/pc_transfer.inc"
 	.include "data/scripts/questionnaire.inc"
 	.include "data/scripts/abnormal_weather.inc"

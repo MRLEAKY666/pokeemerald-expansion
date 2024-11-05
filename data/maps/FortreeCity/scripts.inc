@@ -13,300 +13,302 @@ FortreeCity_MapScripts::
 # 7 "data//maps/FortreeCity/scripts.pory"
 FortreeCity_OnTransition:
 # 8 "data//maps/FortreeCity/scripts.pory"
-	setflag FLAG_VISITED_FORTREE_CITY
+	setflag FLAG_SYS_SAVE_GET
 # 9 "data//maps/FortreeCity/scripts.pory"
-	end
+	setflag FLAG_VISITED_FORTREE_CITY
 # 10 "data//maps/FortreeCity/scripts.pory"
-
+	end
 # 11 "data//maps/FortreeCity/scripts.pory"
-FortreeCity_OnResume:
+
 # 12 "data//maps/FortreeCity/scripts.pory"
-	setstepcallback STEP_CB_FORTREE_BRIDGE
+FortreeCity_OnResume:
 # 13 "data//maps/FortreeCity/scripts.pory"
-	end
+	setstepcallback STEP_CB_FORTREE_BRIDGE
 # 14 "data//maps/FortreeCity/scripts.pory"
-
+	end
 # 15 "data//maps/FortreeCity/scripts.pory"
-FortreeCity_EventScript_Man::
+
 # 16 "data//maps/FortreeCity/scripts.pory"
-	msgbox FortreeCity_Text_SawGiganticPokemonInSky, MSGBOX_NPC
+FortreeCity_EventScript_Man::
 # 17 "data//maps/FortreeCity/scripts.pory"
-	end
+	msgbox FortreeCity_Text_SawGiganticPokemonInSky, MSGBOX_NPC
 # 18 "data//maps/FortreeCity/scripts.pory"
-
+	end
 # 19 "data//maps/FortreeCity/scripts.pory"
-FortreeCity_EventScript_Woman::
+
 # 20 "data//maps/FortreeCity/scripts.pory"
-	lock
+FortreeCity_EventScript_Woman::
 # 21 "data//maps/FortreeCity/scripts.pory"
-	faceplayer
-# 22 "data//maps/FortreeCity/scripts.pory"
-	goto_if_set FLAG_KECLEON_FLED_FORTREE, FortreeCity_EventScript_WomanGymAccessible
-# 23 "data//maps/FortreeCity/scripts.pory"
-	msgbox FortreeCity_Text_SomethingBlockingGym, MSGBOX_DEFAULT
-# 24 "data//maps/FortreeCity/scripts.pory"
-	release
-# 25 "data//maps/FortreeCity/scripts.pory"
-	end
-# 26 "data//maps/FortreeCity/scripts.pory"
-
-# 27 "data//maps/FortreeCity/scripts.pory"
-FortreeCity_EventScript_WomanGymAccessible::
-# 28 "data//maps/FortreeCity/scripts.pory"
-	msgbox FortreeCity_Text_ThisTimeIllBeatWinona, MSGBOX_DEFAULT
-# 29 "data//maps/FortreeCity/scripts.pory"
-	release
-# 30 "data//maps/FortreeCity/scripts.pory"
-	end
-# 31 "data//maps/FortreeCity/scripts.pory"
-
-# 32 "data//maps/FortreeCity/scripts.pory"
-FortreeCity_EventScript_Girl::
-# 33 "data//maps/FortreeCity/scripts.pory"
-	msgbox FortreeCity_Text_TreesGrowByDrinkingRainwater, MSGBOX_NPC
-# 34 "data//maps/FortreeCity/scripts.pory"
-	end
-# 35 "data//maps/FortreeCity/scripts.pory"
-
-# 36 "data//maps/FortreeCity/scripts.pory"
-FortreeCity_EventScript_OldMan::
-# 37 "data//maps/FortreeCity/scripts.pory"
-	msgbox FortreeCity_Text_EveryoneHealthyAndLively, MSGBOX_NPC
-# 38 "data//maps/FortreeCity/scripts.pory"
-	end
-# 39 "data//maps/FortreeCity/scripts.pory"
-
-# 40 "data//maps/FortreeCity/scripts.pory"
-FortreeCity_EventScript_Boy::
-# 41 "data//maps/FortreeCity/scripts.pory"
-	msgbox FortreeCity_Text_BugPokemonComeThroughWindow, MSGBOX_NPC
-# 42 "data//maps/FortreeCity/scripts.pory"
-	end
-# 43 "data//maps/FortreeCity/scripts.pory"
-
-# 44 "data//maps/FortreeCity/scripts.pory"
-FortreeCity_EventScript_GameboyKid::
-# 45 "data//maps/FortreeCity/scripts.pory"
-	msgbox FortreeCity_Text_PokemonThatEvolveWhenTraded, MSGBOX_NPC
-# 46 "data//maps/FortreeCity/scripts.pory"
-	end
-# 47 "data//maps/FortreeCity/scripts.pory"
-
-# 48 "data//maps/FortreeCity/scripts.pory"
-FortreeCity_EventScript_CitySign::
-# 49 "data//maps/FortreeCity/scripts.pory"
-	msgbox FortreeCity_Text_CitySign, MSGBOX_SIGN
-# 50 "data//maps/FortreeCity/scripts.pory"
-	end
-# 51 "data//maps/FortreeCity/scripts.pory"
-
-# 52 "data//maps/FortreeCity/scripts.pory"
-FortreeCity_EventScript_GymSign::
-# 53 "data//maps/FortreeCity/scripts.pory"
-	msgbox FortreeCity_Text_GymSign, MSGBOX_SIGN
-# 54 "data//maps/FortreeCity/scripts.pory"
-	end
-# 55 "data//maps/FortreeCity/scripts.pory"
-
-# 56 "data//maps/FortreeCity/scripts.pory"
-FortreeCity_EventScript_Kecleon::
-# 57 "data//maps/FortreeCity/scripts.pory"
 	lock
-# 58 "data//maps/FortreeCity/scripts.pory"
+# 22 "data//maps/FortreeCity/scripts.pory"
 	faceplayer
+# 23 "data//maps/FortreeCity/scripts.pory"
+	goto_if_set FLAG_KECLEON_FLED_FORTREE, FortreeCity_EventScript_WomanGymAccessible
+# 24 "data//maps/FortreeCity/scripts.pory"
+	msgbox FortreeCity_Text_SomethingBlockingGym, MSGBOX_DEFAULT
+# 25 "data//maps/FortreeCity/scripts.pory"
+	release
+# 26 "data//maps/FortreeCity/scripts.pory"
+	end
+# 27 "data//maps/FortreeCity/scripts.pory"
+
+# 28 "data//maps/FortreeCity/scripts.pory"
+FortreeCity_EventScript_WomanGymAccessible::
+# 29 "data//maps/FortreeCity/scripts.pory"
+	msgbox FortreeCity_Text_ThisTimeIllBeatWinona, MSGBOX_DEFAULT
+# 30 "data//maps/FortreeCity/scripts.pory"
+	release
+# 31 "data//maps/FortreeCity/scripts.pory"
+	end
+# 32 "data//maps/FortreeCity/scripts.pory"
+
+# 33 "data//maps/FortreeCity/scripts.pory"
+FortreeCity_EventScript_Girl::
+# 34 "data//maps/FortreeCity/scripts.pory"
+	msgbox FortreeCity_Text_TreesGrowByDrinkingRainwater, MSGBOX_NPC
+# 35 "data//maps/FortreeCity/scripts.pory"
+	end
+# 36 "data//maps/FortreeCity/scripts.pory"
+
+# 37 "data//maps/FortreeCity/scripts.pory"
+FortreeCity_EventScript_OldMan::
+# 38 "data//maps/FortreeCity/scripts.pory"
+	msgbox FortreeCity_Text_EveryoneHealthyAndLively, MSGBOX_NPC
+# 39 "data//maps/FortreeCity/scripts.pory"
+	end
+# 40 "data//maps/FortreeCity/scripts.pory"
+
+# 41 "data//maps/FortreeCity/scripts.pory"
+FortreeCity_EventScript_Boy::
+# 42 "data//maps/FortreeCity/scripts.pory"
+	msgbox FortreeCity_Text_BugPokemonComeThroughWindow, MSGBOX_NPC
+# 43 "data//maps/FortreeCity/scripts.pory"
+	end
+# 44 "data//maps/FortreeCity/scripts.pory"
+
+# 45 "data//maps/FortreeCity/scripts.pory"
+FortreeCity_EventScript_GameboyKid::
+# 46 "data//maps/FortreeCity/scripts.pory"
+	msgbox FortreeCity_Text_PokemonThatEvolveWhenTraded, MSGBOX_NPC
+# 47 "data//maps/FortreeCity/scripts.pory"
+	end
+# 48 "data//maps/FortreeCity/scripts.pory"
+
+# 49 "data//maps/FortreeCity/scripts.pory"
+FortreeCity_EventScript_CitySign::
+# 50 "data//maps/FortreeCity/scripts.pory"
+	msgbox FortreeCity_Text_CitySign, MSGBOX_SIGN
+# 51 "data//maps/FortreeCity/scripts.pory"
+	end
+# 52 "data//maps/FortreeCity/scripts.pory"
+
+# 53 "data//maps/FortreeCity/scripts.pory"
+FortreeCity_EventScript_GymSign::
+# 54 "data//maps/FortreeCity/scripts.pory"
+	msgbox FortreeCity_Text_GymSign, MSGBOX_SIGN
+# 55 "data//maps/FortreeCity/scripts.pory"
+	end
+# 56 "data//maps/FortreeCity/scripts.pory"
+
+# 57 "data//maps/FortreeCity/scripts.pory"
+FortreeCity_EventScript_Kecleon::
+# 58 "data//maps/FortreeCity/scripts.pory"
+	lock
 # 59 "data//maps/FortreeCity/scripts.pory"
-	checkitem ITEM_DEVON_SCOPE
+	faceplayer
 # 60 "data//maps/FortreeCity/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, FortreeCity_EventScript_AskUseDevonScope
+	checkitem ITEM_DEVON_SCOPE
 # 61 "data//maps/FortreeCity/scripts.pory"
-	msgbox FortreeCity_Text_SomethingUnseeable, MSGBOX_DEFAULT
+	goto_if_eq VAR_RESULT, TRUE, FortreeCity_EventScript_AskUseDevonScope
 # 62 "data//maps/FortreeCity/scripts.pory"
-	release
+	msgbox FortreeCity_Text_SomethingUnseeable, MSGBOX_DEFAULT
 # 63 "data//maps/FortreeCity/scripts.pory"
-	end
+	release
 # 64 "data//maps/FortreeCity/scripts.pory"
-
+	end
 # 65 "data//maps/FortreeCity/scripts.pory"
-FortreeCity_EventScript_AskUseDevonScope::
+
 # 66 "data//maps/FortreeCity/scripts.pory"
-	msgbox FortreeCity_Text_UnseeableUseDevonScope, MSGBOX_YESNO
+FortreeCity_EventScript_AskUseDevonScope::
 # 67 "data//maps/FortreeCity/scripts.pory"
-	goto_if_eq VAR_RESULT, YES, FortreeCity_EventScript_UseDevonScope
+	msgbox FortreeCity_Text_UnseeableUseDevonScope, MSGBOX_YESNO
 # 68 "data//maps/FortreeCity/scripts.pory"
-	release
+	goto_if_eq VAR_RESULT, YES, FortreeCity_EventScript_UseDevonScope
 # 69 "data//maps/FortreeCity/scripts.pory"
-	end
-# 70 "data//maps/FortreeCity/scripts.pory"
-
-# 71 "data//maps/FortreeCity/scripts.pory"
-FortreeCity_EventScript_UseDevonScope::
-# 72 "data//maps/FortreeCity/scripts.pory"
-	msgbox FortreeCity_Text_UsedDevonScopePokemonFled, MSGBOX_DEFAULT
-# 73 "data//maps/FortreeCity/scripts.pory"
-	closemessage
-# 74 "data//maps/FortreeCity/scripts.pory"
-	applymovement VAR_LAST_TALKED, Movement_KecleonAppears
-# 75 "data//maps/FortreeCity/scripts.pory"
-	waitmovement 0
-# 76 "data//maps/FortreeCity/scripts.pory"
-	waitse
-# 77 "data//maps/FortreeCity/scripts.pory"
-	playmoncry SPECIES_KECLEON, CRY_MODE_ENCOUNTER
-# 78 "data//maps/FortreeCity/scripts.pory"
-	delay 40
-# 79 "data//maps/FortreeCity/scripts.pory"
-	waitmoncry
-# 80 "data//maps/FortreeCity/scripts.pory"
-	applymovement VAR_LAST_TALKED, FortreeCity_Movement_KecleonFlee
-# 81 "data//maps/FortreeCity/scripts.pory"
-	waitmovement 0
-# 82 "data//maps/FortreeCity/scripts.pory"
-	removeobject VAR_LAST_TALKED
-# 83 "data//maps/FortreeCity/scripts.pory"
-	setflag FLAG_KECLEON_FLED_FORTREE
-# 84 "data//maps/FortreeCity/scripts.pory"
 	release
-# 85 "data//maps/FortreeCity/scripts.pory"
+# 70 "data//maps/FortreeCity/scripts.pory"
 	end
+# 71 "data//maps/FortreeCity/scripts.pory"
+
+# 72 "data//maps/FortreeCity/scripts.pory"
+FortreeCity_EventScript_UseDevonScope::
+# 73 "data//maps/FortreeCity/scripts.pory"
+	msgbox FortreeCity_Text_UsedDevonScopePokemonFled, MSGBOX_DEFAULT
+# 74 "data//maps/FortreeCity/scripts.pory"
+	closemessage
+# 75 "data//maps/FortreeCity/scripts.pory"
+	applymovement VAR_LAST_TALKED, Movement_KecleonAppears
+# 76 "data//maps/FortreeCity/scripts.pory"
+	waitmovement 0
+# 77 "data//maps/FortreeCity/scripts.pory"
+	waitse
+# 78 "data//maps/FortreeCity/scripts.pory"
+	playmoncry SPECIES_KECLEON, CRY_MODE_ENCOUNTER
+# 79 "data//maps/FortreeCity/scripts.pory"
+	delay 40
+# 80 "data//maps/FortreeCity/scripts.pory"
+	waitmoncry
+# 81 "data//maps/FortreeCity/scripts.pory"
+	applymovement VAR_LAST_TALKED, FortreeCity_Movement_KecleonFlee
+# 82 "data//maps/FortreeCity/scripts.pory"
+	waitmovement 0
+# 83 "data//maps/FortreeCity/scripts.pory"
+	removeobject VAR_LAST_TALKED
+# 84 "data//maps/FortreeCity/scripts.pory"
+	setflag FLAG_KECLEON_FLED_FORTREE
+# 85 "data//maps/FortreeCity/scripts.pory"
+	release
 # 86 "data//maps/FortreeCity/scripts.pory"
-
+	end
 # 87 "data//maps/FortreeCity/scripts.pory"
-FortreeCity_Movement_KecleonFlee:
+
 # 88 "data//maps/FortreeCity/scripts.pory"
-	walk_right
+FortreeCity_Movement_KecleonFlee:
 # 89 "data//maps/FortreeCity/scripts.pory"
-	step_end
+	walk_right
 # 90 "data//maps/FortreeCity/scripts.pory"
-
+	step_end
 # 91 "data//maps/FortreeCity/scripts.pory"
-FortreeCity_Text_SawGiganticPokemonInSky:
+
 # 92 "data//maps/FortreeCity/scripts.pory"
-	.string "No one believes me, but I saw this\n"
+FortreeCity_Text_SawGiganticPokemonInSky:
 # 93 "data//maps/FortreeCity/scripts.pory"
-	.string "gigantic POKéMON in the sky.\p"
+	.string "No one believes me, but I saw this\n"
 # 94 "data//maps/FortreeCity/scripts.pory"
-	.string "It seemed to squirm as it flew toward\n"
+	.string "gigantic POKéMON in the sky.\p"
 # 95 "data//maps/FortreeCity/scripts.pory"
-	.string "ROUTE 131.\p"
+	.string "It seemed to squirm as it flew toward\n"
 # 96 "data//maps/FortreeCity/scripts.pory"
-	.string "By the way… Sniff…\n"
+	.string "ROUTE 131.\p"
 # 97 "data//maps/FortreeCity/scripts.pory"
-	.string "Um… You, uh…smell singed.\p"
+	.string "By the way… Sniff…\n"
 # 98 "data//maps/FortreeCity/scripts.pory"
-	.string "Were you at a volcano or something?$"
+	.string "Um… You, uh…smell singed.\p"
 # 99 "data//maps/FortreeCity/scripts.pory"
-
+	.string "Were you at a volcano or something?$"
 # 100 "data//maps/FortreeCity/scripts.pory"
-FortreeCity_Text_SomethingBlockingGym:
+
 # 101 "data//maps/FortreeCity/scripts.pory"
-	.string "I want to go to the POKéMON GYM,\n"
+FortreeCity_Text_SomethingBlockingGym:
 # 102 "data//maps/FortreeCity/scripts.pory"
-	.string "but something's blocking the way.\p"
+	.string "I want to go to the POKéMON GYM,\n"
 # 103 "data//maps/FortreeCity/scripts.pory"
-	.string "After all the bother I went through\n"
+	.string "but something's blocking the way.\p"
 # 104 "data//maps/FortreeCity/scripts.pory"
-	.string "training on ROUTE 120…$"
+	.string "After all the bother I went through\n"
 # 105 "data//maps/FortreeCity/scripts.pory"
-
+	.string "training on ROUTE 120…$"
 # 106 "data//maps/FortreeCity/scripts.pory"
-FortreeCity_Text_ThisTimeIllBeatWinona:
+
 # 107 "data//maps/FortreeCity/scripts.pory"
-	.string "I've got my pride-and-joy POKéMON\n"
+FortreeCity_Text_ThisTimeIllBeatWinona:
 # 108 "data//maps/FortreeCity/scripts.pory"
-	.string "with me. This time, I'll beat WINONA.$"
+	.string "I've got my pride-and-joy POKéMON\n"
 # 109 "data//maps/FortreeCity/scripts.pory"
-
+	.string "with me. This time, I'll beat WINONA.$"
 # 110 "data//maps/FortreeCity/scripts.pory"
-FortreeCity_Text_TreesGrowByDrinkingRainwater:
+
 # 111 "data//maps/FortreeCity/scripts.pory"
-	.string "The ground absorbs rainwater, and\n"
+FortreeCity_Text_TreesGrowByDrinkingRainwater:
 # 112 "data//maps/FortreeCity/scripts.pory"
-	.string "trees grow by drinking that water…\p"
+	.string "The ground absorbs rainwater, and\n"
 # 113 "data//maps/FortreeCity/scripts.pory"
-	.string "Our FORTREE CITY exists because\n"
+	.string "trees grow by drinking that water…\p"
 # 114 "data//maps/FortreeCity/scripts.pory"
-	.string "there's both water and soil.$"
+	.string "Our FORTREE CITY exists because\n"
 # 115 "data//maps/FortreeCity/scripts.pory"
-
+	.string "there's both water and soil.$"
 # 116 "data//maps/FortreeCity/scripts.pory"
-FortreeCity_Text_EveryoneHealthyAndLively:
+
 # 117 "data//maps/FortreeCity/scripts.pory"
-	.string "The CITY consists of homes built on\n"
+FortreeCity_Text_EveryoneHealthyAndLively:
 # 118 "data//maps/FortreeCity/scripts.pory"
-	.string "trees.\p"
+	.string "The CITY consists of homes built on\n"
 # 119 "data//maps/FortreeCity/scripts.pory"
-	.string "Perhaps because of that lifestyle,\n"
+	.string "trees.\p"
 # 120 "data//maps/FortreeCity/scripts.pory"
-	.string "everyone is healthy and lively.\p"
+	.string "Perhaps because of that lifestyle,\n"
 # 121 "data//maps/FortreeCity/scripts.pory"
-	.string "Why, even myself--I feel as if I've\n"
+	.string "everyone is healthy and lively.\p"
 # 122 "data//maps/FortreeCity/scripts.pory"
-	.string "grown thirty years younger.$"
+	.string "Why, even myself--I feel as if I've\n"
 # 123 "data//maps/FortreeCity/scripts.pory"
-
+	.string "grown thirty years younger.$"
 # 124 "data//maps/FortreeCity/scripts.pory"
-FortreeCity_Text_BugPokemonComeThroughWindow:
+
 # 125 "data//maps/FortreeCity/scripts.pory"
-	.string "Living on top of trees is okay.\p"
+FortreeCity_Text_BugPokemonComeThroughWindow:
 # 126 "data//maps/FortreeCity/scripts.pory"
-	.string "But sometimes BUG POKéMON come in\n"
+	.string "Living on top of trees is okay.\p"
 # 127 "data//maps/FortreeCity/scripts.pory"
-	.string "through windows.\l"
+	.string "But sometimes BUG POKéMON come in\n"
 # 128 "data//maps/FortreeCity/scripts.pory"
-	.string "It can be really startling.$"
+	.string "through windows.\l"
 # 129 "data//maps/FortreeCity/scripts.pory"
-
+	.string "It can be really startling.$"
 # 130 "data//maps/FortreeCity/scripts.pory"
-FortreeCity_Text_PokemonThatEvolveWhenTraded:
+
 # 131 "data//maps/FortreeCity/scripts.pory"
-	.string "There are POKéMON that evolve when\n"
+FortreeCity_Text_PokemonThatEvolveWhenTraded:
 # 132 "data//maps/FortreeCity/scripts.pory"
-	.string "you trade them! That's what I heard.$"
+	.string "There are POKéMON that evolve when\n"
 # 133 "data//maps/FortreeCity/scripts.pory"
-
+	.string "you trade them! That's what I heard.$"
 # 134 "data//maps/FortreeCity/scripts.pory"
-FortreeCity_Text_SomethingUnseeable:
+
 # 135 "data//maps/FortreeCity/scripts.pory"
-	.string "Something unseeable is in the way.$"
+FortreeCity_Text_SomethingUnseeable:
 # 136 "data//maps/FortreeCity/scripts.pory"
-
+	.string "Something unseeable is in the way.$"
 # 137 "data//maps/FortreeCity/scripts.pory"
-FortreeCity_Text_UnseeableUseDevonScope:
+
 # 138 "data//maps/FortreeCity/scripts.pory"
-	.string "Something unseeable is in the way.\p"
+FortreeCity_Text_UnseeableUseDevonScope:
 # 139 "data//maps/FortreeCity/scripts.pory"
-	.string "Want to use the DEVON SCOPE?$"
+	.string "Something unseeable is in the way.\p"
 # 140 "data//maps/FortreeCity/scripts.pory"
-
+	.string "Want to use the DEVON SCOPE?$"
 # 141 "data//maps/FortreeCity/scripts.pory"
-FortreeCity_Text_UsedDevonScopePokemonFled:
+
 # 142 "data//maps/FortreeCity/scripts.pory"
-	.string "{PLAYER} used the DEVON SCOPE.\p"
+FortreeCity_Text_UsedDevonScopePokemonFled:
 # 143 "data//maps/FortreeCity/scripts.pory"
-	.string "An invisible POKéMON became completely\n"
+	.string "{PLAYER} used the DEVON SCOPE.\p"
 # 144 "data//maps/FortreeCity/scripts.pory"
-	.string "visible!\p"
+	.string "An invisible POKéMON became completely\n"
 # 145 "data//maps/FortreeCity/scripts.pory"
-	.string "The startled POKéMON fled!$"
+	.string "visible!\p"
 # 146 "data//maps/FortreeCity/scripts.pory"
-
+	.string "The startled POKéMON fled!$"
 # 147 "data//maps/FortreeCity/scripts.pory"
-FortreeCity_Text_CitySign:
-# 148 "data//maps/FortreeCity/scripts.pory"
-	.string "FORTREE CITY\n"
-# 149 "data//maps/FortreeCity/scripts.pory"
-	.string "“The treetop city that frolics with\l"
-# 150 "data//maps/FortreeCity/scripts.pory"
-	.string "nature.”$"
-# 151 "data//maps/FortreeCity/scripts.pory"
 
+# 148 "data//maps/FortreeCity/scripts.pory"
+FortreeCity_Text_CitySign:
+# 149 "data//maps/FortreeCity/scripts.pory"
+	.string "FORTREE CITY\n"
+# 150 "data//maps/FortreeCity/scripts.pory"
+	.string "“The treetop city that frolics with\l"
+# 151 "data//maps/FortreeCity/scripts.pory"
+	.string "nature.”$"
 # 152 "data//maps/FortreeCity/scripts.pory"
-FortreeCity_Text_GymSign:
+
 # 153 "data//maps/FortreeCity/scripts.pory"
-	.string "FORTREE CITY POKéMON GYM\n"
+FortreeCity_Text_GymSign:
 # 154 "data//maps/FortreeCity/scripts.pory"
-	.string "LEADER: WINONA\p"
+	.string "FORTREE CITY POKéMON GYM\n"
 # 155 "data//maps/FortreeCity/scripts.pory"
-	.string "“The bird user taking flight into\n"
+	.string "LEADER: WINONA\p"
 # 156 "data//maps/FortreeCity/scripts.pory"
+	.string "“The bird user taking flight into\n"
+# 157 "data//maps/FortreeCity/scripts.pory"
 	.string "the world.”$"
