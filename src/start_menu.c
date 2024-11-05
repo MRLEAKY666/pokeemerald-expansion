@@ -342,7 +342,12 @@ static void BuildNormalStartMenu(void)
     }
 
     AddStartMenuAction(MENU_ACTION_PLAYER);
-    AddStartMenuAction(MENU_ACTION_SAVE);
+
+    if (FlagGet(FLAG_SYS_SAVE_GET) == TRUE)
+    {
+        AddStartMenuAction(MENU_ACTION_SAVE);
+    }
+    
     AddStartMenuAction(MENU_ACTION_OPTION);
     AddStartMenuAction(MENU_ACTION_EXIT);
 }
