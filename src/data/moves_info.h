@@ -12825,7 +12825,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .name = COMPOUND_STRING("Retaliate"),
         .description = COMPOUND_STRING(
             "An attack that does more\n"
-            "damage if an ally fainted."),
+            "damage if an ally died."),
         .effect = EFFECT_RETALIATE,
         .power = 70,
         .type = TYPE_NORMAL,
