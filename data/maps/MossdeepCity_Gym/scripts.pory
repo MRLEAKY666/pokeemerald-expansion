@@ -8,6 +8,8 @@ MossdeepCity_Gym_MapScripts::
 
 MossdeepCity_Gym_OnTransition:
 	clearflag FLAG_SYS_SAVE_GET
+	setvar VAR_0x8008, 7
+	call_if_unset FLAG_DEFEATED_MOSSDEEP_GYM, Common_EventScript_ResetGymTrainers
 	setflag FLAG_TEMP_HIDE_FOLLOWER @ Hide follower since it can collide with moving statues
 	end
 
