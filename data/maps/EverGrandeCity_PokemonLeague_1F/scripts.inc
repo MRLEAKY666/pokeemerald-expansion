@@ -91,7 +91,7 @@ EverGrandeCity_PokemonLeague_1F_Pokemart:
 # 46 "data//maps/EverGrandeCity_PokemonLeague_1F/scripts.pory"
 	.2byte ITEM_FULL_HEAL
 # 47 "data//maps/EverGrandeCity_PokemonLeague_1F/scripts.pory"
-	.2byte ITEM_SITRUS_BERRY
+	.2byte ITEM_FOCUS_SASH
 # 48 "data//maps/EverGrandeCity_PokemonLeague_1F/scripts.pory"
 	.2byte ITEM_MAX_REPEL
 # 49 "data//maps/EverGrandeCity_PokemonLeague_1F/scripts.pory"
