@@ -35,7 +35,7 @@ Route123_EventScript_GigaDrainGirl::
 # 18 "data//maps/Route123/scripts.pory"
 	msgbox Route123_Text_YouLikeGrassMonsTooHaveThis, MSGBOX_DEFAULT
 # 19 "data//maps/Route123/scripts.pory"
-	giveitem ITEM_TM_GIGA_DRAIN
+	giveitem ITEM_TM_GIGA_DRAIN, 2
 # 20 "data//maps/Route123/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 # 21 "data//maps/Route123/scripts.pory"

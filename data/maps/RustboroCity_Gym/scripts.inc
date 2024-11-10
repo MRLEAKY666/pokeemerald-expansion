@@ -71,7 +71,7 @@ RustboroCity_Gym_EventScript_RoxanneDefeated::
 # 36 "data//maps/RustboroCity_Gym/scripts.pory"
 RustboroCity_Gym_EventScript_GiveRockTomb::
 # 37 "data//maps/RustboroCity_Gym/scripts.pory"
-	giveitem ITEM_TM_ROCK_TOMB
+	giveitem ITEM_TM_ROCK_TOMB, 5
 # 38 "data//maps/RustboroCity_Gym/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 # 39 "data//maps/RustboroCity_Gym/scripts.pory"

@@ -35,25 +35,25 @@ VerdanturfTown_Mart_Pokemart:
 # 18 "data//maps/VerdanturfTown_Mart/scripts.pory"
 	.2byte ITEM_NEST_BALL
 # 19 "data//maps/VerdanturfTown_Mart/scripts.pory"
-	.2byte ITEM_SUPER_POTION
+	.2byte ITEM_FRIEND_BALL
 # 20 "data//maps/VerdanturfTown_Mart/scripts.pory"
-	.2byte ITEM_ANTIDOTE
+	.2byte ITEM_CHERISH_BALL
 # 21 "data//maps/VerdanturfTown_Mart/scripts.pory"
-	.2byte ITEM_PARALYZE_HEAL
+	.2byte ITEM_SUPER_POTION
 # 22 "data//maps/VerdanturfTown_Mart/scripts.pory"
-	.2byte ITEM_AWAKENING
+	.2byte ITEM_ANTIDOTE
 # 23 "data//maps/VerdanturfTown_Mart/scripts.pory"
-	.2byte ITEM_BURN_HEAL
+	.2byte ITEM_PARALYZE_HEAL
 # 24 "data//maps/VerdanturfTown_Mart/scripts.pory"
-	.2byte ITEM_ICE_HEAL
+	.2byte ITEM_AWAKENING
 # 25 "data//maps/VerdanturfTown_Mart/scripts.pory"
-	.2byte ITEM_REPEL
+	.2byte ITEM_BURN_HEAL
 # 26 "data//maps/VerdanturfTown_Mart/scripts.pory"
-	.2byte ITEM_X_SP_ATK
+	.2byte ITEM_ICE_HEAL
 # 27 "data//maps/VerdanturfTown_Mart/scripts.pory"
-	.2byte ITEM_FLUFFY_TAIL
+	.2byte ITEM_REPEL
 # 28 "data//maps/VerdanturfTown_Mart/scripts.pory"
-	.2byte ITEM_NONE
+	.2byte ITEM_FLUFFY_TAIL
 # 29 "data//maps/VerdanturfTown_Mart/scripts.pory"
 	release
 # 30 "data//maps/VerdanturfTown_Mart/scripts.pory"

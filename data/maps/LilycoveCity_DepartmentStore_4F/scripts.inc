@@ -63,7 +63,7 @@ LilycoveCity_DepartmentStore_4F_Pokemart_AttackTMs:
 # 32 "data//maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
 	.2byte ITEM_TM_HYPER_BEAM
 # 33 "data//maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
-	.2byte ITEM_NONE
+	.2byte ITEM_TM_SOLAR_BEAM
 # 34 "data//maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
 	release
 # 35 "data//maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
@@ -103,7 +103,7 @@ LilycoveCity_DepartmentStore_4F_Pokemart_DefenseTMs:
 # 52 "data//maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
 	.2byte ITEM_TM_LIGHT_SCREEN
 # 53 "data//maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
-	.2byte ITEM_NONE
+	.2byte ITEM_TM_TOXIC
 # 54 "data//maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
 	release
 # 55 "data//maps/LilycoveCity_DepartmentStore_4F/scripts.pory"

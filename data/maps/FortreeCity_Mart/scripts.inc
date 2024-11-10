@@ -49,7 +49,7 @@ FortreeCity_Mart_Pokemart:
 # 25 "data//maps/FortreeCity_Mart/scripts.pory"
 	.2byte ITEM_SUPER_REPEL
 # 26 "data//maps/FortreeCity_Mart/scripts.pory"
-	.2byte ITEM_WOOD_MAIL
+	.2byte ITEM_NONE
 # 27 "data//maps/FortreeCity_Mart/scripts.pory"
 	.2byte ITEM_NONE
 # 28 "data//maps/FortreeCity_Mart/scripts.pory"

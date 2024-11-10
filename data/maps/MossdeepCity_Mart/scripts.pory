@@ -19,10 +19,10 @@ MossdeepCity_Mart_Pokemart:
 	.2byte ITEM_DIVE_BALL
 	.2byte ITEM_HYPER_POTION
 	.2byte ITEM_FULL_HEAL
-	.2byte ITEM_SITRUS_BERRY
 	.2byte ITEM_MAX_REPEL
-	.2byte ITEM_X_ATTACK
-	.2byte ITEM_X_DEFENSE
+	.2byte ITEM_TM_RAIN_DANCE
+	.2byte ITEM_NONE
+	.2byte ITEM_NONE
 	.2byte ITEM_NONE
 	release
 	end

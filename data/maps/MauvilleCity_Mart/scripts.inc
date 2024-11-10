@@ -35,25 +35,25 @@ MauvilleCity_Mart_Pokemart:
 # 18 "data//maps/MauvilleCity_Mart/scripts.pory"
 	.2byte ITEM_GREAT_BALL
 # 19 "data//maps/MauvilleCity_Mart/scripts.pory"
-	.2byte ITEM_SUPER_POTION
+	.2byte ITEM_QUICK_BALL
 # 20 "data//maps/MauvilleCity_Mart/scripts.pory"
-	.2byte ITEM_ANTIDOTE
+	.2byte ITEM_FAST_BALL
 # 21 "data//maps/MauvilleCity_Mart/scripts.pory"
-	.2byte ITEM_PARALYZE_HEAL
+	.2byte ITEM_HEAVY_BALL
 # 22 "data//maps/MauvilleCity_Mart/scripts.pory"
-	.2byte ITEM_AWAKENING
+	.2byte ITEM_SUPER_POTION
 # 23 "data//maps/MauvilleCity_Mart/scripts.pory"
-	.2byte ITEM_X_SPEED
+	.2byte ITEM_ANTIDOTE
 # 24 "data//maps/MauvilleCity_Mart/scripts.pory"
-	.2byte ITEM_X_ATTACK
+	.2byte ITEM_PARALYZE_HEAL
 # 25 "data//maps/MauvilleCity_Mart/scripts.pory"
-	.2byte ITEM_X_DEFENSE
+	.2byte ITEM_AWAKENING
 # 26 "data//maps/MauvilleCity_Mart/scripts.pory"
-	.2byte ITEM_GUARD_SPEC
+	.2byte ITEM_NONE
 # 27 "data//maps/MauvilleCity_Mart/scripts.pory"
-	.2byte ITEM_DIRE_HIT
+	.2byte ITEM_NONE
 # 28 "data//maps/MauvilleCity_Mart/scripts.pory"
-	.2byte ITEM_X_ACCURACY
+	.2byte ITEM_NONE
 # 29 "data//maps/MauvilleCity_Mart/scripts.pory"
 	.2byte ITEM_NONE
 # 30 "data//maps/MauvilleCity_Mart/scripts.pory"

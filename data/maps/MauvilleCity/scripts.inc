@@ -879,7 +879,7 @@ MauvilleCity_EventScript_CompletedNewMauville::
 # 440 "data//maps/MauvilleCity/scripts.pory"
 	msgbox MauvilleCity_Text_WattsonThanksTakeTM, MSGBOX_DEFAULT
 # 441 "data//maps/MauvilleCity/scripts.pory"
-	giveitem ITEM_TM_THUNDERBOLT
+	giveitem ITEM_TM_THUNDERBOLT, 5
 # 442 "data//maps/MauvilleCity/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 # 443 "data//maps/MauvilleCity/scripts.pory"

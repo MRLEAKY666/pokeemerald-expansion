@@ -243,7 +243,7 @@ SootopolisCity_Gym_1F_EventScript_JuanDefeated::
 # 122 "data//maps/SootopolisCity_Gym_1F/scripts.pory"
 SootopolisCity_Gym_1F_EventScript_GiveWaterPulse::
 # 123 "data//maps/SootopolisCity_Gym_1F/scripts.pory"
-	giveitem ITEM_TM_WATER_PULSE
+	giveitem ITEM_TM_WATER_PULSE, 5
 # 124 "data//maps/SootopolisCity_Gym_1F/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 # 125 "data//maps/SootopolisCity_Gym_1F/scripts.pory"
@@ -257,7 +257,7 @@ SootopolisCity_Gym_1F_EventScript_GiveWaterPulse::
 # 129 "data//maps/SootopolisCity_Gym_1F/scripts.pory"
 SootopolisCity_Gym_1F_EventScript_GiveWaterPulse2::
 # 130 "data//maps/SootopolisCity_Gym_1F/scripts.pory"
-	giveitem ITEM_TM_WATER_PULSE
+	giveitem ITEM_TM_WATER_PULSE, 5
 # 131 "data//maps/SootopolisCity_Gym_1F/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 # 132 "data//maps/SootopolisCity_Gym_1F/scripts.pory"

@@ -97,7 +97,7 @@ Route114_EventScript_RoarGentleman::
 # 49 "data//maps/Route114/scripts.pory"
 	msgbox Route114_Text_AllMyMonDoesIsRoarTakeThis, MSGBOX_DEFAULT
 # 50 "data//maps/Route114/scripts.pory"
-	giveitem ITEM_TM_ROAR
+	giveitem ITEM_TM_ROAR, 2
 # 51 "data//maps/Route114/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 # 52 "data//maps/Route114/scripts.pory"

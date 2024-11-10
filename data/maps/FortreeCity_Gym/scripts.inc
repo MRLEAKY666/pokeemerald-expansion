@@ -111,7 +111,7 @@ FortreeCity_Gym_EventScript_WinonaDefeated::
 # 56 "data//maps/FortreeCity_Gym/scripts.pory"
 FortreeCity_Gym_EventScript_GiveAerialAce2::
 # 57 "data//maps/FortreeCity_Gym/scripts.pory"
-	giveitem ITEM_TM_AERIAL_ACE
+	giveitem ITEM_TM_AERIAL_ACE, 5
 # 58 "data//maps/FortreeCity_Gym/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 # 59 "data//maps/FortreeCity_Gym/scripts.pory"
@@ -127,7 +127,7 @@ FortreeCity_Gym_EventScript_GiveAerialAce2::
 # 64 "data//maps/FortreeCity_Gym/scripts.pory"
 FortreeCity_Gym_EventScript_GiveAerialAce::
 # 65 "data//maps/FortreeCity_Gym/scripts.pory"
-	giveitem ITEM_TM_AERIAL_ACE
+	giveitem ITEM_TM_AERIAL_ACE, 5
 # 66 "data//maps/FortreeCity_Gym/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 # 67 "data//maps/FortreeCity_Gym/scripts.pory"

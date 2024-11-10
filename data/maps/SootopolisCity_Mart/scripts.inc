@@ -33,21 +33,21 @@ SootopolisCity_Mart_Pokemart:
 # 17 "data//maps/SootopolisCity_Mart/scripts.pory"
 	.2byte ITEM_ULTRA_BALL
 # 18 "data//maps/SootopolisCity_Mart/scripts.pory"
-	.2byte ITEM_HYPER_POTION
+	.2byte ITEM_HEAL_BALL
 # 19 "data//maps/SootopolisCity_Mart/scripts.pory"
-	.2byte ITEM_MAX_POTION
+	.2byte ITEM_LUXURY_BALL
 # 20 "data//maps/SootopolisCity_Mart/scripts.pory"
-	.2byte ITEM_FULL_HEAL
+	.2byte ITEM_HYPER_POTION
 # 21 "data//maps/SootopolisCity_Mart/scripts.pory"
-	.2byte ITEM_DUSK_BALL
+	.2byte ITEM_MAX_POTION
 # 22 "data//maps/SootopolisCity_Mart/scripts.pory"
-	.2byte ITEM_MAX_REPEL
+	.2byte ITEM_FULL_HEAL
 # 23 "data//maps/SootopolisCity_Mart/scripts.pory"
-	.2byte ITEM_X_ATTACK
+	.2byte ITEM_MAX_REPEL
 # 24 "data//maps/SootopolisCity_Mart/scripts.pory"
-	.2byte ITEM_X_DEFENSE
+	.2byte ITEM_TM_SUNNY_DAY
 # 25 "data//maps/SootopolisCity_Mart/scripts.pory"
-	.2byte ITEM_SHADOW_MAIL
+	.2byte ITEM_NONE
 # 26 "data//maps/SootopolisCity_Mart/scripts.pory"
 	.2byte ITEM_NONE
 # 27 "data//maps/SootopolisCity_Mart/scripts.pory"

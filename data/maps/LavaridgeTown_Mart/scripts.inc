@@ -33,21 +33,21 @@ LavaridgeTown_Mart_Pokemart:
 # 17 "data//maps/LavaridgeTown_Mart/scripts.pory"
 	.2byte ITEM_GREAT_BALL
 # 18 "data//maps/LavaridgeTown_Mart/scripts.pory"
-	.2byte ITEM_SUPER_POTION
+	.2byte ITEM_MOON_BALL
 # 19 "data//maps/LavaridgeTown_Mart/scripts.pory"
-	.2byte ITEM_ANTIDOTE
+	.2byte ITEM_SUPER_POTION
 # 20 "data//maps/LavaridgeTown_Mart/scripts.pory"
-	.2byte ITEM_PARALYZE_HEAL
+	.2byte ITEM_ANTIDOTE
 # 21 "data//maps/LavaridgeTown_Mart/scripts.pory"
-	.2byte ITEM_AWAKENING
+	.2byte ITEM_PARALYZE_HEAL
 # 22 "data//maps/LavaridgeTown_Mart/scripts.pory"
-	.2byte ITEM_BURN_HEAL
+	.2byte ITEM_AWAKENING
 # 23 "data//maps/LavaridgeTown_Mart/scripts.pory"
-	.2byte ITEM_LUM_BERRY
+	.2byte ITEM_BURN_HEAL
 # 24 "data//maps/LavaridgeTown_Mart/scripts.pory"
 	.2byte ITEM_SUPER_REPEL
 # 25 "data//maps/LavaridgeTown_Mart/scripts.pory"
-	.2byte ITEM_X_SPEED
+	.2byte ITEM_NONE
 # 26 "data//maps/LavaridgeTown_Mart/scripts.pory"
 	.2byte ITEM_NONE
 # 27 "data//maps/LavaridgeTown_Mart/scripts.pory"

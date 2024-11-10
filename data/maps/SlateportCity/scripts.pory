@@ -156,7 +156,7 @@ SlateportCity_Pokemart_EnergyGuru:
 	.2byte ITEM_ZINC
 	.2byte ITEM_CALCIUM
 	.2byte ITEM_HP_UP
-	.2byte ITEM_NONE
+	.2byte ITEM_PP_UP
 	release
 	end
 

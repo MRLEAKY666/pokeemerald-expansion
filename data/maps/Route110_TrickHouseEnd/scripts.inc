@@ -223,7 +223,7 @@ Route110_TrickHouseEnd_EventScript_CompletedPuzzle5::
 # 112 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
 # 113 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	giveitem ITEM_TM_TAUNT
+	giveitem ITEM_TM_TAUNT, 2
 # 114 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	call_if_eq VAR_RESULT, FALSE, Route110_TrickHouseEnd_EventScript_BagFull
 # 115 "data//maps/Route110_TrickHouseEnd/scripts.pory"

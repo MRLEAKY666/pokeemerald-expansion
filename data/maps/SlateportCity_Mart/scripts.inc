@@ -47,7 +47,7 @@ SlateportCity_Mart_Pokemart:
 # 24 "data//maps/SlateportCity_Mart/scripts.pory"
 	.2byte ITEM_REPEL
 # 25 "data//maps/SlateportCity_Mart/scripts.pory"
-	.2byte ITEM_HARBOR_MAIL
+	.2byte ITEM_NONE
 # 26 "data//maps/SlateportCity_Mart/scripts.pory"
 	.2byte ITEM_NONE
 # 27 "data//maps/SlateportCity_Mart/scripts.pory"

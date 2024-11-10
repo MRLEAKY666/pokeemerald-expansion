@@ -183,4 +183,4 @@ SootopolisCity_Gym_ResetGymTrainers::
 	cleartrainerflag TRAINER_ANNIKA
 	cleartrainerflag TRAINER_DAPHNE
 	return
-
+	

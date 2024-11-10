@@ -201,7 +201,7 @@ MossdeepCity_Gym_EventScript_TateAndLizaDefeated::
 # 101 "data//maps/MossdeepCity_Gym/scripts.pory"
 MossdeepCity_Gym_EventScript_GiveCalmMind2::
 # 102 "data//maps/MossdeepCity_Gym/scripts.pory"
-	giveitem ITEM_TM_CALM_MIND
+	giveitem ITEM_TM_CALM_MIND, 5
 # 103 "data//maps/MossdeepCity_Gym/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 # 104 "data//maps/MossdeepCity_Gym/scripts.pory"
@@ -217,7 +217,7 @@ MossdeepCity_Gym_EventScript_GiveCalmMind2::
 # 109 "data//maps/MossdeepCity_Gym/scripts.pory"
 MossdeepCity_Gym_EventScript_GiveCalmMind::
 # 110 "data//maps/MossdeepCity_Gym/scripts.pory"
-	giveitem ITEM_TM_CALM_MIND
+	giveitem ITEM_TM_CALM_MIND, 5
 # 111 "data//maps/MossdeepCity_Gym/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 # 112 "data//maps/MossdeepCity_Gym/scripts.pory"

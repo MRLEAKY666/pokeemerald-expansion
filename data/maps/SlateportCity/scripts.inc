@@ -315,7 +315,7 @@ SlateportCity_Pokemart_EnergyGuru:
 # 158 "data//maps/SlateportCity/scripts.pory"
 	.2byte ITEM_HP_UP
 # 159 "data//maps/SlateportCity/scripts.pory"
-	.2byte ITEM_NONE
+	.2byte ITEM_PP_UP
 # 160 "data//maps/SlateportCity/scripts.pory"
 	release
 # 161 "data//maps/SlateportCity/scripts.pory"

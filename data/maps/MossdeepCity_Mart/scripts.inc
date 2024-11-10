@@ -41,13 +41,13 @@ MossdeepCity_Mart_Pokemart:
 # 21 "data//maps/MossdeepCity_Mart/scripts.pory"
 	.2byte ITEM_FULL_HEAL
 # 22 "data//maps/MossdeepCity_Mart/scripts.pory"
-	.2byte ITEM_SITRUS_BERRY
-# 23 "data//maps/MossdeepCity_Mart/scripts.pory"
 	.2byte ITEM_MAX_REPEL
+# 23 "data//maps/MossdeepCity_Mart/scripts.pory"
+	.2byte ITEM_TM_RAIN_DANCE
 # 24 "data//maps/MossdeepCity_Mart/scripts.pory"
-	.2byte ITEM_X_ATTACK
+	.2byte ITEM_NONE
 # 25 "data//maps/MossdeepCity_Mart/scripts.pory"
-	.2byte ITEM_X_DEFENSE
+	.2byte ITEM_NONE
 # 26 "data//maps/MossdeepCity_Mart/scripts.pory"
 	.2byte ITEM_NONE
 # 27 "data//maps/MossdeepCity_Mart/scripts.pory"
