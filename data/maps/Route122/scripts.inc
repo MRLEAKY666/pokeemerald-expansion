@@ -3,12 +3,14 @@
 # 2 "data//maps/Route122/scripts.pory"
 Route122_MapScripts::
 # 3 "data//maps/Route122/scripts.pory"
-	.byte 0
+	map_script MAP_SCRIPT_ON_TRANSITION, Route122_OnTransition
 # 4 "data//maps/Route122/scripts.pory"
-
+	.byte 0
 # 5 "data//maps/Route122/scripts.pory"
-Route122_OnTransition:
+
 # 6 "data//maps/Route122/scripts.pory"
-	clearflag FLAG_SYS_SAVE_GET
+Route122_OnTransition:
 # 7 "data//maps/Route122/scripts.pory"
+	clearflag FLAG_SYS_SAVE_GET
+# 8 "data//maps/Route122/scripts.pory"
 	end

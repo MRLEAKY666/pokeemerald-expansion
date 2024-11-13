@@ -9,86 +9,70 @@ Common_EventScript_FindMysteryItem::
 	end
 
 GenerateRandomItem::
-	random 79
+	random 61
 	goto_if_eq VAR_RESULT, 0, ItemZero
-	goto_if_eq VAR_RESULT, 74, ItemZero
-	goto_if_eq VAR_RESULT, 1, ItemOne
-	goto_if_eq VAR_RESULT, 2, ItemTwo
-	goto_if_eq VAR_RESULT, 3, ItemThree
-	goto_if_eq VAR_RESULT, 4, ItemFour
-	goto_if_eq VAR_RESULT, 5, ItemFive
-	goto_if_eq VAR_RESULT, 6, ItemSix
-	goto_if_eq VAR_RESULT, 7, ItemSeven
-	goto_if_eq VAR_RESULT, 8, ItemEight
-	goto_if_eq VAR_RESULT, 9, ItemNine
-	goto_if_eq VAR_RESULT, 10, ItemTen
-	goto_if_eq VAR_RESULT, 11, ItemEleven
-	goto_if_eq VAR_RESULT, 12, ItemTwelve
-	goto_if_eq VAR_RESULT, 13, ItemThirteen
-	goto_if_eq VAR_RESULT, 14, ItemFourteen
-	goto_if_eq VAR_RESULT, 15, ItemFifteen
-	goto_if_eq VAR_RESULT, 16, ItemSixteen
-	goto_if_eq VAR_RESULT, 17, ItemSeventeen
-	goto_if_eq VAR_RESULT, 18, ItemEighteen
-	goto_if_eq VAR_RESULT, 19, ItemNineteen
-	goto_if_eq VAR_RESULT, 20, ItemTwenty
-	goto_if_eq VAR_RESULT, 21, ItemTwentyOne
-	goto_if_eq VAR_RESULT, 22, ItemTwentyTwo
-	goto_if_eq VAR_RESULT, 23, ItemTwentyThree
-	goto_if_eq VAR_RESULT, 24, ItemTwentyFour
-	goto_if_eq VAR_RESULT, 75, ItemTwentyFour
-	goto_if_eq VAR_RESULT, 25, ItemTwentyFive
-	goto_if_eq VAR_RESULT, 76, ItemTwentyFive
-	goto_if_eq VAR_RESULT, 26, ItemTwentySix
-	goto_if_eq VAR_RESULT, 77, ItemTwentySix
-	goto_if_eq VAR_RESULT, 27, ItemTwentySeven
-	goto_if_eq VAR_RESULT, 78, ItemTwentySeven
-	goto_if_eq VAR_RESULT, 28, ItemTwentyEight
-	goto_if_eq VAR_RESULT, 29, ItemTwentyNine
-	goto_if_eq VAR_RESULT, 30, ItemThirty
-	goto_if_eq VAR_RESULT, 31, ItemThirtyOne
-	goto_if_eq VAR_RESULT, 32, ItemThirtyTwo
-	goto_if_eq VAR_RESULT, 33, ItemThirtyThree
-	goto_if_eq VAR_RESULT, 34, ItemThirtyFour
-	goto_if_eq VAR_RESULT, 35, ItemThirtyFive
-	goto_if_eq VAR_RESULT, 36, ItemThirtySix
-	goto_if_eq VAR_RESULT, 37, ItemThirtySeven
-	goto_if_eq VAR_RESULT, 38, ItemThirtyEight
-	goto_if_eq VAR_RESULT, 39, ItemThirtyNine
-	goto_if_eq VAR_RESULT, 40, ItemFourty
-	goto_if_eq VAR_RESULT, 41, ItemFourtyOne
-	goto_if_eq VAR_RESULT, 42, ItemFourtyTwo
-	goto_if_eq VAR_RESULT, 43, ItemFourtyThree
-	goto_if_eq VAR_RESULT, 44, ItemFourtyFour
-	goto_if_eq VAR_RESULT, 45, ItemFourtyFive
-	goto_if_eq VAR_RESULT, 46, ItemFourtySix
-	goto_if_eq VAR_RESULT, 47, ItemFourtySeven
-	goto_if_eq VAR_RESULT, 48, ItemFourtyEight
-	goto_if_eq VAR_RESULT, 49, ItemFourtyNine
-	goto_if_eq VAR_RESULT, 50, ItemFifty
-	goto_if_eq VAR_RESULT, 51, ItemFiftyOne
-	goto_if_eq VAR_RESULT, 52, ItemFiftyTwo
-	goto_if_eq VAR_RESULT, 53, ItemFiftyThree
-	goto_if_eq VAR_RESULT, 54, ItemFiftyFour
-	goto_if_eq VAR_RESULT, 55, ItemFiftyFive
-	goto_if_eq VAR_RESULT, 56, ItemFiftySix
-	goto_if_eq VAR_RESULT, 57, ItemFiftySeven
-	goto_if_eq VAR_RESULT, 58, ItemFiftyEight
-	goto_if_eq VAR_RESULT, 59, ItemFiftyNine
-	goto_if_eq VAR_RESULT, 60, ItemSixty
-	goto_if_eq VAR_RESULT, 61, ItemSixtyOne
-	goto_if_eq VAR_RESULT, 62, ItemSixtyTwo
-	goto_if_eq VAR_RESULT, 63, ItemSixtyThree
-	goto_if_eq VAR_RESULT, 64, ItemSixtyFour
-	goto_if_eq VAR_RESULT, 65, ItemSixtyFive
-	goto_if_eq VAR_RESULT, 66, ItemSixtySix
-	goto_if_eq VAR_RESULT, 67, ItemSixtySeven
-	goto_if_eq VAR_RESULT, 68, ItemSixtyEight
-	goto_if_eq VAR_RESULT, 69, ItemSixtyNine
-	goto_if_eq VAR_RESULT, 70, ItemSeventy
-	goto_if_eq VAR_RESULT, 71, ItemSeventyOne
-	goto_if_eq VAR_RESULT, 72, ItemSeventyTwo
-	goto_if_eq VAR_RESULT, 73, ItemSeventyThree
+	goto_if_eq VAR_RESULT, 1, ItemZero
+	goto_if_eq VAR_RESULT, 2, ItemOne
+	goto_if_eq VAR_RESULT, 3, ItemTwo
+	goto_if_eq VAR_RESULT, 4, ItemThree
+	
+	goto_if_eq VAR_RESULT, 5, GenerateMysteryMint
+
+	goto_if_eq VAR_RESULT, 6, ItemTwentyFour
+	goto_if_eq VAR_RESULT, 7, ItemTwentyFour
+	goto_if_eq VAR_RESULT, 8, ItemTwentyFive
+	goto_if_eq VAR_RESULT, 9, ItemTwentyFive
+	goto_if_eq VAR_RESULT, 10, ItemTwentySix
+	goto_if_eq VAR_RESULT, 11, ItemTwentySix
+	goto_if_eq VAR_RESULT, 12, ItemTwentySeven
+	goto_if_eq VAR_RESULT, 13, ItemTwentySeven
+	goto_if_eq VAR_RESULT, 14, ItemTwentyEight
+	goto_if_eq VAR_RESULT, 15, ItemTwentyNine
+	goto_if_eq VAR_RESULT, 16, ItemThirty
+	goto_if_eq VAR_RESULT, 17, ItemThirtyOne
+	goto_if_eq VAR_RESULT, 18, ItemThirtyTwo
+	goto_if_eq VAR_RESULT, 19, ItemThirtyThree
+	goto_if_eq VAR_RESULT, 20, ItemThirtyFour
+	goto_if_eq VAR_RESULT, 21, ItemThirtyFive
+	goto_if_eq VAR_RESULT, 22, ItemThirtySix
+	goto_if_eq VAR_RESULT, 23, ItemThirtySeven
+	goto_if_eq VAR_RESULT, 24, ItemThirtyEight
+	goto_if_eq VAR_RESULT, 25, ItemThirtyNine
+	goto_if_eq VAR_RESULT, 26, ItemFourty
+	goto_if_eq VAR_RESULT, 27, ItemFourtyOne
+	goto_if_eq VAR_RESULT, 28, ItemFourtyTwo
+	goto_if_eq VAR_RESULT, 29, ItemFourtyThree
+	goto_if_eq VAR_RESULT, 30, ItemFourtyFour
+	goto_if_eq VAR_RESULT, 31, ItemFourtyFive
+	goto_if_eq VAR_RESULT, 32, ItemFourtySix
+	goto_if_eq VAR_RESULT, 33, ItemFourtySeven
+	goto_if_eq VAR_RESULT, 34, ItemFourtyEight
+	goto_if_eq VAR_RESULT, 35, ItemFourtyNine
+	goto_if_eq VAR_RESULT, 36, ItemFifty
+	goto_if_eq VAR_RESULT, 37, ItemFiftyOne
+	goto_if_eq VAR_RESULT, 38, ItemFiftyTwo
+	goto_if_eq VAR_RESULT, 39, ItemFiftyThree
+	goto_if_eq VAR_RESULT, 40, ItemFiftyFour
+	goto_if_eq VAR_RESULT, 41, ItemFiftyFive
+	goto_if_eq VAR_RESULT, 42, ItemFiftySix
+	goto_if_eq VAR_RESULT, 43, ItemFiftySeven
+	goto_if_eq VAR_RESULT, 44, ItemFiftyEight
+	goto_if_eq VAR_RESULT, 45, ItemFiftyNine
+	goto_if_eq VAR_RESULT, 46, ItemSixty
+	goto_if_eq VAR_RESULT, 47, ItemSixtyOne
+	goto_if_eq VAR_RESULT, 48, ItemSixtyTwo
+	goto_if_eq VAR_RESULT, 49, ItemSixtyThree
+	goto_if_eq VAR_RESULT, 50, ItemSixtyFour
+	goto_if_eq VAR_RESULT, 51, ItemSixtyFive
+	goto_if_eq VAR_RESULT, 52, ItemSixtySix
+	goto_if_eq VAR_RESULT, 53, ItemSixtySeven
+	goto_if_eq VAR_RESULT, 54, ItemSixtyEight
+	goto_if_eq VAR_RESULT, 55, ItemSixtyNine
+	goto_if_eq VAR_RESULT, 56, ItemSeventy
+	goto_if_eq VAR_RESULT, 57, ItemSeventyOne
+	goto_if_eq VAR_RESULT, 58, ItemSeventyTwo
+	goto_if_eq VAR_RESULT, 59, ItemSeventyNine
+	goto_if_eq VAR_RESULT, 60, ItemEighty
 	return
 
 ItemZero::
@@ -105,86 +89,6 @@ ItemTwo::
 
 ItemThree::
 	setvar VAR_RESULT, ITEM_ABILITY_PATCH
-	return
-
-ItemFour::
-	setvar VAR_RESULT, ITEM_LONELY_MINT
-	return
-
-ItemFive::
-	setvar VAR_RESULT, ITEM_ADAMANT_MINT
-	return
-
-ItemSix::
-	setvar VAR_RESULT, ITEM_NAUGHTY_MINT
-	return
-
-ItemSeven::
-	setvar VAR_RESULT, ITEM_BOLD_MINT
-	return
-
-ItemEight::
-	setvar VAR_RESULT, ITEM_IMPISH_MINT
-	return
-
-ItemNine::
-	setvar VAR_RESULT, ITEM_LAX_MINT
-	return
-
-ItemTen::
-	setvar VAR_RESULT, ITEM_RELAXED_MINT
-	return
-
-ItemEleven::
-	setvar VAR_RESULT, ITEM_MODEST_MINT
-	return
-
-ItemTwelve::
-	setvar VAR_RESULT, ITEM_MILD_MINT
-	return
-
-ItemThirteen::
-	setvar VAR_RESULT, ITEM_RASH_MINT
-	return
-
-ItemFourteen::
-	setvar VAR_RESULT, ITEM_QUIET_MINT
-	return
-
-ItemFifteen::
-	setvar VAR_RESULT, ITEM_CALM_MINT
-	return
-
-ItemSixteen::
-	setvar VAR_RESULT, ITEM_GENTLE_MINT
-	return
-
-ItemSeventeen::
-	setvar VAR_RESULT, ITEM_CAREFUL_MINT
-	return
-
-ItemEighteen::
-	setvar VAR_RESULT, ITEM_SASSY_MINT
-	return
-
-ItemNineteen::
-	setvar VAR_RESULT, ITEM_TIMID_MINT
-	return
-
-ItemTwenty::
-	setvar VAR_RESULT, ITEM_HASTY_MINT
-	return
-
-ItemTwentyOne::
-	setvar VAR_RESULT, ITEM_JOLLY_MINT
-	return
-
-ItemTwentyTwo::
-	setvar VAR_RESULT, ITEM_NAIVE_MINT
-	return
-
-ItemTwentyThree::
-	setvar VAR_RESULT, ITEM_SERIOUS_MINT
 	return
 
 ItemTwentyFour::
@@ -383,6 +287,119 @@ ItemSeventyTwo::
 	setvar VAR_RESULT, ITEM_LOADED_DICE
 	return
 
-ItemSeventyThree::
+ItemSeventyNine::
+	setvar VAR_RESULT, ITEM_TOXIC_ORB
+	return
+
+ItemEighty::
+	setvar VAR_RESULT, ITEM_FLAME_ORB
+	return
+
+GenerateMysteryMint::
+	random 21
+	goto_if_eq VAR_RESULT, 0, MintOne
+	goto_if_eq VAR_RESULT, 1, MintTwo
+	goto_if_eq VAR_RESULT, 2, MintThree
+	goto_if_eq VAR_RESULT, 3, MintFour
+	goto_if_eq VAR_RESULT, 4, MintFive
+	goto_if_eq VAR_RESULT, 5, MintSix
+	goto_if_eq VAR_RESULT, 6, MintSeven
+	goto_if_eq VAR_RESULT, 7, MintEight
+	goto_if_eq VAR_RESULT, 8, MintNine
+	goto_if_eq VAR_RESULT, 9, MintTen
+	goto_if_eq VAR_RESULT, 10, MintEleven
+	goto_if_eq VAR_RESULT, 11, MintTwelve
+	goto_if_eq VAR_RESULT, 12, MintThirteen
+	goto_if_eq VAR_RESULT, 13, MintFourteen
+	goto_if_eq VAR_RESULT, 14, MintFifteen
+	goto_if_eq VAR_RESULT, 15, MintSixteen
+	goto_if_eq VAR_RESULT, 16, MintSeventeen
+	goto_if_eq VAR_RESULT, 17, MintEighteen
+	goto_if_eq VAR_RESULT, 18, MintNineteen
+	goto_if_eq VAR_RESULT, 19, MintTwenty
+	goto_if_eq VAR_RESULT, 20, MintTwentyOne
+	return
+
+MintOne::
+	setvar VAR_RESULT, ITEM_LONELY_MINT
+	return
+
+MintTwo::
+	setvar VAR_RESULT, ITEM_ADAMANT_MINT
+	return
+
+MintThree::
+	setvar VAR_RESULT, ITEM_NAUGHTY_MINT
+	return
+
+MintFour::
+	setvar VAR_RESULT, ITEM_BOLD_MINT
+	return
+
+MintFive::
+	setvar VAR_RESULT, ITEM_IMPISH_MINT
+	return
+
+MintSix::
+	setvar VAR_RESULT, ITEM_LAX_MINT
+	return
+
+MintSeven::
+	setvar VAR_RESULT, ITEM_RELAXED_MINT
+	return
+
+MintEight::
+	setvar VAR_RESULT, ITEM_MODEST_MINT
+	return
+
+MintNine::
+	setvar VAR_RESULT, ITEM_MILD_MINT
+	return
+
+MintTen::
+	setvar VAR_RESULT, ITEM_RASH_MINT
+	return
+
+MintEleven::
+	setvar VAR_RESULT, ITEM_QUIET_MINT
+	return
+
+MintTwelve::
+	setvar VAR_RESULT, ITEM_CALM_MINT
+	return
+
+MintThirteen::
+	setvar VAR_RESULT, ITEM_GENTLE_MINT
+	return
+
+MintFourteen::
+	setvar VAR_RESULT, ITEM_CAREFUL_MINT
+	return
+
+MintFifteen::
+	setvar VAR_RESULT, ITEM_SASSY_MINT
+	return
+
+MintSixteen::
+	setvar VAR_RESULT, ITEM_TIMID_MINT
+	return
+
+MintSeventeen::
+	setvar VAR_RESULT, ITEM_HASTY_MINT
+	return
+
+MintEighteen::
+	setvar VAR_RESULT, ITEM_JOLLY_MINT
+	return
+
+MintNineteen::
+	setvar VAR_RESULT, ITEM_NAIVE_MINT
+	return
+
+MintTwenty::
+	setvar VAR_RESULT, ITEM_SERIOUS_MINT
+	return
+
+MintTwentyOne::
 	setvar VAR_RESULT, ITEM_BRAVE_MINT
 	return

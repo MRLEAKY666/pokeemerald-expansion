@@ -18322,7 +18322,7 @@
     "LevelMoves": [
       {
         "Level": 1,
-        "Move": "MOVE_SHADOW_SNEAK"
+        "Move": "MOVE_SCRATCH"
       },
       {
         "Level": 6,
@@ -18338,7 +18338,7 @@
       },
       {
         "Level": 25,
-        "Move": "MOVE_SLASH"
+        "Move": "MOVE_SHADOW_SNEAK"
       },
       {
         "Level": 34,

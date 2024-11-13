@@ -4,6 +4,7 @@ raw `
 .set LOCALID_GRUNT_3, 14
 
 Route121_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route121_OnTransition
 	.byte 0
 
 Route121_OnTransition:
