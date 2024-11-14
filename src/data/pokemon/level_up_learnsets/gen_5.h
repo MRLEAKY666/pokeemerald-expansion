@@ -12757,9 +12757,9 @@ static const struct LevelUpMove sZoroarkLevelUpLearnset[] = {
 
 #if P_HISUIAN_FORMS
 static const struct LevelUpMove sZoruaHisuianLevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 1, MOVE_SHADOW_SNEAK),
+    LEVEL_UP_MOVE( 1, MOVE_SWIFT),
     LEVEL_UP_MOVE( 6, MOVE_SNARL),
-    LEVEL_UP_MOVE(11, MOVE_SWIFT),
+    LEVEL_UP_MOVE(11, MOVE_SHADOW_SNEAK),
     LEVEL_UP_MOVE(18, MOVE_BITTER_MALICE),
     LEVEL_UP_MOVE(25, MOVE_SLASH),
     LEVEL_UP_MOVE(34, MOVE_SHADOW_CLAW),
@@ -12768,9 +12768,9 @@ static const struct LevelUpMove sZoruaHisuianLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sZoroarkHisuianLevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 1, MOVE_SHADOW_SNEAK),
+    LEVEL_UP_MOVE( 1, MOVE_SWIFT),
     LEVEL_UP_MOVE( 6, MOVE_SNARL),
-    LEVEL_UP_MOVE(11, MOVE_SWIFT),
+    LEVEL_UP_MOVE(11, MOVE_SHADOW_SNEAK),
     LEVEL_UP_MOVE(18, MOVE_BITTER_MALICE),
     LEVEL_UP_MOVE(25, MOVE_SLASH),
     LEVEL_UP_MOVE(34, MOVE_SHADOW_CLAW),
