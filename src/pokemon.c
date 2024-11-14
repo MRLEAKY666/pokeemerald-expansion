@@ -3993,6 +3993,8 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                         if (GetMonData(mon, MON_DATA_MAX_HP, NULL) != GetMonData(mon, MON_DATA_HP, NULL))
                         {
                             // Restore HP
+                            bool8 dead = FALSE;
+                            SetMonData(mon, MON_DATA_DEAD, &dead);
                             dataUnsigned = GetMonData(mon, MON_DATA_HP, NULL) + dataUnsigned;
                             if (dataUnsigned > GetMonData(mon, MON_DATA_MAX_HP, NULL))
                                 dataUnsigned = GetMonData(mon, MON_DATA_MAX_HP, NULL);
