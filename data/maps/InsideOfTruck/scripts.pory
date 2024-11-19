@@ -81,7 +81,8 @@ script InsideOfTruck_EventScript_Starterball{
 	msgbox("Take your Pokémon?", MSGBOX_YESNO)
 	if(var(VAR_RESULT) == YES){
 		call(GenerateStarter)
-		givemon(VAR_STARTER_MON, 5, ITEM_NONE)
+		randompercentage(25)
+		givemon(VAR_STARTER_MON, 5, item=ITEM_NONE, ball=ITEM_LUXURY_BALL, isShiny=VAR_RESULT)
 		if(var(VAR_RESULT) == MON_GIVEN_TO_PARTY){
 			playfanfare(MUS_OBTAIN_ITEM)
 			msgbox("Wouldn't want to leave it behind!")

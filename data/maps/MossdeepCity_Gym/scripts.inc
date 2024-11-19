@@ -21,17 +21,17 @@ MossdeepCity_Gym_OnTransition:
 # 11 "data//maps/MossdeepCity_Gym/scripts.pory"
 	setvar VAR_0x8008, 7
 # 12 "data//maps/MossdeepCity_Gym/scripts.pory"
-	call_if_unset FLAG_DEFEATED_MOSSDEEP_GYM, Common_EventScript_ResetGymTrainers
-# 13 "data//maps/MossdeepCity_Gym/scripts.pory"
 	setflag FLAG_TEMP_HIDE_FOLLOWER @ Hide follower since it can collide with moving statues
-# 14 "data//maps/MossdeepCity_Gym/scripts.pory"
+# 13 "data//maps/MossdeepCity_Gym/scripts.pory"
 	end
-# 15 "data//maps/MossdeepCity_Gym/scripts.pory"
+# 14 "data//maps/MossdeepCity_Gym/scripts.pory"
 
-# 16 "data//maps/MossdeepCity_Gym/scripts.pory"
+# 15 "data//maps/MossdeepCity_Gym/scripts.pory"
 @ All the below checks are leftover from RS. FLAG_MOSSDEEP_GYM_SWITCH_X is never set
-# 17 "data//maps/MossdeepCity_Gym/scripts.pory"
+# 16 "data//maps/MossdeepCity_Gym/scripts.pory"
 MossdeepCity_Gym_OnLoad:
+# 17 "data//maps/MossdeepCity_Gym/scripts.pory"
+	call_if_unset FLAG_DEFEATED_MOSSDEEP_GYM, Common_EventScript_ResetGymTrainers
 # 18 "data//maps/MossdeepCity_Gym/scripts.pory"
 	goto_if_set FLAG_MOSSDEEP_GYM_SWITCH_1, MossdeepCity_Gym_EventScript_SetSwitch1Metatiles
 # 19 "data//maps/MossdeepCity_Gym/scripts.pory"

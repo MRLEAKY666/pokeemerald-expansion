@@ -9,12 +9,12 @@ MossdeepCity_Gym_MapScripts::
 MossdeepCity_Gym_OnTransition:
 	clearflag FLAG_SYS_SAVE_GET
 	setvar VAR_0x8008, 7
-	call_if_unset FLAG_DEFEATED_MOSSDEEP_GYM, Common_EventScript_ResetGymTrainers
 	setflag FLAG_TEMP_HIDE_FOLLOWER @ Hide follower since it can collide with moving statues
 	end
 
 @ All the below checks are leftover from RS. FLAG_MOSSDEEP_GYM_SWITCH_X is never set
 MossdeepCity_Gym_OnLoad:
+	call_if_unset FLAG_DEFEATED_MOSSDEEP_GYM, Common_EventScript_ResetGymTrainers
 	goto_if_set FLAG_MOSSDEEP_GYM_SWITCH_1, MossdeepCity_Gym_EventScript_SetSwitch1Metatiles
 	goto MossdeepCity_Gym_EventScript_CheckSwitch2
 	end

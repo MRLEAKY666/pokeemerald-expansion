@@ -916,6 +916,12 @@ SootopolisCity_EventScript_StevenHelpWallace::
 
 SootopolisCity_EventScript_StevenMaxieArchieLeft::
 	msgbox SootopolisCity_Text_MaxieArchieLeft, MSGBOX_DEFAULT
+	msgbox SootopolisCity_Text_StevenGiveDevonScope, MSGBOX_DEFAULT
+	giveitem ITEM_DEVON_SCOPE
+	setflag FLAG_RECEIVED_DEVON_SCOPE
+	setflag FLAG_HIDE_SOOTOPOLIS_CITY_STEVEN
+	warpsilent MAP_SOOTOPOLIS_CITY, 31, 34
+	waitstate
 	releaseall
 	end
 
@@ -1685,6 +1691,16 @@ SootopolisCity_Text_MaxieArchieLeft:
 	.string "ARCHIE have gone away somewhere.\p"
 	.string "Perhaps they've gone to MT. PYRE to\n"
 	.string "return those ORBS…$"
+
+SootopolisCity_Text_StevenGiveDevonScope:
+	.string "RAYQUAZA seemingly flew off towards\n"
+	.string "the forests around FORTREE CITY.\p"
+	.string "If you're going to track it down\n"
+	.string "you'll need this DEVON SCOPE.\p"
+	.string "A POKéMON called KECLEON makes\n"
+	.string "that area hard to navigate . . .\p"
+	.string "the DEVON SCOPE allows you to see\n"
+	.string "through their camouflage.$"
 
 SootopolisCity_Text_HaventYouScaledSkyPillar:
 	.string "WALLACE: Oh?\n"

@@ -8403,7 +8403,7 @@ u8 GetAttackerObedienceForAction()
         return OBEYS;
     if (B_OBEDIENCE_MECHANICS < GEN_8 && !IsOtherTrainer(gBattleMons[gBattlerAttacker].otId, gBattleMons[gBattlerAttacker].otName))
         return OBEYS;
-    if (FlagGet(FLAG_BADGE08_GET)) // Rain Badge, ignore obedience altogether
+    if (FlagGet(FLAG_BADGE06_GET)) // Rain Badge, ignore obedience altogether
         return OBEYS;
 
     obedienceLevel = 10;
@@ -8411,17 +8411,17 @@ u8 GetAttackerObedienceForAction()
     if (FlagGet(FLAG_BADGE01_GET)) // Stone Badge
         obedienceLevel = 15;
     if (FlagGet(FLAG_BADGE02_GET)) // Knuckle Badge
-        obedienceLevel = 20;
-    if (FlagGet(FLAG_BADGE03_GET)) // Dynamo Badge
-        obedienceLevel = 25;
-    if (FlagGet(FLAG_BADGE04_GET)) // Heat Badge
         obedienceLevel = 30;
+    if (FlagGet(FLAG_BADGE03_GET)) // Dynamo Badge
+        obedienceLevel = 20;
+    if (FlagGet(FLAG_BADGE04_GET)) // Heat Badge
+        obedienceLevel = 25;
     if (FlagGet(FLAG_BADGE05_GET)) // Balance Badge
         obedienceLevel = 35;
-    if (FlagGet(FLAG_BADGE06_GET)) // Feather Badge
-        obedienceLevel = 40;
-    if (FlagGet(FLAG_BADGE07_GET)) // Mind Badge
+    if (FlagGet(FLAG_BADGE08_GET)) // Feather Badge
         obedienceLevel = 45;
+    if (FlagGet(FLAG_BADGE07_GET)) // Mind Badge
+        obedienceLevel = 40;
 
     if (B_OBEDIENCE_MECHANICS >= GEN_8
      && !IsOtherTrainer(gBattleMons[gBattlerAttacker].otId, gBattleMons[gBattlerAttacker].otName))
