@@ -15,7 +15,7 @@ RustboroCity_CuttersHouse_EventScript_Cutter::
 # 8 "data//maps/RustboroCity_CuttersHouse/scripts.pory"
 	goto_if_set FLAG_RECEIVED_HM_CUT, RustboroCity_CuttersHouse_EventScript_ExplainCut
 # 9 "data//maps/RustboroCity_CuttersHouse/scripts.pory"
-	goto_if_unset FLAG_BADGE05_GET, RustboroCity_CuttersHouse_EventScript_NotReadyYet
+	goto_if_unset FLAG_IS_CHAMPION, RustboroCity_CuttersHouse_EventScript_NotReadyYet
 # 10 "data//maps/RustboroCity_CuttersHouse/scripts.pory"
 	msgbox RustboroCity_CuttersHouse_Text_YouCanPutThisHMToGoodUse, MSGBOX_DEFAULT
 # 11 "data//maps/RustboroCity_CuttersHouse/scripts.pory"

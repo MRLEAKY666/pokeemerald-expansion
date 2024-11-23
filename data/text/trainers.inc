@@ -2914,6 +2914,20 @@ Route119_Text_FabianPostBattle:
 	.string "Leave me alone!\l"
 	.string "Your win you have to atone!$"
 
+Route119_Text_DaemonIntro:
+	.string "I came here because rare and powerful\n"
+	.string "DRAGON POKéMON live nearby!\l"
+	.string "Are you looking for them too?$"
+
+Route119_Text_DaemonDefeat:
+	.string "If I couldn't even win this battle,\n"
+	.string "how could I catch a legendary POKéMON?$"
+
+Route119_Text_DaemonPostBattle:
+	.string "I heard RAYQUAZA had been sighted\n"
+	.string "flying over FORTREE WOODS.\l"
+	.string "But where is the entrance?$"
+
 Route119_Text_DaytonIntro:
 	.string "Hohoho!\n"
 	.string "I like kid TRAINERS!\l"

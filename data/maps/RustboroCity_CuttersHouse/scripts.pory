@@ -6,7 +6,7 @@ RustboroCity_CuttersHouse_EventScript_Cutter::
 	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_HM_CUT, RustboroCity_CuttersHouse_EventScript_ExplainCut
-	goto_if_unset FLAG_BADGE05_GET, RustboroCity_CuttersHouse_EventScript_NotReadyYet
+	goto_if_unset FLAG_IS_CHAMPION, RustboroCity_CuttersHouse_EventScript_NotReadyYet
 	msgbox RustboroCity_CuttersHouse_Text_YouCanPutThisHMToGoodUse, MSGBOX_DEFAULT
 	giveitem ITEM_HM_CUT
 	setflag FLAG_RECEIVED_HM_CUT

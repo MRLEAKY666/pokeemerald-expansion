@@ -452,6 +452,11 @@ Route119_EventScript_Fabian::
 	msgbox Route119_Text_FabianPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+Route119_EventScript_Daemon::
+	trainerbattle_single TRAINER_DAEMON, Route119_Text_DaemonIntro, Route119_Text_DaemonDefeat
+	msgbox Route119_Text_DaemonPostBattle, MSGBOX_AUTOCLOSE
+	end
+
 Route119_EventScript_Dayton::
 	trainerbattle_single TRAINER_DAYTON, Route119_Text_DaytonIntro, Route119_Text_DaytonDefeat
 	msgbox Route119_Text_DaytonPostBattle, MSGBOX_AUTOCLOSE
