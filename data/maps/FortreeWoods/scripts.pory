@@ -1,0 +1,10 @@
+raw `
+FortreeWoods_MapScripts::
+	map_script MAP_SCRIPT_ON_RESUME, FortreeWoods_OnResume
+	.byte 0
+
+FortreeWoods_OnResume:
+	setstepcallback STEP_CB_FORTREE_BRIDGE
+	end
+
+`
