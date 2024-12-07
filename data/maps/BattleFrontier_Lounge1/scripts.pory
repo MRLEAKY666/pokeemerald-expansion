@@ -38,7 +38,8 @@ BattleFrontier_Lounge1_EventScript_ShowMonToBreeder::
 	goto_if_le VAR_0x8005, 90, BattleFrontier_Lounge1_EventScript_AverageTotalIVs       @ Average of 15
 	goto_if_le VAR_0x8005, 120, BattleFrontier_Lounge1_EventScript_AboveAverageTotalIVs @ Average of 20
 	goto_if_le VAR_0x8005, 150, BattleFrontier_Lounge1_EventScript_HighTotalIVs         @ Average of 25
-	goto_if_ge VAR_0x8005, 151, BattleFrontier_Lounge1_EventScript_VeryHighTotalIVs     @ Average of > 25
+	goto_if_le VAR_0x8005, 180, BattleFrontier_Lounge1_EventScript_VeryHighTotalIVs         
+	goto_if_ge VAR_0x8005, 181, BattleFrontier_Lounge1_EventScript_NearlyPerfectTotalIVs     @ Average of > 25
 	end
 
 BattleFrontier_Lounge1_EventScript_ShowEggToBreeder::
@@ -85,6 +86,11 @@ BattleFrontier_Lounge1_EventScript_HighTotalIVs::
 
 BattleFrontier_Lounge1_EventScript_VeryHighTotalIVs::
 	msgbox BattleFrontier_Lounge1_Text_OutstandingAbility, MSGBOX_DEFAULT
+	goto BattleFrontier_Lounge1_EventScript_HighestIVStat
+	end
+
+BattleFrontier_Lounge1_EventScript_NearlyPerfectTotalIVs::
+	msgbox BattleFrontier_Lounge1_Text_GeniusAbility, MSGBOX_DEFAULT
 	goto BattleFrontier_Lounge1_EventScript_HighestIVStat
 	end
 
@@ -183,6 +189,11 @@ BattleFrontier_Lounge1_Text_OutstandingAbility:
 	.string "…Hmm…\p"
 	.string "This one, overall, I would say is\n"
 	.string "wonderfully outstanding in ability!$"
+
+BattleFrontier_Lounge1_Text_GeniusAbility::
+	.string "…Hmm…\p"
+	.string "This one, overall, I would say is\n"
+	.string "a godlike genius in ability!$"
 
 BattleFrontier_Lounge1_Text_BestAspectHP:
 	.string "Incidentally, the best aspect of it,\n"
