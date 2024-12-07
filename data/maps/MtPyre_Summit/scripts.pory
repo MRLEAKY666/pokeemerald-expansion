@@ -48,6 +48,8 @@ MtPyre_Summit_EventScript_TeamAquaExits::
 	call_if_eq VAR_0x8008, 0, MtPyre_Summit_EventScript_ArchieFacePlayer0
 	call_if_eq VAR_0x8008, 1, MtPyre_Summit_EventScript_ArchieFacePlayer1
 	call_if_eq VAR_0x8008, 2, MtPyre_Summit_EventScript_ArchieFacePlayer2
+	msgbox MtPyre_Summit_Text_ArchieAttack, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_ARCHIE_MT_PYRE_SUMMIT, MtPyre_Summit_Text_ArchieDefeat
 	msgbox MtPyre_Summit_Text_ArchieWeGotTheOrbLetsGo, MSGBOX_DEFAULT
 	closemessage
 	fadescreen FADE_TO_BLACK
@@ -490,11 +492,21 @@ MtPyre_Summit_Text_Grunt4PostBattle:
 	.string "We have a great combination going\n"
 	.string "with us members and our leader.$"
 
+MtPyre_Summit_Text_ArchieAttack:
+	.string "Huh . . . ?\p"
+	.string "Who do you think you are?\n"
+	.string "Some kind of baby genius cop?\p"
+	.string "I'll squash you!$"
+
+MtPyre_Summit_Text_ArchieDefeat:
+	.string "You rat!\n"
+	.string "You are so annoying!$"
+
 MtPyre_Summit_Text_ArchieWeGotTheOrbLetsGo:
-	.string "ARCHIE: TEAM MAGMA's MAXIE got ahead\n"
-	.string "of us, but we also got what we wanted.\p"
-	.string "The RED ORB preserved at MT. PYRE…\n"
-	.string "I, ARCHIE, now have it in my possession!\p"
+	.string "ARCHIE: You defeated me . . .\n"
+	.string "but this battle was inconsequential!\p"
+	.string "I already have the RED ORB\n"
+	.string "in my possession!\p"
 	.string "Fufufu… Now we can bring our ultimate\n"
 	.string "objective to fruition!\p"
 	.string "Okay, TEAM!\n"

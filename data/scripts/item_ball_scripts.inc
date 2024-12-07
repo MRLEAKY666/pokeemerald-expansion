@@ -739,3 +739,60 @@ MysteryTMLXVIII::
 MysteryTMLXIX::
 	setvar VAR_RESULT, ITEM_TM_WILD_CHARGE
 	return
+
+Common_EventScript_FindHiddenItem::
+	call GenerateHiddenItem
+	copyvar  VAR_0x8005, VAR_RESULT
+	return
+
+GenerateHiddenItem::
+	random 4
+	goto_if_eq VAR_RESULT, 0, GenerateMysteryTrash
+	goto_if_eq VAR_RESULT, 1, GenerateMysteryTreasure
+	goto_if_eq VAR_RESULT, 2, GenerateMysteryMint
+	goto_if_eq VAR_RESULT, 3, GenerateMysteryTrash
+	return
+
+GenerateMysteryTrash::
+	random 8
+	goto_if_eq VAR_RESULT, 0, MysteryTrashI
+	goto_if_eq VAR_RESULT, 1, MysteryTrashII
+	goto_if_eq VAR_RESULT, 2, MysteryTrashIII
+	goto_if_eq VAR_RESULT, 3, MysteryTrashIV
+	goto_if_eq VAR_RESULT, 4, MysteryTrashV
+	goto_if_eq VAR_RESULT, 5, MysteryTrashVI
+	goto_if_eq VAR_RESULT, 6, MysteryTrashVII
+	goto_if_eq VAR_RESULT, 7, MysteryTrashVIII
+	return
+
+MysteryTrashI::
+	setvar VAR_RESULT, ITEM_GREEN_SHARD
+	return
+
+MysteryTrashII::
+	setvar VAR_RESULT, ITEM_BLUE_SHARD
+	return
+
+MysteryTrashIII::
+	setvar VAR_RESULT, ITEM_RED_SHARD
+	return
+
+MysteryTrashIV::
+	setvar VAR_RESULT, ITEM_YELLOW_SHARD
+	return
+
+MysteryTrashV::
+	setvar VAR_RESULT, ITEM_ABSORB_BULB
+	return
+
+MysteryTrashVI::
+	setvar VAR_RESULT, ITEM_BIG_MUSHROOM
+	return
+
+MysteryTrashVII::
+	setvar VAR_RESULT, ITEM_WHITE_HERB
+	return
+
+MysteryTrashVIII::
+	setvar VAR_RESULT, ITEM_POWER_HERB
+	return

@@ -85,7 +85,7 @@ MauvilleCity_House1_Text_ExplainRockSmash:
 # 43 "data//maps/MauvilleCity_House1/scripts.pory"
 MauvilleCity_House1_Text_MonCanFlyOutOfSmashedRock:
 # 44 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Oh, yes, if you smash a rock, a POKéMON\n"
+	.string "Hey! If you smash a rock, a POKéMON\n"
 # 45 "data//maps/MauvilleCity_House1/scripts.pory"
 	.string "could come flying out of hiding.\p"
 # 46 "data//maps/MauvilleCity_House1/scripts.pory"

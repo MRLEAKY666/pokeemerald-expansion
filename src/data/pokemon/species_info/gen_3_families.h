@@ -2395,8 +2395,8 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         )
         .levelUpLearnset = sKirliaLevelUpLearnset,
         .teachableLearnset = sKirliaTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_GARDEVOIR},
-                                {EVO_ITEM_MALE, ITEM_DAWN_STONE, SPECIES_GALLADE}),
+        .evolutions = EVOLUTION({EVO_LEVEL_FEMALE, 30, SPECIES_GARDEVOIR},
+                                {EVO_LEVEL_MALE, 30, SPECIES_GALLADE}),
     },
 
     [SPECIES_GARDEVOIR] =
@@ -8982,8 +8982,8 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .levelUpLearnset = sSnoruntLevelUpLearnset,
         .teachableLearnset = sSnoruntTeachableLearnset,
         .eggMoveLearnset = sSnoruntEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 42, SPECIES_GLALIE},
-                                {EVO_ITEM_FEMALE, ITEM_DAWN_STONE, SPECIES_FROSLASS}),
+        .evolutions = EVOLUTION({EVO_LEVEL_MALE, 42, SPECIES_GLALIE},
+                                {EVO_LEVEL_FEMALE, 42, SPECIES_FROSLASS}),
     },
 
     [SPECIES_GLALIE] =

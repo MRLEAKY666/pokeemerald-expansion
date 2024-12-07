@@ -41,7 +41,7 @@ MauvilleCity_House1_Text_ExplainRockSmash:
 	.string "Woohoo!$"
 
 MauvilleCity_House1_Text_MonCanFlyOutOfSmashedRock:
-	.string "Oh, yes, if you smash a rock, a POKéMON\n"
+	.string "Hey! If you smash a rock, a POKéMON\n"
 	.string "could come flying out of hiding.\p"
 	.string "Woohoo!$"
 
