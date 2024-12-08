@@ -1,5 +1,6 @@
 raw `
 Route102_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route102_OnTransition
 	.byte 0
 
 Route102_OnTransition:
