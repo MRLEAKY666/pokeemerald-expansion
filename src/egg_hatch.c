@@ -360,8 +360,8 @@ static void CreateHatchedMon(struct Pokemon *egg, struct Pokemon *temp)
     if (rand < 25)
     {
         isShiny = TRUE;
+        SetMonData(temp, MON_DATA_IS_SHINY, &isShiny);
     }
-    SetMonData(temp, MON_DATA_IS_SHINY, &isShiny);
 
     *egg = *temp;
 }
