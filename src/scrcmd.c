@@ -2013,6 +2013,8 @@ bool8 ScrCmd_setwildbattle(struct ScriptContext *ctx)
     u16 species2 = ScriptReadHalfword(ctx);
     u8 level2 = ScriptReadByte(ctx);
     u16 item2 = ScriptReadHalfword(ctx);
+    u8 rand;
+    u8 isShiny;
 
     if(species2 == SPECIES_NONE)
     {
@@ -2023,6 +2025,12 @@ bool8 ScrCmd_setwildbattle(struct ScriptContext *ctx)
     {
         CreateScriptedDoubleWildMon(species, level, item, species2, level2, item2);
         sIsScriptedWildDouble = TRUE;
+    }
+    rand = Random() % 100;
+    if (rand < 25)
+    {
+        isShiny = TRUE;
+        SetMonData(&gEnemyParty[0], MON_DATA_IS_SHINY, &isShiny);
     }
 
     return FALSE;
