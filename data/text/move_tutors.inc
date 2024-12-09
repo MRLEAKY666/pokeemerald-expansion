@@ -3,14 +3,10 @@ MoveTutor_Text_ThisMoveCanOnlyBeLearnedOnce:
 	.string "once. Is that okay?$"
 
 MoveTutor_Text_SwaggerTeach:
-	.string "Heh! My POKéMON totally rules!\n"
-	.string "It's cooler than any POKéMON!\p"
-	.string "I was lipping off with a swagger in\n"
-	.string "my step like that when the CHAIRMAN\l"
-	.string "chewed me out.\p"
-	.string "That took the swagger out of my step.\p"
-	.string "If you'd like, I'll teach the move\n"
-	.string "SWAGGER to a POKéMON of yours.$"
+	.string "You've got a BOTTLE CAP?\p"
+	.string "I'll teach you a great move'\n"
+	.string "called SWAGGER if you let me take\l"
+	.string "that off your hands . . .$"
 
 MoveTutor_Text_SwaggerDeclined:
 	.string "What, no? Can't you get into\n"
@@ -30,10 +26,9 @@ MoveTutor_Text_RolloutTeach:
 	.string "without changing direction?\p"
 	.string "I might even be able to roll\n"
 	.string "that way.\p"
-	.string "Do you think your POKéMON will\n"
-	.string "want to roll, too?\p"
-	.string "I can teach one the move ROLLOUT\n"
-	.string "if you'd like.$"
+	.string "I'll teach your POKEMON how to\n"
+	.string "ROLLOUT if you give me that\l"
+	.string "BOTTLE CAP . . .$"
 
 MoveTutor_Text_RolloutDeclined:
 	.string "You don't need to be shy about it.\n"
@@ -53,7 +48,8 @@ MoveTutor_Text_FuryCutterTeach:
 	.string "It's a BUG-type move, and it is\n"
 	.string "wickedly cool.\p"
 	.string "It's called FURY CUTTER.\n"
-	.string "Want me to teach it to a POKéMON?$"
+	.string "Want me to teach it to a POKéMON\l"
+	.string "in exchange for a BOTTLE CAP?$"
 
 MoveTutor_Text_FuryCutterDeclined:
 	.string "We're not on the same wavelength.$"
@@ -71,9 +67,9 @@ MoveTutor_MimicTeach:
 	.string "I am also a young one, but I mimic\n"
 	.string "the styles and speech of the elderly\l"
 	.string "folks of this town.\p"
-	.string "What do you say, young one?\n"
-	.string "Would you agree to it if I were to\l"
-	.string "offer to teach the move MIMIC?$"
+	.string "What do you say, young one, if\n"
+	.string "for just one BOTTLE CAP I were to\l"
+	.string "teach the move MIMIC to you POKEMON?$"
 
 MoveTutor_MimicDeclined:
 	.string "Oh, boo! I wanted to teach MIMIC\n"
@@ -93,12 +89,12 @@ MoveTutor_Text_MetronomeTeach:
 	.string "I want all sorts of things!\n"
 	.string "But I used up my allowance…\p"
 	.string "Wouldn't it be nice if there were\n"
-	.string "a spell that made money appear when\l"
-	.string "you waggle a finger?\p"
+	.string "a spell that made BOTTLE CAPS appear\l"
+	.string "when you waggle a finger?\p"
 	.string "If you want, I can teach your POKéMON\n"
 	.string "the move METRONOME.\p"
-	.string "Money won't appear, but your POKéMON\n"
-	.string "will waggle a finger. Yes?$"
+	.string "Money won't appear, but I'll\n"
+	.string "settle for your BOTTLE CAP. Yes?$"
 
 MoveTutor_Text_MetronomeDeclined:
 	.string "Okay. I'll be here if you change\n"
@@ -120,8 +116,8 @@ MoveTutor_Text_SleepTalkTeach:
 	.string "POWER to stay awake.\p"
 	.string "She should just take a nap like I do,\n"
 	.string "and SLEEP TALK.\p"
-	.string "I can teach your POKéMON how to\n"
-	.string "SLEEP TALK instead. Interested?$"
+	.string "For a BOTTLE CAP I can teach your\n"
+	.string "POKéMON how to SLEEP TALK. Interested?$"
 
 MoveTutor_Text_SleepTalkDeclined:
 	.string "Oh, fine, fine. You want to stay awake\n"
@@ -144,7 +140,7 @@ MoveTutor_Text_SubstituteTeach:
 	.string "if there were more than just one me\l"
 	.string "so I could enjoy all sorts of lives.\p"
 	.string "Of course it's not possible.\n"
-	.string "Giggle…\p"
+	.string "But if you trade me that BOTTLE CAP…\p"
 	.string "I know! Would you be interested in\n"
 	.string "having a POKéMON learn SUBSTITUTE?$"
 
@@ -169,12 +165,10 @@ MoveTutor_Text_DynamicPunchTeach:
 	.string "I'm a FIGHTING-type TRAINER,\n"
 	.string "so I can't win at the MOSSDEEP GYM\l"
 	.string "no matter how hard I try!\p"
-	.string "Argh! Punch! Punch! Punch!\n"
-	.string "Punch! Punch! Punch!\p"
 	.string "What, don't look at me that way!\n"
 	.string "I'm only hitting the ground!\p"
-	.string "Or do you want me to teach your\n"
-	.string "POKéMON DYNAMICPUNCH?$"
+	.string "I guess for a BOTTLE CAP I could\n"
+	.string "teach your POKéMON DYNAMICPUNCH?$"
 
 MoveTutor_Text_DynamicPunchDeclined:
 	.string "Darn! You're even making fun of me?\n"
@@ -194,9 +188,9 @@ MoveTutor_Text_DoubleEdgeTeach:
 	.string "lovably admirable.\p"
 	.string "But that also means I have many\n"
 	.string "rivals for his attention.\p"
-	.string "He's got appeal with a DOUBLE-EDGE.\n"
-	.string "I couldn't even catch his eye.\p"
-	.string "Please, let me teach your POKéMON\n"
+	.string "He's got appeal with a DOUBLE-EDGE.\p"
+	.string "I know! If you give me a BOTTLE CAP,\n"
+	.string "I could teach your POKéMON\l"
 	.string "the move DOUBLE-EDGE!$"
 
 MoveTutor_Text_DoubleEdgeDeclined:
@@ -218,7 +212,7 @@ MoveTutor_Text_ExplosionTeach:
 	.string "and become a huge hit.\p"
 	.string "Seriously, I'm going to cause\n"
 	.string "a huge EXPLOSION of popularity!\p"
-	.string "If you overheard that, I'll happily\n"
+	.string "And for a BOTTLE CAP, I'll happily\n"
 	.string "teach EXPLOSION to your POKéMON!$"
 
 MoveTutor_Text_ExplosionDeclined:
@@ -235,3 +229,7 @@ MoveTutor_Text_ExplosionTaught:
 	.string "to ignite my own EXPLOSION…\p"
 	.string "Maybe it's because deep down,\n"
 	.string "I would rather stay here…$"
+
+MoveTutor_Text_NoBottleCaps:
+	.string "No BOTTLE CAPS?\n"
+	.string "Quit wasting my time.$"
