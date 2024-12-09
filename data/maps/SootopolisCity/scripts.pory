@@ -62,6 +62,7 @@ SootopolisCity_OnTransition:
 	call_if_eq VAR_SOOTOPOLIS_CITY_STATE, 1, SootopolisCity_EventScript_SetBattleSpectators
 	call_if_eq VAR_SOOTOPOLIS_CITY_STATE, 2, SootopolisCity_EventScript_SetBattleSpectators
 	call_if_eq VAR_SOOTOPOLIS_CITY_STATE, 3, SootopolisCity_EventScript_SetBattleSpectators
+	call_if_eq VAR_SOOTOPOLIS_CITY_STATE, 3, SootopolisCity_EventScript_SetBirchMeteoriteCall
 	call_if_eq VAR_SOOTOPOLIS_CITY_STATE, 4, SootopolisCity_EventScript_SetBattleSpectators
 	call_if_eq VAR_SOOTOPOLIS_CITY_STATE, 5, SootopolisCity_EventScript_SetBattleSpectators
 	call_if_eq VAR_SOOTOPOLIS_CITY_STATE, 2, SootopolisCity_EventScript_CheckSetEnterCaveOfOriginObjPos
@@ -85,6 +86,20 @@ SootopolisCity_EventScript_SetBattleSpectators::
 	setobjectmovementtype LOCALID_NINJA_BOY, MOVEMENT_TYPE_FACE_LEFT
 	setobjectmovementtype LOCALID_WOMAN_1, MOVEMENT_TYPE_FACE_LEFT
 	return
+
+SootopolisCity_EventScript_SetBirchMeteoriteCall::
+	setvar VAR_BIRCH_METEORITE_CALL_STEP_COUNTER, 0
+	setflag FLAG_BIRCH_CALL_METEORITE
+	return
+
+SootopolisCity_EventScript_BirchRayquazaCall::
+	lockall
+	pokenavcall MatchCall_Text_BirchRayquazaCall 
+	waitmessage
+	closemessage
+	clearflag FLAG_BIRCH_CALL_METEORITE
+	releaseall
+	end
 
 SootopolisCity_EventScript_SetLayout::
 	goto_if_eq VAR_SOOTOPOLIS_CITY_STATE, 0, SootopolisCity_EventScript_SetNormalLayout

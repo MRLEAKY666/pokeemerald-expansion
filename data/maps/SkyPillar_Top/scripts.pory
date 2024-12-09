@@ -90,9 +90,12 @@ SkyPillar_Top_EventScript_RanFromRayquaza2::
 
 SkyPillar_Top_EventScript_AwakenRayquaza::
 	lockall
-	fadeoutbgm 1
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
+	checkitem ITEM_METEORITE
+	goto_if_eq VAR_RESULT, FALSE, SkyPillar_Top_EventScript_RayquazaSlept
+	fadeoutbgm 1
+	msgbox SkyPillar_Top_Text_RayquazaWokeUp, MSGBOX_DEFAULT
 	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, SkyPillar_Top_Movement_CameraPanUp
 	waitmovement 0
@@ -132,6 +135,18 @@ SkyPillar_Top_EventScript_AwakenRayquaza::
 	setvar VAR_SKY_PILLAR_RAYQUAZA_CRY_DONE, 1
 	releaseall
 	end
+
+SkyPillar_Top_EventScript_RayquazaSlept:
+	msgbox SkyPillar_Top_Text_RayquazaSlept, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, SkyPillar_Top_Movement_PreventExit
+	waitmovement 0
+	releaseall
+	end
+
+SkyPillar_Top_Movement_PreventExit:
+	walk_down
+	step_end
 
 @ Rayquaza has unusual movement frames
 @ See comments, or sAnimTable_Rayquaza
@@ -183,5 +198,12 @@ SkyPillar_Top_Movement_CameraPanDown:
 
 SkyPillar_Top_Text_RayquazaFlewOff:
 	.string "The awakened RAYQUAZA flew off…$"
+
+SkyPillar_Top_Text_RayquazaSlept::
+	.string "RAYQUAZA is sleeping . . .$"
+
+SkyPillar_Top_Text_RayquazaWokeUp::
+	.string "The METEORITE seemed to\n"
+	.string "disturb the sleeping RAYQUAZA!$"
 
 `

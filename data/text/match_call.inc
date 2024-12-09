@@ -2335,6 +2335,15 @@ MatchCall_Text_BrendanRayquazaCall:
 	.string "… … … … … …\n"
 	.string "… … … … … Click!$"
 
+MatchCall_Text_BirchRayquazaCall:
+	.string "BIRCH: {PLAYER}{KUN}!\p"
+	.string "You're going to look for\n"
+	.string "RAYQUAZA, right?\p"
+	.string "My research into ancient HOENN\n"
+	.string "indicates RAYQUAZA has a strong\l"
+	.string "connection to the METEORITE . . .\p"
+	.string "Good luck!$"
+
 MatchCall_Text_May1::
 	.string "MAY: Hi, {PLAYER}{KUN}!\p"
 	.string "MR. BRINEY retired as a SAILOR,\n"
