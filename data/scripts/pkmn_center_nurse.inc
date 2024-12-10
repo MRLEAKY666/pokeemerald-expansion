@@ -27,6 +27,7 @@ EventScript_PkmnCenterNurse_HealPkmn::
 	incrementgamestat GAME_STAT_USED_POKECENTER
 	checkmoney 50
 	goto_if_eq VAR_RESULT, FALSE, EventScript_PkmnCenterNurse_NotEnoughMoney
+	playse SE_SHOP
 	removemoney 50
 	updatemoneybox
 	call_if_eq VAR_0x8004, 0, EventScript_PkmnCenterNurse_IllTakeYourPkmn

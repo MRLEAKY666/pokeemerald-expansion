@@ -49,7 +49,7 @@ DewfordTown_EventScript_Briney::
 # 25 "data//maps/DewfordTown/scripts.pory"
 	faceplayer
 # 26 "data//maps/DewfordTown/scripts.pory"
-	goto_if_unset FLAG_DELIVERED_STEVEN_LETTER, DewfordTown_EventScript_ReturnToPetalburgPrompt
+	@ goto_if_unset FLAG_DELIVERED_STEVEN_LETTER, DewfordTown_EventScript_ReturnToPetalburgPrompt
 # 27 "data//maps/DewfordTown/scripts.pory"
 	message DewfordTown_Text_WhereAreWeBound
 # 28 "data//maps/DewfordTown/scripts.pory"

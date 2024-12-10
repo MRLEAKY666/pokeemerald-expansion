@@ -101,7 +101,16 @@ GraniteCave_StevensRoom_Text_ThankYouTakeThis:
 	.string "ROCK SMASH.$"
 
 GraniteCave_StevensRoom_Text_CouldBecomeChampionLetsRegister:
-	.string "STEVEN: Your POKéMON appear quite\n"
+	.string "STEVEN: That HM allows you to\n"
+	.string "teach the move ROCK SMASH to your\l"
+	.string "POKEMON.\p"
+	.string "With that move, you can break apart\n"
+	.string "crumbling rocks in the backcountry.\p"
+	.string "But you'll need the GYM BADGE from\n"
+	.string "MAUVILLE CITY to use it outside of\l"
+	.string "battle.\p"
+	.string ". . .\p"
+	.string "Your POKéMON appear quite\n"
 	.string "capable.\p"
 	.string "If you keep training, you could even\n"
 	.string "become the CHAMPION of the POKéMON\l"
