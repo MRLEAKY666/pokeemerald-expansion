@@ -459,7 +459,7 @@
 #define P_FAMILY_BRUXISH                 FALSE
 #define P_FAMILY_DRAMPA                  TRUE
 #define P_FAMILY_DHELMISE                FALSE
-#define P_FAMILY_JANGMO_O                FALSE
+#define P_FAMILY_JANGMO_O                TRUE
 #define P_FAMILY_TAPU_KOKO               FALSE
 #define P_FAMILY_TAPU_LELE               FALSE
 #define P_FAMILY_TAPU_BULU               FALSE

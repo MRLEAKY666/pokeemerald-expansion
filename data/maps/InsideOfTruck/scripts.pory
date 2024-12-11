@@ -81,8 +81,56 @@ script InsideOfTruck_EventScript_Starterball{
 	msgbox("Take your Pokémon?", MSGBOX_YESNO)
 	if(var(VAR_RESULT) == YES){
 		call(GenerateStarter)
+		randompercentage(50)
+		if(var(VAR_RESULT) == TRUE){
+			setvar(VAR_TEMP_1, 31)
+		}
+		else{
+			random(16)
+			setvar(VAR_TEMP_1, VAR_RESULT+15)
+		}
+		randompercentage(50)
+		if(var(VAR_RESULT) == TRUE){
+			setvar(VAR_TEMP_2, 31)
+		}
+		else{
+			random(16)
+			setvar(VAR_TEMP_1, VAR_RESULT+15)
+		}
+		randompercentage(50)
+		if(var(VAR_RESULT) == TRUE){
+			setvar(VAR_TEMP_3, 31)
+		}
+		else{
+			random(16)
+			setvar(VAR_TEMP_1, VAR_RESULT+15)
+		}
+		randompercentage(50)
+		if(var(VAR_RESULT) == TRUE){
+			setvar(VAR_TEMP_4, 31)
+		}
+		else{
+			random(16)
+			setvar(VAR_TEMP_1, VAR_RESULT+15)
+		}
+		randompercentage(50)
+		if(var(VAR_RESULT) == TRUE){
+			setvar(VAR_TEMP_5, 31)
+		}
+		else{
+			random(16)
+			setvar(VAR_TEMP_1, VAR_RESULT+15)
+		}
+		randompercentage(50)
+		if(var(VAR_RESULT) == TRUE){
+			setvar(VAR_TEMP_6, 31)
+		}
+		else{
+			random(16)
+			setvar(VAR_TEMP_1, VAR_RESULT+15)
+		}
 		randompercentage(25)
-		givemon(VAR_STARTER_MON, 5, item=ITEM_NONE, ball=ITEM_LUXURY_BALL, isShiny=VAR_RESULT)
+		givemon(VAR_STARTER_MON, 5, item=ITEM_NONE, ball=ITEM_LUXURY_BALL, hpIv=VAR_TEMP_1, atkIv=VAR_TEMP_2, defIv=VAR_TEMP_3, speedIv=VAR_TEMP_4, spAtkIv=VAR_TEMP_5, spDefIv=VAR_TEMP_6, isShiny=VAR_RESULT)
 		if(var(VAR_RESULT) == MON_GIVEN_TO_PARTY){
 			playfanfare(MUS_OBTAIN_ITEM)
 			msgbox("Wouldn't want to leave it behind!")
@@ -128,7 +176,7 @@ script NicknameBoxMon{
 
 script GenerateStarter{
 
-	random(25)
+	random(36)
 	if(var(VAR_RESULT) == 0){
 		setvar(VAR_STARTER_MON, SPECIES_TREECKO)
 	}
@@ -139,70 +187,103 @@ script GenerateStarter{
 		setvar(VAR_STARTER_MON, SPECIES_MUDKIP)
 	}
 	if(var(VAR_RESULT) == 3){
-		setvar(VAR_STARTER_MON, SPECIES_CASTFORM)
-	}
-	if(var(VAR_RESULT) == 4){
 		setvar(VAR_STARTER_MON, SPECIES_PIPLUP)
 	}
-	if(var(VAR_RESULT) == 5){
+	if(var(VAR_RESULT) == 4){
 		setvar(VAR_STARTER_MON, SPECIES_EEVEE)
 	}
-	if(var(VAR_RESULT) == 6){
+	if(var(VAR_RESULT) == 5){
 		setvar(VAR_STARTER_MON, SPECIES_PICHU)
 	}
-	if(var(VAR_RESULT) == 7){
+	if(var(VAR_RESULT) == 6){
 		setvar(VAR_STARTER_MON, SPECIES_TOGEPI)
 	}
-	if(var(VAR_RESULT) == 8){
-		setvar(VAR_STARTER_MON, SPECIES_PORYGON)
-	}
-	if(var(VAR_RESULT) == 9){
+	if(var(VAR_RESULT) == 7){
 		setvar(VAR_STARTER_MON, SPECIES_SNIVY)
 	}
-	if(var(VAR_RESULT) == 10){
+	if(var(VAR_RESULT) == 8){
 		setvar(VAR_STARTER_MON, SPECIES_ZORUA_HISUIAN)
 	}
-	if(var(VAR_RESULT) == 11){
+	if(var(VAR_RESULT) == 9){
 		setvar(VAR_STARTER_MON, SPECIES_ZORUA)
 	}
-	if(var(VAR_RESULT) == 12){
+	if(var(VAR_RESULT) == 10){
 		setvar(VAR_STARTER_MON, SPECIES_GOTHITA)
 	}
-	if(var(VAR_RESULT) == 13){
+	if(var(VAR_RESULT) == 11){
 		setvar(VAR_STARTER_MON, SPECIES_SOLOSIS)
 	}
-	if(var(VAR_RESULT) == 14){
+	if(var(VAR_RESULT) == 12){
 		setvar(VAR_STARTER_MON, SPECIES_AXEW)
 	}
-	if(var(VAR_RESULT) == 15){
+	if(var(VAR_RESULT) == 13){
 		setvar(VAR_STARTER_MON, SPECIES_LARVESTA)
 	}
-	if(var(VAR_RESULT) == 16){
+	if(var(VAR_RESULT) == 14){
 		setvar(VAR_STARTER_MON, SPECIES_GOOMY)
 	}
-	if(var(VAR_RESULT) == 17){
+	if(var(VAR_RESULT) == 15){
 		setvar(VAR_STARTER_MON, SPECIES_ROWLET)
 	}
-	if(var(VAR_RESULT) == 18){
+	if(var(VAR_RESULT) == 16){
 		setvar(VAR_STARTER_MON, SPECIES_APPLIN)
 	}
-	if(var(VAR_RESULT) == 19){
+	if(var(VAR_RESULT) == 17){
 		setvar(VAR_STARTER_MON, SPECIES_MIME_JR)
 	}
-	if(var(VAR_RESULT) == 20){
+	if(var(VAR_RESULT) == 18){
 		setvar(VAR_STARTER_MON, SPECIES_MAGBY)
 	}
-	if(var(VAR_RESULT) == 21){
+	if(var(VAR_RESULT) == 19){
 		setvar(VAR_STARTER_MON, SPECIES_ELEKID)
 	}
-	if(var(VAR_RESULT) == 22){
+	if(var(VAR_RESULT) == 20){
 		setvar(VAR_STARTER_MON, SPECIES_MANKEY)
 	}
-	if(var(VAR_RESULT) == 23){
+	if(var(VAR_RESULT) == 21){
 		setvar(VAR_STARTER_MON, SPECIES_SWINUB)
 	}
-	if(var(VAR_RESULT) == 24){
+	if(var(VAR_RESULT) == 22){
 		setvar(VAR_STARTER_MON, SPECIES_LARVITAR)
+	}
+	if(var(VAR_RESULT) == 23){
+		setvar(VAR_STARTER_MON, SPECIES_TURTWIG)
+	}
+	if(var(VAR_RESULT) == 24){
+		setvar(VAR_STARTER_MON, SPECIES_CHARMANDER)
+	}
+	if(var(VAR_RESULT) == 25){
+		setvar(VAR_STARTER_MON, SPECIES_SQUIRTLE)
+	}
+	if(var(VAR_RESULT) == 26){
+		setvar(VAR_STARTER_MON, SPECIES_BULBASAUR)
+	}
+	if(var(VAR_RESULT) == 27){
+		setvar(VAR_STARTER_MON, SPECIES_OSHAWOTT)
+	}
+	if(var(VAR_RESULT) == 28){
+		setvar(VAR_STARTER_MON, SPECIES_CYNDAQUIL)
+	}
+	if(var(VAR_RESULT) == 29){
+		setvar(VAR_STARTER_MON, SPECIES_BUDEW)
+	}
+	if(var(VAR_RESULT) == 30){
+		setvar(VAR_STARTER_MON, SPECIES_SPHEAL)
+	}
+	if(var(VAR_RESULT) == 31){
+		setvar(VAR_STARTER_MON, SPECIES_SHINX)
+	}
+	if(var(VAR_RESULT) == 32){
+		setvar(VAR_STARTER_MON, SPECIES_SANDILE)
+	}
+	if(var(VAR_RESULT) == 33){
+		setvar(VAR_STARTER_MON, SPECIES_PAWNIARD)
+	}
+	if(var(VAR_RESULT) == 34){
+		setvar(VAR_STARTER_MON, SPECIES_JANGMO_O)
+	}
+	if(var(VAR_RESULT) == 35){
+		setvar(VAR_STARTER_MON, SPECIES_CASTFORM)
 	}
 }
 
