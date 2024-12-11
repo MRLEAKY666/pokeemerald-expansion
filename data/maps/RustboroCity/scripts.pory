@@ -893,6 +893,18 @@ RustboroCity_EventScript_BattleMay::
 	case SPECIES_MANKEY, RustboroCity_EventScript_BattleMayTorchic
 	case SPECIES_SWINUB, RustboroCity_EventScript_BattleMayMudkip
 	case SPECIES_LARVITAR, RustboroCity_EventScript_BattleMayTreecko
+	case SPECIES_TURTWIG, RustboroCity_EventScript_BattleMayTorchic
+	case SPECIES_CHARMANDER, RustboroCity_EventScript_BattleMayMudkip
+	case SPECIES_SQUIRTLE, RustboroCity_EventScript_BattleMayTreecko
+	case SPECIES_BULBASAUR, RustboroCity_EventScript_BattleMayTorchic
+	case SPECIES_OSHAWOTT, RustboroCity_EventScript_BattleMayMudkip
+	case SPECIES_CYNDAQUIL, RustboroCity_EventScript_BattleMayTreecko
+	case SPECIES_BUDEW, RustboroCity_EventScript_BattleMayTorchic
+	case SPECIES_SPHEAL, RustboroCity_EventScript_BattleMayMudkip
+	case SPECIES_SHINX, RustboroCity_EventScript_BattleMayTreecko
+	case SPECIES_SANDILE, RustboroCity_EventScript_BattleMayTreecko
+	case SPECIES_PAWNIARD, RustboroCity_EventScript_BattleMayTorchic
+	case SPECIES_JANGMO_O, RustboroCity_EventScript_BattleMayMudkip
 	end
 
 RustboroCity_EventScript_MayBrineyHint::

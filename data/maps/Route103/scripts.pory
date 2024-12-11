@@ -65,6 +65,18 @@ Route103_EventScript_RivalMay::
 	case SPECIES_MANKEY, Route103_EventScript_StartMayBattleTorchic
 	case SPECIES_SWINUB, Route103_EventScript_StartMayBattleMudkip
 	case SPECIES_LARVITAR, Route103_EventScript_StartMayBattleTreecko
+	case SPECIES_TURTWIG, Route103_EventScript_StartMayBattleTorchic
+	case SPECIES_CHARMANDER, Route103_EventScript_StartMayBattleMudkip
+	case SPECIES_SQUIRTLE, Route103_EventScript_StartMayBattleTreecko
+	case SPECIES_BULBASAUR, Route103_EventScript_StartMayBattleTorchic
+	case SPECIES_OSHAWOTT, Route103_EventScript_StartMayBattleMudkip
+	case SPECIES_CYNDAQUIL, Route103_EventScript_StartMayBattleTreecko
+	case SPECIES_BUDEW, Route103_EventScript_StartMayBattleTorchic
+	case SPECIES_SPHEAL, Route103_EventScript_StartMayBattleMudkip
+	case SPECIES_SHINX, Route103_EventScript_StartMayBattleTreecko
+	case SPECIES_SANDILE, Route103_EventScript_StartMayBattleTreecko
+	case SPECIES_PAWNIARD, Route103_EventScript_StartMayBattleTorchic
+	case SPECIES_JANGMO_O, Route103_EventScript_StartMayBattleMudkip
 	end
 
 Route103_EventScript_RivalBrendan::

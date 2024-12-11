@@ -101,6 +101,18 @@ Route119_EventScript_BattleMay::
 	case SPECIES_MANKEY, Route119_EventScript_BattleMayTorchic
 	case SPECIES_SWINUB, Route119_EventScript_BattleMayMudkip
 	case SPECIES_LARVITAR, Route119_EventScript_BattleMayTreecko
+	case SPECIES_TURTWIG, Route119_EventScript_BattleMayTorchic
+	case SPECIES_CHARMANDER, Route119_EventScript_BattleMayMudkip
+	case SPECIES_SQUIRTLE, Route119_EventScript_BattleMayTreecko
+	case SPECIES_BULBASAUR, Route119_EventScript_BattleMayTorchic
+	case SPECIES_OSHAWOTT, Route119_EventScript_BattleMayMudkip
+	case SPECIES_CYNDAQUIL, Route119_EventScript_BattleMayTreecko
+	case SPECIES_BUDEW, Route119_EventScript_BattleMayTorchic
+	case SPECIES_SPHEAL, Route119_EventScript_BattleMayMudkip
+	case SPECIES_SHINX, Route119_EventScript_BattleMayTreecko
+	case SPECIES_SANDILE, Route119_EventScript_BattleMayTreecko
+	case SPECIES_PAWNIARD, Route119_EventScript_BattleMayTorchic
+	case SPECIES_JANGMO_O, Route119_EventScript_BattleMayMudkip
 	end
 
 Route119_EventScript_BattleMayTreecko::

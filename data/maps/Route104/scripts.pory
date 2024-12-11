@@ -148,9 +148,6 @@ Route104_EventScript_MayAskToBattle::
 Route104_EventScript_BattleMay::
 	msgbox Route104_Text_MayIntro, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
-	case 0, Route104_EventScript_BattleMayTreecko
-	case 1, Route104_EventScript_BattleMayTorchic
-	case 2, Route104_EventScript_BattleMayMudkip
 	case SPECIES_TREECKO, Route104_EventScript_BattleMayTreecko
 	case SPECIES_TORCHIC, Route104_EventScript_BattleMayTorchic
 	case SPECIES_MUDKIP, Route104_EventScript_BattleMayMudkip
@@ -176,6 +173,18 @@ Route104_EventScript_BattleMay::
 	case SPECIES_MANKEY, Route104_EventScript_BattleMayTorchic
 	case SPECIES_SWINUB, Route104_EventScript_BattleMayMudkip
 	case SPECIES_LARVITAR, Route104_EventScript_BattleMayTreecko
+	case SPECIES_TURTWIG, Route104_EventScript_BattleMayTorchic
+	case SPECIES_CHARMANDER, Route104_EventScript_BattleMayMudkip
+	case SPECIES_SQUIRTLE, Route104_EventScript_BattleMayTreecko
+	case SPECIES_BULBASAUR, Route104_EventScript_BattleMayTorchic
+	case SPECIES_OSHAWOTT, Route104_EventScript_BattleMayMudkip
+	case SPECIES_CYNDAQUIL, Route104_EventScript_BattleMayTreecko
+	case SPECIES_BUDEW, Route104_EventScript_BattleMayTorchic
+	case SPECIES_SPHEAL, Route104_EventScript_BattleMayMudkip
+	case SPECIES_SHINX, Route104_EventScript_BattleMayTreecko
+	case SPECIES_SANDILE, Route104_EventScript_BattleMayTreecko
+	case SPECIES_PAWNIARD, Route104_EventScript_BattleMayTorchic
+	case SPECIES_JANGMO_O, Route104_EventScript_BattleMayMudkip
 	end
 
 Route104_EventScript_MayDefeated::

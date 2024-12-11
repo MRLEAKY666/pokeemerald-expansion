@@ -432,6 +432,18 @@ Route110_EventScript_MayBattle::
 	case SPECIES_MANKEY, Route110_EventScript_MayBattleTorchic
 	case SPECIES_SWINUB, Route110_EventScript_MayBattleMudkip
 	case SPECIES_LARVITAR, Route110_EventScript_MayBattleTreecko
+	case SPECIES_TURTWIG, Route110_EventScript_MayBattleTorchic
+	case SPECIES_CHARMANDER, Route110_EventScript_MayBattleMudkip
+	case SPECIES_SQUIRTLE, Route110_EventScript_MayBattleTreecko
+	case SPECIES_BULBASAUR, Route110_EventScript_MayBattleTorchic
+	case SPECIES_OSHAWOTT, Route110_EventScript_MayBattleMudkip
+	case SPECIES_CYNDAQUIL, Route110_EventScript_MayBattleTreecko
+	case SPECIES_BUDEW, Route110_EventScript_MayBattleTorchic
+	case SPECIES_SPHEAL, Route110_EventScript_MayBattleMudkip
+	case SPECIES_SHINX, Route110_EventScript_MayBattleTreecko
+	case SPECIES_SANDILE, Route110_EventScript_MayBattleTreecko
+	case SPECIES_PAWNIARD, Route110_EventScript_MayBattleTorchic
+	case SPECIES_JANGMO_O, Route110_EventScript_MayBattleMudkip
 	end
 
 Route110_EventScript_MayBattleTreecko::
