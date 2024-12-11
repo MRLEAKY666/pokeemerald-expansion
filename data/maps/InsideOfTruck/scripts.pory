@@ -87,7 +87,9 @@ script InsideOfTruck_EventScript_Starterball{
 		}
 		else{
 			random(16)
-			setvar(VAR_TEMP_1, VAR_RESULT+15)
+			addvar(VAR_RESULT, 15)
+			copyvar(VAR_TEMP_1, VAR_RESULT)
+
 		}
 		randompercentage(50)
 		if(var(VAR_RESULT) == TRUE){
@@ -95,7 +97,8 @@ script InsideOfTruck_EventScript_Starterball{
 		}
 		else{
 			random(16)
-			setvar(VAR_TEMP_1, VAR_RESULT+15)
+			addvar(VAR_RESULT, 15)
+			copyvar(VAR_TEMP_2, VAR_RESULT)
 		}
 		randompercentage(50)
 		if(var(VAR_RESULT) == TRUE){
@@ -103,7 +106,8 @@ script InsideOfTruck_EventScript_Starterball{
 		}
 		else{
 			random(16)
-			setvar(VAR_TEMP_1, VAR_RESULT+15)
+			addvar(VAR_RESULT, 15)
+			copyvar(VAR_TEMP_3, VAR_RESULT)
 		}
 		randompercentage(50)
 		if(var(VAR_RESULT) == TRUE){
@@ -111,7 +115,8 @@ script InsideOfTruck_EventScript_Starterball{
 		}
 		else{
 			random(16)
-			setvar(VAR_TEMP_1, VAR_RESULT+15)
+			addvar(VAR_RESULT, 15)
+			copyvar(VAR_TEMP_4, VAR_RESULT)
 		}
 		randompercentage(50)
 		if(var(VAR_RESULT) == TRUE){
@@ -119,7 +124,8 @@ script InsideOfTruck_EventScript_Starterball{
 		}
 		else{
 			random(16)
-			setvar(VAR_TEMP_1, VAR_RESULT+15)
+			addvar(VAR_RESULT, 15)
+			copyvar(VAR_TEMP_5, VAR_RESULT)
 		}
 		randompercentage(50)
 		if(var(VAR_RESULT) == TRUE){
@@ -127,7 +133,8 @@ script InsideOfTruck_EventScript_Starterball{
 		}
 		else{
 			random(16)
-			setvar(VAR_TEMP_1, VAR_RESULT+15)
+			addvar(VAR_RESULT, 15)
+			copyvar(VAR_TEMP_6, VAR_RESULT)
 		}
 		randompercentage(25)
 		givemon(VAR_STARTER_MON, 5, item=ITEM_NONE, ball=ITEM_LUXURY_BALL, hpIv=VAR_TEMP_1, atkIv=VAR_TEMP_2, defIv=VAR_TEMP_3, speedIv=VAR_TEMP_4, spAtkIv=VAR_TEMP_5, spDefIv=VAR_TEMP_6, isShiny=VAR_RESULT)
