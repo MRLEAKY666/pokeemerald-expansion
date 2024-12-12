@@ -1977,6 +1977,20 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             monsCount = trainer->partySize;
         }
 
+        // start rival variations
+
+//        if (gTrainerBattleOpponent_A == TRAINER_MAY_ROUTE_103_A || TRAINER_BRENDAN_ROUTE_103_A || TRAINER_MAY_ROUTE_110_A || TRAINER_BRENDAN_ROUTE_110_A || TRAINER_MAY_ROUTE_119_A || TRAINER_BRENDAN_ROUTE_119_A || TRAINER_MAY_RUSTBORO_A || TRAINER_BRENDAN_RUSTBORO_A || TRAINER_MAY_LILYCOVE_A || TRAINER_BRENDAN_LILYCOVE_A)
+//        {
+//            monsCount = trainer->partySize - 2;
+//        }
+//
+//        if (gTrainerBattleOpponent_A == TRAINER_MAY_ROUTE_103_B || TRAINER_BRENDAN_ROUTE_103_B || TRAINER_MAY_ROUTE_110_B || TRAINER_BRENDAN_ROUTE_110_B || TRAINER_MAY_ROUTE_119_B || TRAINER_BRENDAN_ROUTE_119_B || TRAINER_MAY_RUSTBORO_B || TRAINER_BRENDAN_RUSTBORO_B || TRAINER_MAY_LILYCOVE_B || TRAINER_BRENDAN_LILYCOVE_B || TRAINER_MAY_ROUTE_103_C || TRAINER_BRENDAN_ROUTE_103_C || TRAINER_MAY_ROUTE_110_C || TRAINER_BRENDAN_ROUTE_110_C || TRAINER_MAY_ROUTE_119_C || TRAINER_BRENDAN_ROUTE_119_C || TRAINER_MAY_RUSTBORO_C || TRAINER_BRENDAN_RUSTBORO_C || TRAINER_MAY_LILYCOVE_C || TRAINER_BRENDAN_LILYCOVE_C)
+//        {
+//            monsCount = trainer->partySize - 1;
+//        }
+
+        // end rival variations
+
         for (i = 0; i < monsCount; i++)
         {
             s32 ball = -1;
@@ -1986,6 +2000,59 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             u32 fixedOtId = 0;
             u32 ability = 0;
             u8 levelscale = partyData[i].lvl;
+
+            // start rival variations
+
+//            if (gTrainerBattleOpponent_A == TRAINER_MAY_ROUTE_103_A || TRAINER_BRENDAN_ROUTE_103_A || TRAINER_MAY_ROUTE_110_A || TRAINER_BRENDAN_ROUTE_110_A || TRAINER_MAY_ROUTE_119_A || TRAINER_BRENDAN_ROUTE_119_A || TRAINER_MAY_RUSTBORO_A || TRAINER_BRENDAN_RUSTBORO_A || TRAINER_MAY_LILYCOVE_A || TRAINER_BRENDAN_LILYCOVE_A)
+//            {
+//                if (i==monsCount-2)
+//               {
+//                    if (VAR_STARTER_MON == SPECIES_CASTFORM || SPECIES_EEVEE || SPECIES_ZORUA_HISUIAN || SPECIES_LARVITAR || SPECIES_SPHEAL)
+//                    {
+//                        i=monsCount-1;
+//                    }
+//                    if (VAR_STARTER_MON == SPECIES_APPLIN || SPECIES_MANKEY || SPECIES_JANGMO_O)
+//                    {
+//                        i=monsCount;
+//                    }
+//                    if (VAR_STARTER_MON == SPECIES_TREECKO || SPECIES_PORYGON || SPECIES_SNIVY || SPECIES_ROWLET || SPECIES_TURTWIG || SPECIES_BULBASAUR || SPECIES_BUDEW || SPECIES_PAWNIARD)
+//                    {
+//                        continue;
+//                    }
+//                }
+//            }
+//
+//            if (gTrainerBattleOpponent_A == TRAINER_MAY_ROUTE_103_B || TRAINER_BRENDAN_ROUTE_103_B || TRAINER_MAY_ROUTE_110_B || TRAINER_BRENDAN_ROUTE_110_B || TRAINER_MAY_ROUTE_119_B || TRAINER_BRENDAN_ROUTE_119_B || TRAINER_MAY_RUSTBORO_B || TRAINER_BRENDAN_RUSTBORO_B || TRAINER_MAY_LILYCOVE_B || TRAINER_BRENDAN_LILYCOVE_B)
+//            {
+//                if (i==monsCount-1)
+//                {
+//                    if (VAR_STARTER_MON == SPECIES_PICHU || SPECIES_GOTHITA || SPECIES_SOLOSIS || SPECIES_LARVESTA || SPECIES_MIME_JR || SPECIES_ELEKID || SPECIES_SHINX)
+//                    {
+//                        i=monsCount;
+//                    }
+//                    else
+//                    {
+//                        i=monsCount-1;
+//                    }
+//                }
+//            }
+//
+//            if (gTrainerBattleOpponent_A == TRAINER_MAY_ROUTE_103_C || TRAINER_BRENDAN_ROUTE_103_C || TRAINER_MAY_ROUTE_110_C || TRAINER_BRENDAN_ROUTE_110_C || TRAINER_MAY_ROUTE_119_C || TRAINER_BRENDAN_ROUTE_119_C || TRAINER_MAY_RUSTBORO_C || TRAINER_BRENDAN_RUSTBORO_C || TRAINER_MAY_LILYCOVE_C || TRAINER_BRENDAN_LILYCOVE_C)
+//            {
+//                if (i==monsCount-1)
+//                {
+//                    if (VAR_STARTER_MON == SPECIES_TOGEPI || SPECIES_AXEW || SPECIES_GOOMY || SPECIES_SWINUB || SPECIES_SANDILE)
+//                    {
+//                        i=monsCount;
+//                    }
+//                    else
+//                    {
+//                        i=monsCount-1;
+//                    }
+//                }
+//            }
+
+            // end rival variations
 
             if (trainer->doubleBattle == TRUE)
                 personalityValue = 0x80;

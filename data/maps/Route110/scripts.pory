@@ -407,57 +407,57 @@ Route110_EventScript_PlayBrendanMusic::
 Route110_EventScript_MayBattle::
 	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
-	case SPECIES_TREECKO, Route110_EventScript_MayBattleTreecko
-	case SPECIES_TORCHIC, Route110_EventScript_MayBattleTorchic
-	case SPECIES_MUDKIP, Route110_EventScript_MayBattleMudkip
-	case SPECIES_CASTFORM, Route110_EventScript_MayBattleTreecko
-	case SPECIES_PIPLUP, Route110_EventScript_MayBattleTorchic
-	case SPECIES_EEVEE, Route110_EventScript_MayBattleMudkip
-	case SPECIES_PICHU, Route110_EventScript_MayBattleTreecko
-	case SPECIES_TOGEPI, Route110_EventScript_MayBattleTorchic
-	case SPECIES_PORYGON, Route110_EventScript_MayBattleMudkip
-	case SPECIES_SNIVY, Route110_EventScript_MayBattleTreecko
-	case SPECIES_ZORUA_HISUIAN, Route110_EventScript_MayBattleTorchic
-	case SPECIES_ZORUA, Route110_EventScript_MayBattleMudkip
-	case SPECIES_GOTHITA, Route110_EventScript_MayBattleTreecko
-	case SPECIES_SOLOSIS, Route110_EventScript_MayBattleTorchic
-	case SPECIES_AXEW, Route110_EventScript_MayBattleMudkip
-	case SPECIES_LARVESTA, Route110_EventScript_MayBattleTreecko
-	case SPECIES_GOOMY, Route110_EventScript_MayBattleTorchic
-	case SPECIES_ROWLET, Route110_EventScript_MayBattleMudkip
-	case SPECIES_APPLIN, Route110_EventScript_MayBattleTreecko
-	case SPECIES_MIME_JR, Route110_EventScript_MayBattleTorchic
-	case SPECIES_MAGBY, Route110_EventScript_MayBattleMudkip
-	case SPECIES_ELEKID, Route110_EventScript_MayBattleTreecko
-	case SPECIES_MANKEY, Route110_EventScript_MayBattleTorchic
-	case SPECIES_SWINUB, Route110_EventScript_MayBattleMudkip
-	case SPECIES_LARVITAR, Route110_EventScript_MayBattleTreecko
-	case SPECIES_TURTWIG, Route110_EventScript_MayBattleTorchic
-	case SPECIES_CHARMANDER, Route110_EventScript_MayBattleMudkip
-	case SPECIES_SQUIRTLE, Route110_EventScript_MayBattleTreecko
-	case SPECIES_BULBASAUR, Route110_EventScript_MayBattleTorchic
-	case SPECIES_OSHAWOTT, Route110_EventScript_MayBattleMudkip
-	case SPECIES_CYNDAQUIL, Route110_EventScript_MayBattleTreecko
-	case SPECIES_BUDEW, Route110_EventScript_MayBattleTorchic
-	case SPECIES_SPHEAL, Route110_EventScript_MayBattleMudkip
-	case SPECIES_SHINX, Route110_EventScript_MayBattleTreecko
-	case SPECIES_SANDILE, Route110_EventScript_MayBattleTreecko
-	case SPECIES_PAWNIARD, Route110_EventScript_MayBattleTorchic
-	case SPECIES_JANGMO_O, Route110_EventScript_MayBattleMudkip
+	case SPECIES_TREECKO, Route110_EventScript_BattleMayA
+	case SPECIES_TORCHIC, Route110_EventScript_BattleMayB
+	case SPECIES_MUDKIP, Route110_EventScript_BattleMayC
+	case SPECIES_CASTFORM, Route110_EventScript_BattleMayA
+	case SPECIES_PIPLUP, Route110_EventScript_BattleMayC
+	case SPECIES_EEVEE, Route110_EventScript_BattleMayA
+	case SPECIES_PICHU, Route110_EventScript_BattleMayB
+	case SPECIES_TOGEPI, Route110_EventScript_BattleMayC
+	case SPECIES_PORYGON, Route110_EventScript_BattleMayA
+	case SPECIES_SNIVY, Route110_EventScript_BattleMayA
+	case SPECIES_ZORUA_HISUIAN, Route110_EventScript_BattleMayA
+	case SPECIES_ZORUA, Route110_EventScript_BattleMayA
+	case SPECIES_GOTHITA, Route110_EventScript_BattleMayB
+	case SPECIES_SOLOSIS, Route110_EventScript_BattleMayB
+	case SPECIES_AXEW, Route110_EventScript_BattleMayC
+	case SPECIES_LARVESTA, Route110_EventScript_BattleMayB
+	case SPECIES_GOOMY, Route110_EventScript_BattleMayC
+	case SPECIES_ROWLET, Route110_EventScript_BattleMayA
+	case SPECIES_APPLIN, Route110_EventScript_BattleMayA
+	case SPECIES_MIME_JR, Route110_EventScript_BattleMayB
+	case SPECIES_MAGBY, Route110_EventScript_BattleMayB
+	case SPECIES_ELEKID, Route110_EventScript_BattleMayB
+	case SPECIES_MANKEY, Route110_EventScript_BattleMayA
+	case SPECIES_SWINUB, Route110_EventScript_BattleMayC
+	case SPECIES_LARVITAR, Route110_EventScript_BattleMayA
+	case SPECIES_TURTWIG, Route110_EventScript_BattleMayA
+	case SPECIES_CHARMANDER, Route110_EventScript_BattleMayB
+	case SPECIES_SQUIRTLE, Route110_EventScript_BattleMayC
+	case SPECIES_BULBASAUR, Route110_EventScript_BattleMayA
+	case SPECIES_OSHAWOTT, Route110_EventScript_BattleMayC
+	case SPECIES_CYNDAQUIL, Route110_EventScript_BattleMayB
+	case SPECIES_BUDEW, Route110_EventScript_BattleMayA
+	case SPECIES_SPHEAL, Route110_EventScript_BattleMayA
+	case SPECIES_SHINX, Route110_EventScript_BattleMayB
+	case SPECIES_SANDILE, Route110_EventScript_BattleMayC
+	case SPECIES_PAWNIARD, Route110_EventScript_BattleMayA
+	case SPECIES_JANGMO_O, Route110_EventScript_BattleMayA
 	end
 
-Route110_EventScript_MayBattleTreecko::
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_110_TREECKO, Route110_Text_MayDefeated
+Route110_EventScript_BattleMayA::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_110_A, Route110_Text_MayDefeated
 	goto Route110_EventScript_MayDefeated
 	end
 
-Route110_EventScript_MayBattleTorchic::
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_110_TORCHIC, Route110_Text_MayDefeated
+Route110_EventScript_BattleMayB::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_110_B, Route110_Text_MayDefeated
 	goto Route110_EventScript_MayDefeated
 	end
 
-Route110_EventScript_MayBattleMudkip::
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_110_MUDKIP, Route110_Text_MayDefeated
+Route110_EventScript_BattleMayC::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_110_C, Route110_Text_MayDefeated
 	goto Route110_EventScript_MayDefeated
 	end
 
@@ -471,23 +471,57 @@ Route110_EventScript_MayDefeated::
 Route110_EventScript_BrendanBattle::
 	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
-	case 0, Route110_EventScript_BrendanBattleTreecko
-	case 1, Route110_EventScript_BrendanBattleTorchic
-	case 2, Route110_EventScript_BrendanBattleMudkip
+	case SPECIES_TREECKO, Route110_EventScript_BattleBrendanA
+	case SPECIES_TORCHIC, Route110_EventScript_BattleBrendanB
+	case SPECIES_MUDKIP, Route110_EventScript_BattleBrendanC
+	case SPECIES_CASTFORM, Route110_EventScript_BattleBrendanA
+	case SPECIES_PIPLUP, Route110_EventScript_BattleBrendanC
+	case SPECIES_EEVEE, Route110_EventScript_BattleBrendanA
+	case SPECIES_PICHU, Route110_EventScript_BattleBrendanB
+	case SPECIES_TOGEPI, Route110_EventScript_BattleBrendanC
+	case SPECIES_PORYGON, Route110_EventScript_BattleBrendanA
+	case SPECIES_SNIVY, Route110_EventScript_BattleBrendanA
+	case SPECIES_ZORUA_HISUIAN, Route110_EventScript_BattleBrendanA
+	case SPECIES_ZORUA, Route110_EventScript_BattleBrendanA
+	case SPECIES_GOTHITA, Route110_EventScript_BattleBrendanB
+	case SPECIES_SOLOSIS, Route110_EventScript_BattleBrendanB
+	case SPECIES_AXEW, Route110_EventScript_BattleBrendanC
+	case SPECIES_LARVESTA, Route110_EventScript_BattleBrendanB
+	case SPECIES_GOOMY, Route110_EventScript_BattleBrendanC
+	case SPECIES_ROWLET, Route110_EventScript_BattleBrendanA
+	case SPECIES_APPLIN, Route110_EventScript_BattleBrendanA
+	case SPECIES_MIME_JR, Route110_EventScript_BattleBrendanB
+	case SPECIES_MAGBY, Route110_EventScript_BattleBrendanB
+	case SPECIES_ELEKID, Route110_EventScript_BattleBrendanB
+	case SPECIES_MANKEY, Route110_EventScript_BattleBrendanA
+	case SPECIES_SWINUB, Route110_EventScript_BattleBrendanC
+	case SPECIES_LARVITAR, Route110_EventScript_BattleBrendanA
+	case SPECIES_TURTWIG, Route110_EventScript_BattleBrendanA
+	case SPECIES_CHARMANDER, Route110_EventScript_BattleBrendanB
+	case SPECIES_SQUIRTLE, Route110_EventScript_BattleBrendanC
+	case SPECIES_BULBASAUR, Route110_EventScript_BattleBrendanA
+	case SPECIES_OSHAWOTT, Route110_EventScript_BattleBrendanC
+	case SPECIES_CYNDAQUIL, Route110_EventScript_BattleBrendanB
+	case SPECIES_BUDEW, Route110_EventScript_BattleBrendanA
+	case SPECIES_SPHEAL, Route110_EventScript_BattleBrendanA
+	case SPECIES_SHINX, Route110_EventScript_BattleBrendanB
+	case SPECIES_SANDILE, Route110_EventScript_BattleBrendanC
+	case SPECIES_PAWNIARD, Route110_EventScript_BattleBrendanA
+	case SPECIES_JANGMO_O, Route110_EventScript_BattleBrendanA
 	end
 
-Route110_EventScript_BrendanBattleTreecko::
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_TREECKO, Route110_Text_BrendanDefeated
+Route110_EventScript_BattleBrendanA::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_A, Route110_Text_BrendanDefeated
 	goto Route110_EventScript_BrendanDefeated
 	end
 
-Route110_EventScript_BrendanBattleTorchic::
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_TORCHIC, Route110_Text_BrendanDefeated
+Route110_EventScript_BattleBrendanB::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_B, Route110_Text_BrendanDefeated
 	goto Route110_EventScript_BrendanDefeated
 	end
 
-Route110_EventScript_BrendanBattleMudkip::
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_MUDKIP, Route110_Text_BrendanDefeated
+Route110_EventScript_BattleBrendanC::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_C, Route110_Text_BrendanDefeated
 	goto Route110_EventScript_BrendanDefeated
 	end
 

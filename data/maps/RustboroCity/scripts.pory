@@ -868,43 +868,43 @@ RustboroCity_EventScript_MayAskToBattle::
 RustboroCity_EventScript_BattleMay::
 	msgbox RustboroCity_Text_MayImNotGoingToLose, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
-	case SPECIES_TREECKO, RustboroCity_EventScript_BattleMayTreecko
-	case SPECIES_TORCHIC, RustboroCity_EventScript_BattleMayTorchic
-	case SPECIES_MUDKIP, RustboroCity_EventScript_BattleMayMudkip
-	case SPECIES_CASTFORM, RustboroCity_EventScript_BattleMayTreecko
-	case SPECIES_PIPLUP, RustboroCity_EventScript_BattleMayTorchic
-	case SPECIES_EEVEE, RustboroCity_EventScript_BattleMayMudkip
-	case SPECIES_PICHU, RustboroCity_EventScript_BattleMayTreecko
-	case SPECIES_TOGEPI, RustboroCity_EventScript_BattleMayTorchic
-	case SPECIES_PORYGON, RustboroCity_EventScript_BattleMayMudkip
-	case SPECIES_SNIVY, RustboroCity_EventScript_BattleMayTreecko
-	case SPECIES_ZORUA_HISUIAN, RustboroCity_EventScript_BattleMayTorchic
-	case SPECIES_ZORUA, RustboroCity_EventScript_BattleMayMudkip
-	case SPECIES_GOTHITA, RustboroCity_EventScript_BattleMayTreecko
-	case SPECIES_SOLOSIS, RustboroCity_EventScript_BattleMayTorchic
-	case SPECIES_AXEW, RustboroCity_EventScript_BattleMayMudkip
-	case SPECIES_LARVESTA, RustboroCity_EventScript_BattleMayTreecko
-	case SPECIES_GOOMY, RustboroCity_EventScript_BattleMayTorchic
-	case SPECIES_ROWLET, RustboroCity_EventScript_BattleMayMudkip
-	case SPECIES_APPLIN, RustboroCity_EventScript_BattleMayTreecko
-	case SPECIES_MIME_JR, RustboroCity_EventScript_BattleMayTorchic
-	case SPECIES_MAGBY, RustboroCity_EventScript_BattleMayMudkip
-	case SPECIES_ELEKID, RustboroCity_EventScript_BattleMayTreecko
-	case SPECIES_MANKEY, RustboroCity_EventScript_BattleMayTorchic
-	case SPECIES_SWINUB, RustboroCity_EventScript_BattleMayMudkip
-	case SPECIES_LARVITAR, RustboroCity_EventScript_BattleMayTreecko
-	case SPECIES_TURTWIG, RustboroCity_EventScript_BattleMayTorchic
-	case SPECIES_CHARMANDER, RustboroCity_EventScript_BattleMayMudkip
-	case SPECIES_SQUIRTLE, RustboroCity_EventScript_BattleMayTreecko
-	case SPECIES_BULBASAUR, RustboroCity_EventScript_BattleMayTorchic
-	case SPECIES_OSHAWOTT, RustboroCity_EventScript_BattleMayMudkip
-	case SPECIES_CYNDAQUIL, RustboroCity_EventScript_BattleMayTreecko
-	case SPECIES_BUDEW, RustboroCity_EventScript_BattleMayTorchic
-	case SPECIES_SPHEAL, RustboroCity_EventScript_BattleMayMudkip
-	case SPECIES_SHINX, RustboroCity_EventScript_BattleMayTreecko
-	case SPECIES_SANDILE, RustboroCity_EventScript_BattleMayTreecko
-	case SPECIES_PAWNIARD, RustboroCity_EventScript_BattleMayTorchic
-	case SPECIES_JANGMO_O, RustboroCity_EventScript_BattleMayMudkip
+	case SPECIES_TREECKO, RustboroCity_EventScript_BattleMayA
+	case SPECIES_TORCHIC, RustboroCity_EventScript_BattleMayB
+	case SPECIES_MUDKIP, RustboroCity_EventScript_BattleMayC
+	case SPECIES_CASTFORM, RustboroCity_EventScript_BattleMayA
+	case SPECIES_PIPLUP, RustboroCity_EventScript_BattleMayC
+	case SPECIES_EEVEE, RustboroCity_EventScript_BattleMayA
+	case SPECIES_PICHU, RustboroCity_EventScript_BattleMayB
+	case SPECIES_TOGEPI, RustboroCity_EventScript_BattleMayC
+	case SPECIES_PORYGON, RustboroCity_EventScript_BattleMayA
+	case SPECIES_SNIVY, RustboroCity_EventScript_BattleMayA
+	case SPECIES_ZORUA_HISUIAN, RustboroCity_EventScript_BattleMayA
+	case SPECIES_ZORUA, RustboroCity_EventScript_BattleMayA
+	case SPECIES_GOTHITA, RustboroCity_EventScript_BattleMayB
+	case SPECIES_SOLOSIS, RustboroCity_EventScript_BattleMayB
+	case SPECIES_AXEW, RustboroCity_EventScript_BattleMayC
+	case SPECIES_LARVESTA, RustboroCity_EventScript_BattleMayB
+	case SPECIES_GOOMY, RustboroCity_EventScript_BattleMayC
+	case SPECIES_ROWLET, RustboroCity_EventScript_BattleMayA
+	case SPECIES_APPLIN, RustboroCity_EventScript_BattleMayA
+	case SPECIES_MIME_JR, RustboroCity_EventScript_BattleMayB
+	case SPECIES_MAGBY, RustboroCity_EventScript_BattleMayB
+	case SPECIES_ELEKID, RustboroCity_EventScript_BattleMayB
+	case SPECIES_MANKEY, RustboroCity_EventScript_BattleMayA
+	case SPECIES_SWINUB, RustboroCity_EventScript_BattleMayC
+	case SPECIES_LARVITAR, RustboroCity_EventScript_BattleMayA
+	case SPECIES_TURTWIG, RustboroCity_EventScript_BattleMayA
+	case SPECIES_CHARMANDER, RustboroCity_EventScript_BattleMayB
+	case SPECIES_SQUIRTLE, RustboroCity_EventScript_BattleMayC
+	case SPECIES_BULBASAUR, RustboroCity_EventScript_BattleMayA
+	case SPECIES_OSHAWOTT, RustboroCity_EventScript_BattleMayC
+	case SPECIES_CYNDAQUIL, RustboroCity_EventScript_BattleMayB
+	case SPECIES_BUDEW, RustboroCity_EventScript_BattleMayA
+	case SPECIES_SPHEAL, RustboroCity_EventScript_BattleMayA
+	case SPECIES_SHINX, RustboroCity_EventScript_BattleMayB
+	case SPECIES_SANDILE, RustboroCity_EventScript_BattleMayC
+	case SPECIES_PAWNIARD, RustboroCity_EventScript_BattleMayA
+	case SPECIES_JANGMO_O, RustboroCity_EventScript_BattleMayA
 	end
 
 RustboroCity_EventScript_MayBrineyHint::
@@ -918,20 +918,20 @@ RustboroCity_EventScript_RestoreBgm::
 	fadedefaultbgm
 	return
 
-RustboroCity_EventScript_BattleMayTreecko::
-	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_TREECKO, RustboroCity_Text_MayDefeat
+RustboroCity_EventScript_BattleMayA::
+	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_A, RustboroCity_Text_MayDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
 	goto RustboroCity_EventScript_MayBrineyHint
 	end
 
-RustboroCity_EventScript_BattleMayTorchic::
-	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_TORCHIC, RustboroCity_Text_MayDefeat
+RustboroCity_EventScript_BattleMayB::
+	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_B, RustboroCity_Text_MayDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
 	goto RustboroCity_EventScript_MayBrineyHint
 	end
 
-RustboroCity_EventScript_BattleMayMudkip::
-	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_MUDKIP, RustboroCity_Text_MayDefeat
+RustboroCity_EventScript_BattleMayC::
+	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_C, RustboroCity_Text_MayDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
 	goto RustboroCity_EventScript_MayBrineyHint
 	end
@@ -968,9 +968,43 @@ RustboroCity_EventScript_BrendanAskToBattle::
 RustboroCity_EventScript_BattleBrendan::
 	msgbox RustboroCity_Text_BrendanIWontGoEasy, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleBrendanTreecko
-	case 1, RustboroCity_EventScript_BattleBrendanTorchic
-	case 2, RustboroCity_EventScript_BattleBrendanMudkip
+	case SPECIES_TREECKO, RustboroCity_EventScript_BattleBrendanA
+	case SPECIES_TORCHIC, RustboroCity_EventScript_BattleBrendanB
+	case SPECIES_MUDKIP, RustboroCity_EventScript_BattleBrendanC
+	case SPECIES_CASTFORM, RustboroCity_EventScript_BattleBrendanA
+	case SPECIES_PIPLUP, RustboroCity_EventScript_BattleBrendanC
+	case SPECIES_EEVEE, RustboroCity_EventScript_BattleBrendanA
+	case SPECIES_PICHU, RustboroCity_EventScript_BattleBrendanB
+	case SPECIES_TOGEPI, RustboroCity_EventScript_BattleBrendanC
+	case SPECIES_PORYGON, RustboroCity_EventScript_BattleBrendanA
+	case SPECIES_SNIVY, RustboroCity_EventScript_BattleBrendanA
+	case SPECIES_ZORUA_HISUIAN, RustboroCity_EventScript_BattleBrendanA
+	case SPECIES_ZORUA, RustboroCity_EventScript_BattleBrendanA
+	case SPECIES_GOTHITA, RustboroCity_EventScript_BattleBrendanB
+	case SPECIES_SOLOSIS, RustboroCity_EventScript_BattleBrendanB
+	case SPECIES_AXEW, RustboroCity_EventScript_BattleBrendanC
+	case SPECIES_LARVESTA, RustboroCity_EventScript_BattleBrendanB
+	case SPECIES_GOOMY, RustboroCity_EventScript_BattleBrendanC
+	case SPECIES_ROWLET, RustboroCity_EventScript_BattleBrendanA
+	case SPECIES_APPLIN, RustboroCity_EventScript_BattleBrendanA
+	case SPECIES_MIME_JR, RustboroCity_EventScript_BattleBrendanB
+	case SPECIES_MAGBY, RustboroCity_EventScript_BattleBrendanB
+	case SPECIES_ELEKID, RustboroCity_EventScript_BattleBrendanB
+	case SPECIES_MANKEY, RustboroCity_EventScript_BattleBrendanA
+	case SPECIES_SWINUB, RustboroCity_EventScript_BattleBrendanC
+	case SPECIES_LARVITAR, RustboroCity_EventScript_BattleBrendanA
+	case SPECIES_TURTWIG, RustboroCity_EventScript_BattleBrendanA
+	case SPECIES_CHARMANDER, RustboroCity_EventScript_BattleBrendanB
+	case SPECIES_SQUIRTLE, RustboroCity_EventScript_BattleBrendanC
+	case SPECIES_BULBASAUR, RustboroCity_EventScript_BattleBrendanA
+	case SPECIES_OSHAWOTT, RustboroCity_EventScript_BattleBrendanC
+	case SPECIES_CYNDAQUIL, RustboroCity_EventScript_BattleBrendanB
+	case SPECIES_BUDEW, RustboroCity_EventScript_BattleBrendanA
+	case SPECIES_SPHEAL, RustboroCity_EventScript_BattleBrendanA
+	case SPECIES_SHINX, RustboroCity_EventScript_BattleBrendanB
+	case SPECIES_SANDILE, RustboroCity_EventScript_BattleBrendanC
+	case SPECIES_PAWNIARD, RustboroCity_EventScript_BattleBrendanA
+	case SPECIES_JANGMO_O, RustboroCity_EventScript_BattleBrendanA
 	end
 
 RustboroCity_EventScript_BrendanBrineyHint::
@@ -979,20 +1013,20 @@ RustboroCity_EventScript_BrendanBrineyHint::
 	releaseall
 	end
 
-RustboroCity_EventScript_BattleBrendanTreecko::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_TREECKO, RustboroCity_Text_BrendanDefeat
+RustboroCity_EventScript_BattleBrendanA::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_A, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
 	goto RustboroCity_EventScript_BrendanBrineyHint
 	end
 
-RustboroCity_EventScript_BattleBrendanTorchic::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_TORCHIC, RustboroCity_Text_BrendanDefeat
+RustboroCity_EventScript_BattleBrendanB::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_B, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
 	goto RustboroCity_EventScript_BrendanBrineyHint
 	end
 
-RustboroCity_EventScript_BattleBrendanMudkip::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_MUDKIP, RustboroCity_Text_BrendanDefeat
+RustboroCity_EventScript_BattleBrendanC::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_C, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
 	goto RustboroCity_EventScript_BrendanBrineyHint
 	end

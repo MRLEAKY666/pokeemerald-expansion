@@ -9532,7 +9532,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Psychic
 - Future Sight
 
-=== TRAINER_BRENDAN_ROUTE_103_MUDKIP ===
+=== TRAINER_BRENDAN_ROUTE_103_C ===
 Name: BRENDAN
 Class: Rival
 Pic: Brendan
@@ -9543,9 +9543,9 @@ AI: Check Bad Move / Try To Faint / Check Viability
 
 Treecko
 Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_BRENDAN_ROUTE_110_MUDKIP ===
+=== TRAINER_BRENDAN_ROUTE_110_C ===
 Name: BRENDAN
 Class: Rival
 Pic: Brendan
@@ -9564,9 +9564,9 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 Grovyle
 Level: 20
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_BRENDAN_ROUTE_119_MUDKIP ===
+=== TRAINER_BRENDAN_ROUTE_119_C ===
 Name: BRENDAN
 Class: Rival
 Pic: Brendan
@@ -9585,9 +9585,9 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Grovyle
 Level: 31
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_BRENDAN_ROUTE_103_TREECKO ===
+=== TRAINER_BRENDAN_ROUTE_103_A ===
 Name: BRENDAN
 Class: Rival
 Pic: Brendan
@@ -9598,9 +9598,9 @@ AI: Check Bad Move / Try To Faint / Setup First Turn
 
 Torchic
 Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_BRENDAN_ROUTE_110_TREECKO ===
+=== TRAINER_BRENDAN_ROUTE_110_A ===
 Name: BRENDAN
 Class: Rival
 Pic: Brendan
@@ -9619,9 +9619,9 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 Combusken
 Level: 20
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_BRENDAN_ROUTE_119_TREECKO ===
+=== TRAINER_BRENDAN_ROUTE_119_A ===
 Name: BRENDAN
 Class: Rival
 Pic: Brendan
@@ -9640,9 +9640,9 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Combusken
 Level: 31
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_BRENDAN_ROUTE_103_TORCHIC ===
+=== TRAINER_BRENDAN_ROUTE_103_B ===
 Name: BRENDAN
 Class: Rival
 Pic: Brendan
@@ -9653,9 +9653,9 @@ AI: Check Bad Move / Try To Faint / Check Viability
 
 Mudkip
 Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_BRENDAN_ROUTE_110_TORCHIC ===
+=== TRAINER_BRENDAN_ROUTE_110_B ===
 Name: BRENDAN
 Class: Rival
 Pic: Brendan
@@ -9674,9 +9674,9 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 Marshtomp
 Level: 20
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_BRENDAN_ROUTE_119_TORCHIC ===
+=== TRAINER_BRENDAN_ROUTE_119_B ===
 Name: BRENDAN
 Class: Rival
 Pic: Brendan
@@ -9695,9 +9695,9 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Marshtomp
 Level: 31
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_MAY_ROUTE_103_MUDKIP ===
+=== TRAINER_MAY_ROUTE_103_C ===
 Name: MAY
 Class: Rival
 Pic: May
@@ -9708,9 +9708,9 @@ AI: Check Bad Move / Try To Faint / Check Viability
 
 Treecko
 Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_MAY_ROUTE_110_MUDKIP ===
+=== TRAINER_MAY_ROUTE_110_C ===
 Name: MAY
 Class: Rival
 Pic: May
@@ -9729,9 +9729,9 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 Grovyle
 Level: 20
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_MAY_ROUTE_119_MUDKIP ===
+=== TRAINER_MAY_ROUTE_119_C ===
 Name: MAY
 Class: Rival
 Pic: May
@@ -9750,9 +9750,9 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Grovyle
 Level: 31
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_MAY_ROUTE_103_TREECKO ===
+=== TRAINER_MAY_ROUTE_103_A ===
 Name: MAY
 Class: Rival
 Pic: May
@@ -9763,9 +9763,9 @@ AI: Check Bad Move / Try To Faint / Check Viability
 
 Torchic
 Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_MAY_ROUTE_110_TREECKO ===
+=== TRAINER_MAY_ROUTE_110_A ===
 Name: MAY
 Class: Rival
 Pic: May
@@ -9784,9 +9784,9 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 Combusken
 Level: 20
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_MAY_ROUTE_119_TREECKO ===
+=== TRAINER_MAY_ROUTE_119_A ===
 Name: MAY
 Class: Rival
 Pic: May
@@ -9805,9 +9805,9 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Combusken
 Level: 31
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_MAY_ROUTE_103_TORCHIC ===
+=== TRAINER_MAY_ROUTE_103_B ===
 Name: MAY
 Class: Rival
 Pic: May
@@ -9818,9 +9818,9 @@ AI: Check Bad Move / Try To Faint / Check Viability
 
 Mudkip
 Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_MAY_ROUTE_110_TORCHIC ===
+=== TRAINER_MAY_ROUTE_110_B ===
 Name: MAY
 Class: Rival
 Pic: May
@@ -9839,9 +9839,9 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 Marshtomp
 Level: 20
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_MAY_ROUTE_119_TORCHIC ===
+=== TRAINER_MAY_ROUTE_119_B ===
 Name: MAY
 Class: Rival
 Pic: May
@@ -9860,7 +9860,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Marshtomp
 Level: 31
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 === TRAINER_ISAAC_1 ===
 Name: ISAAC
@@ -10873,7 +10873,7 @@ Natu
 Level: 36
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_BRENDAN_RUSTBORO_TREECKO ===
+=== TRAINER_BRENDAN_RUSTBORO_A ===
 Name: BRENDAN
 Class: Rival
 Pic: Brendan
@@ -10888,9 +10888,9 @@ IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
 Torchic
 Level: 15
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_BRENDAN_RUSTBORO_MUDKIP ===
+=== TRAINER_BRENDAN_RUSTBORO_C ===
 Name: BRENDAN
 Class: Rival
 Pic: Brendan
@@ -10905,7 +10905,7 @@ IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
 Treecko
 Level: 15
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 === TRAINER_PAXTON ===
 Name: PAXTON
@@ -10997,7 +10997,7 @@ Loudred
 Level: 33
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_BRENDAN_RUSTBORO_TORCHIC ===
+=== TRAINER_BRENDAN_RUSTBORO_B ===
 Name: BRENDAN
 Class: Rival
 Pic: Brendan
@@ -11012,9 +11012,9 @@ IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
 Mudkip
 Level: 15
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_MAY_RUSTBORO_MUDKIP ===
+=== TRAINER_MAY_RUSTBORO_C ===
 Name: MAY
 Class: Rival
 Pic: May
@@ -11029,7 +11029,7 @@ IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
 Treecko
 Level: 15
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 === TRAINER_MAXIE_MAGMA_HIDEOUT ===
 Name: MAXIE
@@ -12276,7 +12276,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Psychic
 - Future Sight
 
-=== TRAINER_BRENDAN_LILYCOVE_MUDKIP ===
+=== TRAINER_BRENDAN_LILYCOVE_C ===
 Name: BRENDAN
 Class: Rival
 Pic: Brendan
@@ -12301,7 +12301,7 @@ Grovyle
 Level: 35
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_BRENDAN_LILYCOVE_TREECKO ===
+=== TRAINER_BRENDAN_LILYCOVE_A ===
 Name: BRENDAN
 Class: Rival
 Pic: Brendan
@@ -12326,7 +12326,7 @@ Combusken
 Level: 35
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_BRENDAN_LILYCOVE_TORCHIC ===
+=== TRAINER_BRENDAN_LILYCOVE_B ===
 Name: BRENDAN
 Class: Rival
 Pic: Brendan
@@ -12351,7 +12351,7 @@ Marshtomp
 Level: 35
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_MAY_LILYCOVE_MUDKIP ===
+=== TRAINER_MAY_LILYCOVE_C ===
 Name: MAY
 Class: Rival
 Pic: May
@@ -12376,7 +12376,7 @@ Grovyle
 Level: 35
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_MAY_LILYCOVE_TREECKO ===
+=== TRAINER_MAY_LILYCOVE_A ===
 Name: MAY
 Class: Rival
 Pic: May
@@ -12401,7 +12401,7 @@ Combusken
 Level: 35
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_MAY_LILYCOVE_TORCHIC ===
+=== TRAINER_MAY_LILYCOVE_B ===
 Name: MAY
 Class: Rival
 Pic: May
@@ -14193,7 +14193,7 @@ Vigoroth
 Level: 29
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-=== TRAINER_MAY_RUSTBORO_TREECKO ===
+=== TRAINER_MAY_RUSTBORO_A ===
 Name: MAY
 Class: Rival
 Pic: May
@@ -14208,9 +14208,9 @@ IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
 Torchic
 Level: 15
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_MAY_RUSTBORO_TORCHIC ===
+=== TRAINER_MAY_RUSTBORO_B ===
 Name: MAY
 Class: Rival
 Pic: May
@@ -14225,7 +14225,7 @@ IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
 Mudkip
 Level: 15
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 === TRAINER_ROXANNE_2 ===
 Name: ROXANNE

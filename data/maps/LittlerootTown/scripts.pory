@@ -951,12 +951,12 @@ LittlerootTown_Text_BirchSpendsDaysInLab:
 
 LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut:
 	.string "Um, um, um!\p"
-	.string "If you go outside and go in the grass,\n"
-	.string "wild POKéMON will jump out!$"
+	.string "PROF. BIRCH said he's working on\n"
+	.string "something, so don't bother him!$"
 
 LittlerootTown_Text_DangerousIfYouDontHavePokemon:
-	.string "It's dangerous if you don't have\n"
-	.string "your own POKéMON.$"
+	.string "That's what he told me\n"
+	.string "at least . . .$"
 
 LittlerootTown_Text_CanYouGoSeeWhatsHappening:
 	.string "The Professor needs help!$"

@@ -1905,17 +1905,17 @@ LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut:
 # 953 "data//maps/LittlerootTown/scripts.pory"
 	.string "Um, um, um!\p"
 # 954 "data//maps/LittlerootTown/scripts.pory"
-	.string "If you go outside and go in the grass,\n"
+	.string "PROF. BIRCH said he's working on\n"
 # 955 "data//maps/LittlerootTown/scripts.pory"
-	.string "wild POKéMON will jump out!$"
+	.string "something, so don't bother him!$"
 # 956 "data//maps/LittlerootTown/scripts.pory"
 
 # 957 "data//maps/LittlerootTown/scripts.pory"
 LittlerootTown_Text_DangerousIfYouDontHavePokemon:
 # 958 "data//maps/LittlerootTown/scripts.pory"
-	.string "It's dangerous if you don't have\n"
+	.string "That's what he told me\n"
 # 959 "data//maps/LittlerootTown/scripts.pory"
-	.string "your own POKéMON.$"
+	.string "at least . . .$"
 # 960 "data//maps/LittlerootTown/scripts.pory"
 
 # 961 "data//maps/LittlerootTown/scripts.pory"

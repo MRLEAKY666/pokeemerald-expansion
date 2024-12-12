@@ -23805,7 +23805,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 9535
-    [TRAINER_BRENDAN_ROUTE_103_MUDKIP] =
+    [TRAINER_BRENDAN_ROUTE_103_C] =
     {
 #line 9536
         .trainerName = _("BRENDAN"),
@@ -23828,7 +23828,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_TREECKO,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 9546
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+            .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 9545
             .lvl = 5,
             .nature = NATURE_HARDY,
@@ -23837,7 +23837,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 9548
-    [TRAINER_BRENDAN_ROUTE_110_MUDKIP] =
+    [TRAINER_BRENDAN_ROUTE_110_C] =
     {
 #line 9549
         .trainerName = _("BRENDAN"),
@@ -23882,7 +23882,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_GROVYLE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 9567
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+            .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 9566
             .lvl = 20,
             .nature = NATURE_HARDY,
@@ -23891,7 +23891,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 9569
-    [TRAINER_BRENDAN_ROUTE_119_MUDKIP] =
+    [TRAINER_BRENDAN_ROUTE_119_C] =
     {
 #line 9570
         .trainerName = _("BRENDAN"),
@@ -23936,7 +23936,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_GROVYLE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 9588
-            .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
+            .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 9587
             .lvl = 31,
             .nature = NATURE_HARDY,
@@ -23945,7 +23945,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 9590
-    [TRAINER_BRENDAN_ROUTE_103_TREECKO] =
+    [TRAINER_BRENDAN_ROUTE_103_A] =
     {
 #line 9591
         .trainerName = _("BRENDAN"),
@@ -23968,7 +23968,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_TORCHIC,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 9601
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+            .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 9600
             .lvl = 5,
             .nature = NATURE_HARDY,
@@ -23977,7 +23977,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 9603
-    [TRAINER_BRENDAN_ROUTE_110_TREECKO] =
+    [TRAINER_BRENDAN_ROUTE_110_A] =
     {
 #line 9604
         .trainerName = _("BRENDAN"),
@@ -24022,7 +24022,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_COMBUSKEN,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 9622
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+            .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 9621
             .lvl = 20,
             .nature = NATURE_HARDY,
@@ -24031,7 +24031,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 9624
-    [TRAINER_BRENDAN_ROUTE_119_TREECKO] =
+    [TRAINER_BRENDAN_ROUTE_119_A] =
     {
 #line 9625
         .trainerName = _("BRENDAN"),
@@ -24076,7 +24076,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_COMBUSKEN,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 9643
-            .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
+            .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 9642
             .lvl = 31,
             .nature = NATURE_HARDY,
@@ -24085,7 +24085,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 9645
-    [TRAINER_BRENDAN_ROUTE_103_TORCHIC] =
+    [TRAINER_BRENDAN_ROUTE_103_B] =
     {
 #line 9646
         .trainerName = _("BRENDAN"),
@@ -24108,7 +24108,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_MUDKIP,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 9656
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+            .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 9655
             .lvl = 5,
             .nature = NATURE_HARDY,
@@ -24117,7 +24117,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 9658
-    [TRAINER_BRENDAN_ROUTE_110_TORCHIC] =
+    [TRAINER_BRENDAN_ROUTE_110_B] =
     {
 #line 9659
         .trainerName = _("BRENDAN"),
@@ -24162,7 +24162,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_MARSHTOMP,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 9677
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+            .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 9676
             .lvl = 20,
             .nature = NATURE_HARDY,
@@ -24171,7 +24171,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 9679
-    [TRAINER_BRENDAN_ROUTE_119_TORCHIC] =
+    [TRAINER_BRENDAN_ROUTE_119_B] =
     {
 #line 9680
         .trainerName = _("BRENDAN"),
@@ -24216,7 +24216,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_MARSHTOMP,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 9698
-            .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
+            .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 9697
             .lvl = 31,
             .nature = NATURE_HARDY,
@@ -24225,7 +24225,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 9700
-    [TRAINER_MAY_ROUTE_103_MUDKIP] =
+    [TRAINER_MAY_ROUTE_103_C] =
     {
 #line 9701
         .trainerName = _("MAY"),
@@ -24250,7 +24250,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_TREECKO,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 9711
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+            .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 9710
             .lvl = 5,
             .nature = NATURE_HARDY,
@@ -24259,7 +24259,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 9713
-    [TRAINER_MAY_ROUTE_110_MUDKIP] =
+    [TRAINER_MAY_ROUTE_110_C] =
     {
 #line 9714
         .trainerName = _("MAY"),
@@ -24306,7 +24306,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_GROVYLE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 9732
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+            .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 9731
             .lvl = 20,
             .nature = NATURE_HARDY,
@@ -24315,7 +24315,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 9734
-    [TRAINER_MAY_ROUTE_119_MUDKIP] =
+    [TRAINER_MAY_ROUTE_119_C] =
     {
 #line 9735
         .trainerName = _("MAY"),
@@ -24362,7 +24362,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_GROVYLE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 9753
-            .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
+            .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 9752
             .lvl = 31,
             .nature = NATURE_HARDY,
@@ -24371,7 +24371,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 9755
-    [TRAINER_MAY_ROUTE_103_TREECKO] =
+    [TRAINER_MAY_ROUTE_103_A] =
     {
 #line 9756
         .trainerName = _("MAY"),
@@ -24396,7 +24396,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_TORCHIC,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 9766
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+            .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 9765
             .lvl = 5,
             .nature = NATURE_HARDY,
@@ -24405,7 +24405,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 9768
-    [TRAINER_MAY_ROUTE_110_TREECKO] =
+    [TRAINER_MAY_ROUTE_110_A] =
     {
 #line 9769
         .trainerName = _("MAY"),
@@ -24452,7 +24452,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_COMBUSKEN,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 9787
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+            .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 9786
             .lvl = 20,
             .nature = NATURE_HARDY,
@@ -24461,7 +24461,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 9789
-    [TRAINER_MAY_ROUTE_119_TREECKO] =
+    [TRAINER_MAY_ROUTE_119_A] =
     {
 #line 9790
         .trainerName = _("MAY"),
@@ -24508,7 +24508,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_COMBUSKEN,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 9808
-            .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
+            .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 9807
             .lvl = 31,
             .nature = NATURE_HARDY,
@@ -24517,7 +24517,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 9810
-    [TRAINER_MAY_ROUTE_103_TORCHIC] =
+    [TRAINER_MAY_ROUTE_103_B] =
     {
 #line 9811
         .trainerName = _("MAY"),
@@ -24542,7 +24542,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_MUDKIP,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 9821
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+            .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 9820
             .lvl = 5,
             .nature = NATURE_HARDY,
@@ -24551,7 +24551,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 9823
-    [TRAINER_MAY_ROUTE_110_TORCHIC] =
+    [TRAINER_MAY_ROUTE_110_B] =
     {
 #line 9824
         .trainerName = _("MAY"),
@@ -24598,7 +24598,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_MARSHTOMP,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 9842
-            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+            .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 9841
             .lvl = 20,
             .nature = NATURE_HARDY,
@@ -24607,7 +24607,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 9844
-    [TRAINER_MAY_ROUTE_119_TORCHIC] =
+    [TRAINER_MAY_ROUTE_119_B] =
     {
 #line 9845
         .trainerName = _("MAY"),
@@ -24654,7 +24654,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_MARSHTOMP,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 9863
-            .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
+            .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 9862
             .lvl = 31,
             .nature = NATURE_HARDY,
@@ -27262,7 +27262,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 10876
-    [TRAINER_BRENDAN_RUSTBORO_TREECKO] =
+    [TRAINER_BRENDAN_RUSTBORO_A] =
     {
 #line 10877
         .trainerName = _("BRENDAN"),
@@ -27296,7 +27296,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_TORCHIC,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 10891
-            .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
+            .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 10890
             .lvl = 15,
             .nature = NATURE_HARDY,
@@ -27305,7 +27305,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 10893
-    [TRAINER_BRENDAN_RUSTBORO_MUDKIP] =
+    [TRAINER_BRENDAN_RUSTBORO_C] =
     {
 #line 10894
         .trainerName = _("BRENDAN"),
@@ -27339,7 +27339,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_TREECKO,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 10908
-            .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
+            .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 10907
             .lvl = 15,
             .nature = NATURE_HARDY,
@@ -27580,7 +27580,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 11000
-    [TRAINER_BRENDAN_RUSTBORO_TORCHIC] =
+    [TRAINER_BRENDAN_RUSTBORO_B] =
     {
 #line 11001
         .trainerName = _("BRENDAN"),
@@ -27614,7 +27614,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_MUDKIP,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 11015
-            .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
+            .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 11014
             .lvl = 15,
             .nature = NATURE_HARDY,
@@ -27623,7 +27623,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 11017
-    [TRAINER_MAY_RUSTBORO_MUDKIP] =
+    [TRAINER_MAY_RUSTBORO_C] =
     {
 #line 11018
         .trainerName = _("MAY"),
@@ -27659,7 +27659,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_TREECKO,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 11032
-            .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
+            .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 11031
             .lvl = 15,
             .nature = NATURE_HARDY,
@@ -30772,7 +30772,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 12279
-    [TRAINER_BRENDAN_LILYCOVE_MUDKIP] =
+    [TRAINER_BRENDAN_LILYCOVE_C] =
     {
 #line 12280
         .trainerName = _("BRENDAN"),
@@ -30837,7 +30837,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 12304
-    [TRAINER_BRENDAN_LILYCOVE_TREECKO] =
+    [TRAINER_BRENDAN_LILYCOVE_A] =
     {
 #line 12305
         .trainerName = _("BRENDAN"),
@@ -30902,7 +30902,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 12329
-    [TRAINER_BRENDAN_LILYCOVE_TORCHIC] =
+    [TRAINER_BRENDAN_LILYCOVE_B] =
     {
 #line 12330
         .trainerName = _("BRENDAN"),
@@ -30967,7 +30967,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 12354
-    [TRAINER_MAY_LILYCOVE_MUDKIP] =
+    [TRAINER_MAY_LILYCOVE_C] =
     {
 #line 12355
         .trainerName = _("MAY"),
@@ -31034,7 +31034,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 12379
-    [TRAINER_MAY_LILYCOVE_TREECKO] =
+    [TRAINER_MAY_LILYCOVE_A] =
     {
 #line 12380
         .trainerName = _("MAY"),
@@ -31101,7 +31101,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 12404
-    [TRAINER_MAY_LILYCOVE_TORCHIC] =
+    [TRAINER_MAY_LILYCOVE_B] =
     {
 #line 12405
         .trainerName = _("MAY"),
@@ -35636,7 +35636,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 14196
-    [TRAINER_MAY_RUSTBORO_TREECKO] =
+    [TRAINER_MAY_RUSTBORO_A] =
     {
 #line 14197
         .trainerName = _("MAY"),
@@ -35672,7 +35672,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_TORCHIC,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 14211
-            .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
+            .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 14210
             .lvl = 15,
             .nature = NATURE_HARDY,
@@ -35681,7 +35681,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 14213
-    [TRAINER_MAY_RUSTBORO_TORCHIC] =
+    [TRAINER_MAY_RUSTBORO_B] =
     {
 #line 14214
         .trainerName = _("MAY"),
@@ -35717,7 +35717,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_MUDKIP,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 14228
-            .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
+            .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
 #line 14227
             .lvl = 15,
             .nature = NATURE_HARDY,
