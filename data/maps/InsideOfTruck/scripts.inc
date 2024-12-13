@@ -377,7 +377,7 @@ GenerateStarter_12:
 
 GenerateStarter_4:
 # 209 "data//maps/InsideOfTruck/scripts.pory"
-	random 33
+	random 32
 # 210 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_eq GenerateStarter_10
@@ -504,11 +504,7 @@ GenerateStarter_101:
 GenerateStarter_104:
 # 333 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 31
-	goto_if_eq GenerateStarter_108
-GenerateStarter_107:
-# 337 "data//maps/InsideOfTruck/scripts.pory"
-	compare VAR_RESULT, 32
-	goto_if_eq GenerateStarter_110
+	goto_if_eq GenerateStarter_107
 	return
 
 GenerateStarter_7:
@@ -747,17 +743,10 @@ GenerateStarter_105:
 	setvar VAR_0x8004, 0
 	goto GenerateStarter_104
 
-GenerateStarter_108:
+GenerateStarter_107:
 # 334 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_JANGMO_O
-# 335 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_0x8004, 0
-	goto GenerateStarter_107
-
-GenerateStarter_110:
-# 338 "data//maps/InsideOfTruck/scripts.pory"
 	setvar VAR_STARTER_MON, SPECIES_CASTFORM
-# 339 "data//maps/InsideOfTruck/scripts.pory"
+# 335 "data//maps/InsideOfTruck/scripts.pory"
 	setvar VAR_0x8004, 0
 	return
 
@@ -779,5 +768,5 @@ NicknamePartyMon_Text_0:
 	.string "And what is its name?$"
 
 InsideOfTruck_NotChosen::
-# 344 "data//maps/InsideOfTruck/scripts.pory"
+# 340 "data//maps/InsideOfTruck/scripts.pory"
 	.string "Make sure to grab it before you leave!$"

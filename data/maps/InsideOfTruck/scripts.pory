@@ -206,7 +206,7 @@ script GenerateStarter{
 
 	}
 	if(var(VAR_RESULT) == FALSE){
-		random(33)
+		random(32)
 		if(var(VAR_RESULT) == 0){
 			setvar(VAR_STARTER_MON, SPECIES_PIPLUP)
 			setvar(VAR_0x8004, 2)
@@ -331,10 +331,6 @@ script GenerateStarter{
 			setvar(VAR_0x8004, 0)
 		}
 		if(var(VAR_RESULT) == 31){
-			setvar(VAR_STARTER_MON, SPECIES_JANGMO_O)
-			setvar(VAR_0x8004, 0)
-		}
-		if(var(VAR_RESULT) == 32){
 			setvar(VAR_STARTER_MON, SPECIES_CASTFORM)
 			setvar(VAR_0x8004, 0)
 		}
