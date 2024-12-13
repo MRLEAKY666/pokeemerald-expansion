@@ -297,9 +297,9 @@ void UpdateRoamerHPStatus(struct Pokemon *mon)
 {
     u32 status = GetMonData(mon, MON_DATA_STATUS);
 
-    //ROAMER(gEncounteredRoamerIndex)->hp = GetMonData(mon, MON_DATA_HP);
-    //ROAMER(gEncounteredRoamerIndex)->statusA = status;
-    //ROAMER(gEncounteredRoamerIndex)->statusB = status >> 8;
+    ROAMER(gEncounteredRoamerIndex)->hp = GetMonData(mon, MON_DATA_HP);
+    ROAMER(gEncounteredRoamerIndex)->statusA = status;
+    ROAMER(gEncounteredRoamerIndex)->statusB = status >> 8;
 
     RoamerMoveToOtherLocationSet(gEncounteredRoamerIndex);
 }
