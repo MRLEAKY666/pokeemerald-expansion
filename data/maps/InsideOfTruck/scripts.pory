@@ -145,6 +145,8 @@ script InsideOfTruck_EventScript_Starterball{
 			removeobject(4)
 			setflag(FLAG_UNUSED_0x493)
 			setvar(VAR_TEMP_0, 1)
+			setvar(VAR_UNUSED_0x8014, 0)
+			special(InitRoamer)
 			call(NicknamePartyMon)
 		}
 		elif(var(VAR_RESULT) == MON_GIVEN_TO_PC){
@@ -153,6 +155,8 @@ script InsideOfTruck_EventScript_Starterball{
 			removeobject(4)
 			setflag(FLAG_UNUSED_0x493)
 			setvar(VAR_TEMP_0, 1)
+			setvar(VAR_UNUSED_0x8014, 0)
+			special(InitRoamer)
 			call(NicknamePartyMon)
 		}
 		else{
@@ -189,12 +193,15 @@ script GenerateStarter{
 		random(3)
 		if(var(VAR_RESULT) == 0){
 			setvar(VAR_STARTER_MON, SPECIES_TREECKO)
+			setvar(VAR_0x8004, 0)
 		}
 		if(var(VAR_RESULT) == 1){
 			setvar(VAR_STARTER_MON, SPECIES_TORCHIC)
+			setvar(VAR_0x8004, 1)
 		}
 		if(var(VAR_RESULT) == 2){
 			setvar(VAR_STARTER_MON, SPECIES_MUDKIP)
+			setvar(VAR_0x8004, 2)
 		}
 
 	}
@@ -202,102 +209,134 @@ script GenerateStarter{
 		random(33)
 		if(var(VAR_RESULT) == 0){
 			setvar(VAR_STARTER_MON, SPECIES_PIPLUP)
+			setvar(VAR_0x8004, 2)
 		}
 		if(var(VAR_RESULT) == 1){
 			setvar(VAR_STARTER_MON, SPECIES_EEVEE)
+			setvar(VAR_0x8004, 0)
 		}
 		if(var(VAR_RESULT) == 2){
 			setvar(VAR_STARTER_MON, SPECIES_PICHU)
+			setvar(VAR_0x8004, 1)
 		}
 		if(var(VAR_RESULT) == 3){
 			setvar(VAR_STARTER_MON, SPECIES_TOGEPI)
+			setvar(VAR_0x8004, 2)
 		}
 		if(var(VAR_RESULT) == 4){
 			setvar(VAR_STARTER_MON, SPECIES_SNIVY)
+			setvar(VAR_0x8004, 0)
 		}
 		if(var(VAR_RESULT) == 5){
 			setvar(VAR_STARTER_MON, SPECIES_ZORUA_HISUIAN)
+			setvar(VAR_0x8004, 0)
 		}
 		if(var(VAR_RESULT) == 6){
 			setvar(VAR_STARTER_MON, SPECIES_ZORUA)
+			setvar(VAR_0x8004, 0)
 		}
 		if(var(VAR_RESULT) == 7){
 			setvar(VAR_STARTER_MON, SPECIES_GOTHITA)
+			setvar(VAR_0x8004, 1)
 		}
 		if(var(VAR_RESULT) == 8){
 			setvar(VAR_STARTER_MON, SPECIES_SOLOSIS)
+			setvar(VAR_0x8004, 1)
 		}
 		if(var(VAR_RESULT) == 9){
 			setvar(VAR_STARTER_MON, SPECIES_AXEW)
+			setvar(VAR_0x8004, 2)
 		}
 		if(var(VAR_RESULT) == 10){
 			setvar(VAR_STARTER_MON, SPECIES_LARVESTA)
+			setvar(VAR_0x8004, 1)
 		}
 		if(var(VAR_RESULT) == 11){
 			setvar(VAR_STARTER_MON, SPECIES_GOOMY)
+			setvar(VAR_0x8004, 2)
 		}
 		if(var(VAR_RESULT) == 12){
 			setvar(VAR_STARTER_MON, SPECIES_ROWLET)
+			setvar(VAR_0x8004, 0)
 		}
 		if(var(VAR_RESULT) == 13){
 			setvar(VAR_STARTER_MON, SPECIES_APPLIN)
+			setvar(VAR_0x8004, 0)
 		}
 		if(var(VAR_RESULT) == 14){
 			setvar(VAR_STARTER_MON, SPECIES_MIME_JR)
+			setvar(VAR_0x8004, 1)
 		}
 		if(var(VAR_RESULT) == 15){
 			setvar(VAR_STARTER_MON, SPECIES_MAGBY)
+			setvar(VAR_0x8004, 1)
 		}
 		if(var(VAR_RESULT) == 16){
 			setvar(VAR_STARTER_MON, SPECIES_ELEKID)
+			setvar(VAR_0x8004, 1)
 		}
 		if(var(VAR_RESULT) == 17){
 			setvar(VAR_STARTER_MON, SPECIES_MANKEY)
+			setvar(VAR_0x8004, 0)
 		}
 		if(var(VAR_RESULT) == 18){
 			setvar(VAR_STARTER_MON, SPECIES_SWINUB)
+			setvar(VAR_0x8004, 2)
 		}
 		if(var(VAR_RESULT) == 19){
 			setvar(VAR_STARTER_MON, SPECIES_LARVITAR)
+			setvar(VAR_0x8004, 0)
 		}
 		if(var(VAR_RESULT) == 20){
 			setvar(VAR_STARTER_MON, SPECIES_TURTWIG)
+			setvar(VAR_0x8004, 0)
 		}
 		if(var(VAR_RESULT) == 21){
 			setvar(VAR_STARTER_MON, SPECIES_CHARMANDER)
+			setvar(VAR_0x8004, 1)
 		}
 		if(var(VAR_RESULT) == 22){
 			setvar(VAR_STARTER_MON, SPECIES_SQUIRTLE)
+			setvar(VAR_0x8004, 2)
 		}
 		if(var(VAR_RESULT) == 23){
 			setvar(VAR_STARTER_MON, SPECIES_BULBASAUR)
+			setvar(VAR_0x8004, 0)
 		}
 		if(var(VAR_RESULT) == 24){
 			setvar(VAR_STARTER_MON, SPECIES_OSHAWOTT)
+			setvar(VAR_0x8004, 2)
 		}
 		if(var(VAR_RESULT) == 25){
 			setvar(VAR_STARTER_MON, SPECIES_CYNDAQUIL)
+			setvar(VAR_0x8004, 1)
 		}
 		if(var(VAR_RESULT) == 26){
 			setvar(VAR_STARTER_MON, SPECIES_BUDEW)
+			setvar(VAR_0x8004, 0)
 		}
 		if(var(VAR_RESULT) == 27){
 			setvar(VAR_STARTER_MON, SPECIES_SPHEAL)
+			setvar(VAR_0x8004, 0)
 		}
 		if(var(VAR_RESULT) == 28){
 			setvar(VAR_STARTER_MON, SPECIES_SHINX)
+			setvar(VAR_0x8004, 1)
 		}
 		if(var(VAR_RESULT) == 29){
 			setvar(VAR_STARTER_MON, SPECIES_SANDILE)
 		}
 		if(var(VAR_RESULT) == 30){
 			setvar(VAR_STARTER_MON, SPECIES_PAWNIARD)
+			setvar(VAR_0x8004, 0)
 		}
 		if(var(VAR_RESULT) == 31){
 			setvar(VAR_STARTER_MON, SPECIES_JANGMO_O)
+			setvar(VAR_0x8004, 0)
 		}
 		if(var(VAR_RESULT) == 32){
 			setvar(VAR_STARTER_MON, SPECIES_CASTFORM)
+			setvar(VAR_0x8004, 0)
 		}
 	}
 }

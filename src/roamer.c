@@ -99,8 +99,18 @@ void MoveAllRoamers(void)
 
 static void CreateInitialRoamerMon(u8 index, u16 species, u8 level)
 {
+    u8 isShiny;
+    u8 rand;
+
     ClearRoamerLocationHistory(index);
     CreateMon(&gEnemyParty[0], species, level, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
+    rand = Random() % 100;
+    if (rand < 25)
+    {
+        isShiny = TRUE;
+        SetMonData(&gEnemyParty[0], MON_DATA_IS_SHINY, &isShiny);
+    }
+    ROAMER(index)->isShiny = GetMonData(&gEnemyParty[0], MON_DATA_IS_SHINY);
     ROAMER(index)->ivs = GetMonData(&gEnemyParty[0], MON_DATA_IVS);
     ROAMER(index)->personality = GetMonData(&gEnemyParty[0], MON_DATA_PERSONALITY);
     ROAMER(index)->species = species;
@@ -148,10 +158,22 @@ bool8 TryAddRoamer(u16 species, u8 level)
 // gSpecialVar_0x8004 here corresponds to the options in the multichoice MULTI_TV_LATI (0 for 'Red', 1 for 'Blue')
 void InitRoamer(void)
 {
-    if (gSpecialVar_0x8004 == 0) // Red
-        TryAddRoamer(SPECIES_LATIAS, 40);
-    else
-        TryAddRoamer(SPECIES_LATIOS, 40);
+    if (gSpecialVar_Unused_0x8014 == 0)
+    {
+        if (gSpecialVar_0x8004 == 0) // starter group A
+            TryAddRoamer(SPECIES_ENTEI, 60);
+        if (gSpecialVar_0x8004 == 1) // starter group B
+            TryAddRoamer(SPECIES_SUICUNE, 60);
+        if (gSpecialVar_0x8004 == 2) // starter group C
+            TryAddRoamer(SPECIES_RAIKOU, 60);
+    }
+    if (gSpecialVar_Unused_0x8014 == 2)
+    {
+        if (gSpecialVar_0x8004 == 0) // Red
+            TryAddRoamer(SPECIES_LATIAS, 60);
+        else
+            TryAddRoamer(SPECIES_LATIOS, 60);
+    }
 }
 
 void UpdateLocationHistoryForRoamer(void)
@@ -252,6 +274,7 @@ void CreateRoamerMonInstance(u32 roamerIndex)
     SetMonData(mon, MON_DATA_CUTE, &ROAMER(roamerIndex)->cute);
     SetMonData(mon, MON_DATA_SMART, &ROAMER(roamerIndex)->smart);
     SetMonData(mon, MON_DATA_TOUGH, &ROAMER(roamerIndex)->tough);
+    SetMonData(mon, MON_DATA_IS_SHINY, &ROAMER(roamerIndex)->isShiny);
 }
 
 bool8 TryStartRoamerEncounter(void)

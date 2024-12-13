@@ -612,7 +612,7 @@ struct Roamer
     /*0x12*/ u8 tough;
     /*0x13*/ bool8 active;
     /*0x14*/ u8 statusB; // Stores frostbite
-    /*0x14*/ u8 filler[0x7];
+    /*0x14*/ bool8 isShiny;
 };
 
 struct RamScriptData
