@@ -5351,8 +5351,8 @@ static s32 AI_Roaming(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
 {
     if (IsBattlerTrapped(battlerAtk, FALSE))
         return score;
-
-    AI_Flee();
+    if ((Random() % 5) == 0)
+        AI_Flee();
     return score;
 }
 
