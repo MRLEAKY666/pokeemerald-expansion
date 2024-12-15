@@ -506,7 +506,7 @@
 #define P_FAMILY_MILCERY                 FALSE
 #define P_FAMILY_FALINKS                 TRUE
 #define P_FAMILY_PINCURCHIN              FALSE
-#define P_FAMILY_SNOM                    FALSE
+#define P_FAMILY_SNOM                    TRUE
 #define P_FAMILY_STONJOURNER             FALSE
 #define P_FAMILY_EISCUE                  FALSE
 #define P_FAMILY_INDEEDEE                FALSE
