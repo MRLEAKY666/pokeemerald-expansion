@@ -430,7 +430,10 @@
     "TerraCave_End",
     "AlteringCave",
     "MeteorFalls_StevensCave",
-    "FortreeWoods"
+    "FortreeWoods",
+    "GraniteCove",
+    "GraniteCave_LowTide",
+    "GraniteCave_ArticunosRoom"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",

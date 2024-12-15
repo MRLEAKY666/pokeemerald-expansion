@@ -4420,6 +4420,36 @@
       "secondary_tileset": "gTileset_Fortree",
       "border_filepath": "data/layouts/FortreeWoods/border.bin",
       "blockdata_filepath": "data/layouts/FortreeWoods/map.bin"
+    },
+    {
+      "id": "LAYOUT_GRANITE_COVE",
+      "name": "GraniteCove_Layout",
+      "width": 32,
+      "height": 24,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Dewford",
+      "border_filepath": "data/layouts/GraniteCove/border.bin",
+      "blockdata_filepath": "data/layouts/GraniteCove/map.bin"
+    },
+    {
+      "id": "LAYOUT_GRANITE_CAVE_LOW_TIDE",
+      "name": "GraniteCave_LowTide_Layout",
+      "width": 32,
+      "height": 24,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Dewford",
+      "border_filepath": "data/layouts/GraniteCave_LowTide/border.bin",
+      "blockdata_filepath": "data/layouts/GraniteCave_LowTide/map.bin"
+    },
+    {
+      "id": "LAYOUT_GRANITE_CAVE_ARTICUNOS_ROOM",
+      "name": "GraniteCave_ArticunosRoom_Layout",
+      "width": 22,
+      "height": 31,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/GraniteCave_ArticunosRoom/border.bin",
+      "blockdata_filepath": "data/layouts/GraniteCave_ArticunosRoom/map.bin"
     }
   ]
 }

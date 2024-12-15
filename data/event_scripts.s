@@ -1084,3 +1084,9 @@ Common_EventScript_ExitSafeArea::
 	.include "data/text/birch_speech.inc"
 
 	.include "data/maps/FortreeWoods/scripts.inc"
+
+	.include "data/maps/GraniteCove/scripts.inc"
+
+	.include "data/maps/GraniteCave_LowTide/scripts.inc"
+
+	.include "data/maps/GraniteCave_ArticunosRoom/scripts.inc"

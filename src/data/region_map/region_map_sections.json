@@ -444,7 +444,7 @@
       "map_section": "MAPSEC_GRANITE_CAVE",
       "name": "GRANITE CAVE",
       "x": 1,
-      "y": 13,
+      "y": 14,
       "width": 1,
       "height": 1
     },
@@ -1603,8 +1603,8 @@
     {
       "map_section": "MAPSEC_BIRTH_ISLAND",
       "name": "BIRTH ISLAND",
-      "x": 0,
-      "y": 0,
+      "x": 27,
+      "y": 14,
       "width": 1,
       "height": 1
     },
@@ -1691,8 +1691,8 @@
     {
       "map_section": "MAPSEC_NAVEL_ROCK",
       "name": "NAVEL ROCK",
-      "x": 0,
-      "y": 0,
+      "x": 20,
+      "y": 13,
       "width": 1,
       "height": 1
     },
@@ -1709,6 +1709,14 @@
       "name": "FORTREE WOODS",
       "x": 11,
       "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "map_section": "MAPSEC_GRANITE_COVE",
+      "name": "GRANITE COVE",
+      "x": 1,
+      "y": 14,
       "width": 1,
       "height": 1
     }
