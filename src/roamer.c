@@ -167,6 +167,10 @@ void InitRoamer(void)
         if (gSpecialVar_0x8004 == 2) // starter group C
             TryAddRoamer(SPECIES_RAIKOU, 60);
     }
+    if (gSpecialVar_Unused_0x8014 == 1)
+    {
+        TryAddRoamer(SPECIES_ARTICUNO, 30);
+    }
     if (gSpecialVar_Unused_0x8014 == 2)
     {
         if (gSpecialVar_0x8004 == 0) // Red
