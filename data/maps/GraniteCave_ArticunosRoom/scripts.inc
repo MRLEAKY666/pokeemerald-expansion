@@ -41,6 +41,7 @@ GraniteCave_ArticunosRoom_EventScript_Articuno::
 	special RemoveCameraObject
 	setvar VAR_UNUSED_0x8014, 1
 	special InitRoamer
+	@ setseenmon SPECIES_ARTICUNO
 	releaseall
 	end
 

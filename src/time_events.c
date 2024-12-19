@@ -81,7 +81,7 @@ void UpdateShoalTideFlag(void)
         1, // 23
     };
 
-    if (IsMapTypeOutdoors(GetLastUsedWarpMapType()))
+    if (IsMapTypeOutdoors(GetLastUsedWarpMapType()) || (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(GRANITE_COVE) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(GRANITE_COVE)))
     {
         RtcCalcLocalTime();
         if (tide[gLocalTime.hours])
