@@ -13,7 +13,7 @@ MauvilleCity_House1_EventScript_RockSmashDude::
 # 7 "data//maps/MauvilleCity_House1/scripts.pory"
 	faceplayer
 # 8 "data//maps/MauvilleCity_House1/scripts.pory"
-	goto_if_set FLAG_RECEIVED_HM_ROCK_SMASH, MauvilleCity_House1_EventScript_ReceivedRockSmash
+	call MauvilleCity_House1_EventScript_ReceivedRockSmash
 # 9 "data//maps/MauvilleCity_House1/scripts.pory"
 	msgbox MauvilleCity_House1_Text_ImRockSmashDudeTakeThis, MSGBOX_DEFAULT
 # 10 "data//maps/MauvilleCity_House1/scripts.pory"
