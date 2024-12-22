@@ -1979,7 +1979,7 @@
               {
                 "min_level": 7,
                 "max_level": 7,
-                "species": "SPECIES_FERROSEED"
+                "species": "SPECIES_MEOWTH_GALARIAN"
               },
               {
                 "min_level": 8,
@@ -2048,7 +2048,7 @@
               {
                 "min_level": 9,
                 "max_level": 9,
-                "species": "SPECIES_FERROSEED"
+                "species": "SPECIES_MEOWTH_GALARIAN"
               },
               {
                 "min_level": 11,
@@ -2447,7 +2447,7 @@
               {
                 "min_level": 10,
                 "max_level": 10,
-                "species": "SPECIES_FERROSEED"
+                "species": "SPECIES_MEOWTH_GALARIAN"
               },
               {
                 "min_level": 11,

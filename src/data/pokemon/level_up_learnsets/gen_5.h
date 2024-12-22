@@ -4901,7 +4901,7 @@ static const struct LevelUpMove sLanturnLevelUpLearnset[] = {
 
 #if P_FAMILY_TOGEPI
 static const struct LevelUpMove sTogepiLevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 1, MOVE_GROWL),
+    LEVEL_UP_MOVE( 1, MOVE_DOUBLE_SLAP),
     LEVEL_UP_MOVE( 1, MOVE_CHARM),
     LEVEL_UP_MOVE( 5, MOVE_METRONOME),
     LEVEL_UP_MOVE( 9, MOVE_SWEET_KISS),

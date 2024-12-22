@@ -119,9 +119,9 @@ LittlerootTown_ProfessorBirchsLab_OnWarp:
 # 60 "data//maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
 	map_script_2 VAR_BIRCH_LAB_STATE, 2, LittlerootTown_ProfessorBirchsLab_EventScript_SetPlayerPosForReceiveStarter
 # 61 "data//maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
-	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 1, LittlerootTown_ProfessorBirchsLab_EventScript_SetObjectPosForDexUpgrade
+	@ map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 1, LittlerootTown_ProfessorBirchsLab_EventScript_SetObjectPosForDexUpgrade
 # 62 "data//maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
-	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2, LittlerootTown_ProfessorBirchsLab_EventScript_SetObjectPosForDexUpgrade
+	@ map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2, LittlerootTown_ProfessorBirchsLab_EventScript_SetObjectPosForDexUpgrade
 # 63 "data//maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
 	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 3, LittlerootTown_ProfessorBirchsLab_EventScript_AddRivalObject
 # 64 "data//maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
@@ -215,7 +215,7 @@ LittlerootTown_ProfessorBirchsLab_OnFrame:
 # 108 "data//maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
 	map_script_2 VAR_BIRCH_LAB_STATE, 4, LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedexEvent
 # 109 "data//maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
-	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 1, LittlerootTown_ProfessorBirchsLab_EventScript_UpgradeToNationalDex
+	@ map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 1, LittlerootTown_ProfessorBirchsLab_EventScript_UpgradeToNationalDex
 # 110 "data//maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
 	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 4, LittlerootTown_ProfessorBirchsLab_EventScript_ChooseJohtoStarter
 # 111 "data//maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
