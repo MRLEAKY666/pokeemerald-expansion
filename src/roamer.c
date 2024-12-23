@@ -171,6 +171,10 @@ void InitRoamer(void)
     {
         TryAddRoamer(SPECIES_ARTICUNO, 30);
     }
+    if (gSpecialVar_Unused_0x8014 == 3)
+    {
+        TryAddRoamer(SPECIES_MOLTRES, 35);
+    }
     if (gSpecialVar_Unused_0x8014 == 2)
     {
         if (gSpecialVar_0x8004 == 0) // Red

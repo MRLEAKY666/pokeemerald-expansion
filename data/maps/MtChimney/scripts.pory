@@ -4,6 +4,7 @@ raw `
 .set LOCALID_TABITHA, 3
 .set LOCALID_MAGMA_GRUNT_2, 22
 .set LOCALID_MAGMA_GRUNT_1, 29
+.set LOCALID_MOLTRES, 31 
 
 
 MtChimney_MapScripts::
@@ -17,7 +18,50 @@ MtChimney_OnTransition:
 	end
 
 MtChimney_OnResume:
+	setstepcallback STEP_CB_FORTREE_BRIDGE
 	setstepcallback STEP_CB_ASH
+	end
+
+MtChimney_EventScript_Moltres::
+	lockall
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, MtChimney_Movement_CameraPanUp
+	waitmovement 0
+	special RemoveCameraObject
+	waitmovement 0
+	waitse
+	playmoncry SPECIES_MOLTRES, CRY_MODE_ENCOUNTER
+	setvar VAR_0x8004, 1  @ vertical pan
+	setvar VAR_0x8005, 1  @ horizontal pan
+	setvar VAR_0x8006, 8  @ num shakes
+	setvar VAR_0x8007, 3  @ shake delay
+	special ShakeCamera
+	waitstate
+	waitse
+	playmoncry SPECIES_MOLTRES, CRY_MODE_ENCOUNTER
+	setvar VAR_0x8004, 1  @ vertical pan
+	setvar VAR_0x8005, 2  @ horizontal pan
+	setvar VAR_0x8006, 8  @ num shakes
+	setvar VAR_0x8007, 5  @ shake delay
+	special ShakeCamera
+	waitstate
+	waitmoncry
+	applymovement LOCALID_MOLTRES, MtChimney_Movement_MoltresFlyOff
+	waitmovement 0
+	removeobject LOCALID_MOLTRES
+	msgbox MtChimney_Text_MoltresFlewOff, MSGBOX_DEFAULT
+	closemessage
+	delay 20
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, MtChimney_Movement_CameraPanDown
+	waitmovement 0
+	special RemoveCameraObject
+	setvar VAR_UNUSED_0x8014, 3
+	special InitRoamer
+	@ setseenmon SPECIES_MOLTRES
+	releaseall
 	end
 
 MtChimney_EventScript_Archie::
@@ -140,6 +184,28 @@ MtChimney_EventScript_NotEnoughMoney::
 	hidemoneybox
 	release
 	end
+
+MtChimney_Movement_MoltresFlyOff:
+	delay_16
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	step_end
+
+MtChimney_Movement_CameraPanUp:
+	walk_slow_up
+	walk_slow_up
+	walk_slow_up
+	step_end
+
+MtChimney_Movement_CameraPanDown:
+	walk_slow_down
+	walk_slow_down
+	walk_slow_down
+	step_end
 
 MtChimney_Movement_ArchieApproachPlayerEast:
 	walk_up
@@ -534,6 +600,10 @@ MtChimney_EventScript_SawyerRematch::
 	trainerbattle_rematch TRAINER_SAWYER_1, MtChimney_Text_SawyerRematchIntro, MtChimney_Text_SawyerRematchDefeat
 	msgbox MtChimney_Text_SawyerPostRematch, MSGBOX_AUTOCLOSE
 	end
+
+MtChimney_Text_MoltresFlewOff:
+	.string "Moltres woke up and flew\n"
+	.string "off somewhere . . .$"
 
 MtChimney_Text_MeteoriteWillActivateVolcano:
 	.string "The power contained in the METEORITE…\p"
