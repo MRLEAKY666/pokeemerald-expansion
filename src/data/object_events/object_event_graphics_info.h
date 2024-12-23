@@ -4690,3 +4690,41 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Articuno = {
     .images = sPicTable_ArticunoOld,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
+
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Moltres = { 
+    .tileTag = 0xFFFF,
+    .paletteTag = OBJ_EVENT_PAL_TAG_MOLTRES,
+    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
+    .size = 512,
+    .width = 32,
+    .height = 32,
+    .paletteSlot = 0,
+    .shadowSize = SHADOW_SIZE_M,
+    .inanimate = TRUE,
+    .compressed = FALSE,
+    .tracks = TRACKS_FOOT,
+    .oam = &gObjectEventBaseOam_32x32,
+    .subspriteTables = sOamTables_32x32,
+    .anims = sAnimTable_Standard,
+    .images = sPicTable_MoltresOld,
+    .affineAnims = gDummySpriteAffineAnimTable,
+};
+
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Zapdos = { 
+    .tileTag = 0xFFFF,
+    .paletteTag = OBJ_EVENT_PAL_TAG_ZAPDOS,
+    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
+    .size = 512,
+    .width = 32,
+    .height = 32,
+    .paletteSlot = 0,
+    .shadowSize = SHADOW_SIZE_M,
+    .inanimate = TRUE,
+    .compressed = FALSE,
+    .tracks = TRACKS_FOOT,
+    .oam = &gObjectEventBaseOam_32x32,
+    .subspriteTables = sOamTables_32x32,
+    .anims = sAnimTable_Standard,
+    .images = sPicTable_ZapdosOld,
+    .affineAnims = gDummySpriteAffineAnimTable,
+};

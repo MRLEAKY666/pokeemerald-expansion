@@ -387,6 +387,12 @@ const u16 gObjectEventPaletteEmotes[] = INCBIN_U16("graphics/misc/emotes.gbapal"
 const u32 gObjectEventPic_ArticunoOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/articuno.4bpp");
 const u16 gObjectEventPal_ArticunoOld[] = INCBIN_U16("graphics/object_events/pics/pokemon_old/articuno.gbapal");
 
+const u32 gObjectEventPic_MoltresOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/moltres.4bpp");
+const u16 gObjectEventPal_MoltresOld[] = INCBIN_U16("graphics/object_events/pics/pokemon_old/moltres.gbapal");
+
+const u32 gObjectEventPic_ZapdosOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/zapdos.4bpp");
+const u16 gObjectEventPal_ZapdosOld[] = INCBIN_U16("graphics/object_events/pics/pokemon_old/zapdos.gbapal");
+
 #if OW_FOLLOWERS_POKEBALLS
 const u32 gObjectEventPic_MasterBall[] = INCBIN_U32("graphics/object_events/pics/misc/ball_master.4bpp");
 const u32 gObjectEventPic_UltraBall[] = INCBIN_U32("graphics/object_events/pics/misc/ball_ultra.4bpp");

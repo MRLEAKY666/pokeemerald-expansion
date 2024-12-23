@@ -4478,3 +4478,9 @@ graphics/door_anims/battle_tower_multi_corridor.4bpp: %.4bpp: %.png
 
 $(OBJEVENTGFXDIR)/pokemon_old/articuno.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
+
+$(OBJEVENTGFXDIR)/pokemon_old/moltres.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
+$(OBJEVENTGFXDIR)/pokemon_old/zapdos.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
