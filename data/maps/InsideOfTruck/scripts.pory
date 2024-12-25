@@ -228,7 +228,7 @@ script GenerateStarter{
 			setvar(VAR_0x8004, 0)
 		}
 		if(var(VAR_RESULT) == 5){
-			setvar(VAR_STARTER_MON, SPECIES_ZORUA_HISUIAN)
+			setvar(VAR_STARTER_MON, SPECIES_ZORUA_HISUI)
 			setvar(VAR_0x8004, 0)
 		}
 		if(var(VAR_RESULT) == 6){

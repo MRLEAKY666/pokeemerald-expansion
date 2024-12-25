@@ -158,7 +158,7 @@ static const u8 sText_Lanettes[] = _("LANETTE's"); //no decapitalize until it is
 static const u8 sText_EnigmaBerry[] = _("ENIGMA BERRY"); //no decapitalize until it is everywhere
 static const u8 sText_BerrySuffix[] = _(" BERRY"); //no decapitalize until it is everywhere
 const u8 gText_EmptyString3[] = _("");
-const u8 gText_CastformChangedWeather[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} changes the weather\nwith {B_CURRENT_MOVE}.");
+const u8 gText_CastformChangedWeather[] = _("{B_SCR_NAME_WITH_PREFIX} changes the weather\nwith {B_CURRENT_MOVE}.");
 
 static const u8 sText_TwoInGameTrainersDefeated[] = _("You defeated {B_TRAINER1_NAME_WITH_CLASS} and {B_TRAINER2_NAME_WITH_CLASS}!\p");
 

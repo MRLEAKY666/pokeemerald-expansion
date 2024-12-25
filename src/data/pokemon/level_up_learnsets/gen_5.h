@@ -12758,7 +12758,7 @@ static const struct LevelUpMove sZoroarkLevelUpLearnset[] = {
 };
 
 #if P_HISUIAN_FORMS
-static const struct LevelUpMove sZoruaHisuianLevelUpLearnset[] = {
+static const struct LevelUpMove sZoruaHisuiLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_SWIFT),
     LEVEL_UP_MOVE( 6, MOVE_SNARL),
     LEVEL_UP_MOVE(11, MOVE_SHADOW_SNEAK),
@@ -12769,7 +12769,7 @@ static const struct LevelUpMove sZoruaHisuianLevelUpLearnset[] = {
     LEVEL_UP_END
 };
 
-static const struct LevelUpMove sZoroarkHisuianLevelUpLearnset[] = {
+static const struct LevelUpMove sZoroarkHisuiLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_SWIFT),
     LEVEL_UP_MOVE( 6, MOVE_SNARL),
     LEVEL_UP_MOVE(11, MOVE_SHADOW_SNEAK),

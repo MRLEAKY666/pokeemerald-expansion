@@ -791,7 +791,7 @@ MauvilleCity_GameCorner_EventScript_Girl::
 # 396 "data//maps/MauvilleCity_GameCorner/scripts.pory"
 	case SPECIES_SNIVY, MauvilleCity_GameCorner_EventScript_GiveTreeckoDoll
 # 397 "data//maps/MauvilleCity_GameCorner/scripts.pory"
-	case SPECIES_ZORUA_HISUIAN, MauvilleCity_GameCorner_EventScript_GiveTorchicDoll
+	case SPECIES_ZORUA_HISUI, MauvilleCity_GameCorner_EventScript_GiveTorchicDoll
 # 398 "data//maps/MauvilleCity_GameCorner/scripts.pory"
 	case SPECIES_ZORUA, MauvilleCity_GameCorner_EventScript_GiveMudkipDoll
 # 399 "data//maps/MauvilleCity_GameCorner/scripts.pory"

@@ -515,7 +515,7 @@ LilycoveCity_EventScript_May::
 # 258 "data//maps/LilycoveCity/scripts.pory"
 	case SPECIES_SNIVY, LilycoveCity_EventScript_BattleMayA
 # 259 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_ZORUA_HISUIAN, LilycoveCity_EventScript_BattleMayA
+	case SPECIES_ZORUA_HISUI, LilycoveCity_EventScript_BattleMayA
 # 260 "data//maps/LilycoveCity/scripts.pory"
 	case SPECIES_ZORUA, LilycoveCity_EventScript_BattleMayA
 # 261 "data//maps/LilycoveCity/scripts.pory"
@@ -639,7 +639,7 @@ LilycoveCity_EventScript_Brendan::
 # 320 "data//maps/LilycoveCity/scripts.pory"
 	case SPECIES_SNIVY, LilycoveCity_EventScript_BattleBrendanA
 # 321 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_ZORUA_HISUIAN, LilycoveCity_EventScript_BattleBrendanA
+	case SPECIES_ZORUA_HISUI, LilycoveCity_EventScript_BattleBrendanA
 # 322 "data//maps/LilycoveCity/scripts.pory"
 	case SPECIES_ZORUA, LilycoveCity_EventScript_BattleBrendanA
 # 323 "data//maps/LilycoveCity/scripts.pory"

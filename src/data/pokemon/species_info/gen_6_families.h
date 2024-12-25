@@ -4055,7 +4055,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .teachableLearnset = sGoomyTeachableLearnset,
         .eggMoveLearnset = sGoomyEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL_SILCOON, 40, SPECIES_SLIGGOO},
-                                {EVO_LEVEL_CASCOON, 40, SPECIES_SLIGGOO_HISUIAN}),
+                                {EVO_LEVEL_CASCOON, 40, SPECIES_SLIGGOO_HISUI}),
     },
 
     [SPECIES_SLIGGOO] =
@@ -5090,7 +5090,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .teachableLearnset = sBergmiteTeachableLearnset,
         .eggMoveLearnset = sBergmiteEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL_SILCOON, 37, SPECIES_AVALUGG},
-                                {EVO_LEVEL_CASCOON, 37, SPECIES_AVALUGG_HISUIAN}),
+                                {EVO_LEVEL_CASCOON, 37, SPECIES_AVALUGG_HISUI}),
     },
 
     [SPECIES_AVALUGG] =

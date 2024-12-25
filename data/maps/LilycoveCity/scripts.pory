@@ -256,7 +256,7 @@ LilycoveCity_EventScript_May::
 	case SPECIES_TOGEPI, LilycoveCity_EventScript_BattleMayC
 	case SPECIES_PORYGON, LilycoveCity_EventScript_BattleMayA
 	case SPECIES_SNIVY, LilycoveCity_EventScript_BattleMayA
-	case SPECIES_ZORUA_HISUIAN, LilycoveCity_EventScript_BattleMayA
+	case SPECIES_ZORUA_HISUI, LilycoveCity_EventScript_BattleMayA
 	case SPECIES_ZORUA, LilycoveCity_EventScript_BattleMayA
 	case SPECIES_GOTHITA, LilycoveCity_EventScript_BattleMayB
 	case SPECIES_SOLOSIS, LilycoveCity_EventScript_BattleMayB
@@ -318,7 +318,7 @@ LilycoveCity_EventScript_Brendan::
 	case SPECIES_TOGEPI, LilycoveCity_EventScript_BattleBrendanC
 	case SPECIES_PORYGON, LilycoveCity_EventScript_BattleBrendanA
 	case SPECIES_SNIVY, LilycoveCity_EventScript_BattleBrendanA
-	case SPECIES_ZORUA_HISUIAN, LilycoveCity_EventScript_BattleBrendanA
+	case SPECIES_ZORUA_HISUI, LilycoveCity_EventScript_BattleBrendanA
 	case SPECIES_ZORUA, LilycoveCity_EventScript_BattleBrendanA
 	case SPECIES_GOTHITA, LilycoveCity_EventScript_BattleBrendanB
 	case SPECIES_SOLOSIS, LilycoveCity_EventScript_BattleBrendanB

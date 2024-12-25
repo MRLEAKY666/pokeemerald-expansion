@@ -417,7 +417,7 @@ Route110_EventScript_MayBattle::
 	case SPECIES_TOGEPI, Route110_EventScript_BattleMayC
 	case SPECIES_PORYGON, Route110_EventScript_BattleMayA
 	case SPECIES_SNIVY, Route110_EventScript_BattleMayA
-	case SPECIES_ZORUA_HISUIAN, Route110_EventScript_BattleMayA
+	case SPECIES_ZORUA_HISUI, Route110_EventScript_BattleMayA
 	case SPECIES_ZORUA, Route110_EventScript_BattleMayA
 	case SPECIES_GOTHITA, Route110_EventScript_BattleMayB
 	case SPECIES_SOLOSIS, Route110_EventScript_BattleMayB
@@ -481,7 +481,7 @@ Route110_EventScript_BrendanBattle::
 	case SPECIES_TOGEPI, Route110_EventScript_BattleBrendanC
 	case SPECIES_PORYGON, Route110_EventScript_BattleBrendanA
 	case SPECIES_SNIVY, Route110_EventScript_BattleBrendanA
-	case SPECIES_ZORUA_HISUIAN, Route110_EventScript_BattleBrendanA
+	case SPECIES_ZORUA_HISUI, Route110_EventScript_BattleBrendanA
 	case SPECIES_ZORUA, Route110_EventScript_BattleBrendanA
 	case SPECIES_GOTHITA, Route110_EventScript_BattleBrendanB
 	case SPECIES_SOLOSIS, Route110_EventScript_BattleBrendanB

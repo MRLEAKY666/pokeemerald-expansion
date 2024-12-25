@@ -878,7 +878,7 @@ RustboroCity_EventScript_BattleMay::
 	case SPECIES_TOGEPI, RustboroCity_EventScript_BattleMayC
 	case SPECIES_PORYGON, RustboroCity_EventScript_BattleMayA
 	case SPECIES_SNIVY, RustboroCity_EventScript_BattleMayA
-	case SPECIES_ZORUA_HISUIAN, RustboroCity_EventScript_BattleMayA
+	case SPECIES_ZORUA_HISUI, RustboroCity_EventScript_BattleMayA
 	case SPECIES_ZORUA, RustboroCity_EventScript_BattleMayA
 	case SPECIES_GOTHITA, RustboroCity_EventScript_BattleMayB
 	case SPECIES_SOLOSIS, RustboroCity_EventScript_BattleMayB
@@ -978,7 +978,7 @@ RustboroCity_EventScript_BattleBrendan::
 	case SPECIES_TOGEPI, RustboroCity_EventScript_BattleBrendanC
 	case SPECIES_PORYGON, RustboroCity_EventScript_BattleBrendanA
 	case SPECIES_SNIVY, RustboroCity_EventScript_BattleBrendanA
-	case SPECIES_ZORUA_HISUIAN, RustboroCity_EventScript_BattleBrendanA
+	case SPECIES_ZORUA_HISUI, RustboroCity_EventScript_BattleBrendanA
 	case SPECIES_ZORUA, RustboroCity_EventScript_BattleBrendanA
 	case SPECIES_GOTHITA, RustboroCity_EventScript_BattleBrendanB
 	case SPECIES_SOLOSIS, RustboroCity_EventScript_BattleBrendanB

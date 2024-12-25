@@ -565,7 +565,7 @@ GenerateStarter_27:
 
 GenerateStarter_30:
 # 231 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_ZORUA_HISUIAN
+	setvar VAR_STARTER_MON, SPECIES_ZORUA_HISUI
 # 232 "data//maps/InsideOfTruck/scripts.pory"
 	setvar VAR_0x8004, 0
 	goto GenerateStarter_29

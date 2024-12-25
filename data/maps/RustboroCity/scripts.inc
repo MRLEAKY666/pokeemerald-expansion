@@ -1759,7 +1759,7 @@ RustboroCity_EventScript_BattleMay::
 # 880 "data//maps/RustboroCity/scripts.pory"
 	case SPECIES_SNIVY, RustboroCity_EventScript_BattleMayA
 # 881 "data//maps/RustboroCity/scripts.pory"
-	case SPECIES_ZORUA_HISUIAN, RustboroCity_EventScript_BattleMayA
+	case SPECIES_ZORUA_HISUI, RustboroCity_EventScript_BattleMayA
 # 882 "data//maps/RustboroCity/scripts.pory"
 	case SPECIES_ZORUA, RustboroCity_EventScript_BattleMayA
 # 883 "data//maps/RustboroCity/scripts.pory"
@@ -1959,7 +1959,7 @@ RustboroCity_EventScript_BattleBrendan::
 # 980 "data//maps/RustboroCity/scripts.pory"
 	case SPECIES_SNIVY, RustboroCity_EventScript_BattleBrendanA
 # 981 "data//maps/RustboroCity/scripts.pory"
-	case SPECIES_ZORUA_HISUIAN, RustboroCity_EventScript_BattleBrendanA
+	case SPECIES_ZORUA_HISUI, RustboroCity_EventScript_BattleBrendanA
 # 982 "data//maps/RustboroCity/scripts.pory"
 	case SPECIES_ZORUA, RustboroCity_EventScript_BattleBrendanA
 # 983 "data//maps/RustboroCity/scripts.pory"

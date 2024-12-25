@@ -837,7 +837,7 @@ Route110_EventScript_MayBattle::
 # 419 "data//maps/Route110/scripts.pory"
 	case SPECIES_SNIVY, Route110_EventScript_BattleMayA
 # 420 "data//maps/Route110/scripts.pory"
-	case SPECIES_ZORUA_HISUIAN, Route110_EventScript_BattleMayA
+	case SPECIES_ZORUA_HISUI, Route110_EventScript_BattleMayA
 # 421 "data//maps/Route110/scripts.pory"
 	case SPECIES_ZORUA, Route110_EventScript_BattleMayA
 # 422 "data//maps/Route110/scripts.pory"
@@ -965,7 +965,7 @@ Route110_EventScript_BrendanBattle::
 # 483 "data//maps/Route110/scripts.pory"
 	case SPECIES_SNIVY, Route110_EventScript_BattleBrendanA
 # 484 "data//maps/Route110/scripts.pory"
-	case SPECIES_ZORUA_HISUIAN, Route110_EventScript_BattleBrendanA
+	case SPECIES_ZORUA_HISUI, Route110_EventScript_BattleBrendanA
 # 485 "data//maps/Route110/scripts.pory"
 	case SPECIES_ZORUA, Route110_EventScript_BattleBrendanA
 # 486 "data//maps/Route110/scripts.pory"
