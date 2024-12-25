@@ -41,7 +41,7 @@ MtChimney_OnResume:
 # 21 "data//maps/MtChimney/scripts.pory"
 	setstepcallback STEP_CB_FORTREE_BRIDGE
 # 22 "data//maps/MtChimney/scripts.pory"
-	setstepcallback STEP_CB_ASH
+	@ setstepcallback STEP_CB_ASH
 # 23 "data//maps/MtChimney/scripts.pory"
 	end
 # 24 "data//maps/MtChimney/scripts.pory"

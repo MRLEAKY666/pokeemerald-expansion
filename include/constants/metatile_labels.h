@@ -202,6 +202,8 @@
 #define METATILE_Fortree_SecretBase_LongGrass_TopRight     0x27B
 #define METATILE_Fortree_SecretBase_Shrub                  0x271
 #define METATILE_Fortree_SecretBase_ShrubOpen              0x278
+#define METATILE_Fortree_VerticalBridgeOverTrees_Lowered   0x25F
+#define METATILE_Fortree_VerticalBridgeOverTrees_Raised    0x25E
 #define METATILE_Fortree_WoodBridge1_Bottom                0x29F
 #define METATILE_Fortree_WoodBridge1_Top                   0x297
 
@@ -266,12 +268,24 @@
 #define METATILE_InsideShip_IntactDoor_Bottom_Unlocked  0x22B
 
 // gTileset_Lavaridge
-#define METATILE_Lavaridge_AshGrass             0x207
-#define METATILE_Lavaridge_CaveEntrance_Bottom  0x25E
-#define METATILE_Lavaridge_CaveEntrance_Top     0x256
-#define METATILE_Lavaridge_LavaField            0x271
-#define METATILE_Lavaridge_NormalGrass          0x206
-#define METATILE_Lavaridge_RockWall             0x274
+#define METATILE_Lavaridge_AshGrass                                    0x207
+#define METATILE_Lavaridge_CaveEntrance_Bottom                         0x25E
+#define METATILE_Lavaridge_CaveEntrance_Top                            0x256
+#define METATILE_Lavaridge_LavaField                                   0x271
+#define METATILE_Lavaridge_MtChimney_BridgeOverLava_Lowered            0x39F
+#define METATILE_Lavaridge_MtChimney_BridgeOverLava_Raised             0x39E
+#define METATILE_Lavaridge_MtChimney_BridgeOverLeftLavaRidge_Lowered   0x3B5
+#define METATILE_Lavaridge_MtChimney_BridgeOverLeftLavaRidge_Raised    0x3B4
+#define METATILE_Lavaridge_MtChimney_BridgeOverLeftRidge_Lowered       0x3AF
+#define METATILE_Lavaridge_MtChimney_BridgeOverLeftRidge_Raised        0x3AE
+#define METATILE_Lavaridge_MtChimney_BridgeOverMountain_Lowered        0x3B7
+#define METATILE_Lavaridge_MtChimney_BridgeOverMountain_Raised         0x3B6
+#define METATILE_Lavaridge_MtChimney_BridgeOverRightLavaRidge_Lowered  0x3AD
+#define METATILE_Lavaridge_MtChimney_BridgeOverRightLavaRidge_Raised   0x3AC
+#define METATILE_Lavaridge_MtChimney_BridgeOverRightRidge_Lowered      0x3A7
+#define METATILE_Lavaridge_MtChimney_BridgeOverRightRidge_Raised       0x3A6
+#define METATILE_Lavaridge_NormalGrass                                 0x206
+#define METATILE_Lavaridge_RockWall                                    0x274
 
 // gTileset_Lilycove
 #define METATILE_Lilycove_Door             0x246

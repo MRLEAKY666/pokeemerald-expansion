@@ -459,6 +459,27 @@ static void TryLowerFortreeBridge(s16 x, s16 y)
         case METATILE_Fortree_BridgeOverTrees_Raised:
             MapGridSetMetatileIdAt(x, y, METATILE_Fortree_BridgeOverTrees_Lowered);
             break;
+        case METATILE_Fortree_VerticalBridgeOverTrees_Raised:
+            MapGridSetMetatileIdAt(x, y, METATILE_Fortree_VerticalBridgeOverTrees_Lowered);
+            break;
+        case METATILE_Lavaridge_MtChimney_BridgeOverLava_Raised:
+            MapGridSetMetatileIdAt(x, y, METATILE_Lavaridge_MtChimney_BridgeOverLava_Lowered);
+            break;
+        case METATILE_Lavaridge_MtChimney_BridgeOverRightRidge_Raised:
+            MapGridSetMetatileIdAt(x, y, METATILE_Lavaridge_MtChimney_BridgeOverRightRidge_Lowered);
+            break;
+        case METATILE_Lavaridge_MtChimney_BridgeOverLeftRidge_Raised:
+            MapGridSetMetatileIdAt(x, y, METATILE_Lavaridge_MtChimney_BridgeOverLeftRidge_Lowered);
+            break;
+        case METATILE_Lavaridge_MtChimney_BridgeOverMountain_Raised:
+            MapGridSetMetatileIdAt(x, y, METATILE_Lavaridge_MtChimney_BridgeOverMountain_Lowered);
+            break;
+        case METATILE_Lavaridge_MtChimney_BridgeOverRightLavaRidge_Raised:
+            MapGridSetMetatileIdAt(x, y, METATILE_Lavaridge_MtChimney_BridgeOverRightLavaRidge_Lowered);
+            break;
+        case METATILE_Lavaridge_MtChimney_BridgeOverLeftLavaRidge_Raised:
+            MapGridSetMetatileIdAt(x, y, METATILE_Lavaridge_MtChimney_BridgeOverLeftLavaRidge_Lowered);
+            break;
         }
     }
 }
@@ -475,6 +496,27 @@ static void TryRaiseFortreeBridge(s16 x, s16 y)
             break;
         case METATILE_Fortree_BridgeOverTrees_Lowered:
             MapGridSetMetatileIdAt(x, y, METATILE_Fortree_BridgeOverTrees_Raised);
+            break;
+        case METATILE_Fortree_VerticalBridgeOverTrees_Lowered:
+            MapGridSetMetatileIdAt(x, y, METATILE_Fortree_VerticalBridgeOverTrees_Raised);
+            break;
+        case METATILE_Lavaridge_MtChimney_BridgeOverLava_Lowered:
+            MapGridSetMetatileIdAt(x, y, METATILE_Lavaridge_MtChimney_BridgeOverLava_Raised);
+            break;
+        case METATILE_Lavaridge_MtChimney_BridgeOverRightRidge_Lowered:
+            MapGridSetMetatileIdAt(x, y, METATILE_Lavaridge_MtChimney_BridgeOverRightRidge_Raised);
+            break;
+        case METATILE_Lavaridge_MtChimney_BridgeOverLeftRidge_Lowered:
+            MapGridSetMetatileIdAt(x, y, METATILE_Lavaridge_MtChimney_BridgeOverLeftRidge_Raised);
+            break;
+        case METATILE_Lavaridge_MtChimney_BridgeOverMountain_Lowered:
+            MapGridSetMetatileIdAt(x, y, METATILE_Lavaridge_MtChimney_BridgeOverMountain_Raised);
+            break;
+        case METATILE_Lavaridge_MtChimney_BridgeOverRightLavaRidge_Lowered:
+            MapGridSetMetatileIdAt(x, y, METATILE_Lavaridge_MtChimney_BridgeOverRightLavaRidge_Raised);
+            break;
+        case METATILE_Lavaridge_MtChimney_BridgeOverLeftLavaRidge_Lowered:
+            MapGridSetMetatileIdAt(x, y, METATILE_Lavaridge_MtChimney_BridgeOverLeftLavaRidge_Raised);
             break;
         }
     }

@@ -19,7 +19,7 @@ MtChimney_OnTransition:
 
 MtChimney_OnResume:
 	setstepcallback STEP_CB_FORTREE_BRIDGE
-	setstepcallback STEP_CB_ASH
+	@ setstepcallback STEP_CB_ASH
 	end
 
 MtChimney_EventScript_Moltres::
