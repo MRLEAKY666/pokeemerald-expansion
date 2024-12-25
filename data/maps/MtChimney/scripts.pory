@@ -60,7 +60,7 @@ MtChimney_EventScript_Moltres::
 	special RemoveCameraObject
 	setvar VAR_UNUSED_0x8014, 3
 	special InitRoamer
-	@ setseenmon SPECIES_MOLTRES
+	setseenmon SPECIES_MOLTRES
 	releaseall
 	end
 

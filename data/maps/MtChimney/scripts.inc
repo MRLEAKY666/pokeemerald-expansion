@@ -123,7 +123,7 @@ MtChimney_EventScript_Moltres::
 # 62 "data//maps/MtChimney/scripts.pory"
 	special InitRoamer
 # 63 "data//maps/MtChimney/scripts.pory"
-	@ setseenmon SPECIES_MOLTRES
+	setseenmon SPECIES_MOLTRES
 # 64 "data//maps/MtChimney/scripts.pory"
 	releaseall
 # 65 "data//maps/MtChimney/scripts.pory"
