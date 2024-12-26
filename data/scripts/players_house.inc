@@ -65,7 +65,7 @@ PlayersHouse_2F_EventScript_WallClock::
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_1
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_2
 	removeobject VAR_0x8008
-	special SaveGame
+	@ special SaveGame
 	releaseall
 	end
 

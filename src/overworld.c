@@ -369,7 +369,8 @@ void DoWhiteOut(void)
         SetMoney(&gSaveBlock1Ptr->money, GetMoney(&gSaveBlock1Ptr->money) / 2);
     HealPlayerParty();
     Overworld_ResetStateAfterWhiteOut();
-    ReloadSave();
+    SetWarpDestinationToLastHealLocation();
+    WarpIntoMap();
 }
 
 void Overworld_ResetStateAfterFly(void)

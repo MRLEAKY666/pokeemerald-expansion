@@ -591,7 +591,10 @@ EventScript_WhiteOut::
 EventScript_AfterWhiteOutHeal::
 	lockall
 	msgbox gText_FirstShouldRestoreMonsHealth
-	call EventScript_PkmnCenterNurse_TakeAndHealPkmn
+	special ChoosePartyMon
+	waitstate
+	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, EventScript_ItsDangerousToGoAlone
+	special HealAfterWhiteOut
 	call_if_unset FLAG_DEFEATED_RUSTBORO_GYM, EventScript_AfterWhiteOutHealMsgPreRoxanne
 	call_if_set FLAG_DEFEATED_RUSTBORO_GYM, EventScript_AfterWhiteOutHealMsg
 	applymovement VAR_LAST_TALKED, Movement_PkmnCenterNurse_Bow
@@ -613,7 +616,35 @@ EventScript_AfterWhiteOutMomHeal::
 	applymovement LOCALID_MOM, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	msgbox gText_HadQuiteAnExperienceTakeRest
-	call Common_EventScript_OutOfCenterPartyHeal
+	special ChoosePartyMon
+	waitstate
+	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, EventScript_ItsDangerousToGoAloneMom
+	special HealAfterWhiteOut
+	msgbox gText_MomExplainHPGetPotions
+	fadedefaultbgm
+	releaseall
+	end
+
+EventScript_ItsDangerousToGoAlone::
+	msgbox gText_ItsDangerousToGoAlone
+	special ChoosePartyMon
+	waitstate
+	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, EventScript_ItsDangerousToGoAlone
+	special HealAfterWhiteOut
+	call_if_unset FLAG_DEFEATED_RUSTBORO_GYM, EventScript_AfterWhiteOutHealMsgPreRoxanne
+	call_if_set FLAG_DEFEATED_RUSTBORO_GYM, EventScript_AfterWhiteOutHealMsg
+	applymovement VAR_LAST_TALKED, Movement_PkmnCenterNurse_Bow
+	waitmovement 0
+	fadedefaultbgm
+	releaseall
+	end
+
+EventScript_ItsDangerousToGoAloneMom::
+	msgbox gText_ItsDangerousToGoAloneMom
+	special ChoosePartyMon
+	waitstate
+	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, EventScript_ItsDangerousToGoAloneMom
+	special HealAfterWhiteOut
 	msgbox gText_MomExplainHPGetPotions
 	fadedefaultbgm
 	releaseall
@@ -925,35 +956,51 @@ gText_PlayerWhitedOut::
 	.string "POKéMON!\p{PLAYER} whited out!$"
 
 gText_FirstShouldRestoreMonsHealth::
-	.string "First, you should restore your\n"
-	.string "POKéMON to full health.$"
+	.string "Unfortunately, all of your POKéMON\n"
+	.string "have died . . .\p"
+	.string "I'm not supposed to do this since\n"
+	.string "you're uninsured, but you shouldn't\l"
+	.string "leave without a POKéMON who can fight.\p"
+	.string "I'll revive one of your POKéMON\n"
+	.string "for you, but it might not be as\l"
+	.string "powerful as before . . .$"
+
+gText_ItsDangerousToGoAlone::
+	.string "You shouldn't leave without a\n"
+	.string "POKéMON who can fight.\p"
+	.string "Please, I insist on reviving\n"
+	.string "one of your POKéMON.$"
+
+gText_ItsDangerousToGoAloneMom::
+	.string "MOM: {PLAYER}! You shouldn't leave\n"
+	.string "without a POKéMON who can fight!\p"
+	.string "Please, let me try to revive one\n"
+	.string "of your POKéMON.$"
 
 gText_MonsHealedShouldBuyPotions::
-	.string "Your POKéMON have been healed\n"
-	.string "to perfect health.\p"
+	.string "Your POKéMON has been revived.\p"
 	.string "If your POKéMON's energy, HP,\n"
 	.string "is down, please come see us.\p"
 	.string "If you're planning to go far in the\n"
-	.string "field, you should buy some POTIONS\l"
-	.string "at the POKéMON MART.\p"
+	.string "backcountry, you should buy some\l"
+	.string "POTIONS at the POKéMON MART.\p"
 	.string "We hope you excel!$"
 
 gText_MonsHealed::
-	.string "Your POKéMON have been healed\n"
-	.string "to perfect health.\p"
-	.string "We hope you excel!$"
+	.string "Your POKéMON has been revived.\p"
+	.string "We hope you excel going forward!$"
 
 gText_HadQuiteAnExperienceTakeRest::
 	.string "MOM: {PLAYER}!\n"
 	.string "Welcome home.\p"
 	.string "It sounds like you had quite\n"
 	.string "an experience.\p"
-	.string "Maybe you should take a quick\n"
-	.string "rest.$"
+	.string "Let me try to revive one of your\n"
+	.string "POKéMON.$"
 
 gText_MomExplainHPGetPotions::
 	.string "MOM: Oh, good! You and your\n"
-	.string "POKéMON are looking great.\p"
+	.string "POKéMON are looking better.\p"
 	.string "I just heard from PROF. BIRCH.\p"
 	.string "He said that POKéMON's energy is\n"
 	.string "measured in HP.\p"

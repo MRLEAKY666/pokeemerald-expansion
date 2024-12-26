@@ -45,6 +45,26 @@ void HealPlayerParty(void)
         FlagSet(B_FLAG_TERA_ORB_CHARGED);
 }
 
+void HealAfterWhiteOut(void)
+{
+    u32 data = 1;
+    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_HP, &data);
+
+    data = (GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_LEVEL)/2);
+    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_LEVEL, &data);
+    u32 species = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES, NULL);
+    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_EXP, &gExperienceTables[gSpeciesInfo[species].growthRate][data]);
+    CalculateMonStats(&gPlayerParty[gSpecialVar_0x8004]);
+
+    bool8 dead = FALSE;
+    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_DEAD, &dead);
+
+    data = STATUS1_NONE;
+    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_STATUS, &data);
+
+    MonRestorePP(&gPlayerParty[gSpecialVar_0x8004]);
+}
+
 static void HealPlayerBoxes(void)
 {
     int boxId, boxPosition;
