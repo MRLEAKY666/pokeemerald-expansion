@@ -12,7 +12,7 @@
 #define I_GRISEOUS_ORB_FORM_CHANGE      GEN_LATEST  // In Gen9+, the Griseous Orb no longer changes Giratina's form when held.
 #define I_GEM_BOOST_POWER               GEN_LATEST  // In Gen6+, the Gem boost power was reduced from 50% to 30%.
 #define I_USE_EVO_HELD_ITEMS_FROM_BAG   TRUE       // If TRUE, items such as Razor Claw or Electirizer will be usable from the bag to evolve a Pokémon just like in LA.
-#define I_TYPE_BOOST_POWER              GEN_3  // In Gen4+, all regular type boosting held items had their power increased from 10% to 20%. eg. Charcoal
+#define I_TYPE_BOOST_POWER              GEN_4  // In Gen4+, all regular type boosting held items had their power increased from 10% to 20%. eg. Charcoal
 #define I_SELL_VALUE_FRACTION           GEN_LATEST  // In Gen9+, items sell for 1/4 of their value instead of 1/2.
 #define I_PRICE                         GEN_LATEST  // Some items have varied in value across generations.
 #define I_BERRY_PRICE                   GEN_3       // Since Berries have become unplantable (Gen8+), their price has gone up.
