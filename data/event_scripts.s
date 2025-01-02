@@ -1214,3 +1214,5 @@ Common_EventScript_ExitSafeArea::
 	.include "data/maps/GraniteCave_LowTide/scripts.inc"
 
 	.include "data/maps/GraniteCave_ArticunosRoom/scripts.inc"
+
+	.include "data/maps/FortreeWoods_House1/scripts.inc"

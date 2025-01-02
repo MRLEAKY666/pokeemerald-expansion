@@ -52,7 +52,7 @@ MysteryConsumableV::
 	return
 
 MysteryConsumableVI::
-	setvar VAR_RESULT, ITEM_EXP_CANDY_XL
+	setvar VAR_RESULT, ITEM_EXP_CANDY_M
 	return
 
 GenerateMysteryTreasure::

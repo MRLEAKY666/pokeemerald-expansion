@@ -174,6 +174,7 @@ SootopolisCity_EventScript_SetWallaceLeft::
 	return
 
 SootopolisCity_EventScript_SetExpertBlockCaveEntrance::
+	setobjectxyperm LOCALID_STEVEN, 29, 33
 	setobjectxyperm LOCALID_EXPERT, 31, 18
 	return
 
@@ -914,7 +915,7 @@ EventScript_ClosedSootopolisDoor::
 	end
 
 SootopolisCity_EventScript_Steven::
-	lockall
+	lock
 	applymovement LOCALID_STEVEN, Common_Movement_FacePlayer
 	waitmovement 0
 	call_if_unset FLAG_STEVEN_GUIDES_TO_CAVE_OF_ORIGIN, SootopolisCity_EventScript_StevenLeadPlayerCaveOfOrigin
@@ -937,8 +938,16 @@ SootopolisCity_EventScript_StevenMaxieArchieLeft::
 	giveitem ITEM_DEVON_SCOPE
 	setflag FLAG_RECEIVED_DEVON_SCOPE
 	setflag FLAG_HIDE_SOOTOPOLIS_CITY_STEVEN
-	warpsilent MAP_SOOTOPOLIS_CITY, 31, 34
-	waitstate
+	msgbox SootopolisCity_Text_StevenUntilNextTime, MSGBOX_DEFAULT
+	waitmessage
+	@ delay 50
+	setfieldeffectargument 0, 1
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	delay 15
+	removeobject LOCALID_STEVEN
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+	@ warpsilent MAP_SOOTOPOLIS_CITY, 31, 34
+	@ waitstate
 	releaseall
 	end
 
@@ -1718,6 +1727,9 @@ SootopolisCity_Text_StevenGiveDevonScope:
 	.string "that area hard to navigate . . .\p"
 	.string "the DEVON SCOPE allows you to see\n"
 	.string "through their camouflage.$"
+
+SootopolisCity_Text_StevenUntilNextTime:
+	.string "Until next time, {PLAYER}!$"
 
 SootopolisCity_Text_HaventYouScaledSkyPillar:
 	.string "WALLACE: Oh?\n"

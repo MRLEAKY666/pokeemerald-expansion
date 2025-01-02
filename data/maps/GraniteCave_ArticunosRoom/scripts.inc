@@ -4,8 +4,9 @@ GraniteCave_ArticunosRoom_MapScripts::
 	.byte 0
 
 GraniteCave_ArticunosRoom_EventScript_Articuno::
-	lockall
+	@ lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	setobjectmovementtype LOCALID_ARTICUNO, MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_DOWN
 	waitmovement 0
 	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, GraniteCave_ArticunosRoom_Movement_CameraPanUp

@@ -95,84 +95,88 @@ LilycoveCity_DepartmentStore_3F_Pokemart_StatBoosters:
 # 48 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
 	.2byte ITEM_WEAKNESS_POLICY
 # 49 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.2byte ITEM_ELECTIRIZER
+	.2byte ITEM_TOXIC_ORB
 # 50 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.2byte ITEM_MAGMARIZER
+	.2byte ITEM_FLAME_ORB
 # 51 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.2byte ITEM_METAL_COAT
+	.2byte ITEM_ELECTIRIZER
 # 52 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.2byte ITEM_PROTECTOR
+	.2byte ITEM_MAGMARIZER
 # 53 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.2byte ITEM_RAZOR_CLAW
+	.2byte ITEM_METAL_COAT
 # 54 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.2byte ITEM_RAZOR_FANG
+	.2byte ITEM_PROTECTOR
 # 55 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.2byte ITEM_REAPER_CLOTH
+	.2byte ITEM_RAZOR_CLAW
 # 56 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.2byte ITEM_UPGRADE
+	.2byte ITEM_RAZOR_FANG
 # 57 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.2byte ITEM_DUBIOUS_DISC
+	.2byte ITEM_REAPER_CLOTH
 # 58 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.2byte ITEM_LINKING_CORD
+	.2byte ITEM_UPGRADE
 # 59 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.2byte ITEM_NONE
+	.2byte ITEM_DUBIOUS_DISC
 # 60 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	release
+	.2byte ITEM_LINKING_CORD
 # 61 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	end
+	.2byte ITEM_NONE
 # 62 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-
+	release
 # 63 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-LilycoveCity_DepartmentStore_3F_EventScript_TriathleteM::
+	end
 # 64 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	msgbox LilycoveCity_DepartmentStore_3F_Text_ItemsBestForTougheningPokemon, MSGBOX_NPC
+
 # 65 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	end
+LilycoveCity_DepartmentStore_3F_EventScript_TriathleteM::
 # 66 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-
+	msgbox LilycoveCity_DepartmentStore_3F_Text_ItemsBestForTougheningPokemon, MSGBOX_NPC
 # 67 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-LilycoveCity_DepartmentStore_3F_EventScript_PokefanM::
+	end
 # 68 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	msgbox LilycoveCity_DepartmentStore_3F_Text_WantMoreEndurance, MSGBOX_NPC
+
 # 69 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	end
+LilycoveCity_DepartmentStore_3F_EventScript_PokefanM::
 # 70 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-
+	msgbox LilycoveCity_DepartmentStore_3F_Text_WantMoreEndurance, MSGBOX_NPC
 # 71 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-LilycoveCity_DepartmentStore_3F_EventScript_Woman::
-# 72 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	msgbox LilycoveCity_DepartmentStore_3F_Text_GaveCarbosToSpeedUpMon, MSGBOX_NPC
-# 73 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
 	end
+# 72 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
+
+# 73 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
+LilycoveCity_DepartmentStore_3F_EventScript_Woman::
 # 74 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-
+	msgbox LilycoveCity_DepartmentStore_3F_Text_GaveCarbosToSpeedUpMon, MSGBOX_NPC
 # 75 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-LilycoveCity_DepartmentStore_3F_Text_ItemsBestForTougheningPokemon:
+	end
 # 76 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.string "For quickly toughening up POKéMON,\n"
+
 # 77 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.string "items are the best.\p"
+LilycoveCity_DepartmentStore_3F_Text_ItemsBestForTougheningPokemon:
 # 78 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.string "PROTEIN boosts ATTACK,\n"
+	.string "For quickly toughening up POKéMON,\n"
 # 79 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.string "and CALCIUM raises SP. ATK.$"
+	.string "items are the best.\p"
 # 80 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-
+	.string "PROTEIN boosts ATTACK,\n"
 # 81 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-LilycoveCity_DepartmentStore_3F_Text_WantMoreEndurance:
+	.string "and CALCIUM raises SP. ATK.$"
 # 82 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.string "I want my POKéMON to have more\n"
-# 83 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.string "endurance.\p"
-# 84 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.string "I'm trying to decide whether to raise\n"
-# 85 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.string "DEFENSE with IRON, or SP. DEF with ZINC.$"
-# 86 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
 
+# 83 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
+LilycoveCity_DepartmentStore_3F_Text_WantMoreEndurance:
+# 84 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
+	.string "I want my POKéMON to have more\n"
+# 85 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
+	.string "endurance.\p"
+# 86 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
+	.string "I'm trying to decide whether to raise\n"
 # 87 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-LilycoveCity_DepartmentStore_3F_Text_GaveCarbosToSpeedUpMon:
+	.string "DEFENSE with IRON, or SP. DEF with ZINC.$"
 # 88 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.string "I gave a CARBOS to my POKéMON,\n"
+
 # 89 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
+LilycoveCity_DepartmentStore_3F_Text_GaveCarbosToSpeedUpMon:
+# 90 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
+	.string "I gave a CARBOS to my POKéMON,\n"
+# 91 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
 	.string "and its SPEED went up.$"

@@ -46,6 +46,8 @@ LilycoveCity_DepartmentStore_3F_Pokemart_StatBoosters:
 	.2byte ITEM_POWER_HERB
 	.2byte ITEM_RED_CARD
 	.2byte ITEM_WEAKNESS_POLICY
+	.2byte ITEM_TOXIC_ORB
+	.2byte ITEM_FLAME_ORB
 	.2byte ITEM_ELECTIRIZER
 	.2byte ITEM_MAGMARIZER
 	.2byte ITEM_METAL_COAT

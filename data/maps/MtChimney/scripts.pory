@@ -23,8 +23,9 @@ MtChimney_OnResume:
 	end
 
 MtChimney_EventScript_Moltres::
-	lockall
+	@ lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	setobjectmovementtype LOCALID_MOLTRES, MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_DOWN
 	waitmovement 0
 	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, MtChimney_Movement_CameraPanUp

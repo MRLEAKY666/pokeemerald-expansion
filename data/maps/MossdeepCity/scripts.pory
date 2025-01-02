@@ -12,6 +12,7 @@ MossdeepCity_MapScripts::
 
 MossdeepCity_OnTransition:
 	setflag FLAG_SYS_SAVE_GET
+	call_if_unset FLAG_DEFEATED_MOSSDEEP_GYM, Common_EventScript_ResetGymTrainers
 	clearflag FLAG_MOSSDEEP_GYM_SWITCH_1
 	clearflag FLAG_MOSSDEEP_GYM_SWITCH_2
 	clearflag FLAG_MOSSDEEP_GYM_SWITCH_3

@@ -433,7 +433,8 @@
     "FortreeWoods",
     "GraniteCove",
     "GraniteCave_LowTide",
-    "GraniteCave_ArticunosRoom"
+    "GraniteCave_ArticunosRoom",
+    "FortreeWoods_House1"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",

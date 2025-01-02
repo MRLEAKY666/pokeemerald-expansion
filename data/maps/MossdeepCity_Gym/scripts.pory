@@ -14,7 +14,6 @@ MossdeepCity_Gym_OnTransition:
 
 @ All the below checks are leftover from RS. FLAG_MOSSDEEP_GYM_SWITCH_X is never set
 MossdeepCity_Gym_OnLoad:
-	call_if_unset FLAG_DEFEATED_MOSSDEEP_GYM, Common_EventScript_ResetGymTrainers
 	goto_if_set FLAG_MOSSDEEP_GYM_SWITCH_1, MossdeepCity_Gym_EventScript_SetSwitch1Metatiles
 	goto MossdeepCity_Gym_EventScript_CheckSwitch2
 	end
