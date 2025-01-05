@@ -63,7 +63,7 @@ LilycoveCity_DepartmentStore_3F_EventScript_ClerkRight::
 # 32 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
 	waitmessage
 # 33 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	pokemart LilycoveCity_DepartmentStore_3F_Pokemart_StatBoosters
+	pokemart LilycoveCity_DepartmentStore_3F_Pokemart_EvoItems
 # 34 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
 # 35 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
@@ -75,29 +75,29 @@ LilycoveCity_DepartmentStore_3F_EventScript_ClerkRight::
 # 38 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
 	.align 2
 # 39 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-LilycoveCity_DepartmentStore_3F_Pokemart_StatBoosters:
+LilycoveCity_DepartmentStore_3F_Pokemart_EvoItems:
 # 40 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.2byte ITEM_AIR_BALLOON
+	@ .2byte ITEM_AIR_BALLOON
 # 41 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.2byte ITEM_WHITE_HERB
+	@ .2byte ITEM_WHITE_HERB
 # 42 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.2byte ITEM_BLUNDER_POLICY
+	@ .2byte ITEM_BLUNDER_POLICY
 # 43 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.2byte ITEM_EJECT_BUTTON
+	@ .2byte ITEM_EJECT_BUTTON
 # 44 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.2byte ITEM_EJECT_PACK
+	@ .2byte ITEM_EJECT_PACK
 # 45 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.2byte ITEM_FOCUS_SASH
+	@ .2byte ITEM_FOCUS_SASH
 # 46 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.2byte ITEM_POWER_HERB
+	@ .2byte ITEM_POWER_HERB
 # 47 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.2byte ITEM_RED_CARD
+	@ .2byte ITEM_RED_CARD
 # 48 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.2byte ITEM_WEAKNESS_POLICY
+	@ .2byte ITEM_WEAKNESS_POLICY
 # 49 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.2byte ITEM_TOXIC_ORB
+	@ .2byte ITEM_TOXIC_ORB
 # 50 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.2byte ITEM_FLAME_ORB
+	@ .2byte ITEM_FLAME_ORB
 # 51 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
 	.2byte ITEM_ELECTIRIZER
 # 52 "data//maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
