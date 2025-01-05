@@ -742,7 +742,7 @@
 #define FLAG_UNUSED_0x2B7  0x2B7 // Unused Flag
 #define FLAG_UNUSED_0x2B8  0x2B8 // Unused Flag
 #define FLAG_UNUSED_0x2B9  0x2B9 // Unused Flag
-#define FLAG_UNUSED_0x2BA  0x2BA // Unused Flag
+#define FLAG_HIDE_ZAPDOS  0x2BA // PREVIOUSLY Unused Flag
 #define FLAG_HIDE_MOLTRES  0x2BB // PREVIOUSLY Unused Flag
 
 // Event Flags

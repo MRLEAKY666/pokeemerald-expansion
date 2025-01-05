@@ -13,9 +13,10 @@ FallarborTown_CozmosHouse_EventScript_ProfCozmo::
 	end
 
 FallarborTown_CozmosHouse_EventScript_PlayerHasMeteorite::
-	call_if_unset FLAG_TEMP_2, FallarborTown_CozmosHouse_EventScript_NoticeMeteorite
-	call_if_set FLAG_TEMP_2, FallarborTown_CozmosHouse_EventScript_AskForMeteorite
-	goto_if_eq VAR_RESULT, NO, FallarborTown_CozmosHouse_EventScript_DeclineGiveMeteorite
+	goto_if_unset FLAG_TEMP_2, FallarborTown_CozmosHouse_EventScript_NoticeMeteorite
+	call FallarborTown_CozmosHouse_EventScript_AskForMeteorite
+	waitmessage
+	call_if_eq VAR_RESULT, NO, FallarborTown_CozmosHouse_EventScript_DeclineGiveMeteorite
 	msgbox FallarborTown_CozmosHouse_Text_PleaseUseThisTM, MSGBOX_DEFAULT
 	giveitem ITEM_TM_RETURN, 2
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
@@ -34,7 +35,22 @@ FallarborTown_CozmosHouse_EventScript_PlayerHasMeteorite::
 FallarborTown_CozmosHouse_EventScript_NoticeMeteorite::
 	msgbox FallarborTown_CozmosHouse_Text_MeteoriteWillNeverBeMineNow, MSGBOX_DEFAULT
 	msgbox FallarborTown_CozmosHouse_Text_IsThatMeteoriteMayIHaveIt, MSGBOX_YESNO
-	return
+	waitmessage
+	call_if_eq VAR_RESULT, NO, FallarborTown_CozmosHouse_EventScript_DeclineGiveMeteorite
+	msgbox FallarborTown_CozmosHouse_Text_PleaseUseThisTM, MSGBOX_DEFAULT
+	giveitem ITEM_TM_RETURN, 2
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	setvar VAR_0x8004, ITEM_METEORITE
+	call Common_EventScript_PlayerHandedOverTheItem
+	setflag FLAG_RECEIVED_TM_RETURN
+	msgbox FallarborTown_CozmosHouse_Text_ReallyGoingToHelpMyResearch, MSGBOX_DEFAULT
+	msgbox FallarborTown_CozmosHouse_Text_AlsoTakeThis, MSGBOX_DEFAULT
+	giveitem ITEM_AURORA_TICKET
+	setflag FLAG_ENABLE_SHIP_BIRTH_ISLAND
+	setflag FLAG_RECEIVED_AURORA_TICKET
+	msgbox FallarborTown_CozmosHouse_Text_AuroraTicket, MSGBOX_DEFAULT
+	release
+	end
 
 FallarborTown_CozmosHouse_EventScript_AskForMeteorite::
 	msgbox FallarborTown_CozmosHouse_Text_MayIHaveMeteorite, MSGBOX_YESNO
@@ -103,11 +119,12 @@ FallarborTown_CozmosHouse_Text_AlsoTakeThis:
 	.string "You should also take this.$"
 
 FallarborTown_CozmosHouse_Text_AuroraTicket:
-	.string "That ticket will allow you to sail to\n"
-	.string "the island where we found that METEORITE\p"
-	.string "The METEORITE is a sample from a larger\n"
-	.string "specimen that crashed and which exhibits\l"
-	.string "indecipherable properties . . . \p"
+	.string "That ticket will allow you to sail\n"
+	.string "to an island where we found\l" 
+	.string "another strange METEORITE.\p"
+	.string "The METEORITE that formed METEOR FALLS\n"
+	.string "and the one on that island . . .\p"
+	.string "Are they are somehow related?$"
 
 FallarborTown_CozmosHouse_Text_CrushedWithDisappointment:
 	.string "PROF. COZMO: Oh, but…\n"
