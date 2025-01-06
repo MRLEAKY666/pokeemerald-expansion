@@ -125,6 +125,10 @@ void ResetRandomItem(void)
     dieroll = Random() % 3;
     itemflag = Random() % (FLAG_ITEM_GENGARITE - FLAG_ITEM_ROUTE_102_POTION);
     hiddenitemflag = Random() % (FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL - FLAG_HIDDEN_ITEMS_START);
+    if ((itemflag == FLAG_ITEM_AQUA_HIDEOUT_B1F_MASTER_BALL) || (itemflag == FLAG_ITEM_ABANDONED_SHIP_HIDDEN_FLOOR_ROOM_2_SCANNER) || (itemflag == FLAG_ITEM_ABANDONED_SHIP_CAPTAINS_OFFICE_STORAGE_KEY) || (hiddenitemflag == FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_1_KEY) || (hiddenitemflag == FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_2_KEY) || (hiddenitemflag == FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_4_KEY) || (hiddenitemflag == FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_6_KEY))
+    {
+        dieroll = 2;
+    }
     switch (dieroll)
     {
     case 0:
