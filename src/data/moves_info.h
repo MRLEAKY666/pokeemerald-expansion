@@ -225,6 +225,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_MEGA_PUNCH] =
     {
         .name = COMPOUND_STRING("Mega Punch"),
+        .bpCost = 24,
         .description = COMPOUND_STRING(
             "A strong punch thrown with\n"
             "incredible power."),
@@ -272,6 +273,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_FIRE_PUNCH] =
     {
         .name = COMPOUND_STRING("Fire Punch"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_3) ? 48 : ((B_MOVE_TUTOR_COSTS <= GEN_5) ? 64 : 8),
         .description = COMPOUND_STRING(
             "A fiery punch that may burn\n"
             "the foe."),
@@ -299,6 +301,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_ICE_PUNCH] =
     {
         .name = COMPOUND_STRING("Ice Punch"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_3) ? 48 : ((B_MOVE_TUTOR_COSTS <= GEN_5) ? 64 : 8),
         .description = COMPOUND_STRING(
             "An icy punch that may\n"
         #if B_USE_FROSTBITE == TRUE
@@ -330,6 +333,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_THUNDER_PUNCH] =
     {
         .name = COMPOUND_STRING("Thunder Punch"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_3) ? 48 : ((B_MOVE_TUTOR_COSTS <= GEN_5) ? 64 : 8),
         .description = COMPOUND_STRING(
             "An electrified punch that\n"
             "may paralyze the foe."),
@@ -449,6 +453,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_SWORDS_DANCE] =
     {
         .name = COMPOUND_STRING("Swords Dance"),
+        .bpCost = 48,
         .description = COMPOUND_STRING(
             "A fighting dance that\n"
             "sharply raises Attack."),
@@ -597,6 +602,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_BIND] =
     {
         .name = COMPOUND_STRING("Bind"),
+        .bpCost = 4,
         .description = COMPOUND_STRING(
             "Binds and squeezes the foe\n"
             "for "BINDING_TURNS" turns."),
@@ -725,6 +731,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_MEGA_KICK] =
     {
         .name = COMPOUND_STRING("Mega Kick"),
+        .bpCost = 48,
         .description = COMPOUND_STRING(
             "An extremely powerful kick\n"
             "with intense force."),
@@ -946,6 +953,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_BODY_SLAM] =
     {
         .name = COMPOUND_STRING("Body Slam"),
+        .bpCost = 48,
         .description = COMPOUND_STRING(
             "A full-body slam that may\n"
             "cause paralysis."),
@@ -1769,6 +1777,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_LOW_KICK] =
     {
         .name = COMPOUND_STRING("Low Kick"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 32 : 8,
         .description = COMPOUND_STRING(
             "A kick that inflicts more\n"
             "damage on heavier foes."),
@@ -1791,6 +1800,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_COUNTER] =
     {
         .name = COMPOUND_STRING("Counter"),
+        .bpCost = 48,
         .description = COMPOUND_STRING(
             "Retaliates any physical hit\n"
             "with double the power."),
@@ -1818,6 +1828,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_SEISMIC_TOSS] =
     {
         .name = COMPOUND_STRING("Seismic Toss"),
+        .bpCost = 24,
         .description = COMPOUND_STRING(
             "Inflicts damage identical\n"
             "to the user's level."),
@@ -2237,6 +2248,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_THUNDER_WAVE] =
     {
         .name = COMPOUND_STRING("Thunder Wave"),
+        .bpCost = 48,
         .description = COMPOUND_STRING(
             "A weak jolt of electricity\n"
             "that paralyzes the foe."),
@@ -2849,6 +2861,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_DEFENSE_CURL] =
     {
         .name = COMPOUND_STRING("Defense Curl"),
+        .bpCost = 16,
         .description = COMPOUND_STRING(
             "Curls up to conceal weak\n"
             "spots and raise Defense."),
@@ -3308,6 +3321,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_SWIFT] =
     {
         .name = COMPOUND_STRING("Swift"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_3) ? 24 : 40,
         .description = COMPOUND_STRING(
             "Sprays star-shaped rays\n"
             "that never miss."),
@@ -3454,6 +3468,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_SOFT_BOILED] =
     {
         .name = COMPOUND_STRING("Soft-Boiled"),
+        .bpCost = 16,
         .description = COMPOUND_STRING(
             "Recovers up to half the\n"
             "user's maximum HP."),
@@ -3538,6 +3553,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_DREAM_EATER] =
     {
         .name = COMPOUND_STRING("Dream Eater"),
+        .bpCost = 24,
         .description = COMPOUND_STRING(
             "Takes one half the damage\n"
             "inflicted on a sleeping foe."),
@@ -3659,6 +3675,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_SKY_ATTACK] =
     {
         .name = COMPOUND_STRING("Sky Attack"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_6) ? 64 : 16,
         .description = COMPOUND_STRING(
             "Searches out weak spots,\n"
             "then strikes the next turn."),
@@ -4005,6 +4022,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_ROCK_SLIDE] =
     {
         .name = COMPOUND_STRING("Rock Slide"),
+        .bpCost = 48,
         .description = COMPOUND_STRING(
             "Large boulders are hurled.\n"
             "May cause flinching."),
@@ -4132,6 +4150,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_SUPER_FANG] =
     {
         .name = COMPOUND_STRING("Super Fang"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 40 : 12,
         .description = COMPOUND_STRING(
             "Attacks with sharp fangs\n"
             "and cuts half the foe's HP."),
@@ -4425,6 +4444,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_SNORE] =
     {
         .name = COMPOUND_STRING("Snore"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_3) ? 24 : ((B_MOVE_TUTOR_COSTS == GEN_4) ? 32 : 4),
         .description = COMPOUND_STRING(
             "A loud attack that can be\n"
             "used only while asleep."),
@@ -4594,6 +4614,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_SPITE] =
     {
         .name = COMPOUND_STRING("Spite"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 40 : 8,
         .description = COMPOUND_STRING(
             "Spitefully cuts the PP\n"
             "of the foe's last move."),
@@ -4814,6 +4835,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_MUD_SLAP] =
     {
         .name = COMPOUND_STRING("Mud-Slap"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_3) ? 24 : 32,
         .description = COMPOUND_STRING(
             "Hurls mud in the foe's face\n"
             "to reduce its accuracy."),
@@ -4996,6 +5018,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_ICY_WIND] =
     {
         .name = COMPOUND_STRING("Icy Wind"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_3) ? 24 : ((B_MOVE_TUTOR_COSTS <= GEN_5) ? 48 : 12),
         .description = COMPOUND_STRING(
             "A chilling attack that\n"
             "lowers the foe's Speed."),
@@ -5092,6 +5115,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_OUTRAGE] =
     {
         .name = COMPOUND_STRING("Outrage"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 48 : 16,
         .description = COMPOUND_STRING(
             "A rampage of 2 to 3 turns\n"
             "that confuses the user."),
@@ -5144,6 +5168,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_GIGA_DRAIN] =
     {
         .name = COMPOUND_STRING("Giga Drain"),
+        .bpCost = 8,
         .description = COMPOUND_STRING(
             "An attack that steals half\n"
             "the damage inflicted."),
@@ -5168,6 +5193,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_ENDURE] =
     {
         .name = COMPOUND_STRING("Endure"),
+        .bpCost = 48,
         .description = COMPOUND_STRING(
             "Endures any attack for\n"
             "1 turn, leaving at least 1HP."),
@@ -5218,6 +5244,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_ROLLOUT] =
     {
         .name = COMPOUND_STRING("Rollout"),
+        .bpCost = 32,
         .description = COMPOUND_STRING(
             "An attack lasting 5 turns\n"
             "with rising intensity."),
@@ -5337,6 +5364,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_FURY_CUTTER] =
     {
         .name = COMPOUND_STRING("Fury Cutter"),
+        .bpCost = 32,
         .description = COMPOUND_STRING(
             "An attack that intensifies\n"
             "on each successive hit."),
@@ -5472,6 +5500,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_HEAL_BELL] =
     {
         .name = COMPOUND_STRING("Heal Bell"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 48 : 8,
         .description = COMPOUND_STRING(
             "Chimes soothingly to heal\n"
             "all status abnormalities."),
@@ -5590,6 +5619,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_PAIN_SPLIT] =
     {
         .name = COMPOUND_STRING("Pain Split"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 64 : 8,
         .description = COMPOUND_STRING(
             "Adds the user and foe's HP,\n"
             "then shares them equally."),
@@ -5865,6 +5895,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_IRON_TAIL] =
     {
         .name = COMPOUND_STRING("Iron Tail"),
+        .bpCost = 8,
         .description = COMPOUND_STRING(
             "Attacks with a rock-hard\n"
             "tail. May lower Defense."),
@@ -5966,6 +5997,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_SYNTHESIS] =
     {
         .name = COMPOUND_STRING("Synthesis"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 40 : 8,
         .description = COMPOUND_STRING(
             "Restores HP. The amount\n"
             "varies with the weather."),
@@ -6062,6 +6094,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_TWISTER] =
     {
         .name = COMPOUND_STRING("Twister"),
+        .bpCost = 40,
         .description = COMPOUND_STRING(
             "Whips up a vicious twister\n"
             "to tear at the foe."),
@@ -6197,6 +6230,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_PSYCH_UP] =
     {
         .name = COMPOUND_STRING("Psych Up"),
+        .bpCost = 48,
         .description = COMPOUND_STRING(
             "Copies the foe's effect(s)\n"
             "and gives to the user."),
@@ -6245,6 +6279,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_ANCIENT_POWER] =
     {
         .name = COMPOUND_STRING("Ancient Power"),
+        .bpCost = 40,
         .description = COMPOUND_STRING(
             "An attack that may raise\n"
             "all stats."),
@@ -6425,6 +6460,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_UPROAR] =
     {
         .name = COMPOUND_STRING("Uproar"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 48 : 8,
         .description = COMPOUND_STRING(
                                     #if B_UPROAR_TURNS >= GEN_5
                                        "Causes an uproar for 2 to 5\n"
@@ -6531,6 +6567,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_HEAT_WAVE] =
     {
         .name = COMPOUND_STRING("Heat Wave"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 48 : 12,
         .description = COMPOUND_STRING(
             "Exhales a hot breath on the\n"
             "foe. May inflict a burn."),
@@ -6694,6 +6731,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_FOCUS_PUNCH] =
     {
         .name = COMPOUND_STRING("Focus Punch"),
+        .bpCost = 16,
         .description = COMPOUND_STRING(
             "A powerful loyalty attack.\n"
             "The user flinches if hit."),
@@ -6854,6 +6892,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_HELPING_HAND] =
     {
         .name = COMPOUND_STRING("Helping Hand"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 40 : 8,
         .description = COMPOUND_STRING(
             "Boosts the power of the\n"
             "recipient's moves."),
@@ -6882,6 +6921,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_TRICK] =
     {
         .name = COMPOUND_STRING("Trick"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 48 : 8,
         .description = COMPOUND_STRING(
             "Tricks the foe into trading\n"
             "held items."),
@@ -6907,6 +6947,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_ROLE_PLAY] =
     {
         .name = COMPOUND_STRING("Role Play"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 48 : 8,
         .description = COMPOUND_STRING(
             "Mimics the target and\n"
             "copies its special ability."),
@@ -7014,6 +7055,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_SUPERPOWER] =
     {
         .name = COMPOUND_STRING("Superpower"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 48 : 16,
         .description = COMPOUND_STRING(
             "Boosts strength sharply,\n"
             "but lowers abilities."),
@@ -7040,6 +7082,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_MAGIC_COAT] =
     {
         .name = COMPOUND_STRING("Magic Coat"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 32 : 8,
         .description = COMPOUND_STRING(
             "Reflects special effects\n"
             "back to the attacker."),
@@ -7064,6 +7107,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_RECYCLE] =
     {
         .name = COMPOUND_STRING("Recycle"),
+        .bpCost = 8,
         .description = COMPOUND_STRING(
             "Recycles a used item for\n"
             "one more use."),
@@ -7154,6 +7198,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_KNOCK_OFF] =
     {
         .name = COMPOUND_STRING("Knock Off"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 40 : 12,
         .description = COMPOUND_STRING(
             "Knocks down the foe's held\n"
             "item to prevent its use."),
@@ -7179,6 +7224,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_ENDEAVOR] =
     {
         .name = COMPOUND_STRING("Endeavor"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 64 : 16,
         .description = COMPOUND_STRING(
             "Gains power if the user's HP\n"
             "is lower than the foe's HP."),
@@ -7223,6 +7269,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_SKILL_SWAP] =
     {
         .name = COMPOUND_STRING("Skill Swap"),
+        .bpCost = 8,
         .description = COMPOUND_STRING(
             "The user swaps special\n"
             "abilities with the target."),
@@ -7323,6 +7370,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_SNATCH] =
     {
         .name = COMPOUND_STRING("Snatch"),
+        .bpCost = 8,
         .description = COMPOUND_STRING(
             "Steals the effects of the\n"
             "move the target uses next."),
@@ -7375,6 +7423,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_DIVE] =
     {
         .name = COMPOUND_STRING("Dive"),
+        .bpCost = 40,
         .description = COMPOUND_STRING(
             "Dives underwater the first\n"
             "turn and strikes next turn."),
@@ -7703,6 +7752,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_HYPER_VOICE] =
     {
         .name = COMPOUND_STRING("Hyper Voice"),
+        .bpCost = 12,
         .description = COMPOUND_STRING(
             "A loud attack that uses\n"
             "sound waves to injure."),
@@ -7955,6 +8005,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_AIR_CUTTER] =
     {
         .name = COMPOUND_STRING("Air Cutter"),
+        .bpCost = 48,
         .description = COMPOUND_STRING(
             "Hacks with razorlike wind.\n"
             "High critical-hit ratio."),
@@ -8200,6 +8251,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_SIGNAL_BEAM] =
     {
         .name = COMPOUND_STRING("Signal Beam"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 40 : 8,
         .description = COMPOUND_STRING(
             "A strange beam attack that\n"
             "may confuse the foe."),
@@ -8435,6 +8487,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_IRON_DEFENSE] =
     {
         .name = COMPOUND_STRING("Iron Defense"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 40 : 8,
         .description = COMPOUND_STRING(
             "Hardens the body's surface\n"
             "to sharply raise Defense."),
@@ -8460,6 +8513,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_BLOCK] =
     {
         .name = COMPOUND_STRING("Block"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 32 : 8,
         .description = COMPOUND_STRING(
             "Blocks the foe's way to\n"
             "prevent escape."),
@@ -8583,6 +8637,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_BOUNCE] =
     {
         .name = COMPOUND_STRING("Bounce"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 32 : 8,
         .description = COMPOUND_STRING(
             "Bounces up, then down the\n"
             "next turn. May paralyze."),
@@ -8666,6 +8721,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_COVET] =
     {
         .name = COMPOUND_STRING("Covet"),
+        .bpCost = 4,
         .description = COMPOUND_STRING(
             "Cutely begs to obtain an\n"
             "item held by the foe."),
@@ -8867,6 +8923,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_SHOCK_WAVE] =
     {
         .name = COMPOUND_STRING("Shock Wave"),
+        .bpCost = 4,
         .description = COMPOUND_STRING(
             "A fast and unavoidable\n"
             "electric attack."),
@@ -8888,6 +8945,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_WATER_PULSE] =
     {
         .name = COMPOUND_STRING("Water Pulse"),
+        .bpCost = 4,
         .description = COMPOUND_STRING(
             "Attacks with ultrasonic\n"
             "waves. May confuse the foe."),
@@ -8988,6 +9046,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_GRAVITY] =
     {
         .name = COMPOUND_STRING("Gravity"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 32 : 8,
         .description = COMPOUND_STRING(
             "Gravity is intensified\n"
             "negating levitation."),
@@ -9228,6 +9287,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_TAILWIND] =
     {
         .name = COMPOUND_STRING("Tailwind"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 48 : 8,
         .description = COMPOUND_STRING(
             "Whips up a turbulent breeze\n"
             "that raises Speed."),
@@ -9546,6 +9606,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_GASTRO_ACID] =
     {
         .name = COMPOUND_STRING("Gastro Acid"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 32 : 8,
         .description = COMPOUND_STRING(
             "Stomach acid suppresses\n"
             "the foe's ability."),
@@ -9725,6 +9786,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_LAST_RESORT] =
     {
         .name = COMPOUND_STRING("Last Resort"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 48 : 12,
         .description = COMPOUND_STRING(
             "Can only be used if every\n"
             "other move has been used."),
@@ -9747,6 +9809,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_WORRY_SEED] =
     {
         .name = COMPOUND_STRING("Worry Seed"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 32 : 8,
         .description = COMPOUND_STRING(
             "Plants a seed on the foe\n"
             "giving it Insomnia."),
@@ -9770,6 +9833,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_SUCKER_PUNCH] =
     {
         .name = COMPOUND_STRING("Sucker Punch"),
+        .bpCost = 40,
         .description = sSuckerPunchDescription,
         .effect = EFFECT_SUCKER_PUNCH,
         .power = B_UPDATED_MOVE_DATA >= GEN_7 ? 70 : 80,
@@ -9865,6 +9929,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_MAGNET_RISE] =
     {
         .name = COMPOUND_STRING("Magnet Rise"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 40 : 8,
         .description = COMPOUND_STRING(
             "The user levitates with\n"
             "electromagnetism."),
@@ -10069,6 +10134,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_AQUA_TAIL] =
     {
         .name = COMPOUND_STRING("Aqua Tail"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 40 : 12,
         .description = COMPOUND_STRING(
             "The user swings its tail\n"
             "like a wave to attack."),
@@ -10091,6 +10157,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_SEED_BOMB] =
     {
         .name = COMPOUND_STRING("Seed Bomb"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 40 : 12,
         .description = COMPOUND_STRING(
             "A barrage of hard seeds\n"
             "is fired at the foe."),
@@ -10189,6 +10256,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_DRAGON_PULSE] =
     {
         .name = COMPOUND_STRING("Dragon Pulse"),
+        .bpCost = 12,
         .description = COMPOUND_STRING(
             "Generates a shock wave to\n"
             "damage the foe."),
@@ -10259,6 +10327,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_DRAIN_PUNCH] =
     {
         .name = COMPOUND_STRING("Drain Punch"),
+        .bpCost = 8,
         .description = sMegaDrainDescription,
         .effect = EFFECT_ABSORB,
         .power = B_UPDATED_MOVE_DATA >= GEN_5 ? 75 : 60,
@@ -10282,6 +10351,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_VACUUM_WAVE] =
     {
         .name = COMPOUND_STRING("Vacuum Wave"),
+        .bpCost = 48,
         .description = COMPOUND_STRING(
             "Whirls its fists to send\n"
             "a wave that strikes first."),
@@ -10378,6 +10448,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_EARTH_POWER] =
     {
         .name = COMPOUND_STRING("Earth Power"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 40 : 12,
         .description = COMPOUND_STRING(
             "Makes the ground erupt with\n"
             "power. May lower Sp. Def."),
@@ -10733,6 +10804,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_ZEN_HEADBUTT] =
     {
         .name = COMPOUND_STRING("Zen Headbutt"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 64 : 8,
         .description = COMPOUND_STRING(
             "Hits with a strong head-\n"
             "butt. May cause flinching."),
@@ -10835,6 +10907,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_DEFOG] =
     {
         .name = COMPOUND_STRING("Defog"),
+        .bpCost = 8,
         .description = COMPOUND_STRING(
             "Removes obstacles and\n"
             "lowers evasion."),
@@ -11054,6 +11127,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_GUNK_SHOT] =
     {
         .name = COMPOUND_STRING("Gunk Shot"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 32 : 16,
         .description = COMPOUND_STRING(
             "Shoots filthy garbage at\n"
             "the foe. May also poison."),
@@ -11079,6 +11153,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_IRON_HEAD] =
     {
         .name = COMPOUND_STRING("Iron Head"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 40 : 8,
         .description = COMPOUND_STRING(
             "Slams the foe with a hard\n"
             "head. May cause flinching."),
@@ -11172,6 +11247,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_STEALTH_ROCK] =
     {
         .name = COMPOUND_STRING("Stealth Rock"),
+        .bpCost = 8,
         .description = COMPOUND_STRING(
             "Sets floating stones that\n"
             "hurt a foe switching in."),
@@ -11283,6 +11359,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_BUG_BITE] =
     {
         .name = COMPOUND_STRING("Bug Bite"),
+        .bpCost = (B_MOVE_TUTOR_COSTS <= GEN_5) ? 32 : 4,
         .description = sPluckDescription,
         .effect = EFFECT_HIT,
         .power = 60,
@@ -11660,6 +11737,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_OMINOUS_WIND] =
     {
         .name = COMPOUND_STRING("Ominous Wind"),
+        .bpCost = 48,
         .description = COMPOUND_STRING(
             "A repulsive attack that may\n"
             "raise all stats."),
@@ -11814,6 +11892,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_WONDER_ROOM] =
     {
         .name = COMPOUND_STRING("Wonder Room"),
+        .bpCost = 8,
         .description = COMPOUND_STRING(
             "Defense and Sp. Def stats\n"
             "are swapped for 5 turns."),
@@ -11931,6 +12010,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_TELEKINESIS] =
     {
         .name = COMPOUND_STRING("Telekinesis"),
+        .bpCost = 8,
         .description = COMPOUND_STRING(
             "Makes the foe float. It is\n"
             "easier to hit for 3 turns."),
@@ -11955,6 +12035,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_MAGIC_ROOM] =
     {
         .name = COMPOUND_STRING("Magic Room"),
+        .bpCost = 8,
         .description = COMPOUND_STRING(
             "Hold items lose their\n"
             "effects for 5 turns."),
@@ -12293,6 +12374,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_FOUL_PLAY] =
     {
         .name = COMPOUND_STRING("Foul Play"),
+        .bpCost = 12,
         .description = COMPOUND_STRING(
             "The higher the foe's Attack\n"
             "the more damage caused."),
@@ -12361,6 +12443,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_AFTER_YOU] =
     {
         .name = COMPOUND_STRING("After You"),
+        .bpCost = 8,
         .description = COMPOUND_STRING(
             "Helps out the foe, letting\n"
             "it move next."),
@@ -12529,6 +12612,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_ALLY_SWITCH] =
     {
         .name = COMPOUND_STRING("Ally Switch"),
+        .bpCost = 8,
         .description = COMPOUND_STRING(
             "The user switches places\n"
             "with its partner."),
@@ -13120,6 +13204,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_ELECTROWEB] =
     {
         .name = COMPOUND_STRING("Electroweb"),
+        .bpCost = 8,
         .description = COMPOUND_STRING(
             "Snares the foe with an\n"
             "electric net. Lowers Speed."),
@@ -13168,6 +13253,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_DRILL_RUN] =
     {
         .name = COMPOUND_STRING("Drill Run"),
+        .bpCost = 8,
         .description = COMPOUND_STRING(
             "Spins its body like a drill.\n"
             "High critical-hit ratio."),
@@ -13191,6 +13277,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_DUAL_CHOP] =
     {
         .name = COMPOUND_STRING("Dual Chop"),
+        .bpCost = 12,
         .description = COMPOUND_STRING(
             "Attacks with brutal hits\n"
             "that strike twice."),
@@ -15821,6 +15908,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_LASER_FOCUS] =
     {
         .name = COMPOUND_STRING("Laser Focus"),
+        .bpCost = 12,
         .description = COMPOUND_STRING(
             "Guarantees the next move\n"
             "will be a critical hit."),
@@ -15872,6 +15960,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_THROAT_CHOP] =
     {
         .name = COMPOUND_STRING("Throat Chop"),
+        .bpCost = 16,
         .description = COMPOUND_STRING(
             "Chops the throat to disable\n"
             "sound moves for a while."),
@@ -16442,6 +16531,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_STOMPING_TANTRUM] =
     {
         .name = COMPOUND_STRING("Stomping Tantrum"),
+        .bpCost = 12,
         .description = COMPOUND_STRING(
             "Stomps around angrily.\n"
             "Stronger after a failure."),
@@ -16512,6 +16602,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     [MOVE_LIQUIDATION] =
     {
         .name = COMPOUND_STRING("Liquidation"),
+        .bpCost = 16,
         .description = COMPOUND_STRING(
             "Slams the foe with water.\n"
             "Can lower Defense."),
