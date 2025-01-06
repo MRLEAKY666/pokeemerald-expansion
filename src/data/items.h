@@ -7997,7 +7997,7 @@ const struct Item gItemsInfo[] =
     [ITEM_CHOICE_SPECS] =
     {
         .name = _("Choice Specs"),
-        .bpCost = (I_PRICE_BP <= GEN_5) ? 24 : ((I_PRICE_BP >= GEN_8) ? 24 : 48),
+        .bpCost = (I_PRICE_BP <= GEN_5) ? 48 : ((I_PRICE_BP >= GEN_8) ? 24 : 48),
         .pluralName = _("Choice Specs"),
         .price = (I_PRICE >= GEN_9) ? 100000 : ((I_PRICE >= GEN_7) ? 4000 : 100),
         .holdEffect = HOLD_EFFECT_CHOICE_SPECS,
@@ -11645,8 +11645,8 @@ const struct Item gItemsInfo[] =
         .price = 3000,
         .description = COMPOUND_STRING(
             "Electrifies\n"
-            "itself and \n"
-            "crashes hard."), // Todo
+            "itself and\n"
+            "charges foe."), // Todo
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
