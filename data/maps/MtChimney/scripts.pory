@@ -603,7 +603,7 @@ MtChimney_EventScript_SawyerRematch::
 	end
 
 MtChimney_Text_MoltresFlewOff:
-	.string "Moltres woke up and flew\n"
+	.string "MOLTRES woke up and flew\n"
 	.string "off somewhere . . .$"
 
 MtChimney_Text_MeteoriteWillActivateVolcano:

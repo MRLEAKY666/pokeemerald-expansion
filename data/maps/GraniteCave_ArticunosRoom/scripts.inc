@@ -69,5 +69,5 @@ GraniteCave_ArticunosRoom_Movement_CameraPanDown:
 	step_end
 
 GraniteCave_ArticunosRoom_Text_ArticunoFlewOff:
-	.string "Articuno woke up and flew\n"
+	.string "ARTICUNO woke up and flew\n"
 	.string "off somewhere . . .$"

@@ -1209,7 +1209,7 @@ MtChimney_EventScript_SawyerRematch::
 # 605 "data//maps/MtChimney/scripts.pory"
 MtChimney_Text_MoltresFlewOff:
 # 606 "data//maps/MtChimney/scripts.pory"
-	.string "Moltres woke up and flew\n"
+	.string "MOLTRES woke up and flew\n"
 # 607 "data//maps/MtChimney/scripts.pory"
 	.string "off somewhere . . .$"
 # 608 "data//maps/MtChimney/scripts.pory"

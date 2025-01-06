@@ -1,4 +1,55 @@
 raw `
+
+.set LOCALID_FORTREE_WOODS_RAYQUAZA, 28
+
+FortreeWoods_EventScript_Rayquaza::
+	lock
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	fadeoutbgm 1
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, FortreeWoods_Movement_CameraPanUpI
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, FortreeWoods_Movement_CameraPanUpII
+	applymovement OBJ_EVENT_ID_CAMERA, FortreeWoods_Movement_CameraPanUpII
+	waitmovement 0
+	special RemoveCameraObject
+	waitse
+	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
+	setvar VAR_0x8004, 1  @ vertical pan
+	setvar VAR_0x8005, 1  @ horizontal pan
+	setvar VAR_0x8006, 8  @ num shakes
+	setvar VAR_0x8007, 3  @ shake delay
+	special ShakeCamera
+	waitstate
+	waitse
+	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
+	setvar VAR_0x8004, 1  @ vertical pan
+	setvar VAR_0x8005, 2  @ horizontal pan
+	setvar VAR_0x8006, 8  @ num shakes
+	setvar VAR_0x8007, 5  @ shake delay
+	special ShakeCamera
+	waitstate
+	waitmoncry
+	applymovement LOCALID_FORTREE_WOODS_RAYQUAZA, FortreeWoods_Movement_RayquazaFlyOff
+	waitmovement 0
+	removeobject LOCALID_FORTREE_WOODS_RAYQUAZA
+	msgbox FortreeWoods_Text_RayquazaFlewOff, MSGBOX_DEFAULT
+	closemessage
+	delay 20
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, FortreeWoods_Movement_CameraPanDownI
+	applymovement OBJ_EVENT_ID_PLAYER, FortreeWoods_Movement_CameraPanDownII
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_CAMERA, FortreeWoods_Movement_CameraPanDownII
+	waitmovement 0
+	fadeinbgm 1
+	special RemoveCameraObject
+	setvar VAR_FORTREE_WOODS_RAYQUAZA_CRY_DONE, 1
+	releaseall
+	end
+
 FortreeWoods_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, FortreeWoods_OnResume
 	.byte 0
@@ -44,4 +95,76 @@ FortreeWoods_EventScript_RanFromZapdos::
 	goto Common_EventScript_LegendaryFlewAway
 	end
 
+FortreeWoods_Movement_RayquazaFlyOff:
+	delay_16
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	step_end
+
+FortreeWoods_Movement_CameraPanUpI:
+	walk_slow_up
+	walk_slow_up
+	walk_slow_up
+	walk_slow_up
+	walk_slow_up
+	walk_slow_up
+	walk_slow_up
+	step_end
+
+FortreeWoods_Movement_CameraPanUpII:
+	walk_slow_up
+	walk_slow_up
+	walk_slow_up
+	walk_slow_up
+	walk_slow_up
+	walk_slow_up
+	walk_slow_up
+	step_end
+
+FortreeWoods_Movement_CameraPanDownI:
+	walk_slow_down
+	walk_slow_down
+	walk_slow_down
+	walk_slow_down
+	walk_slow_down
+	walk_slow_down
+	walk_slow_down
+	step_end
+
+FortreeWoods_Movement_CameraPanDownII:
+	walk_slow_down
+	walk_slow_down
+	walk_slow_down
+	walk_slow_down
+	walk_slow_down
+	walk_slow_down
+	walk_slow_down
+	step_end
+
+FortreeWoods_Movement_SetInvisible:
+	set_invisible
+	step_end
+
+FortreeWoods_Movement_SetVisible:
+	set_visible
+	step_end
+
+FortreeWoods_Text_RayquazaFlewOff:
+	.string "RAYQUAZA flew off somewhere . . .$"
 `
