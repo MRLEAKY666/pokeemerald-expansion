@@ -116,3 +116,24 @@ void UpdateBirchState(u16 days)
     *state += days;
     *state %= 7;
 }
+
+void ResetRandomItem(void)
+{
+    u8 dieroll;
+    u8 itemflag;
+    u8 hiddenitemflag;
+    dieroll = Random() % 3;
+    itemflag = Random() % (FLAG_ITEM_GENGARITE - FLAG_ITEM_ROUTE_102_POTION);
+    hiddenitemflag = Random() % (FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL - FLAG_HIDDEN_ITEMS_START);
+    switch (dieroll)
+    {
+    case 0:
+        FlagClear(FLAG_ITEM_ROUTE_102_POTION + itemflag);
+        break;
+    case 1:
+        FlagClear(FLAG_HIDDEN_ITEMS_START + hiddenitemflag);
+        break;
+    case 2:
+        break;
+    }
+}
