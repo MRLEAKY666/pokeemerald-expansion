@@ -9781,11 +9781,21 @@
               {
                 "min_level": 28,
                 "max_level": 28,
-                "species": "SPECIES_ROLYCOLY"
+                "species": "SPECIES_RATTATA"
               },
               {
                 "min_level": 28,
                 "max_level": 28,
+                "species": "SPECIES_RATTATA_ALOLA"
+              },
+              {
+                "min_level": 30,
+                "max_level": 30,
+                "species": "SPECIES_ROLYCOLY"
+              },
+              {
+                "min_level": 29,
+                "max_level": 29,
                 "species": "SPECIES_SALANDIT"
               },
               {
@@ -9794,8 +9804,8 @@
                 "species": "SPECIES_SLUGMA"
               },
               {
-                "min_level": 29,
-                "max_level": 29,
+                "min_level": 30,
+                "max_level": 30,
                 "species": "SPECIES_KOFFING"
               },
               {
@@ -9809,29 +9819,19 @@
                 "species": "SPECIES_CASTFORM"
               },
               {
-                "min_level": 30,
-                "max_level": 30,
-                "species": "SPECIES_VOLTORB"
-              },
-              {
-                "min_level": 30,
-                "max_level": 30,
-                "species": "SPECIES_DITTO"
-              },
-              {
                 "min_level": 31,
                 "max_level": 31,
-                "species": "SPECIES_MAGNEMITE"
+                "species": "SPECIES_VOLTORB"
               },
               {
                 "min_level": 32,
                 "max_level": 32,
-                "species": "SPECIES_"
+                "species": "SPECIES_MAGNEMITE"
               },
               {
                 "min_level": 33,
                 "max_level": 33,
-                "species": "SPECIES_"
+                "species": "SPECIES_DITTO"
               }
             ]
           }
@@ -9850,11 +9850,21 @@
               {
                 "min_level": 28,
                 "max_level": 28,
-                "species": "SPECIES_ROLYCOLY"
+                "species": "SPECIES_RATTATA"
               },
               {
                 "min_level": 28,
                 "max_level": 28,
+                "species": "SPECIES_RATTATA_ALOLA"
+              },
+              {
+                "min_level": 30,
+                "max_level": 30,
+                "species": "SPECIES_ROLYCOLY"
+              },
+              {
+                "min_level": 29,
+                "max_level": 29,
                 "species": "SPECIES_SALANDIT"
               },
               {
@@ -9863,8 +9873,8 @@
                 "species": "SPECIES_SLUGMA"
               },
               {
-                "min_level": 29,
-                "max_level": 29,
+                "min_level": 30,
+                "max_level": 30,
                 "species": "SPECIES_KOFFING"
               },
               {
@@ -9878,29 +9888,19 @@
                 "species": "SPECIES_CASTFORM"
               },
               {
-                "min_level": 30,
-                "max_level": 30,
-                "species": "SPECIES_VOLTORB"
-              },
-              {
-                "min_level": 30,
-                "max_level": 30,
-                "species": "SPECIES_DITTO"
-              },
-              {
                 "min_level": 31,
                 "max_level": 31,
-                "species": "SPECIES_MAGNEMITE"
+                "species": "SPECIES_VOLTORB"
               },
               {
                 "min_level": 32,
                 "max_level": 32,
-                "species": "SPECIES_"
+                "species": "SPECIES_MAGNEMITE"
               },
               {
                 "min_level": 33,
                 "max_level": 33,
-                "species": "SPECIES_"
+                "species": "SPECIES_DITTO"
               }
             ]
           }
@@ -9919,11 +9919,21 @@
               {
                 "min_level": 28,
                 "max_level": 28,
-                "species": "SPECIES_ROLYCOLY"
+                "species": "SPECIES_RATTATA"
               },
               {
                 "min_level": 28,
                 "max_level": 28,
+                "species": "SPECIES_RATTATA_ALOLA"
+              },
+              {
+                "min_level": 30,
+                "max_level": 30,
+                "species": "SPECIES_ROLYCOLY"
+              },
+              {
+                "min_level": 29,
+                "max_level": 29,
                 "species": "SPECIES_SALANDIT"
               },
               {
@@ -9932,8 +9942,8 @@
                 "species": "SPECIES_SLUGMA"
               },
               {
-                "min_level": 29,
-                "max_level": 29,
+                "min_level": 30,
+                "max_level": 30,
                 "species": "SPECIES_KOFFING"
               },
               {
@@ -9947,29 +9957,19 @@
                 "species": "SPECIES_CASTFORM"
               },
               {
-                "min_level": 30,
-                "max_level": 30,
-                "species": "SPECIES_VOLTORB"
-              },
-              {
-                "min_level": 30,
-                "max_level": 30,
-                "species": "SPECIES_DITTO"
-              },
-              {
                 "min_level": 31,
                 "max_level": 31,
-                "species": "SPECIES_MAGNEMITE"
+                "species": "SPECIES_VOLTORB"
               },
               {
                 "min_level": 32,
                 "max_level": 32,
-                "species": "SPECIES_"
+                "species": "SPECIES_MAGNEMITE"
               },
               {
                 "min_level": 33,
                 "max_level": 33,
-                "species": "SPECIES_"
+                "species": "SPECIES_DITTO"
               }
             ]
           }
@@ -9988,11 +9988,21 @@
               {
                 "min_level": 28,
                 "max_level": 28,
-                "species": "SPECIES_ROLYCOLY"
+                "species": "SPECIES_RATTATA"
               },
               {
                 "min_level": 28,
                 "max_level": 28,
+                "species": "SPECIES_RATTATA_ALOLA"
+              },
+              {
+                "min_level": 30,
+                "max_level": 30,
+                "species": "SPECIES_ROLYCOLY"
+              },
+              {
+                "min_level": 29,
+                "max_level": 29,
                 "species": "SPECIES_SALANDIT"
               },
               {
@@ -10001,8 +10011,8 @@
                 "species": "SPECIES_SLUGMA"
               },
               {
-                "min_level": 29,
-                "max_level": 29,
+                "min_level": 30,
+                "max_level": 30,
                 "species": "SPECIES_KOFFING"
               },
               {
@@ -10016,29 +10026,19 @@
                 "species": "SPECIES_CASTFORM"
               },
               {
-                "min_level": 30,
-                "max_level": 30,
-                "species": "SPECIES_VOLTORB"
-              },
-              {
-                "min_level": 30,
-                "max_level": 30,
-                "species": "SPECIES_DITTO"
-              },
-              {
                 "min_level": 31,
                 "max_level": 31,
-                "species": "SPECIES_MAGNEMITE"
+                "species": "SPECIES_VOLTORB"
               },
               {
                 "min_level": 32,
                 "max_level": 32,
-                "species": "SPECIES_"
+                "species": "SPECIES_MAGNEMITE"
               },
               {
                 "min_level": 33,
                 "max_level": 33,
-                "species": "SPECIES_"
+                "species": "SPECIES_DITTO"
               }
             ]
           }
@@ -10057,21 +10057,31 @@
               {
                 "min_level": 28,
                 "max_level": 28,
-                "species": "SPECIES_MAGNEMITE"
+                "species": "SPECIES_RATTATA"
               },
               {
                 "min_level": 28,
                 "max_level": 28,
+                "species": "SPECIES_RATTATA_ALOLA"
+              },
+              {
+                "min_level": 30,
+                "max_level": 30,
+                "species": "SPECIES_KLINK"
+              },
+              {
+                "min_level": 29,
+                "max_level": 29,
                 "species": "SPECIES_SALANDIT"
               },
               {
                 "min_level": 30,
                 "max_level": 30,
-                "species": "SPECIES_DITTO"
+                "species": "SPECIES_SLUGMA"
               },
               {
-                "min_level": 29,
-                "max_level": 29,
+                "min_level": 30,
+                "max_level": 30,
                 "species": "SPECIES_KOFFING"
               },
               {
@@ -10085,16 +10095,6 @@
                 "species": "SPECIES_CASTFORM"
               },
               {
-                "min_level": 30,
-                "max_level": 30,
-                "species": "SPECIES_KLINK"
-              },
-              {
-                "min_level": 30,
-                "max_level": 30,
-                "species": "SPECIES_PORYGON"
-              },
-              {
                 "min_level": 31,
                 "max_level": 31,
                 "species": "SPECIES_VOLTORB"
@@ -10102,12 +10102,12 @@
               {
                 "min_level": 32,
                 "max_level": 32,
-                "species": "SPECIES_"
+                "species": "SPECIES_MAGNEMITE"
               },
               {
                 "min_level": 33,
                 "max_level": 33,
-                "species": "SPECIES_"
+                "species": "SPECIES_DITTO"
               }
             ]
           }
@@ -10126,11 +10126,21 @@
               {
                 "min_level": 28,
                 "max_level": 28,
-                "species": "SPECIES_ROLYCOLY"
+                "species": "SPECIES_RATTATA"
               },
               {
                 "min_level": 28,
                 "max_level": 28,
+                "species": "SPECIES_RATTATA_ALOLA"
+              },
+              {
+                "min_level": 30,
+                "max_level": 30,
+                "species": "SPECIES_ROLYCOLY"
+              },
+              {
+                "min_level": 29,
+                "max_level": 29,
                 "species": "SPECIES_SALANDIT"
               },
               {
@@ -10139,8 +10149,8 @@
                 "species": "SPECIES_SLUGMA"
               },
               {
-                "min_level": 29,
-                "max_level": 29,
+                "min_level": 30,
+                "max_level": 30,
                 "species": "SPECIES_KOFFING"
               },
               {
@@ -10154,29 +10164,19 @@
                 "species": "SPECIES_CASTFORM"
               },
               {
-                "min_level": 30,
-                "max_level": 30,
-                "species": "SPECIES_VOLTORB"
-              },
-              {
-                "min_level": 30,
-                "max_level": 30,
-                "species": "SPECIES_DITTO"
-              },
-              {
                 "min_level": 31,
                 "max_level": 31,
-                "species": "SPECIES_MAGNEMITE"
+                "species": "SPECIES_VOLTORB"
               },
               {
                 "min_level": 32,
                 "max_level": 32,
-                "species": "SPECIES_"
+                "species": "SPECIES_MAGNEMITE"
               },
               {
                 "min_level": 33,
                 "max_level": 33,
-                "species": "SPECIES_"
+                "species": "SPECIES_DITTO"
               }
             ]
           }
@@ -10195,11 +10195,21 @@
               {
                 "min_level": 28,
                 "max_level": 28,
-                "species": "SPECIES_ROLYCOLY"
+                "species": "SPECIES_RATTATA"
               },
               {
                 "min_level": 28,
                 "max_level": 28,
+                "species": "SPECIES_RATTATA_ALOLA"
+              },
+              {
+                "min_level": 30,
+                "max_level": 30,
+                "species": "SPECIES_ROLYCOLY"
+              },
+              {
+                "min_level": 29,
+                "max_level": 29,
                 "species": "SPECIES_SALANDIT"
               },
               {
@@ -10208,8 +10218,8 @@
                 "species": "SPECIES_SLUGMA"
               },
               {
-                "min_level": 29,
-                "max_level": 29,
+                "min_level": 30,
+                "max_level": 30,
                 "species": "SPECIES_KOFFING"
               },
               {
@@ -10223,29 +10233,19 @@
                 "species": "SPECIES_CASTFORM"
               },
               {
-                "min_level": 30,
-                "max_level": 30,
-                "species": "SPECIES_VOLTORB"
-              },
-              {
-                "min_level": 30,
-                "max_level": 30,
-                "species": "SPECIES_DITTO"
-              },
-              {
                 "min_level": 31,
                 "max_level": 31,
-                "species": "SPECIES_MAGNEMITE"
+                "species": "SPECIES_VOLTORB"
               },
               {
                 "min_level": 32,
                 "max_level": 32,
-                "species": "SPECIES_"
+                "species": "SPECIES_MAGNEMITE"
               },
               {
                 "min_level": 33,
                 "max_level": 33,
-                "species": "SPECIES_"
+                "species": "SPECIES_DITTO"
               }
             ]
           }
@@ -10264,11 +10264,21 @@
               {
                 "min_level": 28,
                 "max_level": 28,
-                "species": "SPECIES_CARKOL"
+                "species": "SPECIES_RATTATA"
               },
               {
                 "min_level": 28,
                 "max_level": 28,
+                "species": "SPECIES_RATTATA_ALOLA"
+              },
+              {
+                "min_level": 30,
+                "max_level": 30,
+                "species": "SPECIES_ROLYCOLY"
+              },
+              {
+                "min_level": 29,
+                "max_level": 29,
                 "species": "SPECIES_SALANDIT"
               },
               {
@@ -10277,8 +10287,8 @@
                 "species": "SPECIES_SLUGMA"
               },
               {
-                "min_level": 29,
-                "max_level": 29,
+                "min_level": 30,
+                "max_level": 30,
                 "species": "SPECIES_KOFFING"
               },
               {
@@ -10292,29 +10302,19 @@
                 "species": "SPECIES_CASTFORM"
               },
               {
-                "min_level": 30,
-                "max_level": 30,
-                "species": "SPECIES_VOLTORB"
-              },
-              {
-                "min_level": 30,
-                "max_level": 30,
-                "species": "SPECIES_DITTO"
-              },
-              {
                 "min_level": 31,
                 "max_level": 31,
-                "species": "SPECIES_MAGNEMITE"
+                "species": "SPECIES_VOLTORB"
               },
               {
                 "min_level": 32,
                 "max_level": 32,
-                "species": "SPECIES_"
+                "species": "SPECIES_MAGNEMITE"
               },
               {
                 "min_level": 33,
                 "max_level": 33,
-                "species": "SPECIES_"
+                "species": "SPECIES_DITTO"
               }
             ]
           }
