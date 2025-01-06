@@ -14,3 +14,11 @@ GraniteCove_EventScript_SetHighTide::
 GraniteCove_EventScript_SetLowTide::
     setmaplayoutindex LAYOUT_GRANITE_CAVE_LOW_TIDE
     end
+
+GraniteCove_EventScript_CoveSign::
+    msgbox GraniteCove_Text_CoveSign, MSGBOX_SIGN
+    end
+
+GraniteCove_Text_CoveSign:
+	.string "GRANITE COVE\n"
+	.string "Beware of tide.$"
