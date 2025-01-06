@@ -37,17 +37,6 @@ LilycoveCity_DepartmentStore_3F_EventScript_ClerkRight::
 
 	.align 2
 LilycoveCity_DepartmentStore_3F_Pokemart_EvoItems:
-	@ .2byte ITEM_AIR_BALLOON
-	@ .2byte ITEM_WHITE_HERB
-	@ .2byte ITEM_BLUNDER_POLICY
-	@ .2byte ITEM_EJECT_BUTTON
-	@ .2byte ITEM_EJECT_PACK
-	@ .2byte ITEM_FOCUS_SASH
-	@ .2byte ITEM_POWER_HERB
-	@ .2byte ITEM_RED_CARD
-	@ .2byte ITEM_WEAKNESS_POLICY
-	@ .2byte ITEM_TOXIC_ORB
-	@ .2byte ITEM_FLAME_ORB
 	.2byte ITEM_ELECTIRIZER
 	.2byte ITEM_MAGMARIZER
 	.2byte ITEM_METAL_COAT

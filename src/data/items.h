@@ -1413,7 +1413,7 @@ const struct Item gItemsInfo[] =
     [ITEM_PP_UP] =
     {
         .name = _("PP Up"),
-        .bpCost = (I_PRICE_BP <= GEN_7) ? 48 : ((I_PRICE_BP >= GEN_9) ? 50 : 10),
+        .bpCost = (I_PRICE_BP <= GEN_7) ? 1 : ((I_PRICE_BP >= GEN_9) ? 50 : 10),
         .price = (I_PRICE == GEN_1) ? 1 : ((I_PRICE >= GEN_7) ? 10000 : 9800),
         .description = COMPOUND_STRING(
             "Raises the maximum\n"
