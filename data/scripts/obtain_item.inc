@@ -175,7 +175,21 @@ EventScript_NoRoomToPickUpItem::
 EventScript_HiddenItemScript::
 	lockall
 	waitse
+	call_if_eq VAR_0x8005, ITEM_KEY_TO_ROOM_1, EventScript_SpecificHiddenItemScript
+	call_if_eq VAR_0x8005, ITEM_KEY_TO_ROOM_2, EventScript_SpecificHiddenItemScript
+	call_if_eq VAR_0x8005, ITEM_KEY_TO_ROOM_4, EventScript_SpecificHiddenItemScript
+	call_if_eq VAR_0x8005, ITEM_KEY_TO_ROOM_6, EventScript_SpecificHiddenItemScript
 	call Common_EventScript_FindHiddenItem
+	additem VAR_0x8005
+	copyvar VAR_0x8007, VAR_RESULT
+	bufferitemnameplural STR_VAR_2, VAR_0x8005, 1
+	checkitemtype VAR_0x8005
+	call EventScript_BufferPocketNameAndTryFanfare
+	goto_if_eq VAR_0x8007, TRUE, EventScript_PickUpHiddenItem
+	goto_if_eq VAR_0x8007, FALSE, EventScript_NoRoomForHiddenItem
+	end
+
+EventScript_SpecificHiddenItemScript::
 	additem VAR_0x8005
 	copyvar VAR_0x8007, VAR_RESULT
 	bufferitemnameplural STR_VAR_2, VAR_0x8005, 1
