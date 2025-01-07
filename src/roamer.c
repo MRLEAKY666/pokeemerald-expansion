@@ -156,6 +156,7 @@ bool8 TryAddRoamer(u16 species, u8 level)
 }
 
 // gSpecialVar_0x8004 here corresponds to the options in the multichoice MULTI_TV_LATI (0 for 'Red', 1 for 'Blue')
+// MR LEAKY UPDATE not anymore sucker,s now it means which roamer arre we initing, 0 for beasts, 1 for articuno, 2 for latis, 3 for moltres, 
 void InitRoamer(void)
 {
     if (gSpecialVar_Unused_0x8014 == 0)
@@ -276,7 +277,15 @@ void CreateRoamerMonInstance(u32 roamerIndex)
     // The roamer's status field is u16, but SetMonData expects status to be u32, so will set the roamer's status
     // using the status field and the following 3 bytes (cool, beauty, and cute).
     SetMonData(mon, MON_DATA_STATUS, &status);
-    SetMonData(mon, MON_DATA_HP, &ROAMER(roamerIndex)->hp);
+    if (ROAMER(roamerIndex)->hp == 0)
+    {
+        u16 maxhp = GetMonData(mon, MON_DATA_MAX_HP);
+        SetMonData(mon, MON_DATA_HP, &maxhp);
+    }
+    else 
+    {
+        SetMonData(mon, MON_DATA_HP, &ROAMER(roamerIndex)->hp);
+    }
     SetMonData(mon, MON_DATA_COOL, &ROAMER(roamerIndex)->cool);
     SetMonData(mon, MON_DATA_BEAUTY, &ROAMER(roamerIndex)->beauty);
     SetMonData(mon, MON_DATA_CUTE, &ROAMER(roamerIndex)->cute);
@@ -315,6 +324,31 @@ void UpdateRoamerHPStatus(struct Pokemon *mon)
 void SetRoamerInactive(u32 roamerIndex)
 {
     ROAMER(roamerIndex)->active = FALSE;
+}
+
+void ResetSleepingRoamer(u32 roamerIndex)
+{
+    if (ROAMER(roamerIndex)->species == SPECIES_ARTICUNO)
+    {
+        FlagClear(FLAG_HIDE_ARTICUNO);
+    }
+    if (ROAMER(roamerIndex)->species == SPECIES_MOLTRES)
+    {
+        FlagClear(FLAG_HIDE_ARTICUNO);
+    }
+}
+
+void ActivateRoamer(u32 roamerIndex)
+{
+    if (gSpecialVar_Unused_0x8014 == 1) // articuno
+    {
+        roamerIndex = 1;
+    }
+    if (gSpecialVar_Unused_0x8014 == 3) // moltres
+    {
+        roamerIndex = 3;
+    }
+    ROAMER(roamerIndex)->active = TRUE;
 }
 
 void GetRoamerLocation(u32 roamerIndex, u8 *mapGroup, u8 *mapNum)

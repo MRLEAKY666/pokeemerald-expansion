@@ -41,8 +41,15 @@ GraniteCave_ArticunosRoom_EventScript_Articuno::
 	waitmovement 0
 	special RemoveCameraObject
 	setvar VAR_UNUSED_0x8014, 1
+	@ goto_if_set FLAG_MET_ARTICUNO, GraniteCave_ArticunosRoom_EventScript_ReAwakenArticuno
 	special InitRoamer
 	setseenmon SPECIES_ARTICUNO
+	@ setflag FLAG_MET_ARTICUNO
+	releaseall
+	end
+
+GraniteCave_ArticunosRoom_EventScript_ReAwakenArticuno::
+	special ActivateRoamer
 	releaseall
 	end
 

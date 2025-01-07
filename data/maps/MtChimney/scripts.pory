@@ -60,8 +60,15 @@ MtChimney_EventScript_Moltres::
 	waitmovement 0
 	special RemoveCameraObject
 	setvar VAR_UNUSED_0x8014, 3
+	@ goto_if_set FLAG_MET_MOLTRES, MtChimney_EventScript_ReAwakenMoltres
 	special InitRoamer
 	setseenmon SPECIES_MOLTRES
+	@ setflag FLAG_MET_MOLTRES
+	releaseall
+	end
+
+MtChimney_EventScript_ReAwakenMoltres::
+	special ActivateRoamer
 	releaseall
 	end
 
