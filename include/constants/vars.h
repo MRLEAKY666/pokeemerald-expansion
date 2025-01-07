@@ -266,9 +266,9 @@
 #define VAR_RIVAL_RAYQUAZA_CALL_STEP_COUNTER             0x40F6
 #define VAR_BIRCH_METEORITE_CALL_STEP_COUNTER                                0x40F7 // Unused Var
 #define VAR_ARTICUNO_INDEX                                0x40F8 // PREVIOUSLY Unused Var
-#define VAR_MOLTRES_INDEX                               0x40F9 // Unused Var
-#define VAR_BEAST_INDEX                                0x40FA // Unused Var
-#define VAR_LATI_INDEX                                0x40FB // Unused Var
+#define VAR_MOLTRES_INDEX                               0x40F9 // PREVIOUSLY Unused Var
+#define VAR_BEAST_SPECIES                                0x40FA // PREVIOUSLY Unused Var
+#define VAR_LATI_INDEX                                0x40FB // PREVIOUSLY Unused Var
 #define VAR_UNUSED_0x40FC                                0x40FC // Unused Var
 #define VAR_UNUSED_0x40FD                                0x40FD // Unused Var
 #define VAR_UNUSED_0x40FE                                0x40FE // Unused Var

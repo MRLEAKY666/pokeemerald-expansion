@@ -46,10 +46,10 @@
 #define FLAG_INBATTLE_WEATHER_CHANGED    0x20 // Unused Flag
 #define FLAG_MET_ARTICUNO    0x21 // PREVIOUSLY Unused Flag
 #define FLAG_MET_MOLTRES    0x22 // PREVIOUSLY Unused Flag
-#define FLAG_UNUSED_0x023    0x23 // Unused Flag
-#define FLAG_UNUSED_0x024    0x24 // Unused Flag
-#define FLAG_UNUSED_0x025    0x25 // Unused Flag
-#define FLAG_UNUSED_0x026    0x26 // Unused Flag
+#define FLAG_CAUGHT_ROAMING_ENTEI    0x23 // PREVIOUSLY Unused Flag
+#define FLAG_CAUGHT_ROAMING_SUICUNE    0x24 // PREVIOUSLY Unused Flag
+#define FLAG_CAUGHT_ROAMING_RAIKOU    0x25 // PREVIOUSLY Unused Flag
+#define FLAG_NO_ACTIVE_BEAST    0x26 // PREVIOUSLY Unused Flag
 #define FLAG_UNUSED_0x027    0x27 // Unused Flag
 #define FLAG_UNUSED_0x028    0x28 // Unused Flag
 #define FLAG_UNUSED_0x029    0x29 // Unused Flag

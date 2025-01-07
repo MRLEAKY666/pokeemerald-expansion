@@ -162,11 +162,20 @@ void InitRoamer(void)
     if (gSpecialVar_Unused_0x8014 == 0)
     {
         if (gSpecialVar_0x8004 == 0) // starter group A
+        {
             TryAddRoamer(SPECIES_ENTEI, 60);
+            VarSet(VAR_BEAST_SPECIES, SPECIES_ENTEI);
+        }
         if (gSpecialVar_0x8004 == 1) // starter group B
+        {
             TryAddRoamer(SPECIES_SUICUNE, 60);
+            VarSet(VAR_BEAST_SPECIES, SPECIES_SUICUNE);
+        }
         if (gSpecialVar_0x8004 == 2) // starter group C
+        {
             TryAddRoamer(SPECIES_RAIKOU, 60);
+            VarSet(VAR_BEAST_SPECIES, SPECIES_RAIKOU);
+        }
     }
     if (gSpecialVar_Unused_0x8014 == 1)
     {
@@ -335,6 +344,32 @@ void ResetSleepingRoamer(u32 roamerIndex)
     if (ROAMER(roamerIndex)->species == SPECIES_MOLTRES)
     {
         FlagClear(FLAG_HIDE_ARTICUNO);
+    }
+    if (ROAMER(roamerIndex)->species == (SPECIES_ENTEI || SPECIES_SUICUNE || SPECIES_RAIKOU))
+    {
+        FlagSet(FLAG_NO_ACTIVE_BEAST);
+    }
+}
+
+void CaughtRoamer(u32 roamerIndex)
+{
+    if (ROAMER(roamerIndex)->species == SPECIES_ENTEI)
+    {
+        VarSet(VAR_BEAST_SPECIES, SPECIES_SUICUNE);
+        FlagSet(FLAG_CAUGHT_ROAMING_ENTEI);
+        FlagSet(FLAG_NO_ACTIVE_BEAST);
+    }
+    if (ROAMER(roamerIndex)->species == SPECIES_SUICUNE)
+    {
+        VarSet(VAR_BEAST_SPECIES, SPECIES_RAIKOU);
+        FlagSet(FLAG_CAUGHT_ROAMING_SUICUNE);
+        FlagSet(FLAG_NO_ACTIVE_BEAST);
+    }
+    if (ROAMER(roamerIndex)->species == SPECIES_RAIKOU)
+    {
+        VarSet(VAR_BEAST_SPECIES, SPECIES_ENTEI);
+        FlagSet(FLAG_CAUGHT_ROAMING_RAIKOU);
+        FlagSet(FLAG_NO_ACTIVE_BEAST);
     }
 }
 

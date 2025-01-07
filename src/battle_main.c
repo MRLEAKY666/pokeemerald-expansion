@@ -5864,6 +5864,10 @@ static void ReturnFromBattleToOverworld(void)
         {
             ResetSleepingRoamer(gEncounteredRoamerIndex);
         }
+        if (gBattleOutcome == B_OUTCOME_CAUGHT)
+        {
+            CaughtRoamer(gEncounteredRoamerIndex);
+        }
     }
 
     m4aSongNumStop(SE_LOW_HEALTH);
