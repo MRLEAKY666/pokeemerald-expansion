@@ -50,8 +50,8 @@
 #define FLAG_CAUGHT_ROAMING_SUICUNE    0x24 // PREVIOUSLY Unused Flag
 #define FLAG_CAUGHT_ROAMING_RAIKOU    0x25 // PREVIOUSLY Unused Flag
 #define FLAG_NO_ACTIVE_BEAST    0x26 // PREVIOUSLY Unused Flag
-#define FLAG_UNUSED_0x027    0x27 // Unused Flag
-#define FLAG_UNUSED_0x028    0x28 // Unused Flag
+#define FLAG_MET_WALLACE_HOUSE    0x27 // PREVIOUSLY Unused Flag
+#define FLAG_ROAMING_BEASTS_CAUGHT    0x28 // PREVIOUSLY Unused Flag
 #define FLAG_UNUSED_0x029    0x29 // Unused Flag
 #define FLAG_UNUSED_0x02A    0x2A // Unused Flag
 #define FLAG_UNUSED_0x02B    0x2B // Unused Flag

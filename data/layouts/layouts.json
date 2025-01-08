@@ -3084,8 +3084,8 @@
     {
       "id": "LAYOUT_SOOTOPOLIS_CITY_HOUSE3",
       "name": "SootopolisCity_House3_Layout",
-      "width": 8,
-      "height": 7,
+      "width": 9,
+      "height": 8,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/SootopolisCity_House3/border.bin",

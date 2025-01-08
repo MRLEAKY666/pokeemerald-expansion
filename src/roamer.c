@@ -345,7 +345,7 @@ void ResetSleepingRoamer(u32 roamerIndex)
     {
         FlagClear(FLAG_HIDE_ARTICUNO);
     }
-    if (ROAMER(roamerIndex)->species == (SPECIES_ENTEI || SPECIES_SUICUNE || SPECIES_RAIKOU))
+    if ((ROAMER(roamerIndex)->species == SPECIES_ENTEI) || (ROAMER(roamerIndex)->species == SPECIES_SUICUNE) || (ROAMER(roamerIndex)->species == SPECIES_RAIKOU))
     {
         FlagSet(FLAG_NO_ACTIVE_BEAST);
     }
@@ -355,21 +355,33 @@ void CaughtRoamer(u32 roamerIndex)
 {
     if (ROAMER(roamerIndex)->species == SPECIES_ENTEI)
     {
-        VarSet(VAR_BEAST_SPECIES, SPECIES_SUICUNE);
+        //VarSet(VAR_BEAST_SPECIES, SPECIES_SUICUNE);
         FlagSet(FLAG_CAUGHT_ROAMING_ENTEI);
         FlagSet(FLAG_NO_ACTIVE_BEAST);
+        if ((FlagGet(FLAG_CAUGHT_ROAMING_ENTEI) == TRUE) && (FlagGet(FLAG_CAUGHT_ROAMING_SUICUNE) == TRUE) && (FlagGet(FLAG_CAUGHT_ROAMING_RAIKOU) == TRUE))
+        {
+            FlagSet(FLAG_ROAMING_BEASTS_CAUGHT);
+        }
     }
     if (ROAMER(roamerIndex)->species == SPECIES_SUICUNE)
     {
-        VarSet(VAR_BEAST_SPECIES, SPECIES_RAIKOU);
+        //VarSet(VAR_BEAST_SPECIES, SPECIES_RAIKOU);
         FlagSet(FLAG_CAUGHT_ROAMING_SUICUNE);
         FlagSet(FLAG_NO_ACTIVE_BEAST);
+        if ((FlagGet(FLAG_CAUGHT_ROAMING_ENTEI) == TRUE) && (FlagGet(FLAG_CAUGHT_ROAMING_SUICUNE) == TRUE) && (FlagGet(FLAG_CAUGHT_ROAMING_RAIKOU) == TRUE))
+        {
+            FlagSet(FLAG_ROAMING_BEASTS_CAUGHT);
+        }
     }
     if (ROAMER(roamerIndex)->species == SPECIES_RAIKOU)
     {
-        VarSet(VAR_BEAST_SPECIES, SPECIES_ENTEI);
+        //VarSet(VAR_BEAST_SPECIES, SPECIES_ENTEI);
         FlagSet(FLAG_CAUGHT_ROAMING_RAIKOU);
         FlagSet(FLAG_NO_ACTIVE_BEAST);
+        if ((FlagGet(FLAG_CAUGHT_ROAMING_ENTEI) == TRUE) && (FlagGet(FLAG_CAUGHT_ROAMING_SUICUNE) == TRUE) && (FlagGet(FLAG_CAUGHT_ROAMING_RAIKOU) == TRUE))
+        {
+            FlagSet(FLAG_ROAMING_BEASTS_CAUGHT);
+        }
     }
 }
 

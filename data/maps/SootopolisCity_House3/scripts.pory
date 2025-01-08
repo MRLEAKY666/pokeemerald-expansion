@@ -2,6 +2,207 @@ raw `
 SootopolisCity_House3_MapScripts::
 	.byte 0
 
+SootopolisCity_House3_EventScript_WallaceThanks::
+	msgbox SootopolisCity_House3_Text_WallaceThanks, MSGBOX_DEFAULT
+	waitmessage
+	setflag FLAG_MET_WALLACE_HOUSE
+	return
+
+SootopolisCity_House3_EventScript_Wallace::
+	lock
+	faceplayer
+	goto_if_set FLAG_RECEIVED_MYSTIC_TICKET, SootopolisCity_House3_EventScript_WallaceMeetAtNavelRock
+	call_if_unset FLAG_MET_WALLACE_HOUSE, SootopolisCity_House3_EventScript_WallaceThanks
+	msgbox SootopolisCity_House3_Text_WallaceSearchingBeasts, MSGBOX_DEFAULT
+	waitmessage
+	goto_if_eq VAR_BEAST_SPECIES, SPECIES_ENTEI, SootopolisCity_House3_EventScript_EnteiSpeech
+	goto_if_eq VAR_BEAST_SPECIES, SPECIES_SUICUNE, SootopolisCity_House3_EventScript_SuicuneSpeech
+	goto_if_eq VAR_BEAST_SPECIES, SPECIES_RAIKOU, SootopolisCity_House3_EventScript_RaikouSpeech
+	msgbox SootopolisCity_House3_Text_AlwaysHunting, MSGBOX_DEFAULT
+	waitmessage
+	release
+	end
+
+SootopolisCity_House3_EventScript_EnteiSpeech::
+	msgbox SootopolisCity_House3_Text_EnteiSpeech, MSGBOX_DEFAULT
+	waitmessage
+	getseenmon SPECIES_ENTEI
+	goto_if_eq VAR_RESULT, TRUE, SootopolisCity_House3_EventScript_SeenEntei
+	return
+
+SootopolisCity_House3_EventScript_SeenEntei::
+	msgbox SootopolisCity_House3_Text_SeenEntei, MSGBOX_DEFAULT
+	waitmessage
+	goto_if_set FLAG_CAUGHT_ROAMING_ENTEI, SootopolisCity_House3_EventScript_CaughtEntei
+	msgbox SootopolisCity_House3_Text_ShowMeEntei, MSGBOX_DEFAULT
+	waitmessage
+	call_if_set FLAG_NO_ACTIVE_BEAST SootopolisCity_House3_EventScript_SpawnNewEntei
+	release
+	end
+
+SootopolisCity_House3_EventScript_CaughtEntei::
+	msgbox SootopolisCity_House3_Text_CaughtEntei, MSGBOX_DEFAULT
+	waitmessage
+	checkspecies SPECIES_ENTEI, NO_PARTY_SCREEN
+	goto_if_eq VAR_RESULT, TRUE, SootopolisCity_House3_EventScript_ShowEntei
+	msgbox SootopolisCity_House3_Text_ShowMeEntei, MSGBOX_DEFAULT
+	waitmessage
+	release
+	end
+
+SootopolisCity_House3_EventScript_ShowEntei::
+	@ checkspecies SPECIES_ENTEI, OPEN_PARTY_SCREEN
+	goto_if_set FLAG_ROAMING_BEASTS_CAUGHT, SootopolisCity_House3_EventScript_WallaceGiveTicketEntei
+	goto_if_eq VAR_RESULT, TRUE, SootopolisCity_House3_EventScript_SpawnFirstSuicune
+	msgbox SootopolisCity_House3_Text_AlwaysHunting, MSGBOX_DEFAULT
+	waitmessage
+	release
+	end
+
+SootopolisCity_House3_EventScript_SpawnFirstEntei::
+	setvar VAR_0x8004, 0
+	setvar VAR_UNUSED_0x8014, 0
+	special InitRoamer
+	clearflag FLAG_NO_ACTIVE_BEAST
+	setvar VAR_BEAST_SPECIES, SPECIES_ENTEI
+	msgbox SootopolisCity_House3_Text_ThatsRaikou, MSGBOX_DEFAULT
+	waitmessage
+	showmonpic SPECIES_ENTEI, 0, 0
+	setseenmon SPECIES_ENTEI
+	msgbox SootopolisCity_House3_Text_IntroEntei, MSGBOX_DEFAULT
+	waitmessage
+	hidemonpic
+	release
+	end
+
+SootopolisCity_House3_EventScript_SpawnNewEntei::
+	setvar VAR_0x8004, 0
+	setvar VAR_UNUSED_0x8014, 0
+	special InitRoamer
+	clearflag FLAG_NO_ACTIVE_BEAST
+	setvar VAR_BEAST_SPECIES, SPECIES_ENTEI
+	return
+
+SootopolisCity_House3_EventScript_SuicuneSpeech::
+	msgbox SootopolisCity_House3_Text_SuicuneSpeech, MSGBOX_DEFAULT
+	waitmessage
+	getseenmon SPECIES_SUICUNE
+	goto_if_eq VAR_RESULT, TRUE, SootopolisCity_House3_EventScript_SeenSuicune
+	return
+
+SootopolisCity_House3_EventScript_SeenSuicune::
+	msgbox SootopolisCity_House3_Text_SeenSuicune, MSGBOX_DEFAULT
+	waitmessage
+	goto_if_set FLAG_CAUGHT_ROAMING_SUICUNE, SootopolisCity_House3_EventScript_CaughtSuicune
+	msgbox SootopolisCity_House3_Text_ShowMeSuicune, MSGBOX_DEFAULT
+	waitmessage
+	call_if_set FLAG_NO_ACTIVE_BEAST SootopolisCity_House3_EventScript_SpawnNewSuicune
+	release
+	end
+
+SootopolisCity_House3_EventScript_CaughtSuicune::
+	msgbox SootopolisCity_House3_Text_CaughtSuicune, MSGBOX_DEFAULT
+	waitmessage
+	checkspecies SPECIES_SUICUNE, NO_PARTY_SCREEN
+	goto_if_eq VAR_RESULT, TRUE, SootopolisCity_House3_EventScript_ShowSuicune
+	msgbox SootopolisCity_House3_Text_ShowMeSuicune, MSGBOX_DEFAULT
+	waitmessage
+	release
+	end
+
+SootopolisCity_House3_EventScript_ShowSuicune::
+	@ checkspecies SPECIES_SUICUNE, OPEN_PARTY_SCREEN
+	goto_if_set FLAG_ROAMING_BEASTS_CAUGHT, SootopolisCity_House3_EventScript_WallaceGiveTicketSuicune
+	goto_if_eq VAR_RESULT, TRUE, SootopolisCity_House3_EventScript_SpawnFirstRaikou
+	msgbox SootopolisCity_House3_Text_AlwaysHunting, MSGBOX_DEFAULT
+	waitmessage
+	release
+	end
+
+SootopolisCity_House3_EventScript_SpawnFirstSuicune::
+	setvar VAR_0x8004, 1
+	setvar VAR_UNUSED_0x8014, 0
+	special InitRoamer
+	clearflag FLAG_NO_ACTIVE_BEAST
+	setvar VAR_BEAST_SPECIES, SPECIES_SUICUNE
+	msgbox SootopolisCity_House3_Text_ThatsEntei, MSGBOX_DEFAULT
+	waitmessage
+	showmonpic SPECIES_SUICUNE, 0, 0
+	setseenmon SPECIES_SUICUNE
+	msgbox SootopolisCity_House3_Text_IntroSuicune, MSGBOX_DEFAULT
+	waitmessage
+	hidemonpic
+	release
+	end
+
+SootopolisCity_House3_EventScript_SpawnNewSuicune::
+	setvar VAR_0x8004, 1
+	setvar VAR_UNUSED_0x8014, 0
+	special InitRoamer
+	clearflag FLAG_NO_ACTIVE_BEAST
+	setvar VAR_BEAST_SPECIES, SPECIES_SUICUNE
+	return
+
+SootopolisCity_House3_EventScript_RaikouSpeech::
+	msgbox SootopolisCity_House3_Text_RaikouSpeech, MSGBOX_DEFAULT
+	waitmessage
+	getseenmon SPECIES_RAIKOU
+	goto_if_eq VAR_RESULT, TRUE, SootopolisCity_House3_EventScript_SeenRaikou
+	return
+
+SootopolisCity_House3_EventScript_SeenRaikou::
+	msgbox SootopolisCity_House3_Text_SeenRaikou, MSGBOX_DEFAULT
+	waitmessage
+	goto_if_set FLAG_CAUGHT_ROAMING_RAIKOU, SootopolisCity_House3_EventScript_CaughtRaikou
+	msgbox SootopolisCity_House3_Text_ShowMeRaikou, MSGBOX_DEFAULT
+	waitmessage
+	call_if_set FLAG_NO_ACTIVE_BEAST SootopolisCity_House3_EventScript_SpawnNewRaikou
+	release
+	end
+
+SootopolisCity_House3_EventScript_CaughtRaikou::
+	msgbox SootopolisCity_House3_Text_CaughtRaikou, MSGBOX_DEFAULT
+	waitmessage
+	checkspecies SPECIES_RAIKOU, NO_PARTY_SCREEN
+	goto_if_eq VAR_RESULT, TRUE, SootopolisCity_House3_EventScript_ShowRaikou
+	msgbox SootopolisCity_House3_Text_ShowMeRaikou, MSGBOX_DEFAULT
+	waitmessage
+	release
+	end
+
+SootopolisCity_House3_EventScript_ShowRaikou::
+	@ checkspecies SPECIES_RAIKOU, OPEN_PARTY_SCREEN
+	goto_if_set FLAG_ROAMING_BEASTS_CAUGHT, SootopolisCity_House3_EventScript_WallaceGiveTicketRaikou
+	goto_if_eq VAR_RESULT, TRUE, SootopolisCity_House3_EventScript_SpawnFirstEntei
+	msgbox SootopolisCity_House3_Text_AlwaysHunting, MSGBOX_DEFAULT
+	waitmessage
+	release
+	end
+
+SootopolisCity_House3_EventScript_SpawnFirstRaikou::
+	setvar VAR_0x8004, 2
+	setvar VAR_UNUSED_0x8014, 0
+	special InitRoamer
+	clearflag FLAG_NO_ACTIVE_BEAST
+	setvar VAR_BEAST_SPECIES, SPECIES_RAIKOU
+	msgbox SootopolisCity_House3_Text_ThatsSuicune, MSGBOX_DEFAULT
+	waitmessage
+	showmonpic SPECIES_RAIKOU, 0, 0
+	setseenmon SPECIES_RAIKOU
+	msgbox SootopolisCity_House3_Text_IntroRaikou, MSGBOX_DEFAULT
+	waitmessage
+	hidemonpic
+	release
+	end
+
+SootopolisCity_House3_EventScript_SpawnNewRaikou::
+	setvar VAR_0x8004, 2
+	setvar VAR_UNUSED_0x8014, 0
+	special InitRoamer
+	clearflag FLAG_NO_ACTIVE_BEAST
+	setvar VAR_BEAST_SPECIES, SPECIES_RAIKOU
+	return
+
 SootopolisCity_House3_EventScript_Woman::
 	lock
 	faceplayer
@@ -19,6 +220,167 @@ SootopolisCity_House3_EventScript_HaveFans::
 SootopolisCity_House3_EventScript_Girl::
 	msgbox SootopolisCity_House3_Text_TrainerFanClubWasWild, MSGBOX_NPC
 	end
+
+SootopolisCity_House3_EventScript_WallaceGiveTicketEntei::
+	msgbox SootopolisCity_House3_Text_WallaceFinalBeastEntei, MSGBOX_DEFAULT
+	waitmessage
+	goto SootopolisCity_House3_EventScript_WallaceGiveTicket
+	end
+
+SootopolisCity_House3_EventScript_WallaceGiveTicketSuicune::
+	msgbox SootopolisCity_House3_Text_WallaceFinalBeastSuicune, MSGBOX_DEFAULT
+	waitmessage
+	goto SootopolisCity_House3_EventScript_WallaceGiveTicket
+	end
+
+SootopolisCity_House3_EventScript_WallaceGiveTicketRaikou::
+	msgbox SootopolisCity_House3_Text_WallaceFinalBeastRaikou, MSGBOX_DEFAULT
+	waitmessage
+	goto SootopolisCity_House3_EventScript_WallaceGiveTicket
+	end
+
+SootopolisCity_House3_EventScript_WallaceGiveTicket::
+	msgbox SootopolisCity_House3_Text_WallaceThreeBeasts, MSGBOX_DEFAULT
+	waitmessage
+	giveitem ITEM_MYSTIC_TICKET
+	setflag FLAG_ENABLE_SHIP_NAVEL_ROCK
+	setflag FLAG_RECEIVED_MYSTIC_TICKET
+	msgbox SootopolisCity_House3_Text_WallaceGiveHoohQuest MSGBOX_DEFAULT
+	waitmessage
+	release
+	end
+
+SootopolisCity_House3_EventScript_WallaceMeetAtNavelRock::
+	msgbox SootopolisCity_House3_Text_WallaceGiveHoohQuest MSGBOX_DEFAULT
+	waitmessage
+	release
+	end
+
+SootopolisCity_House3_Text_ShowMeEntei:
+	.string "If you can show me ENTEI, I'll be\n"
+	.string "indebted to you once more, {PLAYER}.$"
+
+SootopolisCity_House3_Text_ShowMeSuicune:
+	.string "If you can show me SUICUNE, I'll be\n"
+	.string "indebted to you once more, {PLAYER}.$"
+
+SootopolisCity_House3_Text_ShowMeRaikou:
+	.string "If you can show me RAIKOU, I'll be\n"
+	.string "indebted to you once more, {PLAYER}.$"
+
+SootopolisCity_House3_Text_CaughtEntei:
+	.string ". . .\n"
+	.string ". . .\p"
+	.string ". . .\n"
+	.string ". . .\p"
+	.string "You've captured ENTEI?!$"
+
+SootopolisCity_House3_Text_CaughtSuicune:
+	.string ". . .\n"
+	.string ". . .\p"
+	.string ". . .\n"
+	.string ". . .\p"
+	.string "You've captured SUICUNE?!$"
+
+SootopolisCity_House3_Text_CaughtRaikou:
+	.string ". . .\n"
+	.string ". . .\p"
+	.string ". . .\n"
+	.string ". . .\p"
+	.string "You've captured RAIKOU?!$"
+
+SootopolisCity_House3_Text_SeenEntei:
+	.string ". . .\n"
+	.string ". . .\p"
+	.string "Oh! You've seen ENTEI?$"
+
+SootopolisCity_House3_Text_SeenSuicune:
+	.string ". . .\n"
+	.string ". . .\p"
+	.string "Oh! You've seen SUICUNE?$"
+
+SootopolisCity_House3_Text_SeenRaikou:
+	.string ". . .\n"
+	.string ". . .\p"
+	.string "Oh! You've seen RAIKOU?$"
+
+SootopolisCity_House3_Text_EnteiSpeech:
+	.string "Lately there have been rumors of\n"
+	.string "sightings of one such POKéMON.\p"
+	.string "Yes, the POKéMON ENTEI has been\n"
+	.string "seen recently around the HOENN region.$"
+
+SootopolisCity_House3_Text_SuicuneSpeech:
+	.string "Lately there have been rumors of\n"
+	.string "sightings of one such POKéMON.\p"
+	.string "Yes, the POKéMON SUICUNE has been\n"
+	.string "seen recently around the HOENN region.$"
+
+SootopolisCity_House3_Text_RaikouSpeech:
+	.string "Lately there have been rumors of\n"
+	.string "sightings of one such POKéMON.\p"
+	.string "Yes, the POKéMON RAIKOU has been\n"
+	.string "seen recently around the HOENN region.$"
+
+SootopolisCity_House3_Text_ThatsEntei:
+	.string "That POKéMON . . .\p"
+	.string "That's ENTEI!\p"
+	.string "It's incredible to see a POKéMON as\n"
+	.string "magnificent as this up close.\p"
+	.string "Maybe someday I will be able to see\n"
+	.string "the other legendary beasts as well.\p"
+	.string "I've recently heard news of SUICUNE\n"
+	.string "spotted roaming around HOENN as well...$"
+
+SootopolisCity_House3_Text_IntroSuicune:
+	.string "SUICUNE is the Aurora POKéMON.\p"
+	.string "If you can capture SUICUNE and show it\n" 
+	.string "to me, I'll be indebted to you once more.$"
+
+SootopolisCity_House3_Text_ThatsSuicune:
+	.string "That POKéMON . . .\p"
+	.string "That's SUICUNE!\p"
+	.string "It's incredible to see a POKéMON as\n"
+	.string "magnificent as this up close.\p"
+	.string "Maybe someday I will be able to see\n"
+	.string "the other legendary beasts as well.\p"
+	.string "I've recently heard reports that RAIKOU\n"
+	.string "has been spotted around HOENN as well...$"
+
+SootopolisCity_House3_Text_IntroRaikou:
+	.string "RAIKOU is the Thunder POKéMON.\p"
+	.string "If you can capture RAIKOU and show it\n" 
+	.string "to me, I'll be indebted to you once more.$"
+
+SootopolisCity_House3_Text_ThatsRaikou:
+	.string "That POKéMON . . .\p"
+	.string "That's RAIKOU!\p"
+	.string "It's incredible to see a POKéMON as\n"
+	.string "magnificent as this up close.\p"
+	.string "Maybe someday I will be able to see\n"
+	.string "the other legendary beasts as well.\p"
+	.string "I've recently heard reports that ENTEI\n"
+	.string "has been spotted around HOENN as well...$"
+
+SootopolisCity_House3_Text_IntroEntei:
+	.string "ENTEI is the Volcano POKéMON.\p"
+	.string "If you can capture ENTEI and show it\n" 
+	.string "to me, I'll be indebted to you once more.$"
+
+SootopolisCity_House3_Text_WallaceThanks:
+	.string "WALLACE: Thanks for your help with\n"
+	.string "that incident. Your help finding\l"
+	.string "RAYQUAZA was invaluable.$"
+
+SootopolisCity_House3_Text_WallaceSearchingBeasts:
+	.string "WALLACE: I'm considered an expert\n"
+	.string "on the mythology of super-ancient\l"
+	.string "POKéMON because I've spent my life\l"
+	.string "researching a POKéMON called SUICUNE.\p"
+	.string "Through my research and my travels,\n"
+	.string "I've learned quite a bit about the\l"
+	.string "myths surrounding the super-ancient\l"
+	.string "POKéMON called the legendary beasts.$"
 
 SootopolisCity_House3_Text_JuanHasManyFansDoYou:
 	.string "You're a POKéMON TRAINER, aren't you?\p"
@@ -40,5 +402,56 @@ SootopolisCity_House3_Text_TrainerFanClubWasWild:
 	.string "outside of HOENN.\p"
 	.string "It was really wild when I went to the\n"
 	.string "TRAINER FAN CLUB in LILYCOVE.$"
+
+SootopolisCity_House3_Text_AlwaysHunting:
+	.string "I'm always hunting for more information\n"
+	.string "regarding the legendary beasts ENTEI,\l"
+	.string "SUICUNE, and RAIKOU.\p"
+	.string "If you see one, please come back and\n"
+	.string "let me know.$"
+
+SootopolisCity_House3_Text_WallaceFinalBeastEntei:
+	.string "That POKéMON . . .\p"
+	.string "That's ENTEI!\p"
+	.string "It's incredible to see a POKéMON as\n"
+	.string "magnificent as this up close.$"
+
+SootopolisCity_House3_Text_WallaceFinalBeastSuicune:
+	.string "That POKéMON . . .\p"
+	.string "That's SUICUNE!\p"
+	.string "It's incredible to see a POKéMON as\n"
+	.string "magnificent as this up close.$"
+
+SootopolisCity_House3_Text_WallaceFinalBeastRaikou:
+	.string "That POKéMON . . .\p"
+	.string "That's RAIKOU!\p"
+	.string "It's incredible to see a POKéMON as\n"
+	.string "magnificent as this up close.$"
+
+SootopolisCity_House3_Text_WallaceThreeBeasts:
+	.string ". . .\n"
+	.string ". . .\p"
+	.string "{PLAYER} . . .\p"
+	.string "Thanks to you, I've been able to fulfill\n"
+	.string "my life's dream of seeing all three of\l"
+	.string "the legendary beast POKéMON . . .\p"
+	.string ". . .\n"
+	.string ". . .\p"
+	.string "Ultimately, though I dedicated my life\n"
+	.string "to finding SUICUNE, it was you alone,\l"
+	.string "{PLAYER} . . .\p"
+	.string "Yes, I, WALLACE, had nothing to do with\n"
+	.string "your incredible discovery . . .\p"
+	.string "{PLAYER},\n"
+	.string "I'd like you to take this.$"
+
+SootopolisCity_House3_Text_WallaceGiveHoohQuest:
+	.string "WALLACE: That ticket will allow you to\n"
+	.string "travel to NAVEL ROCK\p"
+	.string "I want you to meet me there with the\n"
+	.string "three legendary beast POKéMON you've\l"
+	.string "caught.\p"
+	.string "By assembling them all in that place...\n"
+	.string "Can we summon HO-OH?$" 
 
 `
