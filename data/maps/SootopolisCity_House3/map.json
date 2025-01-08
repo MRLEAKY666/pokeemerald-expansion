@@ -25,7 +25,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SootopolisCity_House3_EventScript_Wallace",
-      "flag": "0"
+      "flag": "FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE_HOUSE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(LUDICOLO)",
@@ -38,12 +38,12 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE_HOUSE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(WALREIN)",
-      "x": 5,
-      "y": 2,
+      "x": 8,
+      "y": 3,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -51,7 +51,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE_HOUSE"
     }
   ],
   "warp_events": [
