@@ -655,4 +655,7 @@ extern const u8 EventScript_CancelMessageBox[];
 extern const u8 Common_EventScript_ShowPokemonCenterSign[];
 extern const u8 Common_EventScript_ShowPokemartSign[];
 
+//trainer sight script
+extern const u8 EventScript_ObjectApproachPlayer[];
+
 #endif // GUARD_EVENT_SCRIPTS_H
