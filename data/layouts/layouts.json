@@ -4460,6 +4460,16 @@
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/FortreeWoods_House1/border.bin",
       "blockdata_filepath": "data/layouts/FortreeWoods_House1/map.bin"
+    },
+    {
+      "id": "LAYOUT_KIRI_KIRI_MOUNTAIN",
+      "name": "KiriKiriMountain_Layout",
+      "width": 40,
+      "height": 120,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Fortree",
+      "border_filepath": "data/layouts/KiriKiriMountain/border.bin",
+      "blockdata_filepath": "data/layouts/KiriKiriMountain/map.bin"
     }
   ]
 }

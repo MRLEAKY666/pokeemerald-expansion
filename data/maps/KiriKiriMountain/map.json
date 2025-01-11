@@ -1,0 +1,61 @@
+{
+  "id": "MAP_KIRI_KIRI_MOUNTAIN",
+  "name": "KiriKiriMountain",
+  "layout": "LAYOUT_KIRI_KIRI_MOUNTAIN",
+  "music": "MUS_RG_SEVII_ROUTE",
+  "region_map_section": "MAPSEC_KIRIKIRI_MOUNTAIN",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_ROUTE120",
+      "offset": -20,
+      "direction": "right"
+    },
+    {
+      "map": "MAP_FORTREE_CITY",
+      "offset": 0,
+      "direction": "up"
+    },
+    {
+      "map": "MAP_ROUTE119",
+      "offset": -20,
+      "direction": "left"
+    },
+    {
+      "map": "MAP_ROUTE123",
+      "offset": 0,
+      "direction": "down"
+    }
+  ],
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SNORLAX)",
+      "x": 12,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 5,
+      "movement_range_y": 5,
+      "trainer_type": "FLAG_KIRIKIRI_MOUNTAIN_SNORLAX",
+      "trainer_sight_or_berry_tree_id": "5",
+      "script": "KiriKiriMountain_EventScript_Snorlax",
+      "flag": "FLAG_KIRIKIRI_MOUNTAIN_SNORLAX"
+    }
+  ],
+  "warp_events": [
+
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

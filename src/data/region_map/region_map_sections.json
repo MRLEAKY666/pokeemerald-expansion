@@ -1719,6 +1719,14 @@
       "y": 14,
       "width": 1,
       "height": 1
+    },
+    {
+      "map_section": "MAPSEC_KIRIKIRI_MOUNTAIN",
+      "name": "KIRIKIRI MOUNTAIN",
+      "x": 12,
+      "y": 1,
+      "width": 1,
+      "height": 5
     }
   ]
 }

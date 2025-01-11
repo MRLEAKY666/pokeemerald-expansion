@@ -1216,3 +1216,5 @@ Common_EventScript_ExitSafeArea::
 	.include "data/maps/GraniteCave_ArticunosRoom/scripts.inc"
 
 	.include "data/maps/FortreeWoods_House1/scripts.inc"
+
+	.include "data/maps/KiriKiriMountain/scripts.inc"

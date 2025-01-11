@@ -216,7 +216,8 @@
 #define MAPSEC_TRAINER_HILL                 0xD4
 #define MAPSEC_FORTREE_WOODS                0xD5
 #define MAPSEC_GRANITE_COVE                 0xD6
-#define MAPSEC_NONE                         0xD7
+#define MAPSEC_KIRIKIRI_MOUNTAIN            0xD7
+#define MAPSEC_NONE                         0xD8
 
 #define METLOC_SPECIAL_EGG                  0xFD
 #define METLOC_IN_GAME_TRADE                0xFE

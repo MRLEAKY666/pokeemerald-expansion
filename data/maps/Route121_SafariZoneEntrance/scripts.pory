@@ -1,6 +1,7 @@
 raw `
 Route121_SafariZoneEntrance_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route121_SafariZoneEntrance_OnFrame
+	map_script MAP_SCRIPT_ON_TRANSITION Route121_SafariZoneEntrance_OnTransition
 	.byte 0
 
 Route121_SafariZoneEntrance_OnTransition:
