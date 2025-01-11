@@ -10,9 +10,10 @@ KiriKiriMountain_OnTransition:
 KiriKiriMountain_EventScript_Snorlax::
 	lock
 	faceplayer
+	waitse
 	playmoncry SPECIES_SNORLAX, CRY_MODE_ENCOUNTER
 	msgbox KiriKiriMountain_Text_Snorlax, MSGBOX_DEFAULT
-	delay 40
+	delay 10
 	waitmoncry
 	setwildbattle SPECIES_SNORLAX, 60
 	dowildbattle
