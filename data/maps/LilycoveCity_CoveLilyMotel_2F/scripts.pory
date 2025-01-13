@@ -40,6 +40,26 @@ LilycoveCity_CoveLilyMotel_2F_EventScript_GraphicArtist::
 	msgbox LilycoveCity_CoveLilyMotel_2F_Text_ImTheGraphicArtist, MSGBOX_NPC
 	end
 
+LilycoveCity_CoveLilyMotel_2F_EventScript_ProfOak::
+	lock
+	faceplayer
+	call_if_set FLAG_MET_PROF_OAK, LilycoveCity_CoveLilyMotel_2F_EventScript_MetProfOak
+	call_if_unset FLAG_MET_PROF_OAK, LilycoveCity_CoveLilyMotel_2F_EventScript_MeetProfOak
+	waitmessage
+	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex
+	end
+
+LilycoveCity_CoveLilyMotel_2F_EventScript_MeetProfOak::
+	setflag FLAG_MET_PROF_OAK
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_MeetProfOak, MSGBOX_DEFAULT
+	waitmessage
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_APokedex, MSGBOX_DEFAULT
+	return
+
+LilycoveCity_CoveLilyMotel_2F_EventScript_MetProfOak::
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_MetProfOak, MSGBOX_DEFAULT
+	return
+
 LilycoveCity_CoveLilyMotel_2F_EventScript_FatMan::
 	msgbox LilycoveCity_CoveLilyMotel_2F_Text_GirlsAreCute, MSGBOX_NPC
 	end
@@ -135,4 +155,325 @@ LilycoveCity_CoveLilyMotel_2F_Text_ContestsDoTakeStrategy:
 	.string "Devising CONTEST strategies is one way\n"
 	.string "of becoming a better TRAINER, I'd say.$"
 
+LilycoveCity_CoveLilyMotel_2F_Text_MeetProfOak:
+	.string "PROF. OAK: Ah, hello. I am the\n"
+	.string "POKéMON Professor, PROF. OAK.\p"
+	.string "And you are?\p"
+	.string "… … … … …\p"
+	.string "{PLAYER}! Excellent!$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_APokedex:
+	.string "… … … … …\p"
+	.string "What have you got there?\n"
+	.string "A POKéDEX?\p"
+	.string "I'm very familiar with POKéDEX\n"
+	.string "technology.\p"
+	.string "Mind if I take a look at yours?$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_MetProfOak:
+	.string "PROF: OAK: Ah, {PLAYER}.\n"
+	.string "Still working on that POKéDEX?\p"
+	.string "Mind if I take a look?$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_SeenArticuno:
+	.string "… … … … …\p"
+	.string "Remarkable!\n"
+	.string "You've seen ARTICUNO?$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_CaughtArticuno:
+	.string "… … … … …\p"
+	.string "And you've actually\n"
+	.string "captured ARTICUNO?$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_AlsoCaughtArticuno:
+	.string "You've also captured\n"
+	.string "ARTICUNO?\p"
+	.string "… … … … …\p"
+	.string "Incredible!$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_SeenZapdos:
+	.string "… … … … …\p"
+	.string "Remarkable!\n"
+	.string "You've seen ZAPDOS?$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_CaughtZapdos:
+	.string "… … … … …\p"
+	.string "And you've actually\n"
+	.string "captured ZAPDOS?$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_AlsoCaughtZapdos:
+	.string "You've also captured\n"
+	.string "ZAPDOS?\p"
+	.string "… … … … …\p"
+	.string "Incredible!$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_SeenMoltres:
+	.string "… … … … …\p"
+	.string "Remarkable!\n"
+	.string "You've seen MOLTRES?$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_CaughtMoltres:
+	.string "… … … … …\p"
+	.string "And you've actually\n"
+	.string "captured MOLTRES?$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_AlsoCaughtMoltres:
+	.string "You've also captured\n"
+	.string "MOLTRES?\p"
+	.string "… … … … …\p"
+	.string "Incredible!$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_EvenCaughtMoltres:
+	.string "You've even\n"
+	.string "captured MOLTRES!?$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_SeenArticunoZapdos:
+	.string "… … … … …\p"
+	.string "Remarkable!\n"
+	.string "You've seen ARTICUNO?\p"
+	.string "You've also seen ZAPDOS!?$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_SeenArticunoMoltres:
+	.string "… … … … …\p"
+	.string "Remarkable!\n"
+	.string "You've seen ARTICUNO?\p"
+	.string "You've also seen MOLTRES!?$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_SeenZapdosMoltres:
+	.string "… … … … …\p"
+	.string "Remarkable!\n"
+	.string "You've seen ZAPDOS?\p"
+	.string "You've also seen MOLTRES!?$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_SeenAllBirds:
+	.string "… … … … …\p"
+	.string "Remarkable!\n"
+	.string "You've seen ARTICUNO?\p"
+	.string "…And You've seen ZAPDOS?\p"
+	.string "You've also seen MOLTRES!?$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds:
+	.string "I'm visiting the HOENN region\n"
+	.string "to study the legendary bird POKéMON:\l"
+	.string "ARTICUNO, ZAPDOS, and MOLTRES.\p"
+	.string "If you can capture them all and\n"
+	.string "show me your POKéDEX, it would\l"
+	.string "help my research immensely.$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_NavelRock:
+	.string "{PLAYER}, my research, along\n"
+	.string "with the POKéDEX data you've\l"
+	.string "shown me . . .\p"
+	.string "Yes, it strongly indicates that\n"
+	.string "NAVEL ROCK is an important\l"
+	.string "location for these POKéMON.$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_TakeThisTicket:
+	.string "Take this to the ferry port,\n"
+	.string "and show it to the attendant$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_GiveMysticTicket:
+	.string "PROF OAK: That ticket will allow\n"
+	.string "you to travel to NAVEL ROCK.$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_MeetMeThere:
+	.string "Meet me at NAVEL ROCK.\p"
+	.string "We'll see if we can't make yet\n"
+	.string "another groundbreaking discovery!$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_VisitingHoenn:
+	.string "Keep up the good work, {PLAYER}.\p"
+	.string "I came to HOENN because I\n"
+	.string "heard that some rare bird\l"
+	.string "POKéMON were roosting here.\p"
+	.string "Come back  and show me if you\n"
+	.string "find any POKéMON like that.$"
+
 `
+script LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex {
+	getseenmon(SPECIES_ARTICUNO)
+	copyvar(VAR_TEMP_0, VAR_RESULT)
+	getseenmon(SPECIES_ZAPDOS)
+	copyvar(VAR_TEMP_1, VAR_RESULT)
+	getseenmon(SPECIES_MOLTRES)
+	copyvar(VAR_TEMP_2, VAR_RESULT)
+	if ((var(VAR_TEMP_0) == TRUE) && (var(VAR_TEMP_1) == FALSE) && (var(VAR_TEMP_2) == FALSE)) {
+		msgbox(LilycoveCity_CoveLilyMotel_2F_Text_SeenArticuno)
+		waitmessage
+		getcaughtmon(SPECIES_ARTICUNO)
+		if (var(VAR_RESULT)) {
+			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_CaughtArticuno)
+			waitmessage
+		}
+	}
+	elif ((var(VAR_TEMP_0) == FALSE) && (var(VAR_TEMP_1) == TRUE) && (var(VAR_TEMP_2) == FALSE)) {
+		msgbox(LilycoveCity_CoveLilyMotel_2F_Text_SeenZapdos)
+		waitmessage
+		getcaughtmon(SPECIES_ZAPDOS)
+		if (var(VAR_RESULT)) {
+			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_CaughtZapdos)
+			waitmessage
+		}
+	}
+	elif ((var(VAR_TEMP_0) == FALSE) && (var(VAR_TEMP_1) == FALSE) && (var(VAR_TEMP_2) == TRUE)) {
+		msgbox(LilycoveCity_CoveLilyMotel_2F_Text_SeenMoltres)
+		waitmessage
+		getcaughtmon(SPECIES_MOLTRES)
+		if (var(VAR_RESULT)) {
+			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_CaughtMoltres)
+			waitmessage
+		}
+	}
+	elif ((var(VAR_TEMP_0) == TRUE) && (var(VAR_TEMP_1) == TRUE) && (var(VAR_TEMP_2) == FALSE)) {
+		msgbox(LilycoveCity_CoveLilyMotel_2F_Text_SeenArticunoZapdos)
+		waitmessage
+		getcaughtmon(SPECIES_ARTICUNO)
+		if (var(VAR_RESULT)) {
+			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_CaughtArticuno)
+			waitmessage
+			getcaughtmon(SPECIES_ZAPDOS)
+			if (var(VAR_RESULT)) {
+				msgbox(LilycoveCity_CoveLilyMotel_2F_Text_AlsoCaughtZapdos)
+				waitmessage
+			}
+			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds)
+			waitmessage
+			release
+			end
+		}
+		getcaughtmon(SPECIES_ZAPDOS)
+		if (var(VAR_RESULT)) {
+			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_CaughtZapdos)
+			waitmessage
+		}
+	}
+	elif ((var(VAR_TEMP_0) == TRUE) && (var(VAR_TEMP_1) == FALSE) && (var(VAR_TEMP_2) == TRUE)) {
+		msgbox(LilycoveCity_CoveLilyMotel_2F_Text_SeenArticunoMoltres)
+		waitmessage
+		getcaughtmon(SPECIES_ARTICUNO)
+		if (var(VAR_RESULT)) {
+			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_CaughtArticuno)
+			waitmessage
+			getcaughtmon(SPECIES_MOLTRES)
+			if (var(VAR_RESULT)) {
+				msgbox(LilycoveCity_CoveLilyMotel_2F_Text_AlsoCaughtMoltres)
+				waitmessage
+			}
+			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds)
+			waitmessage
+			release
+			end
+		}
+		getcaughtmon(SPECIES_MOLTRES)
+		if (var(VAR_RESULT)) {
+			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_CaughtMoltres)
+			waitmessage
+		}
+	}
+	elif ((var(VAR_TEMP_0) == FALSE) && (var(VAR_TEMP_1) == TRUE) && (var(VAR_TEMP_2) == TRUE)) {
+		msgbox(LilycoveCity_CoveLilyMotel_2F_Text_SeenZapdosMoltres)
+		waitmessage
+		getcaughtmon(SPECIES_ZAPDOS)
+		if (var(VAR_RESULT)) {
+			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_CaughtZapdos)
+			waitmessage
+			getcaughtmon(SPECIES_MOLTRES)
+			if (var(VAR_RESULT)) {
+				msgbox(LilycoveCity_CoveLilyMotel_2F_Text_AlsoCaughtMoltres)
+				waitmessage
+			}
+			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds)
+			waitmessage
+			release
+			end
+		}
+		getcaughtmon(SPECIES_MOLTRES)
+		if (var(VAR_RESULT)) {
+			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_CaughtMoltres)
+			waitmessage
+		}
+	}
+	elif ((var(VAR_TEMP_0) == TRUE) && (var(VAR_TEMP_1) == TRUE) && (var(VAR_TEMP_2) == TRUE)) {
+		msgbox(LilycoveCity_CoveLilyMotel_2F_Text_SeenAllBirds)
+		waitmessage
+		getcaughtmon(SPECIES_ARTICUNO)
+		if (var(VAR_RESULT)) {
+			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_CaughtArticuno)
+			waitmessage
+			getcaughtmon(SPECIES_ZAPDOS)
+			if (var(VAR_RESULT)) {
+				msgbox(LilycoveCity_CoveLilyMotel_2F_Text_AlsoCaughtZapdos)
+				waitmessage
+				getcaughtmon(SPECIES_MOLTRES)
+				if (var(VAR_RESULT)) {
+					msgbox(LilycoveCity_CoveLilyMotel_2F_Text_EvenCaughtMoltres)
+					waitmessage
+					msgbox(LilycoveCity_CoveLilyMotel_2F_Text_NavelRock)
+					waitmessage
+					if (!flag(FLAG_RECEIVED_MYSTIC_TICKET)) {
+						msgbox(LilycoveCity_CoveLilyMotel_2F_Text_TakeThisTicket)
+						waitmessage
+						giveitem(ITEM_MYSTIC_TICKET)
+						setflag(FLAG_ENABLE_SHIP_NAVEL_ROCK)
+						setflag(FLAG_RECEIVED_MYSTIC_TICKET)
+						msgbox(LilycoveCity_CoveLilyMotel_2F_Text_GiveMysticTicket)
+						waitmessage
+					}
+					msgbox(LilycoveCity_CoveLilyMotel_2F_Text_MeetMeThere)
+					release
+					end
+				}
+				msgbox(LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds)
+				waitmessage
+				release
+				end
+			}
+			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds)
+			waitmessage
+			release
+			end
+		}
+		getcaughtmon(SPECIES_ZAPDOS)
+		if (var(VAR_RESULT)) {
+			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_CaughtZapdos)
+			waitmessage
+			getcaughtmon(SPECIES_MOLTRES)
+			if (var(VAR_RESULT)) {
+				msgbox(LilycoveCity_CoveLilyMotel_2F_Text_AlsoCaughtMoltres)
+				waitmessage
+				msgbox(LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds)
+				waitmessage
+				release
+				end
+			}
+			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds)
+			waitmessage
+			release
+			end
+		}
+		getcaughtmon(SPECIES_MOLTRES)
+		if (var(VAR_RESULT)) {
+			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_CaughtMoltres)
+			waitmessage
+			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds)
+			waitmessage
+			release
+			end
+		}
+		msgbox(LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds)
+		waitmessage
+		release
+		end
+		
+	}
+	else {
+		msgbox(LilycoveCity_CoveLilyMotel_2F_Text_VisitingHoenn)
+		waitmessage
+		release
+		end
+	}
+	msgbox(LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds)
+	waitmessage
+	release
+	end
+}

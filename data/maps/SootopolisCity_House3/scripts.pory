@@ -11,7 +11,7 @@ SootopolisCity_House3_EventScript_WallaceThanks::
 SootopolisCity_House3_EventScript_Wallace::
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_MYSTIC_TICKET, SootopolisCity_House3_EventScript_WallaceMeetAtNavelRock
+	goto_if_eq VAR_BEAST_SPECIES, SPECIES_HO_OH, SootopolisCity_House3_EventScript_WallaceMeetAtNavelRock
 	call_if_unset FLAG_MET_WALLACE_HOUSE, SootopolisCity_House3_EventScript_WallaceThanks
 	msgbox SootopolisCity_House3_Text_WallaceSearchingBeasts, MSGBOX_DEFAULT
 	waitmessage
@@ -224,19 +224,31 @@ SootopolisCity_House3_EventScript_Girl::
 SootopolisCity_House3_EventScript_WallaceGiveTicketEntei::
 	msgbox SootopolisCity_House3_Text_WallaceFinalBeastEntei, MSGBOX_DEFAULT
 	waitmessage
-	goto SootopolisCity_House3_EventScript_WallaceGiveTicket
+	goto_if_unset FLAG_RECEIVED_MYSTIC_TICKET, SootopolisCity_House3_EventScript_WallaceGiveTicket
+	msgbox SootopolisCity_House3_Text_WallaceGiveHoohQuest2 MSGBOX_DEFAULT
+	waitmessage
+	setvar VAR_BEAST_SPECIES, SPECIES_HO_OH
+	release
 	end
 
 SootopolisCity_House3_EventScript_WallaceGiveTicketSuicune::
 	msgbox SootopolisCity_House3_Text_WallaceFinalBeastSuicune, MSGBOX_DEFAULT
 	waitmessage
-	goto SootopolisCity_House3_EventScript_WallaceGiveTicket
+	goto_if_unset FLAG_RECEIVED_MYSTIC_TICKET, SootopolisCity_House3_EventScript_WallaceGiveTicket
+	msgbox SootopolisCity_House3_Text_WallaceGiveHoohQuest2 MSGBOX_DEFAULT
+	waitmessage
+	setvar VAR_BEAST_SPECIES, SPECIES_HO_OH
+	release
 	end
 
 SootopolisCity_House3_EventScript_WallaceGiveTicketRaikou::
 	msgbox SootopolisCity_House3_Text_WallaceFinalBeastRaikou, MSGBOX_DEFAULT
 	waitmessage
-	goto SootopolisCity_House3_EventScript_WallaceGiveTicket
+	goto_if_unset FLAG_RECEIVED_MYSTIC_TICKET, SootopolisCity_House3_EventScript_WallaceGiveTicket
+	msgbox SootopolisCity_House3_Text_WallaceGiveHoohQuest2 MSGBOX_DEFAULT
+	waitmessage
+	setvar VAR_BEAST_SPECIES, SPECIES_HO_OH
+	release
 	end
 
 SootopolisCity_House3_EventScript_WallaceGiveTicket::
@@ -245,6 +257,7 @@ SootopolisCity_House3_EventScript_WallaceGiveTicket::
 	giveitem ITEM_MYSTIC_TICKET
 	setflag FLAG_ENABLE_SHIP_NAVEL_ROCK
 	setflag FLAG_RECEIVED_MYSTIC_TICKET
+	setvar VAR_BEAST_SPECIES, SPECIES_HO_OH
 	msgbox SootopolisCity_House3_Text_WallaceGiveHoohQuest MSGBOX_DEFAULT
 	waitmessage
 	release
@@ -330,7 +343,7 @@ SootopolisCity_House3_Text_ThatsEntei:
 	.string "Maybe someday I will be able to see\n"
 	.string "the other legendary beasts as well.\p"
 	.string "I've recently heard news of SUICUNE\n"
-	.string "spotted roaming around HOENN as well...$"
+	.string "roaming around HOENN as well...$"
 
 SootopolisCity_House3_Text_IntroSuicune:
 	.string "SUICUNE is the Aurora POKéMON.\p"
@@ -441,16 +454,23 @@ SootopolisCity_House3_Text_WallaceThreeBeasts:
 	.string "to finding SUICUNE, it was you alone,\l"
 	.string "{PLAYER} . . .\p"
 	.string "Yes, I, WALLACE, had nothing to do with\n"
-	.string "your incredible discovery . . .\p"
+	.string "your dazzling discovery . . .\p"
 	.string "{PLAYER},\n"
 	.string "I'd like you to take this.$"
 
 SootopolisCity_House3_Text_WallaceGiveHoohQuest:
-	.string "WALLACE: That ticket will allow you to\n"
-	.string "travel to NAVEL ROCK\p"
+	.string "WALLACE: With the MYSTIC TICKET\n"
+	.string "you can travel to NAVEL ROCK.\p"
 	.string "I want you to meet me there with the\n"
 	.string "three legendary beast POKéMON you've\l"
 	.string "caught.\p"
+	.string "By assembling them all in that place...\n"
+	.string "Can we summon HO-OH?$" 
+
+SootopolisCity_House3_Text_WallaceGiveHoohQuest2:
+	.string "{PLAYER} . . .\p"
+	.string "I want you to meet me at NAVEL ROCK with\n"
+	.string "the three legendary beast POKéMON.\p"
 	.string "By assembling them all in that place...\n"
 	.string "Can we summon HO-OH?$" 
 

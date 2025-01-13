@@ -25,7 +25,7 @@ SootopolisCity_House3_EventScript_Wallace::
 # 13 "data//maps/SootopolisCity_House3/scripts.pory"
 	faceplayer
 # 14 "data//maps/SootopolisCity_House3/scripts.pory"
-	goto_if_set FLAG_RECEIVED_MYSTIC_TICKET, SootopolisCity_House3_EventScript_WallaceMeetAtNavelRock
+	goto_if_eq VAR_BEAST_SPECIES, SPECIES_HO_OH, SootopolisCity_House3_EventScript_WallaceMeetAtNavelRock
 # 15 "data//maps/SootopolisCity_House3/scripts.pory"
 	call_if_unset FLAG_MET_WALLACE_HOUSE, SootopolisCity_House3_EventScript_WallaceThanks
 # 16 "data//maps/SootopolisCity_House3/scripts.pory"
@@ -451,460 +451,500 @@ SootopolisCity_House3_EventScript_WallaceGiveTicketEntei::
 # 226 "data//maps/SootopolisCity_House3/scripts.pory"
 	waitmessage
 # 227 "data//maps/SootopolisCity_House3/scripts.pory"
-	goto SootopolisCity_House3_EventScript_WallaceGiveTicket
+	goto_if_unset FLAG_RECEIVED_MYSTIC_TICKET, SootopolisCity_House3_EventScript_WallaceGiveTicket
 # 228 "data//maps/SootopolisCity_House3/scripts.pory"
-	end
+	msgbox SootopolisCity_House3_Text_WallaceGiveHoohQuest2 MSGBOX_DEFAULT
 # 229 "data//maps/SootopolisCity_House3/scripts.pory"
-
+	waitmessage
 # 230 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_EventScript_WallaceGiveTicketSuicune::
+	setvar VAR_BEAST_SPECIES, SPECIES_HO_OH
 # 231 "data//maps/SootopolisCity_House3/scripts.pory"
-	msgbox SootopolisCity_House3_Text_WallaceFinalBeastSuicune, MSGBOX_DEFAULT
+	release
 # 232 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
+	end
 # 233 "data//maps/SootopolisCity_House3/scripts.pory"
-	goto SootopolisCity_House3_EventScript_WallaceGiveTicket
+
 # 234 "data//maps/SootopolisCity_House3/scripts.pory"
-	end
+SootopolisCity_House3_EventScript_WallaceGiveTicketSuicune::
 # 235 "data//maps/SootopolisCity_House3/scripts.pory"
-
+	msgbox SootopolisCity_House3_Text_WallaceFinalBeastSuicune, MSGBOX_DEFAULT
 # 236 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_EventScript_WallaceGiveTicketRaikou::
+	waitmessage
 # 237 "data//maps/SootopolisCity_House3/scripts.pory"
-	msgbox SootopolisCity_House3_Text_WallaceFinalBeastRaikou, MSGBOX_DEFAULT
+	goto_if_unset FLAG_RECEIVED_MYSTIC_TICKET, SootopolisCity_House3_EventScript_WallaceGiveTicket
 # 238 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
+	msgbox SootopolisCity_House3_Text_WallaceGiveHoohQuest2 MSGBOX_DEFAULT
 # 239 "data//maps/SootopolisCity_House3/scripts.pory"
-	goto SootopolisCity_House3_EventScript_WallaceGiveTicket
-# 240 "data//maps/SootopolisCity_House3/scripts.pory"
-	end
-# 241 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 242 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_EventScript_WallaceGiveTicket::
-# 243 "data//maps/SootopolisCity_House3/scripts.pory"
-	msgbox SootopolisCity_House3_Text_WallaceThreeBeasts, MSGBOX_DEFAULT
-# 244 "data//maps/SootopolisCity_House3/scripts.pory"
 	waitmessage
+# 240 "data//maps/SootopolisCity_House3/scripts.pory"
+	setvar VAR_BEAST_SPECIES, SPECIES_HO_OH
+# 241 "data//maps/SootopolisCity_House3/scripts.pory"
+	release
+# 242 "data//maps/SootopolisCity_House3/scripts.pory"
+	end
+# 243 "data//maps/SootopolisCity_House3/scripts.pory"
+
+# 244 "data//maps/SootopolisCity_House3/scripts.pory"
+SootopolisCity_House3_EventScript_WallaceGiveTicketRaikou::
 # 245 "data//maps/SootopolisCity_House3/scripts.pory"
-	giveitem ITEM_MYSTIC_TICKET
+	msgbox SootopolisCity_House3_Text_WallaceFinalBeastRaikou, MSGBOX_DEFAULT
 # 246 "data//maps/SootopolisCity_House3/scripts.pory"
-	setflag FLAG_ENABLE_SHIP_NAVEL_ROCK
+	waitmessage
 # 247 "data//maps/SootopolisCity_House3/scripts.pory"
-	setflag FLAG_RECEIVED_MYSTIC_TICKET
+	goto_if_unset FLAG_RECEIVED_MYSTIC_TICKET, SootopolisCity_House3_EventScript_WallaceGiveTicket
 # 248 "data//maps/SootopolisCity_House3/scripts.pory"
-	msgbox SootopolisCity_House3_Text_WallaceGiveHoohQuest MSGBOX_DEFAULT
+	msgbox SootopolisCity_House3_Text_WallaceGiveHoohQuest2 MSGBOX_DEFAULT
 # 249 "data//maps/SootopolisCity_House3/scripts.pory"
 	waitmessage
 # 250 "data//maps/SootopolisCity_House3/scripts.pory"
-	release
+	setvar VAR_BEAST_SPECIES, SPECIES_HO_OH
 # 251 "data//maps/SootopolisCity_House3/scripts.pory"
-	end
-# 252 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 253 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_EventScript_WallaceMeetAtNavelRock::
-# 254 "data//maps/SootopolisCity_House3/scripts.pory"
-	msgbox SootopolisCity_House3_Text_WallaceGiveHoohQuest MSGBOX_DEFAULT
-# 255 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
-# 256 "data//maps/SootopolisCity_House3/scripts.pory"
 	release
-# 257 "data//maps/SootopolisCity_House3/scripts.pory"
+# 252 "data//maps/SootopolisCity_House3/scripts.pory"
 	end
+# 253 "data//maps/SootopolisCity_House3/scripts.pory"
+
+# 254 "data//maps/SootopolisCity_House3/scripts.pory"
+SootopolisCity_House3_EventScript_WallaceGiveTicket::
+# 255 "data//maps/SootopolisCity_House3/scripts.pory"
+	msgbox SootopolisCity_House3_Text_WallaceThreeBeasts, MSGBOX_DEFAULT
+# 256 "data//maps/SootopolisCity_House3/scripts.pory"
+	waitmessage
+# 257 "data//maps/SootopolisCity_House3/scripts.pory"
+	giveitem ITEM_MYSTIC_TICKET
 # 258 "data//maps/SootopolisCity_House3/scripts.pory"
-
+	setflag FLAG_ENABLE_SHIP_NAVEL_ROCK
 # 259 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_ShowMeEntei:
+	setflag FLAG_RECEIVED_MYSTIC_TICKET
 # 260 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "If you can show me ENTEI, I'll be\n"
+	setvar VAR_BEAST_SPECIES, SPECIES_HO_OH
 # 261 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "indebted to you once more, {PLAYER}.$"
+	msgbox SootopolisCity_House3_Text_WallaceGiveHoohQuest MSGBOX_DEFAULT
 # 262 "data//maps/SootopolisCity_House3/scripts.pory"
-
+	waitmessage
 # 263 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_ShowMeSuicune:
+	release
 # 264 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "If you can show me SUICUNE, I'll be\n"
+	end
 # 265 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "indebted to you once more, {PLAYER}.$"
+
 # 266 "data//maps/SootopolisCity_House3/scripts.pory"
-
+SootopolisCity_House3_EventScript_WallaceMeetAtNavelRock::
 # 267 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_ShowMeRaikou:
+	msgbox SootopolisCity_House3_Text_WallaceGiveHoohQuest MSGBOX_DEFAULT
 # 268 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "If you can show me RAIKOU, I'll be\n"
+	waitmessage
 # 269 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "indebted to you once more, {PLAYER}.$"
+	release
 # 270 "data//maps/SootopolisCity_House3/scripts.pory"
-
+	end
 # 271 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_CaughtEntei:
+
 # 272 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\n"
+SootopolisCity_House3_Text_ShowMeEntei:
 # 273 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\p"
+	.string "If you can show me ENTEI, I'll be\n"
 # 274 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\n"
+	.string "indebted to you once more, {PLAYER}.$"
 # 275 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\p"
+
 # 276 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "You've captured ENTEI?!$"
+SootopolisCity_House3_Text_ShowMeSuicune:
 # 277 "data//maps/SootopolisCity_House3/scripts.pory"
-
+	.string "If you can show me SUICUNE, I'll be\n"
 # 278 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_CaughtSuicune:
+	.string "indebted to you once more, {PLAYER}.$"
 # 279 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\n"
+
 # 280 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\p"
+SootopolisCity_House3_Text_ShowMeRaikou:
 # 281 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\n"
+	.string "If you can show me RAIKOU, I'll be\n"
 # 282 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\p"
+	.string "indebted to you once more, {PLAYER}.$"
 # 283 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "You've captured SUICUNE?!$"
+
 # 284 "data//maps/SootopolisCity_House3/scripts.pory"
-
+SootopolisCity_House3_Text_CaughtEntei:
 # 285 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_CaughtRaikou:
+	.string ". . .\n"
 # 286 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\n"
+	.string ". . .\p"
 # 287 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\p"
+	.string ". . .\n"
 # 288 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\n"
+	.string ". . .\p"
 # 289 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\p"
+	.string "You've captured ENTEI?!$"
 # 290 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "You've captured RAIKOU?!$"
+
 # 291 "data//maps/SootopolisCity_House3/scripts.pory"
-
+SootopolisCity_House3_Text_CaughtSuicune:
 # 292 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_SeenEntei:
+	.string ". . .\n"
 # 293 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\n"
+	.string ". . .\p"
 # 294 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\p"
+	.string ". . .\n"
 # 295 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "Oh! You've seen ENTEI?$"
+	.string ". . .\p"
 # 296 "data//maps/SootopolisCity_House3/scripts.pory"
-
+	.string "You've captured SUICUNE?!$"
 # 297 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_SeenSuicune:
+
 # 298 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\n"
+SootopolisCity_House3_Text_CaughtRaikou:
 # 299 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\p"
-# 300 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "Oh! You've seen SUICUNE?$"
-# 301 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 302 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_SeenRaikou:
-# 303 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string ". . .\n"
-# 304 "data//maps/SootopolisCity_House3/scripts.pory"
+# 300 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string ". . .\p"
+# 301 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string ". . .\n"
+# 302 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string ". . .\p"
+# 303 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "You've captured RAIKOU?!$"
+# 304 "data//maps/SootopolisCity_House3/scripts.pory"
+
 # 305 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "Oh! You've seen RAIKOU?$"
+SootopolisCity_House3_Text_SeenEntei:
 # 306 "data//maps/SootopolisCity_House3/scripts.pory"
-
+	.string ". . .\n"
 # 307 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_EnteiSpeech:
+	.string ". . .\p"
 # 308 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "Lately there have been rumors of\n"
+	.string "Oh! You've seen ENTEI?$"
 # 309 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "sightings of one such POKéMON.\p"
+
 # 310 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "Yes, the POKéMON ENTEI has been\n"
+SootopolisCity_House3_Text_SeenSuicune:
 # 311 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "seen recently around the HOENN region.$"
+	.string ". . .\n"
 # 312 "data//maps/SootopolisCity_House3/scripts.pory"
-
+	.string ". . .\p"
 # 313 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_SuicuneSpeech:
+	.string "Oh! You've seen SUICUNE?$"
 # 314 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "Lately there have been rumors of\n"
+
 # 315 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "sightings of one such POKéMON.\p"
+SootopolisCity_House3_Text_SeenRaikou:
 # 316 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "Yes, the POKéMON SUICUNE has been\n"
+	.string ". . .\n"
 # 317 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "seen recently around the HOENN region.$"
+	.string ". . .\p"
 # 318 "data//maps/SootopolisCity_House3/scripts.pory"
-
+	.string "Oh! You've seen RAIKOU?$"
 # 319 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_RaikouSpeech:
+
 # 320 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "Lately there have been rumors of\n"
+SootopolisCity_House3_Text_EnteiSpeech:
 # 321 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "sightings of one such POKéMON.\p"
+	.string "Lately there have been rumors of\n"
 # 322 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "Yes, the POKéMON RAIKOU has been\n"
+	.string "sightings of one such POKéMON.\p"
 # 323 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "seen recently around the HOENN region.$"
+	.string "Yes, the POKéMON ENTEI has been\n"
 # 324 "data//maps/SootopolisCity_House3/scripts.pory"
-
+	.string "seen recently around the HOENN region.$"
 # 325 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_ThatsEntei:
+
 # 326 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "That POKéMON . . .\p"
+SootopolisCity_House3_Text_SuicuneSpeech:
 # 327 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "That's ENTEI!\p"
+	.string "Lately there have been rumors of\n"
 # 328 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "It's incredible to see a POKéMON as\n"
+	.string "sightings of one such POKéMON.\p"
 # 329 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "magnificent as this up close.\p"
+	.string "Yes, the POKéMON SUICUNE has been\n"
 # 330 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "Maybe someday I will be able to see\n"
+	.string "seen recently around the HOENN region.$"
 # 331 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "the other legendary beasts as well.\p"
+
 # 332 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "I've recently heard news of SUICUNE\n"
+SootopolisCity_House3_Text_RaikouSpeech:
 # 333 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "spotted roaming around HOENN as well...$"
+	.string "Lately there have been rumors of\n"
 # 334 "data//maps/SootopolisCity_House3/scripts.pory"
-
+	.string "sightings of one such POKéMON.\p"
 # 335 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_IntroSuicune:
+	.string "Yes, the POKéMON RAIKOU has been\n"
 # 336 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "SUICUNE is the Aurora POKéMON.\p"
+	.string "seen recently around the HOENN region.$"
 # 337 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "If you can capture SUICUNE and show it\n" 
+
 # 338 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "to me, I'll be indebted to you once more.$"
+SootopolisCity_House3_Text_ThatsEntei:
 # 339 "data//maps/SootopolisCity_House3/scripts.pory"
-
+	.string "That POKéMON . . .\p"
 # 340 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_ThatsSuicune:
+	.string "That's ENTEI!\p"
 # 341 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "That POKéMON . . .\p"
+	.string "It's incredible to see a POKéMON as\n"
 # 342 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "That's SUICUNE!\p"
+	.string "magnificent as this up close.\p"
 # 343 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "It's incredible to see a POKéMON as\n"
+	.string "Maybe someday I will be able to see\n"
 # 344 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "magnificent as this up close.\p"
+	.string "the other legendary beasts as well.\p"
 # 345 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "Maybe someday I will be able to see\n"
+	.string "I've recently heard news of SUICUNE\n"
 # 346 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "the other legendary beasts as well.\p"
+	.string "roaming around HOENN as well...$"
 # 347 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "I've recently heard reports that RAIKOU\n"
+
 # 348 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "has been spotted around HOENN as well...$"
+SootopolisCity_House3_Text_IntroSuicune:
 # 349 "data//maps/SootopolisCity_House3/scripts.pory"
-
+	.string "SUICUNE is the Aurora POKéMON.\p"
 # 350 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_IntroRaikou:
+	.string "If you can capture SUICUNE and show it\n" 
 # 351 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "RAIKOU is the Thunder POKéMON.\p"
+	.string "to me, I'll be indebted to you once more.$"
 # 352 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "If you can capture RAIKOU and show it\n" 
+
 # 353 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "to me, I'll be indebted to you once more.$"
+SootopolisCity_House3_Text_ThatsSuicune:
 # 354 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 355 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_ThatsRaikou:
-# 356 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "That POKéMON . . .\p"
-# 357 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "That's RAIKOU!\p"
-# 358 "data//maps/SootopolisCity_House3/scripts.pory"
+# 355 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "That's SUICUNE!\p"
+# 356 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "It's incredible to see a POKéMON as\n"
-# 359 "data//maps/SootopolisCity_House3/scripts.pory"
+# 357 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "magnificent as this up close.\p"
-# 360 "data//maps/SootopolisCity_House3/scripts.pory"
+# 358 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Maybe someday I will be able to see\n"
-# 361 "data//maps/SootopolisCity_House3/scripts.pory"
+# 359 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "the other legendary beasts as well.\p"
-# 362 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "I've recently heard reports that ENTEI\n"
-# 363 "data//maps/SootopolisCity_House3/scripts.pory"
+# 360 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "I've recently heard reports that RAIKOU\n"
+# 361 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "has been spotted around HOENN as well...$"
+# 362 "data//maps/SootopolisCity_House3/scripts.pory"
+
+# 363 "data//maps/SootopolisCity_House3/scripts.pory"
+SootopolisCity_House3_Text_IntroRaikou:
 # 364 "data//maps/SootopolisCity_House3/scripts.pory"
-
+	.string "RAIKOU is the Thunder POKéMON.\p"
 # 365 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_IntroEntei:
+	.string "If you can capture RAIKOU and show it\n" 
 # 366 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "ENTEI is the Volcano POKéMON.\p"
-# 367 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "If you can capture ENTEI and show it\n" 
-# 368 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "to me, I'll be indebted to you once more.$"
+# 367 "data//maps/SootopolisCity_House3/scripts.pory"
+
+# 368 "data//maps/SootopolisCity_House3/scripts.pory"
+SootopolisCity_House3_Text_ThatsRaikou:
 # 369 "data//maps/SootopolisCity_House3/scripts.pory"
-
+	.string "That POKéMON . . .\p"
 # 370 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_WallaceThanks:
+	.string "That's RAIKOU!\p"
 # 371 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "WALLACE: Thanks for your help with\n"
+	.string "It's incredible to see a POKéMON as\n"
 # 372 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "that incident. Your help finding\l"
+	.string "magnificent as this up close.\p"
 # 373 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "RAYQUAZA was invaluable.$"
+	.string "Maybe someday I will be able to see\n"
 # 374 "data//maps/SootopolisCity_House3/scripts.pory"
-
+	.string "the other legendary beasts as well.\p"
 # 375 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_WallaceSearchingBeasts:
+	.string "I've recently heard reports that ENTEI\n"
 # 376 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "WALLACE: I'm considered an expert\n"
+	.string "has been spotted around HOENN as well...$"
 # 377 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "on the mythology of super-ancient\l"
+
 # 378 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "POKéMON because I've spent my life\l"
+SootopolisCity_House3_Text_IntroEntei:
 # 379 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "researching a POKéMON called SUICUNE.\p"
+	.string "ENTEI is the Volcano POKéMON.\p"
 # 380 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "Through my research and my travels,\n"
+	.string "If you can capture ENTEI and show it\n" 
 # 381 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "I've learned quite a bit about the\l"
+	.string "to me, I'll be indebted to you once more.$"
 # 382 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "myths surrounding the super-ancient\l"
+
 # 383 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "POKéMON called the legendary beasts.$"
+SootopolisCity_House3_Text_WallaceThanks:
 # 384 "data//maps/SootopolisCity_House3/scripts.pory"
-
+	.string "WALLACE: Thanks for your help with\n"
 # 385 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_JuanHasManyFansDoYou:
+	.string "that incident. Your help finding\l"
 # 386 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "You're a POKéMON TRAINER, aren't you?\p"
+	.string "RAYQUAZA was invaluable.$"
 # 387 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "SOOTOPOLIS's JUAN has many fans.\n"
+
 # 388 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "Even more than his student WALLACE!\p"
+SootopolisCity_House3_Text_WallaceSearchingBeasts:
 # 389 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "Do you have any?$"
+	.string "WALLACE: I'm considered an expert\n"
 # 390 "data//maps/SootopolisCity_House3/scripts.pory"
-
+	.string "on the mythology of super-ancient\l"
 # 391 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_YouMustBePrettyStrong:
+	.string "POKéMON because I've spent my life\l"
 # 392 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "Oh, then you must be pretty strong.$"
+	.string "researching a POKéMON called SUICUNE.\p"
 # 393 "data//maps/SootopolisCity_House3/scripts.pory"
-
+	.string "Through my research and my travels,\n"
 # 394 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_LonesomeTryWorkingHarder:
+	.string "I've learned quite a bit about the\l"
 # 395 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "Oh, dear…\n"
+	.string "myths surrounding the super-ancient\l"
 # 396 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "That's a little lonesome.\p"
+	.string "POKéMON called the legendary beasts.$"
 # 397 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "Try working a little harder to get\n"
+
 # 398 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "a fan following.$"
+SootopolisCity_House3_Text_JuanHasManyFansDoYou:
 # 399 "data//maps/SootopolisCity_House3/scripts.pory"
-
+	.string "You're a POKéMON TRAINER, aren't you?\p"
 # 400 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_TrainerFanClubWasWild:
+	.string "SOOTOPOLIS's JUAN has many fans.\n"
 # 401 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "Dedicated fans come over from even\n"
+	.string "Even more than his student WALLACE!\p"
 # 402 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "outside of HOENN.\p"
+	.string "Do you have any?$"
 # 403 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "It was really wild when I went to the\n"
-# 404 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "TRAINER FAN CLUB in LILYCOVE.$"
-# 405 "data//maps/SootopolisCity_House3/scripts.pory"
 
+# 404 "data//maps/SootopolisCity_House3/scripts.pory"
+SootopolisCity_House3_Text_YouMustBePrettyStrong:
+# 405 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "Oh, then you must be pretty strong.$"
 # 406 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_AlwaysHunting:
+
 # 407 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "I'm always hunting for more information\n"
+SootopolisCity_House3_Text_LonesomeTryWorkingHarder:
 # 408 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "regarding the legendary beasts ENTEI,\l"
+	.string "Oh, dear…\n"
 # 409 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "SUICUNE, and RAIKOU.\p"
+	.string "That's a little lonesome.\p"
 # 410 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "If you see one, please come back and\n"
+	.string "Try working a little harder to get\n"
 # 411 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "let me know.$"
+	.string "a fan following.$"
 # 412 "data//maps/SootopolisCity_House3/scripts.pory"
 
 # 413 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_WallaceFinalBeastEntei:
+SootopolisCity_House3_Text_TrainerFanClubWasWild:
 # 414 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "That POKéMON . . .\p"
+	.string "Dedicated fans come over from even\n"
 # 415 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "That's ENTEI!\p"
+	.string "outside of HOENN.\p"
 # 416 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "It's incredible to see a POKéMON as\n"
+	.string "It was really wild when I went to the\n"
 # 417 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "magnificent as this up close.$"
+	.string "TRAINER FAN CLUB in LILYCOVE.$"
 # 418 "data//maps/SootopolisCity_House3/scripts.pory"
 
 # 419 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_WallaceFinalBeastSuicune:
+SootopolisCity_House3_Text_AlwaysHunting:
 # 420 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "That POKéMON . . .\p"
+	.string "I'm always hunting for more information\n"
 # 421 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "That's SUICUNE!\p"
+	.string "regarding the legendary beasts ENTEI,\l"
 # 422 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "It's incredible to see a POKéMON as\n"
+	.string "SUICUNE, and RAIKOU.\p"
 # 423 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "magnificent as this up close.$"
+	.string "If you see one, please come back and\n"
 # 424 "data//maps/SootopolisCity_House3/scripts.pory"
-
+	.string "let me know.$"
 # 425 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_WallaceFinalBeastRaikou:
+
 # 426 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "That POKéMON . . .\p"
+SootopolisCity_House3_Text_WallaceFinalBeastEntei:
 # 427 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "That's RAIKOU!\p"
+	.string "That POKéMON . . .\p"
 # 428 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "It's incredible to see a POKéMON as\n"
+	.string "That's ENTEI!\p"
 # 429 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "magnificent as this up close.$"
+	.string "It's incredible to see a POKéMON as\n"
 # 430 "data//maps/SootopolisCity_House3/scripts.pory"
-
+	.string "magnificent as this up close.$"
 # 431 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_WallaceThreeBeasts:
-# 432 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\n"
-# 433 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\p"
-# 434 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "{PLAYER} . . .\p"
-# 435 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "Thanks to you, I've been able to fulfill\n"
-# 436 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "my life's dream of seeing all three of\l"
-# 437 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "the legendary beast POKéMON . . .\p"
-# 438 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\n"
-# 439 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\p"
-# 440 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "Ultimately, though I dedicated my life\n"
-# 441 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "to finding SUICUNE, it was you alone,\l"
-# 442 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "{PLAYER} . . .\p"
-# 443 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "Yes, I, WALLACE, had nothing to do with\n"
-# 444 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "your incredible discovery . . .\p"
-# 445 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "{PLAYER},\n"
-# 446 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "I'd like you to take this.$"
-# 447 "data//maps/SootopolisCity_House3/scripts.pory"
 
+# 432 "data//maps/SootopolisCity_House3/scripts.pory"
+SootopolisCity_House3_Text_WallaceFinalBeastSuicune:
+# 433 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "That POKéMON . . .\p"
+# 434 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "That's SUICUNE!\p"
+# 435 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "It's incredible to see a POKéMON as\n"
+# 436 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "magnificent as this up close.$"
+# 437 "data//maps/SootopolisCity_House3/scripts.pory"
+
+# 438 "data//maps/SootopolisCity_House3/scripts.pory"
+SootopolisCity_House3_Text_WallaceFinalBeastRaikou:
+# 439 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "That POKéMON . . .\p"
+# 440 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "That's RAIKOU!\p"
+# 441 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "It's incredible to see a POKéMON as\n"
+# 442 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "magnificent as this up close.$"
+# 443 "data//maps/SootopolisCity_House3/scripts.pory"
+
+# 444 "data//maps/SootopolisCity_House3/scripts.pory"
+SootopolisCity_House3_Text_WallaceThreeBeasts:
+# 445 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string ". . .\n"
+# 446 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string ". . .\p"
+# 447 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "{PLAYER} . . .\p"
 # 448 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_Text_WallaceGiveHoohQuest:
+	.string "Thanks to you, I've been able to fulfill\n"
 # 449 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "WALLACE: That ticket will allow you to\n"
+	.string "my life's dream of seeing all three of\l"
 # 450 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "travel to NAVEL ROCK\p"
+	.string "the legendary beast POKéMON . . .\p"
 # 451 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "I want you to meet me there with the\n"
+	.string ". . .\n"
 # 452 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "three legendary beast POKéMON you've\l"
+	.string ". . .\p"
 # 453 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "caught.\p"
+	.string "Ultimately, though I dedicated my life\n"
 # 454 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "By assembling them all in that place...\n"
+	.string "to finding SUICUNE, it was you alone,\l"
 # 455 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "{PLAYER} . . .\p"
+# 456 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "Yes, I, WALLACE, had nothing to do with\n"
+# 457 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "your dazzling discovery . . .\p"
+# 458 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "{PLAYER},\n"
+# 459 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "I'd like you to take this.$"
+# 460 "data//maps/SootopolisCity_House3/scripts.pory"
+
+# 461 "data//maps/SootopolisCity_House3/scripts.pory"
+SootopolisCity_House3_Text_WallaceGiveHoohQuest:
+# 462 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "WALLACE: With the MYSTIC TICKET\n"
+# 463 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "you can travel to NAVEL ROCK.\p"
+# 464 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "I want you to meet me there with the\n"
+# 465 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "three legendary beast POKéMON you've\l"
+# 466 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "caught.\p"
+# 467 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "By assembling them all in that place...\n"
+# 468 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "Can we summon HO-OH?$" 
+# 469 "data//maps/SootopolisCity_House3/scripts.pory"
+
+# 470 "data//maps/SootopolisCity_House3/scripts.pory"
+SootopolisCity_House3_Text_WallaceGiveHoohQuest2:
+# 471 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "{PLAYER} . . .\p"
+# 472 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "I want you to meet me at NAVEL ROCK with\n"
+# 473 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "the three legendary beast POKéMON.\p"
+# 474 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "By assembling them all in that place...\n"
+# 475 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Can we summon HO-OH?$"

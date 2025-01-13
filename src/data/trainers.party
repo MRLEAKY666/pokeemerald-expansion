@@ -2163,7 +2163,7 @@ Items: Full Restore
 Double Battle: No
 AI: Check Bad Move
 
-Luvdisc @ Nugget
+Alomomola @ Nugget
 Level: 39
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Attract
@@ -2171,7 +2171,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Flail
 - Water Pulse
 
-Luvdisc @ Nugget
+Alomomola @ Nugget
 Level: 39
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Attract
@@ -4822,7 +4822,7 @@ Gender: Female
 Music: Female
 Items: Potion / Potion
 Double Battle: No
-AI: Basic Trainer
+AI: Basic Trainer / Smart Switching / Smart Mon Choices
 
 Geodude
 Level: 12
@@ -4856,7 +4856,7 @@ Gender: Male
 Music: Male
 Items: Super Potion / Super Potion
 Double Battle: No
-AI: Basic Trainer
+AI: Basic Trainer / Smart Switching / Smart Mon Choices
 
 Tyrogue
 Level: 25
@@ -4898,7 +4898,7 @@ Gender: Male
 Music: Male
 Items: Super Potion / Super Potion
 Double Battle: No
-AI: Basic Trainer
+AI: Basic Trainer / Smart Switching / Smart Mon Choices
 
 Voltorb
 Level: 20
@@ -4940,7 +4940,7 @@ Gender: Female
 Music: Female
 Items: Hyper Potion / Hyper Potion
 Double Battle: No
-AI: Basic Trainer
+AI: Basic Trainer / Smart Switching / Smart Mon Choices
 
 Numel
 Level: 24
@@ -4982,7 +4982,7 @@ Gender: Male
 Music: Male
 Items: Hyper Potion / Hyper Potion
 Double Battle: No
-AI: Basic Trainer
+AI: Basic Trainer / Smart Switching / Smart Mon Choices
 
 Spinda
 Level: 27
@@ -5024,7 +5024,7 @@ Gender: Female
 Music: Female
 Items: Hyper Potion / Hyper Potion
 Double Battle: No
-AI: Basic Trainer / Risky
+AI: Basic Trainer / Risky / Smart Switching / Smart Mon Choices
 
 Swellow @ Toxic Orb
 Ability: Guts
@@ -5078,7 +5078,7 @@ Gender: Male
 Music: Female
 Items: Hyper Potion / Hyper Potion / Hyper Potion / Hyper Potion
 Double Battle: Yes
-AI: Basic Trainer
+AI: Basic Trainer / Smart Switching / Smart Mon Choices
 
 Claydol
 Level: 41
@@ -5120,15 +5120,15 @@ Gender: Male
 Music: Male
 Items: Hyper Potion / Hyper Potion
 Double Battle: No
-AI: Basic Trainer
+AI: Basic Trainer / Smart Switching / Smart Mon Choices
 
-Luvdisc
+Alomomola
 Level: 45
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Water Pulse
-- Attract
-- Sweet Kiss
-- Flail
+- Wish
+- Protect
+- Toxic
+- Scald
 
 Whiscash
 Level: 45
@@ -8550,7 +8550,7 @@ Music: Swimmer
 Double Battle: No
 AI: Check Bad Move
 
-Luvdisc
+Alomomola
 Level: 45
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -11266,7 +11266,7 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Luvdisc
+Alomomola
 Level: 40
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
@@ -11792,11 +11792,11 @@ Music: Girl
 Double Battle: Yes
 AI: Check Bad Move
 
-Luvdisc
+Alomomola
 Level: 45
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Luvdisc
+Alomomola
 Level: 45
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -16835,7 +16835,7 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Luvdisc
+Alomomola
 Level: 38
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
@@ -16856,7 +16856,7 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Luvdisc
+Alomomola
 Level: 40
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 

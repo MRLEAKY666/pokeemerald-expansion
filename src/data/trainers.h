@@ -5279,7 +5279,7 @@ F_TRAINER_FEMALE |
         {
             {
 #line 2166
-            .species = SPECIES_LUVDISC,
+            .species = SPECIES_ALOMOMOLA,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 2166
             .heldItem = ITEM_NUGGET,
@@ -5299,7 +5299,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 2174
-            .species = SPECIES_LUVDISC,
+            .species = SPECIES_ALOMOMOLA,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 2174
             .heldItem = ITEM_NUGGET,
@@ -11941,7 +11941,7 @@ F_TRAINER_FEMALE |
 #line 4824
         .doubleBattle = FALSE,
 #line 4825
-        .aiFlags = AI_FLAG_BASIC_TRAINER,
+        .aiFlags = AI_FLAG_BASIC_TRAINER | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -12020,7 +12020,7 @@ F_TRAINER_FEMALE |
 #line 4858
         .doubleBattle = FALSE,
 #line 4859
-        .aiFlags = AI_FLAG_BASIC_TRAINER,
+        .aiFlags = AI_FLAG_BASIC_TRAINER | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -12117,7 +12117,7 @@ F_TRAINER_FEMALE |
 #line 4900
         .doubleBattle = FALSE,
 #line 4901
-        .aiFlags = AI_FLAG_BASIC_TRAINER,
+        .aiFlags = AI_FLAG_BASIC_TRAINER | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -12216,7 +12216,7 @@ F_TRAINER_FEMALE |
 #line 4942
         .doubleBattle = FALSE,
 #line 4943
-        .aiFlags = AI_FLAG_BASIC_TRAINER,
+        .aiFlags = AI_FLAG_BASIC_TRAINER | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -12313,7 +12313,7 @@ F_TRAINER_FEMALE |
 #line 4984
         .doubleBattle = FALSE,
 #line 4985
-        .aiFlags = AI_FLAG_BASIC_TRAINER,
+        .aiFlags = AI_FLAG_BASIC_TRAINER | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -12412,7 +12412,7 @@ F_TRAINER_FEMALE |
 #line 5026
         .doubleBattle = FALSE,
 #line 5027
-        .aiFlags = AI_FLAG_BASIC_TRAINER | AI_FLAG_RISKY,
+        .aiFlags = AI_FLAG_BASIC_TRAINER | AI_FLAG_RISKY | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
@@ -12537,7 +12537,7 @@ F_TRAINER_FEMALE |
 #line 5080
         .doubleBattle = TRUE,
 #line 5081
-        .aiFlags = AI_FLAG_BASIC_TRAINER,
+        .aiFlags = AI_FLAG_BASIC_TRAINER | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES,
         .partySize = 4,
         .party = (const struct TrainerMon[])
         {
@@ -12636,13 +12636,13 @@ F_TRAINER_FEMALE |
 #line 5122
         .doubleBattle = FALSE,
 #line 5123
-        .aiFlags = AI_FLAG_BASIC_TRAINER,
+        .aiFlags = AI_FLAG_BASIC_TRAINER | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES,
         .partySize = 5,
         .party = (const struct TrainerMon[])
         {
             {
 #line 5125
-            .species = SPECIES_LUVDISC,
+            .species = SPECIES_ALOMOMOLA,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5127
             .iv = TRAINER_PARTY_IVS(24, 24, 24, 24, 24, 24),
@@ -12652,10 +12652,10 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 5128
-                MOVE_WATER_PULSE,
-                MOVE_ATTRACT,
-                MOVE_SWEET_KISS,
-                MOVE_FLAIL,
+                MOVE_WISH,
+                MOVE_PROTECT,
+                MOVE_TOXIC,
+                MOVE_SCALD,
             },
             },
             {
@@ -21334,7 +21334,7 @@ F_TRAINER_FEMALE |
         {
             {
 #line 8553
-            .species = SPECIES_LUVDISC,
+            .species = SPECIES_ALOMOMOLA,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 8555
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
@@ -28281,7 +28281,7 @@ F_TRAINER_FEMALE |
         {
             {
 #line 11269
-            .species = SPECIES_LUVDISC,
+            .species = SPECIES_ALOMOMOLA,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 11271
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
@@ -29623,7 +29623,7 @@ F_TRAINER_FEMALE |
         {
             {
 #line 11795
-            .species = SPECIES_LUVDISC,
+            .species = SPECIES_ALOMOMOLA,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 11797
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
@@ -29634,7 +29634,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 11799
-            .species = SPECIES_LUVDISC,
+            .species = SPECIES_ALOMOMOLA,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 11801
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
@@ -42074,7 +42074,7 @@ F_TRAINER_FEMALE |
         {
             {
 #line 16838
-            .species = SPECIES_LUVDISC,
+            .species = SPECIES_ALOMOMOLA,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 16840
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
@@ -42130,7 +42130,7 @@ F_TRAINER_FEMALE |
         {
             {
 #line 16859
-            .species = SPECIES_LUVDISC,
+            .species = SPECIES_ALOMOMOLA,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 16861
             .iv = TRAINER_PARTY_IVS(4, 4, 4, 4, 4, 4),

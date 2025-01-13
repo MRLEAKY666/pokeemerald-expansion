@@ -1391,3 +1391,7 @@ static const struct SpriteFrameImage sPicTable_ZapdosOld[] = {
     overworld_frame(gObjectEventPic_ZapdosOld, 4, 4, 7),
     overworld_frame(gObjectEventPic_ZapdosOld, 4, 4, 8),
 };
+
+static const struct SpriteFrameImage sPicTable_ProfOak[] = {
+    overworld_ascending_frames(gObjectEventPic_ProfOak, 2, 4),
+};

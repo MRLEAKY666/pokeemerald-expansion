@@ -62,6 +62,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BerryTreeEa
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BerryTreeLateStages;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanAcroBike;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ProfBirch;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ProfOak;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Man4;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Man5;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ReporterM;
@@ -317,6 +318,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_BERRY_TREE_LATE_STAGES] =   &gObjectEventGraphicsInfo_BerryTreeLateStages,
     [OBJ_EVENT_GFX_BRENDAN_ACRO_BIKE] =        &gObjectEventGraphicsInfo_BrendanAcroBike,
     [OBJ_EVENT_GFX_PROF_BIRCH] =               &gObjectEventGraphicsInfo_ProfBirch,
+    [OBJ_EVENT_GFX_PROF_OAK] =                 &gObjectEventGraphicsInfo_ProfOak, 
     [OBJ_EVENT_GFX_MAN_4] =                    &gObjectEventGraphicsInfo_Man4,
     [OBJ_EVENT_GFX_MAN_5] =                    &gObjectEventGraphicsInfo_Man5,
     [OBJ_EVENT_GFX_REPORTER_M] =               &gObjectEventGraphicsInfo_ReporterM,
@@ -494,8 +496,8 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_POKE_BALL] =                &gObjectEventGraphicsInfo_PokeBall,
     [OBJ_EVENT_GFX_OW_MON] =                   &gObjectEventGraphicsInfo_Follower,
     [OBJ_EVENT_GFX_ARTICUNO] =                 &gObjectEventGraphicsInfo_Articuno, 
-    [OBJ_EVENT_GFX_MOLTRES] =                 &gObjectEventGraphicsInfo_Moltres, 
-    [OBJ_EVENT_GFX_ZAPDOS] =                 &gObjectEventGraphicsInfo_Zapdos,
+    [OBJ_EVENT_GFX_MOLTRES] =                  &gObjectEventGraphicsInfo_Moltres, 
+    [OBJ_EVENT_GFX_ZAPDOS] =                   &gObjectEventGraphicsInfo_Zapdos,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

@@ -393,6 +393,9 @@ const u16 gObjectEventPal_MoltresOld[] = INCBIN_U16("graphics/object_events/pics
 const u32 gObjectEventPic_ZapdosOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/zapdos.4bpp");
 const u16 gObjectEventPal_ZapdosOld[] = INCBIN_U16("graphics/object_events/pics/pokemon_old/zapdos.gbapal");
 
+const u32 gObjectEventPic_ProfOak[] = INCBIN_U32("graphics/object_events/pics/people/prof_oak.4bpp");
+const u16 gObjectEventPal_ProfOak[] = INCBIN_U16("graphics/object_events/pics/people/prof_oak.gbapal");
+
 #if OW_FOLLOWERS_POKEBALLS
 const u32 gObjectEventPic_MasterBall[] = INCBIN_U32("graphics/object_events/pics/misc/ball_master.4bpp");
 const u32 gObjectEventPic_UltraBall[] = INCBIN_U32("graphics/object_events/pics/misc/ball_ultra.4bpp");
