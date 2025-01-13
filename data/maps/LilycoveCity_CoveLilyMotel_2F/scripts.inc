@@ -581,493 +581,497 @@ LilycoveCity_CoveLilyMotel_2F_Text_VisitingHoenn:
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex::
 # 294 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	getseenmon SPECIES_ARTICUNO
+	playse SE_PC_ON
 # 295 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	copyvar VAR_TEMP_0, VAR_RESULT
+	waitse
 # 296 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	getseenmon SPECIES_ZAPDOS
+	getseenmon SPECIES_ARTICUNO
 # 297 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	copyvar VAR_TEMP_1, VAR_RESULT
+	copyvar VAR_TEMP_0, VAR_RESULT
 # 298 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	getseenmon SPECIES_MOLTRES
+	getseenmon SPECIES_ZAPDOS
 # 299 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	copyvar VAR_TEMP_2, VAR_RESULT
+	copyvar VAR_TEMP_1, VAR_RESULT
 # 300 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	getseenmon SPECIES_MOLTRES
+# 301 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	copyvar VAR_TEMP_2, VAR_RESULT
+# 302 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_TEMP_0, TRUE
 	goto_if_eq LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_40
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_36:
-# 309 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 311 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_TEMP_0, FALSE
 	goto_if_eq LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_35
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_31:
-# 318 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 320 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_TEMP_0, FALSE
 	goto_if_eq LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_30
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_26:
-# 327 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 329 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_TEMP_0, TRUE
 	goto_if_eq LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_25
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_21:
-# 350 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 352 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_TEMP_0, TRUE
 	goto_if_eq LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_20
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_16:
-# 373 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 375 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_TEMP_0, FALSE
 	goto_if_eq LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_15
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_11:
-# 396 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 398 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_TEMP_0, TRUE
 	goto_if_eq LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_10
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_9:
-# 470 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_VisitingHoenn
-# 471 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	waitmessage
 # 472 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_VisitingHoenn
+# 473 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	waitmessage
+# 474 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	release
 	end
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_1:
-# 475 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds
-# 476 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	waitmessage
 # 477 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds
+# 478 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	waitmessage
+# 479 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	release
 	end
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_2:
-# 301 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_SeenArticuno
-# 302 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	waitmessage
 # 303 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	getcaughtmon SPECIES_ARTICUNO
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_SeenArticuno
 # 304 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	waitmessage
+# 305 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	getcaughtmon SPECIES_ARTICUNO
+# 306 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_ne LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_45
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_1
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_3:
-# 310 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_SeenZapdos
-# 311 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	waitmessage
 # 312 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	getcaughtmon SPECIES_ZAPDOS
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_SeenZapdos
 # 313 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	waitmessage
+# 314 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	getcaughtmon SPECIES_ZAPDOS
+# 315 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_ne LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_47
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_1
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_4:
-# 319 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_SeenMoltres
-# 320 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	waitmessage
 # 321 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	getcaughtmon SPECIES_MOLTRES
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_SeenMoltres
 # 322 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	waitmessage
+# 323 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	getcaughtmon SPECIES_MOLTRES
+# 324 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_ne LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_49
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_1
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_5:
-# 328 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_SeenArticunoZapdos
-# 329 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	waitmessage
 # 330 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	getcaughtmon SPECIES_ARTICUNO
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_SeenArticunoZapdos
 # 331 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	waitmessage
+# 332 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	getcaughtmon SPECIES_ARTICUNO
+# 333 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_ne LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_52
-# 344 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 346 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	getcaughtmon SPECIES_ZAPDOS
-# 345 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 347 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_ne LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_63
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_1
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_6:
-# 351 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_SeenArticunoMoltres
-# 352 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	waitmessage
 # 353 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	getcaughtmon SPECIES_ARTICUNO
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_SeenArticunoMoltres
 # 354 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	waitmessage
+# 355 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	getcaughtmon SPECIES_ARTICUNO
+# 356 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_ne LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_55
-# 367 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 369 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	getcaughtmon SPECIES_MOLTRES
-# 368 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 370 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_ne LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_68
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_1
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_7:
-# 374 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_SeenZapdosMoltres
-# 375 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	waitmessage
 # 376 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	getcaughtmon SPECIES_ZAPDOS
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_SeenZapdosMoltres
 # 377 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	waitmessage
+# 378 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	getcaughtmon SPECIES_ZAPDOS
+# 379 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_ne LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_58
-# 390 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 392 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	getcaughtmon SPECIES_MOLTRES
-# 391 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 393 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_ne LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_73
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_1
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_8:
-# 397 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_SeenAllBirds
-# 398 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	waitmessage
 # 399 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	getcaughtmon SPECIES_ARTICUNO
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_SeenAllBirds
 # 400 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	waitmessage
+# 401 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	getcaughtmon SPECIES_ARTICUNO
+# 402 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_ne LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_61
-# 436 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 438 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	getcaughtmon SPECIES_ZAPDOS
-# 437 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 439 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_ne LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_79
-# 454 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 456 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	getcaughtmon SPECIES_MOLTRES
-# 455 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 457 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_ne LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_85
-# 463 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds
-# 464 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	waitmessage
 # 465 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds
+# 466 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	waitmessage
+# 467 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	release
 	end
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_10:
-# 396 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 398 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_TEMP_1, TRUE
 	goto_if_eq LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_12
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_9
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_12:
-# 396 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 398 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_TEMP_2, TRUE
 	goto_if_eq LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_8
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_9
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_15:
-# 373 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 375 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_TEMP_1, TRUE
 	goto_if_eq LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_17
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_11
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_17:
-# 373 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 375 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_TEMP_2, TRUE
 	goto_if_eq LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_7
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_11
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_20:
-# 350 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 352 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_TEMP_1, FALSE
 	goto_if_eq LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_22
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_16
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_22:
-# 350 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 352 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_TEMP_2, TRUE
 	goto_if_eq LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_6
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_16
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_25:
-# 327 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 329 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_TEMP_1, TRUE
 	goto_if_eq LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_27
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_21
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_27:
-# 327 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 329 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_TEMP_2, FALSE
 	goto_if_eq LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_5
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_21
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_30:
-# 318 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 320 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_TEMP_1, FALSE
 	goto_if_eq LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_32
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_26
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_32:
-# 318 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 320 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_TEMP_2, TRUE
 	goto_if_eq LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_4
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_26
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_35:
-# 309 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 311 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_TEMP_1, TRUE
 	goto_if_eq LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_37
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_31
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_37:
-# 309 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 311 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_TEMP_2, FALSE
 	goto_if_eq LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_3
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_31
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_40:
-# 300 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 302 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_TEMP_1, FALSE
 	goto_if_eq LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_42
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_36
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_42:
-# 300 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 302 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_TEMP_2, FALSE
 	goto_if_eq LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_2
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_36
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_45:
-# 305 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 307 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	msgbox LilycoveCity_CoveLilyMotel_2F_Text_CaughtArticuno
-# 306 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 308 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	waitmessage
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_1
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_47:
-# 314 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 316 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	msgbox LilycoveCity_CoveLilyMotel_2F_Text_CaughtZapdos
-# 315 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 317 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	waitmessage
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_1
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_49:
-# 323 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 325 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	msgbox LilycoveCity_CoveLilyMotel_2F_Text_CaughtMoltres
-# 324 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 326 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	waitmessage
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_1
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_52:
-# 332 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_CaughtArticuno
-# 333 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	waitmessage
 # 334 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	getcaughtmon SPECIES_ZAPDOS
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_CaughtArticuno
 # 335 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	waitmessage
+# 336 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	getcaughtmon SPECIES_ZAPDOS
+# 337 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_ne LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_66
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_65:
-# 339 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds
-# 340 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	waitmessage
 # 341 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds
+# 342 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	waitmessage
+# 343 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	release
 	end
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_55:
-# 355 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_CaughtArticuno
-# 356 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	waitmessage
 # 357 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	getcaughtmon SPECIES_MOLTRES
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_CaughtArticuno
 # 358 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	waitmessage
+# 359 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	getcaughtmon SPECIES_MOLTRES
+# 360 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_ne LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_71
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_70:
-# 362 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds
-# 363 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	waitmessage
 # 364 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds
+# 365 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	waitmessage
+# 366 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	release
 	end
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_58:
-# 378 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_CaughtZapdos
-# 379 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	waitmessage
 # 380 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	getcaughtmon SPECIES_MOLTRES
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_CaughtZapdos
 # 381 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	waitmessage
+# 382 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	getcaughtmon SPECIES_MOLTRES
+# 383 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_ne LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_76
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_75:
-# 385 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds
-# 386 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	waitmessage
 # 387 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds
+# 388 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	waitmessage
+# 389 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	release
 	end
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_61:
-# 401 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_CaughtArticuno
-# 402 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	waitmessage
 # 403 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	getcaughtmon SPECIES_ZAPDOS
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_CaughtArticuno
 # 404 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	waitmessage
+# 405 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	getcaughtmon SPECIES_ZAPDOS
+# 406 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_ne LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_82
-# 431 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds
-# 432 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	waitmessage
 # 433 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds
+# 434 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	waitmessage
+# 435 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	release
 	end
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_63:
-# 346 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 348 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	msgbox LilycoveCity_CoveLilyMotel_2F_Text_CaughtZapdos
-# 347 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 349 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	waitmessage
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_1
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_66:
-# 336 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 338 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	msgbox LilycoveCity_CoveLilyMotel_2F_Text_AlsoCaughtZapdos
-# 337 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 339 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	waitmessage
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_65
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_68:
-# 369 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 371 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	msgbox LilycoveCity_CoveLilyMotel_2F_Text_CaughtMoltres
-# 370 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 372 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	waitmessage
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_1
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_71:
-# 359 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 361 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	msgbox LilycoveCity_CoveLilyMotel_2F_Text_AlsoCaughtMoltres
-# 360 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 362 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	waitmessage
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_70
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_73:
-# 392 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 394 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	msgbox LilycoveCity_CoveLilyMotel_2F_Text_CaughtMoltres
-# 393 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 395 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	waitmessage
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_1
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_76:
-# 382 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 384 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	msgbox LilycoveCity_CoveLilyMotel_2F_Text_AlsoCaughtMoltres
-# 383 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 385 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	waitmessage
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_75
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_79:
-# 438 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_CaughtZapdos
-# 439 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	waitmessage
 # 440 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	getcaughtmon SPECIES_MOLTRES
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_CaughtZapdos
 # 441 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	waitmessage
+# 442 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	getcaughtmon SPECIES_MOLTRES
+# 443 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_ne LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_88
-# 449 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds
-# 450 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	waitmessage
 # 451 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds
+# 452 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	waitmessage
+# 453 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	release
 	end
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_82:
-# 405 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_AlsoCaughtZapdos
-# 406 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	waitmessage
 # 407 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	getcaughtmon SPECIES_MOLTRES
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_AlsoCaughtZapdos
 # 408 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	waitmessage
+# 409 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	getcaughtmon SPECIES_MOLTRES
+# 410 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_ne LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_91
-# 426 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds
-# 427 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	waitmessage
 # 428 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds
+# 429 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	waitmessage
+# 430 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	release
 	end
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_85:
-# 456 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_CaughtMoltres
-# 457 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	waitmessage
 # 458 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_CaughtMoltres
 # 459 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	waitmessage
 # 460 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds
+# 461 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	waitmessage
+# 462 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	release
 	end
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_88:
-# 442 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_AlsoCaughtMoltres
-# 443 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	waitmessage
 # 444 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_AlsoCaughtMoltres
 # 445 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	waitmessage
 # 446 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds
+# 447 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	waitmessage
+# 448 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	release
 	end
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_91:
-# 409 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_EvenCaughtMoltres
-# 410 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	waitmessage
 # 411 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_NavelRock
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_EvenCaughtMoltres
 # 412 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	waitmessage
 # 413 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_NavelRock
+# 414 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	waitmessage
+# 415 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	goto_if_unset FLAG_RECEIVED_MYSTIC_TICKET, LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_94
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_93:
-# 422 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 424 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	msgbox LilycoveCity_CoveLilyMotel_2F_Text_MeetMeThere
-# 423 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 425 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	release
 	end
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_94:
-# 414 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_TakeThisTicket
-# 415 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	waitmessage
 # 416 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	giveitem ITEM_MYSTIC_TICKET
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_TakeThisTicket
 # 417 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	setflag FLAG_ENABLE_SHIP_NAVEL_ROCK
+	waitmessage
 # 418 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	setflag FLAG_RECEIVED_MYSTIC_TICKET
+	giveitem ITEM_MYSTIC_TICKET
 # 419 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_GiveMysticTicket
+	setflag FLAG_ENABLE_SHIP_NAVEL_ROCK
 # 420 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	setflag FLAG_RECEIVED_MYSTIC_TICKET
+# 421 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_GiveMysticTicket
+# 422 "data//maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	waitmessage
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex_93
 

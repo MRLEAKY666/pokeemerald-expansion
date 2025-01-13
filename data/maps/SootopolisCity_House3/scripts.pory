@@ -67,6 +67,7 @@ SootopolisCity_House3_EventScript_SpawnFirstEntei::
 	setvar VAR_BEAST_SPECIES, SPECIES_ENTEI
 	msgbox SootopolisCity_House3_Text_ThatsRaikou, MSGBOX_DEFAULT
 	waitmessage
+	playmoncry SPECIES_ENTEI, CRY_MODE_NORMAL
 	showmonpic SPECIES_ENTEI, 0, 0
 	setseenmon SPECIES_ENTEI
 	msgbox SootopolisCity_House3_Text_IntroEntei, MSGBOX_DEFAULT
@@ -127,6 +128,7 @@ SootopolisCity_House3_EventScript_SpawnFirstSuicune::
 	setvar VAR_BEAST_SPECIES, SPECIES_SUICUNE
 	msgbox SootopolisCity_House3_Text_ThatsEntei, MSGBOX_DEFAULT
 	waitmessage
+	playmoncry SPECIES_SUICUNE, CRY_MODE_NORMAL
 	showmonpic SPECIES_SUICUNE, 0, 0
 	setseenmon SPECIES_SUICUNE
 	msgbox SootopolisCity_House3_Text_IntroSuicune, MSGBOX_DEFAULT
@@ -187,6 +189,7 @@ SootopolisCity_House3_EventScript_SpawnFirstRaikou::
 	setvar VAR_BEAST_SPECIES, SPECIES_RAIKOU
 	msgbox SootopolisCity_House3_Text_ThatsSuicune, MSGBOX_DEFAULT
 	waitmessage
+	playmoncry SPECIES_RAIKOU, CRY_MODE_NORMAL
 	showmonpic SPECIES_RAIKOU, 0, 0
 	setseenmon SPECIES_RAIKOU
 	msgbox SootopolisCity_House3_Text_IntroRaikou, MSGBOX_DEFAULT

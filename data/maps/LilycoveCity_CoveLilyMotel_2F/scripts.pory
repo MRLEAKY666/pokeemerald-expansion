@@ -291,6 +291,8 @@ LilycoveCity_CoveLilyMotel_2F_Text_VisitingHoenn:
 
 `
 script LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex {
+	playse(SE_PC_ON)
+	waitse
 	getseenmon(SPECIES_ARTICUNO)
 	copyvar(VAR_TEMP_0, VAR_RESULT)
 	getseenmon(SPECIES_ZAPDOS)
