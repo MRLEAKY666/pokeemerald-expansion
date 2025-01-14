@@ -75,4 +75,69 @@ ProfBirch_EventScript_RatePokedex::
 	buffernumberstring STR_VAR_1, VAR_0x8008  @ Num National seen
 	buffernumberstring STR_VAR_2, VAR_0x8009  @ Num National caught
 	msgbox gBirchDexRatingText_OnANationwideBasis, MSGBOX_DEFAULT
+	goto_if_set FLAG_LATIOS_OR_LATIAS_ROAMING ProfBirch_EventScript_LatiSpeech
+	waitmessage
+	return
+
+ProfBirch_EventScript_LatiSpeech::
+	msgbox gBirchDexRatingText_LatiSpeech, MSGBOX_DEFAULT
+	call_if_eq VAR_ROAMER_POKEMON, 0, ProfBirch_EventScript_BirchIfLatias
+	call_if_ne VAR_ROAMER_POKEMON, 0, ProfBirch_EventScript_BirchIfLatios 
+	return
+
+ProfBirch_EventScript_BirchIfLatios::
+	showmonpic SPECIES_LATIOS, 0, 0
+	setseenmon SPECIES_LATIOS
+	msgbox gBirchDexRatingText_LatiosSpeech, MSGBOX_DEFAULT
+	waitmessage
+	hidemonpic
+	call_if_eq VAR_ROAMING_LATI_STATE, 2, ProfBirch_EventScript_TryBirchResetLati
+	call_if_eq VAR_ROAMING_LATI_STATE, 1, ProfBirch_EventScript_TryGiveEonTicketLatios
+	goto_if_eq VAR_BIRCH_LAB_STATE, 5, LittlerootTown_ProfessorBirchsLab_EventScript_PokemonAwait
+	return
+
+ProfBirch_EventScript_BirchIfLatias::
+	showmonpic SPECIES_LATIAS, 0, 0
+	setseenmon SPECIES_LATIAS
+	msgbox gBirchDexRatingText_LatiasSpeech, MSGBOX_DEFAULT
+	waitmessage
+	hidemonpic
+	call_if_eq VAR_ROAMING_LATI_STATE, 2, ProfBirch_EventScript_TryBirchResetLati
+	call_if_eq VAR_ROAMING_LATI_STATE, 1, ProfBirch_EventScript_TryGiveEonTicketLatias
+	goto_if_eq VAR_BIRCH_LAB_STATE, 5, LittlerootTown_ProfessorBirchsLab_EventScript_PokemonAwait
+	return
+
+ProfBirch_EventScript_TryGiveEonTicketLatios::
+	goto_if_unset FLAG_RECEIVED_EON_TICKET, ProfBirch_EventScript_GiveEonTicketLatios
+	return
+
+ProfBirch_EventScript_GiveEonTicketLatios::
+	msgbox gBirchDexRatingText_CaughtLatios, MSGBOX_DEFAULT
+	giveitem ITEM_EON_TICKET
+	setflag FLAG_RECEIVED_EON_TICKET
+	setflag FLAG_ENABLE_SHIP_SOUTHERN_ISLAND
+	setvar VAR_DISTRIBUTE_EON_TICKET, 0
+	msgbox gBirchDexRatingText_AllowSouthernIsland, MSGBOX_DEFAULT
+	release
+	end
+
+ProfBirch_EventScript_TryGiveEonTicketLatias::
+	goto_if_unset FLAG_RECEIVED_EON_TICKET, ProfBirch_EventScript_GiveEonTicketLatias
+	return
+
+ProfBirch_EventScript_GiveEonTicketLatias::
+	msgbox gBirchDexRatingText_CaughtLatias, MSGBOX_DEFAULT
+	giveitem ITEM_EON_TICKET
+	setflag FLAG_RECEIVED_EON_TICKET
+	setflag FLAG_ENABLE_SHIP_SOUTHERN_ISLAND
+	setvar VAR_DISTRIBUTE_EON_TICKET, 0
+	msgbox gBirchDexRatingText_AllowSouthernIsland, MSGBOX_DEFAULT
+	release
+	end
+
+ProfBirch_EventScript_TryBirchResetLati::
+	setvar VAR_UNUSED_0x8014, 2
+	copyvar VAR_0x8004, VAR_ROAMER_POKEMON
+	special InitRoamer
+	setvar VAR_ROAMING_LATI_STATE, 0
 	return

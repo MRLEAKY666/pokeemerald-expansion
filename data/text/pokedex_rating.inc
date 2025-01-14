@@ -113,3 +113,37 @@ gBirchDexRatingText_OnANationwideBasis::
 	.string "On a nationwide basis…\p"
 	.string "You've seen {STR_VAR_1} POKéMON,\n"
 	.string "and you've caught {STR_VAR_2} POKéMON…$"
+
+gBirchDexRatingText_LatiSpeech::
+	.string "{PLAYER}, did you know RAYQUAZA\n"
+	.string "isn't the only legendary DRAGON-type\l"
+	.string "POKéMON who lives in HOENN's skies?\p"
+	.string "That's right, a pair of extremely\n"
+	.string "intelligent DRAGON-type POKéMON live\l"
+	.string "on our SOUTHERN ISLAND.$"
+
+gBirchDexRatingText_LatiosSpeech::
+	.string "One of those POKéMON, LATIOS, has even\n"
+	.string "been seen flying in our skies recently.$"
+
+gBirchDexRatingText_LatiasSpeech::
+	.string "One of those POKéMON, LATIAS, has even\n"
+	.string "been seen flying in our skies recently.$"
+
+gBirchDexRatingText_CaughtLatios::
+	.string "… … … … …\p"
+	.string "You've actually captured LATIOS?\p"
+	.string "{PLAYER}, I think you should take this.$"
+
+gBirchDexRatingText_CaughtLatias::
+	.string "… … … … …\p"
+	.string "You've actually captured LATIAS?\p"
+	.string "{PLAYER}, I think you should take this.$"
+
+gBirchDexRatingText_AllowSouthernIsland::
+	.string "That ticket will allow you to travel\n"
+	.string "to SOUTHERN ISLAND.\p"
+	.string "The other EON POKéMON is said to\n"
+	.string "roost there . . .\p"
+	.string "If you were able to catch them both,\n"
+	.string "it would be groundbreaking for science!$"

@@ -337,6 +337,10 @@ void SetRoamerInactive(u32 roamerIndex)
 
 void ResetSleepingRoamer(u32 roamerIndex)
 {
+    if ((ROAMER(roamerIndex)->species == SPECIES_LATIOS) || (ROAMER(roamerIndex)->species == SPECIES_LATIAS))
+    {
+        VarSet(VAR_ROAMING_LATI_STATE, 2);
+    }
     if (ROAMER(roamerIndex)->species == SPECIES_ARTICUNO)
     {
         FlagClear(FLAG_HIDE_ARTICUNO);
@@ -353,6 +357,10 @@ void ResetSleepingRoamer(u32 roamerIndex)
 
 void CaughtRoamer(u32 roamerIndex)
 {
+    if ((ROAMER(roamerIndex)->species == SPECIES_LATIOS) || (ROAMER(roamerIndex)->species == SPECIES_LATIAS))
+    {
+        VarSet(VAR_ROAMING_LATI_STATE, 1);
+    } 
     if (ROAMER(roamerIndex)->species == SPECIES_ENTEI)
     {
         //VarSet(VAR_BEAST_SPECIES, SPECIES_SUICUNE);
