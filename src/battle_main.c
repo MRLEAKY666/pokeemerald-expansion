@@ -376,6 +376,7 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_PIKE_QUEEN] = { _("PIKE QUEEN") },
     [TRAINER_CLASS_PYRAMID_KING] = { _("PYRAMID KING") },
     [TRAINER_CLASS_RS_PROTAG] = { _("{PKMN} TRAINER") },
+    [TRAINER_CLASS_PROFESSOR] = { _("PROF.") },
 };
 
 static void (* const sTurnActionsFuncsTable[])(void) =
@@ -2065,7 +2066,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
                 otIdType = OT_ID_PRESET;
                 fixedOtId = HIHALF(personalityValue) ^ LOHALF(personalityValue);
             }
-            if (trainer->trainerClass == TRAINER_CLASS_CHAMPION || TRAINER_CLASS_ELITE_FOUR) // level scaling for elite four and champion
+            if (trainer->trainerClass == (TRAINER_CLASS_CHAMPION || TRAINER_CLASS_ELITE_FOUR || TRAINER_CLASS_PROFESSOR || TRAINER_CLASS_RIVAL)) // level scaling for elite four and champion
             {
                 levelscale = (partyData[i].lvl+VarGet(VAR_HOF_COUNTER)*2);
                 if (levelscale > 100)

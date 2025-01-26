@@ -418,6 +418,7 @@ script LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex {
 						giveitem(ITEM_MYSTIC_TICKET)
 						setflag(FLAG_ENABLE_SHIP_NAVEL_ROCK)
 						setflag(FLAG_RECEIVED_MYSTIC_TICKET)
+						setflag(FLAG_START_LUGIA_QUEST)
 						msgbox(LilycoveCity_CoveLilyMotel_2F_Text_GiveMysticTicket)
 						waitmessage
 					}

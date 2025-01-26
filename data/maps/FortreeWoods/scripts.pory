@@ -2,6 +2,30 @@ raw `
 
 .set LOCALID_FORTREE_WOODS_RAYQUAZA, 28
 
+FortreeWoods_MapScripts::
+	map_script MAP_SCRIPT_ON_RESUME, FortreeWoods_OnResume
+	map_script MAP_SCRIPT_ON_RESUME, FortreeWoods_OnTransition
+	.byte 0
+
+FortreeWoods_OnResume:
+	setstepcallback STEP_CB_FORTREE_BRIDGE
+	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, FortreeWoods_EventScript_TryRemoveZapdos
+	end
+
+FortreeWoods_OnTransition:
+	call_if_set FLAG_CAUGHT_ZAPDOS, FortreeWoods_EventScript_HideZapdos
+	call_if_unset FLAG_CAUGHT_ZAPDOS, FortreeWoods_EventScript_TryShowZapdos
+	end
+
+FortreeWoods_EventScript_HideZapdos::
+	setflag FLAG_HIDE_ZAPDOS
+	return
+
+FortreeWoods_EventScript_TryShowZapdos::
+	goto_if_set FLAG_DEFEATED_ZAPDOS, Common_EventScript_NopReturn
+	clearflag FLAG_HIDE_ZAPDOS
+	return
+
 FortreeWoods_EventScript_Rayquaza::
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
@@ -50,15 +74,6 @@ FortreeWoods_EventScript_Rayquaza::
 	releaseall
 	end
 
-FortreeWoods_MapScripts::
-	map_script MAP_SCRIPT_ON_RESUME, FortreeWoods_OnResume
-	.byte 0
-
-FortreeWoods_OnResume:
-	setstepcallback STEP_CB_FORTREE_BRIDGE
-	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, FortreeWoods_EventScript_TryRemoveZapdos
-	end
-
 FortreeWoods_EventScript_TryRemoveZapdos::
 	specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
@@ -81,7 +96,7 @@ FortreeWoods_EventScript_Zapdos::
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, FortreeWoods_EventScript_DefeatedZapdos
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, FortreeWoods_EventScript_RanFromZapdos
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, FortreeWoods_EventScript_RanFromZapdos
-	setflag FLAG_DEFEATED_ZAPDOS
+	setflag FLAG_CAUGHT_ZAPDOS
 	release
 	end
 

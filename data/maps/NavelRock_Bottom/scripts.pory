@@ -17,6 +17,7 @@ NavelRock_Bottom_EventScript_HideLugia::
 
 NavelRock_Bottom_EventScript_TryShowLugia::
 	goto_if_set FLAG_DEFEATED_LUGIA, Common_EventScript_NopReturn
+	goto_if_not_defeated TRAINER_OAK_NAVEL_ROCK, Common_EventScript_NopReturn
 	clearflag FLAG_HIDE_LUGIA
 	return
 

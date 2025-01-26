@@ -494,6 +494,7 @@ MtPyre_Summit_Text_Grunt4PostBattle:
 
 MtPyre_Summit_Text_ArchieAttack:
 	.string "Huh . . . ?\p"
+	.string "You're following me around?\p"
 	.string "Who do you think you are?\n"
 	.string "Some kind of baby genius cop?\p"
 	.string "I'll squash you!$"

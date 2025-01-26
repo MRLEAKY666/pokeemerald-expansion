@@ -1,5 +1,140 @@
 raw `
 NavelRock_Entrance_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, NavelRock_Entrance_OnTransition
 	.byte 0
 
+NavelRock_Entrance_OnTransition::
+	call_if_eq VAR_BEAST_SPECIES, SPECIES_HO_OH, NavelRock_Entrance_EventScript_ShowWallace
+	call_if_set FLAG_START_LUGIA_QUEST, NavelRock_Entrance_EventScript_ShowOak
+	end
+
+NavelRock_Entrance_EventScript_ShowWallace::
+	clearflag FLAG_HIDE_NAVEL_ROCK_WALLACE
+	return
+
+NavelRock_Entrance_EventScript_ShowOak::
+	clearflag FLAG_HIDE_NAVEL_ROCK_OAK
+	return
+
+NavelRock_Entrance_EventScript_ProfOak::
+	lock
+	faceplayer
+	goto_if_defeated TRAINER_OAK_NAVEL_ROCK, NavelRock_Entrance_EventScript_ProfOakFindLugia
+	msgbox NavelRock_Entance_Text_OakDidYouBringThem, MSGBOX_DEFAULT
+	call NavelRock_Entrance_EventScript_CheckForBirds
+	msgbox NavelRock_Entance_Text_OakBringTheBirds, MSGBOX_DEFAULT
+	release
+	end
+
+NavelRock_Entrance_EventScript_ProfOakFindLugia::
+	msgbox NavelRock_Entance_Text_OakFindLugia, MSGBOX_DEFAULT
+	release
+	end
+
+NavelRock_Entance_Text_OakDidYouBringThem:
+	.string "PROF. OAK: Ah, {PLAYER}!\n"
+	.string "Welcome to NAVEL ROCK.\p"
+	.string "Did you bring the legendary POKéMON\n"
+	.string "ARTICUNO, ZAPDOS, and MOLTRES?$"
+
+NavelRock_Entance_Text_OakBringTheBirds:
+	.string "That's too bad . . .\p"
+	.string "Come back here with those\n"
+	.string "POKéMON.\p"
+	.string "I'd like to see if their presence\n"
+	.string "might attract another rare POKéMON\l"
+	.string "to this place.$"
+
+NavelRock_Entance_Text_OakExplain:
+	.string ". . .\n"
+	.string ". . .\p"
+	.string "You did!\p"
+	.string "Now {PLAYER}, this place is called\n"
+	.string "NAVEL ROCK . . .\p"
+	.string "Some very rare and powerful\n"
+	.string "POKéMON are known to roost here.\p"
+	.string "One such POKéMON, LUGIA, is said\n"
+	.string "to have a connection to the\l"
+	.string "legendary birds.\p"
+	.string "I theorize that by allowing your\n"
+	.string "POKéMON to demonstrate their full\l"
+	.string "power in this place, we can\l"
+	.string "summon LUGIA.\p"
+	.string "My battling days are long past,\n"
+	.string "but for this experiment I think\l"
+	.string "I'll make a serviceable partner.$"
+
+NavelRock_Entance_Text_OakAskToBattle:
+	.string "{PLAYER} . . .\p"
+	.string "Will you battle me here?$"
+
+NavelRock_Entance_Text_OakStartBattle:
+	.string "Okay, {PLAYER}, prepare yourself!\p"
+	.string "Despite their old age, my POKéMON\n"
+	.string "have more than enough experience\l"
+	.string "to be considered a threat!$"
+
+NavelRock_Entance_Text_OakEndBattle:
+	.string "Thank you, {PLAYER}!$"
+
+NavelRock_Entance_Text_OakPostBattle:
+	.string "Did you hear that?\p"
+	.string "I think LUGIA is here on the\n"
+	.string "island!\p"
+	.string "LUGIA probably roosts deep under\n"
+	.string "NAVEL ROCK, close to the water.\p"
+	.string "{PLAYER}, will you go find LUGIA?\p"
+	.string "I'd very much appreciate the\n"
+	.string "opportunity to study its POKéDEX\l"
+	.string "data.$"
+
+NavelRock_Entance_Text_OakFindLugia:
+	.string "LUGIA probably roosts deep under\n"
+	.string "NAVEL ROCK, close to the water.\p"
+	.string "{PLAYER}, will you go find LUGIA?\p"
+	.string "I'd very much appreciate the\n"
+	.string "opportunity to study its POKéDEX\l"
+	.string "data.$" 
+
 `
+
+script NavelRock_Entrance_EventScript_CheckForBirds {
+	checkspecies(SPECIES_ARTICUNO, NO_PARTY_SCREEN)
+	if (var(VAR_RESULT)) {
+		checkspecies(SPECIES_ZAPDOS, NO_PARTY_SCREEN)
+		if (var(VAR_RESULT)) {
+			checkspecies(SPECIES_MOLTRES, NO_PARTY_SCREEN)
+			if (var(VAR_RESULT)) {
+				msgbox(NavelRock_Entance_Text_OakExplain)
+				msgbox(NavelRock_Entance_Text_OakAskToBattle, MSGBOX_YESNO)
+				if (var(VAR_RESULT) == YES) {
+					msgbox(NavelRock_Entance_Text_OakStartBattle)
+					trainerbattle_no_intro(TRAINER_OAK_NAVEL_ROCK, NavelRock_Entance_Text_OakEndBattle)
+					playmoncry(SPECIES_LUGIA, CRY_MODE_ENCOUNTER)
+					setvar(VAR_0x8004, 0)
+					setvar(VAR_0x8005, 3)  
+					setvar(VAR_0x8006, 4) 
+					setvar(VAR_0x8007, 2)  
+					special(ShakeCamera)
+					delay(30)
+					playmoncry(SPECIES_LUGIA, CRY_MODE_ENCOUNTER)
+					setvar(VAR_0x8004, 0) 
+					setvar(VAR_0x8005, 3) 
+					setvar(VAR_0x8006, 4)
+					setvar(VAR_0x8007, 2)  
+					special(ShakeCamera)
+					delay(30)
+					delay(50)
+					waitse
+					playmoncry(SPECIES_LUGIA, CRY_MODE_ENCOUNTER)
+					waitmoncry
+					delay(20)
+					msgbox(NavelRock_Entance_Text_OakPostBattle)
+					release
+					end
+				}
+			}
+		}
+	} 
+	return
+}
