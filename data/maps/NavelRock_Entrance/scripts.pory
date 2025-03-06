@@ -26,6 +26,12 @@ NavelRock_Entrance_EventScript_ProfOak::
 	release
 	end
 
+NavelRock_Entrance_EventScript_Wallace::
+	lock
+	faceplayer
+	release
+	end
+
 NavelRock_Entrance_EventScript_ProfOakFindLugia::
 	msgbox NavelRock_Entance_Text_OakFindLugia, MSGBOX_DEFAULT
 	release
@@ -45,6 +51,11 @@ NavelRock_Entance_Text_OakBringTheBirds:
 	.string "might attract another rare POKéMON\l"
 	.string "to this place.$"
 
+NavelRock_Entrance_Text_OakPrepareForBattle:
+	.string "If you want to help me attract\n"
+	.string "LUGIA to NAVEL ROCK, prepare for a\l"
+	.string "tough battle.$"
+
 NavelRock_Entance_Text_OakExplain:
 	.string ". . .\n"
 	.string ". . .\p"
@@ -59,10 +70,7 @@ NavelRock_Entance_Text_OakExplain:
 	.string "I theorize that by allowing your\n"
 	.string "POKéMON to demonstrate their full\l"
 	.string "power in this place, we can\l"
-	.string "summon LUGIA.\p"
-	.string "My battling days are long past,\n"
-	.string "but for this experiment I think\l"
-	.string "I'll make a serviceable partner.$"
+	.string "summon LUGIA.$"
 
 NavelRock_Entance_Text_OakAskToBattle:
 	.string "{PLAYER} . . .\p"
@@ -130,6 +138,11 @@ script NavelRock_Entrance_EventScript_CheckForBirds {
 					waitmoncry
 					delay(20)
 					msgbox(NavelRock_Entance_Text_OakPostBattle)
+					release
+					end
+				}
+				else {
+					msgbox(NavelRock_Entrance_Text_OakPrepareForBattle)
 					release
 					end
 				}
