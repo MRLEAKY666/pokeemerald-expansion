@@ -43,7 +43,7 @@
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 5,
       "movement_range_y": 5,
-      "trainer_type": "FLAG_KIRIKIRI_MOUNTAIN_SNORLAX",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "5",
       "script": "KiriKiriMountain_EventScript_Snorlax",
       "flag": "FLAG_KIRIKIRI_MOUNTAIN_SNORLAX"
