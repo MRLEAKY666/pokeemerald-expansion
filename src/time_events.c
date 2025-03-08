@@ -141,3 +141,8 @@ void ResetRandomItem(void)
         break;
     }
 }
+
+void ResetWildOverworldMons(void)
+{
+    FlagClear(FLAG_GRANITE_COVE_SNOVER);
+}

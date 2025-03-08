@@ -56,6 +56,7 @@ static void UpdatePerDay(struct Time *localTime)
         SetRandomLotteryNumber(daysSince);
         UpdateDaysPassedSinceFormChange(daysSince);
         ResetRandomItem();
+        ResetWildOverworldMons();
         *days = localTime->days;
     }
 }
