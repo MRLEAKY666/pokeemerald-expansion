@@ -61,7 +61,7 @@ Route103_EventScript_RivalMay::
 	case SPECIES_APPLIN, Route103_EventScript_BattleMayA
 	case SPECIES_MIME_JR, Route103_EventScript_BattleMayB
 	case SPECIES_MAGBY, Route103_EventScript_BattleMayB
-	case SPECIES_ELEKID, Route103_EventScript_BattleMayB
+	case SPECIES_ELEKID, Route103_EventScript_BattleMayA
 	case SPECIES_MANKEY, Route103_EventScript_BattleMayA
 	case SPECIES_SWINUB, Route103_EventScript_BattleMayC
 	case SPECIES_LARVITAR, Route103_EventScript_BattleMayA

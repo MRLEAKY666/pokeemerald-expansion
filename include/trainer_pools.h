@@ -22,6 +22,7 @@ enum PoolRulesets {
 enum PoolPickFunctions {
     POOL_PICK_DEFAULT,
     POOL_PICK_LOWEST,
+    POOL_PICK_RIVAL,
 };
 
 enum PoolPruneOptions {

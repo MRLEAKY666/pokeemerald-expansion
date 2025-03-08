@@ -6,6 +6,7 @@
 #include "trainer_pools.h"
 #include "constants/battle.h"
 #include "constants/items.h"
+#include "event_data.h"
 
 #include "data/battle_pool_rules.h"
 
@@ -96,6 +97,87 @@ static u32 DefaultAcePickFunction(const struct Trainer *trainer, u8 *poolIndexAr
         {
             monIndex = poolIndexArray[firstAceIndex];
             poolIndexArray[firstAceIndex] = POOL_SLOT_DISABLED;
+        }
+    }
+    return monIndex;
+}
+
+static u32 RivalAcePickFunction(const struct Trainer *trainer, u8 *poolIndexArray, u32 partyIndex, u32 monsCount, u32 battleTypeFlags, struct PoolRules *rules)
+{
+    u32 arrayIndex = 0;
+    u32 monIndex = POOL_SLOT_DISABLED;
+    //  monIndex is set to 255 if nothing has been chosen yet, this gives an upper limit on pool size of 255
+    if (((partyIndex == monsCount - 1) || (partyIndex == monsCount - 2 && battleTypeFlags & BATTLE_TYPE_DOUBLE))
+     && (rules->tagMaxMembers[1] == POOL_MEMBER_COUNT_UNLIMITED || rules->tagMaxMembers[1] >= 1))
+    {
+        //  Find required + ace tags
+        bool32 foundRequiredTag = FALSE;
+        u32 firstAceIndex = POOL_SLOT_DISABLED;
+        for (u32 currIndex = 0; currIndex < trainer->poolSize; currIndex++)
+        {
+            u32 starter = VarGet(VAR_STARTER_MON);
+            if ((poolIndexArray[currIndex] != POOL_SLOT_DISABLED)
+             && (trainer->party[poolIndexArray[currIndex]].tags & (1u << POOL_TAG_ACE)))
+            {
+                if (firstAceIndex == POOL_SLOT_DISABLED)
+                    firstAceIndex = currIndex;
+                if (trainer->party[currIndex].species == SPECIES_TORCHIC || trainer->party[currIndex].species == SPECIES_COMBUSKEN || trainer->party[currIndex].species == SPECIES_BLAZIKEN)
+                {
+                    if (starter == SPECIES_TREECKO || starter == SPECIES_PORYGON || starter == SPECIES_SNIVY || starter == SPECIES_ZORUA || starter == SPECIES_ROWLET || starter == SPECIES_TURTWIG || starter == SPECIES_BULBASAUR || starter == SPECIES_BUDEW || starter == SPECIES_PAWNIARD)
+                    {    
+                        monIndex = currIndex;
+                        break;
+                    }
+                } 
+                if (trainer->party[currIndex].species == SPECIES_MUDKIP || trainer->party[currIndex].species == SPECIES_MARSHTOMP || trainer->party[currIndex].species == SPECIES_SWAMPERT)
+                {
+                    if (starter ==  SPECIES_TORCHIC || starter == SPECIES_MAGBY || starter == SPECIES_CHARMANDER || starter == SPECIES_CYNDAQUIL)
+                    {    
+                        monIndex = currIndex;
+                        break;
+                    }
+                }
+                if (trainer->party[currIndex].species == SPECIES_TREECKO || trainer->party[currIndex].species == SPECIES_GROVYLE || trainer->party[currIndex].species == SPECIES_SCEPTILE)
+                {
+                    if (starter == SPECIES_MUDKIP || starter == SPECIES_PIPLUP || starter == SPECIES_SQUIRTLE || starter == SPECIES_OSHAWOTT)
+                    {    
+                        monIndex = currIndex;
+                        break;
+                    }
+                }
+                if (trainer->party[currIndex].species == SPECIES_RIOLU || trainer->party[currIndex].species == SPECIES_LUCARIO)
+                {
+                    if (starter == SPECIES_CASTFORM || starter == SPECIES_EEVEE || starter == SPECIES_ZORUA_HISUI || starter == SPECIES_LARVITAR || starter == SPECIES_SPHEAL)
+                    {    
+                        monIndex = currIndex;
+                        break;
+                    }
+                }
+                if (trainer->party[currIndex].species == SPECIES_LARVITAR || trainer->party[currIndex].species == SPECIES_PUPITAR || trainer->party[currIndex].species == SPECIES_TYRANITAR)
+                {
+                    if (starter == SPECIES_PICHU || starter == SPECIES_GOTHITA || starter == SPECIES_SOLOSIS || starter == SPECIES_LARVESTA || starter == SPECIES_MIME_JR || starter == SPECIES_ELEKID || starter == SPECIES_SHINX)
+                    {    
+                        monIndex = currIndex;
+                        break;
+                    }
+                }
+                if (trainer->party[currIndex].species == SPECIES_SPHEAL || trainer->party[currIndex].species == SPECIES_SEALEO || trainer->party[currIndex].species == SPECIES_WALREIN)
+                {
+                    if (starter == SPECIES_TOGEPI || starter == SPECIES_AXEW || starter == SPECIES_GOOMY || starter == SPECIES_SWINUB || starter == SPECIES_SANDILE)
+                    {    
+                        monIndex = currIndex;
+                        break;
+                    }
+                }
+                if (trainer->party[currIndex].species == SPECIES_DRATINI || trainer->party[currIndex].species == SPECIES_DRAGONAIR || trainer->party[currIndex].species == SPECIES_DRAGONITE)
+                {
+                    if (starter == SPECIES_APPLIN || starter == SPECIES_MANKEY)
+                    {    
+                        monIndex = currIndex;
+                        break;
+                    }
+                }
+            }
         }
     }
     return monIndex;
@@ -313,6 +395,11 @@ static struct PickFunctions GetPickFunctions(const struct Trainer *trainer)
             pickFunctions.LeadFunction = &PickLowest;
             pickFunctions.AceFunction = &PickLowest;
             pickFunctions.OtherFunction = &PickLowest;
+            break;
+        case POOL_PICK_RIVAL:
+            pickFunctions.LeadFunction = &DefaultLeadPickFunction;
+            pickFunctions.AceFunction = &RivalAcePickFunction;
+            pickFunctions.OtherFunction = &DefaultOtherPickFunction;
             break;
         default:
             pickFunctions.LeadFunction = &DefaultLeadPickFunction;

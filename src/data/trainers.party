@@ -9746,10 +9746,43 @@ Gender: Female
 Music: Female
 Double Battle: No
 AI: Basic Trainer
+Party Size: 1
+Pool Pick Functions: Rival
 
 Torchic
 Level: 5
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Mudkip
+Level: 5
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Treecko
+Level: 5
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Riolu
+Level: 5
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Larvitar
+Level: 5
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Spheal
+Level: 5
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Dratini
+Level: 5
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
 
 === TRAINER_MAY_ROUTE_110_A ===
 Name: MAY

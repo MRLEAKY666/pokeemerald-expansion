@@ -125,7 +125,7 @@ Route103_EventScript_RivalMay::
 # 63 "data//maps/Route103/scripts.pory"
 	case SPECIES_MAGBY, Route103_EventScript_BattleMayB
 # 64 "data//maps/Route103/scripts.pory"
-	case SPECIES_ELEKID, Route103_EventScript_BattleMayB
+	case SPECIES_ELEKID, Route103_EventScript_BattleMayA
 # 65 "data//maps/Route103/scripts.pory"
 	case SPECIES_MANKEY, Route103_EventScript_BattleMayA
 # 66 "data//maps/Route103/scripts.pory"
