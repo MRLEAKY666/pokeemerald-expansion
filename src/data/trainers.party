@@ -9581,10 +9581,43 @@ Gender: Male
 Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Force Setup First Turn
+Party Size: 1
+Pool Pick Functions: Rival
 
 Torchic
 Level: 5
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Mudkip
+Level: 5
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Treecko
+Level: 5
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Riolu
+Level: 5
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Larvitar
+Level: 5
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Spheal
+Level: 5
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Dratini
+Level: 5
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
 
 === TRAINER_BRENDAN_ROUTE_110_A ===
 Name: BRENDAN
@@ -9594,6 +9627,12 @@ Gender: Male
 Music: Male
 Double Battle: No
 AI: Basic Trainer
+Party Size: 3
+Pool Pick Functions: Rival
+
+Slugma
+Level: 18
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 Wingull
 Level: 18
@@ -9606,6 +9645,37 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 Combusken
 Level: 20
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Marshtomp
+Level: 20
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Grovyle
+Level: 20
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Riolu
+Level: 20
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Larvitar
+Level: 20
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Spheal
+Level: 20
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Dratini
+Level: 20
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
 
 === TRAINER_BRENDAN_ROUTE_119_A ===
 Name: BRENDAN
@@ -9615,6 +9685,12 @@ Gender: Male
 Music: Male
 Double Battle: No
 AI: Basic Trainer
+Party Size: 3
+Pool Pick Functions: Rival
+
+Slugma
+Level: 29
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Pelipper
 Level: 29
@@ -9627,6 +9703,37 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 Combusken
 Level: 31
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Marshtomp
+Level: 31
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Grovyle
+Level: 31
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Lucario
+Level: 31
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Pupitar
+Level: 31
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Sealeo
+Level: 31
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Dragonair
+Level: 31
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
 
 === TRAINER_BRENDAN_ROUTE_103_B ===
 Name: BRENDAN
@@ -9792,8 +9899,14 @@ Gender: Female
 Music: Female
 Double Battle: No
 AI: Basic Trainer
+Party Size: 3
+Pool Pick Functions: Rival
 
 Wingull
+Level: 18
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+Slugma
 Level: 18
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
@@ -9804,6 +9917,37 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 Combusken
 Level: 20
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Marshtomp
+Level: 20
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Grovyle
+Level: 20
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Riolu
+Level: 20
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Larvitar
+Level: 20
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Spheal
+Level: 20
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Dratini
+Level: 20
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
 
 === TRAINER_MAY_ROUTE_119_A ===
 Name: MAY
@@ -9813,6 +9957,12 @@ Gender: Female
 Music: Female
 Double Battle: No
 AI: Basic Trainer
+Party Size: 3
+Pool Pick Functions: Rival
+
+Slugma
+Level: 29
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Pelipper
 Level: 29
@@ -9825,6 +9975,37 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 Combusken
 Level: 31
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Marshtomp
+Level: 31
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Grovyle
+Level: 31
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Lucario
+Level: 31
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Pupitar
+Level: 31
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Sealeo
+Level: 32
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Dragonair
+Level: 31
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
 
 === TRAINER_MAY_ROUTE_103_B ===
 Name: MAY
@@ -10900,6 +11081,16 @@ Gender: Male
 Music: Male
 Double Battle: No
 AI: Check Bad Move
+Party Size: 2
+Pool Pick Functions: Rival
+
+Wingull
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Slugma
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
 Lotad
 Level: 13
@@ -10908,6 +11099,37 @@ IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 Torchic
 Level: 15
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Mudkip
+Level: 15
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Treecko
+Level: 15
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Riolu
+Level: 15
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Larvitar
+Level: 15
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Spheal
+Level: 15
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Dratini
+Level: 15
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
 
 === TRAINER_BRENDAN_RUSTBORO_C ===
 Name: BRENDAN
@@ -12328,8 +12550,14 @@ Gender: Male
 Music: Male
 Double Battle: No
 AI: Basic Trainer
+Party Size: 4
+Pool Pick Functions: Rival
 
 Tropius
+Level: 33
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+
+Slugma
 Level: 33
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
@@ -12344,6 +12572,37 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 Combusken
 Level: 35
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Marshtomp
+Level: 35
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Grovyle
+Level: 35
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Lucario
+Level: 35
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Pupitar
+Level: 35
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Sealeo
+Level: 35
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Dragonair
+Level: 35
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
 
 === TRAINER_BRENDAN_LILYCOVE_B ===
 Name: BRENDAN
@@ -12403,6 +12662,12 @@ Gender: Female
 Music: Female
 Double Battle: No
 AI: Basic Trainer
+Party Size: 4
+Pool Pick Functions: Rival
+
+Slugma
+Level: 33
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 Tropius
 Level: 33
@@ -12419,6 +12684,37 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 Combusken
 Level: 35
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Marshtomp
+Level: 35
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Grovyle
+Level: 35
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Lucario
+Level: 35
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Pupitar
+Level: 35
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Sealeo
+Level: 35
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Dragonair
+Level: 35
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
 
 === TRAINER_MAY_LILYCOVE_B ===
 Name: MAY
@@ -14220,6 +14516,16 @@ Gender: Female
 Music: Female
 Double Battle: No
 AI: Basic Trainer
+Party Size: 2
+Pool Pick Functions: Rival
+
+Wingull
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Slugma
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
 Lotad
 Level: 13
@@ -14228,6 +14534,37 @@ IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 Torchic
 Level: 15
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Mudkip
+Level: 15
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Treecko
+Level: 15
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Riolu
+Level: 15
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Larvitar
+Level: 15
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Spheal
+Level: 15
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+
+Dratini
+Level: 15
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
 
 === TRAINER_MAY_RUSTBORO_B ===
 Name: MAY

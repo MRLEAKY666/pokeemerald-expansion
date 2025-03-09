@@ -1990,7 +1990,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
                 otIdType = OT_ID_PRESET;
                 fixedOtId = HIHALF(personalityValue) ^ LOHALF(personalityValue);
             }
-            if (trainer->trainerClass == (TRAINER_CLASS_CHAMPION || TRAINER_CLASS_ELITE_FOUR || TRAINER_CLASS_PROFESSOR || TRAINER_CLASS_RIVAL)) // level scaling for elite four and champion
+            if (trainer->trainerClass == TRAINER_CLASS_CHAMPION || trainer->trainerClass == TRAINER_CLASS_ELITE_FOUR || trainer->trainerClass == TRAINER_CLASS_PROFESSOR || trainer->trainerClass == TRAINER_CLASS_RIVAL) // level scaling for elite four and champion
             {
                 levelscale = (partyData[monIndex].lvl+VarGet(VAR_HOF_COUNTER)*2);
                 if (levelscale > 100)

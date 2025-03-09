@@ -148,43 +148,7 @@ Route104_EventScript_MayAskToBattle::
 Route104_EventScript_BattleMay::
 	msgbox Route104_Text_MayIntro, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
-	case SPECIES_TREECKO, Route104_EventScript_BattleMayA
-	case SPECIES_TORCHIC, Route104_EventScript_BattleMayB
-	case SPECIES_MUDKIP, Route104_EventScript_BattleMayC
-	case SPECIES_CASTFORM, Route104_EventScript_BattleMayA
-	case SPECIES_PIPLUP, Route104_EventScript_BattleMayC
-	case SPECIES_EEVEE, Route104_EventScript_BattleMayA
-	case SPECIES_PICHU, Route104_EventScript_BattleMayB
-	case SPECIES_TOGEPI, Route104_EventScript_BattleMayC
-	case SPECIES_PORYGON, Route104_EventScript_BattleMayA
-	case SPECIES_SNIVY, Route104_EventScript_BattleMayA
-	case SPECIES_ZORUA_HISUI, Route104_EventScript_BattleMayA
-	case SPECIES_ZORUA, Route104_EventScript_BattleMayA
-	case SPECIES_GOTHITA, Route104_EventScript_BattleMayB
-	case SPECIES_SOLOSIS, Route104_EventScript_BattleMayB
-	case SPECIES_AXEW, Route104_EventScript_BattleMayC
-	case SPECIES_LARVESTA, Route104_EventScript_BattleMayB
-	case SPECIES_GOOMY, Route104_EventScript_BattleMayC
-	case SPECIES_ROWLET, Route104_EventScript_BattleMayA
-	case SPECIES_APPLIN, Route104_EventScript_BattleMayA
-	case SPECIES_MIME_JR, Route104_EventScript_BattleMayB
-	case SPECIES_MAGBY, Route104_EventScript_BattleMayB
-	case SPECIES_ELEKID, Route104_EventScript_BattleMayB
-	case SPECIES_MANKEY, Route104_EventScript_BattleMayA
-	case SPECIES_SWINUB, Route104_EventScript_BattleMayC
-	case SPECIES_LARVITAR, Route104_EventScript_BattleMayA
-	case SPECIES_TURTWIG, Route104_EventScript_BattleMayA
-	case SPECIES_CHARMANDER, Route104_EventScript_BattleMayB
-	case SPECIES_SQUIRTLE, Route104_EventScript_BattleMayC
-	case SPECIES_BULBASAUR, Route104_EventScript_BattleMayA
-	case SPECIES_OSHAWOTT, Route104_EventScript_BattleMayC
-	case SPECIES_CYNDAQUIL, Route104_EventScript_BattleMayB
-	case SPECIES_BUDEW, Route104_EventScript_BattleMayA
-	case SPECIES_SPHEAL, Route104_EventScript_BattleMayA
-	case SPECIES_SHINX, Route104_EventScript_BattleMayB
-	case SPECIES_SANDILE, Route104_EventScript_BattleMayC
-	case SPECIES_PAWNIARD, Route104_EventScript_BattleMayA
-	case SPECIES_JANGMO_O, Route104_EventScript_BattleMayA
+	goto Route104_EventScript_StartMayBattle
 	end
 
 Route104_EventScript_MayDefeated::
@@ -198,20 +162,8 @@ Route104_EventScript_RestoreMusic::
 	fadedefaultbgm
 	return
 
-Route104_EventScript_BattleMayA::
+Route104_EventScript_StartMayBattle::
 	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_A, Route104_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	goto Route104_EventScript_MayDefeated
-	end
-
-Route104_EventScript_BattleMayB::
-	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_B, Route104_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	goto Route104_EventScript_MayDefeated
-	end
-
-Route104_EventScript_BattleMayC::
-	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_C, Route104_Text_MayDefeat
 	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
 	goto Route104_EventScript_MayDefeated
 	end
@@ -254,43 +206,7 @@ Route104_EventScript_BrendanAskToBattle::
 Route104_EventScript_BattleBrendan::
 	msgbox Route104_Text_BrendanIntro, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
-	case SPECIES_TREECKO, Route104_EventScript_BattleBrendanA
-	case SPECIES_TORCHIC, Route104_EventScript_BattleBrendanB
-	case SPECIES_MUDKIP, Route104_EventScript_BattleBrendanC
-	case SPECIES_CASTFORM, Route104_EventScript_BattleBrendanA
-	case SPECIES_PIPLUP, Route104_EventScript_BattleBrendanC
-	case SPECIES_EEVEE, Route104_EventScript_BattleBrendanA
-	case SPECIES_PICHU, Route104_EventScript_BattleBrendanB
-	case SPECIES_TOGEPI, Route104_EventScript_BattleBrendanC
-	case SPECIES_PORYGON, Route104_EventScript_BattleBrendanA
-	case SPECIES_SNIVY, Route104_EventScript_BattleBrendanA
-	case SPECIES_ZORUA_HISUI, Route104_EventScript_BattleBrendanA
-	case SPECIES_ZORUA, Route104_EventScript_BattleBrendanA
-	case SPECIES_GOTHITA, Route104_EventScript_BattleBrendanB
-	case SPECIES_SOLOSIS, Route104_EventScript_BattleBrendanB
-	case SPECIES_AXEW, Route104_EventScript_BattleBrendanC
-	case SPECIES_LARVESTA, Route104_EventScript_BattleBrendanB
-	case SPECIES_GOOMY, Route104_EventScript_BattleBrendanC
-	case SPECIES_ROWLET, Route104_EventScript_BattleBrendanA
-	case SPECIES_APPLIN, Route104_EventScript_BattleBrendanA
-	case SPECIES_MIME_JR, Route104_EventScript_BattleBrendanB
-	case SPECIES_MAGBY, Route104_EventScript_BattleBrendanB
-	case SPECIES_ELEKID, Route104_EventScript_BattleBrendanB
-	case SPECIES_MANKEY, Route104_EventScript_BattleBrendanA
-	case SPECIES_SWINUB, Route104_EventScript_BattleBrendanC
-	case SPECIES_LARVITAR, Route104_EventScript_BattleBrendanA
-	case SPECIES_TURTWIG, Route104_EventScript_BattleBrendanA
-	case SPECIES_CHARMANDER, Route104_EventScript_BattleBrendanB
-	case SPECIES_SQUIRTLE, Route104_EventScript_BattleBrendanC
-	case SPECIES_BULBASAUR, Route104_EventScript_BattleBrendanA
-	case SPECIES_OSHAWOTT, Route104_EventScript_BattleBrendanC
-	case SPECIES_CYNDAQUIL, Route104_EventScript_BattleBrendanB
-	case SPECIES_BUDEW, Route104_EventScript_BattleBrendanA
-	case SPECIES_SPHEAL, Route104_EventScript_BattleBrendanA
-	case SPECIES_SHINX, Route104_EventScript_BattleBrendanB
-	case SPECIES_SANDILE, Route104_EventScript_BattleBrendanC
-	case SPECIES_PAWNIARD, Route104_EventScript_BattleBrendanA
-	case SPECIES_JANGMO_O, Route104_EventScript_BattleBrendanA
+	goto Route104_EventScript_StartBrendanBattle
 	end
 
 Route104_EventScript_BrendanDefeated::
@@ -299,20 +215,8 @@ Route104_EventScript_BrendanDefeated::
 	releaseall
 	end
 
-Route104_EventScript_BattleBrendanA::
+Route104_EventScript_StartBrendanBattle::
 	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_A, Route104_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	goto Route104_EventScript_BrendanDefeated
-	end
-
-Route104_EventScript_BattleBrendanB::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_B, Route104_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	goto Route104_EventScript_BrendanDefeated
-	end
-
-Route104_EventScript_BattleBrendanC::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_C, Route104_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
 	goto Route104_EventScript_BrendanDefeated
 	end

@@ -495,1166 +495,982 @@ LilycoveCity_EventScript_May::
 # 248 "data//maps/LilycoveCity/scripts.pory"
 	switch VAR_STARTER_MON
 # 249 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_TREECKO, LilycoveCity_EventScript_BattleMayA
+	goto LilycoveCity_EventScript_BattleMay
 # 250 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_TORCHIC, LilycoveCity_EventScript_BattleMayB
-# 251 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_MUDKIP, LilycoveCity_EventScript_BattleMayC
-# 252 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_CASTFORM, LilycoveCity_EventScript_BattleMayA
-# 253 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_PIPLUP, LilycoveCity_EventScript_BattleMayC
-# 254 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_EEVEE, LilycoveCity_EventScript_BattleMayA
-# 255 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_PICHU, LilycoveCity_EventScript_BattleMayB
-# 256 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_TOGEPI, LilycoveCity_EventScript_BattleMayC
-# 257 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_PORYGON, LilycoveCity_EventScript_BattleMayA
-# 258 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_SNIVY, LilycoveCity_EventScript_BattleMayA
-# 259 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_ZORUA_HISUI, LilycoveCity_EventScript_BattleMayA
-# 260 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_ZORUA, LilycoveCity_EventScript_BattleMayA
-# 261 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_GOTHITA, LilycoveCity_EventScript_BattleMayB
-# 262 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_SOLOSIS, LilycoveCity_EventScript_BattleMayB
-# 263 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_AXEW, LilycoveCity_EventScript_BattleMayC
-# 264 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_LARVESTA, LilycoveCity_EventScript_BattleMayB
-# 265 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_GOOMY, LilycoveCity_EventScript_BattleMayC
-# 266 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_ROWLET, LilycoveCity_EventScript_BattleMayA
-# 267 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_APPLIN, LilycoveCity_EventScript_BattleMayA
-# 268 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_MIME_JR, LilycoveCity_EventScript_BattleMayB
-# 269 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_MAGBY, LilycoveCity_EventScript_BattleMayB
-# 270 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_ELEKID, LilycoveCity_EventScript_BattleMayB
-# 271 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_MANKEY, LilycoveCity_EventScript_BattleMayA
-# 272 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_SWINUB, LilycoveCity_EventScript_BattleMayC
-# 273 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_LARVITAR, LilycoveCity_EventScript_BattleMayA
-# 274 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_TURTWIG, LilycoveCity_EventScript_BattleMayA
-# 275 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_CHARMANDER, LilycoveCity_EventScript_BattleMayB
-# 276 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_SQUIRTLE, LilycoveCity_EventScript_BattleMayC
-# 277 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_BULBASAUR, LilycoveCity_EventScript_BattleMayA
-# 278 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_OSHAWOTT, LilycoveCity_EventScript_BattleMayC
-# 279 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_CYNDAQUIL, LilycoveCity_EventScript_BattleMayB
-# 280 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_BUDEW, LilycoveCity_EventScript_BattleMayA
-# 281 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_SPHEAL, LilycoveCity_EventScript_BattleMayA
-# 282 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_SHINX, LilycoveCity_EventScript_BattleMayB
-# 283 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_SANDILE, LilycoveCity_EventScript_BattleMayC
-# 284 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_PAWNIARD, LilycoveCity_EventScript_BattleMayA
-# 285 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_JANGMO_O, LilycoveCity_EventScript_BattleMayA
-# 286 "data//maps/LilycoveCity/scripts.pory"
 	end
-# 287 "data//maps/LilycoveCity/scripts.pory"
+# 251 "data//maps/LilycoveCity/scripts.pory"
 
-# 288 "data//maps/LilycoveCity/scripts.pory"
+# 252 "data//maps/LilycoveCity/scripts.pory"
 LilycoveCity_EventScript_MayAskToBattleAgain::
-# 289 "data//maps/LilycoveCity/scripts.pory"
+# 253 "data//maps/LilycoveCity/scripts.pory"
 	msgbox LilycoveCity_Text_MayBattleMe, MSGBOX_YESNO
-# 290 "data//maps/LilycoveCity/scripts.pory"
+# 254 "data//maps/LilycoveCity/scripts.pory"
 	return
-# 291 "data//maps/LilycoveCity/scripts.pory"
+# 255 "data//maps/LilycoveCity/scripts.pory"
 
-# 292 "data//maps/LilycoveCity/scripts.pory"
+# 256 "data//maps/LilycoveCity/scripts.pory"
 LilycoveCity_EventScript_MayAskToBattle::
-# 293 "data//maps/LilycoveCity/scripts.pory"
+# 257 "data//maps/LilycoveCity/scripts.pory"
 	msgbox LilycoveCity_Text_MayShoppingLetsBattle, MSGBOX_YESNO
-# 294 "data//maps/LilycoveCity/scripts.pory"
+# 258 "data//maps/LilycoveCity/scripts.pory"
 	return
-# 295 "data//maps/LilycoveCity/scripts.pory"
+# 259 "data//maps/LilycoveCity/scripts.pory"
 
-# 296 "data//maps/LilycoveCity/scripts.pory"
+# 260 "data//maps/LilycoveCity/scripts.pory"
 LilycoveCity_EventScript_DeclineMayBattle::
-# 297 "data//maps/LilycoveCity/scripts.pory"
+# 261 "data//maps/LilycoveCity/scripts.pory"
 	setflag FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE
-# 298 "data//maps/LilycoveCity/scripts.pory"
+# 262 "data//maps/LilycoveCity/scripts.pory"
 	msgbox LilycoveCity_Text_MayNotRaisingPokemon, MSGBOX_DEFAULT
-# 299 "data//maps/LilycoveCity/scripts.pory"
+# 263 "data//maps/LilycoveCity/scripts.pory"
 	savebgm MUS_DUMMY
-# 300 "data//maps/LilycoveCity/scripts.pory"
+# 264 "data//maps/LilycoveCity/scripts.pory"
 	fadedefaultbgm
-# 301 "data//maps/LilycoveCity/scripts.pory"
+# 265 "data//maps/LilycoveCity/scripts.pory"
 	release
+# 266 "data//maps/LilycoveCity/scripts.pory"
+	end
+# 267 "data//maps/LilycoveCity/scripts.pory"
+
+# 268 "data//maps/LilycoveCity/scripts.pory"
+LilycoveCity_EventScript_Brendan::
+# 269 "data//maps/LilycoveCity/scripts.pory"
+	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+# 270 "data//maps/LilycoveCity/scripts.pory"
+	call_if_set FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE, LilycoveCity_EventScript_BrendanAskToBattleAgain
+# 271 "data//maps/LilycoveCity/scripts.pory"
+	call_if_unset FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE, LilycoveCity_EventScript_BrendanAskToBattle
+# 272 "data//maps/LilycoveCity/scripts.pory"
+	goto_if_eq VAR_RESULT, NO, LilycoveCity_EventScript_DeclineBrendanBattle
+# 273 "data//maps/LilycoveCity/scripts.pory"
+	msgbox LilycoveCity_Text_BrendanWontBeBeaten, MSGBOX_DEFAULT
+# 274 "data//maps/LilycoveCity/scripts.pory"
+	switch VAR_STARTER_MON
+# 275 "data//maps/LilycoveCity/scripts.pory"
+	goto LilycoveCity_EventScript_BattleBrendan
+# 276 "data//maps/LilycoveCity/scripts.pory"
+	end
+# 277 "data//maps/LilycoveCity/scripts.pory"
+
+# 278 "data//maps/LilycoveCity/scripts.pory"
+LilycoveCity_EventScript_BrendanAskToBattleAgain::
+# 279 "data//maps/LilycoveCity/scripts.pory"
+	msgbox LilycoveCity_Text_BrendanBattleMe, MSGBOX_YESNO
+# 280 "data//maps/LilycoveCity/scripts.pory"
+	return
+# 281 "data//maps/LilycoveCity/scripts.pory"
+
+# 282 "data//maps/LilycoveCity/scripts.pory"
+LilycoveCity_EventScript_BrendanAskToBattle::
+# 283 "data//maps/LilycoveCity/scripts.pory"
+	msgbox LilycoveCity_Text_BrendanShoppingLetsBattle, MSGBOX_YESNO
+# 284 "data//maps/LilycoveCity/scripts.pory"
+	return
+# 285 "data//maps/LilycoveCity/scripts.pory"
+
+# 286 "data//maps/LilycoveCity/scripts.pory"
+LilycoveCity_EventScript_DeclineBrendanBattle::
+# 287 "data//maps/LilycoveCity/scripts.pory"
+	setflag FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE
+# 288 "data//maps/LilycoveCity/scripts.pory"
+	msgbox LilycoveCity_Text_BrendanNoConfidence, MSGBOX_DEFAULT
+# 289 "data//maps/LilycoveCity/scripts.pory"
+	savebgm MUS_DUMMY
+# 290 "data//maps/LilycoveCity/scripts.pory"
+	fadedefaultbgm
+# 291 "data//maps/LilycoveCity/scripts.pory"
+	release
+# 292 "data//maps/LilycoveCity/scripts.pory"
+	end
+# 293 "data//maps/LilycoveCity/scripts.pory"
+
+# 294 "data//maps/LilycoveCity/scripts.pory"
+LilycoveCity_EventScript_BattleMay::
+# 295 "data//maps/LilycoveCity/scripts.pory"
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_A, LilycoveCity_Text_MayDefeat
+# 296 "data//maps/LilycoveCity/scripts.pory"
+	goto LilycoveCity_EventScript_DefeatedMay
+# 297 "data//maps/LilycoveCity/scripts.pory"
+	end
+# 298 "data//maps/LilycoveCity/scripts.pory"
+
+# 299 "data//maps/LilycoveCity/scripts.pory"
+LilycoveCity_EventScript_BattleBrendan::
+# 300 "data//maps/LilycoveCity/scripts.pory"
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_A, LilycoveCity_Text_BrendanDefeat
+# 301 "data//maps/LilycoveCity/scripts.pory"
+	goto LilycoveCity_EventScript_DefeatedBrendan
 # 302 "data//maps/LilycoveCity/scripts.pory"
 	end
 # 303 "data//maps/LilycoveCity/scripts.pory"
 
 # 304 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_EventScript_Brendan::
+LilycoveCity_EventScript_DefeatedMay::
 # 305 "data//maps/LilycoveCity/scripts.pory"
-	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+	msgbox LilycoveCity_Text_MayGoingBackToLittleroot, MSGBOX_DEFAULT
 # 306 "data//maps/LilycoveCity/scripts.pory"
-	call_if_set FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE, LilycoveCity_EventScript_BrendanAskToBattleAgain
+	setvar VAR_RESULT, FALSE
 # 307 "data//maps/LilycoveCity/scripts.pory"
-	call_if_unset FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE, LilycoveCity_EventScript_BrendanAskToBattle
+	call_if_set FLAG_BADGE06_GET, LilycoveCity_EventScript_CheckFinalBadge
 # 308 "data//maps/LilycoveCity/scripts.pory"
-	goto_if_eq VAR_RESULT, NO, LilycoveCity_EventScript_DeclineBrendanBattle
+	call_if_eq VAR_RESULT, FALSE, LilycoveCity_EventScript_MayCollectBadges
 # 309 "data//maps/LilycoveCity/scripts.pory"
-	msgbox LilycoveCity_Text_BrendanWontBeBeaten, MSGBOX_DEFAULT
+	call_if_eq VAR_RESULT, TRUE, LilycoveCity_EventScript_MayPokemonLeague
 # 310 "data//maps/LilycoveCity/scripts.pory"
-	switch VAR_STARTER_MON
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
 # 311 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_TREECKO, LilycoveCity_EventScript_BattleBrendanA
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_2F_PICHU_DOLL
 # 312 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_TORCHIC, LilycoveCity_EventScript_BattleBrendanB
+	goto LilycoveCity_EventScript_RivalFlyAway
 # 313 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_MUDKIP, LilycoveCity_EventScript_BattleBrendanC
+	end
 # 314 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_CASTFORM, LilycoveCity_EventScript_BattleBrendanA
+
 # 315 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_PIPLUP, LilycoveCity_EventScript_BattleBrendanC
+LilycoveCity_EventScript_CheckFinalBadge::
 # 316 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_EEVEE, LilycoveCity_EventScript_BattleBrendanA
+	goto_if_set FLAG_BADGE08_GET, LilycoveCity_EventScript_HasFinalBadge
 # 317 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_PICHU, LilycoveCity_EventScript_BattleBrendanB
+	return
 # 318 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_TOGEPI, LilycoveCity_EventScript_BattleBrendanC
+
 # 319 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_PORYGON, LilycoveCity_EventScript_BattleBrendanA
+LilycoveCity_EventScript_HasFinalBadge::
 # 320 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_SNIVY, LilycoveCity_EventScript_BattleBrendanA
+	setvar VAR_RESULT, TRUE
 # 321 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_ZORUA_HISUI, LilycoveCity_EventScript_BattleBrendanA
+	return
 # 322 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_ZORUA, LilycoveCity_EventScript_BattleBrendanA
+
 # 323 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_GOTHITA, LilycoveCity_EventScript_BattleBrendanB
+LilycoveCity_EventScript_MayCollectBadges::
 # 324 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_SOLOSIS, LilycoveCity_EventScript_BattleBrendanB
+	msgbox LilycoveCity_Text_MayYouGoingToCollectBadges, MSGBOX_DEFAULT
 # 325 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_AXEW, LilycoveCity_EventScript_BattleBrendanC
+	return
 # 326 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_LARVESTA, LilycoveCity_EventScript_BattleBrendanB
+
 # 327 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_GOOMY, LilycoveCity_EventScript_BattleBrendanC
+LilycoveCity_EventScript_MayPokemonLeague::
 # 328 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_ROWLET, LilycoveCity_EventScript_BattleBrendanA
+	goto_if_set FLAG_SYS_GAME_CLEAR, LilycoveCity_EventScript_MayBattleFrontier
 # 329 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_APPLIN, LilycoveCity_EventScript_BattleBrendanA
+	msgbox LilycoveCity_Text_MayYouGoingToPokemonLeague, MSGBOX_DEFAULT
 # 330 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_MIME_JR, LilycoveCity_EventScript_BattleBrendanB
+	return
 # 331 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_MAGBY, LilycoveCity_EventScript_BattleBrendanB
+
 # 332 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_ELEKID, LilycoveCity_EventScript_BattleBrendanB
+LilycoveCity_EventScript_MayBattleFrontier::
 # 333 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_MANKEY, LilycoveCity_EventScript_BattleBrendanA
+	msgbox LilycoveCity_Text_MayYouGoingToBattleFrontier, MSGBOX_DEFAULT
 # 334 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_SWINUB, LilycoveCity_EventScript_BattleBrendanC
+	return
 # 335 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_LARVITAR, LilycoveCity_EventScript_BattleBrendanA
+
 # 336 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_TURTWIG, LilycoveCity_EventScript_BattleBrendanA
+LilycoveCity_EventScript_DefeatedBrendan::
 # 337 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_CHARMANDER, LilycoveCity_EventScript_BattleBrendanB
+	msgbox LilycoveCity_Text_BrendanGoingBackToLittleroot, MSGBOX_DEFAULT
 # 338 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_SQUIRTLE, LilycoveCity_EventScript_BattleBrendanC
+	setvar VAR_RESULT, FALSE
 # 339 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_BULBASAUR, LilycoveCity_EventScript_BattleBrendanA
+	call_if_set FLAG_BADGE06_GET, LilycoveCity_EventScript_CheckFinalBadge
 # 340 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_OSHAWOTT, LilycoveCity_EventScript_BattleBrendanC
+	call_if_eq VAR_RESULT, FALSE, LilycoveCity_EventScript_BrendanCollectBadges
 # 341 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_CYNDAQUIL, LilycoveCity_EventScript_BattleBrendanB
+	call_if_eq VAR_RESULT, TRUE, LilycoveCity_EventScript_BrendanPokemonLeague
 # 342 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_BUDEW, LilycoveCity_EventScript_BattleBrendanA
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM
 # 343 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_SPHEAL, LilycoveCity_EventScript_BattleBrendanA
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_SWABLU_DOLL
 # 344 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_SHINX, LilycoveCity_EventScript_BattleBrendanB
+	goto LilycoveCity_EventScript_RivalFlyAway
 # 345 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_SANDILE, LilycoveCity_EventScript_BattleBrendanC
+	end
 # 346 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_PAWNIARD, LilycoveCity_EventScript_BattleBrendanA
+
 # 347 "data//maps/LilycoveCity/scripts.pory"
-	case SPECIES_JANGMO_O, LilycoveCity_EventScript_BattleBrendanA
+LilycoveCity_EventScript_BrendanCollectBadges::
 # 348 "data//maps/LilycoveCity/scripts.pory"
-	end
+	msgbox LilycoveCity_Text_BrendanYouGoingToCollectBadges, MSGBOX_DEFAULT
 # 349 "data//maps/LilycoveCity/scripts.pory"
-
+	return
 # 350 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_EventScript_BrendanAskToBattleAgain::
+
 # 351 "data//maps/LilycoveCity/scripts.pory"
-	msgbox LilycoveCity_Text_BrendanBattleMe, MSGBOX_YESNO
+LilycoveCity_EventScript_BrendanPokemonLeague::
 # 352 "data//maps/LilycoveCity/scripts.pory"
-	return
+	goto_if_set FLAG_SYS_GAME_CLEAR, LilycoveCity_EventScript_BrendanBattleFrontier
 # 353 "data//maps/LilycoveCity/scripts.pory"
-
+	msgbox LilycoveCity_Text_BrendanYouGoingToPokemonLeague, MSGBOX_DEFAULT
 # 354 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_EventScript_BrendanAskToBattle::
-# 355 "data//maps/LilycoveCity/scripts.pory"
-	msgbox LilycoveCity_Text_BrendanShoppingLetsBattle, MSGBOX_YESNO
-# 356 "data//maps/LilycoveCity/scripts.pory"
 	return
+# 355 "data//maps/LilycoveCity/scripts.pory"
+
+# 356 "data//maps/LilycoveCity/scripts.pory"
+LilycoveCity_EventScript_BrendanBattleFrontier::
 # 357 "data//maps/LilycoveCity/scripts.pory"
-
+	msgbox LilycoveCity_Text_BrendanYouGoingToBattleFrontier, MSGBOX_DEFAULT
 # 358 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_EventScript_DeclineBrendanBattle::
+	return
 # 359 "data//maps/LilycoveCity/scripts.pory"
-	setflag FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE
+
 # 360 "data//maps/LilycoveCity/scripts.pory"
-	msgbox LilycoveCity_Text_BrendanNoConfidence, MSGBOX_DEFAULT
+LilycoveCity_EventScript_RivalFlyAway::
 # 361 "data//maps/LilycoveCity/scripts.pory"
-	savebgm MUS_DUMMY
+	closemessage
 # 362 "data//maps/LilycoveCity/scripts.pory"
-	fadedefaultbgm
+	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceFasterDown
 # 363 "data//maps/LilycoveCity/scripts.pory"
-	release
+	waitmovement 0
 # 364 "data//maps/LilycoveCity/scripts.pory"
-	end
+	delay 50
 # 365 "data//maps/LilycoveCity/scripts.pory"
-
+	setfieldeffectargument 0, 1
 # 366 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_EventScript_BattleMayA::
+	dofieldeffect FLDEFF_NPCFLY_OUT
 # 367 "data//maps/LilycoveCity/scripts.pory"
-	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_A, LilycoveCity_Text_MayDefeat
+	delay 15
 # 368 "data//maps/LilycoveCity/scripts.pory"
-	goto LilycoveCity_EventScript_DefeatedMay
+	removeobject VAR_LAST_TALKED
 # 369 "data//maps/LilycoveCity/scripts.pory"
-	end
+	waitfieldeffect FLDEFF_NPCFLY_OUT
 # 370 "data//maps/LilycoveCity/scripts.pory"
-
+	savebgm MUS_DUMMY
 # 371 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_EventScript_BattleMayB::
+	fadedefaultbgm
 # 372 "data//maps/LilycoveCity/scripts.pory"
-	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_B, LilycoveCity_Text_MayDefeat
+	setflag FLAG_MET_RIVAL_LILYCOVE
 # 373 "data//maps/LilycoveCity/scripts.pory"
-	goto LilycoveCity_EventScript_DefeatedMay
+	release
 # 374 "data//maps/LilycoveCity/scripts.pory"
 	end
 # 375 "data//maps/LilycoveCity/scripts.pory"
 
 # 376 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_EventScript_BattleMayC::
+LilycoveCity_EventScript_SchoolKidM::
 # 377 "data//maps/LilycoveCity/scripts.pory"
-	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_C, LilycoveCity_Text_MayDefeat
+	lock
 # 378 "data//maps/LilycoveCity/scripts.pory"
-	goto LilycoveCity_EventScript_DefeatedMay
+	faceplayer
 # 379 "data//maps/LilycoveCity/scripts.pory"
-	end
+	msgbox LilycoveCity_Text_DoYouKnowAboutBerryBlender, MSGBOX_YESNO
 # 380 "data//maps/LilycoveCity/scripts.pory"
-
+	call_if_eq VAR_RESULT, YES, LilycoveCity_EventScript_KnowAboutBerryBlender
 # 381 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_EventScript_BattleBrendanA::
+	call_if_eq VAR_RESULT, NO, LilycoveCity_EventScript_DontKnowAboutBerryBlender
 # 382 "data//maps/LilycoveCity/scripts.pory"
-	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_A, LilycoveCity_Text_BrendanDefeat
+	release
 # 383 "data//maps/LilycoveCity/scripts.pory"
-	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
 # 384 "data//maps/LilycoveCity/scripts.pory"
-	end
+
 # 385 "data//maps/LilycoveCity/scripts.pory"
-
+LilycoveCity_EventScript_KnowAboutBerryBlender::
 # 386 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_EventScript_BattleBrendanB::
+	msgbox LilycoveCity_Text_FasterSpinBetterPokeblocks, MSGBOX_DEFAULT
 # 387 "data//maps/LilycoveCity/scripts.pory"
-	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_B, LilycoveCity_Text_BrendanDefeat
+	return
 # 388 "data//maps/LilycoveCity/scripts.pory"
-	goto LilycoveCity_EventScript_DefeatedBrendan
+
 # 389 "data//maps/LilycoveCity/scripts.pory"
-	end
+LilycoveCity_EventScript_DontKnowAboutBerryBlender::
 # 390 "data//maps/LilycoveCity/scripts.pory"
-
+	msgbox LilycoveCity_Text_ExplainBerryBlender, MSGBOX_DEFAULT
 # 391 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_EventScript_BattleBrendanC::
+	return
 # 392 "data//maps/LilycoveCity/scripts.pory"
-	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_C, LilycoveCity_Text_BrendanDefeat
+
 # 393 "data//maps/LilycoveCity/scripts.pory"
-	goto LilycoveCity_EventScript_DefeatedBrendan
+LilycoveCity_Text_MayShoppingLetsBattle:
 # 394 "data//maps/LilycoveCity/scripts.pory"
-	end
+	.string "MAY: Oh, hey?\n"
 # 395 "data//maps/LilycoveCity/scripts.pory"
-
+	.string "{PLAYER}{KUN}, are you shopping, too?\p"
 # 396 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_EventScript_DefeatedMay::
+	.string "I bought a whole bunch of DOLLS and\n"
 # 397 "data//maps/LilycoveCity/scripts.pory"
-	msgbox LilycoveCity_Text_MayGoingBackToLittleroot, MSGBOX_DEFAULT
+	.string "POSTERS.\p"
 # 398 "data//maps/LilycoveCity/scripts.pory"
-	setvar VAR_RESULT, FALSE
+	.string "Of course, I've also caught a lot of\n"
 # 399 "data//maps/LilycoveCity/scripts.pory"
-	call_if_set FLAG_BADGE06_GET, LilycoveCity_EventScript_CheckFinalBadge
+	.string "POKéMON, and I'm raising them\l"
 # 400 "data//maps/LilycoveCity/scripts.pory"
-	call_if_eq VAR_RESULT, FALSE, LilycoveCity_EventScript_MayCollectBadges
+	.string "properly, too.\p"
 # 401 "data//maps/LilycoveCity/scripts.pory"
-	call_if_eq VAR_RESULT, TRUE, LilycoveCity_EventScript_MayPokemonLeague
+	.string "Actually, I'm more worried if you're\n"
 # 402 "data//maps/LilycoveCity/scripts.pory"
-	clearflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
+	.string "raising POKéMON properly, {PLAYER}{KUN}.\p"
 # 403 "data//maps/LilycoveCity/scripts.pory"
-	clearflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_2F_PICHU_DOLL
+	.string "I'll battle with you, so you can show\n"
 # 404 "data//maps/LilycoveCity/scripts.pory"
-	goto LilycoveCity_EventScript_RivalFlyAway
+	.string "me your POKéMON, {PLAYER}{KUN}.$"
 # 405 "data//maps/LilycoveCity/scripts.pory"
-	end
+
 # 406 "data//maps/LilycoveCity/scripts.pory"
-
+LilycoveCity_Text_MayNotRaisingPokemon:
 # 407 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_EventScript_CheckFinalBadge::
+	.string "MAY: Oh, why? {PLAYER}{KUN}, haven't you\n"
 # 408 "data//maps/LilycoveCity/scripts.pory"
-	goto_if_set FLAG_BADGE08_GET, LilycoveCity_EventScript_HasFinalBadge
+	.string "been raising your POKéMON?\p"
 # 409 "data//maps/LilycoveCity/scripts.pory"
-	return
+	.string "That's not a very good showing as a\n"
 # 410 "data//maps/LilycoveCity/scripts.pory"
-
+	.string "TRAINER…$"
 # 411 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_EventScript_HasFinalBadge::
+
 # 412 "data//maps/LilycoveCity/scripts.pory"
-	setvar VAR_RESULT, TRUE
+LilycoveCity_Text_MayBattleMe:
 # 413 "data//maps/LilycoveCity/scripts.pory"
-	return
+	.string "MAY: Come on, battle with me, so I can\n"
 # 414 "data//maps/LilycoveCity/scripts.pory"
-
+	.string "check out your POKéMON!$"
 # 415 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_EventScript_MayCollectBadges::
+
 # 416 "data//maps/LilycoveCity/scripts.pory"
-	msgbox LilycoveCity_Text_MayYouGoingToCollectBadges, MSGBOX_DEFAULT
+LilycoveCity_Text_MayWontBeBeaten:
 # 417 "data//maps/LilycoveCity/scripts.pory"
-	return
+	.string "MAY: The POKéMON I raised won't be\n"
 # 418 "data//maps/LilycoveCity/scripts.pory"
-
+	.string "beaten by your POKéMON, {PLAYER}{KUN}!$"
 # 419 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_EventScript_MayPokemonLeague::
+
 # 420 "data//maps/LilycoveCity/scripts.pory"
-	goto_if_set FLAG_SYS_GAME_CLEAR, LilycoveCity_EventScript_MayBattleFrontier
+LilycoveCity_Text_MayDefeat:
 # 421 "data//maps/LilycoveCity/scripts.pory"
-	msgbox LilycoveCity_Text_MayYouGoingToPokemonLeague, MSGBOX_DEFAULT
+	.string "… … … … … … … …\p"
 # 422 "data//maps/LilycoveCity/scripts.pory"
-	return
+	.string "I remember the battle I had with you,\n"
 # 423 "data//maps/LilycoveCity/scripts.pory"
-
+	.string "{PLAYER}{KUN}, on ROUTE 103.\p"
 # 424 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_EventScript_MayBattleFrontier::
+	.string "That battle helped you become this\n"
 # 425 "data//maps/LilycoveCity/scripts.pory"
-	msgbox LilycoveCity_Text_MayYouGoingToBattleFrontier, MSGBOX_DEFAULT
+	.string "strong, {PLAYER}{KUN}, didn't it?$"
 # 426 "data//maps/LilycoveCity/scripts.pory"
-	return
+
 # 427 "data//maps/LilycoveCity/scripts.pory"
-
+LilycoveCity_Text_MayGoingBackToLittleroot:
 # 428 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_EventScript_DefeatedBrendan::
+	.string "MAY: I'm thinking of going back to\n"
 # 429 "data//maps/LilycoveCity/scripts.pory"
-	msgbox LilycoveCity_Text_BrendanGoingBackToLittleroot, MSGBOX_DEFAULT
+	.string "LITTLEROOT soon.\p"
 # 430 "data//maps/LilycoveCity/scripts.pory"
-	setvar VAR_RESULT, FALSE
+	.string "I've caught a decent group of POKéMON,\n"
 # 431 "data//maps/LilycoveCity/scripts.pory"
-	call_if_set FLAG_BADGE06_GET, LilycoveCity_EventScript_CheckFinalBadge
+	.string "and my POKéDEX is coming along, so\l"
 # 432 "data//maps/LilycoveCity/scripts.pory"
-	call_if_eq VAR_RESULT, FALSE, LilycoveCity_EventScript_BrendanCollectBadges
+	.string "I'm going home to show my dad.$"
 # 433 "data//maps/LilycoveCity/scripts.pory"
-	call_if_eq VAR_RESULT, TRUE, LilycoveCity_EventScript_BrendanPokemonLeague
-# 434 "data//maps/LilycoveCity/scripts.pory"
-	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM
-# 435 "data//maps/LilycoveCity/scripts.pory"
-	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_SWABLU_DOLL
-# 436 "data//maps/LilycoveCity/scripts.pory"
-	goto LilycoveCity_EventScript_RivalFlyAway
-# 437 "data//maps/LilycoveCity/scripts.pory"
-	end
-# 438 "data//maps/LilycoveCity/scripts.pory"
 
+# 434 "data//maps/LilycoveCity/scripts.pory"
+LilycoveCity_Text_MayYouGoingToCollectBadges:
+# 435 "data//maps/LilycoveCity/scripts.pory"
+	.string "{PLAYER}{KUN}, what are you going to do?\p"
+# 436 "data//maps/LilycoveCity/scripts.pory"
+	.string "Collect all the GYM BADGES and take\n"
+# 437 "data//maps/LilycoveCity/scripts.pory"
+	.string "the POKéMON LEAGUE challenge?\p"
+# 438 "data//maps/LilycoveCity/scripts.pory"
+	.string "Well, while you're collecting BADGES,\n"
 # 439 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_EventScript_BrendanCollectBadges::
+	.string "{PLAYER}{KUN}, I'm going to work on my\l"
 # 440 "data//maps/LilycoveCity/scripts.pory"
-	msgbox LilycoveCity_Text_BrendanYouGoingToCollectBadges, MSGBOX_DEFAULT
+	.string "POKéDEX. I'll complete it before you!\p"
 # 441 "data//maps/LilycoveCity/scripts.pory"
-	return
+	.string "See you!$"
 # 442 "data//maps/LilycoveCity/scripts.pory"
 
 # 443 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_EventScript_BrendanPokemonLeague::
+LilycoveCity_Text_MayYouGoingToPokemonLeague:
 # 444 "data//maps/LilycoveCity/scripts.pory"
-	goto_if_set FLAG_SYS_GAME_CLEAR, LilycoveCity_EventScript_BrendanBattleFrontier
+	.string "{PLAYER}{KUN}, what are you going to do?\p"
 # 445 "data//maps/LilycoveCity/scripts.pory"
-	msgbox LilycoveCity_Text_BrendanYouGoingToPokemonLeague, MSGBOX_DEFAULT
+	.string "Are you taking the POKéMON LEAGUE\n"
 # 446 "data//maps/LilycoveCity/scripts.pory"
-	return
+	.string "challenge?\p"
 # 447 "data//maps/LilycoveCity/scripts.pory"
-
+	.string "Or, are you going to complete your\n"
 # 448 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_EventScript_BrendanBattleFrontier::
+	.string "POKéDEX?\p"
 # 449 "data//maps/LilycoveCity/scripts.pory"
-	msgbox LilycoveCity_Text_BrendanYouGoingToBattleFrontier, MSGBOX_DEFAULT
+	.string "I might've lost to you in battling,\n"
 # 450 "data//maps/LilycoveCity/scripts.pory"
-	return
+	.string "but I'll finish my POKéDEX before you!\p"
 # 451 "data//maps/LilycoveCity/scripts.pory"
-
+	.string "See you!$"
 # 452 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_EventScript_RivalFlyAway::
+
 # 453 "data//maps/LilycoveCity/scripts.pory"
-	closemessage
+LilycoveCity_Text_MayYouGoingToBattleFrontier:
 # 454 "data//maps/LilycoveCity/scripts.pory"
-	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceFasterDown
+	.string "{PLAYER}{KUN}, what are you going to do?\p"
 # 455 "data//maps/LilycoveCity/scripts.pory"
-	waitmovement 0
+	.string "Are you taking the BATTLE FRONTIER\n"
 # 456 "data//maps/LilycoveCity/scripts.pory"
-	delay 50
+	.string "challenge?\p"
 # 457 "data//maps/LilycoveCity/scripts.pory"
-	setfieldeffectargument 0, 1
+	.string "Or, are you going to complete your\n"
 # 458 "data//maps/LilycoveCity/scripts.pory"
-	dofieldeffect FLDEFF_NPCFLY_OUT
+	.string "POKéDEX?\p"
 # 459 "data//maps/LilycoveCity/scripts.pory"
-	delay 15
+	.string "I might've lost to you in battling,\n"
 # 460 "data//maps/LilycoveCity/scripts.pory"
-	removeobject VAR_LAST_TALKED
+	.string "but I'll finish my POKéDEX before you!\p"
 # 461 "data//maps/LilycoveCity/scripts.pory"
-	waitfieldeffect FLDEFF_NPCFLY_OUT
+	.string "See you!$"
 # 462 "data//maps/LilycoveCity/scripts.pory"
-	savebgm MUS_DUMMY
+
 # 463 "data//maps/LilycoveCity/scripts.pory"
-	fadedefaultbgm
+LilycoveCity_Text_BrendanShoppingLetsBattle:
 # 464 "data//maps/LilycoveCity/scripts.pory"
-	setflag FLAG_MET_RIVAL_LILYCOVE
+	.string "BRENDAN: Oh, hey, it's {PLAYER}.\p"
 # 465 "data//maps/LilycoveCity/scripts.pory"
-	release
+	.string "I'm running an errand for my dad.\n"
 # 466 "data//maps/LilycoveCity/scripts.pory"
-	end
+	.string "No, I'm not buying any DOLLS.\p"
 # 467 "data//maps/LilycoveCity/scripts.pory"
-
+	.string "Anyways, it's been a while.\p"
 # 468 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_EventScript_SchoolKidM::
+	.string "Want to have a battle to see who's been\n"
 # 469 "data//maps/LilycoveCity/scripts.pory"
-	lock
+	.string "raising POKéMON better?$"
 # 470 "data//maps/LilycoveCity/scripts.pory"
-	faceplayer
+
 # 471 "data//maps/LilycoveCity/scripts.pory"
-	msgbox LilycoveCity_Text_DoYouKnowAboutBerryBlender, MSGBOX_YESNO
+LilycoveCity_Text_BrendanNoConfidence:
 # 472 "data//maps/LilycoveCity/scripts.pory"
-	call_if_eq VAR_RESULT, YES, LilycoveCity_EventScript_KnowAboutBerryBlender
+	.string "BRENDAN: Oh, what's the matter?\n"
 # 473 "data//maps/LilycoveCity/scripts.pory"
-	call_if_eq VAR_RESULT, NO, LilycoveCity_EventScript_DontKnowAboutBerryBlender
+	.string "Don't have the confidence?$"
 # 474 "data//maps/LilycoveCity/scripts.pory"
-	release
+
 # 475 "data//maps/LilycoveCity/scripts.pory"
-	end
+LilycoveCity_Text_BrendanBattleMe:
 # 476 "data//maps/LilycoveCity/scripts.pory"
-
+	.string "BRENDAN: Want to battle to see who's\n"
 # 477 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_EventScript_KnowAboutBerryBlender::
+	.string "been raising POKéMON better?$"
 # 478 "data//maps/LilycoveCity/scripts.pory"
-	msgbox LilycoveCity_Text_FasterSpinBetterPokeblocks, MSGBOX_DEFAULT
+
 # 479 "data//maps/LilycoveCity/scripts.pory"
-	return
+LilycoveCity_Text_BrendanWontBeBeaten:
 # 480 "data//maps/LilycoveCity/scripts.pory"
-
+	.string "BRENDAN: Aww, but you know I'm not\n"
 # 481 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_EventScript_DontKnowAboutBerryBlender::
+	.string "going to lose to no {PLAYER}.$"
 # 482 "data//maps/LilycoveCity/scripts.pory"
-	msgbox LilycoveCity_Text_ExplainBerryBlender, MSGBOX_DEFAULT
+
 # 483 "data//maps/LilycoveCity/scripts.pory"
-	return
+LilycoveCity_Text_BrendanDefeat:
 # 484 "data//maps/LilycoveCity/scripts.pory"
-
+	.string "Humph…\n"
 # 485 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_MayShoppingLetsBattle:
+	.string "You've done a lot of raising.\p"
 # 486 "data//maps/LilycoveCity/scripts.pory"
-	.string "MAY: Oh, hey?\n"
+	.string "That stings a bit--I had a head start\n"
 # 487 "data//maps/LilycoveCity/scripts.pory"
-	.string "{PLAYER}{KUN}, are you shopping, too?\p"
+	.string "on you as a TRAINER…$"
 # 488 "data//maps/LilycoveCity/scripts.pory"
-	.string "I bought a whole bunch of DOLLS and\n"
+
 # 489 "data//maps/LilycoveCity/scripts.pory"
-	.string "POSTERS.\p"
+LilycoveCity_Text_BrendanGoingBackToLittleroot:
 # 490 "data//maps/LilycoveCity/scripts.pory"
-	.string "Of course, I've also caught a lot of\n"
+	.string "BRENDAN: I…\n"
 # 491 "data//maps/LilycoveCity/scripts.pory"
-	.string "POKéMON, and I'm raising them\l"
+	.string "I plan on going home to LITTLEROOT.\p"
 # 492 "data//maps/LilycoveCity/scripts.pory"
-	.string "properly, too.\p"
+	.string "You know I'm helping out my dad on his\n"
 # 493 "data//maps/LilycoveCity/scripts.pory"
-	.string "Actually, I'm more worried if you're\n"
+	.string "POKéDEX. It's coming together pretty\l"
 # 494 "data//maps/LilycoveCity/scripts.pory"
-	.string "raising POKéMON properly, {PLAYER}{KUN}.\p"
+	.string "decently, so I should go show him.$"
 # 495 "data//maps/LilycoveCity/scripts.pory"
-	.string "I'll battle with you, so you can show\n"
+
 # 496 "data//maps/LilycoveCity/scripts.pory"
-	.string "me your POKéMON, {PLAYER}{KUN}.$"
+LilycoveCity_Text_BrendanYouGoingToCollectBadges:
 # 497 "data//maps/LilycoveCity/scripts.pory"
-
+	.string "{PLAYER}, what are you going to do?\p"
 # 498 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_MayNotRaisingPokemon:
+	.string "Collect all the GYM BADGES and take\n"
 # 499 "data//maps/LilycoveCity/scripts.pory"
-	.string "MAY: Oh, why? {PLAYER}{KUN}, haven't you\n"
+	.string "the POKéMON LEAGUE challenge?\p"
 # 500 "data//maps/LilycoveCity/scripts.pory"
-	.string "been raising your POKéMON?\p"
+	.string "Maybe I'll do that, too…\p"
 # 501 "data//maps/LilycoveCity/scripts.pory"
-	.string "That's not a very good showing as a\n"
+	.string "Well, anyway, hang in there!$"
 # 502 "data//maps/LilycoveCity/scripts.pory"
-	.string "TRAINER…$"
+
 # 503 "data//maps/LilycoveCity/scripts.pory"
-
+LilycoveCity_Text_BrendanYouGoingToPokemonLeague:
 # 504 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_MayBattleMe:
+	.string "{PLAYER}, what are you going to do?\p"
 # 505 "data//maps/LilycoveCity/scripts.pory"
-	.string "MAY: Come on, battle with me, so I can\n"
+	.string "Since you're that strong, are you\n"
 # 506 "data//maps/LilycoveCity/scripts.pory"
-	.string "check out your POKéMON!$"
+	.string "taking the POKéMON LEAGUE challenge?\p"
 # 507 "data//maps/LilycoveCity/scripts.pory"
-
+	.string "Heh, even me--if I trained my POKéMON\n"
 # 508 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_MayWontBeBeaten:
+	.string "a bit more, I should be stronger than\l"
 # 509 "data//maps/LilycoveCity/scripts.pory"
-	.string "MAY: The POKéMON I raised won't be\n"
+	.string "you, {PLAYER}.\p"
 # 510 "data//maps/LilycoveCity/scripts.pory"
-	.string "beaten by your POKéMON, {PLAYER}{KUN}!$"
+	.string "Well, anyway, hang in there!$"
 # 511 "data//maps/LilycoveCity/scripts.pory"
 
 # 512 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_MayDefeat:
+LilycoveCity_Text_BrendanYouGoingToBattleFrontier:
 # 513 "data//maps/LilycoveCity/scripts.pory"
-	.string "… … … … … … … …\p"
+	.string "{PLAYER}, what are you going to do?\p"
 # 514 "data//maps/LilycoveCity/scripts.pory"
-	.string "I remember the battle I had with you,\n"
+	.string "Are you taking the BATTLE FRONTIER\n"
 # 515 "data//maps/LilycoveCity/scripts.pory"
-	.string "{PLAYER}{KUN}, on ROUTE 103.\p"
+	.string "challenge?\p"
 # 516 "data//maps/LilycoveCity/scripts.pory"
-	.string "That battle helped you become this\n"
+	.string "Or, are you going to complete your\n"
 # 517 "data//maps/LilycoveCity/scripts.pory"
-	.string "strong, {PLAYER}{KUN}, didn't it?$"
+	.string "POKéDEX?\p"
 # 518 "data//maps/LilycoveCity/scripts.pory"
-
+	.string "Since you're that strong, you should\n"
 # 519 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_MayGoingBackToLittleroot:
+	.string "consider the BATTLE FRONTIER.\p"
 # 520 "data//maps/LilycoveCity/scripts.pory"
-	.string "MAY: I'm thinking of going back to\n"
+	.string "Heh, if I train my POKéMON a bit more,\n"
 # 521 "data//maps/LilycoveCity/scripts.pory"
-	.string "LITTLEROOT soon.\p"
+	.string "I'll get stronger than you, {PLAYER}.\p"
 # 522 "data//maps/LilycoveCity/scripts.pory"
-	.string "I've caught a decent group of POKéMON,\n"
+	.string "Maybe I should go to the BATTLE\n"
 # 523 "data//maps/LilycoveCity/scripts.pory"
-	.string "and my POKéDEX is coming along, so\l"
+	.string "FRONTIER.\p"
 # 524 "data//maps/LilycoveCity/scripts.pory"
-	.string "I'm going home to show my dad.$"
+	.string "Well, anyway, hang in there!$"
 # 525 "data//maps/LilycoveCity/scripts.pory"
 
 # 526 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_MayYouGoingToCollectBadges:
-# 527 "data//maps/LilycoveCity/scripts.pory"
-	.string "{PLAYER}{KUN}, what are you going to do?\p"
-# 528 "data//maps/LilycoveCity/scripts.pory"
-	.string "Collect all the GYM BADGES and take\n"
-# 529 "data//maps/LilycoveCity/scripts.pory"
-	.string "the POKéMON LEAGUE challenge?\p"
-# 530 "data//maps/LilycoveCity/scripts.pory"
-	.string "Well, while you're collecting BADGES,\n"
-# 531 "data//maps/LilycoveCity/scripts.pory"
-	.string "{PLAYER}{KUN}, I'm going to work on my\l"
-# 532 "data//maps/LilycoveCity/scripts.pory"
-	.string "POKéDEX. I'll complete it before you!\p"
-# 533 "data//maps/LilycoveCity/scripts.pory"
-	.string "See you!$"
-# 534 "data//maps/LilycoveCity/scripts.pory"
-
-# 535 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_MayYouGoingToPokemonLeague:
-# 536 "data//maps/LilycoveCity/scripts.pory"
-	.string "{PLAYER}{KUN}, what are you going to do?\p"
-# 537 "data//maps/LilycoveCity/scripts.pory"
-	.string "Are you taking the POKéMON LEAGUE\n"
-# 538 "data//maps/LilycoveCity/scripts.pory"
-	.string "challenge?\p"
-# 539 "data//maps/LilycoveCity/scripts.pory"
-	.string "Or, are you going to complete your\n"
-# 540 "data//maps/LilycoveCity/scripts.pory"
-	.string "POKéDEX?\p"
-# 541 "data//maps/LilycoveCity/scripts.pory"
-	.string "I might've lost to you in battling,\n"
-# 542 "data//maps/LilycoveCity/scripts.pory"
-	.string "but I'll finish my POKéDEX before you!\p"
-# 543 "data//maps/LilycoveCity/scripts.pory"
-	.string "See you!$"
-# 544 "data//maps/LilycoveCity/scripts.pory"
-
-# 545 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_MayYouGoingToBattleFrontier:
-# 546 "data//maps/LilycoveCity/scripts.pory"
-	.string "{PLAYER}{KUN}, what are you going to do?\p"
-# 547 "data//maps/LilycoveCity/scripts.pory"
-	.string "Are you taking the BATTLE FRONTIER\n"
-# 548 "data//maps/LilycoveCity/scripts.pory"
-	.string "challenge?\p"
-# 549 "data//maps/LilycoveCity/scripts.pory"
-	.string "Or, are you going to complete your\n"
-# 550 "data//maps/LilycoveCity/scripts.pory"
-	.string "POKéDEX?\p"
-# 551 "data//maps/LilycoveCity/scripts.pory"
-	.string "I might've lost to you in battling,\n"
-# 552 "data//maps/LilycoveCity/scripts.pory"
-	.string "but I'll finish my POKéDEX before you!\p"
-# 553 "data//maps/LilycoveCity/scripts.pory"
-	.string "See you!$"
-# 554 "data//maps/LilycoveCity/scripts.pory"
-
-# 555 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_BrendanShoppingLetsBattle:
-# 556 "data//maps/LilycoveCity/scripts.pory"
-	.string "BRENDAN: Oh, hey, it's {PLAYER}.\p"
-# 557 "data//maps/LilycoveCity/scripts.pory"
-	.string "I'm running an errand for my dad.\n"
-# 558 "data//maps/LilycoveCity/scripts.pory"
-	.string "No, I'm not buying any DOLLS.\p"
-# 559 "data//maps/LilycoveCity/scripts.pory"
-	.string "Anyways, it's been a while.\p"
-# 560 "data//maps/LilycoveCity/scripts.pory"
-	.string "Want to have a battle to see who's been\n"
-# 561 "data//maps/LilycoveCity/scripts.pory"
-	.string "raising POKéMON better?$"
-# 562 "data//maps/LilycoveCity/scripts.pory"
-
-# 563 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_BrendanNoConfidence:
-# 564 "data//maps/LilycoveCity/scripts.pory"
-	.string "BRENDAN: Oh, what's the matter?\n"
-# 565 "data//maps/LilycoveCity/scripts.pory"
-	.string "Don't have the confidence?$"
-# 566 "data//maps/LilycoveCity/scripts.pory"
-
-# 567 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_BrendanBattleMe:
-# 568 "data//maps/LilycoveCity/scripts.pory"
-	.string "BRENDAN: Want to battle to see who's\n"
-# 569 "data//maps/LilycoveCity/scripts.pory"
-	.string "been raising POKéMON better?$"
-# 570 "data//maps/LilycoveCity/scripts.pory"
-
-# 571 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_BrendanWontBeBeaten:
-# 572 "data//maps/LilycoveCity/scripts.pory"
-	.string "BRENDAN: Aww, but you know I'm not\n"
-# 573 "data//maps/LilycoveCity/scripts.pory"
-	.string "going to lose to no {PLAYER}.$"
-# 574 "data//maps/LilycoveCity/scripts.pory"
-
-# 575 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_BrendanDefeat:
-# 576 "data//maps/LilycoveCity/scripts.pory"
-	.string "Humph…\n"
-# 577 "data//maps/LilycoveCity/scripts.pory"
-	.string "You've done a lot of raising.\p"
-# 578 "data//maps/LilycoveCity/scripts.pory"
-	.string "That stings a bit--I had a head start\n"
-# 579 "data//maps/LilycoveCity/scripts.pory"
-	.string "on you as a TRAINER…$"
-# 580 "data//maps/LilycoveCity/scripts.pory"
-
-# 581 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_BrendanGoingBackToLittleroot:
-# 582 "data//maps/LilycoveCity/scripts.pory"
-	.string "BRENDAN: I…\n"
-# 583 "data//maps/LilycoveCity/scripts.pory"
-	.string "I plan on going home to LITTLEROOT.\p"
-# 584 "data//maps/LilycoveCity/scripts.pory"
-	.string "You know I'm helping out my dad on his\n"
-# 585 "data//maps/LilycoveCity/scripts.pory"
-	.string "POKéDEX. It's coming together pretty\l"
-# 586 "data//maps/LilycoveCity/scripts.pory"
-	.string "decently, so I should go show him.$"
-# 587 "data//maps/LilycoveCity/scripts.pory"
-
-# 588 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_BrendanYouGoingToCollectBadges:
-# 589 "data//maps/LilycoveCity/scripts.pory"
-	.string "{PLAYER}, what are you going to do?\p"
-# 590 "data//maps/LilycoveCity/scripts.pory"
-	.string "Collect all the GYM BADGES and take\n"
-# 591 "data//maps/LilycoveCity/scripts.pory"
-	.string "the POKéMON LEAGUE challenge?\p"
-# 592 "data//maps/LilycoveCity/scripts.pory"
-	.string "Maybe I'll do that, too…\p"
-# 593 "data//maps/LilycoveCity/scripts.pory"
-	.string "Well, anyway, hang in there!$"
-# 594 "data//maps/LilycoveCity/scripts.pory"
-
-# 595 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_BrendanYouGoingToPokemonLeague:
-# 596 "data//maps/LilycoveCity/scripts.pory"
-	.string "{PLAYER}, what are you going to do?\p"
-# 597 "data//maps/LilycoveCity/scripts.pory"
-	.string "Since you're that strong, are you\n"
-# 598 "data//maps/LilycoveCity/scripts.pory"
-	.string "taking the POKéMON LEAGUE challenge?\p"
-# 599 "data//maps/LilycoveCity/scripts.pory"
-	.string "Heh, even me--if I trained my POKéMON\n"
-# 600 "data//maps/LilycoveCity/scripts.pory"
-	.string "a bit more, I should be stronger than\l"
-# 601 "data//maps/LilycoveCity/scripts.pory"
-	.string "you, {PLAYER}.\p"
-# 602 "data//maps/LilycoveCity/scripts.pory"
-	.string "Well, anyway, hang in there!$"
-# 603 "data//maps/LilycoveCity/scripts.pory"
-
-# 604 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_BrendanYouGoingToBattleFrontier:
-# 605 "data//maps/LilycoveCity/scripts.pory"
-	.string "{PLAYER}, what are you going to do?\p"
-# 606 "data//maps/LilycoveCity/scripts.pory"
-	.string "Are you taking the BATTLE FRONTIER\n"
-# 607 "data//maps/LilycoveCity/scripts.pory"
-	.string "challenge?\p"
-# 608 "data//maps/LilycoveCity/scripts.pory"
-	.string "Or, are you going to complete your\n"
-# 609 "data//maps/LilycoveCity/scripts.pory"
-	.string "POKéDEX?\p"
-# 610 "data//maps/LilycoveCity/scripts.pory"
-	.string "Since you're that strong, you should\n"
-# 611 "data//maps/LilycoveCity/scripts.pory"
-	.string "consider the BATTLE FRONTIER.\p"
-# 612 "data//maps/LilycoveCity/scripts.pory"
-	.string "Heh, if I train my POKéMON a bit more,\n"
-# 613 "data//maps/LilycoveCity/scripts.pory"
-	.string "I'll get stronger than you, {PLAYER}.\p"
-# 614 "data//maps/LilycoveCity/scripts.pory"
-	.string "Maybe I should go to the BATTLE\n"
-# 615 "data//maps/LilycoveCity/scripts.pory"
-	.string "FRONTIER.\p"
-# 616 "data//maps/LilycoveCity/scripts.pory"
-	.string "Well, anyway, hang in there!$"
-# 617 "data//maps/LilycoveCity/scripts.pory"
-
-# 618 "data//maps/LilycoveCity/scripts.pory"
 LilycoveCity_Text_MovedLootIntoHideoutToday:
-# 619 "data//maps/LilycoveCity/scripts.pory"
+# 527 "data//maps/LilycoveCity/scripts.pory"
 	.string "Fufufu…\p"
-# 620 "data//maps/LilycoveCity/scripts.pory"
+# 528 "data//maps/LilycoveCity/scripts.pory"
 	.string "We moved more loot into our secret\n"
-# 621 "data//maps/LilycoveCity/scripts.pory"
+# 529 "data//maps/LilycoveCity/scripts.pory"
 	.string "HIDEOUT today…\p"
-# 622 "data//maps/LilycoveCity/scripts.pory"
+# 530 "data//maps/LilycoveCity/scripts.pory"
 	.string "Wh-who are you?!\n"
-# 623 "data//maps/LilycoveCity/scripts.pory"
+# 531 "data//maps/LilycoveCity/scripts.pory"
 	.string "I was just talking to myself!$"
-# 624 "data//maps/LilycoveCity/scripts.pory"
+# 532 "data//maps/LilycoveCity/scripts.pory"
 
-# 625 "data//maps/LilycoveCity/scripts.pory"
+# 533 "data//maps/LilycoveCity/scripts.pory"
 LilycoveCity_Text_ChanceToDoBigThings:
-# 626 "data//maps/LilycoveCity/scripts.pory"
+# 534 "data//maps/LilycoveCity/scripts.pory"
 	.string "I'm just a GRUNT, so I don't know what\n"
-# 627 "data//maps/LilycoveCity/scripts.pory"
+# 535 "data//maps/LilycoveCity/scripts.pory"
 	.string "the BOSS is thinking…\p"
-# 628 "data//maps/LilycoveCity/scripts.pory"
+# 536 "data//maps/LilycoveCity/scripts.pory"
 	.string "But being on TEAM AQUA, I know I'll get\n"
-# 629 "data//maps/LilycoveCity/scripts.pory"
+# 537 "data//maps/LilycoveCity/scripts.pory"
 	.string "the chance to do big things!\p"
-# 630 "data//maps/LilycoveCity/scripts.pory"
+# 538 "data//maps/LilycoveCity/scripts.pory"
 	.string "Wh-who are you?!\n"
-# 631 "data//maps/LilycoveCity/scripts.pory"
+# 539 "data//maps/LilycoveCity/scripts.pory"
 	.string "I was just talking to myself!$"
-# 632 "data//maps/LilycoveCity/scripts.pory"
+# 540 "data//maps/LilycoveCity/scripts.pory"
 
-# 633 "data//maps/LilycoveCity/scripts.pory"
+# 541 "data//maps/LilycoveCity/scripts.pory"
 LilycoveCity_Text_DontGoNearCaveInCove:
-# 634 "data//maps/LilycoveCity/scripts.pory"
+# 542 "data//maps/LilycoveCity/scripts.pory"
 	.string "Hey, you!\p"
-# 635 "data//maps/LilycoveCity/scripts.pory"
+# 543 "data//maps/LilycoveCity/scripts.pory"
 	.string "Don't go near the cave in the cove!\p"
-# 636 "data//maps/LilycoveCity/scripts.pory"
+# 544 "data//maps/LilycoveCity/scripts.pory"
 	.string "Why? You don't need a reason why!\n"
-# 637 "data//maps/LilycoveCity/scripts.pory"
+# 545 "data//maps/LilycoveCity/scripts.pory"
 	.string "I'm an adult, so you just listen to me!$"
-# 638 "data//maps/LilycoveCity/scripts.pory"
+# 546 "data//maps/LilycoveCity/scripts.pory"
 
-# 639 "data//maps/LilycoveCity/scripts.pory"
+# 547 "data//maps/LilycoveCity/scripts.pory"
 LilycoveCity_Text_IfWorldBecomesOurs:
-# 640 "data//maps/LilycoveCity/scripts.pory"
+# 548 "data//maps/LilycoveCity/scripts.pory"
 	.string "If this whole wide world becomes ours,\n"
-# 641 "data//maps/LilycoveCity/scripts.pory"
+# 549 "data//maps/LilycoveCity/scripts.pory"
 	.string "TEAM AQUA's, it will be a happier\l"
-# 642 "data//maps/LilycoveCity/scripts.pory"
+# 550 "data//maps/LilycoveCity/scripts.pory"
 	.string "place for POKéMON, too.$"
-# 643 "data//maps/LilycoveCity/scripts.pory"
+# 551 "data//maps/LilycoveCity/scripts.pory"
 
-# 644 "data//maps/LilycoveCity/scripts.pory"
+# 552 "data//maps/LilycoveCity/scripts.pory"
 LilycoveCity_Text_WailmerLeapOutOfWater:
-# 645 "data//maps/LilycoveCity/scripts.pory"
+# 553 "data//maps/LilycoveCity/scripts.pory"
 	.string "There! WAILMER!\n"
-# 646 "data//maps/LilycoveCity/scripts.pory"
+# 554 "data//maps/LilycoveCity/scripts.pory"
 	.string "Leap out of the water now!$"
-# 647 "data//maps/LilycoveCity/scripts.pory"
+# 555 "data//maps/LilycoveCity/scripts.pory"
 
-# 648 "data//maps/LilycoveCity/scripts.pory"
+# 556 "data//maps/LilycoveCity/scripts.pory"
 LilycoveCity_Text_GetLostMessingUpTraining:
-# 649 "data//maps/LilycoveCity/scripts.pory"
+# 557 "data//maps/LilycoveCity/scripts.pory"
 	.string "Hunh? What do you want?\p"
-# 650 "data//maps/LilycoveCity/scripts.pory"
+# 558 "data//maps/LilycoveCity/scripts.pory"
 	.string "You're messing up our training,\n"
-# 651 "data//maps/LilycoveCity/scripts.pory"
+# 559 "data//maps/LilycoveCity/scripts.pory"
 	.string "so can you, like, get lost?$"
-# 652 "data//maps/LilycoveCity/scripts.pory"
+# 560 "data//maps/LilycoveCity/scripts.pory"
 
-# 653 "data//maps/LilycoveCity/scripts.pory"
+# 561 "data//maps/LilycoveCity/scripts.pory"
 LilycoveCity_Text_ContestHallInTown:
-# 654 "data//maps/LilycoveCity/scripts.pory"
+# 562 "data//maps/LilycoveCity/scripts.pory"
 	.string "There's a POKéMON CONTEST HALL\n"
-# 655 "data//maps/LilycoveCity/scripts.pory"
+# 563 "data//maps/LilycoveCity/scripts.pory"
 	.string "right in this here town. \p"
-# 656 "data//maps/LilycoveCity/scripts.pory"
+# 564 "data//maps/LilycoveCity/scripts.pory"
 	.string "That means well-raised POKéMON will\n"
-# 657 "data//maps/LilycoveCity/scripts.pory"
+# 565 "data//maps/LilycoveCity/scripts.pory"
 	.string "come from all over the country.\p"
-# 658 "data//maps/LilycoveCity/scripts.pory"
+# 566 "data//maps/LilycoveCity/scripts.pory"
 	.string "My heart swells with excitement!$"
-# 659 "data//maps/LilycoveCity/scripts.pory"
+# 567 "data//maps/LilycoveCity/scripts.pory"
 
-# 660 "data//maps/LilycoveCity/scripts.pory"
+# 568 "data//maps/LilycoveCity/scripts.pory"
 LilycoveCity_Text_StrangeCaveInCove:
-# 661 "data//maps/LilycoveCity/scripts.pory"
+# 569 "data//maps/LilycoveCity/scripts.pory"
 	.string "Have you seen that strange cave in\n"
-# 662 "data//maps/LilycoveCity/scripts.pory"
+# 570 "data//maps/LilycoveCity/scripts.pory"
 	.string "the cove at the edge of town?$"
-# 663 "data//maps/LilycoveCity/scripts.pory"
+# 571 "data//maps/LilycoveCity/scripts.pory"
 
-# 664 "data//maps/LilycoveCity/scripts.pory"
+# 572 "data//maps/LilycoveCity/scripts.pory"
 LilycoveCity_Text_GoingToMoveDeleterForHMs:
-# 665 "data//maps/LilycoveCity/scripts.pory"
+# 573 "data//maps/LilycoveCity/scripts.pory"
 	.string "I'm going to teach my POKéMON some new\n"
-# 666 "data//maps/LilycoveCity/scripts.pory"
+# 574 "data//maps/LilycoveCity/scripts.pory"
 	.string "moves for entering a CONTEST.\p"
-# 667 "data//maps/LilycoveCity/scripts.pory"
+# 575 "data//maps/LilycoveCity/scripts.pory"
 	.string "So, I'm going to see the MOVE DELETER\n"
-# 668 "data//maps/LilycoveCity/scripts.pory"
+# 576 "data//maps/LilycoveCity/scripts.pory"
 	.string "and make it forget HM moves.$"
-# 669 "data//maps/LilycoveCity/scripts.pory"
+# 577 "data//maps/LilycoveCity/scripts.pory"
 
-# 670 "data//maps/LilycoveCity/scripts.pory"
+# 578 "data//maps/LilycoveCity/scripts.pory"
 LilycoveCity_Text_ImFromKanto:
-# 671 "data//maps/LilycoveCity/scripts.pory"
+# 579 "data//maps/LilycoveCity/scripts.pory"
 	.string "I came from KANTO.\p"
-# 672 "data//maps/LilycoveCity/scripts.pory"
+# 580 "data//maps/LilycoveCity/scripts.pory"
 	.string "The HOENN region is beautiful with\n"
-# 673 "data//maps/LilycoveCity/scripts.pory"
+# 581 "data//maps/LilycoveCity/scripts.pory"
 	.string "all its water and verdant nature.\p"
-# 674 "data//maps/LilycoveCity/scripts.pory"
+# 582 "data//maps/LilycoveCity/scripts.pory"
 	.string "Hunh? Wait a second…\p"
-# 675 "data//maps/LilycoveCity/scripts.pory"
+# 583 "data//maps/LilycoveCity/scripts.pory"
 	.string "Could there be rare POKéMON that live\n"
-# 676 "data//maps/LilycoveCity/scripts.pory"
+# 584 "data//maps/LilycoveCity/scripts.pory"
 	.string "only in this area?$"
+# 585 "data//maps/LilycoveCity/scripts.pory"
+
+# 586 "data//maps/LilycoveCity/scripts.pory"
+LilycoveCity_Text_TeamAquaBeenTrainingWailmer:
+# 587 "data//maps/LilycoveCity/scripts.pory"
+	.string "TEAM AQUA's been training their\n"
+# 588 "data//maps/LilycoveCity/scripts.pory"
+	.string "WAILMER in the cove.\p"
+# 589 "data//maps/LilycoveCity/scripts.pory"
+	.string "We SAILORS can't get our boats out\n"
+# 590 "data//maps/LilycoveCity/scripts.pory"
+	.string "to sea with them in the way!$"
+# 591 "data//maps/LilycoveCity/scripts.pory"
+
+# 592 "data//maps/LilycoveCity/scripts.pory"
+LilycoveCity_Text_SomeonePuntedTeamAquaOut:
+# 593 "data//maps/LilycoveCity/scripts.pory"
+	.string "Ahoy, did you know?\p"
+# 594 "data//maps/LilycoveCity/scripts.pory"
+	.string "Someone punted TEAM AQUA out of\n"
+# 595 "data//maps/LilycoveCity/scripts.pory"
+	.string "the way for us!\p"
+# 596 "data//maps/LilycoveCity/scripts.pory"
+	.string "That got the WAILMER out of the cove,\n"
+# 597 "data//maps/LilycoveCity/scripts.pory"
+	.string "so we can get our boats out again.$"
+# 598 "data//maps/LilycoveCity/scripts.pory"
+
+# 599 "data//maps/LilycoveCity/scripts.pory"
+LilycoveCity_Text_SomeoneStoleMyPokemon:
+# 600 "data//maps/LilycoveCity/scripts.pory"
+	.string "I was taking a relaxing snooze at the\n"
+# 601 "data//maps/LilycoveCity/scripts.pory"
+	.string "seaside inn to the sound of waves…\p"
+# 602 "data//maps/LilycoveCity/scripts.pory"
+	.string "When someone stole my POKéMON!\p"
+# 603 "data//maps/LilycoveCity/scripts.pory"
+	.string "Who's the abductor?\n"
+# 604 "data//maps/LilycoveCity/scripts.pory"
+	.string "TEAM AQUA? Is it TEAM AQUA?$"
+# 605 "data//maps/LilycoveCity/scripts.pory"
+
+# 606 "data//maps/LilycoveCity/scripts.pory"
+LilycoveCity_Text_MissingPokemonCameBack:
+# 607 "data//maps/LilycoveCity/scripts.pory"
+	.string "My missing POKéMON…\n"
+# 608 "data//maps/LilycoveCity/scripts.pory"
+	.string "It came back without me noticing!$"
+# 609 "data//maps/LilycoveCity/scripts.pory"
+
+# 610 "data//maps/LilycoveCity/scripts.pory"
+LilycoveCity_Text_ImArtDealer:
+# 611 "data//maps/LilycoveCity/scripts.pory"
+	.string "I'm an ART DEALER.\p"
+# 612 "data//maps/LilycoveCity/scripts.pory"
+	.string "I am a buyer and seller of fine art,\n"
+# 613 "data//maps/LilycoveCity/scripts.pory"
+	.string "especially paintings.\p"
+# 614 "data//maps/LilycoveCity/scripts.pory"
+	.string "I've heard that the MUSEUM here has\n"
+# 615 "data//maps/LilycoveCity/scripts.pory"
+	.string "magnificent works on exhibit…$"
+# 616 "data//maps/LilycoveCity/scripts.pory"
+
+# 617 "data//maps/LilycoveCity/scripts.pory"
+LilycoveCity_Text_SeaRemainsForeverYoung:
+# 618 "data//maps/LilycoveCity/scripts.pory"
+	.string "Even as we grow old and wrinkled,\n"
+# 619 "data//maps/LilycoveCity/scripts.pory"
+	.string "the sea remains forever young with\l"
+# 620 "data//maps/LilycoveCity/scripts.pory"
+	.string "the vivid brilliance of life…\p"
+# 621 "data//maps/LilycoveCity/scripts.pory"
+	.string "Fwohoho fwohohohoho…$"
+# 622 "data//maps/LilycoveCity/scripts.pory"
+
+# 623 "data//maps/LilycoveCity/scripts.pory"
+LilycoveCity_Text_SixtyYearsAgoHusbandProposed:
+# 624 "data//maps/LilycoveCity/scripts.pory"
+	.string "It was sixty years ago that my husband\n"
+# 625 "data//maps/LilycoveCity/scripts.pory"
+	.string "proposed to me here.\l"
+# 626 "data//maps/LilycoveCity/scripts.pory"
+	.string "The sea remains as beautiful as ever.\p"
+# 627 "data//maps/LilycoveCity/scripts.pory"
+	.string "Mufufufu mufufufufufu…$"
+# 628 "data//maps/LilycoveCity/scripts.pory"
+
+# 629 "data//maps/LilycoveCity/scripts.pory"
+LilycoveCity_Text_TeamAquaRenovatedCavern:
+# 630 "data//maps/LilycoveCity/scripts.pory"
+	.string "Hm, you know of the peculiar cavern\n"
+# 631 "data//maps/LilycoveCity/scripts.pory"
+	.string "in this cove?\p"
+# 632 "data//maps/LilycoveCity/scripts.pory"
+	.string "That had been a natural formation,\n"
+# 633 "data//maps/LilycoveCity/scripts.pory"
+	.string "but then that TEAM AQUA lot came\l"
+# 634 "data//maps/LilycoveCity/scripts.pory"
+	.string "along and made their renovations.\p"
+# 635 "data//maps/LilycoveCity/scripts.pory"
+	.string "They call themselves\n"
+# 636 "data//maps/LilycoveCity/scripts.pory"
+	.string "the “nature-loving TEAM AQUA”!\p"
+# 637 "data//maps/LilycoveCity/scripts.pory"
+	.string "But what they do and what they say\n"
+# 638 "data//maps/LilycoveCity/scripts.pory"
+	.string "don't match at all!$"
+# 639 "data//maps/LilycoveCity/scripts.pory"
+
+# 640 "data//maps/LilycoveCity/scripts.pory"
+LilycoveCity_Text_TeamAquaLotGoneForGood:
+# 641 "data//maps/LilycoveCity/scripts.pory"
+	.string "That cave in the cove…\p"
+# 642 "data//maps/LilycoveCity/scripts.pory"
+	.string "I didn't notice it right away,\n"
+# 643 "data//maps/LilycoveCity/scripts.pory"
+	.string "but it's completely empty now.\p"
+# 644 "data//maps/LilycoveCity/scripts.pory"
+	.string "That TEAM AQUA lot, they must\n"
+# 645 "data//maps/LilycoveCity/scripts.pory"
+	.string "have gone away for good.$"
+# 646 "data//maps/LilycoveCity/scripts.pory"
+
+# 647 "data//maps/LilycoveCity/scripts.pory"
+LilycoveCity_Text_CitySign:
+# 648 "data//maps/LilycoveCity/scripts.pory"
+	.string "LILYCOVE CITY\p"
+# 649 "data//maps/LilycoveCity/scripts.pory"
+	.string "“Where the land ends and the\n"
+# 650 "data//maps/LilycoveCity/scripts.pory"
+	.string "sea begins.”$"
+# 651 "data//maps/LilycoveCity/scripts.pory"
+
+# 652 "data//maps/LilycoveCity/scripts.pory"
+LilycoveCity_Text_ContestHallSign:
+# 653 "data//maps/LilycoveCity/scripts.pory"
+	.string "POKéMON CONTEST HALL\n"
+# 654 "data//maps/LilycoveCity/scripts.pory"
+	.string "“The gathering place for TRAINERS!”$"
+# 655 "data//maps/LilycoveCity/scripts.pory"
+
+# 656 "data//maps/LilycoveCity/scripts.pory"
+LilycoveCity_Text_MotelSign:
+# 657 "data//maps/LilycoveCity/scripts.pory"
+	.string "COVE LILY MOTEL\p"
+# 658 "data//maps/LilycoveCity/scripts.pory"
+	.string "“Remember us as COVE LILY of\n"
+# 659 "data//maps/LilycoveCity/scripts.pory"
+	.string "LILYCOVE.”$"
+# 660 "data//maps/LilycoveCity/scripts.pory"
+
+# 661 "data//maps/LilycoveCity/scripts.pory"
+LilycoveCity_Text_MuseumSign:
+# 662 "data//maps/LilycoveCity/scripts.pory"
+	.string "LILYCOVE MUSEUM\p"
+# 663 "data//maps/LilycoveCity/scripts.pory"
+	.string "“POKéMON Masterpiece Collection\n"
+# 664 "data//maps/LilycoveCity/scripts.pory"
+	.string "on exhibit!”$"
+# 665 "data//maps/LilycoveCity/scripts.pory"
+
+# 666 "data//maps/LilycoveCity/scripts.pory"
+LilycoveCity_Text_MuseumSignPlayersExhibit:
+# 667 "data//maps/LilycoveCity/scripts.pory"
+	.string "LILYCOVE MUSEUM\p"
+# 668 "data//maps/LilycoveCity/scripts.pory"
+	.string "“{PLAYER}'s POKéMON Collection\n"
+# 669 "data//maps/LilycoveCity/scripts.pory"
+	.string "on exhibit!”$"
+# 670 "data//maps/LilycoveCity/scripts.pory"
+
+# 671 "data//maps/LilycoveCity/scripts.pory"
+LilycoveCity_Text_HarborSignUnderConstruction:
+# 672 "data//maps/LilycoveCity/scripts.pory"
+	.string "LILYCOVE CITY HARBOR\p"
+# 673 "data//maps/LilycoveCity/scripts.pory"
+	.string "“The ferry S.S. TIDAL is under\n"
+# 674 "data//maps/LilycoveCity/scripts.pory"
+	.string "construction in SLATEPORT CITY.\p"
+# 675 "data//maps/LilycoveCity/scripts.pory"
+	.string "“Service is scheduled to begin\n"
+# 676 "data//maps/LilycoveCity/scripts.pory"
+	.string "shortly.”$"
 # 677 "data//maps/LilycoveCity/scripts.pory"
 
 # 678 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_TeamAquaBeenTrainingWailmer:
+LilycoveCity_Text_HarborSign:
 # 679 "data//maps/LilycoveCity/scripts.pory"
-	.string "TEAM AQUA's been training their\n"
+	.string "LILYCOVE CITY HARBOR\p"
 # 680 "data//maps/LilycoveCity/scripts.pory"
-	.string "WAILMER in the cove.\p"
+	.string "“Enjoy a delightful cruise on\n"
 # 681 "data//maps/LilycoveCity/scripts.pory"
-	.string "We SAILORS can't get our boats out\n"
+	.string "the ferry S.S. TIDAL.”$"
 # 682 "data//maps/LilycoveCity/scripts.pory"
-	.string "to sea with them in the way!$"
+
 # 683 "data//maps/LilycoveCity/scripts.pory"
-
+LilycoveCity_Text_TrainerFanClubSign:
 # 684 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_SomeonePuntedTeamAquaOut:
+	.string "POKéMON TRAINER FAN CLUB\p"
 # 685 "data//maps/LilycoveCity/scripts.pory"
-	.string "Ahoy, did you know?\p"
+	.string "The names of TRAINERS are scribbled\n"
 # 686 "data//maps/LilycoveCity/scripts.pory"
-	.string "Someone punted TEAM AQUA out of\n"
+	.string "all over the sign…$"
 # 687 "data//maps/LilycoveCity/scripts.pory"
-	.string "the way for us!\p"
+
 # 688 "data//maps/LilycoveCity/scripts.pory"
-	.string "That got the WAILMER out of the cove,\n"
+LilycoveCity_Text_DepartmentStoreSign:
 # 689 "data//maps/LilycoveCity/scripts.pory"
-	.string "so we can get our boats out again.$"
+	.string "LILYCOVE DEPARTMENT STORE\p"
 # 690 "data//maps/LilycoveCity/scripts.pory"
-
+	.string "“Overflowing with great merchandise\n"
 # 691 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_SomeoneStoleMyPokemon:
+	.string "and excitement!\p"
 # 692 "data//maps/LilycoveCity/scripts.pory"
-	.string "I was taking a relaxing snooze at the\n"
+	.string "“A great place to find that something\n"
 # 693 "data//maps/LilycoveCity/scripts.pory"
-	.string "seaside inn to the sound of waves…\p"
+	.string "you need!”$"
 # 694 "data//maps/LilycoveCity/scripts.pory"
-	.string "When someone stole my POKéMON!\p"
+
 # 695 "data//maps/LilycoveCity/scripts.pory"
-	.string "Who's the abductor?\n"
+LilycoveCity_Text_MoveDeletersHouseSign:
 # 696 "data//maps/LilycoveCity/scripts.pory"
-	.string "TEAM AQUA? Is it TEAM AQUA?$"
+	.string "MOVE DELETER'S HOUSE\p"
 # 697 "data//maps/LilycoveCity/scripts.pory"
-
+	.string "“Unwanted POKéMON moves deleted.”$"
 # 698 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_MissingPokemonCameBack:
-# 699 "data//maps/LilycoveCity/scripts.pory"
-	.string "My missing POKéMON…\n"
-# 700 "data//maps/LilycoveCity/scripts.pory"
-	.string "It came back without me noticing!$"
-# 701 "data//maps/LilycoveCity/scripts.pory"
 
+# 699 "data//maps/LilycoveCity/scripts.pory"
+LilycoveCity_Text_DoYouKnowAboutBerryBlender:
+# 700 "data//maps/LilycoveCity/scripts.pory"
+	.string "Do you know about the machine\n"
+# 701 "data//maps/LilycoveCity/scripts.pory"
+	.string "BERRY BLENDER?$"
 # 702 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_ImArtDealer:
+
 # 703 "data//maps/LilycoveCity/scripts.pory"
-	.string "I'm an ART DEALER.\p"
+LilycoveCity_Text_FasterSpinBetterPokeblocks:
 # 704 "data//maps/LilycoveCity/scripts.pory"
-	.string "I am a buyer and seller of fine art,\n"
+	.string "People have to work together to get it\n"
 # 705 "data//maps/LilycoveCity/scripts.pory"
-	.string "especially paintings.\p"
+	.string "to spin faster.\p"
 # 706 "data//maps/LilycoveCity/scripts.pory"
-	.string "I've heard that the MUSEUM here has\n"
+	.string "The faster you can make it spin, the\n"
 # 707 "data//maps/LilycoveCity/scripts.pory"
-	.string "magnificent works on exhibit…$"
+	.string "better {POKEBLOCK}S you can get, I've heard.$"
 # 708 "data//maps/LilycoveCity/scripts.pory"
 
 # 709 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_SeaRemainsForeverYoung:
+LilycoveCity_Text_ExplainBerryBlender:
 # 710 "data//maps/LilycoveCity/scripts.pory"
-	.string "Even as we grow old and wrinkled,\n"
+	.string "It's used for making a kind of candy\n"
 # 711 "data//maps/LilycoveCity/scripts.pory"
-	.string "the sea remains forever young with\l"
+	.string "called a {POKEBLOCK}.\p"
 # 712 "data//maps/LilycoveCity/scripts.pory"
-	.string "the vivid brilliance of life…\p"
+	.string "If you give a good {POKEBLOCK} to a POKéMON,\n"
 # 713 "data//maps/LilycoveCity/scripts.pory"
-	.string "Fwohoho fwohohohoho…$"
+	.string "its condition will improve by a lot.$"
 # 714 "data//maps/LilycoveCity/scripts.pory"
 
 # 715 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_SixtyYearsAgoHusbandProposed:
-# 716 "data//maps/LilycoveCity/scripts.pory"
-	.string "It was sixty years ago that my husband\n"
-# 717 "data//maps/LilycoveCity/scripts.pory"
-	.string "proposed to me here.\l"
-# 718 "data//maps/LilycoveCity/scripts.pory"
-	.string "The sea remains as beautiful as ever.\p"
-# 719 "data//maps/LilycoveCity/scripts.pory"
-	.string "Mufufufu mufufufufufu…$"
-# 720 "data//maps/LilycoveCity/scripts.pory"
-
-# 721 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_TeamAquaRenovatedCavern:
-# 722 "data//maps/LilycoveCity/scripts.pory"
-	.string "Hm, you know of the peculiar cavern\n"
-# 723 "data//maps/LilycoveCity/scripts.pory"
-	.string "in this cove?\p"
-# 724 "data//maps/LilycoveCity/scripts.pory"
-	.string "That had been a natural formation,\n"
-# 725 "data//maps/LilycoveCity/scripts.pory"
-	.string "but then that TEAM AQUA lot came\l"
-# 726 "data//maps/LilycoveCity/scripts.pory"
-	.string "along and made their renovations.\p"
-# 727 "data//maps/LilycoveCity/scripts.pory"
-	.string "They call themselves\n"
-# 728 "data//maps/LilycoveCity/scripts.pory"
-	.string "the “nature-loving TEAM AQUA”!\p"
-# 729 "data//maps/LilycoveCity/scripts.pory"
-	.string "But what they do and what they say\n"
-# 730 "data//maps/LilycoveCity/scripts.pory"
-	.string "don't match at all!$"
-# 731 "data//maps/LilycoveCity/scripts.pory"
-
-# 732 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_TeamAquaLotGoneForGood:
-# 733 "data//maps/LilycoveCity/scripts.pory"
-	.string "That cave in the cove…\p"
-# 734 "data//maps/LilycoveCity/scripts.pory"
-	.string "I didn't notice it right away,\n"
-# 735 "data//maps/LilycoveCity/scripts.pory"
-	.string "but it's completely empty now.\p"
-# 736 "data//maps/LilycoveCity/scripts.pory"
-	.string "That TEAM AQUA lot, they must\n"
-# 737 "data//maps/LilycoveCity/scripts.pory"
-	.string "have gone away for good.$"
-# 738 "data//maps/LilycoveCity/scripts.pory"
-
-# 739 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_CitySign:
-# 740 "data//maps/LilycoveCity/scripts.pory"
-	.string "LILYCOVE CITY\p"
-# 741 "data//maps/LilycoveCity/scripts.pory"
-	.string "“Where the land ends and the\n"
-# 742 "data//maps/LilycoveCity/scripts.pory"
-	.string "sea begins.”$"
-# 743 "data//maps/LilycoveCity/scripts.pory"
-
-# 744 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_ContestHallSign:
-# 745 "data//maps/LilycoveCity/scripts.pory"
-	.string "POKéMON CONTEST HALL\n"
-# 746 "data//maps/LilycoveCity/scripts.pory"
-	.string "“The gathering place for TRAINERS!”$"
-# 747 "data//maps/LilycoveCity/scripts.pory"
-
-# 748 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_MotelSign:
-# 749 "data//maps/LilycoveCity/scripts.pory"
-	.string "COVE LILY MOTEL\p"
-# 750 "data//maps/LilycoveCity/scripts.pory"
-	.string "“Remember us as COVE LILY of\n"
-# 751 "data//maps/LilycoveCity/scripts.pory"
-	.string "LILYCOVE.”$"
-# 752 "data//maps/LilycoveCity/scripts.pory"
-
-# 753 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_MuseumSign:
-# 754 "data//maps/LilycoveCity/scripts.pory"
-	.string "LILYCOVE MUSEUM\p"
-# 755 "data//maps/LilycoveCity/scripts.pory"
-	.string "“POKéMON Masterpiece Collection\n"
-# 756 "data//maps/LilycoveCity/scripts.pory"
-	.string "on exhibit!”$"
-# 757 "data//maps/LilycoveCity/scripts.pory"
-
-# 758 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_MuseumSignPlayersExhibit:
-# 759 "data//maps/LilycoveCity/scripts.pory"
-	.string "LILYCOVE MUSEUM\p"
-# 760 "data//maps/LilycoveCity/scripts.pory"
-	.string "“{PLAYER}'s POKéMON Collection\n"
-# 761 "data//maps/LilycoveCity/scripts.pory"
-	.string "on exhibit!”$"
-# 762 "data//maps/LilycoveCity/scripts.pory"
-
-# 763 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_HarborSignUnderConstruction:
-# 764 "data//maps/LilycoveCity/scripts.pory"
-	.string "LILYCOVE CITY HARBOR\p"
-# 765 "data//maps/LilycoveCity/scripts.pory"
-	.string "“The ferry S.S. TIDAL is under\n"
-# 766 "data//maps/LilycoveCity/scripts.pory"
-	.string "construction in SLATEPORT CITY.\p"
-# 767 "data//maps/LilycoveCity/scripts.pory"
-	.string "“Service is scheduled to begin\n"
-# 768 "data//maps/LilycoveCity/scripts.pory"
-	.string "shortly.”$"
-# 769 "data//maps/LilycoveCity/scripts.pory"
-
-# 770 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_HarborSign:
-# 771 "data//maps/LilycoveCity/scripts.pory"
-	.string "LILYCOVE CITY HARBOR\p"
-# 772 "data//maps/LilycoveCity/scripts.pory"
-	.string "“Enjoy a delightful cruise on\n"
-# 773 "data//maps/LilycoveCity/scripts.pory"
-	.string "the ferry S.S. TIDAL.”$"
-# 774 "data//maps/LilycoveCity/scripts.pory"
-
-# 775 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_TrainerFanClubSign:
-# 776 "data//maps/LilycoveCity/scripts.pory"
-	.string "POKéMON TRAINER FAN CLUB\p"
-# 777 "data//maps/LilycoveCity/scripts.pory"
-	.string "The names of TRAINERS are scribbled\n"
-# 778 "data//maps/LilycoveCity/scripts.pory"
-	.string "all over the sign…$"
-# 779 "data//maps/LilycoveCity/scripts.pory"
-
-# 780 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_DepartmentStoreSign:
-# 781 "data//maps/LilycoveCity/scripts.pory"
-	.string "LILYCOVE DEPARTMENT STORE\p"
-# 782 "data//maps/LilycoveCity/scripts.pory"
-	.string "“Overflowing with great merchandise\n"
-# 783 "data//maps/LilycoveCity/scripts.pory"
-	.string "and excitement!\p"
-# 784 "data//maps/LilycoveCity/scripts.pory"
-	.string "“A great place to find that something\n"
-# 785 "data//maps/LilycoveCity/scripts.pory"
-	.string "you need!”$"
-# 786 "data//maps/LilycoveCity/scripts.pory"
-
-# 787 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_MoveDeletersHouseSign:
-# 788 "data//maps/LilycoveCity/scripts.pory"
-	.string "MOVE DELETER'S HOUSE\p"
-# 789 "data//maps/LilycoveCity/scripts.pory"
-	.string "“Unwanted POKéMON moves deleted.”$"
-# 790 "data//maps/LilycoveCity/scripts.pory"
-
-# 791 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_DoYouKnowAboutBerryBlender:
-# 792 "data//maps/LilycoveCity/scripts.pory"
-	.string "Do you know about the machine\n"
-# 793 "data//maps/LilycoveCity/scripts.pory"
-	.string "BERRY BLENDER?$"
-# 794 "data//maps/LilycoveCity/scripts.pory"
-
-# 795 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_FasterSpinBetterPokeblocks:
-# 796 "data//maps/LilycoveCity/scripts.pory"
-	.string "People have to work together to get it\n"
-# 797 "data//maps/LilycoveCity/scripts.pory"
-	.string "to spin faster.\p"
-# 798 "data//maps/LilycoveCity/scripts.pory"
-	.string "The faster you can make it spin, the\n"
-# 799 "data//maps/LilycoveCity/scripts.pory"
-	.string "better {POKEBLOCK}S you can get, I've heard.$"
-# 800 "data//maps/LilycoveCity/scripts.pory"
-
-# 801 "data//maps/LilycoveCity/scripts.pory"
-LilycoveCity_Text_ExplainBerryBlender:
-# 802 "data//maps/LilycoveCity/scripts.pory"
-	.string "It's used for making a kind of candy\n"
-# 803 "data//maps/LilycoveCity/scripts.pory"
-	.string "called a {POKEBLOCK}.\p"
-# 804 "data//maps/LilycoveCity/scripts.pory"
-	.string "If you give a good {POKEBLOCK} to a POKéMON,\n"
-# 805 "data//maps/LilycoveCity/scripts.pory"
-	.string "its condition will improve by a lot.$"
-# 806 "data//maps/LilycoveCity/scripts.pory"
-
-# 807 "data//maps/LilycoveCity/scripts.pory"
 LilycoveCity_Text_HeardTowerCalledSkyPillar:
-# 808 "data//maps/LilycoveCity/scripts.pory"
+# 716 "data//maps/LilycoveCity/scripts.pory"
 	.string "I heard there's a tower somewhere out\n"
-# 809 "data//maps/LilycoveCity/scripts.pory"
+# 717 "data//maps/LilycoveCity/scripts.pory"
 	.string "on the sea routes.\p"
-# 810 "data//maps/LilycoveCity/scripts.pory"
+# 718 "data//maps/LilycoveCity/scripts.pory"
 	.string "It's called the SKY PILLAR, I hear.$"
-# 811 "data//maps/LilycoveCity/scripts.pory"
+# 719 "data//maps/LilycoveCity/scripts.pory"
 
-# 812 "data//maps/LilycoveCity/scripts.pory"
+# 720 "data//maps/LilycoveCity/scripts.pory"
 LilycoveCity_Text_SawTallTowerOnRoute131:
-# 813 "data//maps/LilycoveCity/scripts.pory"
+# 721 "data//maps/LilycoveCity/scripts.pory"
 	.string "I saw this tall tower somewhere\n"
-# 814 "data//maps/LilycoveCity/scripts.pory"
+# 722 "data//maps/LilycoveCity/scripts.pory"
 	.string "around ROUTE 131.\p"
-# 815 "data//maps/LilycoveCity/scripts.pory"
+# 723 "data//maps/LilycoveCity/scripts.pory"
 	.string "Could that possibly be…?$"
-# 816 "data//maps/LilycoveCity/scripts.pory"
+# 724 "data//maps/LilycoveCity/scripts.pory"
 
-# 817 "data//maps/LilycoveCity/scripts.pory"
+# 725 "data//maps/LilycoveCity/scripts.pory"
 LilycoveCity_Text_JustArrivedAndSawRarePokemon:
-# 818 "data//maps/LilycoveCity/scripts.pory"
+# 726 "data//maps/LilycoveCity/scripts.pory"
 	.string "We just arrived here on our\n"
-# 819 "data//maps/LilycoveCity/scripts.pory"
+# 727 "data//maps/LilycoveCity/scripts.pory"
 	.string "honeymoon vacation.\p"
-# 820 "data//maps/LilycoveCity/scripts.pory"
+# 728 "data//maps/LilycoveCity/scripts.pory"
 	.string "We happened to see a DRAGON-type\n"
-# 821 "data//maps/LilycoveCity/scripts.pory"
+# 729 "data//maps/LilycoveCity/scripts.pory"
 	.string "POKéMON flying way up in the sky.\p"
-# 822 "data//maps/LilycoveCity/scripts.pory"
+# 730 "data//maps/LilycoveCity/scripts.pory"
 	.string "Do cool POKéMON like that live in\n"
-# 823 "data//maps/LilycoveCity/scripts.pory"
+# 731 "data//maps/LilycoveCity/scripts.pory"
 	.string "the HOENN region?$"
-# 824 "data//maps/LilycoveCity/scripts.pory"
+# 732 "data//maps/LilycoveCity/scripts.pory"
 
-# 825 "data//maps/LilycoveCity/scripts.pory"
+# 733 "data//maps/LilycoveCity/scripts.pory"
 LilycoveCity_Text_HoneymoonVowToSeeRarePokemon:
-# 826 "data//maps/LilycoveCity/scripts.pory"
+# 734 "data//maps/LilycoveCity/scripts.pory"
 	.string "On our honeymoon, we vowed to see as\n"
-# 827 "data//maps/LilycoveCity/scripts.pory"
+# 735 "data//maps/LilycoveCity/scripts.pory"
 	.string "many rare POKéMON as we can.\p"
-# 828 "data//maps/LilycoveCity/scripts.pory"
+# 736 "data//maps/LilycoveCity/scripts.pory"
 	.string "So we were delighted to see a rare\n"
-# 829 "data//maps/LilycoveCity/scripts.pory"
+# 737 "data//maps/LilycoveCity/scripts.pory"
 	.string "POKéMON as soon as we arrived.\p"
-# 830 "data//maps/LilycoveCity/scripts.pory"
+# 738 "data//maps/LilycoveCity/scripts.pory"
 	.string "I mean, we are totally happy!$"
