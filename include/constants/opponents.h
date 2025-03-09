@@ -523,24 +523,24 @@
 #define TRAINER_EDWIN_4                     517
 #define TRAINER_EDWIN_5                     518
 #define TRAINER_WALLY_VR_1                  519
-#define TRAINER_BRENDAN_ROUTE_103_C    520
-#define TRAINER_BRENDAN_ROUTE_110_C    521
-#define TRAINER_BRENDAN_ROUTE_119_C    522
+#define TRAINER_BRENDAN_ROUTE_103_C    520 // currently unused
+#define TRAINER_BRENDAN_ROUTE_110_C    521 // currently unused
+#define TRAINER_BRENDAN_ROUTE_119_C    522 // currently unused
 #define TRAINER_BRENDAN_ROUTE_103_A   523
 #define TRAINER_BRENDAN_ROUTE_110_A   524
 #define TRAINER_BRENDAN_ROUTE_119_A   525
-#define TRAINER_BRENDAN_ROUTE_103_B   526
-#define TRAINER_BRENDAN_ROUTE_110_B   527
-#define TRAINER_BRENDAN_ROUTE_119_B   528
-#define TRAINER_MAY_ROUTE_103_C        529
-#define TRAINER_MAY_ROUTE_110_C        530
-#define TRAINER_MAY_ROUTE_119_C        531
+#define TRAINER_BRENDAN_ROUTE_103_B   526 // currently unused
+#define TRAINER_BRENDAN_ROUTE_110_B   527 // currently unused
+#define TRAINER_BRENDAN_ROUTE_119_B   528 // currently unused
+#define TRAINER_MAY_ROUTE_103_C        529 // currently unused
+#define TRAINER_MAY_ROUTE_110_C        530 // currently unused
+#define TRAINER_MAY_ROUTE_119_C        531 // currently unused
 #define TRAINER_MAY_ROUTE_103_A       532
 #define TRAINER_MAY_ROUTE_110_A       533
 #define TRAINER_MAY_ROUTE_119_A       534
-#define TRAINER_MAY_ROUTE_103_B       535
-#define TRAINER_MAY_ROUTE_110_B       536
-#define TRAINER_MAY_ROUTE_119_B       537
+#define TRAINER_MAY_ROUTE_103_B       535 // currently unused
+#define TRAINER_MAY_ROUTE_110_B       536 // currently unused
+#define TRAINER_MAY_ROUTE_119_B       537 // currently unused
 #define TRAINER_ISAAC_1                     538
 #define TRAINER_DAVIS                       539
 #define TRAINER_MITCHELL                    540
@@ -596,14 +596,14 @@
 #define TRAINER_GRUNT_SPACE_CENTER_7        590
 #define TRAINER_MACEY                       591
 #define TRAINER_BRENDAN_RUSTBORO_A    592
-#define TRAINER_BRENDAN_RUSTBORO_C     593
+#define TRAINER_BRENDAN_RUSTBORO_C     593 // currently unused
 #define TRAINER_PAXTON                      594
 #define TRAINER_ISABELLA                    595
 #define TRAINER_GRUNT_WEATHER_INST_5        596
 #define TRAINER_TABITHA_MT_CHIMNEY          597
 #define TRAINER_JONATHAN                    598
-#define TRAINER_BRENDAN_RUSTBORO_B    599
-#define TRAINER_MAY_RUSTBORO_C         600
+#define TRAINER_BRENDAN_RUSTBORO_B    599 // currently unused
+#define TRAINER_MAY_RUSTBORO_C         600 // currently unused
 #define TRAINER_MAXIE_MAGMA_HIDEOUT         601
 #define TRAINER_MAXIE_MT_CHIMNEY            602
 #define TRAINER_TIANA                       603
@@ -664,12 +664,12 @@
 #define TRAINER_WALLY_VR_3                  658
 #define TRAINER_WALLY_VR_4                  659
 #define TRAINER_WALLY_VR_5                  660
-#define TRAINER_BRENDAN_LILYCOVE_C     661
+#define TRAINER_BRENDAN_LILYCOVE_C     661 // currently unused
 #define TRAINER_BRENDAN_LILYCOVE_A    662
-#define TRAINER_BRENDAN_LILYCOVE_B    663
-#define TRAINER_MAY_LILYCOVE_C         664
+#define TRAINER_BRENDAN_LILYCOVE_B    663 // currently unused
+#define TRAINER_MAY_LILYCOVE_C         664 // currently unused
 #define TRAINER_MAY_LILYCOVE_A        665
-#define TRAINER_MAY_LILYCOVE_B        666
+#define TRAINER_MAY_LILYCOVE_B        666 // currently unused
 #define TRAINER_JONAH                       667
 #define TRAINER_HENRY                       668
 #define TRAINER_ROGER                       669
@@ -772,7 +772,7 @@
 #define TRAINER_PAT                         766
 #define TRAINER_CRISTIN_1                   767
 #define TRAINER_MAY_RUSTBORO_A        768
-#define TRAINER_MAY_RUSTBORO_B        769
+#define TRAINER_MAY_RUSTBORO_B        769 // currently unused
 #define TRAINER_ROXANNE_2                   770
 #define TRAINER_ROXANNE_3                   771
 #define TRAINER_ROXANNE_4                   772
@@ -868,7 +868,7 @@
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
 #define TRAINERS_COUNT                      859
-#define MAX_TRAINERS_COUNT                  864
+#define MAX_TRAINERS_COUNT                  904
 #define TRAINER_PARTNER(partner)           (MAX_TRAINERS_COUNT + partner)
 
 #endif  // GUARD_CONSTANTS_OPPONENTS_H
