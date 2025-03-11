@@ -8,7 +8,6 @@ Route101_MapScripts::
 	.byte 0
 
 Route101_OnTransition:
-	clearflag FLAG_SYS_SAVE_GET
 	call ProfBirch_EventScript_UpdateLocation
 	end
 
@@ -298,7 +297,7 @@ Route101_Text_YouSavedMe:
 	.string "I was in the tall grass studying wild\n"
 	.string "POKéMON when I was jumped.\p"
 	.string "My idiot kid must have\n"
-	.string "'borrowed' my POKéMON again . . .\p"
+	.string "‘borrowed’ my POKéMON again . . .\p"
 	.string "This is a dangerous place to chat, so\n"
 	.string "lets off to my POKéMON LAB, okay?$"
 

@@ -21,6 +21,4 @@ Underwater_SootopolisCity_OnResume:
 # 11 "data//maps/Underwater_SootopolisCity/scripts.pory"
 Underwater_SootopolisCity_OnTransition:
 # 12 "data//maps/Underwater_SootopolisCity/scripts.pory"
-	clearflag FLAG_SYS_SAVE_GET
-# 13 "data//maps/Underwater_SootopolisCity/scripts.pory"
 	end

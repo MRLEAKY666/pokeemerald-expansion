@@ -5,7 +5,6 @@ Route121_SafariZoneEntrance_MapScripts::
 	.byte 0
 
 Route121_SafariZoneEntrance_OnTransition:
-	setflag FLAG_SYS_SAVE_GET
 	end
 
 Route121_SafariZoneEntrance_OnFrame:

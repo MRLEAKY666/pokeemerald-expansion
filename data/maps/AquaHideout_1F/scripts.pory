@@ -4,7 +4,6 @@ AquaHideout_1F_MapScripts::
 	.byte 0
 
 AquaHideout_1F_OnTransition:
-	clearflag FLAG_SYS_SAVE_GET
 	end
 
 @ The below two entrance guards give hints about what to do to progress the story

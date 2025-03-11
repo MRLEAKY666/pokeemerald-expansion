@@ -4,7 +4,6 @@ RustboroCity_Gym_MapScripts::
 	.byte 0
 
 RustboroCity_Gym_OnTransition:
-	clearflag FLAG_SYS_SAVE_GET
 	setvar VAR_0x8008, 1
 	call_if_unset FLAG_DEFEATED_RUSTBORO_GYM, Common_EventScript_ResetGymTrainers
 	end

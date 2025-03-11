@@ -4,7 +4,6 @@ Route102_MapScripts::
 	.byte 0
 
 Route102_OnTransition:
-	clearflag FLAG_SYS_SAVE_GET
 	end
 
 Route102_EventScript_LittleBoy::

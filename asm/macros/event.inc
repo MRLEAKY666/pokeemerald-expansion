@@ -2461,6 +2461,10 @@
 	waitstate
 	.endm
 
+	.macro SaveGamePC
+	callnative Script_SaveGamePC
+	.endm
+
 	@ Makes the trainer unable to see the player if executed.
 	@ This is a no-op if the player interacts with the trainer.
 	.macro cant_see_if, condition:req

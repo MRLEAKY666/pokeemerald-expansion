@@ -11,6 +11,4 @@ Route122_MapScripts::
 # 6 "data//maps/Route122/scripts.pory"
 Route122_OnTransition:
 # 7 "data//maps/Route122/scripts.pory"
-	clearflag FLAG_SYS_SAVE_GET
-# 8 "data//maps/Route122/scripts.pory"
 	end

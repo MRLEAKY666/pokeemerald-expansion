@@ -25,16 +25,18 @@ OldaleTown_House2_EventScript_Man::
 # 13 "data//maps/OldaleTown_House2/scripts.pory"
 OldaleTown_House2_Text_PokemonLevelUp:
 # 14 "data//maps/OldaleTown_House2/scripts.pory"
-	.string "When POKéMON battle, they eventually\n"
+	.string "HOENN doesn't have modern roads,\n"
 # 15 "data//maps/OldaleTown_House2/scripts.pory"
-	.string "level up and become stronger.$"
+	.string "so the area between towns and cities\l"
 # 16 "data//maps/OldaleTown_House2/scripts.pory"
-
+	.string "is mostly wilderness.$"
 # 17 "data//maps/OldaleTown_House2/scripts.pory"
-OldaleTown_House2_Text_YoullGoFurtherWithStrongPokemon:
+
 # 18 "data//maps/OldaleTown_House2/scripts.pory"
-	.string "If the POKéMON with you become\n"
+OldaleTown_House2_Text_YoullGoFurtherWithStrongPokemon:
 # 19 "data//maps/OldaleTown_House2/scripts.pory"
-	.string "stronger, you'll be able to go farther\l"
+	.string "If the POKéMON with you become\n"
 # 20 "data//maps/OldaleTown_House2/scripts.pory"
+	.string "stronger, you'll be able to go farther\l"
+# 21 "data//maps/OldaleTown_House2/scripts.pory"
 	.string "away from here.$"

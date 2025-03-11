@@ -8,7 +8,6 @@ Route121_MapScripts::
 	.byte 0
 
 Route121_OnTransition:
-	clearflag FLAG_SYS_SAVE_GET
 	end
 
 Route121_EventScript_Woman::

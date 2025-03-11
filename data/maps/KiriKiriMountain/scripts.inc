@@ -3,7 +3,6 @@ KiriKiriMountain_MapScripts::
 	.byte 0
 
 KiriKiriMountain_OnTransition:
-	clearflag FLAG_SYS_SAVE_GET
 	call KiriKiriMountain_EventScript_ResetWildMons
 	end
 

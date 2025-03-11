@@ -4,7 +4,6 @@ DewfordTown_Gym_MapScripts::
 	.byte 0
 
 DewfordTown_Gym_OnTransition:
-	clearflag FLAG_SYS_SAVE_GET
 	call DewfordTown_Gym_EventScript_SetFlashLevel
 	setvar VAR_0x8008, 2
 	call_if_unset FLAG_DEFEATED_DEWFORD_GYM, Common_EventScript_ResetGymTrainers

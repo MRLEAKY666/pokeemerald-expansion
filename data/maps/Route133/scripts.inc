@@ -11,76 +11,74 @@ Route133_MapScripts::
 # 6 "data//maps/Route133/scripts.pory"
 Route133_OnTransition:
 # 7 "data//maps/Route133/scripts.pory"
-	clearflag FLAG_SYS_SAVE_GET
+	end
 # 8 "data//maps/Route133/scripts.pory"
-	end
+
 # 9 "data//maps/Route133/scripts.pory"
-
-# 10 "data//maps/Route133/scripts.pory"
 Route133_EventScript_Franklin::
-# 11 "data//maps/Route133/scripts.pory"
+# 10 "data//maps/Route133/scripts.pory"
 	trainerbattle_single TRAINER_FRANKLIN, Route133_Text_FranklinIntro, Route133_Text_FranklinDefeat
-# 12 "data//maps/Route133/scripts.pory"
+# 11 "data//maps/Route133/scripts.pory"
 	msgbox Route133_Text_FranklinPostBattle, MSGBOX_AUTOCLOSE
+# 12 "data//maps/Route133/scripts.pory"
+	end
 # 13 "data//maps/Route133/scripts.pory"
-	end
+
 # 14 "data//maps/Route133/scripts.pory"
-
-# 15 "data//maps/Route133/scripts.pory"
 Route133_EventScript_Debra::
-# 16 "data//maps/Route133/scripts.pory"
+# 15 "data//maps/Route133/scripts.pory"
 	trainerbattle_single TRAINER_DEBRA, Route133_Text_DebraIntro, Route133_Text_DebraDefeat
-# 17 "data//maps/Route133/scripts.pory"
+# 16 "data//maps/Route133/scripts.pory"
 	msgbox Route133_Text_DebraPostBattle, MSGBOX_AUTOCLOSE
+# 17 "data//maps/Route133/scripts.pory"
+	end
 # 18 "data//maps/Route133/scripts.pory"
-	end
+
 # 19 "data//maps/Route133/scripts.pory"
-
-# 20 "data//maps/Route133/scripts.pory"
 Route133_EventScript_Linda::
-# 21 "data//maps/Route133/scripts.pory"
+# 20 "data//maps/Route133/scripts.pory"
 	trainerbattle_single TRAINER_LINDA, Route133_Text_LindaIntro, Route133_Text_LindaDefeat
-# 22 "data//maps/Route133/scripts.pory"
+# 21 "data//maps/Route133/scripts.pory"
 	msgbox Route133_Text_LindaPostBattle, MSGBOX_AUTOCLOSE
+# 22 "data//maps/Route133/scripts.pory"
+	end
 # 23 "data//maps/Route133/scripts.pory"
-	end
+
 # 24 "data//maps/Route133/scripts.pory"
-
-# 25 "data//maps/Route133/scripts.pory"
 Route133_EventScript_Warren::
-# 26 "data//maps/Route133/scripts.pory"
+# 25 "data//maps/Route133/scripts.pory"
 	trainerbattle_single TRAINER_WARREN, Route133_Text_WarrenIntro, Route133_Text_WarrenDefeat
-# 27 "data//maps/Route133/scripts.pory"
+# 26 "data//maps/Route133/scripts.pory"
 	msgbox Route133_Text_WarrenPostBattle, MSGBOX_AUTOCLOSE
+# 27 "data//maps/Route133/scripts.pory"
+	end
 # 28 "data//maps/Route133/scripts.pory"
-	end
+
 # 29 "data//maps/Route133/scripts.pory"
-
-# 30 "data//maps/Route133/scripts.pory"
 Route133_EventScript_Beck::
-# 31 "data//maps/Route133/scripts.pory"
+# 30 "data//maps/Route133/scripts.pory"
 	trainerbattle_single TRAINER_BECK, Route133_Text_BeckIntro, Route133_Text_BeckDefeat
-# 32 "data//maps/Route133/scripts.pory"
+# 31 "data//maps/Route133/scripts.pory"
 	msgbox Route133_Text_BeckPostBattle, MSGBOX_AUTOCLOSE
+# 32 "data//maps/Route133/scripts.pory"
+	end
 # 33 "data//maps/Route133/scripts.pory"
-	end
+
 # 34 "data//maps/Route133/scripts.pory"
-
-# 35 "data//maps/Route133/scripts.pory"
 Route133_EventScript_Mollie::
-# 36 "data//maps/Route133/scripts.pory"
+# 35 "data//maps/Route133/scripts.pory"
 	trainerbattle_single TRAINER_MOLLIE, Route133_Text_MollieIntro, Route133_Text_MollieDefeat
-# 37 "data//maps/Route133/scripts.pory"
+# 36 "data//maps/Route133/scripts.pory"
 	msgbox Route133_Text_MolliePostBattle, MSGBOX_AUTOCLOSE
-# 38 "data//maps/Route133/scripts.pory"
+# 37 "data//maps/Route133/scripts.pory"
 	end
-# 39 "data//maps/Route133/scripts.pory"
+# 38 "data//maps/Route133/scripts.pory"
 
-# 40 "data//maps/Route133/scripts.pory"
+# 39 "data//maps/Route133/scripts.pory"
 Route133_EventScript_Conor::
-# 41 "data//maps/Route133/scripts.pory"
+# 40 "data//maps/Route133/scripts.pory"
 	trainerbattle_single TRAINER_CONOR, Route133_Text_ConorIntro, Route133_Text_ConorDefeat
-# 42 "data//maps/Route133/scripts.pory"
+# 41 "data//maps/Route133/scripts.pory"
 	msgbox Route133_Text_ConorPostBattle, MSGBOX_AUTOCLOSE
-# 43 "data//maps/Route133/scripts.pory"
+# 42 "data//maps/Route133/scripts.pory"
 	end

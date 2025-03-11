@@ -7,7 +7,6 @@ Route109_MapScripts::
 	.byte 0
 
 Route109_OnTransition:
-	clearflag FLAG_SYS_SAVE_GET
 	end
 
 Route109_EventScript_StartDepartForDewford::

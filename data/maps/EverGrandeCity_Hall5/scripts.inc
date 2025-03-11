@@ -21,14 +21,12 @@ EverGrandeCity_Hall5_OnWarp:
 # 11 "data//maps/EverGrandeCity_Hall5/scripts.pory"
 EverGrandeCity_Hall5_OnTransition:
 # 12 "data//maps/EverGrandeCity_Hall5/scripts.pory"
-	clearflag FLAG_SYS_SAVE_GET
-# 13 "data//maps/EverGrandeCity_Hall5/scripts.pory"
 	end
-# 14 "data//maps/EverGrandeCity_Hall5/scripts.pory"
+# 13 "data//maps/EverGrandeCity_Hall5/scripts.pory"
 
-# 15 "data//maps/EverGrandeCity_Hall5/scripts.pory"
+# 14 "data//maps/EverGrandeCity_Hall5/scripts.pory"
 EverGrandeCity_Hall5_EventScript_TurnPlayerNorth::
-# 16 "data//maps/EverGrandeCity_Hall5/scripts.pory"
+# 15 "data//maps/EverGrandeCity_Hall5/scripts.pory"
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
-# 17 "data//maps/EverGrandeCity_Hall5/scripts.pory"
+# 16 "data//maps/EverGrandeCity_Hall5/scripts.pory"
 	end

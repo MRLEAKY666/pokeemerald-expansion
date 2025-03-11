@@ -9,7 +9,6 @@ Underwater_SootopolisCity_OnResume:
 	end
 
 Underwater_SootopolisCity_OnTransition:
-	clearflag FLAG_SYS_SAVE_GET
 	end
 
 `

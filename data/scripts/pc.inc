@@ -19,8 +19,9 @@ EventScript_AccessPC::
 	switch VAR_RESULT
 	case 0, EventScript_AccessPokemonStorage
 	case 1, EventScript_AccessPlayersPC
-	case 2, EventScript_AccessHallOfFame
-	case 3, EventScript_TurnOffPC
+	case 2, EventScript_PCSaveGame
+	case 3, EventScript_AccessHallOfFame
+	case 4, EventScript_TurnOffPC
 	case MULTI_B_PRESSED, EventScript_TurnOffPC
 	end
 
@@ -29,6 +30,23 @@ EventScript_AccessPlayersPC::
 	msgbox gText_AccessedPlayersPC, MSGBOX_DEFAULT
 	special PlayerPC
 	waitstate
+	goto EventScript_PCMainMenu
+	end
+
+EventScript_PCSaveGame::
+	special DoPCTurnOffEffect
+	special SaveGame
+	waitstate
+	goto_if_eq VAR_RESULT, 0, EventScript_PCSaveCancelled
+	waitbuttonpress
+	special DoPCTurnOnEffect
+	playse SE_PC_ON
+	goto EventScript_PCMainMenu
+	end
+
+EventScript_PCSaveCancelled::
+	special DoPCTurnOnEffect
+	playse SE_PC_ON
 	goto EventScript_PCMainMenu
 	end
 

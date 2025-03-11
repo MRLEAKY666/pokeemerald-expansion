@@ -5,7 +5,6 @@ PacifidlogTown_MapScripts::
 	.byte 0
 
 PacifidlogTown_OnTransition:
-	setflag FLAG_SYS_SAVE_GET
 	setflag FLAG_VISITED_PACIFIDLOG_TOWN
 	end
 

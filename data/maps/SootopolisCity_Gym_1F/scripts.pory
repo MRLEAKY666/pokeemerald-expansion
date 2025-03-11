@@ -7,7 +7,6 @@ SootopolisCity_Gym_1F_MapScripts::
 	.byte 0
 
 SootopolisCity_Gym_1F_OnTransition:
-	clearflag FLAG_SYS_SAVE_GET
 	setvar VAR_0x8008, 8
 	setvar VAR_ICE_STEP_COUNT, 1
 	end

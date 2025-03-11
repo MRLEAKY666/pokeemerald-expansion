@@ -4,7 +4,6 @@ Route106_MapScripts::
 	.byte 0
 
 Route106_OnTransition:
-	clearflag FLAG_SYS_SAVE_GET
 	end
 
 Route106_EventScript_TrainerTipsSign::

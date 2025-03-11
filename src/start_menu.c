@@ -140,6 +140,7 @@ static u8 BattlePyramidRetireInputCallback(void);
 // Task callbacks
 static void StartMenuTask(u8 taskId);
 static void SaveGameTask(u8 taskId);
+static void PCSaveTask(u8 taskId);
 static void Task_SaveAfterLinkBattle(u8 taskId);
 static void Task_WaitForBattleTowerLinkSave(u8 taskId);
 static bool8 FieldCB_ReturnToFieldStartMenu(void);
@@ -956,6 +957,33 @@ void SaveGame(void)
 {
     InitSave();
     CreateTask(SaveGameTask, 0x50);
+}
+
+void Script_SaveGamePC(void)
+{
+    InitSave();
+    CreateTask(PCSaveTask, 0x50);
+}
+
+static void PCSaveTask(u8 taskId)
+{
+    u8 status = RunSaveCallback();
+
+    switch (status)
+    {
+    case SAVE_CANCELED:
+    case SAVE_ERROR:
+        gSpecialVar_Result = 0;
+        break;
+    case SAVE_SUCCESS:
+        gSpecialVar_Result = status;
+        break;
+    case SAVE_IN_PROGRESS:
+        return;
+    }
+
+    DestroyTask(taskId);
+    ScriptContext_Enable();
 }
 
 static void ShowSaveMessage(const u8 *message, u8 (*saveCallback)(void))

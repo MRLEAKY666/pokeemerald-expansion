@@ -15,7 +15,6 @@ MauvilleCity_Gym_OnLoad:
 	end
 
 MauvilleCity_Gym_OnTransition:
-	clearflag FLAG_SYS_SAVE_GET
 	setvar VAR_0x8008, 3
 	call_if_unset FLAG_DEFEATED_MAUVILLE_GYM, Common_EventScript_ResetGymTrainers
 	end

@@ -11,8 +11,6 @@ ArtisanCave_B1F_MapScripts::
 # 6 "data//maps/ArtisanCave_B1F/scripts.pory"
 ArtisanCave_B1F_OnTransition:
 # 7 "data//maps/ArtisanCave_B1F/scripts.pory"
-	clearflag FLAG_SYS_SAVE_GET
-# 8 "data//maps/ArtisanCave_B1F/scripts.pory"
 	setflag FLAG_LANDMARK_ARTISAN_CAVE
-# 9 "data//maps/ArtisanCave_B1F/scripts.pory"
+# 8 "data//maps/ArtisanCave_B1F/scripts.pory"
 	end
