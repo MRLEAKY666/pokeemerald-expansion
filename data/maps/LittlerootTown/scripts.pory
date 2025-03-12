@@ -398,6 +398,12 @@ LittlerootTown_EventScript_BrendansHouseSign::
 	releaseall
 	end
 
+LittlerootTown_EventScript_TestScriptSign::
+	lock
+	special Special_ViewVoltorbFlip
+	release
+	end
+
 LittlerootTown_EventScript_PlayersHouseSignMale::
 	msgbox LittlerootTown_Text_PlayersHouse, MSGBOX_DEFAULT
 	return
