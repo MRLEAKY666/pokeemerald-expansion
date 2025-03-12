@@ -49,7 +49,6 @@ GraniteCove_EventScript_Snover::
 	faceplayer
 	waitse
 	playmoncry SPECIES_SNOVER, CRY_MODE_ENCOUNTER
-	msgbox GraniteCove_Text_Snover, MSGBOX_DEFAULT
 	delay 10
 	waitmoncry
 	setwildbattle SPECIES_SNOVER, 25
@@ -78,6 +77,4 @@ GraniteCove_Text_CoveSign:
 
 GraniteCove_Text_Abomasnow:
     .string "TIIIIIIIIIDE!$"
-
-GraniteCove_Text_Snover:
-    .string "Wubbawub!$"
+	
