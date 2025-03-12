@@ -140,8 +140,26 @@ Debug_EventScript_Script_1::
 	lock
 	special Special_ViewVoltorbFlip
 	waitstate
+	goto_if_eq VAR_RESULT, FALSE, Debug_EventScript_VoltorbFlipLost
+	goto_if_eq VAR_RESULT, TRUE, Debug_EventScript_VoltorbFlipWon
 	release
 	end
+
+Debug_EventScript_VoltorbFlipWon::
+	msgbox Debug_EventScript_Text_VoltorbFlipWon, MSGBOX_DEFAULT
+	release
+	end
+
+Debug_EventScript_VoltorbFlipLost::
+	msgbox Debug_EventScript_Text_VoltorbFlipLost, MSGBOX_DEFAULT
+	release
+	end
+
+Debug_EventScript_Text_VoltorbFlipWon:
+	.string "You won!$"
+
+Debug_EventScript_Text_VoltorbFlipLost:
+	.string "You lost . . .$"
 
 Debug_EventScript_Script_2::
 	lock
