@@ -8,6 +8,7 @@ void Task_ShowStartMenu(u8 taskId);
 void ShowStartMenu(void);
 void ShowBattlePyramidStartMenu(void);
 void SaveGame(void);
+void Script_SaveGamePC(void);
 void CB2_SetUpSaveAfterLinkBattle(void);
 void SaveForBattleTowerLink(void);
 void HideStartMenu(void);

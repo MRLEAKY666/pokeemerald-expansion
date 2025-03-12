@@ -53,7 +53,8 @@ SecretBase_EventScript_PCMainMenuWithRegister::
 	case 0, SecretBase_EventScript_PCDecorationMenu
 	case 1, SecretBase_EventScript_PCPackUp
 	case 2, SecretBase_EventScript_PCRegistryMenu
-	case 3, SecretBase_EventScript_PCTurnOff
+	case 3, SecretBase_EventScript_PCSaveGame
+	case 4, SecretBase_EventScript_PCTurnOff
 	case MULTI_B_PRESSED, SecretBase_EventScript_PCTurnOff
 	end
 
@@ -62,8 +63,23 @@ SecretBase_EventScript_PCMainMenuWithoutRegister::
 	switch VAR_RESULT
 	case 0, SecretBase_EventScript_PCDecorationMenu
 	case 1, SecretBase_EventScript_PCPackUp
-	case 2, SecretBase_EventScript_PCTurnOff
+	case 2, SecretBase_EventScript_PCSaveGame
+	case 3, SecretBase_EventScript_PCTurnOff
 	case MULTI_B_PRESSED, SecretBase_EventScript_PCTurnOff
+	end
+
+SecretBase_EventScript_PCSaveGame::
+	special DoSecretBasePCTurnOffEffect
+	callnative Script_SaveGamePC
+	waitstate
+	goto_if_eq VAR_RESULT, 0, SecretBase_EventScript_PCSaveCancelled
+	goto SecretBase_EventScript_PCTurnOff
+	end
+
+SecretBase_EventScript_PCSaveCancelled::
+	dofieldeffect FLDEFF_PCTURN_ON
+	playse SE_PC_ON
+	goto SecretBase_EventScript_PCShowMainMenu
 	end
 
 SecretBase_EventScript_PCPackUp::

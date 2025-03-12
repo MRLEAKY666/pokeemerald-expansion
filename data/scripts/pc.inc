@@ -35,13 +35,10 @@ EventScript_AccessPlayersPC::
 
 EventScript_PCSaveGame::
 	special DoPCTurnOffEffect
-	special SaveGame
+	callnative Script_SaveGamePC
 	waitstate
 	goto_if_eq VAR_RESULT, 0, EventScript_PCSaveCancelled
-	waitbuttonpress
-	special DoPCTurnOnEffect
-	playse SE_PC_ON
-	goto EventScript_PCMainMenu
+	goto EventScript_TurnOffPC
 	end
 
 EventScript_PCSaveCancelled::

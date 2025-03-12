@@ -595,7 +595,7 @@ Route103_Text_BrendanLetsBattle:
 # 298 "data//maps/Route103/scripts.pory"
 	.string "Hey, it's {PLAYER}!\p"
 # 299 "data//maps/Route103/scripts.pory"
-	.string "…Oh, you some dumb POKéMON too?\p"
+	.string "…Oh, you have some dumb POKéMON too?\p"
 # 300 "data//maps/Route103/scripts.pory"
 	.string "Since we're here, how about a little\n"
 # 301 "data//maps/Route103/scripts.pory"
