@@ -140,7 +140,6 @@ static u8 BattlePyramidRetireInputCallback(void);
 // Task callbacks
 static void StartMenuTask(u8 taskId);
 static void SaveGameTask(u8 taskId);
-static void PCSaveTask(u8 taskId);
 static void Task_SaveAfterLinkBattle(u8 taskId);
 static void Task_WaitForBattleTowerLinkSave(u8 taskId);
 static bool8 FieldCB_ReturnToFieldStartMenu(void);
@@ -263,8 +262,6 @@ static bool32 PrintStartMenuActions(s8 *pIndex, u32 count);
 static bool32 InitStartMenuStep(void);
 static void InitStartMenu(void);
 static void CreateStartMenuTask(TaskFunc followupFunc);
-static void InitSave(void);
-static u8 RunSaveCallback(void);
 static void ShowSaveMessage(const u8 *message, u8 (*saveCallback)(void));
 static void HideSaveMessageWindow(void);
 static void HideSaveInfoWindow(void);
@@ -934,14 +931,14 @@ static bool8 BattlePyramidRetireCallback(void)
     return FALSE;
 }
 
-static void InitSave(void)
+void InitSave(void)
 {
     SaveMapView();
     sSaveDialogCallback = SaveConfirmSaveCallback;
     sSavingComplete = FALSE;
 }
 
-static u8 RunSaveCallback(void)
+u8 RunSaveCallback(void)
 {
     // True if text is still printing
     if (RunTextPrintersAndIsPrinter0Active() == TRUE)
@@ -965,7 +962,7 @@ void Script_SaveGamePC(void)
     CreateTask(PCSaveTask, 0x50);
 }
 
-static void PCSaveTask(u8 taskId)
+void PCSaveTask(u8 taskId)
 {
     u8 status = RunSaveCallback();
 

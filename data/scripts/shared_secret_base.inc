@@ -69,9 +69,11 @@ SecretBase_EventScript_PCMainMenuWithoutRegister::
 	end
 
 SecretBase_EventScript_PCSaveGame::
+	setvar VAR_TEMP_F, TRUE 
 	special DoSecretBasePCTurnOffEffect
 	callnative Script_SaveGamePC
 	waitstate
+	setvar VAR_TEMP_F, FALSE
 	goto_if_eq VAR_RESULT, 0, SecretBase_EventScript_PCSaveCancelled
 	goto SecretBase_EventScript_PCTurnOff
 	end

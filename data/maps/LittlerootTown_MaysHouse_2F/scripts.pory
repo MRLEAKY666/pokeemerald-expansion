@@ -311,6 +311,22 @@ LittlerootTown_MaysHouse_2F_EventScript_TurnOffPlayerPC::
 	releaseall
 	end
 
+LittlerootTown_MaysHouse_2F_EventScript_BedroomPCSave::
+	special DoPCTurnOffEffect
+	callnative Script_SaveGamePC
+	waitstate
+	goto_if_eq VAR_RESULT, 0, LittlerootTown_MaysHouse_2F_EventScript_PCSaveCancelled
+	goto LittlerootTown_MaysHouse_2F_EventScript_TurnOffPlayerPC
+	end
+
+LittlerootTown_MaysHouse_2F_EventScript_PCSaveCancelled::
+	special DoPCTurnOnEffect
+	playse SE_PC_ON
+	special BedroomPC
+	waitstate
+	releaseall
+	end
+
 RivalsHouse_2F_Text_MayWhoAreYou:
 	.string "Huh?\n"
 	.string "Who… Who are you?\p"

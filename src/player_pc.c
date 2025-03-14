@@ -267,7 +267,7 @@ static const struct WindowTemplate sWindowTemplates_MainMenus[] =
         .tilemapLeft = 1,
         .tilemapTop = 1,
         .width = 9,
-        .height = 8,
+        .height = 10,
         .paletteNum = 15,
         .baseBlock = 1
     },
@@ -507,7 +507,15 @@ static void PlayerPC_Decoration(u8 taskId)
 
 static void PlayerPC_SaveGame(u8 taskId)
 {
-    Script_SaveGamePC();
+    //InitSave();
+    gTasks[taskId].func = PCSaveTask;
+
+    if (gSaveBlock2Ptr->playerGender == MALE)
+        ScriptContext_SetupScript(LittlerootTown_BrendansHouse_2F_EventScript_BedroomPCSave);
+    else
+        ScriptContext_SetupScript(LittlerootTown_MaysHouse_2F_EventScript_BedroomPCSave);
+    
+
 }
 
 static void PlayerPC_TurnOff(u8 taskId)

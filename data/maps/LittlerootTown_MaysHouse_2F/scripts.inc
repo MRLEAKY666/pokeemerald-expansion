@@ -625,108 +625,140 @@ LittlerootTown_MaysHouse_2F_EventScript_TurnOffPlayerPC::
 # 313 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 
 # 314 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-RivalsHouse_2F_Text_MayWhoAreYou:
+LittlerootTown_MaysHouse_2F_EventScript_BedroomPCSave::
 # 315 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "Huh?\n"
+	special DoPCTurnOffEffect
 # 316 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "Who… Who are you?\p"
+	callnative Script_SaveGamePC
 # 317 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "Get out of my room!$"
+	waitstate
 # 318 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-
+	goto_if_eq VAR_RESULT, 0, LittlerootTown_MaysHouse_2F_EventScript_PCSaveCancelled
 # 319 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-RivalsHouse_2F_Text_MayGettingReady:
+	goto LittlerootTown_MaysHouse_2F_EventScript_TurnOffPlayerPC
 # 320 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "POKéMON fully restored!\n"
+	end
 # 321 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "Items ready, and…$"
+
 # 322 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-
+LittlerootTown_MaysHouse_2F_EventScript_PCSaveCancelled::
 # 323 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-RivalsHouse_2F_Text_BrendanWhoAreYou:
+	special DoPCTurnOnEffect
 # 324 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "Hey!\n"
+	playse SE_PC_ON
 # 325 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "This is my room!\p"
+	special BedroomPC
 # 326 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "You should leave.$"
+	waitstate
 # 327 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-
+	releaseall
 # 328 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-RivalsHouse_2F_Text_BrendanGettingReady:
+	end
 # 329 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "POKéMON fully restored…\n"
+
 # 330 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "Items all packed, and…$"
+RivalsHouse_2F_Text_MayWhoAreYou:
 # 331 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-
+	.string "Huh?\n"
 # 332 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-RivalsHouse_2F_Text_ItsRivalsPokeBall:
+	.string "Who… Who are you?\p"
 # 333 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "Isn't this Birch's POKé BALL?\p"
+	.string "Get out of my room!$"
 # 334 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "What is {RIVAL} doing with it?$"
+
 # 335 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-
+RivalsHouse_2F_Text_MayGettingReady:
 # 336 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-RivalsHouse_2F_Text_MayJustCheckingMyPokedex:
+	.string "POKéMON fully restored!\n"
 # 337 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "MAY: {PLAYER}{KUN}!\p"
+	.string "Items ready, and…$"
 # 338 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "I was just checking my POKéDEX.\p"
-# 339 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "There's still a lot of POKéMON that\n"
-# 340 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "I've seen but haven't caught.\p"
-# 341 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "And there are many others that\n"
-# 342 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "I think will evolve.\p"
-# 343 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "I wonder where I should go catch\n"
-# 344 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "some POKéMON next?$"
-# 345 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 
+# 339 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+RivalsHouse_2F_Text_BrendanWhoAreYou:
+# 340 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+	.string "Hey!\n"
+# 341 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+	.string "This is my room!\p"
+# 342 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+	.string "You should leave.$"
+# 343 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+
+# 344 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+RivalsHouse_2F_Text_BrendanGettingReady:
+# 345 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+	.string "POKéMON fully restored…\n"
 # 346 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-RivalsHouse_2F_Text_MayWhereShouldIGoNext:
+	.string "Items all packed, and…$"
 # 347 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "MAY: I wonder where I should go catch\n"
+
 # 348 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "some POKéMON next?\p"
+RivalsHouse_2F_Text_ItsRivalsPokeBall:
 # 349 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "Wouldn't it be funny if we ran into each\n"
+	.string "Isn't this Birch's POKé BALL?\p"
 # 350 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "other, {PLAYER}{KUN}?$"
+	.string "What is {RIVAL} doing with it?$"
 # 351 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 
 # 352 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-RivalsHouse_2F_Text_BrendanJustCheckingMyPokedex:
+RivalsHouse_2F_Text_MayJustCheckingMyPokedex:
 # 353 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "BRENDAN: Hey, it's {PLAYER}.\p"
+	.string "MAY: {PLAYER}{KUN}!\p"
 # 354 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "I was just checking out my POKéDEX.\p"
+	.string "I was just checking my POKéDEX.\p"
 # 355 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "There are still many POKéMON that\n"
+	.string "There's still a lot of POKéMON that\n"
 # 356 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "I need to catch, I know, but this\l"
+	.string "I've seen but haven't caught.\p"
 # 357 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "is looking pretty good.\p"
+	.string "And there are many others that\n"
 # 358 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "Checking this POKéDEX out gives me\n"
+	.string "I think will evolve.\p"
 # 359 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "the urge to hit the road again.$"
+	.string "I wonder where I should go catch\n"
 # 360 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-
+	.string "some POKéMON next?$"
 # 361 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-RivalsHouse_2F_Text_BrendanWhereShouldIGoNext:
+
 # 362 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "BRENDAN: I'm having a hard time deciding\n"
+RivalsHouse_2F_Text_MayWhereShouldIGoNext:
 # 363 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "where I should catch POKéMON next.\p"
+	.string "MAY: I wonder where I should go catch\n"
 # 364 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "Hey, {PLAYER}, if I see you while I'm out\n"
+	.string "some POKéMON next?\p"
 # 365 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "catching POKéMON, I can pitch you a\l"
+	.string "Wouldn't it be funny if we ran into each\n"
 # 366 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+	.string "other, {PLAYER}{KUN}?$"
+# 367 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+
+# 368 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+RivalsHouse_2F_Text_BrendanJustCheckingMyPokedex:
+# 369 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+	.string "BRENDAN: Hey, it's {PLAYER}.\p"
+# 370 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+	.string "I was just checking out my POKéDEX.\p"
+# 371 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+	.string "There are still many POKéMON that\n"
+# 372 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+	.string "I need to catch, I know, but this\l"
+# 373 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+	.string "is looking pretty good.\p"
+# 374 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+	.string "Checking this POKéDEX out gives me\n"
+# 375 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+	.string "the urge to hit the road again.$"
+# 376 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+
+# 377 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+RivalsHouse_2F_Text_BrendanWhereShouldIGoNext:
+# 378 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+	.string "BRENDAN: I'm having a hard time deciding\n"
+# 379 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+	.string "where I should catch POKéMON next.\p"
+# 380 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+	.string "Hey, {PLAYER}, if I see you while I'm out\n"
+# 381 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+	.string "catching POKéMON, I can pitch you a\l"
+# 382 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "battle if you'd like.$"
