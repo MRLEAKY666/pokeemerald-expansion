@@ -2465,6 +2465,11 @@
 	callnative Script_SaveGamePC
 	.endm
 
+	.macro OpenDexnav
+	callnative Task_OpenDexNavFromStartMenu
+	waitstate
+	.endm
+
 	@ Makes the trainer unable to see the player if executed.
 	@ This is a no-op if the player interacts with the trainer.
 	.macro cant_see_if, condition:req

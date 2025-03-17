@@ -25,4 +25,4 @@ OldaleTown_House1_Text_LeftPokemonGoesOutFirst:
 # 13 "data//maps/OldaleTown_House1/scripts.pory"
 	.string "came up with a way to revive dead\l"
 # 14 "data//maps/OldaleTown_House1/scripts.pory"
-	.string "POKéMON.\p"
+	.string "POKéMON.$"

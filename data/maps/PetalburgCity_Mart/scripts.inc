@@ -167,6 +167,6 @@ PetalburgCity_Mart_Text_TakeSomeAntidotesWithYou:
 # 84 "data//maps/PetalburgCity_Mart/scripts.pory"
 	.string "If you walk around with a poisoned\n"
 # 85 "data//maps/PetalburgCity_Mart/scripts.pory"
-	.string "POKéMON, it will lose HP until it faints.\l"
+	.string "POKéMON, it will lose HP until it dies.\l"
 # 86 "data//maps/PetalburgCity_Mart/scripts.pory"
 	.string "Take some ANTIDOTES with you.$"

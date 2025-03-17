@@ -1915,7 +1915,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             u32 otIdType = OT_ID_RANDOM_NO_SHINY;
             u32 fixedOtId = 0;
             u32 ability = 0;
-            u8 levelscale = partyData[i].lvl;
+            u8 levelscale = partyData[monIndex].lvl; // defined here for levelscaling, moved from corresponding argument in CreateMon below
 
             if (trainer->doubleBattle == TRUE)
                 personalityValue = 0x80;

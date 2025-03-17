@@ -4596,12 +4596,26 @@ Gender: Male
 Music: Elite Four
 Items: Full Restore / Full Restore
 Double Battle: No
-AI: Basic Trainer / Force Setup First Turn
+AI: Basic Trainer / Force Setup First Turn / Smart Switching / Risky
 Mugshot: Purple
+Party Size: 5
+Pool Rules: Boss
+Pool Pick Functions: Default
+
+Umbreon
+Level: 48
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Tags: Lead
+- Curse
+- Wish
+- Baton Pass
+- Protect
+
 
 Mightyena
 Level: 48
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Tags: Lead
 - Roar
 - Double Edge
 - Sand Attack
@@ -4626,14 +4640,25 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 Crawdaunt
 Level: 50
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Tags: Tag6
 - Surf
 - Swords Dance
 - Strength
 - Facade
 
+Sharpedo @ Choice Specs
+Level: 51
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Tags: Tag6
+- Flip Turn
+- Hydro Pump
+- Crunch
+- Take Down
+
 Absol @ Sitrus Berry
 Level: 51
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Tags: Ace
 - Aerial Ace
 - Rock Slide
 - Swords Dance
@@ -4647,16 +4672,31 @@ Gender: Female
 Music: Elite Four
 Items: Full Restore / Full Restore
 Double Battle: No
-AI: Basic Trainer
+AI: Basic Trainer / Smart Switching / Ace Pokemon
 Mugshot: Green
+Party Size: 5
+Pool Rules: Boss
+Pool Pick Functions: Default
 
 Dusclops
 Level: 50
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Ability: Pressure
+Tags: Lead
 - Shadow Punch
 - Confuse Ray
 - Curse
 - Protect
+
+Zoroark-Hisui
+Ability: Illusion
+Level: 50
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Tags: Lead
+- Swords Dance
+- U-Turn
+- Low Kick
+- Shadow Sneak
 
 Banette
 Level: 51
@@ -4677,14 +4717,25 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 Banette
 Level: 51
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Tags: Tag6
 - Shadow Ball
 - Psychic
 - Thunderbolt
 - Facade
 
+Misdreavus @ Eviolite
+Level: 51
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Tags: Tag6
+- Thunderbolt
+- Curse
+- Thunder Wave
+- Pain Split
+
 Dusclops @ Sitrus Berry
 Level: 53
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Tags: Ace
 - Shadow Ball
 - Ice Beam
 - Rock Slide
@@ -4698,12 +4749,16 @@ Gender: Female
 Music: Elite Four
 Items: Full Restore / Full Restore
 Double Battle: No
-AI: Basic Trainer
+AI: Basic Trainer / Smart Switching / Ace Pokemon
 Mugshot: Pink
+Party Size: 5
+Pool Rules: Boss
+Pool Pick Functions: Default
 
 Sealeo
 Level: 52
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Tags: Lead
 - Encore
 - Body Slam
 - Hail
@@ -4728,14 +4783,25 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 Glalie
 Level: 54
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Tags: Tag6
 - Shadow Ball
 - Explosion
 - Hail
 - Ice Beam
 
+Froslass
+Level: 54
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Tags: Tag6
+- Destiny Bond
+- Thunder Wave
+- Taunt
+- Hex
+
 Walrein @ Sitrus Berry
 Level: 55
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Tags: Ace
 - Surf
 - Body Slam
 - Ice Beam
@@ -4749,16 +4815,28 @@ Gender: Male
 Music: Elite Four
 Items: Full Restore / Full Restore
 Double Battle: No
-AI: Basic Trainer
+AI: Basic Trainer / Smart Switching / Ace Pokemon
 Mugshot: Blue
+Party Size: 5
+Pool Rules: Boss
+Pool Pick Functions: Default
 
 Shelgon
 Level: 54
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Tags: Lead
 - Rock Tomb
 - Dragon Claw
 - Protect
 - Double Edge
+
+Exeggutor-Alola
+Level: 56
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Draco Meteor
+- Leaf Storm
+- Flamethrower
+- Teleport
 
 Altaria
 Level: 56
@@ -4787,6 +4865,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 Salamence @ Sitrus Berry
 Level: 57
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Tags: Ace
 - Flamethrower
 - Dragon Claw
 - Rock Slide
@@ -4800,11 +4879,15 @@ Gender: Female
 Music: Female
 Items: Potion / Potion
 Double Battle: No
-AI: Basic Trainer / Smart Switching / Smart Mon Choices
+AI: Basic Trainer / Smart Switching / Ace Pokemon
+Party Size: 3
+Pool Rules: Basic
+Pool Pick Functions: Default
 
 Geodude
 Level: 12
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Tags: Lead
 - Tackle
 - Defense Curl
 - Rock Throw
@@ -4817,10 +4900,28 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Defense Curl
 - Rock Throw
 - Rock Tomb
+
+Roggenrola
+Level: 12
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Headbutt
+- Iron Defense
+- Rock Blast
+- Rock Tomb
+
+Shuckle @ Oran Berry
+Level: 15
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+- Encore
+- Rollout
+- Defense Curl
+- Mud Slap
 
 Nosepass @ Oran Berry
 Level: 15
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
 - Block
 - Harden
 - Tackle
@@ -4834,7 +4935,19 @@ Gender: Male
 Music: Male
 Items: Super Potion / Super Potion
 Double Battle: No
-AI: Basic Trainer / Smart Switching / Smart Mon Choices
+AI: Basic Trainer / Smart Switching / Ace Pokemon
+Party Size: 4
+Pool Rules: Basic
+Pool Pick Functions: Default
+
+Machop
+Level: 25
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Tags: Lead
+- Karate Chop
+- Low Kick
+- Seismic Toss
+- Bulk Up
 
 Tyrogue
 Level: 25
@@ -4844,13 +4957,13 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Protect
 - Mach Punch
 
-Machop
+Riolu
 Level: 25
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Karate Chop
-- Low Kick
-- Seismic Toss
 - Bulk Up
+- Reversal
+- Endure
+- Vacuum Wave
 
 Meditite
 Level: 25
@@ -4863,10 +4976,21 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 Makuhita @ Sitrus Berry
 Level: 27
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
 - Arm Thrust
 - Vital Throw
 - Reversal
 - Bulk Up
+
+Scraggy @ Sitrus Berry
+Level: 27
+Ability: Moxie
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+- Bulk Up
+- Swagger
+- Focus Punch
+- Roar
 
 === TRAINER_WATTSON_1 ===
 Name: WATTSON
@@ -4876,15 +5000,27 @@ Gender: Male
 Music: Male
 Items: Super Potion / Super Potion
 Double Battle: No
-AI: Basic Trainer / Smart Switching / Smart Mon Choices
+AI: Basic Trainer / Smart Switching / Ace Pokemon
+Party Size: 4
+Pool Rules: Basic
+Pool Pick Functions: Default
 
 Voltorb
 Level: 20
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Lead
 - Rollout
 - Spark
 - Self Destruct
 - Shock Wave
+
+Mareep
+Level: 20
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Thunder
+- Thunder Wave
+- Protect
+- Light Screen
 
 Electrike
 Level: 20
@@ -4905,10 +5041,20 @@ IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
 Manectric @ Sitrus Berry
 Level: 24
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Tags: Ace
 - Quick Attack
 - Thunder Wave
 - Shock Wave
 - Howl
+
+Pikachu @ Sitrus Berry
+Level: 24
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Tags: Ace
+- Rain Dance
+- Thunder
+- Surf
+- Shock Wave
 
 === TRAINER_FLANNERY_1 ===
 Name: FLANNERY
@@ -4918,11 +5064,15 @@ Gender: Female
 Music: Female
 Items: Hyper Potion / Hyper Potion
 Double Battle: No
-AI: Basic Trainer / Smart Switching / Smart Mon Choices
+AI: Basic Trainer / Smart Switching 
+Party Size: 4
+Pool Rules: Boss
+Pool Pick Functions: Default
 
 Numel
 Level: 24
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Lead
 - Overheat
 - Take Down
 - Magnitude
@@ -4936,9 +5086,26 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Light Screen
 - Sunny Day
 
+Growlithe-Hisui
+Level: 24
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Howl
+- Take Down
+- Sunny Day
+- Wild Charge
+
+Houndour
+Level: 24
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Roar
+- Solar Beam
+- Sunny Day
+- Taunt
+
 Camerupt
 Level: 26
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Tags: Tag6
 - Overheat
 - Tackle
 - Sunny Day
@@ -4947,6 +5114,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 Torkoal @ White Herb
 Level: 29
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Tags: Ace
 - Overheat
 - Sunny Day
 - Body Slam
@@ -4960,11 +5128,15 @@ Gender: Male
 Music: Male
 Items: Hyper Potion / Hyper Potion
 Double Battle: No
-AI: Basic Trainer / Smart Switching / Smart Mon Choices
+AI: Basic Trainer / Smart Switching / Ace Pokemon
+Party Size: 4
+Pool Rules: Boss
+Pool Pick Functions: Default
 
 Spinda
 Level: 27
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Lead
 - Teeter Dance
 - Psybeam
 - Facade
@@ -4986,13 +5158,42 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Facade
 - Headbutt
 
+Linoone @ Focus Sash
+Level: 29
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Tags: Tag6
+- Shadow Ball
+- Belly Drum
+- Extreme Speed
+- Attract
+
+Swellow @ Toxic Orb
+Level: 29
+Ability: Guts
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Tags: Tag6
+- U-Turn
+- Facade
+- Quick Attack
+- Aerial Ace
+
 Slaking @ Sitrus Berry
 Level: 31
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Tags: Ace
 - Counter
 - Yawn
 - Facade
 - Feint Attack
+
+Slaking @ Leftovers
+Level: 31
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Tags: Ace
+- Hyper Beam
+- Yawn
+- Shadow Ball
+- Protect
 
 === TRAINER_WINONA_1 ===
 Name: WINONA
@@ -5002,7 +5203,48 @@ Gender: Female
 Music: Female
 Items: Hyper Potion / Hyper Potion
 Double Battle: No
-AI: Basic Trainer / Risky / Smart Switching / Smart Mon Choices
+AI: Basic Trainer / Risky / Smart Switching / Ace Pokemon
+Party Size: 5
+Pool Rules: Boss
+Pool Pick Functions: Default
+
+Noctowl
+Level: 48
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Tags: Lead
+- Hypnosis
+- Psychic
+- Reflect
+- Dream Eater
+
+Skarmory
+Level: 50
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+Tags: Lead
+- Spikes
+- Whirlwind
+- Steel Wing
+- Aerial Ace
+
+Tropius
+Level: 49
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Tags: Tag6
+- Sunny Day
+- Aerial Ace
+- Solar Beam
+- Synthesis
+
+Pelipper @ Damp Rock
+Ability: Drizzle
+Level: 49
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+Relaxed Nature
+Tags: Tag6
+- Scald
+- U-turn
+- Roost
+- Hurricane
 
 Swellow @ Toxic Orb
 Ability: Guts
@@ -5014,24 +5256,6 @@ Jolly Nature
 - U-turn
 - Quick Attack
 
-Tropius
-Level: 48
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-- Sunny Day
-- Aerial Ace
-- Solar Beam
-- Synthesis
-
-Pelipper @ Damp Rock
-Ability: Drizzle
-Level: 49
-IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
-Relaxed Nature
-- Scald
-- U-turn
-- Roost
-- Hurricane
-
 Skarmory
 Level: 50
 IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
@@ -5040,9 +5264,18 @@ IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
 - Steel Wing
 - Aerial Ace
 
+Honchkrow
+Level: 50
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Drill Peck
+- Sucker Punch
+- Icy Wind
+- Tailwind
+
 Altaria @ Sitrus Berry
 Level: 50
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Tags: Ace
 - Earthquake
 - Dragon Breath
 - Dragon Dance
@@ -5056,11 +5289,15 @@ Gender: Male
 Music: Female
 Items: Hyper Potion / Hyper Potion / Hyper Potion / Hyper Potion
 Double Battle: Yes
-AI: Basic Trainer / Smart Switching / Smart Mon Choices
+AI: Basic Trainer / Smart Switching / Ace Pokemon
+Party Size: 4
+Pool Rules: Doubles
+Pool Pick Functions: Default
 
 Claydol
 Level: 41
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Tags: Lead
 - Earthquake
 - Ancient Power
 - Psychic
@@ -5069,14 +5306,34 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 Xatu
 Level: 41
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Tags: Lead
 - Psychic
 - Sunny Day
 - Confuse Ray
 - Calm Mind
 
+Chimecho
+Level: 41
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Tags: Lead
+- Light Screen
+- Psychic
+- Reflect
+- Yawn
+
+Sigilyph
+Level: 41
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Tags: Lead
+- Tailwind
+- Ice Beam
+- Psychic
+- Shadow Ball
+
 Lunatone @ Sitrus Berry
 Level: 42
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Tags: Ace
 - Light Screen
 - Psychic
 - Hypnosis
@@ -5085,6 +5342,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 Solrock @ Sitrus Berry
 Level: 42
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Tags: Ace
 - Sunny Day
 - Solar Beam
 - Psychic
@@ -5098,15 +5356,19 @@ Gender: Male
 Music: Male
 Items: Hyper Potion / Hyper Potion
 Double Battle: No
-AI: Basic Trainer / Smart Switching / Smart Mon Choices
+AI: Basic Trainer / Smart Switching / Ace Pokemon
+Party Size: 5
+Pool Rules: Boss
+Pool Pick Functions: Default
 
-Alomomola
-Level: 45
+Gorebyss @ Focus Sash
+Level: 46
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Wish
-- Protect
-- Toxic
-- Scald
+Tags: Lead
+- Shell Smash
+- Psychic
+- Icy Wind
+- Hydro Pump
 
 Whiscash
 Level: 45
@@ -5132,9 +5394,27 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Taunt
 - Leer
 
+Relicanth
+Level: 46
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Head Smash
+- Waterfall
+- Earthquake
+- Rain Dance
+
+Alomomola
+Level: 45
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Tag6
+- Wish
+- Protect
+- Toxic
+- Scald
+
 Kingdra @ Chesto Berry
 Level: 47
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Tags: Ace
 - Water Pulse
 - Double Team
 - Ice Beam
@@ -6265,16 +6545,57 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore / Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability / Smart Switching
+AI: Basic Trainer / Smart Switching / Ace Pokemon
 Mugshot: Purple
+Party Size: 6
+Pool Rules: Boss Species Clause
+Pool Pick Functions: Default
 
 Skarmory
 Level: 60
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Tags: Lead
 - Toxic
-- Aerial Ace
+- Whirlwind
 - Spikes
 - Steel Wing
+
+Gigalith
+Level: 60
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Ability: Sand Stream
+Tags: Lead
+- Stealth Rock
+- Rock Slide
+- Earthquake
+- Toxic
+
+Skarmory
+Level: 59
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Tags: Tag6
+- Curse
+- Roost
+- Aerial Ace
+- Steel Wing
+
+Archeops @ Sitrus Berry
+Level: 59
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Tags: Tag6
+- Acrobatics
+- Rock Slide
+- Earthquake
+- Roost
+
+Claydol
+Level: 59
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Tags: Tag6
+- Reflect
+- Light Screen
+- Extrasensory
+- Earthquake
 
 Cradily
 Level: 57
@@ -6284,6 +6605,14 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Sludge Bomb
 - Confuse Ray
 
+Cradily
+Level: 57
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Toxic
+- Giga Drain
+- Rest
+- Barrier
+
 Armaldo
 Level: 59
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
@@ -6291,14 +6620,6 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Rock Blast
 - Metal Claw
 - Crush Claw
-
-Claydol
-Level: 59
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Reflect
-- Light Screen
-- Extrasensory
-- Earthquake
 
 Aggron
 Level: 59
@@ -6311,6 +6632,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 Metagross @ Metagrossite
 Level: 61
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Tags: Ace
 - Bullet Punch
 - Zen Headbutt
 - Meteor Mash
