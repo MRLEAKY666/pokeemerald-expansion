@@ -113,9 +113,9 @@ static u32 RivalAcePickFunction(const struct Trainer *trainer, u8 *poolIndexArra
         //  Find required + ace tags
         bool32 foundRequiredTag = FALSE;
         u32 firstAceIndex = POOL_SLOT_DISABLED;
+        u32 starter = VarGet(VAR_STARTER_MON);
         for (u32 currIndex = 0; currIndex < trainer->poolSize; currIndex++)
         {
-            u32 starter = VarGet(VAR_STARTER_MON);
             if ((poolIndexArray[currIndex] != POOL_SLOT_DISABLED)
              && (trainer->party[poolIndexArray[currIndex]].tags & (1u << POOL_TAG_ACE)))
             {
@@ -125,7 +125,9 @@ static u32 RivalAcePickFunction(const struct Trainer *trainer, u8 *poolIndexArra
                 {
                     if (starter == SPECIES_TREECKO || starter == SPECIES_PORYGON || starter == SPECIES_SNIVY || starter == SPECIES_ZORUA || starter == SPECIES_ROWLET || starter == SPECIES_TURTWIG || starter == SPECIES_BULBASAUR || starter == SPECIES_BUDEW || starter == SPECIES_PAWNIARD)
                     {    
-                        monIndex = currIndex;
+                        poolIndexArray[arrayIndex] = currIndex;
+                        poolIndexArray[firstAceIndex] = currIndex;
+                        foundRequiredTag = TRUE;
                         break;
                     }
                 } 
@@ -133,7 +135,9 @@ static u32 RivalAcePickFunction(const struct Trainer *trainer, u8 *poolIndexArra
                 {
                     if (starter ==  SPECIES_TORCHIC || starter == SPECIES_MAGBY || starter == SPECIES_CHARMANDER || starter == SPECIES_CYNDAQUIL)
                     {    
-                        monIndex = currIndex;
+                        poolIndexArray[arrayIndex] = currIndex;
+                        poolIndexArray[firstAceIndex] = currIndex;
+                        foundRequiredTag = TRUE;
                         break;
                     }
                 }
@@ -141,7 +145,9 @@ static u32 RivalAcePickFunction(const struct Trainer *trainer, u8 *poolIndexArra
                 {
                     if (starter == SPECIES_MUDKIP || starter == SPECIES_PIPLUP || starter == SPECIES_SQUIRTLE || starter == SPECIES_OSHAWOTT)
                     {    
-                        monIndex = currIndex;
+                        poolIndexArray[arrayIndex] = currIndex;
+                        poolIndexArray[firstAceIndex] = currIndex;
+                        foundRequiredTag = TRUE;
                         break;
                     }
                 }
@@ -149,7 +155,9 @@ static u32 RivalAcePickFunction(const struct Trainer *trainer, u8 *poolIndexArra
                 {
                     if (starter == SPECIES_CASTFORM || starter == SPECIES_EEVEE || starter == SPECIES_ZORUA_HISUI || starter == SPECIES_LARVITAR || starter == SPECIES_SPHEAL)
                     {    
-                        monIndex = currIndex;
+                        poolIndexArray[arrayIndex] = currIndex;
+                        poolIndexArray[firstAceIndex] = currIndex;
+                        foundRequiredTag = TRUE;
                         break;
                     }
                 }
@@ -157,7 +165,9 @@ static u32 RivalAcePickFunction(const struct Trainer *trainer, u8 *poolIndexArra
                 {
                     if (starter == SPECIES_PICHU || starter == SPECIES_GOTHITA || starter == SPECIES_SOLOSIS || starter == SPECIES_LARVESTA || starter == SPECIES_MIME_JR || starter == SPECIES_ELEKID || starter == SPECIES_SHINX)
                     {    
-                        monIndex = currIndex;
+                        poolIndexArray[arrayIndex] = currIndex;
+                        poolIndexArray[firstAceIndex] = currIndex;
+                        foundRequiredTag = TRUE;
                         break;
                     }
                 }
@@ -165,7 +175,9 @@ static u32 RivalAcePickFunction(const struct Trainer *trainer, u8 *poolIndexArra
                 {
                     if (starter == SPECIES_TOGEPI || starter == SPECIES_AXEW || starter == SPECIES_GOOMY || starter == SPECIES_SWINUB || starter == SPECIES_SANDILE)
                     {    
-                        monIndex = currIndex;
+                        poolIndexArray[arrayIndex] = currIndex;
+                        poolIndexArray[firstAceIndex] = currIndex;
+                        foundRequiredTag = TRUE;
                         break;
                     }
                 }
@@ -173,11 +185,24 @@ static u32 RivalAcePickFunction(const struct Trainer *trainer, u8 *poolIndexArra
                 {
                     if (starter == SPECIES_APPLIN || starter == SPECIES_MANKEY)
                     {    
-                        monIndex = currIndex;
+                        poolIndexArray[arrayIndex] = currIndex;
+                        poolIndexArray[firstAceIndex] = currIndex;
+                        foundRequiredTag = TRUE;
                         break;
                     }
                 }
             }
+        }
+        //  If a combination of required + ace wasn't found, apply the first found lead
+        if (foundRequiredTag)
+        {
+            monIndex = poolIndexArray[arrayIndex];
+            poolIndexArray[arrayIndex] = POOL_SLOT_DISABLED;
+        }
+        else if (firstAceIndex != POOL_SLOT_DISABLED)
+        {
+            monIndex = poolIndexArray[firstAceIndex];
+            poolIndexArray[firstAceIndex] = POOL_SLOT_DISABLED;
         }
     }
     return monIndex;

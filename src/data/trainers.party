@@ -5235,7 +5235,7 @@ Tags: Tag6
 - Solar Beam
 - Synthesis
 
-Pelipper @ Damp Rock
+Pelipper 
 Ability: Drizzle
 Level: 49
 IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
@@ -6537,7 +6537,7 @@ Electrike
 Level: 13
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_WALLACE ===
+=== TRAINER_CHAMPION_STEVEN ===
 Name: STEVEN
 Class: Champion
 Pic: Steven
@@ -6570,6 +6570,15 @@ Tags: Lead
 - Earthquake
 - Toxic
 
+Claydol
+Level: 59
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Tags: Lead
+- Reflect
+- Light Screen
+- Stealth Rock
+- Earthquake
+
 Skarmory
 Level: 59
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
@@ -6587,15 +6596,6 @@ Tags: Tag6
 - Rock Slide
 - Earthquake
 - Roost
-
-Claydol
-Level: 59
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-Tags: Tag6
-- Reflect
-- Light Screen
-- Extrasensory
-- Earthquake
 
 Cradily
 Level: 57
@@ -6621,7 +6621,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Metal Claw
 - Crush Claw
 
-Aggron
+Aggron @ Air Balloon
 Level: 59
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Stone Edge
@@ -9904,6 +9904,7 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Force Setup First Turn
 Party Size: 1
+Pool Rules: Boss
 Pool Pick Functions: Rival
 
 Torchic
@@ -9950,6 +9951,7 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 Party Size: 3
+Pool Rules: Boss
 Pool Pick Functions: Rival
 
 Slugma
@@ -10008,6 +10010,7 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 Party Size: 3
+Pool Rules: Boss
 Pool Pick Functions: Rival
 
 Slugma
@@ -10057,39 +10060,138 @@ Level: 31
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 Tags: Ace
 
-=== TRAINER_BRENDAN_ROUTE_103_B ===
-Name: BRENDAN
-Class: Rival
-Pic: Brendan
+=== TRAINER_CHAMPION_WALLACE ===
+Name: WALLACE
+Class: Champion
+Pic: Champion Wallace
 Gender: Male
 Music: Male
+Items: Full Restore / Full Restore / Full Restore / Full Restore
 Double Battle: No
-AI: Basic Trainer
+AI: Basic Trainer / Smart Switching 
+Mugshot: Blue
+Party Size: 6
+Pool Rules: Boss Species Clause
+Pool Pick Functions: Default
 
-Mudkip
-Level: 5
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Wailord @ Damp Rock
+Level: 57
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Tags: Lead 
+- Rain Dance
+- Water Spout
+- Flip Turn
+- Blizzard
 
-=== TRAINER_BRENDAN_ROUTE_110_B ===
-Name: BRENDAN
-Class: Rival
-Pic: Brendan
-Gender: Male
-Music: Male
-Double Battle: No
-AI: Basic Trainer
+Pelipper @ Leftovers
+Ability: Drizzle
+Level: 57
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Tags: Lead 
+- Scald
+- U-turn
+- Roost
+- Hurricane
 
-Lombre
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Swampert @ Damp Rock
+Level: 57
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Tags: Lead
+- Rain Dance
+- Stealth Rock
+- Roar
+- Flip Turn
 
-Slugma
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Tentacruel @ Black Sludge
+Level: 59
+Ability: Rain Dish
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Toxic Spikes
+- Rain Dance
+- Scald
+- Protect
 
-Marshtomp
-Level: 20
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tentacruel @ Black Sludge
+Level: 59
+Ability: Rain Dish
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Toxic
+- Protect
+- Sludge Bomb
+- Scald
+
+Ludicolo @ Assault Vest
+Ability: Swift Swim
+Level: 59
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Giga Drain
+- Scald
+- Ice Beam
+- Thunder Punch
+
+Ludicolo @ Big Root
+Ability: Rain Dish
+Level: 59
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Giga Drain
+- Substitute
+- Leech Seed
+- Scald
+
+Gorebyss @ White Herb
+Level: 59
+Ability: Swift Swim
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Tags: Tag7
+- Shell Smash
+- Hydro Pump
+- Ice Beam
+- Psychic
+
+Whiscash @ Chesto Berry
+Level: 59
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Tags: Tag7
+- Earthquake
+- Rest
+- Amnesia
+- Hyper Beam
+
+Huntail @ White Herb
+Ability: Swift Swim
+Tags: Tag7
+- Shell Smash
+- Body Slam
+- Muddy Water
+- Baton Pass
+
+Starmie @ Expert Belt
+Level: 60
+Ability: Swift Swim
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Tags: Tag6
+- Psychic
+- Scald
+- Thunderbolt
+- Signal Beam
+
+Gyarados @ Wacan Berry
+Level: 60
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Tags: Tag6
+- Dragon Dance
+- Earthquake
+- Double Edge
+- Bounce
+
+Milotic @ Leftovers
+Level: 61
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Tags: Ace
+- Recover
+- Scald
+- Ice Beam
+- Haze
 
 === TRAINER_BRENDAN_ROUTE_119_B ===
 Name: BRENDAN
@@ -10176,6 +10278,7 @@ Music: Female
 Double Battle: No
 AI: Basic Trainer
 Party Size: 1
+Pool Rules: Boss
 Pool Pick Functions: Rival
 
 Torchic
@@ -10222,6 +10325,7 @@ Music: Female
 Double Battle: No
 AI: Basic Trainer
 Party Size: 3
+Pool Rules: Boss
 Pool Pick Functions: Rival
 
 Wingull
@@ -10280,6 +10384,7 @@ Music: Female
 Double Battle: No
 AI: Basic Trainer
 Party Size: 3
+Pool Rules: Boss
 Pool Pick Functions: Rival
 
 Slugma
@@ -11404,6 +11509,7 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move
 Party Size: 2
+Pool Rules: Boss
 Pool Pick Functions: Rival
 
 Wingull
@@ -12873,6 +12979,7 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 Party Size: 4
+Pool Rules: Boss
 Pool Pick Functions: Rival
 
 Tropius
@@ -12985,6 +13092,7 @@ Music: Female
 Double Battle: No
 AI: Basic Trainer
 Party Size: 4
+Pool Rules: Boss
 Pool Pick Functions: Rival
 
 Slugma
@@ -14839,6 +14947,7 @@ Music: Female
 Double Battle: No
 AI: Basic Trainer
 Party Size: 2
+Pool Rules: Boss
 Pool Pick Functions: Rival
 
 Wingull

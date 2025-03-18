@@ -338,7 +338,7 @@
 #define TRAINER_EDDIE                       332
 #define TRAINER_ALLEN                       333
 #define TRAINER_TIMMY                       334
-#define TRAINER_WALLACE                     335
+#define TRAINER_CHAMPION_STEVEN                     335
 #define TRAINER_ANDREW                      336
 #define TRAINER_IVAN                        337
 #define TRAINER_CLAUDE                      338
@@ -529,7 +529,7 @@
 #define TRAINER_BRENDAN_ROUTE_103_A   523
 #define TRAINER_BRENDAN_ROUTE_110_A   524
 #define TRAINER_BRENDAN_ROUTE_119_A   525
-#define TRAINER_BRENDAN_ROUTE_103_B   526 // currently unused
+#define TRAINER_CHAMPION_WALLACE   526 // currently unused
 #define TRAINER_BRENDAN_ROUTE_110_B   527 // currently unused
 #define TRAINER_BRENDAN_ROUTE_119_B   528 // currently unused
 #define TRAINER_MAY_ROUTE_103_C        529 // currently unused

@@ -84,5 +84,7 @@ const struct PoolRules gPoolRulesetsList[] = {
         .tagMaxMembers[POOL_TAG_ACE] = 1,
         .tagRequired[POOL_TAG_TAG6] = TRUE,
         .tagMaxMembers[POOL_TAG_TAG6] = 1,
+        .tagRequired[POOL_TAG_TAG7] = TRUE,
+        .tagMaxMembers[POOL_TAG_TAG7] = 1,
     },
 };
