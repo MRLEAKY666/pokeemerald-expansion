@@ -322,9 +322,12 @@ Music: Aqua
 Double Battle: No
 AI: Check Bad Move
 
-Poochyena
-Level: 11
+Poochyena @ Brightpowder
+Level: 13
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Sand Attack
+- Howl
+- Tackle
 
 === TRAINER_GRUNT_WEATHER_INST_1 ===
 Name: GRUNT
@@ -14947,8 +14950,8 @@ Music: Female
 Double Battle: No
 AI: Basic Trainer
 Party Size: 2
-Pool Rules: Boss
-Pool Pick Functions: Rival
+Pool Rules: Basic
+Pool Prune: Rival
 
 Wingull
 Level: 13

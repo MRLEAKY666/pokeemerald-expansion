@@ -6568,7 +6568,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             FlagClear(FLAG_INBATTLE_WEATHER_CHANGED); //always reset the flag
             //enhancement end
-            break;
+            break;                                                                                                   
         case ABILITY_FLOWER_GIFT:
             if ((IsBattlerWeatherAffected(battler, gBattleWeather)
              || gBattleWeather == B_WEATHER_NONE

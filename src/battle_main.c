@@ -454,7 +454,7 @@ static void CB2_InitBattleInternal(void)
 {
     s32 i;
     u16 targetSpecies;
-    u32 weather; //added var wiz1989
+    //u32 weather; //added var wiz1989
 
 
     //set temporary battle weather wiz1989

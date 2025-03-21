@@ -116,82 +116,104 @@ static u32 RivalAcePickFunction(const struct Trainer *trainer, u8 *poolIndexArra
         u32 starter = VarGet(VAR_STARTER_MON);
         for (u32 currIndex = 0; currIndex < trainer->poolSize; currIndex++)
         {
+            u16 currentSpecies = trainer->party[currIndex].species;
             if ((poolIndexArray[currIndex] != POOL_SLOT_DISABLED)
              && (trainer->party[poolIndexArray[currIndex]].tags & (1u << POOL_TAG_ACE)))
             {
-                if (firstAceIndex == POOL_SLOT_DISABLED)
-                    firstAceIndex = currIndex;
-                if (trainer->party[currIndex].species == SPECIES_TORCHIC || trainer->party[currIndex].species == SPECIES_COMBUSKEN || trainer->party[currIndex].species == SPECIES_BLAZIKEN)
+//                if (firstAceIndex == POOL_SLOT_DISABLED)
+//                    firstAceIndex = currIndex;
+                if ((currentSpecies == SPECIES_TORCHIC 
+                 || currentSpecies == SPECIES_COMBUSKEN 
+                 || currentSpecies == SPECIES_BLAZIKEN)
+                 && (starter == SPECIES_TREECKO || starter == SPECIES_PORYGON || starter == SPECIES_SNIVY 
+                 || starter == SPECIES_ZORUA || starter == SPECIES_ROWLET || starter == SPECIES_TURTWIG 
+                 || starter == SPECIES_BULBASAUR || starter == SPECIES_BUDEW || starter == SPECIES_PAWNIARD))
                 {
-                    if (starter == SPECIES_TREECKO || starter == SPECIES_PORYGON || starter == SPECIES_SNIVY || starter == SPECIES_ZORUA || starter == SPECIES_ROWLET || starter == SPECIES_TURTWIG || starter == SPECIES_BULBASAUR || starter == SPECIES_BUDEW || starter == SPECIES_PAWNIARD)
-                    {    
-                        poolIndexArray[arrayIndex] = currIndex;
-                        poolIndexArray[firstAceIndex] = currIndex;
-                        foundRequiredTag = TRUE;
-                        break;
-                    }
+                    if (firstAceIndex == POOL_SLOT_DISABLED)
+                        firstAceIndex = currIndex;
+                    poolIndexArray[arrayIndex] = currIndex;
+                    poolIndexArray[firstAceIndex] = currIndex;
+                    foundRequiredTag = TRUE;
+                    //break;
                 } 
-                if (trainer->party[currIndex].species == SPECIES_MUDKIP || trainer->party[currIndex].species == SPECIES_MARSHTOMP || trainer->party[currIndex].species == SPECIES_SWAMPERT)
+                else if ((currentSpecies == SPECIES_MUDKIP 
+                 || currentSpecies == SPECIES_MARSHTOMP 
+                 || currentSpecies == SPECIES_SWAMPERT)
+                 && (starter == SPECIES_TORCHIC || starter == SPECIES_MAGBY || starter == SPECIES_CHARMANDER 
+                 || starter == SPECIES_CYNDAQUIL))
                 {
-                    if (starter ==  SPECIES_TORCHIC || starter == SPECIES_MAGBY || starter == SPECIES_CHARMANDER || starter == SPECIES_CYNDAQUIL)
-                    {    
-                        poolIndexArray[arrayIndex] = currIndex;
-                        poolIndexArray[firstAceIndex] = currIndex;
-                        foundRequiredTag = TRUE;
-                        break;
-                    }
+                    if (firstAceIndex == POOL_SLOT_DISABLED)
+                        firstAceIndex = currIndex;
+                    poolIndexArray[arrayIndex] = currIndex;
+                    poolIndexArray[firstAceIndex] = currIndex;
+                    foundRequiredTag = TRUE;
+                    //break;
                 }
-                if (trainer->party[currIndex].species == SPECIES_TREECKO || trainer->party[currIndex].species == SPECIES_GROVYLE || trainer->party[currIndex].species == SPECIES_SCEPTILE)
+                else if ((currentSpecies == SPECIES_TREECKO 
+                 || currentSpecies == SPECIES_GROVYLE 
+                 || currentSpecies == SPECIES_SCEPTILE)
+                 && (starter == SPECIES_MUDKIP || starter == SPECIES_PIPLUP || starter == SPECIES_SQUIRTLE || starter == SPECIES_OSHAWOTT))
                 {
-                    if (starter == SPECIES_MUDKIP || starter == SPECIES_PIPLUP || starter == SPECIES_SQUIRTLE || starter == SPECIES_OSHAWOTT)
-                    {    
-                        poolIndexArray[arrayIndex] = currIndex;
-                        poolIndexArray[firstAceIndex] = currIndex;
-                        foundRequiredTag = TRUE;
-                        break;
-                    }
+                    if (firstAceIndex == POOL_SLOT_DISABLED)
+                        firstAceIndex = currIndex;    
+                    poolIndexArray[arrayIndex] = currIndex;
+                    poolIndexArray[firstAceIndex] = currIndex;
+                    foundRequiredTag = TRUE;
+                    //break;
                 }
-                if (trainer->party[currIndex].species == SPECIES_RIOLU || trainer->party[currIndex].species == SPECIES_LUCARIO)
+                else if ((currentSpecies == SPECIES_RIOLU 
+                 || currentSpecies == SPECIES_LUCARIO)
+                 && (starter == SPECIES_CASTFORM || starter == SPECIES_EEVEE || starter == SPECIES_ZORUA_HISUI 
+                 || starter == SPECIES_LARVITAR || starter == SPECIES_SPHEAL))
                 {
-                    if (starter == SPECIES_CASTFORM || starter == SPECIES_EEVEE || starter == SPECIES_ZORUA_HISUI || starter == SPECIES_LARVITAR || starter == SPECIES_SPHEAL)
-                    {    
-                        poolIndexArray[arrayIndex] = currIndex;
-                        poolIndexArray[firstAceIndex] = currIndex;
-                        foundRequiredTag = TRUE;
-                        break;
-                    }
+                    if (firstAceIndex == POOL_SLOT_DISABLED)
+                        firstAceIndex = currIndex;    
+                    poolIndexArray[arrayIndex] = currIndex;
+                    poolIndexArray[firstAceIndex] = currIndex;
+                    foundRequiredTag = TRUE;
+                    //break;
                 }
-                if (trainer->party[currIndex].species == SPECIES_LARVITAR || trainer->party[currIndex].species == SPECIES_PUPITAR || trainer->party[currIndex].species == SPECIES_TYRANITAR)
+                else if ((currentSpecies == SPECIES_LARVITAR 
+                 || currentSpecies == SPECIES_PUPITAR 
+                 || currentSpecies == SPECIES_TYRANITAR)
+                 && (starter == SPECIES_PICHU || starter == SPECIES_GOTHITA || starter == SPECIES_SOLOSIS 
+                 || starter == SPECIES_LARVESTA || starter == SPECIES_MIME_JR || starter == SPECIES_ELEKID || starter == SPECIES_SHINX))
                 {
-                    if (starter == SPECIES_PICHU || starter == SPECIES_GOTHITA || starter == SPECIES_SOLOSIS || starter == SPECIES_LARVESTA || starter == SPECIES_MIME_JR || starter == SPECIES_ELEKID || starter == SPECIES_SHINX)
-                    {    
-                        poolIndexArray[arrayIndex] = currIndex;
-                        poolIndexArray[firstAceIndex] = currIndex;
-                        foundRequiredTag = TRUE;
-                        break;
-                    }
+                    if (firstAceIndex == POOL_SLOT_DISABLED)
+                        firstAceIndex = currIndex;    
+                    poolIndexArray[arrayIndex] = currIndex;
+                    poolIndexArray[firstAceIndex] = currIndex;
+                    foundRequiredTag = TRUE;
+                    //break;
                 }
-                if (trainer->party[currIndex].species == SPECIES_SPHEAL || trainer->party[currIndex].species == SPECIES_SEALEO || trainer->party[currIndex].species == SPECIES_WALREIN)
+                else if ((currentSpecies == SPECIES_SPHEAL 
+                 || currentSpecies == SPECIES_SEALEO 
+                 || currentSpecies == SPECIES_WALREIN)
+                 && (starter == SPECIES_TOGEPI || starter == SPECIES_AXEW || starter == SPECIES_GOOMY 
+                 || starter == SPECIES_SWINUB || starter == SPECIES_SANDILE))
                 {
-                    if (starter == SPECIES_TOGEPI || starter == SPECIES_AXEW || starter == SPECIES_GOOMY || starter == SPECIES_SWINUB || starter == SPECIES_SANDILE)
-                    {    
-                        poolIndexArray[arrayIndex] = currIndex;
-                        poolIndexArray[firstAceIndex] = currIndex;
-                        foundRequiredTag = TRUE;
-                        break;
-                    }
+                    if (firstAceIndex == POOL_SLOT_DISABLED)
+                        firstAceIndex = currIndex;    
+                    poolIndexArray[arrayIndex] = currIndex;
+                    poolIndexArray[firstAceIndex] = currIndex;
+                    foundRequiredTag = TRUE;
+                    //break;
                 }
-                if (trainer->party[currIndex].species == SPECIES_DRATINI || trainer->party[currIndex].species == SPECIES_DRAGONAIR || trainer->party[currIndex].species == SPECIES_DRAGONITE)
+                else if ((currentSpecies == SPECIES_DRATINI 
+                 || currentSpecies == SPECIES_DRAGONAIR 
+                 || currentSpecies == SPECIES_DRAGONITE)
+                 && (starter == SPECIES_APPLIN || starter == SPECIES_MANKEY))
                 {
-                    if (starter == SPECIES_APPLIN || starter == SPECIES_MANKEY)
-                    {    
-                        poolIndexArray[arrayIndex] = currIndex;
-                        poolIndexArray[firstAceIndex] = currIndex;
-                        foundRequiredTag = TRUE;
-                        break;
-                    }
-                }
+                    if (firstAceIndex == POOL_SLOT_DISABLED)
+                        firstAceIndex = currIndex;    
+                    poolIndexArray[arrayIndex] = currIndex;
+                    poolIndexArray[firstAceIndex] = currIndex;
+                    foundRequiredTag = TRUE;
+                    //break;
+                } 
             }
+            if (foundRequiredTag)
+                break;
         }
         //  If a combination of required + ace wasn't found, apply the first found lead
         if (foundRequiredTag)
@@ -443,6 +465,51 @@ static void TestPrune(const struct Trainer *trainer, u8 *poolIndexArray, const s
             poolIndexArray[i] = POOL_SLOT_DISABLED;
 }
 
+static void RivalPrune(const struct Trainer *trainer, u8 *poolIndexArray, const struct PoolRules *rules)
+{
+    u32 starter = VarGet(VAR_STARTER_MON);
+    for (u32 i = 0; i < trainer->poolSize; i++)
+    {
+        u16 currentSpecies = trainer->party[poolIndexArray[i]].species;
+        if (starter == SPECIES_TREECKO)
+        {
+            if (currentSpecies == SPECIES_TREECKO || currentSpecies == SPECIES_GROVYLE || currentSpecies == SPECIES_SCEPTILE
+             || currentSpecies == SPECIES_MUDKIP || currentSpecies == SPECIES_MARSHTOMP || currentSpecies == SPECIES_SWAMPERT
+             || currentSpecies == SPECIES_LARVITAR || currentSpecies == SPECIES_PUPITAR || currentSpecies == SPECIES_TYRANITAR
+             || currentSpecies == SPECIES_SPHEAL || currentSpecies == SPECIES_SEALEO || currentSpecies == SPECIES_WALREIN
+             || currentSpecies == SPECIES_DRATINI || currentSpecies == SPECIES_DRAGONAIR || currentSpecies == SPECIES_DRAGONITE
+             || currentSpecies == SPECIES_RIOLU || currentSpecies == SPECIES_LUCARIO)
+            {
+                poolIndexArray[i] = POOL_SLOT_DISABLED;
+            }
+        }
+        if (starter == SPECIES_TORCHIC)
+        {
+            if (currentSpecies == SPECIES_TORCHIC || currentSpecies == SPECIES_COMBUSKEN || currentSpecies == SPECIES_BLAZIKEN
+             || currentSpecies == SPECIES_TREECKO || currentSpecies == SPECIES_GROVYLE || currentSpecies == SPECIES_SCEPTILE
+             || currentSpecies == SPECIES_LARVITAR || currentSpecies == SPECIES_PUPITAR || currentSpecies == SPECIES_TYRANITAR
+             || currentSpecies == SPECIES_SPHEAL || currentSpecies == SPECIES_SEALEO || currentSpecies == SPECIES_WALREIN
+             || currentSpecies == SPECIES_DRATINI || currentSpecies == SPECIES_DRAGONAIR || currentSpecies == SPECIES_DRAGONITE
+             || currentSpecies == SPECIES_RIOLU || currentSpecies == SPECIES_LUCARIO)
+            {
+                poolIndexArray[i] = POOL_SLOT_DISABLED;
+            }
+        } 
+        if (starter == SPECIES_MUDKIP)
+        {
+            if (currentSpecies == SPECIES_TORCHIC || currentSpecies == SPECIES_COMBUSKEN || currentSpecies == SPECIES_BLAZIKEN
+             || currentSpecies == SPECIES_MUDKIP || currentSpecies == SPECIES_MARSHTOMP || currentSpecies == SPECIES_SWAMPERT
+             || currentSpecies == SPECIES_LARVITAR || currentSpecies == SPECIES_PUPITAR || currentSpecies == SPECIES_TYRANITAR
+             || currentSpecies == SPECIES_SPHEAL || currentSpecies == SPECIES_SEALEO || currentSpecies == SPECIES_WALREIN
+             || currentSpecies == SPECIES_DRATINI || currentSpecies == SPECIES_DRAGONAIR || currentSpecies == SPECIES_DRAGONITE
+             || currentSpecies == SPECIES_RIOLU || currentSpecies == SPECIES_LUCARIO)
+            {
+                poolIndexArray[i] = POOL_SLOT_DISABLED;
+            }
+        }    
+    }
+}
+
 static void RandomTagPrune(const struct Trainer *trainer, u8 *poolIndexArray, const struct PoolRules *rules)
 {
     u32 tagToUse = trainer->party[poolIndexArray[0]].tags;
@@ -460,6 +527,9 @@ static void PrunePool(const struct Trainer *trainer, u8 *poolIndexArray, const s
             break;
         case POOL_PRUNE_TEST:
             TestPrune(trainer, poolIndexArray, rules);
+            break;
+        case POOL_PRUNE_RIVAL:
+            RivalPrune(trainer, poolIndexArray, rules);
             break;
         case POOL_PRUNE_RANDOM_TAG:
             RandomTagPrune(trainer, poolIndexArray, rules);

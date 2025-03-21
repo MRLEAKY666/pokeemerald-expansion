@@ -68,6 +68,7 @@
 #include "data/battle_move_effects.h"
 #include "field_weather.h" //added wiz1989
 #include "constants/weather.h" //added wiz1989
+#include "constants/species.h" //added wiz1989
 
 // table to avoid ugly powing on gba (courtesy of doesnt)
 // this returns (i^2.5)/4
@@ -1138,9 +1139,6 @@ static bool32 NoTargetPresent(u8 battler, u32 move)
 //enhanced by wiz1989
 bool32 CastformTriggerWeatherChange(u32 battler, u32 ability, u32 move)
 {
-    u32 moveType;
-    moveType = gMovesInfo[move].type;
-
     //only execute if battler is a CASTFORM and ability FORECAST is active
     if (IsCastform(battler) && ability == ABILITY_FORECAST)
     {

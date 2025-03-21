@@ -731,7 +731,13 @@ LittlerootTown_ProfessorBirchsLab_Text_ReceivedPokedex:
 
 LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex:
 	.string "PROF. BIRCH: You'll want a POKéDEX \n"
-	.string "if you're travelling around Hoenn.$"
+	.string "if you're travelling around Hoenn.\p"
+	.string "Like I mentioned before, strange\n"
+	.string "POKéMON have started appearing.\p"
+	.string "The less you know about a wild area,\n"
+	.string "the more dangerous it can be!\p"
+	.string "Use your POKéDEX to document the wild\n"
+	.string "POKéMON you see.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_CountlessPokemonAwait:
 	.string "PROF. BIRCH: Countless POKéMON\n"
