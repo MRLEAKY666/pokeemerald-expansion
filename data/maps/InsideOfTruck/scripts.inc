@@ -155,12 +155,12 @@ InsideOfTruck_EventScript_Starterball::
 # 82 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq InsideOfTruck_EventScript_Starterball_2
-# 167 "data//maps/InsideOfTruck/scripts.pory"
+# 168 "data//maps/InsideOfTruck/scripts.pory"
 	msgbox InsideOfTruck_NotChosen
 InsideOfTruck_EventScript_Starterball_1:
-# 169 "data//maps/InsideOfTruck/scripts.pory"
-	waitmessage
 # 170 "data//maps/InsideOfTruck/scripts.pory"
+	waitmessage
+# 171 "data//maps/InsideOfTruck/scripts.pory"
 	releaseall
 	end
 
@@ -254,6 +254,8 @@ InsideOfTruck_EventScript_Starterball_25:
 InsideOfTruck_EventScript_Starterball_29:
 # 164 "data//maps/InsideOfTruck/scripts.pory"
 	setflag FLAG_SYS_POKEMON_GET
+# 165 "data//maps/InsideOfTruck/scripts.pory"
+	call GenerateRivalStarter
 	goto InsideOfTruck_EventScript_Starterball_1
 
 InsideOfTruck_EventScript_Starterball_6:
@@ -326,426 +328,1538 @@ InsideOfTruck_EventScript_Starterball_31:
 
 
 NicknamePartyMon::
-# 176 "data//maps/InsideOfTruck/scripts.pory"
-	msgbox NicknamePartyMon_Text_0
 # 177 "data//maps/InsideOfTruck/scripts.pory"
-	call Common_EventScript_GetGiftMonPartySlot
+	msgbox NicknamePartyMon_Text_0
 # 178 "data//maps/InsideOfTruck/scripts.pory"
+	call Common_EventScript_GetGiftMonPartySlot
+# 179 "data//maps/InsideOfTruck/scripts.pory"
 	call Common_EventScript_NameReceivedPartyMon
 	return
 
 
 NicknameBoxMon::
-# 183 "data//maps/InsideOfTruck/scripts.pory"
-	msgbox NicknamePartyMon_Text_0
 # 184 "data//maps/InsideOfTruck/scripts.pory"
-	call Common_EventScript_NameReceivedBoxMon
+	msgbox NicknamePartyMon_Text_0
 # 185 "data//maps/InsideOfTruck/scripts.pory"
+	call Common_EventScript_NameReceivedBoxMon
+# 186 "data//maps/InsideOfTruck/scripts.pory"
 	call Common_EventScript_TransferredToPC
 	return
 
 
 GenerateStarter::
-# 190 "data//maps/InsideOfTruck/scripts.pory"
-	randompercentage 50
 # 191 "data//maps/InsideOfTruck/scripts.pory"
+	randompercentage 50
+# 192 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq GenerateStarter_2
 GenerateStarter_1:
-# 207 "data//maps/InsideOfTruck/scripts.pory"
+# 208 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, FALSE
 	goto_if_eq GenerateStarter_4
 	return
 
 GenerateStarter_2:
-# 192 "data//maps/InsideOfTruck/scripts.pory"
-	random 3
 # 193 "data//maps/InsideOfTruck/scripts.pory"
+	random 3
+# 194 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_eq GenerateStarter_7
 GenerateStarter_6:
-# 197 "data//maps/InsideOfTruck/scripts.pory"
+# 198 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 1
 	goto_if_eq GenerateStarter_13
 GenerateStarter_12:
-# 201 "data//maps/InsideOfTruck/scripts.pory"
+# 202 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 2
 	goto_if_eq GenerateStarter_18
 	goto GenerateStarter_1
 
 GenerateStarter_4:
-# 208 "data//maps/InsideOfTruck/scripts.pory"
-	random 32
 # 209 "data//maps/InsideOfTruck/scripts.pory"
+	random 24
+# 210 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_eq GenerateStarter_10
 GenerateStarter_9:
-# 213 "data//maps/InsideOfTruck/scripts.pory"
+# 214 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 1
 	goto_if_eq GenerateStarter_16
 GenerateStarter_15:
-# 217 "data//maps/InsideOfTruck/scripts.pory"
+# 218 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 2
 	goto_if_eq GenerateStarter_21
 GenerateStarter_20:
-# 221 "data//maps/InsideOfTruck/scripts.pory"
+# 222 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 3
 	goto_if_eq GenerateStarter_24
 GenerateStarter_23:
-# 225 "data//maps/InsideOfTruck/scripts.pory"
+# 226 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 4
 	goto_if_eq GenerateStarter_27
 GenerateStarter_26:
-# 229 "data//maps/InsideOfTruck/scripts.pory"
+# 230 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 5
 	goto_if_eq GenerateStarter_30
 GenerateStarter_29:
-# 233 "data//maps/InsideOfTruck/scripts.pory"
+# 234 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 6
 	goto_if_eq GenerateStarter_33
 GenerateStarter_32:
-# 237 "data//maps/InsideOfTruck/scripts.pory"
+# 238 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 7
 	goto_if_eq GenerateStarter_36
 GenerateStarter_35:
-# 241 "data//maps/InsideOfTruck/scripts.pory"
+# 242 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 8
 	goto_if_eq GenerateStarter_39
 GenerateStarter_38:
-# 245 "data//maps/InsideOfTruck/scripts.pory"
+# 246 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 9
 	goto_if_eq GenerateStarter_42
 GenerateStarter_41:
-# 249 "data//maps/InsideOfTruck/scripts.pory"
+# 250 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 10
 	goto_if_eq GenerateStarter_45
 GenerateStarter_44:
-# 253 "data//maps/InsideOfTruck/scripts.pory"
+# 254 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 11
 	goto_if_eq GenerateStarter_48
 GenerateStarter_47:
-# 257 "data//maps/InsideOfTruck/scripts.pory"
+# 258 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 12
 	goto_if_eq GenerateStarter_51
 GenerateStarter_50:
-# 261 "data//maps/InsideOfTruck/scripts.pory"
+# 262 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 13
 	goto_if_eq GenerateStarter_54
 GenerateStarter_53:
-# 265 "data//maps/InsideOfTruck/scripts.pory"
+# 266 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 14
 	goto_if_eq GenerateStarter_57
 GenerateStarter_56:
-# 269 "data//maps/InsideOfTruck/scripts.pory"
+# 270 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 15
 	goto_if_eq GenerateStarter_60
 GenerateStarter_59:
-# 273 "data//maps/InsideOfTruck/scripts.pory"
+# 274 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 16
 	goto_if_eq GenerateStarter_63
 GenerateStarter_62:
-# 277 "data//maps/InsideOfTruck/scripts.pory"
+# 278 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 17
 	goto_if_eq GenerateStarter_66
 GenerateStarter_65:
-# 281 "data//maps/InsideOfTruck/scripts.pory"
+# 282 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 18
 	goto_if_eq GenerateStarter_69
 GenerateStarter_68:
-# 285 "data//maps/InsideOfTruck/scripts.pory"
+# 286 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 19
 	goto_if_eq GenerateStarter_72
 GenerateStarter_71:
-# 289 "data//maps/InsideOfTruck/scripts.pory"
+# 290 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 20
 	goto_if_eq GenerateStarter_75
 GenerateStarter_74:
-# 293 "data//maps/InsideOfTruck/scripts.pory"
+# 294 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 21
 	goto_if_eq GenerateStarter_78
 GenerateStarter_77:
-# 297 "data//maps/InsideOfTruck/scripts.pory"
+# 298 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 22
 	goto_if_eq GenerateStarter_81
 GenerateStarter_80:
-# 301 "data//maps/InsideOfTruck/scripts.pory"
+# 302 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, 23
-	goto_if_eq GenerateStarter_84
-GenerateStarter_83:
-# 305 "data//maps/InsideOfTruck/scripts.pory"
-	compare VAR_RESULT, 24
-	goto_if_eq GenerateStarter_87
-GenerateStarter_86:
-# 309 "data//maps/InsideOfTruck/scripts.pory"
-	compare VAR_RESULT, 25
-	goto_if_eq GenerateStarter_90
-GenerateStarter_89:
-# 313 "data//maps/InsideOfTruck/scripts.pory"
-	compare VAR_RESULT, 26
-	goto_if_eq GenerateStarter_93
-GenerateStarter_92:
-# 317 "data//maps/InsideOfTruck/scripts.pory"
-	compare VAR_RESULT, 27
-	goto_if_eq GenerateStarter_96
-GenerateStarter_95:
-# 321 "data//maps/InsideOfTruck/scripts.pory"
-	compare VAR_RESULT, 28
-	goto_if_eq GenerateStarter_99
-GenerateStarter_98:
-# 325 "data//maps/InsideOfTruck/scripts.pory"
-	compare VAR_RESULT, 29
-	goto_if_eq GenerateStarter_102
-GenerateStarter_101:
-# 328 "data//maps/InsideOfTruck/scripts.pory"
-	compare VAR_RESULT, 30
-	goto_if_eq GenerateStarter_105
-GenerateStarter_104:
-# 332 "data//maps/InsideOfTruck/scripts.pory"
-	compare VAR_RESULT, 31
-	goto_if_eq GenerateStarter_107
+	goto_if_eq GenerateStarter_83
 	return
 
 GenerateStarter_7:
-# 194 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_TREECKO
 # 195 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_STARTER_MON, SPECIES_TORCHIC
+# 196 "data//maps/InsideOfTruck/scripts.pory"
 	setvar VAR_0x8004, 0
 	goto GenerateStarter_6
 
 GenerateStarter_10:
-# 210 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_PIPLUP
 # 211 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_STARTER_MON, SPECIES_PIPLUP
+# 212 "data//maps/InsideOfTruck/scripts.pory"
 	setvar VAR_0x8004, 2
 	goto GenerateStarter_9
 
 GenerateStarter_13:
-# 198 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_TORCHIC
 # 199 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_STARTER_MON, SPECIES_MUDKIP
+# 200 "data//maps/InsideOfTruck/scripts.pory"
 	setvar VAR_0x8004, 1
 	goto GenerateStarter_12
 
 GenerateStarter_16:
-# 214 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_EEVEE
 # 215 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_STARTER_MON, SPECIES_EEVEE
+# 216 "data//maps/InsideOfTruck/scripts.pory"
 	setvar VAR_0x8004, 0
 	goto GenerateStarter_15
 
 GenerateStarter_18:
-# 202 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_MUDKIP
 # 203 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_STARTER_MON, SPECIES_TREECKO
+# 204 "data//maps/InsideOfTruck/scripts.pory"
 	setvar VAR_0x8004, 2
 	goto GenerateStarter_1
 
 GenerateStarter_21:
-# 218 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_PICHU
 # 219 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_STARTER_MON, SPECIES_PICHU
+# 220 "data//maps/InsideOfTruck/scripts.pory"
 	setvar VAR_0x8004, 1
 	goto GenerateStarter_20
 
 GenerateStarter_24:
-# 222 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_TOGEPI
 # 223 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_STARTER_MON, SPECIES_TOGEPI
+# 224 "data//maps/InsideOfTruck/scripts.pory"
 	setvar VAR_0x8004, 2
 	goto GenerateStarter_23
 
 GenerateStarter_27:
-# 226 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_SNIVY
 # 227 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_STARTER_MON, SPECIES_SNIVY
+# 228 "data//maps/InsideOfTruck/scripts.pory"
 	setvar VAR_0x8004, 0
 	goto GenerateStarter_26
 
 GenerateStarter_30:
-# 230 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_ZORUA_HISUI
 # 231 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_0x8004, 0
+	setvar VAR_STARTER_MON, SPECIES_GOTHITA
+# 232 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_0x8004, 1
 	goto GenerateStarter_29
 
 GenerateStarter_33:
-# 234 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_ZORUA
 # 235 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_0x8004, 0
+	setvar VAR_STARTER_MON, SPECIES_SOLOSIS
+# 236 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_0x8004, 1
 	goto GenerateStarter_32
 
 GenerateStarter_36:
-# 238 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_GOTHITA
 # 239 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_0x8004, 1
+	setvar VAR_STARTER_MON, SPECIES_AXEW
+# 240 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_0x8004, 2
 	goto GenerateStarter_35
 
 GenerateStarter_39:
-# 242 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_SOLOSIS
 # 243 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_0x8004, 1
+	setvar VAR_STARTER_MON, SPECIES_GOOMY
+# 244 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_0x8004, 2
 	goto GenerateStarter_38
 
 GenerateStarter_42:
-# 246 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_AXEW
 # 247 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_0x8004, 2
+	setvar VAR_STARTER_MON, SPECIES_ROWLET
+# 248 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_0x8004, 0
 	goto GenerateStarter_41
 
 GenerateStarter_45:
-# 250 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_LARVESTA
 # 251 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_0x8004, 1
+	setvar VAR_STARTER_MON, SPECIES_APPLIN
+# 252 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_0x8004, 0
 	goto GenerateStarter_44
 
 GenerateStarter_48:
-# 254 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_GOOMY
 # 255 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_0x8004, 2
+	setvar VAR_STARTER_MON, SPECIES_MAGBY
+# 256 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_0x8004, 1
 	goto GenerateStarter_47
 
 GenerateStarter_51:
-# 258 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_ROWLET
 # 259 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_0x8004, 0
+	setvar VAR_STARTER_MON, SPECIES_ELEKID
+# 260 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_0x8004, 1
 	goto GenerateStarter_50
 
 GenerateStarter_54:
-# 262 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_APPLIN
 # 263 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_STARTER_MON, SPECIES_SWINUB
+# 264 "data//maps/InsideOfTruck/scripts.pory"
 	setvar VAR_0x8004, 0
 	goto GenerateStarter_53
 
 GenerateStarter_57:
-# 266 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_MIME_JR
 # 267 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_0x8004, 1
+	setvar VAR_STARTER_MON, SPECIES_LARVITAR
+# 268 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_0x8004, 0
 	goto GenerateStarter_56
 
 GenerateStarter_60:
-# 270 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_MAGBY
 # 271 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_0x8004, 1
+	setvar VAR_STARTER_MON, SPECIES_TURTWIG
+# 272 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_0x8004, 0
 	goto GenerateStarter_59
 
 GenerateStarter_63:
-# 274 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_ELEKID
 # 275 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_STARTER_MON, SPECIES_CHARMANDER
+# 276 "data//maps/InsideOfTruck/scripts.pory"
 	setvar VAR_0x8004, 1
 	goto GenerateStarter_62
 
 GenerateStarter_66:
-# 278 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_MANKEY
 # 279 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_0x8004, 0
+	setvar VAR_STARTER_MON, SPECIES_BULBASAUR
+# 280 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_0x8004, 2
 	goto GenerateStarter_65
 
 GenerateStarter_69:
-# 282 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_SWINUB
 # 283 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_0x8004, 2
+	setvar VAR_STARTER_MON, SPECIES_SQUIRTLE
+# 284 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_0x8004, 0
 	goto GenerateStarter_68
 
 GenerateStarter_72:
-# 286 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_LARVITAR
 # 287 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_0x8004, 0
+	setvar VAR_STARTER_MON, SPECIES_OSHAWOTT
+# 288 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_0x8004, 2
 	goto GenerateStarter_71
 
 GenerateStarter_75:
-# 290 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_TURTWIG
 # 291 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_0x8004, 0
+	setvar VAR_STARTER_MON, SPECIES_CYNDAQUIL
+# 292 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_0x8004, 1
 	goto GenerateStarter_74
 
 GenerateStarter_78:
-# 294 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_CHARMANDER
 # 295 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_0x8004, 1
+	setvar VAR_STARTER_MON, SPECIES_BUDEW
+# 296 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_0x8004, 0
 	goto GenerateStarter_77
 
 GenerateStarter_81:
-# 298 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_SQUIRTLE
 # 299 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_0x8004, 2
+	setvar VAR_STARTER_MON, SPECIES_SPHEAL
+# 300 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_0x8004, 0
 	goto GenerateStarter_80
 
-GenerateStarter_84:
-# 302 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_BULBASAUR
+GenerateStarter_83:
 # 303 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_0x8004, 0
-	goto GenerateStarter_83
-
-GenerateStarter_87:
-# 306 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_OSHAWOTT
-# 307 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_0x8004, 2
-	goto GenerateStarter_86
-
-GenerateStarter_90:
-# 310 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_CYNDAQUIL
-# 311 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_0x8004, 1
-	goto GenerateStarter_89
-
-GenerateStarter_93:
-# 314 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_BUDEW
-# 315 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_0x8004, 0
-	goto GenerateStarter_92
-
-GenerateStarter_96:
-# 318 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_SPHEAL
-# 319 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_0x8004, 0
-	goto GenerateStarter_95
-
-GenerateStarter_99:
-# 322 "data//maps/InsideOfTruck/scripts.pory"
 	setvar VAR_STARTER_MON, SPECIES_SHINX
-# 323 "data//maps/InsideOfTruck/scripts.pory"
+# 304 "data//maps/InsideOfTruck/scripts.pory"
 	setvar VAR_0x8004, 1
-	goto GenerateStarter_98
+	return
 
-GenerateStarter_102:
-# 326 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_SANDILE
-	goto GenerateStarter_101
 
-GenerateStarter_105:
+GenerateRivalStarter::
+# 310 "data//maps/InsideOfTruck/scripts.pory"
+	random 5
+# 311 "data//maps/InsideOfTruck/scripts.pory"
+	copyvar VAR_TEMP_A, VAR_RESULT
+# 312 "data//maps/InsideOfTruck/scripts.pory"
+	switch VAR_STARTER_MON
+# 313 "data//maps/InsideOfTruck/scripts.pory"
+	case SPECIES_TORCHIC, GenerateRivalStarter_2
+# 328 "data//maps/InsideOfTruck/scripts.pory"
+	case SPECIES_MUDKIP, GenerateRivalStarter_3
+# 343 "data//maps/InsideOfTruck/scripts.pory"
+	case SPECIES_TREECKO, GenerateRivalStarter_4
+# 358 "data//maps/InsideOfTruck/scripts.pory"
+	case SPECIES_PIPLUP, GenerateRivalStarter_5
+# 373 "data//maps/InsideOfTruck/scripts.pory"
+	case SPECIES_EEVEE, GenerateRivalStarter_6
+# 388 "data//maps/InsideOfTruck/scripts.pory"
+	case SPECIES_PICHU, GenerateRivalStarter_7
+# 403 "data//maps/InsideOfTruck/scripts.pory"
+	case SPECIES_TOGEPI, GenerateRivalStarter_8
+# 418 "data//maps/InsideOfTruck/scripts.pory"
+	case SPECIES_SNIVY, GenerateRivalStarter_9
+# 433 "data//maps/InsideOfTruck/scripts.pory"
+	case SPECIES_GOTHITA, GenerateRivalStarter_10
+# 448 "data//maps/InsideOfTruck/scripts.pory"
+	case SPECIES_SOLOSIS, GenerateRivalStarter_11
+# 463 "data//maps/InsideOfTruck/scripts.pory"
+	case SPECIES_AXEW, GenerateRivalStarter_12
+# 478 "data//maps/InsideOfTruck/scripts.pory"
+	case SPECIES_GOOMY, GenerateRivalStarter_13
+# 493 "data//maps/InsideOfTruck/scripts.pory"
+	case SPECIES_ROWLET, GenerateRivalStarter_14
+# 508 "data//maps/InsideOfTruck/scripts.pory"
+	case SPECIES_APPLIN, GenerateRivalStarter_15
+# 523 "data//maps/InsideOfTruck/scripts.pory"
+	case SPECIES_MAGBY, GenerateRivalStarter_16
+# 538 "data//maps/InsideOfTruck/scripts.pory"
+	case SPECIES_ELEKID, GenerateRivalStarter_17
+# 553 "data//maps/InsideOfTruck/scripts.pory"
+	case SPECIES_SWINUB, GenerateRivalStarter_18
+# 568 "data//maps/InsideOfTruck/scripts.pory"
+	case SPECIES_LARVITAR, GenerateRivalStarter_19
+# 583 "data//maps/InsideOfTruck/scripts.pory"
+	case SPECIES_TURTWIG, GenerateRivalStarter_20
+# 598 "data//maps/InsideOfTruck/scripts.pory"
+	case SPECIES_CHARMANDER, GenerateRivalStarter_21
+# 613 "data//maps/InsideOfTruck/scripts.pory"
+	case SPECIES_BULBASAUR, GenerateRivalStarter_22
+# 628 "data//maps/InsideOfTruck/scripts.pory"
+	case SPECIES_SQUIRTLE, GenerateRivalStarter_23
+# 643 "data//maps/InsideOfTruck/scripts.pory"
+	case SPECIES_OSHAWOTT, GenerateRivalStarter_24
+# 658 "data//maps/InsideOfTruck/scripts.pory"
+	case SPECIES_CYNDAQUIL, GenerateRivalStarter_25
+# 673 "data//maps/InsideOfTruck/scripts.pory"
+	case SPECIES_BUDEW, GenerateRivalStarter_26
+# 688 "data//maps/InsideOfTruck/scripts.pory"
+	case SPECIES_SPHEAL, GenerateRivalStarter_27
+# 703 "data//maps/InsideOfTruck/scripts.pory"
+	case SPECIES_SHINX, GenerateRivalStarter_28
+	return
+
+GenerateRivalStarter_2:
+# 314 "data//maps/InsideOfTruck/scripts.pory"
+	random 5
+# 315 "data//maps/InsideOfTruck/scripts.pory"
+	switch VAR_RESULT
+# 316 "data//maps/InsideOfTruck/scripts.pory"
+	case 0, GenerateRivalStarter_30
+# 318 "data//maps/InsideOfTruck/scripts.pory"
+	case 1, GenerateRivalStarter_31
+# 320 "data//maps/InsideOfTruck/scripts.pory"
+	case 2, GenerateRivalStarter_32
+# 322 "data//maps/InsideOfTruck/scripts.pory"
+	case 3, GenerateRivalStarter_33
+# 324 "data//maps/InsideOfTruck/scripts.pory"
+	case 4, GenerateRivalStarter_34
+	return
+
+GenerateRivalStarter_3:
 # 329 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_PAWNIARD
+	random 5
 # 330 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_0x8004, 0
-	goto GenerateStarter_104
-
-GenerateStarter_107:
+	switch VAR_RESULT
+# 331 "data//maps/InsideOfTruck/scripts.pory"
+	case 0, GenerateRivalStarter_36
 # 333 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_CASTFORM
+	case 1, GenerateRivalStarter_37
+# 335 "data//maps/InsideOfTruck/scripts.pory"
+	case 2, GenerateRivalStarter_38
+# 337 "data//maps/InsideOfTruck/scripts.pory"
+	case 3, GenerateRivalStarter_39
+# 339 "data//maps/InsideOfTruck/scripts.pory"
+	case 4, GenerateRivalStarter_40
+	return
+
+GenerateRivalStarter_4:
+# 344 "data//maps/InsideOfTruck/scripts.pory"
+	random 5
+# 345 "data//maps/InsideOfTruck/scripts.pory"
+	switch VAR_RESULT
+# 346 "data//maps/InsideOfTruck/scripts.pory"
+	case 0, GenerateRivalStarter_42
+# 348 "data//maps/InsideOfTruck/scripts.pory"
+	case 1, GenerateRivalStarter_43
+# 350 "data//maps/InsideOfTruck/scripts.pory"
+	case 2, GenerateRivalStarter_44
+# 352 "data//maps/InsideOfTruck/scripts.pory"
+	case 3, GenerateRivalStarter_45
+# 354 "data//maps/InsideOfTruck/scripts.pory"
+	case 4, GenerateRivalStarter_46
+	return
+
+GenerateRivalStarter_5:
+# 359 "data//maps/InsideOfTruck/scripts.pory"
+	random 5
+# 360 "data//maps/InsideOfTruck/scripts.pory"
+	switch VAR_RESULT
+# 361 "data//maps/InsideOfTruck/scripts.pory"
+	case 0, GenerateRivalStarter_48
+# 363 "data//maps/InsideOfTruck/scripts.pory"
+	case 1, GenerateRivalStarter_49
+# 365 "data//maps/InsideOfTruck/scripts.pory"
+	case 2, GenerateRivalStarter_50
+# 367 "data//maps/InsideOfTruck/scripts.pory"
+	case 3, GenerateRivalStarter_51
+# 369 "data//maps/InsideOfTruck/scripts.pory"
+	case 4, GenerateRivalStarter_52
+	return
+
+GenerateRivalStarter_6:
+# 374 "data//maps/InsideOfTruck/scripts.pory"
+	random 5
+# 375 "data//maps/InsideOfTruck/scripts.pory"
+	switch VAR_RESULT
+# 376 "data//maps/InsideOfTruck/scripts.pory"
+	case 0, GenerateRivalStarter_54
+# 378 "data//maps/InsideOfTruck/scripts.pory"
+	case 1, GenerateRivalStarter_55
+# 380 "data//maps/InsideOfTruck/scripts.pory"
+	case 2, GenerateRivalStarter_56
+# 382 "data//maps/InsideOfTruck/scripts.pory"
+	case 3, GenerateRivalStarter_57
+# 384 "data//maps/InsideOfTruck/scripts.pory"
+	case 4, GenerateRivalStarter_58
+	return
+
+GenerateRivalStarter_7:
+# 389 "data//maps/InsideOfTruck/scripts.pory"
+	random 5
+# 390 "data//maps/InsideOfTruck/scripts.pory"
+	switch VAR_RESULT
+# 391 "data//maps/InsideOfTruck/scripts.pory"
+	case 0, GenerateRivalStarter_60
+# 393 "data//maps/InsideOfTruck/scripts.pory"
+	case 1, GenerateRivalStarter_61
+# 395 "data//maps/InsideOfTruck/scripts.pory"
+	case 2, GenerateRivalStarter_62
+# 397 "data//maps/InsideOfTruck/scripts.pory"
+	case 3, GenerateRivalStarter_63
+# 399 "data//maps/InsideOfTruck/scripts.pory"
+	case 4, GenerateRivalStarter_64
+	return
+
+GenerateRivalStarter_8:
+# 404 "data//maps/InsideOfTruck/scripts.pory"
+	random 5
+# 405 "data//maps/InsideOfTruck/scripts.pory"
+	switch VAR_RESULT
+# 406 "data//maps/InsideOfTruck/scripts.pory"
+	case 0, GenerateRivalStarter_66
+# 408 "data//maps/InsideOfTruck/scripts.pory"
+	case 1, GenerateRivalStarter_67
+# 410 "data//maps/InsideOfTruck/scripts.pory"
+	case 2, GenerateRivalStarter_68
+# 412 "data//maps/InsideOfTruck/scripts.pory"
+	case 3, GenerateRivalStarter_69
+# 414 "data//maps/InsideOfTruck/scripts.pory"
+	case 4, GenerateRivalStarter_70
+	return
+
+GenerateRivalStarter_9:
+# 419 "data//maps/InsideOfTruck/scripts.pory"
+	random 5
+# 420 "data//maps/InsideOfTruck/scripts.pory"
+	switch VAR_RESULT
+# 421 "data//maps/InsideOfTruck/scripts.pory"
+	case 0, GenerateRivalStarter_72
+# 423 "data//maps/InsideOfTruck/scripts.pory"
+	case 1, GenerateRivalStarter_73
+# 425 "data//maps/InsideOfTruck/scripts.pory"
+	case 2, GenerateRivalStarter_74
+# 427 "data//maps/InsideOfTruck/scripts.pory"
+	case 3, GenerateRivalStarter_75
+# 429 "data//maps/InsideOfTruck/scripts.pory"
+	case 4, GenerateRivalStarter_76
+	return
+
+GenerateRivalStarter_10:
+# 434 "data//maps/InsideOfTruck/scripts.pory"
+	random 5
+# 435 "data//maps/InsideOfTruck/scripts.pory"
+	switch VAR_RESULT
+# 436 "data//maps/InsideOfTruck/scripts.pory"
+	case 0, GenerateRivalStarter_78
+# 438 "data//maps/InsideOfTruck/scripts.pory"
+	case 1, GenerateRivalStarter_79
+# 440 "data//maps/InsideOfTruck/scripts.pory"
+	case 2, GenerateRivalStarter_80
+# 442 "data//maps/InsideOfTruck/scripts.pory"
+	case 3, GenerateRivalStarter_81
+# 444 "data//maps/InsideOfTruck/scripts.pory"
+	case 4, GenerateRivalStarter_82
+	return
+
+GenerateRivalStarter_11:
+# 449 "data//maps/InsideOfTruck/scripts.pory"
+	random 5
+# 450 "data//maps/InsideOfTruck/scripts.pory"
+	switch VAR_RESULT
+# 451 "data//maps/InsideOfTruck/scripts.pory"
+	case 0, GenerateRivalStarter_84
+# 453 "data//maps/InsideOfTruck/scripts.pory"
+	case 1, GenerateRivalStarter_85
+# 455 "data//maps/InsideOfTruck/scripts.pory"
+	case 2, GenerateRivalStarter_86
+# 457 "data//maps/InsideOfTruck/scripts.pory"
+	case 3, GenerateRivalStarter_87
+# 459 "data//maps/InsideOfTruck/scripts.pory"
+	case 4, GenerateRivalStarter_88
+	return
+
+GenerateRivalStarter_12:
+# 464 "data//maps/InsideOfTruck/scripts.pory"
+	random 5
+# 465 "data//maps/InsideOfTruck/scripts.pory"
+	switch VAR_RESULT
+# 466 "data//maps/InsideOfTruck/scripts.pory"
+	case 0, GenerateRivalStarter_90
+# 468 "data//maps/InsideOfTruck/scripts.pory"
+	case 1, GenerateRivalStarter_91
+# 470 "data//maps/InsideOfTruck/scripts.pory"
+	case 2, GenerateRivalStarter_92
+# 472 "data//maps/InsideOfTruck/scripts.pory"
+	case 3, GenerateRivalStarter_93
+# 474 "data//maps/InsideOfTruck/scripts.pory"
+	case 4, GenerateRivalStarter_94
+	return
+
+GenerateRivalStarter_13:
+# 479 "data//maps/InsideOfTruck/scripts.pory"
+	random 5
+# 480 "data//maps/InsideOfTruck/scripts.pory"
+	switch VAR_RESULT
+# 481 "data//maps/InsideOfTruck/scripts.pory"
+	case 0, GenerateRivalStarter_96
+# 483 "data//maps/InsideOfTruck/scripts.pory"
+	case 1, GenerateRivalStarter_97
+# 485 "data//maps/InsideOfTruck/scripts.pory"
+	case 2, GenerateRivalStarter_98
+# 487 "data//maps/InsideOfTruck/scripts.pory"
+	case 3, GenerateRivalStarter_99
+# 489 "data//maps/InsideOfTruck/scripts.pory"
+	case 4, GenerateRivalStarter_100
+	return
+
+GenerateRivalStarter_14:
+# 494 "data//maps/InsideOfTruck/scripts.pory"
+	random 5
+# 495 "data//maps/InsideOfTruck/scripts.pory"
+	switch VAR_RESULT
+# 496 "data//maps/InsideOfTruck/scripts.pory"
+	case 0, GenerateRivalStarter_102
+# 498 "data//maps/InsideOfTruck/scripts.pory"
+	case 1, GenerateRivalStarter_103
+# 500 "data//maps/InsideOfTruck/scripts.pory"
+	case 2, GenerateRivalStarter_104
+# 502 "data//maps/InsideOfTruck/scripts.pory"
+	case 3, GenerateRivalStarter_105
+# 504 "data//maps/InsideOfTruck/scripts.pory"
+	case 4, GenerateRivalStarter_106
+	return
+
+GenerateRivalStarter_15:
+# 509 "data//maps/InsideOfTruck/scripts.pory"
+	random 5
+# 510 "data//maps/InsideOfTruck/scripts.pory"
+	switch VAR_RESULT
+# 511 "data//maps/InsideOfTruck/scripts.pory"
+	case 0, GenerateRivalStarter_108
+# 513 "data//maps/InsideOfTruck/scripts.pory"
+	case 1, GenerateRivalStarter_109
+# 515 "data//maps/InsideOfTruck/scripts.pory"
+	case 2, GenerateRivalStarter_110
+# 517 "data//maps/InsideOfTruck/scripts.pory"
+	case 3, GenerateRivalStarter_111
+# 519 "data//maps/InsideOfTruck/scripts.pory"
+	case 4, GenerateRivalStarter_112
+	return
+
+GenerateRivalStarter_16:
+# 524 "data//maps/InsideOfTruck/scripts.pory"
+	random 5
+# 525 "data//maps/InsideOfTruck/scripts.pory"
+	switch VAR_RESULT
+# 526 "data//maps/InsideOfTruck/scripts.pory"
+	case 0, GenerateRivalStarter_114
+# 528 "data//maps/InsideOfTruck/scripts.pory"
+	case 1, GenerateRivalStarter_115
+# 530 "data//maps/InsideOfTruck/scripts.pory"
+	case 2, GenerateRivalStarter_116
+# 532 "data//maps/InsideOfTruck/scripts.pory"
+	case 3, GenerateRivalStarter_117
+# 534 "data//maps/InsideOfTruck/scripts.pory"
+	case 4, GenerateRivalStarter_118
+	return
+
+GenerateRivalStarter_17:
+# 539 "data//maps/InsideOfTruck/scripts.pory"
+	random 5
+# 540 "data//maps/InsideOfTruck/scripts.pory"
+	switch VAR_RESULT
+# 541 "data//maps/InsideOfTruck/scripts.pory"
+	case 0, GenerateRivalStarter_120
+# 543 "data//maps/InsideOfTruck/scripts.pory"
+	case 1, GenerateRivalStarter_121
+# 545 "data//maps/InsideOfTruck/scripts.pory"
+	case 2, GenerateRivalStarter_122
+# 547 "data//maps/InsideOfTruck/scripts.pory"
+	case 3, GenerateRivalStarter_123
+# 549 "data//maps/InsideOfTruck/scripts.pory"
+	case 4, GenerateRivalStarter_124
+	return
+
+GenerateRivalStarter_18:
+# 554 "data//maps/InsideOfTruck/scripts.pory"
+	random 5
+# 555 "data//maps/InsideOfTruck/scripts.pory"
+	switch VAR_RESULT
+# 556 "data//maps/InsideOfTruck/scripts.pory"
+	case 0, GenerateRivalStarter_126
+# 558 "data//maps/InsideOfTruck/scripts.pory"
+	case 1, GenerateRivalStarter_127
+# 560 "data//maps/InsideOfTruck/scripts.pory"
+	case 2, GenerateRivalStarter_128
+# 562 "data//maps/InsideOfTruck/scripts.pory"
+	case 3, GenerateRivalStarter_129
+# 564 "data//maps/InsideOfTruck/scripts.pory"
+	case 4, GenerateRivalStarter_130
+	return
+
+GenerateRivalStarter_19:
+# 569 "data//maps/InsideOfTruck/scripts.pory"
+	random 5
+# 570 "data//maps/InsideOfTruck/scripts.pory"
+	switch VAR_RESULT
+# 571 "data//maps/InsideOfTruck/scripts.pory"
+	case 0, GenerateRivalStarter_132
+# 573 "data//maps/InsideOfTruck/scripts.pory"
+	case 1, GenerateRivalStarter_133
+# 575 "data//maps/InsideOfTruck/scripts.pory"
+	case 2, GenerateRivalStarter_134
+# 577 "data//maps/InsideOfTruck/scripts.pory"
+	case 3, GenerateRivalStarter_135
+# 579 "data//maps/InsideOfTruck/scripts.pory"
+	case 4, GenerateRivalStarter_136
+	return
+
+GenerateRivalStarter_20:
+# 584 "data//maps/InsideOfTruck/scripts.pory"
+	random 5
+# 585 "data//maps/InsideOfTruck/scripts.pory"
+	switch VAR_RESULT
+# 586 "data//maps/InsideOfTruck/scripts.pory"
+	case 0, GenerateRivalStarter_138
+# 588 "data//maps/InsideOfTruck/scripts.pory"
+	case 1, GenerateRivalStarter_139
+# 590 "data//maps/InsideOfTruck/scripts.pory"
+	case 2, GenerateRivalStarter_140
+# 592 "data//maps/InsideOfTruck/scripts.pory"
+	case 3, GenerateRivalStarter_141
+# 594 "data//maps/InsideOfTruck/scripts.pory"
+	case 4, GenerateRivalStarter_142
+	return
+
+GenerateRivalStarter_21:
+# 599 "data//maps/InsideOfTruck/scripts.pory"
+	random 5
+# 600 "data//maps/InsideOfTruck/scripts.pory"
+	switch VAR_RESULT
+# 601 "data//maps/InsideOfTruck/scripts.pory"
+	case 0, GenerateRivalStarter_144
+# 603 "data//maps/InsideOfTruck/scripts.pory"
+	case 1, GenerateRivalStarter_145
+# 605 "data//maps/InsideOfTruck/scripts.pory"
+	case 2, GenerateRivalStarter_146
+# 607 "data//maps/InsideOfTruck/scripts.pory"
+	case 3, GenerateRivalStarter_147
+# 609 "data//maps/InsideOfTruck/scripts.pory"
+	case 4, GenerateRivalStarter_148
+	return
+
+GenerateRivalStarter_22:
+# 614 "data//maps/InsideOfTruck/scripts.pory"
+	random 5
+# 615 "data//maps/InsideOfTruck/scripts.pory"
+	switch VAR_RESULT
+# 616 "data//maps/InsideOfTruck/scripts.pory"
+	case 0, GenerateRivalStarter_150
+# 618 "data//maps/InsideOfTruck/scripts.pory"
+	case 1, GenerateRivalStarter_151
+# 620 "data//maps/InsideOfTruck/scripts.pory"
+	case 2, GenerateRivalStarter_152
+# 622 "data//maps/InsideOfTruck/scripts.pory"
+	case 3, GenerateRivalStarter_153
+# 624 "data//maps/InsideOfTruck/scripts.pory"
+	case 4, GenerateRivalStarter_154
+	return
+
+GenerateRivalStarter_23:
+# 629 "data//maps/InsideOfTruck/scripts.pory"
+	random 5
+# 630 "data//maps/InsideOfTruck/scripts.pory"
+	switch VAR_RESULT
+# 631 "data//maps/InsideOfTruck/scripts.pory"
+	case 0, GenerateRivalStarter_156
+# 633 "data//maps/InsideOfTruck/scripts.pory"
+	case 1, GenerateRivalStarter_157
+# 635 "data//maps/InsideOfTruck/scripts.pory"
+	case 2, GenerateRivalStarter_158
+# 637 "data//maps/InsideOfTruck/scripts.pory"
+	case 3, GenerateRivalStarter_159
+# 639 "data//maps/InsideOfTruck/scripts.pory"
+	case 4, GenerateRivalStarter_160
+	return
+
+GenerateRivalStarter_24:
+# 644 "data//maps/InsideOfTruck/scripts.pory"
+	random 5
+# 645 "data//maps/InsideOfTruck/scripts.pory"
+	switch VAR_RESULT
+# 646 "data//maps/InsideOfTruck/scripts.pory"
+	case 0, GenerateRivalStarter_162
+# 648 "data//maps/InsideOfTruck/scripts.pory"
+	case 1, GenerateRivalStarter_163
+# 650 "data//maps/InsideOfTruck/scripts.pory"
+	case 2, GenerateRivalStarter_164
+# 652 "data//maps/InsideOfTruck/scripts.pory"
+	case 3, GenerateRivalStarter_165
+# 654 "data//maps/InsideOfTruck/scripts.pory"
+	case 4, GenerateRivalStarter_166
+	return
+
+GenerateRivalStarter_25:
+# 659 "data//maps/InsideOfTruck/scripts.pory"
+	random 5
+# 660 "data//maps/InsideOfTruck/scripts.pory"
+	switch VAR_RESULT
+# 661 "data//maps/InsideOfTruck/scripts.pory"
+	case 0, GenerateRivalStarter_168
+# 663 "data//maps/InsideOfTruck/scripts.pory"
+	case 1, GenerateRivalStarter_169
+# 665 "data//maps/InsideOfTruck/scripts.pory"
+	case 2, GenerateRivalStarter_170
+# 667 "data//maps/InsideOfTruck/scripts.pory"
+	case 3, GenerateRivalStarter_171
+# 669 "data//maps/InsideOfTruck/scripts.pory"
+	case 4, GenerateRivalStarter_172
+	return
+
+GenerateRivalStarter_26:
+# 674 "data//maps/InsideOfTruck/scripts.pory"
+	random 5
+# 675 "data//maps/InsideOfTruck/scripts.pory"
+	switch VAR_RESULT
+# 676 "data//maps/InsideOfTruck/scripts.pory"
+	case 0, GenerateRivalStarter_174
+# 678 "data//maps/InsideOfTruck/scripts.pory"
+	case 1, GenerateRivalStarter_175
+# 680 "data//maps/InsideOfTruck/scripts.pory"
+	case 2, GenerateRivalStarter_176
+# 682 "data//maps/InsideOfTruck/scripts.pory"
+	case 3, GenerateRivalStarter_177
+# 684 "data//maps/InsideOfTruck/scripts.pory"
+	case 4, GenerateRivalStarter_178
+	return
+
+GenerateRivalStarter_27:
+# 689 "data//maps/InsideOfTruck/scripts.pory"
+	random 5
+# 690 "data//maps/InsideOfTruck/scripts.pory"
+	switch VAR_RESULT
+# 691 "data//maps/InsideOfTruck/scripts.pory"
+	case 0, GenerateRivalStarter_180
+# 693 "data//maps/InsideOfTruck/scripts.pory"
+	case 1, GenerateRivalStarter_181
+# 695 "data//maps/InsideOfTruck/scripts.pory"
+	case 2, GenerateRivalStarter_182
+# 697 "data//maps/InsideOfTruck/scripts.pory"
+	case 3, GenerateRivalStarter_183
+# 699 "data//maps/InsideOfTruck/scripts.pory"
+	case 4, GenerateRivalStarter_184
+	return
+
+GenerateRivalStarter_28:
+# 704 "data//maps/InsideOfTruck/scripts.pory"
+	random 5
+# 705 "data//maps/InsideOfTruck/scripts.pory"
+	switch VAR_RESULT
+# 706 "data//maps/InsideOfTruck/scripts.pory"
+	case 0, GenerateRivalStarter_186
+# 708 "data//maps/InsideOfTruck/scripts.pory"
+	case 1, GenerateRivalStarter_187
+# 710 "data//maps/InsideOfTruck/scripts.pory"
+	case 2, GenerateRivalStarter_188
+# 712 "data//maps/InsideOfTruck/scripts.pory"
+	case 3, GenerateRivalStarter_189
+# 714 "data//maps/InsideOfTruck/scripts.pory"
+	case 4, GenerateRivalStarter_190
+	return
+
+GenerateRivalStarter_30:
+# 317 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_MUDKIP
+	return
+
+GenerateRivalStarter_31:
+# 319 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_ABRA
+	return
+
+GenerateRivalStarter_32:
+# 321 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_DRATINI
+	return
+
+GenerateRivalStarter_33:
+# 323 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_TRAPINCH
+	return
+
+GenerateRivalStarter_34:
+# 325 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_FLETCHLING
+	return
+
+GenerateRivalStarter_36:
+# 332 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_TREECKO
+	return
+
+GenerateRivalStarter_37:
 # 334 "data//maps/InsideOfTruck/scripts.pory"
-	setvar VAR_0x8004, 0
+	setvar VAR_RIVAL_STARTER, SPECIES_POLIWAG
+	return
+
+GenerateRivalStarter_38:
+# 336 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_DRATINI
+	return
+
+GenerateRivalStarter_39:
+# 338 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_CHIKORITA
+	return
+
+GenerateRivalStarter_40:
+# 340 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_BUDEW
+	return
+
+GenerateRivalStarter_42:
+# 347 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_TORCHIC
+	return
+
+GenerateRivalStarter_43:
+# 349 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_WHISMUR
+	return
+
+GenerateRivalStarter_44:
+# 351 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_BUDEW
+	return
+
+GenerateRivalStarter_45:
+# 353 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_FLETCHLING
+	return
+
+GenerateRivalStarter_46:
+# 355 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_GOOMY
+	return
+
+GenerateRivalStarter_48:
+# 362 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_TREECKO
+	return
+
+GenerateRivalStarter_49:
+# 364 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_POLIWAG
+	return
+
+GenerateRivalStarter_50:
+# 366 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_MAREEP
+	return
+
+GenerateRivalStarter_51:
+# 368 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_SHINX
+	return
+
+GenerateRivalStarter_52:
+# 370 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_ELEKID
+	return
+
+GenerateRivalStarter_54:
+# 377 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_TORCHIC
+	return
+
+GenerateRivalStarter_55:
+# 379 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_DRATINI
+	return
+
+GenerateRivalStarter_56:
+# 381 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_WHISMUR
+	return
+
+GenerateRivalStarter_57:
+# 383 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_DUSKULL
+	return
+
+GenerateRivalStarter_58:
+# 385 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_GOOMY
+	return
+
+GenerateRivalStarter_60:
+# 392 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_MUDKIP
+	return
+
+GenerateRivalStarter_61:
+# 394 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_RHYHORN
+	return
+
+GenerateRivalStarter_62:
+# 396 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_SWINUB
+	return
+
+GenerateRivalStarter_63:
+# 398 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_WHISMUR
+	return
+
+GenerateRivalStarter_64:
+# 400 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_TRAPINCH
+	return
+
+GenerateRivalStarter_66:
+# 407 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_TORCHIC
+	return
+
+GenerateRivalStarter_67:
+# 409 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_RHYHORN
+	return
+
+GenerateRivalStarter_68:
+# 411 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_MAREEP
+	return
+
+GenerateRivalStarter_69:
+# 413 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_SWINUB
+	return
+
+GenerateRivalStarter_70:
+# 415 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_TRAPINCH
+	return
+
+GenerateRivalStarter_72:
+# 422 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_TORCHIC
+	return
+
+GenerateRivalStarter_73:
+# 424 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_DRATINI
+	return
+
+GenerateRivalStarter_74:
+# 426 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_BUDEW
+	return
+
+GenerateRivalStarter_75:
+# 428 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_FLETCHLING
+	return
+
+GenerateRivalStarter_76:
+# 430 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_MAGBY
+	return
+
+GenerateRivalStarter_78:
+# 437 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_RHYHORN
+	return
+
+GenerateRivalStarter_79:
+# 439 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_DRATINI
+	return
+
+GenerateRivalStarter_80:
+# 441 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_WHISMUR
+	return
+
+GenerateRivalStarter_81:
+# 443 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_DUSKULL
+	return
+
+GenerateRivalStarter_82:
+# 445 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_GOOMY
+	return
+
+GenerateRivalStarter_84:
+# 452 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_RHYHORN
+	return
+
+GenerateRivalStarter_85:
+# 454 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_DRATINI
+	return
+
+GenerateRivalStarter_86:
+# 456 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_WHISMUR
+	return
+
+GenerateRivalStarter_87:
+# 458 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_DUSKULL
+	return
+
+GenerateRivalStarter_88:
+# 460 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_GOOMY
+	return
+
+GenerateRivalStarter_90:
+# 467 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_NIDORAN_F
+	return
+
+GenerateRivalStarter_91:
+# 469 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_SWINUB
+	return
+
+GenerateRivalStarter_92:
+# 471 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_DUSKULL
+	return
+
+GenerateRivalStarter_93:
+# 473 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_SPHEAL
+	return
+
+GenerateRivalStarter_94:
+# 475 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_GOOMY
+	return
+
+GenerateRivalStarter_96:
+# 482 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_MUDKIP
+	return
+
+GenerateRivalStarter_97:
+# 484 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_RHYHORN
+	return
+
+GenerateRivalStarter_98:
+# 486 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_SWINUB
+	return
+
+GenerateRivalStarter_99:
+# 488 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_TRAPINCH
+	return
+
+GenerateRivalStarter_100:
+# 490 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_SPHEAL
+	return
+
+GenerateRivalStarter_102:
+# 497 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_TORCHIC
+	return
+
+GenerateRivalStarter_103:
+# 499 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_NIDORAN_F
+	return
+
+GenerateRivalStarter_104:
+# 501 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_ABRA
+	return
+
+GenerateRivalStarter_105:
+# 503 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_RHYHORN
+	return
+
+GenerateRivalStarter_106:
+# 505 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_DUSKULL
+	return
+
+GenerateRivalStarter_108:
+# 512 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_TORCHIC
+	return
+
+GenerateRivalStarter_109:
+# 514 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_NIDORAN_F
+	return
+
+GenerateRivalStarter_110:
+# 516 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_DRATINI
+	return
+
+GenerateRivalStarter_111:
+# 518 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_SWINUB
+	return
+
+GenerateRivalStarter_112:
+# 520 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_FLETCHLING
+	return
+
+GenerateRivalStarter_114:
+# 527 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_MUDKIP
+	return
+
+GenerateRivalStarter_115:
+# 529 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_POLIWAG
+	return
+
+GenerateRivalStarter_116:
+# 531 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_RHYHORN
+	return
+
+GenerateRivalStarter_117:
+# 533 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_WHISMUR
+	return
+
+GenerateRivalStarter_118:
+# 535 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_ELEKID
+	return
+
+GenerateRivalStarter_120:
+# 542 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_NIDORAN_F
+	return
+
+GenerateRivalStarter_121:
+# 544 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_RHYHORN
+	return
+
+GenerateRivalStarter_122:
+# 546 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_SWINUB
+	return
+
+GenerateRivalStarter_123:
+# 548 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_TRAPINCH
+	return
+
+GenerateRivalStarter_124:
+# 550 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_MAGBY
+	return
+
+GenerateRivalStarter_126:
+# 557 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_TORCHIC
+	return
+
+GenerateRivalStarter_127:
+# 559 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_MUDKIP
+	return
+
+GenerateRivalStarter_128:
+# 561 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_WHISMUR
+	return
+
+GenerateRivalStarter_129:
+# 563 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_DUSKULL
+	return
+
+GenerateRivalStarter_130:
+# 565 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_SPHEAL
+	return
+
+GenerateRivalStarter_132:
+# 572 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_MUDKIP
+	return
+
+GenerateRivalStarter_133:
+# 574 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_POLIWAG
+	return
+
+GenerateRivalStarter_134:
+# 576 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_TRAPINCH
+	return
+
+GenerateRivalStarter_135:
+# 578 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_SPHEAL
+	return
+
+GenerateRivalStarter_136:
+# 580 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_GOOMY
+	return
+
+GenerateRivalStarter_138:
+# 587 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_TORCHIC
+	return
+
+GenerateRivalStarter_139:
+# 589 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_BUDEW
+	return
+
+GenerateRivalStarter_140:
+# 591 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_FLETCHLING
+	return
+
+GenerateRivalStarter_141:
+# 593 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_MAGBY
+	return
+
+GenerateRivalStarter_142:
+# 595 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_GOOMY
+	return
+
+GenerateRivalStarter_144:
+# 602 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_MUDKIP
+	return
+
+GenerateRivalStarter_145:
+# 604 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_POLIWAG
+	return
+
+GenerateRivalStarter_146:
+# 606 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_RHYHORN
+	return
+
+GenerateRivalStarter_147:
+# 608 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_TRAPINCH
+	return
+
+GenerateRivalStarter_148:
+# 610 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_SPHEAL
+	return
+
+GenerateRivalStarter_150:
+# 617 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_TORCHIC
+	return
+
+GenerateRivalStarter_151:
+# 619 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_NIDORAN_F
+	return
+
+GenerateRivalStarter_152:
+# 621 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_DRATINI
+	return
+
+GenerateRivalStarter_153:
+# 623 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_SWINUB
+	return
+
+GenerateRivalStarter_154:
+# 625 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_FLETCHLING
+	return
+
+GenerateRivalStarter_156:
+# 632 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_TREECKO
+	return
+
+GenerateRivalStarter_157:
+# 634 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_CHIKORITA
+	return
+
+GenerateRivalStarter_158:
+# 636 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_MAREEP
+	return
+
+GenerateRivalStarter_159:
+# 638 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_BUDEW
+	return
+
+GenerateRivalStarter_160:
+# 640 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_SHINX
+	return
+
+GenerateRivalStarter_162:
+# 647 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_TREECKO
+	return
+
+GenerateRivalStarter_163:
+# 649 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_CHIKORITA
+	return
+
+GenerateRivalStarter_164:
+# 651 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_MAREEP
+	return
+
+GenerateRivalStarter_165:
+# 653 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_BUDEW
+	return
+
+GenerateRivalStarter_166:
+# 655 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_ELEKID
+	return
+
+GenerateRivalStarter_168:
+# 662 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_MUDKIP
+	return
+
+GenerateRivalStarter_169:
+# 664 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_POLIWAG
+	return
+
+GenerateRivalStarter_170:
+# 666 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_RHYHORN
+	return
+
+GenerateRivalStarter_171:
+# 668 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_WHISMUR
+	return
+
+GenerateRivalStarter_172:
+# 670 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_TRAPINCH
+	return
+
+GenerateRivalStarter_174:
+# 677 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_TORCHIC
+	return
+
+GenerateRivalStarter_175:
+# 679 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_NIDORAN_F
+	return
+
+GenerateRivalStarter_176:
+# 681 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_DRATINI
+	return
+
+GenerateRivalStarter_177:
+# 683 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_SWINUB
+	return
+
+GenerateRivalStarter_178:
+# 685 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_FLETCHLING
+	return
+
+GenerateRivalStarter_180:
+# 692 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_TREECKO
+	return
+
+GenerateRivalStarter_181:
+# 694 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_POLIWAG
+	return
+
+GenerateRivalStarter_182:
+# 696 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_WHISMUR
+	return
+
+GenerateRivalStarter_183:
+# 698 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_SHINX
+	return
+
+GenerateRivalStarter_184:
+# 700 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_ELEKID
+	return
+
+GenerateRivalStarter_186:
+# 707 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_RHYHORN
+	return
+
+GenerateRivalStarter_187:
+# 709 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_CHIKORITA
+	return
+
+GenerateRivalStarter_188:
+# 711 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_SWINUB
+	return
+
+GenerateRivalStarter_189:
+# 713 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_BUDEW
+	return
+
+GenerateRivalStarter_190:
+# 715 "data//maps/InsideOfTruck/scripts.pory"
+	setvar VAR_RIVAL_STARTER, SPECIES_TRAPINCH
 	return
 
 
@@ -762,9 +1876,9 @@ InsideOfTruck_EventScript_Starterball_Text_2:
 	.string "No More Room$"
 
 NicknamePartyMon_Text_0:
-# 176 "data//maps/InsideOfTruck/scripts.pory"
+# 177 "data//maps/InsideOfTruck/scripts.pory"
 	.string "And what is its name?$"
 
 InsideOfTruck_NotChosen::
-# 339 "data//maps/InsideOfTruck/scripts.pory"
+# 722 "data//maps/InsideOfTruck/scripts.pory"
 	.string "Make sure to grab it before you leave!$"

@@ -467,42 +467,534 @@ static void TestPrune(const struct Trainer *trainer, u8 *poolIndexArray, const s
 
 static void RivalPrune(const struct Trainer *trainer, u8 *poolIndexArray, const struct PoolRules *rules)
 {
-    u32 starter = VarGet(VAR_STARTER_MON);
+    u32 starter = VarGet(VAR_RIVAL_STARTER);
     for (u32 i = 0; i < trainer->poolSize; i++)
     {
         u16 currentSpecies = trainer->party[poolIndexArray[i]].species;
         if (starter == SPECIES_TREECKO)
         {
-            if (currentSpecies == SPECIES_TREECKO || currentSpecies == SPECIES_GROVYLE || currentSpecies == SPECIES_SCEPTILE
+            if (currentSpecies == SPECIES_TORCHIC || currentSpecies == SPECIES_COMBUSKEN || currentSpecies == SPECIES_BLAZIKEN
              || currentSpecies == SPECIES_MUDKIP || currentSpecies == SPECIES_MARSHTOMP || currentSpecies == SPECIES_SWAMPERT
-             || currentSpecies == SPECIES_LARVITAR || currentSpecies == SPECIES_PUPITAR || currentSpecies == SPECIES_TYRANITAR
-             || currentSpecies == SPECIES_SPHEAL || currentSpecies == SPECIES_SEALEO || currentSpecies == SPECIES_WALREIN
+             || currentSpecies == SPECIES_NIDORAN_F || currentSpecies == SPECIES_NIDORINA || currentSpecies == SPECIES_NIDOQUEEN
+             || currentSpecies == SPECIES_POLIWAG || currentSpecies == SPECIES_POLIWHIRL || currentSpecies == SPECIES_POLITOED
+             || currentSpecies == SPECIES_ABRA || currentSpecies == SPECIES_KADABRA || currentSpecies == SPECIES_ALAKAZAM
+             || currentSpecies == SPECIES_RHYHORN || currentSpecies == SPECIES_RHYDON || currentSpecies == SPECIES_RHYPERIOR
              || currentSpecies == SPECIES_DRATINI || currentSpecies == SPECIES_DRAGONAIR || currentSpecies == SPECIES_DRAGONITE
-             || currentSpecies == SPECIES_RIOLU || currentSpecies == SPECIES_LUCARIO)
+             || currentSpecies == SPECIES_CHIKORITA || currentSpecies == SPECIES_BAYLEEF || currentSpecies == SPECIES_MEGANIUM
+             || currentSpecies == SPECIES_MAREEP || currentSpecies == SPECIES_FLAAFFY || currentSpecies == SPECIES_AMPHAROS
+             || currentSpecies == SPECIES_SWINUB || currentSpecies == SPECIES_PILOSWINE || currentSpecies == SPECIES_MAMOSWINE
+             || currentSpecies == SPECIES_WHISMUR || currentSpecies == SPECIES_LOUDRED || currentSpecies == SPECIES_EXPLOUD
+             || currentSpecies == SPECIES_BUDEW || currentSpecies == SPECIES_ROSELIA || currentSpecies == SPECIES_ROSERADE
+             || currentSpecies == SPECIES_TRAPINCH || currentSpecies == SPECIES_VIBRAVA || currentSpecies == SPECIES_FLYGON
+             || currentSpecies == SPECIES_DUSKULL || currentSpecies == SPECIES_DUSCLOPS || currentSpecies == SPECIES_DUSKNOIR
+             || currentSpecies == SPECIES_SPHEAL || currentSpecies == SPECIES_SEALEO || currentSpecies == SPECIES_WALREIN
+             || currentSpecies == SPECIES_SHINX || currentSpecies == SPECIES_LUXIO || currentSpecies == SPECIES_LUXRAY
+             || currentSpecies == SPECIES_FLETCHLING || currentSpecies == SPECIES_FLETCHINDER || currentSpecies == SPECIES_TALONFLAME
+             || currentSpecies == SPECIES_MAGBY || currentSpecies == SPECIES_MAGMAR || currentSpecies == SPECIES_MAGMORTAR
+             || currentSpecies == SPECIES_ELEKID || currentSpecies == SPECIES_ELECTABUZZ || currentSpecies == SPECIES_ELECTIVIRE
+             || currentSpecies == SPECIES_GOOMY || currentSpecies == SPECIES_SLIGGOO || currentSpecies == SPECIES_GOODRA_HISUI)
             {
                 poolIndexArray[i] = POOL_SLOT_DISABLED;
             }
         }
         if (starter == SPECIES_TORCHIC)
         {
-            if (currentSpecies == SPECIES_TORCHIC || currentSpecies == SPECIES_COMBUSKEN || currentSpecies == SPECIES_BLAZIKEN
-             || currentSpecies == SPECIES_TREECKO || currentSpecies == SPECIES_GROVYLE || currentSpecies == SPECIES_SCEPTILE
-             || currentSpecies == SPECIES_LARVITAR || currentSpecies == SPECIES_PUPITAR || currentSpecies == SPECIES_TYRANITAR
-             || currentSpecies == SPECIES_SPHEAL || currentSpecies == SPECIES_SEALEO || currentSpecies == SPECIES_WALREIN
+            if (currentSpecies == SPECIES_TREECKO || currentSpecies == SPECIES_GROVYLE || currentSpecies == SPECIES_SCEPTILE
+             || currentSpecies == SPECIES_MUDKIP || currentSpecies == SPECIES_MARSHTOMP || currentSpecies == SPECIES_SWAMPERT
+             || currentSpecies == SPECIES_NIDORAN_F || currentSpecies == SPECIES_NIDORINA || currentSpecies == SPECIES_NIDOQUEEN
+             || currentSpecies == SPECIES_POLIWAG || currentSpecies == SPECIES_POLIWHIRL || currentSpecies == SPECIES_POLITOED
+             || currentSpecies == SPECIES_ABRA || currentSpecies == SPECIES_KADABRA || currentSpecies == SPECIES_ALAKAZAM
+             || currentSpecies == SPECIES_RHYHORN || currentSpecies == SPECIES_RHYDON || currentSpecies == SPECIES_RHYPERIOR
              || currentSpecies == SPECIES_DRATINI || currentSpecies == SPECIES_DRAGONAIR || currentSpecies == SPECIES_DRAGONITE
-             || currentSpecies == SPECIES_RIOLU || currentSpecies == SPECIES_LUCARIO)
+             || currentSpecies == SPECIES_CHIKORITA || currentSpecies == SPECIES_BAYLEEF || currentSpecies == SPECIES_MEGANIUM
+             || currentSpecies == SPECIES_MAREEP || currentSpecies == SPECIES_FLAAFFY || currentSpecies == SPECIES_AMPHAROS
+             || currentSpecies == SPECIES_SWINUB || currentSpecies == SPECIES_PILOSWINE || currentSpecies == SPECIES_MAMOSWINE
+             || currentSpecies == SPECIES_WHISMUR || currentSpecies == SPECIES_LOUDRED || currentSpecies == SPECIES_EXPLOUD
+             || currentSpecies == SPECIES_BUDEW || currentSpecies == SPECIES_ROSELIA || currentSpecies == SPECIES_ROSERADE
+             || currentSpecies == SPECIES_TRAPINCH || currentSpecies == SPECIES_VIBRAVA || currentSpecies == SPECIES_FLYGON
+             || currentSpecies == SPECIES_DUSKULL || currentSpecies == SPECIES_DUSCLOPS || currentSpecies == SPECIES_DUSKNOIR
+             || currentSpecies == SPECIES_SPHEAL || currentSpecies == SPECIES_SEALEO || currentSpecies == SPECIES_WALREIN
+             || currentSpecies == SPECIES_SHINX || currentSpecies == SPECIES_LUXIO || currentSpecies == SPECIES_LUXRAY
+             || currentSpecies == SPECIES_FLETCHLING || currentSpecies == SPECIES_FLETCHINDER || currentSpecies == SPECIES_TALONFLAME
+             || currentSpecies == SPECIES_MAGBY || currentSpecies == SPECIES_MAGMAR || currentSpecies == SPECIES_MAGMORTAR
+             || currentSpecies == SPECIES_ELEKID || currentSpecies == SPECIES_ELECTABUZZ || currentSpecies == SPECIES_ELECTIVIRE
+             || currentSpecies == SPECIES_GOOMY || currentSpecies == SPECIES_SLIGGOO || currentSpecies == SPECIES_GOODRA_HISUI)
             {
                 poolIndexArray[i] = POOL_SLOT_DISABLED;
             }
         } 
         if (starter == SPECIES_MUDKIP)
         {
-            if (currentSpecies == SPECIES_TORCHIC || currentSpecies == SPECIES_COMBUSKEN || currentSpecies == SPECIES_BLAZIKEN
-             || currentSpecies == SPECIES_MUDKIP || currentSpecies == SPECIES_MARSHTOMP || currentSpecies == SPECIES_SWAMPERT
-             || currentSpecies == SPECIES_LARVITAR || currentSpecies == SPECIES_PUPITAR || currentSpecies == SPECIES_TYRANITAR
-             || currentSpecies == SPECIES_SPHEAL || currentSpecies == SPECIES_SEALEO || currentSpecies == SPECIES_WALREIN
-             || currentSpecies == SPECIES_DRATINI || currentSpecies == SPECIES_DRAGONAIR || currentSpecies == SPECIES_DRAGONITE
-             || currentSpecies == SPECIES_RIOLU || currentSpecies == SPECIES_LUCARIO)
+            if (currentSpecies == SPECIES_TREECKO || currentSpecies == SPECIES_GROVYLE || currentSpecies == SPECIES_SCEPTILE
+                || currentSpecies == SPECIES_TORCHIC || currentSpecies == SPECIES_COMBUSKEN || currentSpecies == SPECIES_BLAZIKEN
+                || currentSpecies == SPECIES_NIDORAN_F || currentSpecies == SPECIES_NIDORINA || currentSpecies == SPECIES_NIDOQUEEN
+                || currentSpecies == SPECIES_POLIWAG || currentSpecies == SPECIES_POLIWHIRL || currentSpecies == SPECIES_POLITOED
+                || currentSpecies == SPECIES_ABRA || currentSpecies == SPECIES_KADABRA || currentSpecies == SPECIES_ALAKAZAM
+                || currentSpecies == SPECIES_RHYHORN || currentSpecies == SPECIES_RHYDON || currentSpecies == SPECIES_RHYPERIOR
+                || currentSpecies == SPECIES_DRATINI || currentSpecies == SPECIES_DRAGONAIR || currentSpecies == SPECIES_DRAGONITE
+                || currentSpecies == SPECIES_CHIKORITA || currentSpecies == SPECIES_BAYLEEF || currentSpecies == SPECIES_MEGANIUM
+                || currentSpecies == SPECIES_MAREEP || currentSpecies == SPECIES_FLAAFFY || currentSpecies == SPECIES_AMPHAROS
+                || currentSpecies == SPECIES_SWINUB || currentSpecies == SPECIES_PILOSWINE || currentSpecies == SPECIES_MAMOSWINE
+                || currentSpecies == SPECIES_WHISMUR || currentSpecies == SPECIES_LOUDRED || currentSpecies == SPECIES_EXPLOUD
+                || currentSpecies == SPECIES_BUDEW || currentSpecies == SPECIES_ROSELIA || currentSpecies == SPECIES_ROSERADE
+                || currentSpecies == SPECIES_TRAPINCH || currentSpecies == SPECIES_VIBRAVA || currentSpecies == SPECIES_FLYGON
+                || currentSpecies == SPECIES_DUSKULL || currentSpecies == SPECIES_DUSCLOPS || currentSpecies == SPECIES_DUSKNOIR
+                || currentSpecies == SPECIES_SPHEAL || currentSpecies == SPECIES_SEALEO || currentSpecies == SPECIES_WALREIN
+                || currentSpecies == SPECIES_SHINX || currentSpecies == SPECIES_LUXIO || currentSpecies == SPECIES_LUXRAY
+                || currentSpecies == SPECIES_FLETCHLING || currentSpecies == SPECIES_FLETCHINDER || currentSpecies == SPECIES_TALONFLAME
+                || currentSpecies == SPECIES_MAGBY || currentSpecies == SPECIES_MAGMAR || currentSpecies == SPECIES_MAGMORTAR
+                || currentSpecies == SPECIES_ELEKID || currentSpecies == SPECIES_ELECTABUZZ || currentSpecies == SPECIES_ELECTIVIRE
+                || currentSpecies == SPECIES_GOOMY || currentSpecies == SPECIES_SLIGGOO || currentSpecies == SPECIES_GOODRA_HISUI)
+            {
+                poolIndexArray[i] = POOL_SLOT_DISABLED;
+            }
+        }if (starter == SPECIES_NIDORAN_F)
+        {
+            if (currentSpecies == SPECIES_TREECKO || currentSpecies == SPECIES_GROVYLE || currentSpecies == SPECIES_SCEPTILE
+                || currentSpecies == SPECIES_TORCHIC || currentSpecies == SPECIES_COMBUSKEN || currentSpecies == SPECIES_BLAZIKEN
+                || currentSpecies == SPECIES_MUDKIP || currentSpecies == SPECIES_MARSHTOMP || currentSpecies == SPECIES_SWAMPERT
+                || currentSpecies == SPECIES_POLIWAG || currentSpecies == SPECIES_POLIWHIRL || currentSpecies == SPECIES_POLITOED
+                || currentSpecies == SPECIES_ABRA || currentSpecies == SPECIES_KADABRA || currentSpecies == SPECIES_ALAKAZAM
+                || currentSpecies == SPECIES_RHYHORN || currentSpecies == SPECIES_RHYDON || currentSpecies == SPECIES_RHYPERIOR
+                || currentSpecies == SPECIES_DRATINI || currentSpecies == SPECIES_DRAGONAIR || currentSpecies == SPECIES_DRAGONITE
+                || currentSpecies == SPECIES_CHIKORITA || currentSpecies == SPECIES_BAYLEEF || currentSpecies == SPECIES_MEGANIUM
+                || currentSpecies == SPECIES_MAREEP || currentSpecies == SPECIES_FLAAFFY || currentSpecies == SPECIES_AMPHAROS
+                || currentSpecies == SPECIES_SWINUB || currentSpecies == SPECIES_PILOSWINE || currentSpecies == SPECIES_MAMOSWINE
+                || currentSpecies == SPECIES_WHISMUR || currentSpecies == SPECIES_LOUDRED || currentSpecies == SPECIES_EXPLOUD
+                || currentSpecies == SPECIES_BUDEW || currentSpecies == SPECIES_ROSELIA || currentSpecies == SPECIES_ROSERADE
+                || currentSpecies == SPECIES_TRAPINCH || currentSpecies == SPECIES_VIBRAVA || currentSpecies == SPECIES_FLYGON
+                || currentSpecies == SPECIES_DUSKULL || currentSpecies == SPECIES_DUSCLOPS || currentSpecies == SPECIES_DUSKNOIR
+                || currentSpecies == SPECIES_SPHEAL || currentSpecies == SPECIES_SEALEO || currentSpecies == SPECIES_WALREIN
+                || currentSpecies == SPECIES_SHINX || currentSpecies == SPECIES_LUXIO || currentSpecies == SPECIES_LUXRAY
+                || currentSpecies == SPECIES_FLETCHLING || currentSpecies == SPECIES_FLETCHINDER || currentSpecies == SPECIES_TALONFLAME
+                || currentSpecies == SPECIES_MAGBY || currentSpecies == SPECIES_MAGMAR || currentSpecies == SPECIES_MAGMORTAR
+                || currentSpecies == SPECIES_ELEKID || currentSpecies == SPECIES_ELECTABUZZ || currentSpecies == SPECIES_ELECTIVIRE
+                || currentSpecies == SPECIES_GOOMY || currentSpecies == SPECIES_SLIGGOO || currentSpecies == SPECIES_GOODRA_HISUI)
+            {
+                poolIndexArray[i] = POOL_SLOT_DISABLED;
+            }
+        }if (starter == SPECIES_POLIWAG)
+        {
+            if (currentSpecies == SPECIES_TREECKO || currentSpecies == SPECIES_GROVYLE || currentSpecies == SPECIES_SCEPTILE
+                || currentSpecies == SPECIES_TORCHIC || currentSpecies == SPECIES_COMBUSKEN || currentSpecies == SPECIES_BLAZIKEN
+                || currentSpecies == SPECIES_MUDKIP || currentSpecies == SPECIES_MARSHTOMP || currentSpecies == SPECIES_SWAMPERT
+                || currentSpecies == SPECIES_NIDORAN_F || currentSpecies == SPECIES_NIDORINA || currentSpecies == SPECIES_NIDOQUEEN
+                || currentSpecies == SPECIES_ABRA || currentSpecies == SPECIES_KADABRA || currentSpecies == SPECIES_ALAKAZAM
+                || currentSpecies == SPECIES_RHYHORN || currentSpecies == SPECIES_RHYDON || currentSpecies == SPECIES_RHYPERIOR
+                || currentSpecies == SPECIES_DRATINI || currentSpecies == SPECIES_DRAGONAIR || currentSpecies == SPECIES_DRAGONITE
+                || currentSpecies == SPECIES_CHIKORITA || currentSpecies == SPECIES_BAYLEEF || currentSpecies == SPECIES_MEGANIUM
+                || currentSpecies == SPECIES_MAREEP || currentSpecies == SPECIES_FLAAFFY || currentSpecies == SPECIES_AMPHAROS
+                || currentSpecies == SPECIES_SWINUB || currentSpecies == SPECIES_PILOSWINE || currentSpecies == SPECIES_MAMOSWINE
+                || currentSpecies == SPECIES_WHISMUR || currentSpecies == SPECIES_LOUDRED || currentSpecies == SPECIES_EXPLOUD
+                || currentSpecies == SPECIES_BUDEW || currentSpecies == SPECIES_ROSELIA || currentSpecies == SPECIES_ROSERADE
+                || currentSpecies == SPECIES_TRAPINCH || currentSpecies == SPECIES_VIBRAVA || currentSpecies == SPECIES_FLYGON
+                || currentSpecies == SPECIES_DUSKULL || currentSpecies == SPECIES_DUSCLOPS || currentSpecies == SPECIES_DUSKNOIR
+                || currentSpecies == SPECIES_SPHEAL || currentSpecies == SPECIES_SEALEO || currentSpecies == SPECIES_WALREIN
+                || currentSpecies == SPECIES_SHINX || currentSpecies == SPECIES_LUXIO || currentSpecies == SPECIES_LUXRAY
+                || currentSpecies == SPECIES_FLETCHLING || currentSpecies == SPECIES_FLETCHINDER || currentSpecies == SPECIES_TALONFLAME
+                || currentSpecies == SPECIES_MAGBY || currentSpecies == SPECIES_MAGMAR || currentSpecies == SPECIES_MAGMORTAR
+                || currentSpecies == SPECIES_ELEKID || currentSpecies == SPECIES_ELECTABUZZ || currentSpecies == SPECIES_ELECTIVIRE
+                || currentSpecies == SPECIES_GOOMY || currentSpecies == SPECIES_SLIGGOO || currentSpecies == SPECIES_GOODRA_HISUI)
+            {
+                poolIndexArray[i] = POOL_SLOT_DISABLED;
+            }
+        }if (starter == SPECIES_ABRA)
+        {
+            if (currentSpecies == SPECIES_TREECKO || currentSpecies == SPECIES_GROVYLE || currentSpecies == SPECIES_SCEPTILE
+                || currentSpecies == SPECIES_TORCHIC || currentSpecies == SPECIES_COMBUSKEN || currentSpecies == SPECIES_BLAZIKEN
+                || currentSpecies == SPECIES_MUDKIP || currentSpecies == SPECIES_MARSHTOMP || currentSpecies == SPECIES_SWAMPERT
+                || currentSpecies == SPECIES_NIDORAN_F || currentSpecies == SPECIES_NIDORINA || currentSpecies == SPECIES_NIDOQUEEN
+                || currentSpecies == SPECIES_POLIWAG || currentSpecies == SPECIES_POLIWHIRL || currentSpecies == SPECIES_POLITOED
+                || currentSpecies == SPECIES_RHYHORN || currentSpecies == SPECIES_RHYDON || currentSpecies == SPECIES_RHYPERIOR
+                || currentSpecies == SPECIES_DRATINI || currentSpecies == SPECIES_DRAGONAIR || currentSpecies == SPECIES_DRAGONITE
+                || currentSpecies == SPECIES_CHIKORITA || currentSpecies == SPECIES_BAYLEEF || currentSpecies == SPECIES_MEGANIUM
+                || currentSpecies == SPECIES_MAREEP || currentSpecies == SPECIES_FLAAFFY || currentSpecies == SPECIES_AMPHAROS
+                || currentSpecies == SPECIES_SWINUB || currentSpecies == SPECIES_PILOSWINE || currentSpecies == SPECIES_MAMOSWINE
+                || currentSpecies == SPECIES_WHISMUR || currentSpecies == SPECIES_LOUDRED || currentSpecies == SPECIES_EXPLOUD
+                || currentSpecies == SPECIES_BUDEW || currentSpecies == SPECIES_ROSELIA || currentSpecies == SPECIES_ROSERADE
+                || currentSpecies == SPECIES_TRAPINCH || currentSpecies == SPECIES_VIBRAVA || currentSpecies == SPECIES_FLYGON
+                || currentSpecies == SPECIES_DUSKULL || currentSpecies == SPECIES_DUSCLOPS || currentSpecies == SPECIES_DUSKNOIR
+                || currentSpecies == SPECIES_SPHEAL || currentSpecies == SPECIES_SEALEO || currentSpecies == SPECIES_WALREIN
+                || currentSpecies == SPECIES_SHINX || currentSpecies == SPECIES_LUXIO || currentSpecies == SPECIES_LUXRAY
+                || currentSpecies == SPECIES_FLETCHLING || currentSpecies == SPECIES_FLETCHINDER || currentSpecies == SPECIES_TALONFLAME
+                || currentSpecies == SPECIES_MAGBY || currentSpecies == SPECIES_MAGMAR || currentSpecies == SPECIES_MAGMORTAR
+                || currentSpecies == SPECIES_ELEKID || currentSpecies == SPECIES_ELECTABUZZ || currentSpecies == SPECIES_ELECTIVIRE
+                || currentSpecies == SPECIES_GOOMY || currentSpecies == SPECIES_SLIGGOO || currentSpecies == SPECIES_GOODRA_HISUI)
+            {
+                poolIndexArray[i] = POOL_SLOT_DISABLED;
+            }
+        }if (starter == SPECIES_RHYHORN)
+        {
+            if (currentSpecies == SPECIES_TREECKO || currentSpecies == SPECIES_GROVYLE || currentSpecies == SPECIES_SCEPTILE
+                || currentSpecies == SPECIES_TORCHIC || currentSpecies == SPECIES_COMBUSKEN || currentSpecies == SPECIES_BLAZIKEN
+                || currentSpecies == SPECIES_MUDKIP || currentSpecies == SPECIES_MARSHTOMP || currentSpecies == SPECIES_SWAMPERT
+                || currentSpecies == SPECIES_NIDORAN_F || currentSpecies == SPECIES_NIDORINA || currentSpecies == SPECIES_NIDOQUEEN
+                || currentSpecies == SPECIES_POLIWAG || currentSpecies == SPECIES_POLIWHIRL || currentSpecies == SPECIES_POLITOED
+                || currentSpecies == SPECIES_ABRA || currentSpecies == SPECIES_KADABRA || currentSpecies == SPECIES_ALAKAZAM
+                || currentSpecies == SPECIES_DRATINI || currentSpecies == SPECIES_DRAGONAIR || currentSpecies == SPECIES_DRAGONITE
+                || currentSpecies == SPECIES_CHIKORITA || currentSpecies == SPECIES_BAYLEEF || currentSpecies == SPECIES_MEGANIUM
+                || currentSpecies == SPECIES_MAREEP || currentSpecies == SPECIES_FLAAFFY || currentSpecies == SPECIES_AMPHAROS
+                || currentSpecies == SPECIES_SWINUB || currentSpecies == SPECIES_PILOSWINE || currentSpecies == SPECIES_MAMOSWINE
+                || currentSpecies == SPECIES_WHISMUR || currentSpecies == SPECIES_LOUDRED || currentSpecies == SPECIES_EXPLOUD
+                || currentSpecies == SPECIES_BUDEW || currentSpecies == SPECIES_ROSELIA || currentSpecies == SPECIES_ROSERADE
+                || currentSpecies == SPECIES_TRAPINCH || currentSpecies == SPECIES_VIBRAVA || currentSpecies == SPECIES_FLYGON
+                || currentSpecies == SPECIES_DUSKULL || currentSpecies == SPECIES_DUSCLOPS || currentSpecies == SPECIES_DUSKNOIR
+                || currentSpecies == SPECIES_SPHEAL || currentSpecies == SPECIES_SEALEO || currentSpecies == SPECIES_WALREIN
+                || currentSpecies == SPECIES_SHINX || currentSpecies == SPECIES_LUXIO || currentSpecies == SPECIES_LUXRAY
+                || currentSpecies == SPECIES_FLETCHLING || currentSpecies == SPECIES_FLETCHINDER || currentSpecies == SPECIES_TALONFLAME
+                || currentSpecies == SPECIES_MAGBY || currentSpecies == SPECIES_MAGMAR || currentSpecies == SPECIES_MAGMORTAR
+                || currentSpecies == SPECIES_ELEKID || currentSpecies == SPECIES_ELECTABUZZ || currentSpecies == SPECIES_ELECTIVIRE
+                || currentSpecies == SPECIES_GOOMY || currentSpecies == SPECIES_SLIGGOO || currentSpecies == SPECIES_GOODRA_HISUI)
+            {
+                poolIndexArray[i] = POOL_SLOT_DISABLED;
+            }
+        }if (starter == SPECIES_DRATINI)
+        {
+            if (currentSpecies == SPECIES_TREECKO || currentSpecies == SPECIES_GROVYLE || currentSpecies == SPECIES_SCEPTILE
+                || currentSpecies == SPECIES_TORCHIC || currentSpecies == SPECIES_COMBUSKEN || currentSpecies == SPECIES_BLAZIKEN
+                || currentSpecies == SPECIES_MUDKIP || currentSpecies == SPECIES_MARSHTOMP || currentSpecies == SPECIES_SWAMPERT
+                || currentSpecies == SPECIES_NIDORAN_F || currentSpecies == SPECIES_NIDORINA || currentSpecies == SPECIES_NIDOQUEEN
+                || currentSpecies == SPECIES_POLIWAG || currentSpecies == SPECIES_POLIWHIRL || currentSpecies == SPECIES_POLITOED
+                || currentSpecies == SPECIES_ABRA || currentSpecies == SPECIES_KADABRA || currentSpecies == SPECIES_ALAKAZAM
+                || currentSpecies == SPECIES_RHYHORN || currentSpecies == SPECIES_RHYDON || currentSpecies == SPECIES_RHYPERIOR
+                || currentSpecies == SPECIES_CHIKORITA || currentSpecies == SPECIES_BAYLEEF || currentSpecies == SPECIES_MEGANIUM
+                || currentSpecies == SPECIES_MAREEP || currentSpecies == SPECIES_FLAAFFY || currentSpecies == SPECIES_AMPHAROS
+                || currentSpecies == SPECIES_SWINUB || currentSpecies == SPECIES_PILOSWINE || currentSpecies == SPECIES_MAMOSWINE
+                || currentSpecies == SPECIES_WHISMUR || currentSpecies == SPECIES_LOUDRED || currentSpecies == SPECIES_EXPLOUD
+                || currentSpecies == SPECIES_BUDEW || currentSpecies == SPECIES_ROSELIA || currentSpecies == SPECIES_ROSERADE
+                || currentSpecies == SPECIES_TRAPINCH || currentSpecies == SPECIES_VIBRAVA || currentSpecies == SPECIES_FLYGON
+                || currentSpecies == SPECIES_DUSKULL || currentSpecies == SPECIES_DUSCLOPS || currentSpecies == SPECIES_DUSKNOIR
+                || currentSpecies == SPECIES_SPHEAL || currentSpecies == SPECIES_SEALEO || currentSpecies == SPECIES_WALREIN
+                || currentSpecies == SPECIES_SHINX || currentSpecies == SPECIES_LUXIO || currentSpecies == SPECIES_LUXRAY
+                || currentSpecies == SPECIES_FLETCHLING || currentSpecies == SPECIES_FLETCHINDER || currentSpecies == SPECIES_TALONFLAME
+                || currentSpecies == SPECIES_MAGBY || currentSpecies == SPECIES_MAGMAR || currentSpecies == SPECIES_MAGMORTAR
+                || currentSpecies == SPECIES_ELEKID || currentSpecies == SPECIES_ELECTABUZZ || currentSpecies == SPECIES_ELECTIVIRE
+                || currentSpecies == SPECIES_GOOMY || currentSpecies == SPECIES_SLIGGOO || currentSpecies == SPECIES_GOODRA_HISUI)
+            {
+                poolIndexArray[i] = POOL_SLOT_DISABLED;
+            }
+        }if (starter == SPECIES_CHIKORITA)
+        {
+            if (currentSpecies == SPECIES_TREECKO || currentSpecies == SPECIES_GROVYLE || currentSpecies == SPECIES_SCEPTILE
+                || currentSpecies == SPECIES_TORCHIC || currentSpecies == SPECIES_COMBUSKEN || currentSpecies == SPECIES_BLAZIKEN
+                || currentSpecies == SPECIES_MUDKIP || currentSpecies == SPECIES_MARSHTOMP || currentSpecies == SPECIES_SWAMPERT
+                || currentSpecies == SPECIES_NIDORAN_F || currentSpecies == SPECIES_NIDORINA || currentSpecies == SPECIES_NIDOQUEEN
+                || currentSpecies == SPECIES_POLIWAG || currentSpecies == SPECIES_POLIWHIRL || currentSpecies == SPECIES_POLITOED
+                || currentSpecies == SPECIES_ABRA || currentSpecies == SPECIES_KADABRA || currentSpecies == SPECIES_ALAKAZAM
+                || currentSpecies == SPECIES_RHYHORN || currentSpecies == SPECIES_RHYDON || currentSpecies == SPECIES_RHYPERIOR
+                || currentSpecies == SPECIES_DRATINI || currentSpecies == SPECIES_DRAGONAIR || currentSpecies == SPECIES_DRAGONITE
+                || currentSpecies == SPECIES_MAREEP || currentSpecies == SPECIES_FLAAFFY || currentSpecies == SPECIES_AMPHAROS
+                || currentSpecies == SPECIES_SWINUB || currentSpecies == SPECIES_PILOSWINE || currentSpecies == SPECIES_MAMOSWINE
+                || currentSpecies == SPECIES_WHISMUR || currentSpecies == SPECIES_LOUDRED || currentSpecies == SPECIES_EXPLOUD
+                || currentSpecies == SPECIES_BUDEW || currentSpecies == SPECIES_ROSELIA || currentSpecies == SPECIES_ROSERADE
+                || currentSpecies == SPECIES_TRAPINCH || currentSpecies == SPECIES_VIBRAVA || currentSpecies == SPECIES_FLYGON
+                || currentSpecies == SPECIES_DUSKULL || currentSpecies == SPECIES_DUSCLOPS || currentSpecies == SPECIES_DUSKNOIR
+                || currentSpecies == SPECIES_SPHEAL || currentSpecies == SPECIES_SEALEO || currentSpecies == SPECIES_WALREIN
+                || currentSpecies == SPECIES_SHINX || currentSpecies == SPECIES_LUXIO || currentSpecies == SPECIES_LUXRAY
+                || currentSpecies == SPECIES_FLETCHLING || currentSpecies == SPECIES_FLETCHINDER || currentSpecies == SPECIES_TALONFLAME
+                || currentSpecies == SPECIES_MAGBY || currentSpecies == SPECIES_MAGMAR || currentSpecies == SPECIES_MAGMORTAR
+                || currentSpecies == SPECIES_ELEKID || currentSpecies == SPECIES_ELECTABUZZ || currentSpecies == SPECIES_ELECTIVIRE
+                || currentSpecies == SPECIES_GOOMY || currentSpecies == SPECIES_SLIGGOO || currentSpecies == SPECIES_GOODRA_HISUI)
+            {
+                poolIndexArray[i] = POOL_SLOT_DISABLED;
+            }
+        }if (starter == SPECIES_MAREEP)
+        {
+            if (currentSpecies == SPECIES_TREECKO || currentSpecies == SPECIES_GROVYLE || currentSpecies == SPECIES_SCEPTILE
+                || currentSpecies == SPECIES_TORCHIC || currentSpecies == SPECIES_COMBUSKEN || currentSpecies == SPECIES_BLAZIKEN
+                || currentSpecies == SPECIES_MUDKIP || currentSpecies == SPECIES_MARSHTOMP || currentSpecies == SPECIES_SWAMPERT
+                || currentSpecies == SPECIES_NIDORAN_F || currentSpecies == SPECIES_NIDORINA || currentSpecies == SPECIES_NIDOQUEEN
+                || currentSpecies == SPECIES_POLIWAG || currentSpecies == SPECIES_POLIWHIRL || currentSpecies == SPECIES_POLITOED
+                || currentSpecies == SPECIES_ABRA || currentSpecies == SPECIES_KADABRA || currentSpecies == SPECIES_ALAKAZAM
+                || currentSpecies == SPECIES_RHYHORN || currentSpecies == SPECIES_RHYDON || currentSpecies == SPECIES_RHYPERIOR
+                || currentSpecies == SPECIES_DRATINI || currentSpecies == SPECIES_DRAGONAIR || currentSpecies == SPECIES_DRAGONITE
+                || currentSpecies == SPECIES_CHIKORITA || currentSpecies == SPECIES_BAYLEEF || currentSpecies == SPECIES_MEGANIUM
+                || currentSpecies == SPECIES_SWINUB || currentSpecies == SPECIES_PILOSWINE || currentSpecies == SPECIES_MAMOSWINE
+                || currentSpecies == SPECIES_WHISMUR || currentSpecies == SPECIES_LOUDRED || currentSpecies == SPECIES_EXPLOUD
+                || currentSpecies == SPECIES_BUDEW || currentSpecies == SPECIES_ROSELIA || currentSpecies == SPECIES_ROSERADE
+                || currentSpecies == SPECIES_TRAPINCH || currentSpecies == SPECIES_VIBRAVA || currentSpecies == SPECIES_FLYGON
+                || currentSpecies == SPECIES_DUSKULL || currentSpecies == SPECIES_DUSCLOPS || currentSpecies == SPECIES_DUSKNOIR
+                || currentSpecies == SPECIES_SPHEAL || currentSpecies == SPECIES_SEALEO || currentSpecies == SPECIES_WALREIN
+                || currentSpecies == SPECIES_SHINX || currentSpecies == SPECIES_LUXIO || currentSpecies == SPECIES_LUXRAY
+                || currentSpecies == SPECIES_FLETCHLING || currentSpecies == SPECIES_FLETCHINDER || currentSpecies == SPECIES_TALONFLAME
+                || currentSpecies == SPECIES_MAGBY || currentSpecies == SPECIES_MAGMAR || currentSpecies == SPECIES_MAGMORTAR
+                || currentSpecies == SPECIES_ELEKID || currentSpecies == SPECIES_ELECTABUZZ || currentSpecies == SPECIES_ELECTIVIRE
+                || currentSpecies == SPECIES_GOOMY || currentSpecies == SPECIES_SLIGGOO || currentSpecies == SPECIES_GOODRA_HISUI)
+            {
+                poolIndexArray[i] = POOL_SLOT_DISABLED;
+            }
+        }if (starter == SPECIES_SWINUB)
+        {
+            if (currentSpecies == SPECIES_TREECKO || currentSpecies == SPECIES_GROVYLE || currentSpecies == SPECIES_SCEPTILE
+                || currentSpecies == SPECIES_TORCHIC || currentSpecies == SPECIES_COMBUSKEN || currentSpecies == SPECIES_BLAZIKEN
+                || currentSpecies == SPECIES_MUDKIP || currentSpecies == SPECIES_MARSHTOMP || currentSpecies == SPECIES_SWAMPERT
+                || currentSpecies == SPECIES_NIDORAN_F || currentSpecies == SPECIES_NIDORINA || currentSpecies == SPECIES_NIDOQUEEN
+                || currentSpecies == SPECIES_POLIWAG || currentSpecies == SPECIES_POLIWHIRL || currentSpecies == SPECIES_POLITOED
+                || currentSpecies == SPECIES_ABRA || currentSpecies == SPECIES_KADABRA || currentSpecies == SPECIES_ALAKAZAM
+                || currentSpecies == SPECIES_RHYHORN || currentSpecies == SPECIES_RHYDON || currentSpecies == SPECIES_RHYPERIOR
+                || currentSpecies == SPECIES_DRATINI || currentSpecies == SPECIES_DRAGONAIR || currentSpecies == SPECIES_DRAGONITE
+                || currentSpecies == SPECIES_CHIKORITA || currentSpecies == SPECIES_BAYLEEF || currentSpecies == SPECIES_MEGANIUM
+                || currentSpecies == SPECIES_MAREEP || currentSpecies == SPECIES_FLAAFFY || currentSpecies == SPECIES_AMPHAROS
+                || currentSpecies == SPECIES_WHISMUR || currentSpecies == SPECIES_LOUDRED || currentSpecies == SPECIES_EXPLOUD
+                || currentSpecies == SPECIES_BUDEW || currentSpecies == SPECIES_ROSELIA || currentSpecies == SPECIES_ROSERADE
+                || currentSpecies == SPECIES_TRAPINCH || currentSpecies == SPECIES_VIBRAVA || currentSpecies == SPECIES_FLYGON
+                || currentSpecies == SPECIES_DUSKULL || currentSpecies == SPECIES_DUSCLOPS || currentSpecies == SPECIES_DUSKNOIR
+                || currentSpecies == SPECIES_SPHEAL || currentSpecies == SPECIES_SEALEO || currentSpecies == SPECIES_WALREIN
+                || currentSpecies == SPECIES_SHINX || currentSpecies == SPECIES_LUXIO || currentSpecies == SPECIES_LUXRAY
+                || currentSpecies == SPECIES_FLETCHLING || currentSpecies == SPECIES_FLETCHINDER || currentSpecies == SPECIES_TALONFLAME
+                || currentSpecies == SPECIES_MAGBY || currentSpecies == SPECIES_MAGMAR || currentSpecies == SPECIES_MAGMORTAR
+                || currentSpecies == SPECIES_ELEKID || currentSpecies == SPECIES_ELECTABUZZ || currentSpecies == SPECIES_ELECTIVIRE
+                || currentSpecies == SPECIES_GOOMY || currentSpecies == SPECIES_SLIGGOO || currentSpecies == SPECIES_GOODRA_HISUI)
+            {
+                poolIndexArray[i] = POOL_SLOT_DISABLED;
+            }
+        }if (starter == SPECIES_WHISMUR)
+        {
+            if (currentSpecies == SPECIES_TREECKO || currentSpecies == SPECIES_GROVYLE || currentSpecies == SPECIES_SCEPTILE
+                || currentSpecies == SPECIES_TORCHIC || currentSpecies == SPECIES_COMBUSKEN || currentSpecies == SPECIES_BLAZIKEN
+                || currentSpecies == SPECIES_MUDKIP || currentSpecies == SPECIES_MARSHTOMP || currentSpecies == SPECIES_SWAMPERT
+                || currentSpecies == SPECIES_NIDORAN_F || currentSpecies == SPECIES_NIDORINA || currentSpecies == SPECIES_NIDOQUEEN
+                || currentSpecies == SPECIES_POLIWAG || currentSpecies == SPECIES_POLIWHIRL || currentSpecies == SPECIES_POLITOED
+                || currentSpecies == SPECIES_ABRA || currentSpecies == SPECIES_KADABRA || currentSpecies == SPECIES_ALAKAZAM
+                || currentSpecies == SPECIES_RHYHORN || currentSpecies == SPECIES_RHYDON || currentSpecies == SPECIES_RHYPERIOR
+                || currentSpecies == SPECIES_DRATINI || currentSpecies == SPECIES_DRAGONAIR || currentSpecies == SPECIES_DRAGONITE
+                || currentSpecies == SPECIES_CHIKORITA || currentSpecies == SPECIES_BAYLEEF || currentSpecies == SPECIES_MEGANIUM
+                || currentSpecies == SPECIES_MAREEP || currentSpecies == SPECIES_FLAAFFY || currentSpecies == SPECIES_AMPHAROS
+                || currentSpecies == SPECIES_SWINUB || currentSpecies == SPECIES_PILOSWINE || currentSpecies == SPECIES_MAMOSWINE
+                || currentSpecies == SPECIES_BUDEW || currentSpecies == SPECIES_ROSELIA || currentSpecies == SPECIES_ROSERADE
+                || currentSpecies == SPECIES_TRAPINCH || currentSpecies == SPECIES_VIBRAVA || currentSpecies == SPECIES_FLYGON
+                || currentSpecies == SPECIES_DUSKULL || currentSpecies == SPECIES_DUSCLOPS || currentSpecies == SPECIES_DUSKNOIR
+                || currentSpecies == SPECIES_SPHEAL || currentSpecies == SPECIES_SEALEO || currentSpecies == SPECIES_WALREIN
+                || currentSpecies == SPECIES_SHINX || currentSpecies == SPECIES_LUXIO || currentSpecies == SPECIES_LUXRAY
+                || currentSpecies == SPECIES_FLETCHLING || currentSpecies == SPECIES_FLETCHINDER || currentSpecies == SPECIES_TALONFLAME
+                || currentSpecies == SPECIES_MAGBY || currentSpecies == SPECIES_MAGMAR || currentSpecies == SPECIES_MAGMORTAR
+                || currentSpecies == SPECIES_ELEKID || currentSpecies == SPECIES_ELECTABUZZ || currentSpecies == SPECIES_ELECTIVIRE
+                || currentSpecies == SPECIES_GOOMY || currentSpecies == SPECIES_SLIGGOO || currentSpecies == SPECIES_GOODRA_HISUI)
+            {
+                poolIndexArray[i] = POOL_SLOT_DISABLED;
+            }
+        }if (starter == SPECIES_BUDEW)
+        {
+            if (currentSpecies == SPECIES_TREECKO || currentSpecies == SPECIES_GROVYLE || currentSpecies == SPECIES_SCEPTILE
+                || currentSpecies == SPECIES_TORCHIC || currentSpecies == SPECIES_COMBUSKEN || currentSpecies == SPECIES_BLAZIKEN
+                || currentSpecies == SPECIES_MUDKIP || currentSpecies == SPECIES_MARSHTOMP || currentSpecies == SPECIES_SWAMPERT
+                || currentSpecies == SPECIES_NIDORAN_F || currentSpecies == SPECIES_NIDORINA || currentSpecies == SPECIES_NIDOQUEEN
+                || currentSpecies == SPECIES_POLIWAG || currentSpecies == SPECIES_POLIWHIRL || currentSpecies == SPECIES_POLITOED
+                || currentSpecies == SPECIES_ABRA || currentSpecies == SPECIES_KADABRA || currentSpecies == SPECIES_ALAKAZAM
+                || currentSpecies == SPECIES_RHYHORN || currentSpecies == SPECIES_RHYDON || currentSpecies == SPECIES_RHYPERIOR
+                || currentSpecies == SPECIES_DRATINI || currentSpecies == SPECIES_DRAGONAIR || currentSpecies == SPECIES_DRAGONITE
+                || currentSpecies == SPECIES_CHIKORITA || currentSpecies == SPECIES_BAYLEEF || currentSpecies == SPECIES_MEGANIUM
+                || currentSpecies == SPECIES_MAREEP || currentSpecies == SPECIES_FLAAFFY || currentSpecies == SPECIES_AMPHAROS
+                || currentSpecies == SPECIES_SWINUB || currentSpecies == SPECIES_PILOSWINE || currentSpecies == SPECIES_MAMOSWINE
+                || currentSpecies == SPECIES_WHISMUR || currentSpecies == SPECIES_LOUDRED || currentSpecies == SPECIES_EXPLOUD
+                || currentSpecies == SPECIES_TRAPINCH || currentSpecies == SPECIES_VIBRAVA || currentSpecies == SPECIES_FLYGON
+                || currentSpecies == SPECIES_DUSKULL || currentSpecies == SPECIES_DUSCLOPS || currentSpecies == SPECIES_DUSKNOIR
+                || currentSpecies == SPECIES_SPHEAL || currentSpecies == SPECIES_SEALEO || currentSpecies == SPECIES_WALREIN
+                || currentSpecies == SPECIES_SHINX || currentSpecies == SPECIES_LUXIO || currentSpecies == SPECIES_LUXRAY
+                || currentSpecies == SPECIES_FLETCHLING || currentSpecies == SPECIES_FLETCHINDER || currentSpecies == SPECIES_TALONFLAME
+                || currentSpecies == SPECIES_MAGBY || currentSpecies == SPECIES_MAGMAR || currentSpecies == SPECIES_MAGMORTAR
+                || currentSpecies == SPECIES_ELEKID || currentSpecies == SPECIES_ELECTABUZZ || currentSpecies == SPECIES_ELECTIVIRE
+                || currentSpecies == SPECIES_GOOMY || currentSpecies == SPECIES_SLIGGOO || currentSpecies == SPECIES_GOODRA_HISUI)
+            {
+                poolIndexArray[i] = POOL_SLOT_DISABLED;
+            }
+        }if (starter == SPECIES_TRAPINCH)
+        {
+            if (currentSpecies == SPECIES_TREECKO || currentSpecies == SPECIES_GROVYLE || currentSpecies == SPECIES_SCEPTILE
+                || currentSpecies == SPECIES_TORCHIC || currentSpecies == SPECIES_COMBUSKEN || currentSpecies == SPECIES_BLAZIKEN
+                || currentSpecies == SPECIES_MUDKIP || currentSpecies == SPECIES_MARSHTOMP || currentSpecies == SPECIES_SWAMPERT
+                || currentSpecies == SPECIES_NIDORAN_F || currentSpecies == SPECIES_NIDORINA || currentSpecies == SPECIES_NIDOQUEEN
+                || currentSpecies == SPECIES_POLIWAG || currentSpecies == SPECIES_POLIWHIRL || currentSpecies == SPECIES_POLITOED
+                || currentSpecies == SPECIES_ABRA || currentSpecies == SPECIES_KADABRA || currentSpecies == SPECIES_ALAKAZAM
+                || currentSpecies == SPECIES_RHYHORN || currentSpecies == SPECIES_RHYDON || currentSpecies == SPECIES_RHYPERIOR
+                || currentSpecies == SPECIES_DRATINI || currentSpecies == SPECIES_DRAGONAIR || currentSpecies == SPECIES_DRAGONITE
+                || currentSpecies == SPECIES_CHIKORITA || currentSpecies == SPECIES_BAYLEEF || currentSpecies == SPECIES_MEGANIUM
+                || currentSpecies == SPECIES_MAREEP || currentSpecies == SPECIES_FLAAFFY || currentSpecies == SPECIES_AMPHAROS
+                || currentSpecies == SPECIES_SWINUB || currentSpecies == SPECIES_PILOSWINE || currentSpecies == SPECIES_MAMOSWINE
+                || currentSpecies == SPECIES_WHISMUR || currentSpecies == SPECIES_LOUDRED || currentSpecies == SPECIES_EXPLOUD
+                || currentSpecies == SPECIES_BUDEW || currentSpecies == SPECIES_ROSELIA || currentSpecies == SPECIES_ROSERADE
+                || currentSpecies == SPECIES_DUSKULL || currentSpecies == SPECIES_DUSCLOPS || currentSpecies == SPECIES_DUSKNOIR
+                || currentSpecies == SPECIES_SPHEAL || currentSpecies == SPECIES_SEALEO || currentSpecies == SPECIES_WALREIN
+                || currentSpecies == SPECIES_SHINX || currentSpecies == SPECIES_LUXIO || currentSpecies == SPECIES_LUXRAY
+                || currentSpecies == SPECIES_FLETCHLING || currentSpecies == SPECIES_FLETCHINDER || currentSpecies == SPECIES_TALONFLAME
+                || currentSpecies == SPECIES_MAGBY || currentSpecies == SPECIES_MAGMAR || currentSpecies == SPECIES_MAGMORTAR
+                || currentSpecies == SPECIES_ELEKID || currentSpecies == SPECIES_ELECTABUZZ || currentSpecies == SPECIES_ELECTIVIRE
+                || currentSpecies == SPECIES_GOOMY || currentSpecies == SPECIES_SLIGGOO || currentSpecies == SPECIES_GOODRA_HISUI)
+            {
+                poolIndexArray[i] = POOL_SLOT_DISABLED;
+            }
+        }if (starter == SPECIES_DUSKULL)
+        {
+            if (currentSpecies == SPECIES_TREECKO || currentSpecies == SPECIES_GROVYLE || currentSpecies == SPECIES_SCEPTILE
+                || currentSpecies == SPECIES_TORCHIC || currentSpecies == SPECIES_COMBUSKEN || currentSpecies == SPECIES_BLAZIKEN
+                || currentSpecies == SPECIES_MUDKIP || currentSpecies == SPECIES_MARSHTOMP || currentSpecies == SPECIES_SWAMPERT
+                || currentSpecies == SPECIES_NIDORAN_F || currentSpecies == SPECIES_NIDORINA || currentSpecies == SPECIES_NIDOQUEEN
+                || currentSpecies == SPECIES_POLIWAG || currentSpecies == SPECIES_POLIWHIRL || currentSpecies == SPECIES_POLITOED
+                || currentSpecies == SPECIES_ABRA || currentSpecies == SPECIES_KADABRA || currentSpecies == SPECIES_ALAKAZAM
+                || currentSpecies == SPECIES_RHYHORN || currentSpecies == SPECIES_RHYDON || currentSpecies == SPECIES_RHYPERIOR
+                || currentSpecies == SPECIES_DRATINI || currentSpecies == SPECIES_DRAGONAIR || currentSpecies == SPECIES_DRAGONITE
+                || currentSpecies == SPECIES_CHIKORITA || currentSpecies == SPECIES_BAYLEEF || currentSpecies == SPECIES_MEGANIUM
+                || currentSpecies == SPECIES_MAREEP || currentSpecies == SPECIES_FLAAFFY || currentSpecies == SPECIES_AMPHAROS
+                || currentSpecies == SPECIES_SWINUB || currentSpecies == SPECIES_PILOSWINE || currentSpecies == SPECIES_MAMOSWINE
+                || currentSpecies == SPECIES_WHISMUR || currentSpecies == SPECIES_LOUDRED || currentSpecies == SPECIES_EXPLOUD
+                || currentSpecies == SPECIES_BUDEW || currentSpecies == SPECIES_ROSELIA || currentSpecies == SPECIES_ROSERADE
+                || currentSpecies == SPECIES_TRAPINCH || currentSpecies == SPECIES_VIBRAVA || currentSpecies == SPECIES_FLYGON
+                || currentSpecies == SPECIES_SPHEAL || currentSpecies == SPECIES_SEALEO || currentSpecies == SPECIES_WALREIN
+                || currentSpecies == SPECIES_SHINX || currentSpecies == SPECIES_LUXIO || currentSpecies == SPECIES_LUXRAY
+                || currentSpecies == SPECIES_FLETCHLING || currentSpecies == SPECIES_FLETCHINDER || currentSpecies == SPECIES_TALONFLAME
+                || currentSpecies == SPECIES_MAGBY || currentSpecies == SPECIES_MAGMAR || currentSpecies == SPECIES_MAGMORTAR
+                || currentSpecies == SPECIES_ELEKID || currentSpecies == SPECIES_ELECTABUZZ || currentSpecies == SPECIES_ELECTIVIRE
+                || currentSpecies == SPECIES_GOOMY || currentSpecies == SPECIES_SLIGGOO || currentSpecies == SPECIES_GOODRA_HISUI)
+            {
+                poolIndexArray[i] = POOL_SLOT_DISABLED;
+            }
+        }if (starter == SPECIES_SPHEAL)
+        {
+            if (currentSpecies == SPECIES_TREECKO || currentSpecies == SPECIES_GROVYLE || currentSpecies == SPECIES_SCEPTILE
+                || currentSpecies == SPECIES_TORCHIC || currentSpecies == SPECIES_COMBUSKEN || currentSpecies == SPECIES_BLAZIKEN
+                || currentSpecies == SPECIES_MUDKIP || currentSpecies == SPECIES_MARSHTOMP || currentSpecies == SPECIES_SWAMPERT
+                || currentSpecies == SPECIES_NIDORAN_F || currentSpecies == SPECIES_NIDORINA || currentSpecies == SPECIES_NIDOQUEEN
+                || currentSpecies == SPECIES_POLIWAG || currentSpecies == SPECIES_POLIWHIRL || currentSpecies == SPECIES_POLITOED
+                || currentSpecies == SPECIES_ABRA || currentSpecies == SPECIES_KADABRA || currentSpecies == SPECIES_ALAKAZAM
+                || currentSpecies == SPECIES_RHYHORN || currentSpecies == SPECIES_RHYDON || currentSpecies == SPECIES_RHYPERIOR
+                || currentSpecies == SPECIES_DRATINI || currentSpecies == SPECIES_DRAGONAIR || currentSpecies == SPECIES_DRAGONITE
+                || currentSpecies == SPECIES_CHIKORITA || currentSpecies == SPECIES_BAYLEEF || currentSpecies == SPECIES_MEGANIUM
+                || currentSpecies == SPECIES_MAREEP || currentSpecies == SPECIES_FLAAFFY || currentSpecies == SPECIES_AMPHAROS
+                || currentSpecies == SPECIES_SWINUB || currentSpecies == SPECIES_PILOSWINE || currentSpecies == SPECIES_MAMOSWINE
+                || currentSpecies == SPECIES_WHISMUR || currentSpecies == SPECIES_LOUDRED || currentSpecies == SPECIES_EXPLOUD
+                || currentSpecies == SPECIES_BUDEW || currentSpecies == SPECIES_ROSELIA || currentSpecies == SPECIES_ROSERADE
+                || currentSpecies == SPECIES_TRAPINCH || currentSpecies == SPECIES_VIBRAVA || currentSpecies == SPECIES_FLYGON
+                || currentSpecies == SPECIES_DUSKULL || currentSpecies == SPECIES_DUSCLOPS || currentSpecies == SPECIES_DUSKNOIR
+                || currentSpecies == SPECIES_SHINX || currentSpecies == SPECIES_LUXIO || currentSpecies == SPECIES_LUXRAY
+                || currentSpecies == SPECIES_FLETCHLING || currentSpecies == SPECIES_FLETCHINDER || currentSpecies == SPECIES_TALONFLAME
+                || currentSpecies == SPECIES_MAGBY || currentSpecies == SPECIES_MAGMAR || currentSpecies == SPECIES_MAGMORTAR
+                || currentSpecies == SPECIES_ELEKID || currentSpecies == SPECIES_ELECTABUZZ || currentSpecies == SPECIES_ELECTIVIRE
+                || currentSpecies == SPECIES_GOOMY || currentSpecies == SPECIES_SLIGGOO || currentSpecies == SPECIES_GOODRA_HISUI)
+            {
+                poolIndexArray[i] = POOL_SLOT_DISABLED;
+            }
+        }if (starter == SPECIES_SHINX)
+        {
+            if (currentSpecies == SPECIES_TREECKO || currentSpecies == SPECIES_GROVYLE || currentSpecies == SPECIES_SCEPTILE
+                || currentSpecies == SPECIES_TORCHIC || currentSpecies == SPECIES_COMBUSKEN || currentSpecies == SPECIES_BLAZIKEN
+                || currentSpecies == SPECIES_MUDKIP || currentSpecies == SPECIES_MARSHTOMP || currentSpecies == SPECIES_SWAMPERT
+                || currentSpecies == SPECIES_NIDORAN_F || currentSpecies == SPECIES_NIDORINA || currentSpecies == SPECIES_NIDOQUEEN
+                || currentSpecies == SPECIES_POLIWAG || currentSpecies == SPECIES_POLIWHIRL || currentSpecies == SPECIES_POLITOED
+                || currentSpecies == SPECIES_ABRA || currentSpecies == SPECIES_KADABRA || currentSpecies == SPECIES_ALAKAZAM
+                || currentSpecies == SPECIES_RHYHORN || currentSpecies == SPECIES_RHYDON || currentSpecies == SPECIES_RHYPERIOR
+                || currentSpecies == SPECIES_DRATINI || currentSpecies == SPECIES_DRAGONAIR || currentSpecies == SPECIES_DRAGONITE
+                || currentSpecies == SPECIES_CHIKORITA || currentSpecies == SPECIES_BAYLEEF || currentSpecies == SPECIES_MEGANIUM
+                || currentSpecies == SPECIES_MAREEP || currentSpecies == SPECIES_FLAAFFY || currentSpecies == SPECIES_AMPHAROS
+                || currentSpecies == SPECIES_SWINUB || currentSpecies == SPECIES_PILOSWINE || currentSpecies == SPECIES_MAMOSWINE
+                || currentSpecies == SPECIES_WHISMUR || currentSpecies == SPECIES_LOUDRED || currentSpecies == SPECIES_EXPLOUD
+                || currentSpecies == SPECIES_BUDEW || currentSpecies == SPECIES_ROSELIA || currentSpecies == SPECIES_ROSERADE
+                || currentSpecies == SPECIES_TRAPINCH || currentSpecies == SPECIES_VIBRAVA || currentSpecies == SPECIES_FLYGON
+                || currentSpecies == SPECIES_DUSKULL || currentSpecies == SPECIES_DUSCLOPS || currentSpecies == SPECIES_DUSKNOIR
+                || currentSpecies == SPECIES_SPHEAL || currentSpecies == SPECIES_SEALEO || currentSpecies == SPECIES_WALREIN
+                || currentSpecies == SPECIES_FLETCHLING || currentSpecies == SPECIES_FLETCHINDER || currentSpecies == SPECIES_TALONFLAME
+                || currentSpecies == SPECIES_MAGBY || currentSpecies == SPECIES_MAGMAR || currentSpecies == SPECIES_MAGMORTAR
+                || currentSpecies == SPECIES_ELEKID || currentSpecies == SPECIES_ELECTABUZZ || currentSpecies == SPECIES_ELECTIVIRE
+                || currentSpecies == SPECIES_GOOMY || currentSpecies == SPECIES_SLIGGOO || currentSpecies == SPECIES_GOODRA_HISUI)
+            {
+                poolIndexArray[i] = POOL_SLOT_DISABLED;
+            }
+        }if (starter == SPECIES_FLETCHLING)
+        {
+            if (currentSpecies == SPECIES_TREECKO || currentSpecies == SPECIES_GROVYLE || currentSpecies == SPECIES_SCEPTILE
+                || currentSpecies == SPECIES_TORCHIC || currentSpecies == SPECIES_COMBUSKEN || currentSpecies == SPECIES_BLAZIKEN
+                || currentSpecies == SPECIES_MUDKIP || currentSpecies == SPECIES_MARSHTOMP || currentSpecies == SPECIES_SWAMPERT
+                || currentSpecies == SPECIES_NIDORAN_F || currentSpecies == SPECIES_NIDORINA || currentSpecies == SPECIES_NIDOQUEEN
+                || currentSpecies == SPECIES_POLIWAG || currentSpecies == SPECIES_POLIWHIRL || currentSpecies == SPECIES_POLITOED
+                || currentSpecies == SPECIES_ABRA || currentSpecies == SPECIES_KADABRA || currentSpecies == SPECIES_ALAKAZAM
+                || currentSpecies == SPECIES_RHYHORN || currentSpecies == SPECIES_RHYDON || currentSpecies == SPECIES_RHYPERIOR
+                || currentSpecies == SPECIES_DRATINI || currentSpecies == SPECIES_DRAGONAIR || currentSpecies == SPECIES_DRAGONITE
+                || currentSpecies == SPECIES_CHIKORITA || currentSpecies == SPECIES_BAYLEEF || currentSpecies == SPECIES_MEGANIUM
+                || currentSpecies == SPECIES_MAREEP || currentSpecies == SPECIES_FLAAFFY || currentSpecies == SPECIES_AMPHAROS
+                || currentSpecies == SPECIES_SWINUB || currentSpecies == SPECIES_PILOSWINE || currentSpecies == SPECIES_MAMOSWINE
+                || currentSpecies == SPECIES_WHISMUR || currentSpecies == SPECIES_LOUDRED || currentSpecies == SPECIES_EXPLOUD
+                || currentSpecies == SPECIES_BUDEW || currentSpecies == SPECIES_ROSELIA || currentSpecies == SPECIES_ROSERADE
+                || currentSpecies == SPECIES_TRAPINCH || currentSpecies == SPECIES_VIBRAVA || currentSpecies == SPECIES_FLYGON
+                || currentSpecies == SPECIES_DUSKULL || currentSpecies == SPECIES_DUSCLOPS || currentSpecies == SPECIES_DUSKNOIR
+                || currentSpecies == SPECIES_SPHEAL || currentSpecies == SPECIES_SEALEO || currentSpecies == SPECIES_WALREIN
+                || currentSpecies == SPECIES_SHINX || currentSpecies == SPECIES_LUXIO || currentSpecies == SPECIES_LUXRAY
+                || currentSpecies == SPECIES_MAGBY || currentSpecies == SPECIES_MAGMAR || currentSpecies == SPECIES_MAGMORTAR
+                || currentSpecies == SPECIES_ELEKID || currentSpecies == SPECIES_ELECTABUZZ || currentSpecies == SPECIES_ELECTIVIRE
+                || currentSpecies == SPECIES_GOOMY || currentSpecies == SPECIES_SLIGGOO || currentSpecies == SPECIES_GOODRA_HISUI)
+            {
+                poolIndexArray[i] = POOL_SLOT_DISABLED;
+            }
+        }if (starter == SPECIES_MAGBY)
+        {
+            if (currentSpecies == SPECIES_TREECKO || currentSpecies == SPECIES_GROVYLE || currentSpecies == SPECIES_SCEPTILE
+                || currentSpecies == SPECIES_TORCHIC || currentSpecies == SPECIES_COMBUSKEN || currentSpecies == SPECIES_BLAZIKEN
+                || currentSpecies == SPECIES_MUDKIP || currentSpecies == SPECIES_MARSHTOMP || currentSpecies == SPECIES_SWAMPERT
+                || currentSpecies == SPECIES_NIDORAN_F || currentSpecies == SPECIES_NIDORINA || currentSpecies == SPECIES_NIDOQUEEN
+                || currentSpecies == SPECIES_POLIWAG || currentSpecies == SPECIES_POLIWHIRL || currentSpecies == SPECIES_POLITOED
+                || currentSpecies == SPECIES_ABRA || currentSpecies == SPECIES_KADABRA || currentSpecies == SPECIES_ALAKAZAM
+                || currentSpecies == SPECIES_RHYHORN || currentSpecies == SPECIES_RHYDON || currentSpecies == SPECIES_RHYPERIOR
+                || currentSpecies == SPECIES_DRATINI || currentSpecies == SPECIES_DRAGONAIR || currentSpecies == SPECIES_DRAGONITE
+                || currentSpecies == SPECIES_CHIKORITA || currentSpecies == SPECIES_BAYLEEF || currentSpecies == SPECIES_MEGANIUM
+                || currentSpecies == SPECIES_MAREEP || currentSpecies == SPECIES_FLAAFFY || currentSpecies == SPECIES_AMPHAROS
+                || currentSpecies == SPECIES_SWINUB || currentSpecies == SPECIES_PILOSWINE || currentSpecies == SPECIES_MAMOSWINE
+                || currentSpecies == SPECIES_WHISMUR || currentSpecies == SPECIES_LOUDRED || currentSpecies == SPECIES_EXPLOUD
+                || currentSpecies == SPECIES_BUDEW || currentSpecies == SPECIES_ROSELIA || currentSpecies == SPECIES_ROSERADE
+                || currentSpecies == SPECIES_TRAPINCH || currentSpecies == SPECIES_VIBRAVA || currentSpecies == SPECIES_FLYGON
+                || currentSpecies == SPECIES_DUSKULL || currentSpecies == SPECIES_DUSCLOPS || currentSpecies == SPECIES_DUSKNOIR
+                || currentSpecies == SPECIES_SPHEAL || currentSpecies == SPECIES_SEALEO || currentSpecies == SPECIES_WALREIN
+                || currentSpecies == SPECIES_SHINX || currentSpecies == SPECIES_LUXIO || currentSpecies == SPECIES_LUXRAY
+                || currentSpecies == SPECIES_FLETCHLING || currentSpecies == SPECIES_FLETCHINDER || currentSpecies == SPECIES_TALONFLAME
+                || currentSpecies == SPECIES_ELEKID || currentSpecies == SPECIES_ELECTABUZZ || currentSpecies == SPECIES_ELECTIVIRE
+                || currentSpecies == SPECIES_GOOMY || currentSpecies == SPECIES_SLIGGOO || currentSpecies == SPECIES_GOODRA_HISUI)
+            {
+                poolIndexArray[i] = POOL_SLOT_DISABLED;
+            }
+        }if (starter == SPECIES_ELEKID)
+        {
+            if (currentSpecies == SPECIES_TREECKO || currentSpecies == SPECIES_GROVYLE || currentSpecies == SPECIES_SCEPTILE
+                || currentSpecies == SPECIES_TORCHIC || currentSpecies == SPECIES_COMBUSKEN || currentSpecies == SPECIES_BLAZIKEN
+                || currentSpecies == SPECIES_MUDKIP || currentSpecies == SPECIES_MARSHTOMP || currentSpecies == SPECIES_SWAMPERT
+                || currentSpecies == SPECIES_NIDORAN_F || currentSpecies == SPECIES_NIDORINA || currentSpecies == SPECIES_NIDOQUEEN
+                || currentSpecies == SPECIES_POLIWAG || currentSpecies == SPECIES_POLIWHIRL || currentSpecies == SPECIES_POLITOED
+                || currentSpecies == SPECIES_ABRA || currentSpecies == SPECIES_KADABRA || currentSpecies == SPECIES_ALAKAZAM
+                || currentSpecies == SPECIES_RHYHORN || currentSpecies == SPECIES_RHYDON || currentSpecies == SPECIES_RHYPERIOR
+                || currentSpecies == SPECIES_DRATINI || currentSpecies == SPECIES_DRAGONAIR || currentSpecies == SPECIES_DRAGONITE
+                || currentSpecies == SPECIES_CHIKORITA || currentSpecies == SPECIES_BAYLEEF || currentSpecies == SPECIES_MEGANIUM
+                || currentSpecies == SPECIES_MAREEP || currentSpecies == SPECIES_FLAAFFY || currentSpecies == SPECIES_AMPHAROS
+                || currentSpecies == SPECIES_SWINUB || currentSpecies == SPECIES_PILOSWINE || currentSpecies == SPECIES_MAMOSWINE
+                || currentSpecies == SPECIES_WHISMUR || currentSpecies == SPECIES_LOUDRED || currentSpecies == SPECIES_EXPLOUD
+                || currentSpecies == SPECIES_BUDEW || currentSpecies == SPECIES_ROSELIA || currentSpecies == SPECIES_ROSERADE
+                || currentSpecies == SPECIES_TRAPINCH || currentSpecies == SPECIES_VIBRAVA || currentSpecies == SPECIES_FLYGON
+                || currentSpecies == SPECIES_DUSKULL || currentSpecies == SPECIES_DUSCLOPS || currentSpecies == SPECIES_DUSKNOIR
+                || currentSpecies == SPECIES_SPHEAL || currentSpecies == SPECIES_SEALEO || currentSpecies == SPECIES_WALREIN
+                || currentSpecies == SPECIES_SHINX || currentSpecies == SPECIES_LUXIO || currentSpecies == SPECIES_LUXRAY
+                || currentSpecies == SPECIES_FLETCHLING || currentSpecies == SPECIES_FLETCHINDER || currentSpecies == SPECIES_TALONFLAME
+                || currentSpecies == SPECIES_MAGBY || currentSpecies == SPECIES_MAGMAR || currentSpecies == SPECIES_MAGMORTAR
+                || currentSpecies == SPECIES_GOOMY || currentSpecies == SPECIES_SLIGGOO || currentSpecies == SPECIES_GOODRA_HISUI)
+            {
+                poolIndexArray[i] = POOL_SLOT_DISABLED;
+            }
+        }if (starter == SPECIES_GOOMY)
+        {
+            if (currentSpecies == SPECIES_TREECKO || currentSpecies == SPECIES_GROVYLE || currentSpecies == SPECIES_SCEPTILE
+                || currentSpecies == SPECIES_TORCHIC || currentSpecies == SPECIES_COMBUSKEN || currentSpecies == SPECIES_BLAZIKEN
+                || currentSpecies == SPECIES_MUDKIP || currentSpecies == SPECIES_MARSHTOMP || currentSpecies == SPECIES_SWAMPERT
+                || currentSpecies == SPECIES_NIDORAN_F || currentSpecies == SPECIES_NIDORINA || currentSpecies == SPECIES_NIDOQUEEN
+                || currentSpecies == SPECIES_POLIWAG || currentSpecies == SPECIES_POLIWHIRL || currentSpecies == SPECIES_POLITOED
+                || currentSpecies == SPECIES_ABRA || currentSpecies == SPECIES_KADABRA || currentSpecies == SPECIES_ALAKAZAM
+                || currentSpecies == SPECIES_RHYHORN || currentSpecies == SPECIES_RHYDON || currentSpecies == SPECIES_RHYPERIOR
+                || currentSpecies == SPECIES_DRATINI || currentSpecies == SPECIES_DRAGONAIR || currentSpecies == SPECIES_DRAGONITE
+                || currentSpecies == SPECIES_CHIKORITA || currentSpecies == SPECIES_BAYLEEF || currentSpecies == SPECIES_MEGANIUM
+                || currentSpecies == SPECIES_MAREEP || currentSpecies == SPECIES_FLAAFFY || currentSpecies == SPECIES_AMPHAROS
+                || currentSpecies == SPECIES_SWINUB || currentSpecies == SPECIES_PILOSWINE || currentSpecies == SPECIES_MAMOSWINE
+                || currentSpecies == SPECIES_WHISMUR || currentSpecies == SPECIES_LOUDRED || currentSpecies == SPECIES_EXPLOUD
+                || currentSpecies == SPECIES_BUDEW || currentSpecies == SPECIES_ROSELIA || currentSpecies == SPECIES_ROSERADE
+                || currentSpecies == SPECIES_TRAPINCH || currentSpecies == SPECIES_VIBRAVA || currentSpecies == SPECIES_FLYGON
+                || currentSpecies == SPECIES_DUSKULL || currentSpecies == SPECIES_DUSCLOPS || currentSpecies == SPECIES_DUSKNOIR
+                || currentSpecies == SPECIES_SPHEAL || currentSpecies == SPECIES_SEALEO || currentSpecies == SPECIES_WALREIN
+                || currentSpecies == SPECIES_SHINX || currentSpecies == SPECIES_LUXIO || currentSpecies == SPECIES_LUXRAY
+                || currentSpecies == SPECIES_FLETCHLING || currentSpecies == SPECIES_FLETCHINDER || currentSpecies == SPECIES_TALONFLAME
+                || currentSpecies == SPECIES_MAGBY || currentSpecies == SPECIES_MAGMAR || currentSpecies == SPECIES_MAGMORTAR
+                || currentSpecies == SPECIES_ELEKID || currentSpecies == SPECIES_ELECTABUZZ || currentSpecies == SPECIES_ELECTIVIRE)
             {
                 poolIndexArray[i] = POOL_SLOT_DISABLED;
             }

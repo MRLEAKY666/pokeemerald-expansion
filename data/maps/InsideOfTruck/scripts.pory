@@ -162,6 +162,7 @@ script InsideOfTruck_EventScript_Starterball{
 			msgbox("No More Room")
 		}
 		setflag(FLAG_SYS_POKEMON_GET)
+		call(GenerateRivalStarter)
 	}
 	else{
 		msgbox(InsideOfTruck_NotChosen)
@@ -191,21 +192,21 @@ script GenerateStarter{
 	if(var(VAR_RESULT) == TRUE){
 		random(3)
 		if(var(VAR_RESULT) == 0){
-			setvar(VAR_STARTER_MON, SPECIES_TREECKO)
+			setvar(VAR_STARTER_MON, SPECIES_TORCHIC)
 			setvar(VAR_0x8004, 0)
 		}
 		if(var(VAR_RESULT) == 1){
-			setvar(VAR_STARTER_MON, SPECIES_TORCHIC)
+			setvar(VAR_STARTER_MON, SPECIES_MUDKIP)
 			setvar(VAR_0x8004, 1)
 		}
 		if(var(VAR_RESULT) == 2){
-			setvar(VAR_STARTER_MON, SPECIES_MUDKIP)
+			setvar(VAR_STARTER_MON, SPECIES_TREECKO)
 			setvar(VAR_0x8004, 2)
 		}
 
 	}
 	if(var(VAR_RESULT) == FALSE){
-		random(32)
+		random(24)
 		if(var(VAR_RESULT) == 0){
 			setvar(VAR_STARTER_MON, SPECIES_PIPLUP)
 			setvar(VAR_0x8004, 2)
@@ -227,113 +228,495 @@ script GenerateStarter{
 			setvar(VAR_0x8004, 0)
 		}
 		if(var(VAR_RESULT) == 5){
-			setvar(VAR_STARTER_MON, SPECIES_ZORUA_HISUI)
-			setvar(VAR_0x8004, 0)
-		}
-		if(var(VAR_RESULT) == 6){
-			setvar(VAR_STARTER_MON, SPECIES_ZORUA)
-			setvar(VAR_0x8004, 0)
-		}
-		if(var(VAR_RESULT) == 7){
 			setvar(VAR_STARTER_MON, SPECIES_GOTHITA)
 			setvar(VAR_0x8004, 1)
 		}
-		if(var(VAR_RESULT) == 8){
+		if(var(VAR_RESULT) == 6){
 			setvar(VAR_STARTER_MON, SPECIES_SOLOSIS)
 			setvar(VAR_0x8004, 1)
 		}
-		if(var(VAR_RESULT) == 9){
+		if(var(VAR_RESULT) == 7){
 			setvar(VAR_STARTER_MON, SPECIES_AXEW)
 			setvar(VAR_0x8004, 2)
 		}
-		if(var(VAR_RESULT) == 10){
-			setvar(VAR_STARTER_MON, SPECIES_LARVESTA)
-			setvar(VAR_0x8004, 1)
-		}
-		if(var(VAR_RESULT) == 11){
+		if(var(VAR_RESULT) == 8){
 			setvar(VAR_STARTER_MON, SPECIES_GOOMY)
 			setvar(VAR_0x8004, 2)
 		}
-		if(var(VAR_RESULT) == 12){
+		if(var(VAR_RESULT) == 9){
 			setvar(VAR_STARTER_MON, SPECIES_ROWLET)
 			setvar(VAR_0x8004, 0)
 		}
-		if(var(VAR_RESULT) == 13){
+		if(var(VAR_RESULT) == 10){
 			setvar(VAR_STARTER_MON, SPECIES_APPLIN)
 			setvar(VAR_0x8004, 0)
 		}
-		if(var(VAR_RESULT) == 14){
-			setvar(VAR_STARTER_MON, SPECIES_MIME_JR)
-			setvar(VAR_0x8004, 1)
-		}
-		if(var(VAR_RESULT) == 15){
+		if(var(VAR_RESULT) == 11){
 			setvar(VAR_STARTER_MON, SPECIES_MAGBY)
 			setvar(VAR_0x8004, 1)
 		}
-		if(var(VAR_RESULT) == 16){
+		if(var(VAR_RESULT) == 12){
 			setvar(VAR_STARTER_MON, SPECIES_ELEKID)
 			setvar(VAR_0x8004, 1)
 		}
-		if(var(VAR_RESULT) == 17){
-			setvar(VAR_STARTER_MON, SPECIES_MANKEY)
+		if(var(VAR_RESULT) == 13){
+			setvar(VAR_STARTER_MON, SPECIES_SWINUB)
 			setvar(VAR_0x8004, 0)
 		}
-		if(var(VAR_RESULT) == 18){
-			setvar(VAR_STARTER_MON, SPECIES_SWINUB)
-			setvar(VAR_0x8004, 2)
-		}
-		if(var(VAR_RESULT) == 19){
+		if(var(VAR_RESULT) == 14){
 			setvar(VAR_STARTER_MON, SPECIES_LARVITAR)
 			setvar(VAR_0x8004, 0)
 		}
-		if(var(VAR_RESULT) == 20){
+		if(var(VAR_RESULT) == 15){
 			setvar(VAR_STARTER_MON, SPECIES_TURTWIG)
 			setvar(VAR_0x8004, 0)
 		}
-		if(var(VAR_RESULT) == 21){
+		if(var(VAR_RESULT) == 16){
 			setvar(VAR_STARTER_MON, SPECIES_CHARMANDER)
 			setvar(VAR_0x8004, 1)
 		}
-		if(var(VAR_RESULT) == 22){
-			setvar(VAR_STARTER_MON, SPECIES_SQUIRTLE)
+		if(var(VAR_RESULT) == 17){
+			setvar(VAR_STARTER_MON, SPECIES_BULBASAUR)
 			setvar(VAR_0x8004, 2)
 		}
-		if(var(VAR_RESULT) == 23){
-			setvar(VAR_STARTER_MON, SPECIES_BULBASAUR)
+		if(var(VAR_RESULT) == 18){
+			setvar(VAR_STARTER_MON, SPECIES_SQUIRTLE)
 			setvar(VAR_0x8004, 0)
 		}
-		if(var(VAR_RESULT) == 24){
+		if(var(VAR_RESULT) == 19){
 			setvar(VAR_STARTER_MON, SPECIES_OSHAWOTT)
 			setvar(VAR_0x8004, 2)
 		}
-		if(var(VAR_RESULT) == 25){
+		if(var(VAR_RESULT) == 20){
 			setvar(VAR_STARTER_MON, SPECIES_CYNDAQUIL)
 			setvar(VAR_0x8004, 1)
 		}
-		if(var(VAR_RESULT) == 26){
+		if(var(VAR_RESULT) == 21){
 			setvar(VAR_STARTER_MON, SPECIES_BUDEW)
 			setvar(VAR_0x8004, 0)
 		}
-		if(var(VAR_RESULT) == 27){
+		if(var(VAR_RESULT) == 22){
 			setvar(VAR_STARTER_MON, SPECIES_SPHEAL)
 			setvar(VAR_0x8004, 0)
 		}
-		if(var(VAR_RESULT) == 28){
+		if(var(VAR_RESULT) == 23){
 			setvar(VAR_STARTER_MON, SPECIES_SHINX)
 			setvar(VAR_0x8004, 1)
 		}
-		if(var(VAR_RESULT) == 29){
-			setvar(VAR_STARTER_MON, SPECIES_SANDILE)
-		}
-		if(var(VAR_RESULT) == 30){
-			setvar(VAR_STARTER_MON, SPECIES_PAWNIARD)
-			setvar(VAR_0x8004, 0)
-		}
-		if(var(VAR_RESULT) == 31){
-			setvar(VAR_STARTER_MON, SPECIES_CASTFORM)
-			setvar(VAR_0x8004, 0)
-		}
 	}
+}
+
+script GenerateRivalStarter{
+	random(5)
+	copyvar(VAR_TEMP_A, VAR_RESULT)
+	switch (var(VAR_STARTER_MON)) {
+        case SPECIES_TORCHIC: 
+			random(5)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setvar(VAR_RIVAL_STARTER, SPECIES_MUDKIP)
+				case 1:
+					setvar(VAR_RIVAL_STARTER, SPECIES_ABRA)
+				case 2:
+					setvar(VAR_RIVAL_STARTER, SPECIES_DRATINI)
+				case 3:
+					setvar(VAR_RIVAL_STARTER, SPECIES_TRAPINCH)
+				case 4:
+					setvar(VAR_RIVAL_STARTER, SPECIES_FLETCHLING)
+			}
+		
+        case SPECIES_MUDKIP: 
+			random(5)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setvar(VAR_RIVAL_STARTER, SPECIES_TREECKO)
+				case 1:
+					setvar(VAR_RIVAL_STARTER, SPECIES_POLIWAG)
+				case 2:
+					setvar(VAR_RIVAL_STARTER, SPECIES_DRATINI)
+				case 3:
+					setvar(VAR_RIVAL_STARTER, SPECIES_CHIKORITA)
+				case 4:
+					setvar(VAR_RIVAL_STARTER, SPECIES_BUDEW)
+			}
+		
+        case SPECIES_TREECKO: 
+			random(5)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setvar(VAR_RIVAL_STARTER, SPECIES_TORCHIC)
+				case 1:
+					setvar(VAR_RIVAL_STARTER, SPECIES_WHISMUR)
+				case 2:
+					setvar(VAR_RIVAL_STARTER, SPECIES_BUDEW)
+				case 3:
+					setvar(VAR_RIVAL_STARTER, SPECIES_FLETCHLING)
+				case 4:
+					setvar(VAR_RIVAL_STARTER, SPECIES_GOOMY)
+			}
+		
+        case SPECIES_PIPLUP: 
+			random(5)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setvar(VAR_RIVAL_STARTER, SPECIES_TREECKO)
+				case 1:
+					setvar(VAR_RIVAL_STARTER, SPECIES_POLIWAG)
+				case 2:
+					setvar(VAR_RIVAL_STARTER, SPECIES_MAREEP)
+				case 3:
+					setvar(VAR_RIVAL_STARTER, SPECIES_SHINX)
+				case 4:
+					setvar(VAR_RIVAL_STARTER, SPECIES_ELEKID)
+			}
+		
+        case SPECIES_EEVEE: 
+			random(5)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setvar(VAR_RIVAL_STARTER, SPECIES_TORCHIC)
+				case 1:
+					setvar(VAR_RIVAL_STARTER, SPECIES_DRATINI)
+				case 2:
+					setvar(VAR_RIVAL_STARTER, SPECIES_WHISMUR)
+				case 3:
+					setvar(VAR_RIVAL_STARTER, SPECIES_DUSKULL)
+				case 4:
+					setvar(VAR_RIVAL_STARTER, SPECIES_GOOMY)
+			}
+		
+        case SPECIES_PICHU: 
+			random(5)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setvar(VAR_RIVAL_STARTER, SPECIES_MUDKIP)
+				case 1:
+					setvar(VAR_RIVAL_STARTER, SPECIES_RHYHORN)
+				case 2:
+					setvar(VAR_RIVAL_STARTER, SPECIES_SWINUB)
+				case 3:
+					setvar(VAR_RIVAL_STARTER, SPECIES_WHISMUR)
+				case 4:
+					setvar(VAR_RIVAL_STARTER, SPECIES_TRAPINCH)
+			}
+		
+        case SPECIES_TOGEPI: 
+			random(5)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setvar(VAR_RIVAL_STARTER, SPECIES_TORCHIC)
+				case 1:
+					setvar(VAR_RIVAL_STARTER, SPECIES_RHYHORN)
+				case 2:
+					setvar(VAR_RIVAL_STARTER, SPECIES_MAREEP)
+				case 3:
+					setvar(VAR_RIVAL_STARTER, SPECIES_SWINUB)
+				case 4:
+					setvar(VAR_RIVAL_STARTER, SPECIES_TRAPINCH)
+			}
+		
+        case SPECIES_SNIVY: 
+			random(5)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setvar(VAR_RIVAL_STARTER, SPECIES_TORCHIC)
+				case 1:
+					setvar(VAR_RIVAL_STARTER, SPECIES_DRATINI)
+				case 2:
+					setvar(VAR_RIVAL_STARTER, SPECIES_BUDEW)
+				case 3:
+					setvar(VAR_RIVAL_STARTER, SPECIES_FLETCHLING)
+				case 4:
+					setvar(VAR_RIVAL_STARTER, SPECIES_MAGBY)
+			}
+		
+        case SPECIES_GOTHITA: 
+			random(5)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setvar(VAR_RIVAL_STARTER, SPECIES_RHYHORN)
+				case 1:
+					setvar(VAR_RIVAL_STARTER, SPECIES_DRATINI)
+				case 2:
+					setvar(VAR_RIVAL_STARTER, SPECIES_WHISMUR)
+				case 3:
+					setvar(VAR_RIVAL_STARTER, SPECIES_DUSKULL)
+				case 4:
+					setvar(VAR_RIVAL_STARTER, SPECIES_GOOMY)
+			}
+		
+        case SPECIES_SOLOSIS: 
+			random(5)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setvar(VAR_RIVAL_STARTER, SPECIES_RHYHORN)
+				case 1:
+					setvar(VAR_RIVAL_STARTER, SPECIES_DRATINI)
+				case 2:
+					setvar(VAR_RIVAL_STARTER, SPECIES_WHISMUR)
+				case 3:
+					setvar(VAR_RIVAL_STARTER, SPECIES_DUSKULL)
+				case 4:
+					setvar(VAR_RIVAL_STARTER, SPECIES_GOOMY)
+			}
+		
+        case SPECIES_AXEW: 
+			random(5)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setvar(VAR_RIVAL_STARTER, SPECIES_NIDORAN_F)
+				case 1:
+					setvar(VAR_RIVAL_STARTER, SPECIES_SWINUB)
+				case 2:
+					setvar(VAR_RIVAL_STARTER, SPECIES_DUSKULL)
+				case 3:
+					setvar(VAR_RIVAL_STARTER, SPECIES_SPHEAL)
+				case 4:
+					setvar(VAR_RIVAL_STARTER, SPECIES_GOOMY)
+			}
+		
+        case SPECIES_GOOMY: 
+			random(5)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setvar(VAR_RIVAL_STARTER, SPECIES_MUDKIP)
+				case 1:
+					setvar(VAR_RIVAL_STARTER, SPECIES_RHYHORN)
+				case 2:
+					setvar(VAR_RIVAL_STARTER, SPECIES_SWINUB)
+				case 3:
+					setvar(VAR_RIVAL_STARTER, SPECIES_TRAPINCH)
+				case 4:
+					setvar(VAR_RIVAL_STARTER, SPECIES_SPHEAL)
+			}
+		
+        case SPECIES_ROWLET: 
+			random(5)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setvar(VAR_RIVAL_STARTER, SPECIES_TORCHIC)
+				case 1:
+					setvar(VAR_RIVAL_STARTER, SPECIES_NIDORAN_F)
+				case 2:
+					setvar(VAR_RIVAL_STARTER, SPECIES_ABRA)
+				case 3:
+					setvar(VAR_RIVAL_STARTER, SPECIES_RHYHORN)
+				case 4:
+					setvar(VAR_RIVAL_STARTER, SPECIES_DUSKULL)
+			}
+		
+        case SPECIES_APPLIN: 
+			random(5)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setvar(VAR_RIVAL_STARTER, SPECIES_TORCHIC)
+				case 1:
+					setvar(VAR_RIVAL_STARTER, SPECIES_NIDORAN_F)
+				case 2:
+					setvar(VAR_RIVAL_STARTER, SPECIES_DRATINI)
+				case 3:
+					setvar(VAR_RIVAL_STARTER, SPECIES_SWINUB)
+				case 4:
+					setvar(VAR_RIVAL_STARTER, SPECIES_FLETCHLING)
+			}
+		
+        case SPECIES_MAGBY: 
+			random(5)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setvar(VAR_RIVAL_STARTER, SPECIES_MUDKIP)
+				case 1:
+					setvar(VAR_RIVAL_STARTER, SPECIES_POLIWAG)
+				case 2:
+					setvar(VAR_RIVAL_STARTER, SPECIES_RHYHORN)
+				case 3:
+					setvar(VAR_RIVAL_STARTER, SPECIES_WHISMUR)
+				case 4:
+					setvar(VAR_RIVAL_STARTER, SPECIES_ELEKID)
+			}
+		
+        case SPECIES_ELEKID: 
+			random(5)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setvar(VAR_RIVAL_STARTER, SPECIES_NIDORAN_F)
+				case 1:
+					setvar(VAR_RIVAL_STARTER, SPECIES_RHYHORN)
+				case 2:
+					setvar(VAR_RIVAL_STARTER, SPECIES_SWINUB)
+				case 3:
+					setvar(VAR_RIVAL_STARTER, SPECIES_TRAPINCH)
+				case 4:
+					setvar(VAR_RIVAL_STARTER, SPECIES_MAGBY)
+			}
+		
+        case SPECIES_SWINUB: 
+			random(5)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setvar(VAR_RIVAL_STARTER, SPECIES_TORCHIC)
+				case 1:
+					setvar(VAR_RIVAL_STARTER, SPECIES_MUDKIP)
+				case 2:
+					setvar(VAR_RIVAL_STARTER, SPECIES_WHISMUR)
+				case 3:
+					setvar(VAR_RIVAL_STARTER, SPECIES_DUSKULL)
+				case 4:
+					setvar(VAR_RIVAL_STARTER, SPECIES_SPHEAL)
+			}
+		
+        case SPECIES_LARVITAR: 
+			random(5)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setvar(VAR_RIVAL_STARTER, SPECIES_MUDKIP)
+				case 1:
+					setvar(VAR_RIVAL_STARTER, SPECIES_POLIWAG)
+				case 2:
+					setvar(VAR_RIVAL_STARTER, SPECIES_TRAPINCH)
+				case 3:
+					setvar(VAR_RIVAL_STARTER, SPECIES_SPHEAL)
+				case 4:
+					setvar(VAR_RIVAL_STARTER, SPECIES_GOOMY)
+			}
+		
+        case SPECIES_TURTWIG: 
+			random(5)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setvar(VAR_RIVAL_STARTER, SPECIES_TORCHIC)
+				case 1:
+					setvar(VAR_RIVAL_STARTER, SPECIES_BUDEW)
+				case 2:
+					setvar(VAR_RIVAL_STARTER, SPECIES_FLETCHLING)
+				case 3:
+					setvar(VAR_RIVAL_STARTER, SPECIES_MAGBY)
+				case 4:
+					setvar(VAR_RIVAL_STARTER, SPECIES_GOOMY)
+			}
+		
+        case SPECIES_CHARMANDER: 
+			random(5)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setvar(VAR_RIVAL_STARTER, SPECIES_MUDKIP)
+				case 1:
+					setvar(VAR_RIVAL_STARTER, SPECIES_POLIWAG)
+				case 2:
+					setvar(VAR_RIVAL_STARTER, SPECIES_RHYHORN)
+				case 3:
+					setvar(VAR_RIVAL_STARTER, SPECIES_TRAPINCH)
+				case 4:
+					setvar(VAR_RIVAL_STARTER, SPECIES_SPHEAL)
+			}
+		
+        case SPECIES_BULBASAUR: 
+			random(5)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setvar(VAR_RIVAL_STARTER, SPECIES_TORCHIC)
+				case 1:
+					setvar(VAR_RIVAL_STARTER, SPECIES_NIDORAN_F)
+				case 2:
+					setvar(VAR_RIVAL_STARTER, SPECIES_DRATINI)
+				case 3:
+					setvar(VAR_RIVAL_STARTER, SPECIES_SWINUB)
+				case 4:
+					setvar(VAR_RIVAL_STARTER, SPECIES_FLETCHLING)
+			}
+		
+        case SPECIES_SQUIRTLE: 
+			random(5)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setvar(VAR_RIVAL_STARTER, SPECIES_TREECKO)
+				case 1:
+					setvar(VAR_RIVAL_STARTER, SPECIES_CHIKORITA)
+				case 2:
+					setvar(VAR_RIVAL_STARTER, SPECIES_MAREEP)
+				case 3:
+					setvar(VAR_RIVAL_STARTER, SPECIES_BUDEW)
+				case 4:
+					setvar(VAR_RIVAL_STARTER, SPECIES_SHINX)
+			}
+		
+        case SPECIES_OSHAWOTT: 
+			random(5)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setvar(VAR_RIVAL_STARTER, SPECIES_TREECKO)
+				case 1:
+					setvar(VAR_RIVAL_STARTER, SPECIES_CHIKORITA)
+				case 2:
+					setvar(VAR_RIVAL_STARTER, SPECIES_MAREEP)
+				case 3:
+					setvar(VAR_RIVAL_STARTER, SPECIES_BUDEW)
+				case 4:
+					setvar(VAR_RIVAL_STARTER, SPECIES_ELEKID)
+			}
+		
+        case SPECIES_CYNDAQUIL: 
+			random(5)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setvar(VAR_RIVAL_STARTER, SPECIES_MUDKIP)
+				case 1:
+					setvar(VAR_RIVAL_STARTER, SPECIES_POLIWAG)
+				case 2:
+					setvar(VAR_RIVAL_STARTER, SPECIES_RHYHORN)
+				case 3:
+					setvar(VAR_RIVAL_STARTER, SPECIES_WHISMUR)
+				case 4:
+					setvar(VAR_RIVAL_STARTER, SPECIES_TRAPINCH)
+			}
+		
+        case SPECIES_BUDEW: 
+			random(5)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setvar(VAR_RIVAL_STARTER, SPECIES_TORCHIC)
+				case 1:
+					setvar(VAR_RIVAL_STARTER, SPECIES_NIDORAN_F)
+				case 2:
+					setvar(VAR_RIVAL_STARTER, SPECIES_DRATINI)
+				case 3:
+					setvar(VAR_RIVAL_STARTER, SPECIES_SWINUB)
+				case 4:
+					setvar(VAR_RIVAL_STARTER, SPECIES_FLETCHLING)
+			}
+		
+        case SPECIES_SPHEAL: 
+			random(5)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setvar(VAR_RIVAL_STARTER, SPECIES_TREECKO)
+				case 1:
+					setvar(VAR_RIVAL_STARTER, SPECIES_POLIWAG)
+				case 2:
+					setvar(VAR_RIVAL_STARTER, SPECIES_WHISMUR)
+				case 3:
+					setvar(VAR_RIVAL_STARTER, SPECIES_SHINX)
+				case 4:
+					setvar(VAR_RIVAL_STARTER, SPECIES_ELEKID)
+			}
+		
+        case SPECIES_SHINX: 
+			random(5)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setvar(VAR_RIVAL_STARTER, SPECIES_RHYHORN)
+				case 1:
+					setvar(VAR_RIVAL_STARTER, SPECIES_CHIKORITA)
+				case 2:
+					setvar(VAR_RIVAL_STARTER, SPECIES_SWINUB)
+				case 3:
+					setvar(VAR_RIVAL_STARTER, SPECIES_BUDEW)
+				case 4:
+					setvar(VAR_RIVAL_STARTER, SPECIES_TRAPINCH)
+			}
+		
+    }
+
 }
 
 text InsideOfTruck_NotChosen{
