@@ -1139,6 +1139,7 @@ static bool32 NoTargetPresent(u8 battler, u32 move)
 //enhanced by wiz1989
 bool32 CastformTriggerWeatherChange(u32 battler, u32 ability, u32 move)
 {
+    ability = gBattleMons[battler].ability;
     //only execute if battler is a CASTFORM and ability FORECAST is active
     if (IsCastform(battler) && ability == ABILITY_FORECAST)
     {
@@ -1246,7 +1247,8 @@ static void Cmd_attackcanceler(void)
     if (CastformTriggerWeatherChange(gBattlerAttacker, gBattlerAbility, gCurrentMove))
     {
         //this function sets the weather and brings up the battle strings
-        if (AbilityBattleEffects(ABILITYEFFECT_SWITCH_IN_WEATHER, gBattlerAttacker, gBattlerAbility, 0, 0))
+        /* DoSoftReset(); */
+        if (AbilityBattleEffects(ABILITYEFFECT_SWITCH_IN_WEATHER, gBattlerAttacker, gBattleMons[gBattlerAttacker].ability, 0, 0))
             return;
     }
     //enhancement end
