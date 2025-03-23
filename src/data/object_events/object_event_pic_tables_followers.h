@@ -2737,7 +2737,7 @@ static const struct SpriteFrameImage sPicTable_CastformSnowy[] = {
     overworld_ascending_frames(gObjectEventPic_CastformSnowy, 4, 4),
 };
 static const struct SpriteFrameImage sPicTable_CastformSandstorm[] = {
-    overworld_ascending_frames(gObjectEventPic_CastformSnowy, 4, 4),
+    overworld_ascending_frames(gObjectEventPic_CastformSandstorm, 4, 4),
 };
 #endif //P_FAMILY_CASTFORM
 

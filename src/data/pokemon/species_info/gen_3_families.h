@@ -9367,7 +9367,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .palette = gMonPalette_CastformSandstorm,
         .shinyPalette = gMonShinyPalette_CastformSandstorm,
         .iconSprite = gMonIcon_CastformSandstorm,
-        .iconPalIndex = 0,
+        .iconPalIndex = 1,
         FOOTPRINT(Castform)
         OVERWORLD(
             sPicTable_CastformSandstorm,
