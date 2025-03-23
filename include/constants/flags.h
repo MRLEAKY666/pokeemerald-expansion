@@ -519,7 +519,7 @@
 #define FLAG_START_LUGIA_QUEST                    0x1DE // PREVIOUSLY Unused Flag
 #define FLAG_HIDE_NAVEL_ROCK_WALLACE                    0x1DF // Unused Flag
 #define FLAG_HIDE_NAVEL_ROCK_OAK                    0x1E0 // Unused Flag
-#define FLAG_UNUSED_0x1E1                    0x1E1 // Unused Flag
+#define FLAG_HIDE_GRANITE_COVE_BRAWLY                    0x1E1 // previously Unused Flag
 #define FLAG_UNUSED_0x1E2                    0x1E2 // Unused Flag
 #define FLAG_UNUSED_0x1E3                    0x1E3 // Unused Flag
 
@@ -1506,7 +1506,7 @@
 
 #define FLAG_RECEIVED_POKEDEX_FROM_BIRCH            (SYSTEM_FLAGS + 0x84)
 
-#define FLAG_UNUSED_0x8E5                           (SYSTEM_FLAGS + 0x85) // Unused Flag
+#define FLAG_DEWFORD_GYM_SIGN                           (SYSTEM_FLAGS + 0x85) // previously Unused Flag
 #define FLAG_UNUSED_0x8E6                           (SYSTEM_FLAGS + 0x86) // Unused Flag
 #define FLAG_UNUSED_0x8E7                           (SYSTEM_FLAGS + 0x87) // Unused Flag
 #define FLAG_UNUSED_0x8E8                           (SYSTEM_FLAGS + 0x88) // Unused Flag

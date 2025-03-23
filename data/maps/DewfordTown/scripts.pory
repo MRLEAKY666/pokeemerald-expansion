@@ -13,10 +13,25 @@ raw `
 
 DewfordTown_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, DewfordTown_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, DewfordTown_OnLoad
 	.byte 0
 
 DewfordTown_OnTransition:
 	setflag FLAG_VISITED_DEWFORD_TOWN
+	end
+
+DewfordTown_OnLoad:
+	setflag FLAG_DEWFORD_GYM_SIGN
+	call_if_eq VAR_BRAWLY_LOCATION, 0, DewfordTown_EventScript_LockGymDoors
+	end
+
+DewfordTown_EventScript_LockGymDoors::
+	setmetatile 8, 17, METATILE_Dewford_Door_Gym_Locked, TRUE
+	clearflag FLAG_DEWFORD_GYM_SIGN
+	return
+
+DewfordTown_EventScript_GymLockedSign::
+	msgbox DewfordTown_Text_DewfordGymLocked, MSGBOX_SIGN
 	end
 
 DewfordTown_EventScript_Briney::
@@ -804,4 +819,10 @@ DewfordTown_Text_YeahDefinitionOfInRightNow:
 	.string "Yeah, absolutely right!\p"
 	.string "“{STR_VAR_1}” is the\n"
 	.string "definition of “in” right now.$"
+
+DewfordTown_Text_DewfordGymLocked:
+	.string "I left to do some training on the West\n"
+	.string "side of the island. Come back later.\l"
+	.string "-BRAWLY$"
+
 `
