@@ -17666,6 +17666,7 @@ static const u16 sCastformTeachableLearnset[] = {
     MOVE_SWAGGER,
     MOVE_SWIFT,
     MOVE_THUNDER_WAVE,
+    MOVE_MORNING_SUN,
     MOVE_UNAVAILABLE,
 };
 #endif //P_FAMILY_CASTFORM
