@@ -821,8 +821,9 @@ DewfordTown_Text_YeahDefinitionOfInRightNow:
 	.string "definition of “in” right now.$"
 
 DewfordTown_Text_DewfordGymLocked:
+	.string "There's a note on the door…\p"
 	.string "I left to do some training on the West\n"
 	.string "side of the island. Come back later.\l"
-	.string "-BRAWLY$"
+	.string "- BRAWLY$"
 
 `

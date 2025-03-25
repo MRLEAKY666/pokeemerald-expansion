@@ -81,8 +81,8 @@ static const u16 sCrc16Table[] =
 
 const u8 gMiscBlank_Gfx[] = INCBIN_U8("graphics/interface/blank.4bpp");
 
-#define HUE_SHIFT_RANGE_NORMAL  40
-#define HUE_SHITFT_RANGE_SHINY  30
+#define HUE_SHIFT_RANGE_NORMAL  50
+#define HUE_SHITFT_RANGE_SHINY  50
 
 #define NORMAL_HUE_NEGATIVE_SHINY_HUE_POSITIVE     -1
 #define NORMAL_HUE_BOTH_WAYS_SHINY_HUE_BOTH_WAYS    0

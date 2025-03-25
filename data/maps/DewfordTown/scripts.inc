@@ -1645,8 +1645,10 @@ DewfordTown_Text_YeahDefinitionOfInRightNow:
 # 823 "data//maps/DewfordTown/scripts.pory"
 DewfordTown_Text_DewfordGymLocked:
 # 824 "data//maps/DewfordTown/scripts.pory"
-	.string "I left to do some training on the West\n"
+	.string "There's a note on the door…\p"
 # 825 "data//maps/DewfordTown/scripts.pory"
-	.string "side of the island. Come back later.\l"
+	.string "I left to do some training on the West\n"
 # 826 "data//maps/DewfordTown/scripts.pory"
-	.string "-BRAWLY$"
+	.string "side of the island. Come back later.\l"
+# 827 "data//maps/DewfordTown/scripts.pory"
+	.string "- BRAWLY$"

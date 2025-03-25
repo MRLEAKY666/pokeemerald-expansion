@@ -2644,10 +2644,10 @@ static void Task_OnSelectedMon(u8 taskId)
             {
                 sStorage->state = 3;
             }
-            else if (sStorage->displayMonIsEgg)
+            /* else if (sStorage->displayMonIsEgg)
             {
                 sStorage->state = 5; // Cannot release an Egg.
-            }
+            } */
             else if (ItemIsMail(sStorage->displayMonItemId))
             {
                 sStorage->state = 4;
@@ -6740,7 +6740,7 @@ static void LoadSavedMovingMon(void)
         if (sMovingMonOrigBoxId == TOTAL_BOXES_COUNT)
             sStorage->movingMon = sSavedMovingMon;
         else
-            sStorage->movingMon.box = sSavedMovingMon.box;
+            sStorage->movingMon = sSavedMovingMon;
     }
 }
 
@@ -6979,6 +6979,9 @@ static void SetDisplayMonData(void *pokemon, u8 mode)
             sStorage->displayMonPalette = GetMonSpritePalFromSpeciesAndPersonality(sStorage->displayMonSpecies, isShiny, sStorage->displayMonPersonality);
             gender = GetGenderFromSpeciesAndPersonality(sStorage->displayMonSpecies, sStorage->displayMonPersonality);
             sStorage->displayMonItemId = GetBoxMonData(boxMon, MON_DATA_HELD_ITEM);
+
+            struct Pokemon *mon = (struct Pokemon *)pokemon;
+            CopyMon(&sCurrentBoxPokemon, &mon->box, sizeof(sCurrentBoxPokemon));
         }
     }
     else
@@ -10067,6 +10070,9 @@ void UpdateSpeciesSpritePSS(struct BoxPokemon *boxMon)
     u16 species = GetBoxMonData(boxMon, MON_DATA_SPECIES);
     bool8 isShiny = GetBoxMonData(boxMon, MON_DATA_IS_SHINY);
     u32 pid = GetBoxMonData(boxMon, MON_DATA_PERSONALITY);
+
+    /* u8 pos = GetCursorPosition();
+    struct Pokemon *mon = (struct Pokemon *)boxMon; */
 
     // Update front sprite
     sStorage->displayMonSpecies = species;
