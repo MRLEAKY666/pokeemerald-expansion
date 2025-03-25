@@ -3983,6 +3983,7 @@ static void LoadDisplayMonGfx(u16 species, u32 pid)
         CpuCopy32(sStorage->tileBuffer, sStorage->displayMonTilePtr, MON_PIC_SIZE);
         LoadPalette(sStorage->displayMonPalBuffer, sStorage->displayMonPalOffset, PLTT_SIZE_4BPP);
         UniquePalette(sStorage->displayMonPalOffset, &sCurrentBoxPokemon);
+        CpuCopy32(&gPlttBufferFaded[sStorage->displayMonPalOffset], &gPlttBufferUnfaded[sStorage->displayMonPalOffset], PLTT_SIZE_4BPP);
         sStorage->displayMonSprite->invisible = FALSE;
     }
     else
@@ -6740,7 +6741,7 @@ static void LoadSavedMovingMon(void)
         if (sMovingMonOrigBoxId == TOTAL_BOXES_COUNT)
             sStorage->movingMon = sSavedMovingMon;
         else
-            sStorage->movingMon = sSavedMovingMon;
+            sStorage->movingMon.box = sSavedMovingMon.box;
     }
 }
 
