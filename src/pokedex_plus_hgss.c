@@ -734,7 +734,7 @@ enum
 static const u8 sStatBarsGfx[] = INCBIN_U8("graphics/pokedex/hgss/stat_bars.4bpp");
 static const u16 sStatBarPalette[16] = {
     [COLOR_ID_ALPHA] = RGB(0, 0, 10),
-    [COLOR_ID_BAR_WHITE] = RGB_WHITE,
+    [COLOR_ID_BAR_WHITE] = RGB(3, 7, 8),
 
     [COLOR_ID_FILL + COLOR_BEST * 2] = RGB(2, 25, 25),
     [COLOR_ID_FILL_SHADOW + COLOR_BEST * 2] = RGB(13, 27, 27),
@@ -5260,12 +5260,12 @@ static void PrintStatsScreen_Moves_Top(u8 taskId)
     //Draw move type icon
     if (gTasks[taskId].data[5] == 0)
     {
-        SetTypeIconPosAndPal(GetMoveType(move), moves_x + 146, moves_y + 17, 0);
+        SetTypeIconPosAndPal(GetMoveType(move), moves_x + 145, moves_y + 17, 0);
         SetSpriteInvisibility(1, TRUE);
     }
     else
     {
-        SetTypeIconPosAndPal(NUMBER_OF_MON_TYPES + GetMoveContestCategory(move), moves_x + 146, moves_y + 17, 1);
+        SetTypeIconPosAndPal(NUMBER_OF_MON_TYPES + GetMoveContestCategory(move), moves_x + 145, moves_y + 17, 1);
         SetSpriteInvisibility(0, TRUE);
     }
 
