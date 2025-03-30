@@ -4470,6 +4470,16 @@
       "secondary_tileset": "gTileset_Fortree",
       "border_filepath": "data/layouts/KiriKiriMountain/border.bin",
       "blockdata_filepath": "data/layouts/KiriKiriMountain/map.bin"
+    },
+    {
+      "id": "LAYOUT_VERDANT_PLATEAU",
+      "name": "VerdantPlateau_Layout",
+      "width": 72,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mauville",
+      "border_filepath": "data/layouts/VerdantPlateau/border.bin",
+      "blockdata_filepath": "data/layouts/VerdantPlateau/map.bin"
     }
   ]
 }

@@ -1221,3 +1221,5 @@ Common_EventScript_ExitSafeArea::
 
 	.include "data/maps/KiriKiriMountain/scripts.inc"
 	.include "data/scripts/dexnav.inc"
+
+	.include "data/maps/VerdantPlateau/scripts.inc"
