@@ -4475,7 +4475,7 @@
       "id": "LAYOUT_VERDANT_PLATEAU",
       "name": "VerdantPlateau_Layout",
       "width": 72,
-      "height": 20,
+      "height": 32,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Mauville",
       "border_filepath": "data/layouts/VerdantPlateau/border.bin",

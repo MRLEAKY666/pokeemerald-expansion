@@ -105,7 +105,7 @@ LavaridgeTown_Gym_1F_EventScript_EndCheckBuryTrainers::
 # 53 "data//maps/LavaridgeTown_Gym_1F/scripts.pory"
 LavaridgeTown_Gym_1F_EventScript_Flannery::
 # 54 "data//maps/LavaridgeTown_Gym_1F/scripts.pory"
-	trainerbattle_single TRAINER_FLANNERY_1, LavaridgeTown_Gym_1F_Text_FlanneryIntro, LavaridgeTown_Gym_1F_Text_FlanneryDefeat, LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated, NO_MUSIC
+	call_if_unset FLAG_BADGE04_GET, LavaridgeTown_Gym_1F_EventScript_FlanneryBadgeOrder
 # 55 "data//maps/LavaridgeTown_Gym_1F/scripts.pory"
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 # 56 "data//maps/LavaridgeTown_Gym_1F/scripts.pory"
@@ -802,3 +802,17 @@ LavaridgeTown_Gym_1F_Text_FlanneryRematchNeedTwoMons:
 	.string "I hate to say this, but when you come\n"
 # 402 "data//maps/LavaridgeTown_Gym_1F/scripts.pory"
 	.string "see me, bring at least two POKéMON.$"
+
+LavaridgeTown_Gym_1F_EventScript_FlanneryBadgeOrder::
+# 405 "data//maps/LavaridgeTown_Gym_1F/scripts.pory"
+	goto_if_set FLAG_BADGE02_GET, LavaridgeTown_Gym_1F_EventScript_FlanneryBadgeOrder_2
+# 410 "data//maps/LavaridgeTown_Gym_1F/scripts.pory"
+	trainerbattle_single TRAINER_FLANNERY_1B, LavaridgeTown_Gym_1F_Text_FlanneryIntro, LavaridgeTown_Gym_1F_Text_FlanneryDefeat, LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated, NO_MUSIC
+LavaridgeTown_Gym_1F_EventScript_FlanneryBadgeOrder_1:
+	return
+
+LavaridgeTown_Gym_1F_EventScript_FlanneryBadgeOrder_2:
+# 406 "data//maps/LavaridgeTown_Gym_1F/scripts.pory"
+	trainerbattle_single TRAINER_FLANNERY_1, LavaridgeTown_Gym_1F_Text_FlanneryIntro, LavaridgeTown_Gym_1F_Text_FlanneryDefeat, LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated, NO_MUSIC
+	goto LavaridgeTown_Gym_1F_EventScript_FlanneryBadgeOrder_1
+

@@ -275,7 +275,7 @@ DewfordTown_Gym_EventScript_StopCountingTrainers::
 # 138 "data//maps/DewfordTown_Gym/scripts.pory"
 DewfordTown_Gym_EventScript_Brawly::
 # 139 "data//maps/DewfordTown_Gym/scripts.pory"
-	trainerbattle_single TRAINER_BRAWLY_1, DewfordTown_Gym_Text_BrawlyIntro, DewfordTown_Gym_Text_BrawlyDefeat, DewfordTown_Gym_EventScript_BrawlyDefeated, NO_MUSIC
+	call_if_unset FLAG_BADGE02_GET, DewfordTown_Gym_EventScript_BrawlyBadgeOrder
 # 140 "data//maps/DewfordTown_Gym/scripts.pory"
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 # 141 "data//maps/DewfordTown_Gym/scripts.pory"
@@ -916,3 +916,24 @@ DewfordTown_Gym_Text_BrawlyRematchNeedTwoMons:
 	.string "I'm sorry, but I'd like you to come back\n"
 # 459 "data//maps/DewfordTown_Gym/scripts.pory"
 	.string "with at least two POKéMON.$"
+
+DewfordTown_Gym_EventScript_BrawlyBadgeOrder::
+# 462 "data//maps/DewfordTown_Gym/scripts.pory"
+	goto_if_set FLAG_BADGE04_GET, DewfordTown_Gym_EventScript_BrawlyBadgeOrder_2
+# 467 "data//maps/DewfordTown_Gym/scripts.pory"
+	goto_if_set FLAG_BADGE03_GET, DewfordTown_Gym_EventScript_BrawlyBadgeOrder_3
+# 473 "data//maps/DewfordTown_Gym/scripts.pory"
+	trainerbattle_single TRAINER_BRAWLY_1B, DewfordTown_Gym_Text_BrawlyIntro, DewfordTown_Gym_Text_BrawlyDefeat, DewfordTown_Gym_EventScript_BrawlyDefeated, NO_MUSIC
+DewfordTown_Gym_EventScript_BrawlyBadgeOrder_1:
+	return
+
+DewfordTown_Gym_EventScript_BrawlyBadgeOrder_2:
+# 463 "data//maps/DewfordTown_Gym/scripts.pory"
+	trainerbattle_single TRAINER_BRAWLY_1C, DewfordTown_Gym_Text_BrawlyIntro, DewfordTown_Gym_Text_BrawlyDefeat, DewfordTown_Gym_EventScript_BrawlyDefeated, NO_MUSIC
+	goto DewfordTown_Gym_EventScript_BrawlyBadgeOrder_1
+
+DewfordTown_Gym_EventScript_BrawlyBadgeOrder_3:
+# 468 "data//maps/DewfordTown_Gym/scripts.pory"
+	trainerbattle_single TRAINER_BRAWLY_1, DewfordTown_Gym_Text_BrawlyIntro, DewfordTown_Gym_Text_BrawlyDefeat, DewfordTown_Gym_EventScript_BrawlyDefeated, NO_MUSIC
+	goto DewfordTown_Gym_EventScript_BrawlyBadgeOrder_1
+

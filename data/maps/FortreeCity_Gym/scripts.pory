@@ -21,7 +21,7 @@ FortreeCity_Gym_EventScript_InitRotatingGates::
 	end
 
 FortreeCity_Gym_EventScript_Winona::
-	trainerbattle_single TRAINER_WINONA_1, FortreeCity_Gym_Text_WinonaIntro, FortreeCity_Gym_Text_WinonaDefeat, FortreeCity_Gym_EventScript_WinonaDefeated, NO_MUSIC
+	call_if_unset FLAG_BADGE06_GET, FortreeCity_Gym_EventScript_WinonaBadgeOrder
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, FortreeCity_Gym_EventScript_WinonaRematch
 	goto_if_unset FLAG_RECEIVED_TM_AERIAL_ACE, FortreeCity_Gym_EventScript_GiveAerialAce2
@@ -318,3 +318,14 @@ FortreeCity_Gym_Text_WinonaRematchNeedTwoMons:
 	.string "Please return with two POKéMON\n"
 	.string "at the very least.$"
 `
+script FortreeCity_Gym_EventScript_WinonaBadgeOrder {
+	if (flag(FLAG_BADGE07_GET)) {
+		trainerbattle_single(TRAINER_WINONA_1B, FortreeCity_Gym_Text_WinonaIntro, FortreeCity_Gym_Text_WinonaDefeat, FortreeCity_Gym_EventScript_WinonaDefeated, NO_MUSIC)
+	}
+	elif (flag(FLAG_BADGE08_GET)) {
+		trainerbattle_single(TRAINER_WINONA_1, FortreeCity_Gym_Text_WinonaIntro, FortreeCity_Gym_Text_WinonaDefeat, FortreeCity_Gym_EventScript_WinonaDefeated, NO_MUSIC)
+	}
+	else {
+		trainerbattle_single(TRAINER_WINONA_1C, FortreeCity_Gym_Text_WinonaIntro, FortreeCity_Gym_Text_WinonaDefeat, FortreeCity_Gym_EventScript_WinonaDefeated, NO_MUSIC)
+	}
+}	

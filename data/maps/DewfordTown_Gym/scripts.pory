@@ -136,7 +136,7 @@ DewfordTown_Gym_EventScript_StopCountingTrainers::
 	return
 
 DewfordTown_Gym_EventScript_Brawly::
-	trainerbattle_single TRAINER_BRAWLY_1, DewfordTown_Gym_Text_BrawlyIntro, DewfordTown_Gym_Text_BrawlyDefeat, DewfordTown_Gym_EventScript_BrawlyDefeated, NO_MUSIC
+	call_if_unset FLAG_BADGE02_GET, DewfordTown_Gym_EventScript_BrawlyBadgeOrder
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, DewfordTown_Gym_EventScript_BrawlyRematch
 	goto_if_unset FLAG_RECEIVED_TM_BULK_UP, DewfordTown_Gym_EventScript_GiveBulkUp2
@@ -458,3 +458,21 @@ DewfordTown_Gym_Text_BrawlyRematchNeedTwoMons:
 	.string "I'm sorry, but I'd like you to come back\n"
 	.string "with at least two POKéMON.$"
 `
+script DewfordTown_Gym_EventScript_BrawlyBadgeOrder {
+	if (flag(FLAG_BADGE04_GET)) {
+		trainerbattle_single(TRAINER_BRAWLY_1C, DewfordTown_Gym_Text_BrawlyIntro, DewfordTown_Gym_Text_BrawlyDefeat, DewfordTown_Gym_EventScript_BrawlyDefeated, NO_MUSIC)
+		// setflag(TRAINER_BRAWLY_1)
+		// setflag(TRAINER_BRAWLY_1B)
+	}
+	elif (flag(FLAG_BADGE03_GET)) {
+		trainerbattle_single(TRAINER_BRAWLY_1, DewfordTown_Gym_Text_BrawlyIntro, DewfordTown_Gym_Text_BrawlyDefeat, DewfordTown_Gym_EventScript_BrawlyDefeated, NO_MUSIC)
+		// setflag(TRAINER_BRAWLY_1B)
+		// setflag(TRAINER_BRAWLY_1C)
+	}
+	else {
+		trainerbattle_single(TRAINER_BRAWLY_1B, DewfordTown_Gym_Text_BrawlyIntro, DewfordTown_Gym_Text_BrawlyDefeat, DewfordTown_Gym_EventScript_BrawlyDefeated, NO_MUSIC)
+		// setflag(TRAINER_BRAWLY_1)
+		// setflag(TRAINER_BRAWLY_1C)
+	}
+	return
+}

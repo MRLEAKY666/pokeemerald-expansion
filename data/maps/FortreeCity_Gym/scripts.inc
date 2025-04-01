@@ -45,7 +45,7 @@ FortreeCity_Gym_EventScript_InitRotatingGates::
 # 23 "data//maps/FortreeCity_Gym/scripts.pory"
 FortreeCity_Gym_EventScript_Winona::
 # 24 "data//maps/FortreeCity_Gym/scripts.pory"
-	trainerbattle_single TRAINER_WINONA_1, FortreeCity_Gym_Text_WinonaIntro, FortreeCity_Gym_Text_WinonaDefeat, FortreeCity_Gym_EventScript_WinonaDefeated, NO_MUSIC
+	call_if_unset FLAG_BADGE06_GET, FortreeCity_Gym_EventScript_WinonaBadgeOrder
 # 25 "data//maps/FortreeCity_Gym/scripts.pory"
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 # 26 "data//maps/FortreeCity_Gym/scripts.pory"
@@ -636,3 +636,23 @@ FortreeCity_Gym_Text_WinonaRematchNeedTwoMons:
 	.string "Please return with two POKéMON\n"
 # 319 "data//maps/FortreeCity_Gym/scripts.pory"
 	.string "at the very least.$"
+
+FortreeCity_Gym_EventScript_WinonaBadgeOrder::
+# 322 "data//maps/FortreeCity_Gym/scripts.pory"
+	goto_if_set FLAG_BADGE07_GET, FortreeCity_Gym_EventScript_WinonaBadgeOrder_1
+# 325 "data//maps/FortreeCity_Gym/scripts.pory"
+	goto_if_set FLAG_BADGE08_GET, FortreeCity_Gym_EventScript_WinonaBadgeOrder_2
+# 329 "data//maps/FortreeCity_Gym/scripts.pory"
+	trainerbattle_single TRAINER_WINONA_1C, FortreeCity_Gym_Text_WinonaIntro, FortreeCity_Gym_Text_WinonaDefeat, FortreeCity_Gym_EventScript_WinonaDefeated, NO_MUSIC
+	return
+
+FortreeCity_Gym_EventScript_WinonaBadgeOrder_1:
+# 323 "data//maps/FortreeCity_Gym/scripts.pory"
+	trainerbattle_single TRAINER_WINONA_1B, FortreeCity_Gym_Text_WinonaIntro, FortreeCity_Gym_Text_WinonaDefeat, FortreeCity_Gym_EventScript_WinonaDefeated, NO_MUSIC
+	return
+
+FortreeCity_Gym_EventScript_WinonaBadgeOrder_2:
+# 326 "data//maps/FortreeCity_Gym/scripts.pory"
+	trainerbattle_single TRAINER_WINONA_1, FortreeCity_Gym_Text_WinonaIntro, FortreeCity_Gym_Text_WinonaDefeat, FortreeCity_Gym_EventScript_WinonaDefeated, NO_MUSIC
+	return
+

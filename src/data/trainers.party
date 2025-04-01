@@ -18488,6 +18488,372 @@ IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 - Calm Mind  
 - Ice Beam  
 
+=== TRAINER_BRAWLY_1B ===
+Name: BRAWLY
+Class: Leader
+Pic: Leader Brawly
+Gender: Male
+Music: Male
+Items: Super Potion / Super Potion
+Double Battle: No
+AI: Basic Trainer / Smart Switching / Ace Pokemon
+Party Size: 4
+Pool Rules: Basic
+Pool Pick Functions: Default
+
+Machop
+Level: 18
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Tags: Lead
+- Karate Chop
+- Low Kick
+- Seismic Toss
+- Bulk Up
+
+Tyrogue
+Level: 18
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Fake Out
+- Counter
+- Protect
+- Mach Punch
+
+Riolu
+Level: 18
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Bulk Up
+- Reversal
+- Endure
+- Vacuum Wave
+
+Meditite
+Level: 18
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Focus Punch
+- Light Screen
+- Reflect
+- Bulk Up
+
+Makuhita @ Sitrus Berry
+Level: 21
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+- Arm Thrust
+- Vital Throw
+- Reversal
+- Bulk Up
+
+Scraggy @ Sitrus Berry
+Level: 21
+Ability: Moxie
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+- Bulk Up
+- Swagger
+- Focus Punch
+- Roar
+
+=== TRAINER_BRAWLY_1C ===
+Name: BRAWLY
+Class: Leader
+Pic: Leader Brawly
+Gender: Male
+Music: Male
+Items: Super Potion / Super Potion
+Double Battle: No
+AI: Basic Trainer / Smart Switching / Ace Pokemon
+Party Size: 4
+Pool Rules: Basic
+Pool Pick Functions: Default
+
+Machop
+Level: 26
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Tags: Lead
+- Karate Chop
+- Low Kick
+- Seismic Toss
+- Bulk Up
+
+Tyrogue
+Level: 27
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Fake Out
+- Counter
+- Protect
+- Mach Punch
+
+Riolu
+Level: 26
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Bulk Up
+- Reversal
+- Endure
+- Vacuum Wave
+
+Meditite
+Level: 27
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Focus Punch
+- Light Screen
+- Reflect
+- Bulk Up
+
+Makuhita @ Sitrus Berry
+Level: 29
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+- Arm Thrust
+- Vital Throw
+- Reversal
+- Bulk Up
+
+Scraggy @ Sitrus Berry
+Level: 29
+Ability: Moxie
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Ace
+- Bulk Up
+- Swagger
+- Focus Punch
+- Roar
+
+=== TRAINER_FLANNERY_1B ===
+Name: FLANNERY
+Class: Leader
+Pic: Leader Flannery
+Gender: Female
+Music: Female
+Items: Hyper Potion / Hyper Potion
+Double Battle: No
+AI: Basic Trainer / Smart Switching 
+Party Size: 4
+Pool Rules: Boss
+Pool Pick Functions: Default
+
+Numel
+Level: 22
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Tags: Lead
+- Overheat
+- Take Down
+- Magnitude
+- Sunny Day
+
+Slugma
+Level: 23
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Overheat
+- Smog
+- Light Screen
+- Sunny Day
+
+Growlithe-Hisui
+Level: 23
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Howl
+- Take Down
+- Sunny Day
+- Wild Charge
+
+Houndour
+Level: 22
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Roar
+- Solar Beam
+- Sunny Day
+- Taunt
+
+Camerupt
+Level: 25
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Tags: Tag6
+- Overheat
+- Tackle
+- Sunny Day
+- Attract
+
+Torkoal @ White Herb
+Level: 27
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Tags: Ace
+- Overheat
+- Sunny Day
+- Body Slam
+- Attract
+
+=== TRAINER_WINONA_1B ===
+Name: WINONA
+Class: Leader
+Pic: Leader Winona
+Gender: Female
+Music: Female
+Items: Hyper Potion / Hyper Potion
+Double Battle: No
+AI: Basic Trainer / Risky / Smart Switching / Ace Pokemon
+Party Size: 5
+Pool Rules: Boss
+Pool Pick Functions: Default
+
+Noctowl
+Level: 43
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Tags: Lead
+- Hypnosis
+- Psychic
+- Reflect
+- Dream Eater
+
+Skarmory
+Level: 43
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+Tags: Lead
+- Spikes
+- Whirlwind
+- Steel Wing
+- Aerial Ace
+
+Tropius
+Level: 45
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Tags: Tag6
+- Sunny Day
+- Aerial Ace
+- Solar Beam
+- Synthesis
+
+Pelipper 
+Ability: Drizzle
+Level: 45
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+Relaxed Nature
+Tags: Tag6
+- Scald
+- U-turn
+- Roost
+- Hurricane
+
+Swellow @ Toxic Orb
+Ability: Guts
+Level: 43
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Jolly Nature
+- Facade
+- Brave Bird
+- U-turn
+- Quick Attack
+
+Skarmory
+Level: 44
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Sand Attack
+- Curse
+- Steel Wing
+- Aerial Ace
+
+Honchkrow
+Level: 44
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Drill Peck
+- Sucker Punch
+- Icy Wind
+- Tailwind
+
+Altaria @ Sitrus Berry
+Level: 45
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Tags: Ace
+- Earthquake
+- Dragon Breath
+- Dragon Dance
+- Aerial Ace
+
+=== TRAINER_WINONA_1C ===
+Name: WINONA
+Class: Leader
+Pic: Leader Winona
+Gender: Female
+Music: Female
+Items: Hyper Potion / Hyper Potion
+Double Battle: No
+AI: Basic Trainer / Risky / Smart Switching / Ace Pokemon
+Party Size: 5
+Pool Rules: Boss
+Pool Pick Functions: Default
+
+Noctowl
+Level: 40
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Tags: Lead
+- Hypnosis
+- Psychic
+- Reflect
+- Dream Eater
+
+Skarmory
+Level: 42
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+Tags: Lead
+- Spikes
+- Whirlwind
+- Steel Wing
+- Aerial Ace
+
+Tropius
+Level: 41
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Tags: Tag6
+- Sunny Day
+- Aerial Ace
+- Solar Beam
+- Synthesis
+
+Pelipper 
+Ability: Drizzle
+Level: 41
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+Relaxed Nature
+Tags: Tag6
+- Scald
+- U-turn
+- Roost
+- Hurricane
+
+Swellow @ Toxic Orb
+Ability: Guts
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Jolly Nature
+- Facade
+- Brave Bird
+- U-turn
+- Quick Attack
+
+Skarmory
+Level: 42
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Sand Attack
+- Curse
+- Steel Wing
+- Aerial Ace
+
+Honchkrow
+Level: 42
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Drill Peck
+- Sucker Punch
+- Icy Wind
+- Tailwind
+
+Altaria @ Sitrus Berry
+Level: 42
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Tags: Ace
+- Earthquake
+- Dragon Breath
+- Dragon Dance
+- Aerial Ace
+
 === TRAINER_RED ===
 Name: RED
 Class: Rival
