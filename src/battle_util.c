@@ -6553,6 +6553,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                  || !HasWeatherEffect()) // Air Lock active
                  && TryBattleFormChange(battler, FORM_CHANGE_BATTLE_WEATHER)) 
             {
+                gBattleScripting.battler = battler;
                 //enhancement wiz1989
                 //differentiate between regular forecast and self inflicted weather change
                 if (FlagGet(FLAG_INBATTLE_WEATHER_CHANGED)) {
@@ -6567,8 +6568,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
 
                     effect++;
                 }
+                FlagClear(FLAG_INBATTLE_WEATHER_CHANGED); //always reset the flag
             }
-            FlagClear(FLAG_INBATTLE_WEATHER_CHANGED); //always reset the flag
             //enhancement end
             break;                                                                                                   
         case ABILITY_FLOWER_GIFT:
@@ -12098,9 +12099,9 @@ u32 GetBattlerType(u32 battler, u32 typeIndex, bool32 ignoreTera)
 //enhancement wiz1989
 void ChangeWeather(u32 battler, u32 ability)
 {
-    u32 species;
+    /* u32 species;
 
-    species = gBattleMons[battler].species;
+    species = gBattleMons[battler].species; */
     //special handling for CASTFORM weather change
     if (IsCastform(battler) && ability == ABILITY_FORECAST)
     {

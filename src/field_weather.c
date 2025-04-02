@@ -270,6 +270,14 @@ void SetCurrentAndNextWeather(u8 weather)
     UpdateWeatherForms();
 }
 
+void ForecastSetCurrentAndNextWeather(u8 weather)
+{
+    PlayRainStoppingSoundEffect();
+    gWeatherPtr->currWeather = weather;
+    gWeatherPtr->nextWeather = weather;
+    // UpdateWeatherForms();
+}
+
 void SetCurrentAndNextWeatherNoDelay(u8 weather)
 {
     PlayRainStoppingSoundEffect();

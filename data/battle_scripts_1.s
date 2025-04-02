@@ -7721,13 +7721,15 @@ BattleScript_ShedSkinActivates::
 	end3
 
 BattleScript_ActivateWeatherAbilities:
+	saveattacker
 	savetarget
-	setbyte gBattlerTarget, 0
+	setbyte gBattlerAttacker, 0
 BattleScript_ActivateWeatherAbilities_Loop:
-	copybyte sBATTLER, gBattlerTarget
+	copyarraywithindex gBattlerTarget, gBattlerByTurnOrder, gBattlerAttacker, 1
 	activateweatherchangeabilities BS_TARGET
-	addbyte gBattlerTarget, 1
-	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_ActivateWeatherAbilities_Loop
+	addbyte gBattlerAttacker, 1
+	jumpifbytenotequal gBattlerAttacker, gBattlersCount, BattleScript_ActivateWeatherAbilities_Loop
+	restoreattacker
 	restoretarget
 	return
 

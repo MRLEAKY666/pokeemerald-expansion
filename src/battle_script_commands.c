@@ -1146,19 +1146,19 @@ bool32 CastformTriggerWeatherChange(u32 battler, u32 ability, u32 move)
         //don't execute in Primal Weather
         if (!(gBattleWeather & B_WEATHER_SUN_PRIMAL) && !(gBattleWeather & B_WEATHER_RAIN_PRIMAL) && !(gBattleWeather & B_WEATHER_STRONG_WINDS)) {
             if (move == MOVE_THUNDER || move == MOVE_HURRICANE) {
-                SetCurrentAndNextWeather(WEATHER_DOWNPOUR);
+                ForecastSetCurrentAndNextWeather(WEATHER_DOWNPOUR);
                 return TRUE;
             }
             if (move == MOVE_SOLAR_BEAM || move == MOVE_SOLAR_BLADE || move == MOVE_MORNING_SUN) {
-                SetCurrentAndNextWeather(WEATHER_DROUGHT);
+                ForecastSetCurrentAndNextWeather(WEATHER_DROUGHT);
                 return TRUE;
             }
             if (move == MOVE_BLIZZARD || move == MOVE_ICY_WIND || move == MOVE_POWDER_SNOW) {
-                SetCurrentAndNextWeather(WEATHER_SNOW);
+                ForecastSetCurrentAndNextWeather(WEATHER_SNOW);
                 return TRUE;
             }
             if (move == MOVE_SCORCHING_SANDS || move == MOVE_TAILWIND || move == MOVE_SANDSEAR_STORM) {
-                SetCurrentAndNextWeather(WEATHER_SANDSTORM);
+                ForecastSetCurrentAndNextWeather(WEATHER_SANDSTORM);
                 return TRUE;
             }
         }
