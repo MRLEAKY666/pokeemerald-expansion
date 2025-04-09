@@ -51,6 +51,8 @@ LavaridgeTown_Gym_1F_EventScript_EndCheckBuryTrainers::
 	return
 
 LavaridgeTown_Gym_1F_EventScript_Flannery::
+	lock
+	faceplayer
 	call_if_unset FLAG_BADGE04_GET, LavaridgeTown_Gym_1F_EventScript_FlanneryBadgeOrder
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, LavaridgeTown_Gym_1F_EventScript_FlanneryRematch
@@ -402,13 +404,16 @@ LavaridgeTown_Gym_1F_Text_FlanneryRematchNeedTwoMons:
 	.string "see me, bring at least two POKéMON.$"
 `
 script LavaridgeTown_Gym_1F_EventScript_FlanneryBadgeOrder {
+	msgbox(LavaridgeTown_Gym_1F_Text_FlanneryIntro)
 	if (flag(FLAG_BADGE02_GET)) {
-		trainerbattle_single (TRAINER_FLANNERY_1, LavaridgeTown_Gym_1F_Text_FlanneryIntro, LavaridgeTown_Gym_1F_Text_FlanneryDefeat, LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated, NO_MUSIC)
-		// setflag(TRAINER_FLANNERY_1B)
+		trainerbattle_no_intro(TRAINER_FLANNERY_1, LavaridgeTown_Gym_1F_Text_FlanneryDefeat)
+		settrainerflag(TRAINER_FLANNERY_1B)
+		goto(LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated)
 	}
 	else {
-		trainerbattle_single (TRAINER_FLANNERY_1B, LavaridgeTown_Gym_1F_Text_FlanneryIntro, LavaridgeTown_Gym_1F_Text_FlanneryDefeat, LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated, NO_MUSIC)
-		// setflag(TRAINER_FLANNERY_1)
+		trainerbattle_no_intro(TRAINER_FLANNERY_1, LavaridgeTown_Gym_1F_Text_FlanneryDefeat)
+		settrainerflag(TRAINER_FLANNERY_1)
+		goto(LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated)
 	}
 	return
 }

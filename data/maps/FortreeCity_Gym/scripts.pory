@@ -21,6 +21,8 @@ FortreeCity_Gym_EventScript_InitRotatingGates::
 	end
 
 FortreeCity_Gym_EventScript_Winona::
+	lock
+	faceplayer
 	call_if_unset FLAG_BADGE06_GET, FortreeCity_Gym_EventScript_WinonaBadgeOrder
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, FortreeCity_Gym_EventScript_WinonaRematch
@@ -319,13 +321,24 @@ FortreeCity_Gym_Text_WinonaRematchNeedTwoMons:
 	.string "at the very least.$"
 `
 script FortreeCity_Gym_EventScript_WinonaBadgeOrder {
+	msgbox(FortreeCity_Gym_Text_WinonaIntro)
 	if (flag(FLAG_BADGE07_GET)) {
-		trainerbattle_single(TRAINER_WINONA_1B, FortreeCity_Gym_Text_WinonaIntro, FortreeCity_Gym_Text_WinonaDefeat, FortreeCity_Gym_EventScript_WinonaDefeated, NO_MUSIC)
+		trainerbattle_no_intro(TRAINER_WINONA_1B, FortreeCity_Gym_Text_WinonaDefeat)
+		settrainerflag(TRAINER_WINONA_1)
+		settrainerflag(TRAINER_WINONA_1C)
+		goto(FortreeCity_Gym_EventScript_WinonaDefeated)
 	}
 	elif (flag(FLAG_BADGE08_GET)) {
-		trainerbattle_single(TRAINER_WINONA_1, FortreeCity_Gym_Text_WinonaIntro, FortreeCity_Gym_Text_WinonaDefeat, FortreeCity_Gym_EventScript_WinonaDefeated, NO_MUSIC)
+		trainerbattle_no_intro(TRAINER_WINONA_1B, FortreeCity_Gym_Text_WinonaDefeat)
+		settrainerflag(TRAINER_WINONA_1C)
+		settrainerflag(TRAINER_WINONA_1B)
+		goto(FortreeCity_Gym_EventScript_WinonaDefeated)
 	}
 	else {
-		trainerbattle_single(TRAINER_WINONA_1C, FortreeCity_Gym_Text_WinonaIntro, FortreeCity_Gym_Text_WinonaDefeat, FortreeCity_Gym_EventScript_WinonaDefeated, NO_MUSIC)
+		trainerbattle_no_intro(TRAINER_WINONA_1B, FortreeCity_Gym_Text_WinonaDefeat)
+		settrainerflag(TRAINER_WINONA_1)
+		settrainerflag(TRAINER_WINONA_1B)
+		goto(FortreeCity_Gym_EventScript_WinonaDefeated)
 	}
+	return
 }	
