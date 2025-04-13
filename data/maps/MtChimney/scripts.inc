@@ -231,7 +231,7 @@ MtChimney_EventScript_Maxie::
 # 116 "data//maps/MtChimney/scripts.pory"
 	fadescreen FADE_FROM_BLACK
 # 117 "data//maps/MtChimney/scripts.pory"
-	setobjectxyperm LOCALID_ARCHIE, 10, 12
+	setobjectxyperm LOCALID_ARCHIE, 10, 33
 # 118 "data//maps/MtChimney/scripts.pory"
 	addobject LOCALID_ARCHIE
 # 119 "data//maps/MtChimney/scripts.pory"

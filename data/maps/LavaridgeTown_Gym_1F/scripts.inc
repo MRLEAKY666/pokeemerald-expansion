@@ -809,21 +809,19 @@ LavaridgeTown_Gym_1F_Text_FlanneryRematchNeedTwoMons:
 
 LavaridgeTown_Gym_1F_EventScript_FlanneryBadgeOrder::
 # 407 "data//maps/LavaridgeTown_Gym_1F/scripts.pory"
+	msgbox LavaridgeTown_Gym_1F_Text_FlanneryIntro
+# 408 "data//maps/LavaridgeTown_Gym_1F/scripts.pory"
 	goto_if_set FLAG_BADGE02_GET, LavaridgeTown_Gym_1F_EventScript_FlanneryBadgeOrder_2
 # 414 "data//maps/LavaridgeTown_Gym_1F/scripts.pory"
-	msgbox LavaridgeTown_Gym_1F_Text_FlanneryIntro
-# 415 "data//maps/LavaridgeTown_Gym_1F/scripts.pory"
 	trainerbattle_no_intro TRAINER_FLANNERY_1, LavaridgeTown_Gym_1F_Text_FlanneryDefeat
-# 416 "data//maps/LavaridgeTown_Gym_1F/scripts.pory"
+# 415 "data//maps/LavaridgeTown_Gym_1F/scripts.pory"
 	settrainerflag TRAINER_FLANNERY_1
-# 417 "data//maps/LavaridgeTown_Gym_1F/scripts.pory"
+# 416 "data//maps/LavaridgeTown_Gym_1F/scripts.pory"
 	goto LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated
 LavaridgeTown_Gym_1F_EventScript_FlanneryBadgeOrder_1:
 	return
 
 LavaridgeTown_Gym_1F_EventScript_FlanneryBadgeOrder_2:
-# 408 "data//maps/LavaridgeTown_Gym_1F/scripts.pory"
-	msgbox LavaridgeTown_Gym_1F_Text_FlanneryIntro
 # 409 "data//maps/LavaridgeTown_Gym_1F/scripts.pory"
 	trainerbattle_no_intro TRAINER_FLANNERY_1, LavaridgeTown_Gym_1F_Text_FlanneryDefeat
 # 410 "data//maps/LavaridgeTown_Gym_1F/scripts.pory"
