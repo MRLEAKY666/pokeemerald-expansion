@@ -207,3 +207,18 @@ const u16 gMetatileAttributes_MysteryEventsHouse[] = INCBIN_U16("data/tilesets/s
 
 const u16 gMetatiles_UnionRoom[] = INCBIN_U16("data/tilesets/secondary/union_room/metatiles.bin");
 const u16 gMetatileAttributes_UnionRoom[] = INCBIN_U16("data/tilesets/secondary/union_room/metatile_attributes.bin");
+
+const u16 gMetatiles_Mauville_OG[] = INCBIN_U16("data/tilesets/secondary/mauville_og/metatiles.bin");
+const u16 gMetatileAttributes_Mauville_OG[] = INCBIN_U16("data/tilesets/secondary/mauville_og/metatile_attributes.bin");
+
+const u16 gMetatiles_Dewford_OG[] = INCBIN_U16("data/tilesets/secondary/dewford_og/metatiles.bin");
+const u16 gMetatileAttributes_Dewford_OG[] = INCBIN_U16("data/tilesets/secondary/dewford_og/metatile_attributes.bin");
+
+const u16 gMetatiles_Fortree_OG[] = INCBIN_U16("data/tilesets/secondary/fortree_og/metatiles.bin");
+const u16 gMetatileAttributes_Fortree_OG[] = INCBIN_U16("data/tilesets/secondary/fortree_og/metatile_attributes.bin");
+
+const u16 gMetatiles_Lavaridge_OG[] = INCBIN_U16("data/tilesets/secondary/lavaridge_og/metatiles.bin");
+const u16 gMetatileAttributes_Lavaridge_OG[] = INCBIN_U16("data/tilesets/secondary/lavaridge_og/metatile_attributes.bin");
+
+const u16 gMetatiles_General_OG[] = INCBIN_U16("data/tilesets/primary/general_og/metatiles.bin");
+const u16 gMetatileAttributes_General_OG[] = INCBIN_U16("data/tilesets/primary/general_og/metatile_attributes.bin");

@@ -830,3 +830,58 @@ const struct Tileset gTileset_UnionRoom =
     .metatileAttributes = gMetatileAttributes_UnionRoom,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_Mauville_OG =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Mauville_OG,
+    .palettes = gTilesetPalettes_Mauville_OG,
+    .metatiles = gMetatiles_Mauville_OG,
+    .metatileAttributes = gMetatileAttributes_Mauville_OG,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Dewford_OG =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Dewford_OG,
+    .palettes = gTilesetPalettes_Dewford_OG,
+    .metatiles = gMetatiles_Dewford_OG,
+    .metatileAttributes = gMetatileAttributes_Dewford_OG,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Fortree_OG =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Fortree_OG,
+    .palettes = gTilesetPalettes_Fortree_OG,
+    .metatiles = gMetatiles_Fortree_OG,
+    .metatileAttributes = gMetatileAttributes_Fortree_OG,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Lavaridge_OG =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Lavaridge_OG,
+    .palettes = gTilesetPalettes_Lavaridge_OG,
+    .metatiles = gMetatiles_Lavaridge_OG,
+    .metatileAttributes = gMetatileAttributes_Lavaridge_OG,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_General_OG =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_General_OG,
+    .palettes = gTilesetPalettes_General_OG,
+    .metatiles = gMetatiles_General_OG,
+    .metatileAttributes = gMetatileAttributes_General_OG,
+    .callback = NULL,
+};
