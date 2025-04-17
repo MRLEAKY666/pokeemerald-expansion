@@ -4745,6 +4745,8 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ProfOak = {
     .subspriteTables = sOamTables_16x32,
     .anims = sAnimTable_Standard,
     .images = sPicTable_ProfOak,
+};
+
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BallLight = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_LIGHT,

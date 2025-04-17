@@ -216,7 +216,9 @@ MtChimney_EventScript_Maxie::
 	closemessage
 # 109 "data//maps/MtChimney/scripts.pory"
 	delay 30
+# 110 "data//maps/MtChimney/scripts.pory"
 	fadescreenswapbuffers FADE_TO_BLACK
+# 111 "data//maps/MtChimney/scripts.pory"
 	removeobject LOCALID_MAXIE
 # 112 "data//maps/MtChimney/scripts.pory"
 	removeobject LOCALID_MAGMA_GRUNT_1
@@ -226,8 +228,11 @@ MtChimney_EventScript_Maxie::
 	removeobject LOCALID_MAGMA_GRUNT_2
 # 115 "data//maps/MtChimney/scripts.pory"
 	setflag FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA
+# 116 "data//maps/MtChimney/scripts.pory"
 	fadescreenswapbuffers FADE_FROM_BLACK
+# 117 "data//maps/MtChimney/scripts.pory"
 	setobjectxyperm LOCALID_ARCHIE, 10, 12
+# 118 "data//maps/MtChimney/scripts.pory"
 	addobject LOCALID_ARCHIE
 # 119 "data//maps/MtChimney/scripts.pory"
 	call_if_eq VAR_FACING, DIR_EAST, MtChimney_EventScript_ArchieApproachPlayerEast
