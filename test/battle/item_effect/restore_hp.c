@@ -1,7 +1,7 @@
 #include "global.h"
 #include "test/battle.h"
 
-SINGLE_BATTLE_TEST("Items can restore a battler's HP by a fixed amount")
+SINGLE_BATTLE_TEST("Items can restore a battler's HP by a fixed amount (singles, player)")
 {
     u32 item, hp;
     PARAMETRIZE { item = ITEM_POTION; hp = 20; }

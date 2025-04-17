@@ -44,7 +44,7 @@
 #include "event_data.h"
 
 #define TAG_SCROLL_ARROW   2100
-#define TAG_ITEM_ICON_BASE 2110
+#define TAG_ITEM_ICON_BASE 9110
 #define MARTMOVE sMartInfo.martType == MART_TYPE_MOVE_TUTOR
 #define MARTBP sMartInfo.martType == MART_TYPE_BP
 

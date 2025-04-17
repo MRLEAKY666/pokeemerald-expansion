@@ -1163,7 +1163,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
                 totalRerolls += 1;
             if (I_FISHING_CHAIN && gIsFishingEncounter)
                 totalRerolls += CalculateChainFishingShinyRolls();
-            if (gDexNavBattle)
+            if (gDexNavSpecies)
                 totalRerolls += CalculateDexNavShinyRolls();
 
             while (GET_SHINY_VALUE(value, personality) >= SHINY_ODDS && totalRerolls > 0)
@@ -1197,6 +1197,9 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
     value = ITEM_POKE_BALL;
     SetBoxMonData(boxMon, MON_DATA_POKEBALL, &value);
     SetBoxMonData(boxMon, MON_DATA_OT_GENDER, &gSaveBlock2Ptr->playerGender);
+
+    u32 teraType = (boxMon->personality & 0x1) == 0 ? gSpeciesInfo[species].types[0] : gSpeciesInfo[species].types[1];
+    SetBoxMonData(boxMon, MON_DATA_TERA_TYPE, &teraType);
 
     if (fixedIV < USE_RANDOM_IVS)
     {
@@ -1992,11 +1995,10 @@ void GiveBoxMonInitialMoveset(struct BoxPokemon *boxMon) //Credit: AsparagusEdua
     }
 }
 
-u16 MonTryLearningNewMove(struct Pokemon *mon, bool8 firstMove)
+u16 MonTryLearningNewMoveAtLevel(struct Pokemon *mon, bool32 firstMove, u32 level)
 {
     u32 retVal = MOVE_NONE;
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    u8 level = GetMonData(mon, MON_DATA_LEVEL, NULL);
     const struct LevelUpMove *learnset = GetSpeciesLevelUpLearnset(species);
 
     // since you can learn more than one move per level
@@ -2015,6 +2017,25 @@ u16 MonTryLearningNewMove(struct Pokemon *mon, bool8 firstMove)
         }
     }
 
+    //  Handler for Pokémon whose moves change upon form change.
+    //  For example, if Zacian or Zamazenta should learn Iron Head,
+    //  they're prevented from doing if they have Behemoth Blade/Bash,
+    //  since it transforms into them while in their Crowned forms.
+    const struct FormChange *formChanges = GetSpeciesFormChanges(species);
+
+    for (u32 i = 0; formChanges != NULL && formChanges[i].method != FORM_CHANGE_TERMINATOR; i++)
+    {
+        if (formChanges[i].method == FORM_CHANGE_END_BATTLE
+            && learnset[sLearningMoveTableID].move == formChanges[i].param3)
+        {
+            for (u32 j = 0; j < MAX_MON_MOVES; j++)
+            {
+                if (formChanges[i].param2 == GetMonData(mon, MON_DATA_MOVE1 + j))
+                    return MOVE_NONE;
+            }
+        }
+    }
+
     if (learnset[sLearningMoveTableID].level == level)
     {
         gMoveToLearn = learnset[sLearningMoveTableID].move;
@@ -2023,6 +2044,11 @@ u16 MonTryLearningNewMove(struct Pokemon *mon, bool8 firstMove)
     }
 
     return retVal;
+}
+
+u16 MonTryLearningNewMove(struct Pokemon *mon, bool8 firstMove)
+{
+    return MonTryLearningNewMoveAtLevel(mon, firstMove, GetMonData(mon, MON_DATA_LEVEL, NULL));
 }
 
 void DeleteFirstMoveAndGiveMoveToMon(struct Pokemon *mon, u16 move)
@@ -3646,10 +3672,10 @@ const u16 *GetSpeciesFormTable(u16 species)
 
 const struct FormChange *GetSpeciesFormChanges(u16 species)
 {
-    const struct FormChange *evolutions = gSpeciesInfo[SanitizeSpeciesId(species)].formChangeTable;
-    if (evolutions == NULL)
+    const struct FormChange *formChanges = gSpeciesInfo[SanitizeSpeciesId(species)].formChangeTable;
+    if (formChanges == NULL)
         return gSpeciesInfo[SPECIES_NONE].formChangeTable;
-    return evolutions;
+    return formChanges;
 }
 
 u8 CalculatePPWithBonus(u16 move, u8 ppBonuses, u8 moveIndex)
@@ -4064,7 +4090,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
 
                     case 7: // ITEM4_EVO_STONE
                         {
-                            u16 targetSpecies = GetEvolutionTargetSpecies(mon, EVO_MODE_ITEM_USE, item, NULL);
+                            u16 targetSpecies = GetEvolutionTargetSpecies(mon, EVO_MODE_ITEM_USE, item, NULL, DO_EVO);
 
                             if (targetSpecies != SPECIES_NONE)
                             {
@@ -4456,7 +4482,7 @@ u32 GetGMaxTargetSpecies(u32 species)
     return species;
 }
 
-u16 GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode mode, u16 evolutionItem, struct Pokemon *tradePartner)
+u16 GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode mode, u16 evolutionItem, struct Pokemon *tradePartner, enum StartEvo prepareEvo)
 {
     int i, j;
     u16 targetSpecies = SPECIES_NONE;
@@ -4467,7 +4493,8 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode mode, u16 
     u16 friendship;
     u8 beauty = GetMonData(mon, MON_DATA_BEAUTY, 0);
     u16 upperPersonality = personality >> 16;
-    u32 holdEffect, currentMap, partnerSpecies, partnerHeldItem, partnerHoldEffect;
+    enum ItemHoldEffect holdEffect;
+    u32 currentMap, partnerSpecies, partnerHeldItem, partnerHoldEffect;
     bool32 consumeItem = FALSE;
     u16 evolutionTracker = GetMonData(mon, MON_DATA_EVOLUTION_TRACKER, 0);
     const struct Evolution *evolutions = GetSpeciesEvolutions(species);
@@ -4777,7 +4804,8 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode mode, u16 
                 if (CheckBagHasItem(evolutions[i].param, 999))
                 {
                     targetSpecies = evolutions[i].targetSpecies;
-                    RemoveBagItem(evolutions[i].param, 999);
+                    if (prepareEvo == DO_EVO)
+                        RemoveBagItem(evolutions[i].param, 999);
                 }
                 break;
             }
@@ -4882,6 +4910,22 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode mode, u16 
                 if (evolutionItem == EVO_WATER_SCROLL)
                     targetSpecies = evolutions[i].targetSpecies;
                 break;
+            case EVO_ITEM_HOLD_SPIN_DAY_LESS_THAN_5_SECS_CLOCKWISE:
+            case EVO_ITEM_HOLD_SPIN_DAY_LESS_THAN_5_SECS_COUNTER_CLOCKWISE:
+            case EVO_ITEM_HOLD_SPIN_NIGHT_LESS_THAN_5_SECS_CLOCKWISE:
+            case EVO_ITEM_HOLD_SPIN_NIGHT_LESS_THAN_5_SECS_COUNTER_CLOCKWISE:
+            case EVO_ITEM_HOLD_SPIN_DAY_MORE_THAN_5_SECS_CLOCKWISE:
+            case EVO_ITEM_HOLD_SPIN_DAY_MORE_THAN_5_SECS_COUNTER_CLOCKWISE:
+            case EVO_ITEM_HOLD_SPIN_NIGHT_MORE_THAN_5_SECS_CLOCKWISE:
+            case EVO_ITEM_HOLD_SPIN_NIGHT_MORE_THAN_5_SECS_COUNTER_CLOCKWISE:
+            case EVO_ITEM_HOLD_SPIN_DUSK_MORE_THAN_10_SECS:
+                if (evolutions[i].param == heldItem && evolutionItem == evolutions[i].method)
+                {
+                    targetSpecies = evolutions[i].targetSpecies;
+                    consumeItem = TRUE;
+                }
+
+                break;
             }
         }
         break;
@@ -4897,7 +4941,7 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode mode, u16 
         return SPECIES_NONE;
     }
 
-    if (consumeItem)
+    if (consumeItem && prepareEvo == DO_EVO)
     {
         heldItem = ITEM_NONE;
         SetMonData(mon, MON_DATA_HELD_ITEM, &heldItem);
@@ -6531,13 +6575,13 @@ u8 GetFormIdFromFormSpeciesId(u16 formSpeciesId)
 }
 
 // Returns the current species if no form change is possible
-u32 GetFormChangeTargetSpecies(struct Pokemon *mon, u16 method, u32 arg)
+u32 GetFormChangeTargetSpecies(struct Pokemon *mon, enum FormChanges method, u32 arg)
 {
     return GetFormChangeTargetSpeciesBoxMon(&mon->box, method, arg);
 }
 
 // Returns the current species if no form change is possible
-u32 GetFormChangeTargetSpeciesBoxMon(struct BoxPokemon *boxMon, u16 method, u32 arg)
+u32 GetFormChangeTargetSpeciesBoxMon(struct BoxPokemon *boxMon, enum FormChanges method, u32 arg)
 {
     u32 i;
     u32 species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
@@ -6628,6 +6672,8 @@ u32 GetFormChangeTargetSpeciesBoxMon(struct BoxPokemon *boxMon, u16 method, u32 
                         break;
                     }
                     break;
+                default:
+                    break;
                 }
             }
         }
@@ -6652,7 +6698,7 @@ void TrySetDayLimitToFormChange(struct Pokemon *mon)
     }
 }
 
-bool32 DoesSpeciesHaveFormChangeMethod(u16 species, u16 method)
+bool32 DoesSpeciesHaveFormChangeMethod(u16 species, enum FormChanges method)
 {
     u32 i;
     const struct FormChange *formChanges = GetSpeciesFormChanges(species);
@@ -6725,7 +6771,7 @@ void TrySpecialOverworldEvo(void)
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
-        u16 targetSpecies = GetEvolutionTargetSpecies(&gPlayerParty[i], EVO_MODE_OVERWORLD_SPECIAL, evoMethod, SPECIES_NONE);
+        u16 targetSpecies = GetEvolutionTargetSpecies(&gPlayerParty[i], EVO_MODE_OVERWORLD_SPECIAL, evoMethod, SPECIES_NONE, DO_EVO);
         if (targetSpecies != SPECIES_NONE && !(sTriedEvolving & (1u << i)))
         {
             sTriedEvolving |= 1u << i;
@@ -6759,7 +6805,7 @@ bool32 SpeciesHasGenderDifferences(u16 species)
     return FALSE;
 }
 
-bool32 TryFormChange(u32 monId, u32 side, u16 method)
+bool32 TryFormChange(u32 monId, u32 side, enum FormChanges method)
 {
     struct Pokemon *party = (side == B_SIDE_PLAYER) ? gPlayerParty : gEnemyParty;
 
@@ -6797,7 +6843,7 @@ bool32 IsSpeciesEnabled(u16 species)
     return gSpeciesInfo[species].baseHP > 0 || species == SPECIES_EGG;
 }
 
-void TryToSetBattleFormChangeMoves(struct Pokemon *mon, u16 method)
+void TryToSetBattleFormChangeMoves(struct Pokemon *mon, enum FormChanges method)
 {
     int i, j;
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
@@ -7079,4 +7125,10 @@ bool32 IsSpeciesForeignRegionalForm(u32 species, u32 currentRegion)
             return TRUE;
     }
     return FALSE;
+}
+
+u32 GetTeraTypeFromPersonality(struct Pokemon *mon)
+{
+    const u8 *types = gSpeciesInfo[GetMonData(mon, MON_DATA_SPECIES)].types;
+    return (GetMonData(mon, MON_DATA_PERSONALITY) & 0x1) == 0 ? types[0] : types[1];
 }
