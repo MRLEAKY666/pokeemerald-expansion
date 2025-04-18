@@ -4426,8 +4426,8 @@
       "name": "GraniteCove_Layout",
       "width": 32,
       "height": 32,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Dewford",
+      "primary_tileset": "gTileset_General_OG",
+      "secondary_tileset": "gTileset_Dewford_OG",
       "border_filepath": "data/layouts/GraniteCove/border.bin",
       "blockdata_filepath": "data/layouts/GraniteCove/map.bin"
     },
@@ -4436,8 +4436,8 @@
       "name": "GraniteCave_LowTide_Layout",
       "width": 32,
       "height": 32,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Dewford",
+      "primary_tileset": "gTileset_General_OG",
+      "secondary_tileset": "gTileset_Dewford_OG",
       "border_filepath": "data/layouts/GraniteCave_LowTide/border.bin",
       "blockdata_filepath": "data/layouts/GraniteCave_LowTide/map.bin"
     },
@@ -4476,8 +4476,8 @@
       "name": "VerdantPlateau_Layout",
       "width": 72,
       "height": 32,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Mauville",
+      "primary_tileset": "gTileset_General_OG",
+      "secondary_tileset": "gTileset_Mauville_OG",
       "border_filepath": "data/layouts/VerdantPlateau/border.bin",
       "blockdata_filepath": "data/layouts/VerdantPlateau/map.bin"
     }
