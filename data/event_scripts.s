@@ -592,6 +592,8 @@ EventScript_WhiteOut::
 
 EventScript_AfterWhiteOutHeal::
 	lockall
+	specialvar VAR_RESULT, CountPartyAliveNonEggMons
+	goto_if_ge VAR_RESULT, 1, EventScript_RanFromTrainer
 	msgbox gText_FirstShouldRestoreMonsHealth
 	special ChoosePartyMon
 	waitstate
@@ -614,9 +616,11 @@ EventScript_AfterWhiteOutHealMsg::
 	return
 
 EventScript_AfterWhiteOutMomHeal::
-	lockall
+	lock
 	applymovement LOCALID_MOM, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
+	specialvar VAR_RESULT, CountPartyAliveNonEggMons
+	goto_if_ge VAR_RESULT, 1, PlayersHouse_1F_EventScript_MomHealsParty
 	msgbox gText_HadQuiteAnExperienceTakeRest
 	special ChoosePartyMon
 	waitstate
@@ -625,6 +629,11 @@ EventScript_AfterWhiteOutMomHeal::
 	msgbox gText_MomExplainHPGetPotions
 	fadedefaultbgm
 	releaseall
+	end
+
+EventScript_RanFromTrainer::
+	msgbox gText_BeCarefulChallenging
+	goto Common_EventScript_PkmnCenterNurseTrainerRan
 	end
 
 EventScript_ItsDangerousToGoAlone::
@@ -966,6 +975,11 @@ gText_FirstShouldRestoreMonsHealth::
 	.string "I'll revive one of your POKéMON\n"
 	.string "for you, but it might not be as\l"
 	.string "powerful as before . . .$"
+
+gText_BeCarefulChallenging::
+	.string "You should be more careful!\p"
+	.string "Think twice next time before taking\n"
+	.string "your POKéMON into dangerous situations!$"
 
 gText_ItsDangerousToGoAlone::
 	.string "You shouldn't leave without a\n"

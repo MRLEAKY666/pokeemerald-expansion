@@ -77,9 +77,9 @@ VerdantPlateau_EventScript_Maxie::
 # 39 "data//maps/VerdantPlateau/scripts.pory"
 	case DIR_WEST, VerdantPlateau_EventScript_MaxieLeavesWest
 # 40 "data//maps/VerdantPlateau/scripts.pory"
-	case DIR_NORTH, VerdantPlateau_EventScript_MaxieLeavesWest
+	case DIR_NORTH, VerdantPlateau_EventScript_MaxieLeavesNorth
 # 41 "data//maps/VerdantPlateau/scripts.pory"
-	case DIR_EAST, VerdantPlateau_EventScript_MaxieLeavesWest
+	case DIR_EAST, VerdantPlateau_EventScript_MaxieLeavesEast
 # 42 "data//maps/VerdantPlateau/scripts.pory"
 	release
 # 43 "data//maps/VerdantPlateau/scripts.pory"

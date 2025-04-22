@@ -6,6 +6,11 @@ gText_WouldYouLikeToRestYourPkmn::
 	.string "Would you like to rest your POKéMON\n" 
 	.string "for the modest price of ¥50?$"
 
+gText_WouldYouLikeToRestYourPkmnAfterRun::
+	.string "Before going back out, would you like\n"
+	.string "to rest your POKéMON for the modest\l" 
+	.string "price of ¥50?$"
+
 gText_IllTakeYourPkmn::
 	.string "Okay, I'll take your POKéMON\n"
 	.string "for a few seconds.$"
