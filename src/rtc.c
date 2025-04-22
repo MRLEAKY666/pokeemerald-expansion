@@ -8,6 +8,7 @@
 #include "text.h"
 #include "fake_rtc.h"
 #include "overworld.h"
+#include "event_data.h"
 
 // iwram bss
 static u16 sErrorStatus;
@@ -330,6 +331,26 @@ enum TimeOfDay GetTimeOfDay(void)
 {
     UpdateTimeOfDay();
     return gTimeOfDay;
+}
+
+void Script_GetTimeOfDay(void)
+{
+    UpdateTimeOfDay();
+    switch(gTimeOfDay)
+    {
+    case TIME_MORNING:
+        VarSet(VAR_TIME_OF_DAY, 0);
+        break;
+    case TIME_DAY:
+        VarSet(VAR_TIME_OF_DAY, 1);
+        break;
+    case TIME_EVENING:
+        VarSet(VAR_TIME_OF_DAY, 2);
+        break;
+    case TIME_NIGHT:
+        VarSet(VAR_TIME_OF_DAY, 3);
+        break;
+    }
 }
 
 enum TimeOfDay GetTimeOfDayForDex(void)

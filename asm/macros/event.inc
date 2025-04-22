@@ -2468,6 +2468,10 @@
 	callnative Script_SaveGamePC
 	.endm
 
+	.macro GetTimeOfDay
+	callnative Script_GetTimeOfDay
+	.endm
+
 	.macro OpenDexnav
 	callnative Task_OpenDexNavFromStartMenu
 	waitstate

@@ -1,0 +1,174 @@
+raw `
+.set LOCALID_TEAMLEADER, 1
+
+
+VerdantPlateau_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, VerdantPlateau_OnTransition
+	.byte 0
+
+VerdantPlateau_OnTransition:
+	callnative Script_GetTimeOfDay
+	call_if_le VAR_TIME_OF_DAY, 1, VerdantPlateau_EventScript_SetSun
+	end
+
+VerdantPlateau_EventScript_SetSun::
+	setweather WEATHER_SUNNY_CLOUDS
+	doweather
+	return
+
+VerdantPlateau_EventScript_Maxie::
+	lock
+	faceplayer
+	msgbox VerdantPlateau_Text_Maxie, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceUp
+	waitmovement LOCALID_TEAMLEADER
+	delay 60
+	msgbox VerdantPlateau_Text_Maxie2, MSGBOX_DEFAULT 
+	closemessage
+	delay 60
+	msgbox VerdantPlateau_Text_Maxie3, MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	faceplayer
+	waitmovement LOCALID_TEAMLEADER
+	msgbox VerdantPlateau_Text_Maxie4, MSGBOX_DEFAULT
+	closemessage
+	@ setflag FLAG_HIDE_PLATEAU_LEADER
+	switch VAR_FACING
+	case DIR_WEST, VerdantPlateau_EventScript_MaxieLeavesWest
+	case DIR_NORTH, VerdantPlateau_EventScript_MaxieLeavesNorth
+	case DIR_EAST, VerdantPlateau_EventScript_MaxieLeavesEast
+	release
+	end
+
+VerdantPlateau_EventScript_MaxieLeavesWest::
+	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceUp
+	waitmovement LOCALID_TEAMLEADER
+	delay 60
+	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceLeft
+	waitmovement LOCALID_TEAMLEADER
+	delay 60
+	faceplayer
+	waitmovement LOCALID_TEAMLEADER
+	msgbox VerdantPlateau_Text_Maxie5, MSGBOX_DEFAULT
+	giveitem ITEM_SUN_STONE, 1
+	goto_if_eq VAR_RESULT, 0, Common_EventScript_BagIsFull
+	msgbox VerdantPlateau_Text_Maxie6, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNormal
+	waitmovement LOCALID_TEAMLEADER
+	removeobject LOCALID_TEAMLEADER
+	@ setflag FLAG_HIDE_PLATEAU_LEADER
+	return
+
+VerdantPlateau_EventScript_MaxieLeavesEast::
+	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceUp
+	waitmovement LOCALID_TEAMLEADER
+	delay 60
+	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceRight
+	waitmovement LOCALID_TEAMLEADER
+	delay 60
+	faceplayer
+	waitmovement LOCALID_TEAMLEADER
+	msgbox VerdantPlateau_Text_Maxie5, MSGBOX_DEFAULT
+	giveitem ITEM_SUN_STONE, 1
+	goto_if_eq VAR_RESULT, 0, Common_EventScript_BagIsFull
+	msgbox VerdantPlateau_Text_Maxie6, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNormal
+	waitmovement LOCALID_TEAMLEADER
+	removeobject LOCALID_TEAMLEADER
+	@ setflag FLAG_HIDE_PLATEAU_LEADER
+	return
+
+VerdantPlateau_EventScript_MaxieLeavesNorth::
+	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceUp
+	waitmovement LOCALID_TEAMLEADER
+	delay 60
+	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceLeft
+	waitmovement LOCALID_TEAMLEADER
+	delay 60
+	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceRight
+	waitmovement LOCALID_TEAMLEADER
+	delay 60
+	faceplayer
+	waitmovement LOCALID_TEAMLEADER
+	msgbox VerdantPlateau_Text_Maxie5, MSGBOX_DEFAULT
+	giveitem ITEM_SUN_STONE, 1
+	goto_if_eq VAR_RESULT, 0, Common_EventScript_BagIsFull
+	msgbox VerdantPlateau_Text_Maxie6, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNorth
+	waitmovement LOCALID_TEAMLEADER
+	removeobject LOCALID_TEAMLEADER
+	@ setflag FLAG_HIDE_PLATEAU_LEADER
+	return
+
+VerdantPlateau_Movement_LeaderLeavesNormal:
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	delay_8
+	step_end
+
+VerdantPlateau_Movement_LeaderLeavesNorth:
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	delay_8
+	step_end
+
+VerdantPlateau_Text_Maxie:
+	.string "Hm?\p"
+	.string "My apologies, it's unusual to run into\n"
+	.string "another trainer up here.$"
+
+VerdantPlateau_Text_Maxie2:
+	.string "From up here there is such a clear view\n"
+	.string "of the land extending all around us…\p"
+	.string "And the way the sunlight seems to burn\n"
+	.string "so bright…$" 
+
+VerdantPlateau_Text_Maxie3:
+	.string "Can you imagine an entire region as\n"
+	.string "beautiful as this plateau?\p"
+	.string "What if the whole world could be this\n"
+	.string "brilliant?$"
+
+VerdantPlateau_Text_Maxie4:
+	.string "That's the type of world I want to see.$"
+
+VerdantPlateau_Text_Maxie5:
+	.string "And to that end, I must depart.\p"
+	.string "What was your name?\p"
+	.string "{PLAYER} is it?\p"
+	.string "Well {PLAYER}, maybe we'll cross paths again\n"
+	.string "someday.\p"
+	.string "I wonder if we'll be living in a new world\n"
+	.string "when that time comes…\p"
+	.string "Thank you for listening, {PLAYER}.\n"
+	.string "Take this as a parting gift.$"
+
+VerdantPlateau_Text_Maxie6:
+	.string "Goodbye for now…$"
+
+`
