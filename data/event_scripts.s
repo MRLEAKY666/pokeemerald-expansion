@@ -1107,6 +1107,9 @@ gText_LegendaryFlewAway::
 	.include "data/text/questionnaire.inc"
 	.include "data/text/abnormal_weather.inc"
 
+gText_WildMonFled::
+	.string "The {STR_VAR_1} ran off…$"
+
 EventScript_SelectWithoutRegisteredItem::
 	msgbox gText_SelectWithoutRegisteredItem, MSGBOX_SIGN
 	end
@@ -1150,6 +1153,15 @@ Common_EventScript_LegendaryFlewAway::
 	fadescreenswapbuffers FADE_FROM_BLACK
 	bufferspeciesname STR_VAR_1, VAR_0x8004
 	msgbox gText_LegendaryFlewAway, MSGBOX_DEFAULT
+	release
+	end
+
+Common_EventScript_WildMonFled::
+	fadescreenswapbuffers FADE_TO_BLACK
+	removeobject VAR_LAST_TALKED
+	fadescreenswapbuffers FADE_FROM_BLACK
+	bufferspeciesname STR_VAR_1, VAR_0x8004
+	msgbox gText_WildMonFled, MSGBOX_DEFAULT
 	release
 	end
 

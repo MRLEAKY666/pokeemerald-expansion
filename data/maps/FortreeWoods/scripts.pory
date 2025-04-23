@@ -81,7 +81,7 @@ FortreeWoods_EventScript_TryRemoveZapdos::
 	return
 
 FortreeWoods_EventScript_Zapdos::
-	@ lock
+	lock
 	faceplayer
 	waitse
 	playmoncry SPECIES_ZAPDOS, CRY_MODE_ENCOUNTER
@@ -103,11 +103,13 @@ FortreeWoods_EventScript_Zapdos::
 FortreeWoods_EventScript_DefeatedZapdos::
 	setflag FLAG_DEFEATED_ZAPDOS
 	goto Common_EventScript_RemoveStaticPokemon
+	release
 	end
 
 FortreeWoods_EventScript_RanFromZapdos::
 	setvar VAR_0x8004, SPECIES_ZAPDOS
 	goto Common_EventScript_LegendaryFlewAway
+	release
 	end
 
 FortreeWoods_Movement_RayquazaFlyOff:

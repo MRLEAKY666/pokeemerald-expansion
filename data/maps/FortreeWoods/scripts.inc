@@ -165,7 +165,7 @@ FortreeWoods_EventScript_TryRemoveZapdos::
 # 83 "data//maps/FortreeWoods/scripts.pory"
 FortreeWoods_EventScript_Zapdos::
 # 84 "data//maps/FortreeWoods/scripts.pory"
-	@ lock
+	lock
 # 85 "data//maps/FortreeWoods/scripts.pory"
 	faceplayer
 # 86 "data//maps/FortreeWoods/scripts.pory"
@@ -209,27 +209,27 @@ FortreeWoods_EventScript_DefeatedZapdos::
 # 105 "data//maps/FortreeWoods/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 # 106 "data//maps/FortreeWoods/scripts.pory"
-	end
+	release
 # 107 "data//maps/FortreeWoods/scripts.pory"
-
-# 108 "data//maps/FortreeWoods/scripts.pory"
-FortreeWoods_EventScript_RanFromZapdos::
-# 109 "data//maps/FortreeWoods/scripts.pory"
-	setvar VAR_0x8004, SPECIES_ZAPDOS
-# 110 "data//maps/FortreeWoods/scripts.pory"
-	goto Common_EventScript_LegendaryFlewAway
-# 111 "data//maps/FortreeWoods/scripts.pory"
 	end
-# 112 "data//maps/FortreeWoods/scripts.pory"
+# 108 "data//maps/FortreeWoods/scripts.pory"
 
+# 109 "data//maps/FortreeWoods/scripts.pory"
+FortreeWoods_EventScript_RanFromZapdos::
+# 110 "data//maps/FortreeWoods/scripts.pory"
+	setvar VAR_0x8004, SPECIES_ZAPDOS
+# 111 "data//maps/FortreeWoods/scripts.pory"
+	goto Common_EventScript_LegendaryFlewAway
+# 112 "data//maps/FortreeWoods/scripts.pory"
+	release
 # 113 "data//maps/FortreeWoods/scripts.pory"
-FortreeWoods_Movement_RayquazaFlyOff:
+	end
 # 114 "data//maps/FortreeWoods/scripts.pory"
-	delay_16
+
 # 115 "data//maps/FortreeWoods/scripts.pory"
-	slide_up
+FortreeWoods_Movement_RayquazaFlyOff:
 # 116 "data//maps/FortreeWoods/scripts.pory"
-	slide_up
+	delay_16
 # 117 "data//maps/FortreeWoods/scripts.pory"
 	slide_up
 # 118 "data//maps/FortreeWoods/scripts.pory"
@@ -263,15 +263,15 @@ FortreeWoods_Movement_RayquazaFlyOff:
 # 132 "data//maps/FortreeWoods/scripts.pory"
 	slide_up
 # 133 "data//maps/FortreeWoods/scripts.pory"
-	step_end
+	slide_up
 # 134 "data//maps/FortreeWoods/scripts.pory"
-
+	slide_up
 # 135 "data//maps/FortreeWoods/scripts.pory"
-FortreeWoods_Movement_CameraPanUpI:
+	step_end
 # 136 "data//maps/FortreeWoods/scripts.pory"
-	walk_slow_up
+
 # 137 "data//maps/FortreeWoods/scripts.pory"
-	walk_slow_up
+FortreeWoods_Movement_CameraPanUpI:
 # 138 "data//maps/FortreeWoods/scripts.pory"
 	walk_slow_up
 # 139 "data//maps/FortreeWoods/scripts.pory"
@@ -283,15 +283,15 @@ FortreeWoods_Movement_CameraPanUpI:
 # 142 "data//maps/FortreeWoods/scripts.pory"
 	walk_slow_up
 # 143 "data//maps/FortreeWoods/scripts.pory"
-	step_end
+	walk_slow_up
 # 144 "data//maps/FortreeWoods/scripts.pory"
-
+	walk_slow_up
 # 145 "data//maps/FortreeWoods/scripts.pory"
-FortreeWoods_Movement_CameraPanUpII:
+	step_end
 # 146 "data//maps/FortreeWoods/scripts.pory"
-	walk_slow_up
+
 # 147 "data//maps/FortreeWoods/scripts.pory"
-	walk_slow_up
+FortreeWoods_Movement_CameraPanUpII:
 # 148 "data//maps/FortreeWoods/scripts.pory"
 	walk_slow_up
 # 149 "data//maps/FortreeWoods/scripts.pory"
@@ -303,15 +303,15 @@ FortreeWoods_Movement_CameraPanUpII:
 # 152 "data//maps/FortreeWoods/scripts.pory"
 	walk_slow_up
 # 153 "data//maps/FortreeWoods/scripts.pory"
-	step_end
+	walk_slow_up
 # 154 "data//maps/FortreeWoods/scripts.pory"
-
+	walk_slow_up
 # 155 "data//maps/FortreeWoods/scripts.pory"
-FortreeWoods_Movement_CameraPanDownI:
+	step_end
 # 156 "data//maps/FortreeWoods/scripts.pory"
-	walk_slow_down
+
 # 157 "data//maps/FortreeWoods/scripts.pory"
-	walk_slow_down
+FortreeWoods_Movement_CameraPanDownI:
 # 158 "data//maps/FortreeWoods/scripts.pory"
 	walk_slow_down
 # 159 "data//maps/FortreeWoods/scripts.pory"
@@ -323,15 +323,15 @@ FortreeWoods_Movement_CameraPanDownI:
 # 162 "data//maps/FortreeWoods/scripts.pory"
 	walk_slow_down
 # 163 "data//maps/FortreeWoods/scripts.pory"
-	step_end
+	walk_slow_down
 # 164 "data//maps/FortreeWoods/scripts.pory"
-
+	walk_slow_down
 # 165 "data//maps/FortreeWoods/scripts.pory"
-FortreeWoods_Movement_CameraPanDownII:
+	step_end
 # 166 "data//maps/FortreeWoods/scripts.pory"
-	walk_slow_down
+
 # 167 "data//maps/FortreeWoods/scripts.pory"
-	walk_slow_down
+FortreeWoods_Movement_CameraPanDownII:
 # 168 "data//maps/FortreeWoods/scripts.pory"
 	walk_slow_down
 # 169 "data//maps/FortreeWoods/scripts.pory"
@@ -343,26 +343,30 @@ FortreeWoods_Movement_CameraPanDownII:
 # 172 "data//maps/FortreeWoods/scripts.pory"
 	walk_slow_down
 # 173 "data//maps/FortreeWoods/scripts.pory"
-	step_end
+	walk_slow_down
 # 174 "data//maps/FortreeWoods/scripts.pory"
-
+	walk_slow_down
 # 175 "data//maps/FortreeWoods/scripts.pory"
-FortreeWoods_Movement_SetInvisible:
+	step_end
 # 176 "data//maps/FortreeWoods/scripts.pory"
-	set_invisible
+
 # 177 "data//maps/FortreeWoods/scripts.pory"
-	step_end
+FortreeWoods_Movement_SetInvisible:
 # 178 "data//maps/FortreeWoods/scripts.pory"
-
+	set_invisible
 # 179 "data//maps/FortreeWoods/scripts.pory"
-FortreeWoods_Movement_SetVisible:
-# 180 "data//maps/FortreeWoods/scripts.pory"
-	set_visible
-# 181 "data//maps/FortreeWoods/scripts.pory"
 	step_end
-# 182 "data//maps/FortreeWoods/scripts.pory"
+# 180 "data//maps/FortreeWoods/scripts.pory"
 
+# 181 "data//maps/FortreeWoods/scripts.pory"
+FortreeWoods_Movement_SetVisible:
+# 182 "data//maps/FortreeWoods/scripts.pory"
+	set_visible
 # 183 "data//maps/FortreeWoods/scripts.pory"
-FortreeWoods_Text_RayquazaFlewOff:
+	step_end
 # 184 "data//maps/FortreeWoods/scripts.pory"
+
+# 185 "data//maps/FortreeWoods/scripts.pory"
+FortreeWoods_Text_RayquazaFlewOff:
+# 186 "data//maps/FortreeWoods/scripts.pory"
 	.string "RAYQUAZA flew off somewhere . . .$"

@@ -3,7 +3,8 @@
 
 GraniteCove_MapScripts::
     map_script MAP_SCRIPT_ON_TRANSITION, GraniteCove_OnTransition
-    map_script MAP_SCRIPT_ON_TRANSITION, GraniteCove_OnLoad
+    map_script MAP_SCRIPT_ON_LOAD, GraniteCove_OnLoad
+    map_script MAP_SCRIPT_ON_RESUME, GraniteCove_OnResume
 	.byte 0
 
 GraniteCove_OnTransition:
@@ -15,6 +16,16 @@ GraniteCove_OnTransition:
 GraniteCove_OnLoad:
 	call_if_eq VAR_BRAWLY_LOCATION, 1, GraniteCove_EventScript_HideBrawly
 	end
+
+GraniteCove_OnResume:
+	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, GraniteCove_EventScript_TryRemoveWildMon
+	end
+
+GraniteCove_EventScript_TryRemoveWildMon::
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
+	removeobject VAR_LAST_TALKED
+	return
 
 GraniteCove_EventScript_HideBrawly::
 	setflag FLAG_HIDE_GRANITE_COVE_BRAWLY
@@ -44,15 +55,14 @@ GraniteCove_EventScript_Abomasnow::
 	waitmoncry
 	closemessage
 	setwildbattle SPECIES_ABOMASNOW, 40
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	dowildbattle
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setvar VAR_0x8004, SPECIES_ABOMASNOW
     specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, GraniteCove_EventScript_DefeatedWildMon
-    goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, GraniteCove_EventScript_DefeatedWildMon
-	fadescreenswapbuffers FADE_TO_BLACK
-	removeobject VAR_LAST_TALKED
-    playse SE_FLEE
-    waitse
-	fadescreenswapbuffers FADE_FROM_BLACK
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, GraniteCove_EventScript_RanWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, GraniteCove_EventScript_RanWildMon
 	release
 	end
 
@@ -64,15 +74,15 @@ GraniteCove_EventScript_Snover::
 	delay 10
 	waitmoncry
 	setwildbattle SPECIES_SNOVER, 25
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	dowildbattle
+	@ waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setvar VAR_0x8004, SPECIES_SNOVER
     specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, GraniteCove_EventScript_DefeatedWildMon
-    goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, GraniteCove_EventScript_DefeatedWildMon
-	fadescreenswapbuffers FADE_TO_BLACK
-	removeobject VAR_LAST_TALKED
-    playse SE_FLEE
-    waitse
-	fadescreenswapbuffers FADE_FROM_BLACK
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, GraniteCove_EventScript_RanWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, GraniteCove_EventScript_RanWildMon
 	release
 	end
 
@@ -129,9 +139,12 @@ GraniteCove_Movement_BrawlyExitNormal:
 	step_end
 
 GraniteCove_EventScript_DefeatedWildMon::
-    fadescreenswapbuffers FADE_TO_BLACK
-	removeobject VAR_LAST_TALKED
-	fadescreenswapbuffers FADE_FROM_BLACK
+    goto Common_EventScript_RemoveStaticPokemon
+	release
+	end
+
+GraniteCove_EventScript_RanWildMon::
+	goto Common_EventScript_WildMonFled
 	release
 	end
 

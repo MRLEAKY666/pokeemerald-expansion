@@ -18,6 +18,9 @@ VerdantPlateau_EventScript_SetSun::
 
 VerdantPlateau_EventScript_Maxie::
 	lock
+	applymovement LOCALID_TEAMLEADER, Common_Movement_ExclamationMark
+	playse SE_PIN
+	waitse
 	faceplayer
 	msgbox VerdantPlateau_Text_Maxie, MSGBOX_DEFAULT
 	closemessage
