@@ -325,7 +325,7 @@
 #define P_FAMILY_TYMPOLE                 P_GEN_5_POKEMON
 #define P_FAMILY_THROH                   P_GEN_5_POKEMON
 #define P_FAMILY_SAWK                    P_GEN_5_POKEMON
-#define P_FAMILY_SEWADDLE                P_GEN_5_POKEMON
+#define P_FAMILY_SEWADDLE                TRUE
 #define P_FAMILY_VENIPEDE                TRUE
 #define P_FAMILY_COTTONEE                TRUE
 #define P_FAMILY_PETILIL                 TRUE
@@ -438,8 +438,8 @@
 #define P_FAMILY_WISHIWASHI              FALSE
 #define P_FAMILY_MAREANIE                FALSE
 #define P_FAMILY_MUDBRAY                 FALSE
-#define P_FAMILY_DEWPIDER                FALSE
-#define P_FAMILY_FOMANTIS                FALSE
+#define P_FAMILY_DEWPIDER                TRUE
+#define P_FAMILY_FOMANTIS                TRUE
 #define P_FAMILY_MORELULL                FALSE
 #define P_FAMILY_SALANDIT                TRUE
 #define P_FAMILY_STUFFUL                 FALSE
@@ -543,7 +543,7 @@
 #define P_FAMILY_SQUAWKABILLY            FALSE
 #define P_FAMILY_NACLI                   FALSE
 #define P_FAMILY_CHARCADET               FALSE
-#define P_FAMILY_TADBULB                 FALSE
+#define P_FAMILY_TADBULB                 P_GEN_9_POKEMON
 #define P_FAMILY_WATTREL                 P_GEN_9_POKEMON
 #define P_FAMILY_MASCHIFF                FALSE
 #define P_FAMILY_SHROODLE                FALSE

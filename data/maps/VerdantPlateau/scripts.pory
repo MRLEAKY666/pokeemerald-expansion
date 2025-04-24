@@ -9,12 +9,31 @@ VerdantPlateau_MapScripts::
 VerdantPlateau_OnTransition:
 	callnative Script_GetTimeOfDay
 	call_if_le VAR_TIME_OF_DAY, 1, VerdantPlateau_EventScript_SetSun
+	call_if_unset FLAG_HIDE_PLATEAU_LEADER, VerdantPlateau_EventScript_SetupTeamLeaderGfxId
 	end
 
 VerdantPlateau_EventScript_SetSun::
 	setweather WEATHER_SUNNY_CLOUDS
 	doweather
 	return
+
+VerdantPlateau_EventScript_SetupTeamLeaderGfxId::
+	goto_if_le VAR_TIME_OF_DAY, 1, VerdantPlateau_EventScript_ShowMaxie
+	goto_if_ge VAR_TIME_OF_DAY, 2, VerdantPlateau_EventScript_ShowArchie
+	return
+
+VerdantPlateau_EventScript_ShowMaxie::
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_MAXIE
+	return
+
+VerdantPlateau_EventScript_ShowArchie::
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_ARCHIE
+	return
+
+VerdantPlateau_EventScript_TeamLeader::
+	goto_if_eq VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_MAXIE, VerdantPlateau_EventScript_Maxie
+	goto_if_eq VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_ARCHIE, VerdantPlateau_EventScript_Archie
+	end
 
 VerdantPlateau_EventScript_Maxie::
 	lock
@@ -108,6 +127,36 @@ VerdantPlateau_EventScript_MaxieLeavesNorth::
 	@ setflag FLAG_HIDE_PLATEAU_LEADER
 	return
 
+VerdantPlateau_EventScript_Archie::
+	lock
+	faceplayer
+	msgbox VerdantPlateau_Text_Archie, MSGBOX_DEFAULT
+	closemessage
+	switch VAR_FACING
+	case DIR_WEST, VerdantPlateau_EventScript_ArchieLeavesWest
+	case DIR_NORTH, VerdantPlateau_EventScript_ArchieLeavesNorth
+	case DIR_EAST, VerdantPlateau_EventScript_ArchieLeavesEast
+	release
+	end
+
+VerdantPlateau_EventScript_ArchieLeavesWest::
+	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNormal
+	waitmovement LOCALID_TEAMLEADER
+	removeobject LOCALID_TEAMLEADER
+	return
+
+VerdantPlateau_EventScript_ArchieLeavesEast::
+	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNormal
+	waitmovement LOCALID_TEAMLEADER
+	removeobject LOCALID_TEAMLEADER
+	return
+
+VerdantPlateau_EventScript_ArchieLeavesNorth::
+	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNorth
+	waitmovement LOCALID_TEAMLEADER
+	removeobject LOCALID_TEAMLEADER
+	return
+
 VerdantPlateau_Movement_LeaderLeavesNormal:
 	walk_down
 	walk_down
@@ -173,5 +222,9 @@ VerdantPlateau_Text_Maxie5:
 
 VerdantPlateau_Text_Maxie6:
 	.string "Goodbye for now…$"
+
+VerdantPlateau_Text_Archie:
+	.string "Talk to me again when I have my scripts\n"
+	.string "written!$"
 
 `

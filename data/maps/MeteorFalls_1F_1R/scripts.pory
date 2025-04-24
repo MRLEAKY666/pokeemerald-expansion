@@ -22,6 +22,7 @@ MeteorFalls_1F_1R_EventScript_OpenStevensCave::
 
 MeteorFalls_1F_1R_EventScript_MagmaStealsMeteoriteScene::
 	lockall
+	setflag FLAG_HIDE_PLATEAU_LEADER
 	playbgm MUS_ENCOUNTER_MAGMA, FALSE
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	waitmovement 0
