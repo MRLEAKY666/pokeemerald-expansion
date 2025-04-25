@@ -47,7 +47,7 @@ MeteorFalls_1F_1R_EventScript_MagmaStealsMeteoriteScene::
 # 24 "data//maps/MeteorFalls_1F_1R/scripts.pory"
 	lockall
 # 25 "data//maps/MeteorFalls_1F_1R/scripts.pory"
-	setflag FLAG_HIDE_PLATEAU_LEADER
+	setflag FLAG_PLATEAU_LEADER_EVENT
 # 26 "data//maps/MeteorFalls_1F_1R/scripts.pory"
 	playbgm MUS_ENCOUNTER_MAGMA, FALSE
 # 27 "data//maps/MeteorFalls_1F_1R/scripts.pory"

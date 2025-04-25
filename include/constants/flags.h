@@ -1502,13 +1502,13 @@
 #define FLAG_ARRIVED_AT_NAVEL_ROCK                  (SYSTEM_FLAGS + 0x81)
 #define FLAG_LANDMARK_TRAINER_HILL                  (SYSTEM_FLAGS + 0x82)
 
-#define FLAG_UNUSED_0x8E3                           (SYSTEM_FLAGS + 0x83) // Unused Flag
+#define FLAG_FORCE_LOAD_OFFSCREEN_OBJEV                           (SYSTEM_FLAGS + 0x83) // previously Unused Flag
 
 #define FLAG_RECEIVED_POKEDEX_FROM_BIRCH            (SYSTEM_FLAGS + 0x84)
 
 #define FLAG_DEWFORD_GYM_SIGN                           (SYSTEM_FLAGS + 0x85) // previously Unused Flag
 #define FLAG_HIDE_PLATEAU_LEADER                           (SYSTEM_FLAGS + 0x86) // previously Unused Flag
-#define FLAG_UNUSED_0x8E7                           (SYSTEM_FLAGS + 0x87) // Unused Flag
+#define FLAG_PLATEAU_LEADER_EVENT                           (SYSTEM_FLAGS + 0x87) // previously Unused Flag
 #define FLAG_UNUSED_0x8E8                           (SYSTEM_FLAGS + 0x88) // Unused Flag
 #define FLAG_UNUSED_0x8E9                           (SYSTEM_FLAGS + 0x89) // Unused Flag
 #define FLAG_UNUSED_0x8EA                           (SYSTEM_FLAGS + 0x8A) // Unused Flag

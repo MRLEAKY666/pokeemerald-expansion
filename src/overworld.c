@@ -1573,6 +1573,14 @@ void UpdateTimeOfDay(void)
         gTimeBlend.weight = TIME_BLEND_WEIGHT(MORNING_HOUR_BEGIN, MORNING_HOUR_MIDDLE);
         gTimeBlend.altWeight = (DEFAULT_WEIGHT - gTimeBlend.weight) / 2;
         gTimeOfDay = TIME_MORNING;
+        if (VarGet(VAR_TIME_OF_DAY) == 1)
+        {
+
+        }
+        else
+        {
+            VarSet(VAR_TIME_OF_DAY, 0);
+        }
     }
     else if (IsBetweenHours(hours, MORNING_HOUR_MIDDLE, MORNING_HOUR_END)) // morning->day
     {
@@ -1581,6 +1589,14 @@ void UpdateTimeOfDay(void)
         gTimeBlend.weight = TIME_BLEND_WEIGHT(MORNING_HOUR_MIDDLE, MORNING_HOUR_END);
         gTimeBlend.altWeight = (DEFAULT_WEIGHT - gTimeBlend.weight) / 2 + (DEFAULT_WEIGHT / 2);
         gTimeOfDay = TIME_MORNING;
+        if (VarGet(VAR_TIME_OF_DAY) == 1)
+        {
+
+        }
+        else
+        {
+            VarSet(VAR_TIME_OF_DAY, 0);
+        }
     }
     else if (IsBetweenHours(hours, EVENING_HOUR_BEGIN, EVENING_HOUR_END)) // evening
     {
@@ -1589,6 +1605,14 @@ void UpdateTimeOfDay(void)
         gTimeBlend.weight = TIME_BLEND_WEIGHT(EVENING_HOUR_BEGIN, EVENING_HOUR_END);
         gTimeBlend.altWeight = gTimeBlend.weight / 2 + (DEFAULT_WEIGHT / 2);
         gTimeOfDay = TIME_EVENING;
+        if (VarGet(VAR_TIME_OF_DAY) == 5)
+        {
+
+        }
+        else
+        {
+            VarSet(VAR_TIME_OF_DAY, 4);
+        }
     }
     else if (IsBetweenHours(hours, NIGHT_HOUR_BEGIN, NIGHT_HOUR_BEGIN + 1)) // evening->night
     {
@@ -1597,6 +1621,14 @@ void UpdateTimeOfDay(void)
         gTimeBlend.weight = TIME_BLEND_WEIGHT(NIGHT_HOUR_BEGIN, NIGHT_HOUR_BEGIN + 1);
         gTimeBlend.altWeight = gTimeBlend.weight / 2;
         gTimeOfDay = TIME_NIGHT;
+        if (VarGet(VAR_TIME_OF_DAY) == 7)
+        {
+
+        }
+        else
+        {
+            VarSet(VAR_TIME_OF_DAY, 6);
+        }
     }
     else if (IsBetweenHours(hours, NIGHT_HOUR_BEGIN, NIGHT_HOUR_END)) // night
     {
@@ -1604,12 +1636,28 @@ void UpdateTimeOfDay(void)
         gTimeBlend.altWeight = 0;
         gTimeBlend.startBlend = gTimeBlend.endBlend = gTimeOfDayBlend[TIME_NIGHT];
         gTimeOfDay = TIME_NIGHT;
+        if (VarGet(VAR_TIME_OF_DAY) == 7)
+        {
+
+        }
+        else
+        {
+            VarSet(VAR_TIME_OF_DAY, 6);
+        }
     }
     else // day
     {
         gTimeBlend.weight = gTimeBlend.altWeight = DEFAULT_WEIGHT;
         gTimeBlend.startBlend = gTimeBlend.endBlend = gTimeOfDayBlend[TIME_DAY];
         gTimeOfDay = TIME_DAY;
+        if (VarGet(VAR_TIME_OF_DAY) == 3)
+        {
+
+        }
+        else
+        {
+            VarSet(VAR_TIME_OF_DAY, 2);
+        }
     }
 }
 

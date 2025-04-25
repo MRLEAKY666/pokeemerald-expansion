@@ -3,13 +3,13 @@ raw `
 
 
 VerdantPlateau_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, VerdantPlateau_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, VerdantPlateau_OnLoad
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, VerdantPlateau_OnFrame
 	.byte 0
 
-VerdantPlateau_OnTransition:
-	callnative Script_GetTimeOfDay
-	call_if_le VAR_TIME_OF_DAY, 1, VerdantPlateau_EventScript_SetSun
-	call_if_unset FLAG_HIDE_PLATEAU_LEADER, VerdantPlateau_EventScript_SetupTeamLeaderGfxId
+VerdantPlateau_OnLoad:
+	call_if_le VAR_TIME_OF_DAY, 3, VerdantPlateau_EventScript_SetSun
+	call_if_unset FLAG_PLATEAU_LEADER_EVENT, VerdantPlateau_EventScript_SetupTeamLeaderGfxId
 	end
 
 VerdantPlateau_EventScript_SetSun::
@@ -18,19 +18,58 @@ VerdantPlateau_EventScript_SetSun::
 	return
 
 VerdantPlateau_EventScript_SetupTeamLeaderGfxId::
-	goto_if_le VAR_TIME_OF_DAY, 1, VerdantPlateau_EventScript_ShowMaxie
-	goto_if_ge VAR_TIME_OF_DAY, 2, VerdantPlateau_EventScript_ShowArchie
+	call_if_set FLAG_HIDE_PLATEAU_LEADER, VerdantPlateau_EventScript_ShowPlateauLeader
+	goto_if_le VAR_TIME_OF_DAY, 3, VerdantPlateau_EventScript_ShowMaxie
+	goto_if_ge VAR_TIME_OF_DAY, 4, VerdantPlateau_EventScript_ShowArchie
+	return
+
+VerdantPlateau_EventScript_ShowPlateauLeader::
+	clearflag FLAG_HIDE_PLATEAU_LEADER
 	return
 
 VerdantPlateau_EventScript_ShowMaxie::
 	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_MAXIE
+	call_if_eq VAR_TIME_OF_DAY, 0, VerdantPlateau_EventScript_IncrementTimeOfDay
+	call_if_eq VAR_TIME_OF_DAY, 2, VerdantPlateau_EventScript_IncrementTimeOfDay
 	return
 
 VerdantPlateau_EventScript_ShowArchie::
 	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_ARCHIE
+	call_if_eq VAR_TIME_OF_DAY, 4, VerdantPlateau_EventScript_IncrementTimeOfDay
+	call_if_eq VAR_TIME_OF_DAY, 6, VerdantPlateau_EventScript_IncrementTimeOfDay
 	return
 
+VerdantPlateau_EventScript_IncrementTimeOfDay::
+	addvar VAR_TIME_OF_DAY, 1
+	return
+
+VerdantPlateau_OnFrame:
+	map_script_2 VAR_TIME_OF_DAY, 0, VerdantPlateau_EventScript_SwitchToDaytime
+	map_script_2 VAR_TIME_OF_DAY, 4, VerdantPlateau_EventScript_SwitchToNighttime
+	.2byte 0
+
+VerdantPlateau_EventScript_SwitchToDaytime::
+	@ setflag FLAG_FORCE_LOAD_OFFSCREEN_OBJEV
+	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNormal
+	waitmovement LOCALID_TEAMLEADER
+	removeobject LOCALID_TEAMLEADER
+	setflag FLAG_HIDE_PLATEAU_LEADER
+	addvar VAR_TIME_OF_DAY, 1
+	@ clearflag FLAG_FORCE_LOAD_OFFSCREEN_OBJEV
+	end
+
+VerdantPlateau_EventScript_SwitchToNighttime::
+	@ setflag FLAG_FORCE_LOAD_OFFSCREEN_OBJEV
+	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNormal
+	waitmovement LOCALID_TEAMLEADER
+	removeobject LOCALID_TEAMLEADER
+	setflag FLAG_HIDE_PLATEAU_LEADER
+	addvar VAR_TIME_OF_DAY, 1
+	@ clearflag FLAG_FORCE_LOAD_OFFSCREEN_OBJEV
+	end
+
 VerdantPlateau_EventScript_TeamLeader::
+	setflag FLAG_PLATEAU_LEADER_EVENT
 	goto_if_eq VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_MAXIE, VerdantPlateau_EventScript_Maxie
 	goto_if_eq VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_ARCHIE, VerdantPlateau_EventScript_Archie
 	end
@@ -140,18 +179,27 @@ VerdantPlateau_EventScript_Archie::
 	end
 
 VerdantPlateau_EventScript_ArchieLeavesWest::
+	giveitem ITEM_MOON_STONE, 1
+	goto_if_eq VAR_RESULT, 0, Common_EventScript_BagIsFull
+	closemessage
 	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNormal
 	waitmovement LOCALID_TEAMLEADER
 	removeobject LOCALID_TEAMLEADER
 	return
 
 VerdantPlateau_EventScript_ArchieLeavesEast::
+	giveitem ITEM_MOON_STONE, 1
+	goto_if_eq VAR_RESULT, 0, Common_EventScript_BagIsFull
+	closemessage
 	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNormal
 	waitmovement LOCALID_TEAMLEADER
 	removeobject LOCALID_TEAMLEADER
 	return
 
 VerdantPlateau_EventScript_ArchieLeavesNorth::
+	giveitem ITEM_MOON_STONE, 1
+	goto_if_eq VAR_RESULT, 0, Common_EventScript_BagIsFull
+	closemessage
 	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNorth
 	waitmovement LOCALID_TEAMLEADER
 	removeobject LOCALID_TEAMLEADER
