@@ -11939,12 +11939,12 @@
               {
                 "min_level": 25,
                 "max_level": 27,
-                "species": "SPECIES_DUCKLETT"
+                "species": "SPECIES_YANMA"
               },
               {
                 "min_level": 27,
                 "max_level": 30,
-                "species": "SPECIES_PSYDUCK"
+                "species": "SPECIES_DUCKLETT"
               },
               {
                 "min_level": 27,
