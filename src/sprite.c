@@ -1604,15 +1604,6 @@ u32 LoadSpritePaletteWithTag(const u16 *pal, u16 tag)
     return LoadSpritePalette(&spritePal);
 }
 
-u32 LoadUniqueSpritePaletteWithTag(const u16 *pal, u16 tag)
-{
-    struct SpritePalette spritePal;
-    struct BoxPokemon boxMon;
-    spritePal.data = pal;
-    spritePal.tag = GetBoxMonData(&boxMon, MON_DATA_SPECIES);
-    return LoadUniqueSpritePalette(&spritePal, &boxMon);
-}
-
 void LoadSpritePalettes(const struct SpritePalette *palettes)
 {
     u32 i;
