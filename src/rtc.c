@@ -333,7 +333,7 @@ enum TimeOfDay GetTimeOfDay(void)
     return gTimeOfDay;
 }
 
-void Script_GetTimeOfDay(void)
+void Script_SetVarTimeOfDay(void)
 {
     UpdateTimeOfDay();
     switch(gTimeOfDay)

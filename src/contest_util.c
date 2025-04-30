@@ -274,7 +274,7 @@ static const struct CompressedSpriteSheet sSpriteSheet_Confetti =
 };
 
 
-static const struct CompressedSpritePalette sSpritePalette_Confetti =
+static const struct SpritePalette sSpritePalette_Confetti =
 {
     .data = gConfetti_Pal,
     .tag = TAG_CONFETTI
@@ -457,7 +457,7 @@ static void LoadContestResultsBgGfx(void)
     CopyToBgTilemapBuffer(2, gContestResults_Interface_Tilemap, 0, 0);
     CopyToBgTilemapBuffer(0, gContestResults_WinnerBanner_Tilemap, 0, 0);
     LoadContestResultsTitleBarTilemaps();
-    LoadCompressedPalette(gContestResults_Pal, BG_PLTT_OFFSET, BG_PLTT_SIZE);
+    LoadPalette(gContestResults_Pal, BG_PLTT_OFFSET, BG_PLTT_SIZE);
     LoadPalette(sResultsTextWindow_Pal, BG_PLTT_ID(15), sizeof(sResultsTextWindow_Pal));
 
     for (i = 0; i < CONTESTANT_COUNT; i++)
@@ -901,15 +901,7 @@ static void Task_ShowWinnerMonBanner(u8 taskId)
                                 species,
                                 personality);
 
-        pokePal = GetMonSpritePalFromSpeciesAndPersonality(species, isShiny, personality);
-
-        // If you are going to use SOURCE_IVS, you'll need to load those stats somewhere during Contests
-        // For SOURCE_NICKNAME_OT, OT Name should be loaded somewhere during Contests
-        CreateBoxMon(&boxMon, species, 5, USE_RANDOM_IVS, TRUE, personality, OT_ID_PRESET, otId);
-        SetBoxMonData(&boxMon, MON_DATA_NICKNAME, gContestMons[i].nickname);
-        SetBoxMonData(&boxMon, MON_DATA_OT_NAME, gContestMons[i].trainerName);
-        LoadCompressedUniqueSpritePalette(pokePal, &boxMon);
-
+        LoadSpritePaletteWithTag(GetMonSpritePalFromSpeciesAndPersonality(species, isShiny, personality), species);
         SetMultiuseSpriteTemplateToPokemon(species, B_POSITION_OPPONENT_LEFT);
         gMultiuseSpriteTemplate.paletteTag = species;
         spriteId = CreateSprite(&gMultiuseSpriteTemplate, DISPLAY_WIDTH + 32, DISPLAY_HEIGHT / 2, 10);
@@ -918,7 +910,7 @@ static void Task_ShowWinnerMonBanner(u8 taskId)
         gSprites[spriteId].callback = SpriteCB_WinnerMonSlideIn;
         sContestResults->data->winnerMonSpriteId = spriteId;
         LoadCompressedSpriteSheet(&sSpriteSheet_Confetti);
-        LoadCompressedSpritePalette(&sSpritePalette_Confetti);
+        LoadSpritePalette(&sSpritePalette_Confetti);
         CreateTask(Task_CreateConfetti, 10);
         gTasks[taskId].tState++;
         break;
@@ -2592,15 +2584,7 @@ void ShowContestEntryMonPic(void)
         gTasks[taskId].data[1] = species;
         HandleLoadSpecialPokePic(TRUE, gMonSpritesGfxPtr->spritesGfx[B_POSITION_OPPONENT_LEFT], species, personality);
 
-        palette = GetMonSpritePalFromSpeciesAndPersonality(species, isShiny, personality);
-
-        // If you are going to use SOURCE_IVS, you'll need to load those stats somewhere during Contests
-        // For SOURCE_NICKNAME_OT, OT Name should be loaded somewhere during Contests
-        CreateBoxMon(&boxMon, species, 5, USE_RANDOM_IVS, TRUE, personality, OT_ID_PRESET, otId);
-        SetBoxMonData(&boxMon, MON_DATA_NICKNAME, gContestMons[gSpecialVar_0x8006].nickname);
-        SetBoxMonData(&boxMon, MON_DATA_NICKNAME, gContestMons[gSpecialVar_0x8006].trainerName);
-        LoadCompressedUniqueSpritePalette(palette, &boxMon);
-
+        LoadSpritePaletteWithTag(GetMonSpritePalFromSpeciesAndPersonality(species, isShiny, personality), species);
         SetMultiuseSpriteTemplateToPokemon(species, B_POSITION_OPPONENT_LEFT);
         gMultiuseSpriteTemplate.paletteTag = species;
         spriteId = CreateSprite(&gMultiuseSpriteTemplate, (left + 1) * 8 + 32, (top * 8) + 40, 0);
