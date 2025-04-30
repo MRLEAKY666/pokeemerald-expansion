@@ -26,6 +26,7 @@
 #include "graphics.h"
 #include "constants/abilities.h"
 #include "daycare.h"
+#include "decompress.h"
 #include "overworld.h"
 #include "scanline_effect.h"
 #include "field_weather.h"
@@ -456,7 +457,7 @@ static u8 EggHatchCreateMonSprite(u8 useAlt, u8 state, u8 partyId, u16 *speciesL
             HandleLoadSpecialPokePic(TRUE,
                                      gMonSpritesGfxPtr->spritesGfx[(useAlt * 2) + B_POSITION_OPPONENT_LEFT],
                                      species, pid);
-            LoadUniqueSpritePaletteWithTag(GetMonFrontSpritePal(mon), species); // arg 2 should be &mon->box ...?
+            LoadUncompressedUniqueSpritePalette(GetMonFrontSpritePal(mon), &mon->box);
             *speciesLoc = species;
         }
         break;

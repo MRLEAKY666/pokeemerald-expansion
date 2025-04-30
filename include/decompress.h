@@ -24,6 +24,6 @@ void LoadSpecialPokePic(void *dest, s32 species, u32 personality, bool8 isFrontP
 
 u32 GetDecompressedDataSize(const u32 *ptr);
 
-void LoadCompressedUniqueSpritePalette(const u32 *src, struct BoxPokemon *boxMon);
+void LoadUncompressedUniqueSpritePalette(const u16 *pal, struct BoxPokemon *boxMon);
 
 #endif // GUARD_DECOMPRESS_H

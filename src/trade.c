@@ -2790,7 +2790,7 @@ static void LoadTradeMonPic(u8 whichParty, u8 state)
 
         HandleLoadSpecialPokePic(TRUE, gMonSpritesGfxPtr->spritesGfx[whichParty * 2 + B_POSITION_OPPONENT_LEFT], species, personality);
 
-        LoadUniqueSpritePaletteWithTag(GetMonFrontSpritePal(mon), species); // arg 2 should be &mon->box ...?
+        LoadUncompressedUniqueSpritePalette(GetMonFrontSpritePal(mon), &mon->box);
         sTradeAnim->monSpecies[whichParty] = species;
         sTradeAnim->monPersonalities[whichParty] = personality;
         break;
