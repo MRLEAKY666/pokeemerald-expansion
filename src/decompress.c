@@ -310,3 +310,11 @@ bool8 LoadCompressedSpriteSheetUsingHeap(const struct CompressedSpriteSheet *src
     Free(buffer);
     return FALSE;
 }
+
+void LoadUncompressedUniqueSpritePalette(const u16 *pal, struct BoxPokemon *boxMon)
+{
+    struct SpritePalette spritePal;
+    spritePal.data = pal;
+    spritePal.tag = GetBoxMonData(boxMon, MON_DATA_SPECIES);
+    LoadUniqueSpritePalette(&spritePal, boxMon);
+}
