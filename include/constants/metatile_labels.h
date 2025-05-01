@@ -193,6 +193,7 @@
 #define METATILE_Fortree_BridgeOverGrass_Raised            0x24E
 #define METATILE_Fortree_BridgeOverTrees_Lowered           0x257
 #define METATILE_Fortree_BridgeOverTrees_Raised            0x256
+#define METATILE_Fortree_Door_Gym_Locked                   0x2CB
 #define METATILE_Fortree_Door_Shrub                        0x312
 #define METATILE_Fortree_LongGrass_Root                    0x208
 #define METATILE_Fortree_SecretBase_LongGrass_BottomLeft   0x281

@@ -2,6 +2,7 @@ raw `
 FortreeCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, FortreeCity_OnTransition
 	map_script MAP_SCRIPT_ON_RESUME, FortreeCity_OnResume
+	map_script MAP_SCRIPT_ON_LOAD, FortreeCity_OnLoad
 	.byte 0
 
 FortreeCity_OnTransition:
@@ -11,6 +12,16 @@ FortreeCity_OnTransition:
 FortreeCity_OnResume:
 	setstepcallback STEP_CB_FORTREE_BRIDGE
 	end
+
+FortreeCity_OnLoad:
+	setflag FLAG_FORTREE_LOCKED_GYM_SIGN
+	call_if_eq VAR_WINONA_LOCATION, 0, FortreeCity_EventScript_LockGymDoors
+	end
+
+FortreeCity_EventScript_LockGymDoors::
+	setmetatile 22, 11, METATILE_Fortree_Door_Gym_Locked, TRUE
+	clearflag FLAG_FORTREE_LOCKED_GYM_SIGN
+	return
 
 FortreeCity_EventScript_Man::
 	msgbox FortreeCity_Text_SawGiganticPokemonInSky, MSGBOX_NPC
@@ -88,6 +99,13 @@ FortreeCity_Movement_KecleonFlee:
 	walk_right
 	step_end
 
+
+FortreeCity_EventScript_LockedGymSign::
+	lock
+	msgbox FortreeCity_Text_LockedGymSign, MSGBOX_SIGN
+	release
+	end
+
 FortreeCity_Text_SawGiganticPokemonInSky:
 	.string "No one believes me, but I saw this\n"
 	.string "gigantic POKéMON in the sky.\p"
@@ -154,5 +172,11 @@ FortreeCity_Text_GymSign:
 	.string "LEADER: WINONA\p"
 	.string "“The bird user taking flight into\n"
 	.string "the world.”$"
+
+FortreeCity_Text_LockedGymSign:
+	.string "There's a note on the door…\p"
+	.string "I left to do some training to the South\n"
+	.string "of the city. Come back later.\l"
+	.string "- WINONA$" 
 
 `

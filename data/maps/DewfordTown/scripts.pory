@@ -31,7 +31,9 @@ DewfordTown_EventScript_LockGymDoors::
 	return
 
 DewfordTown_EventScript_GymLockedSign::
+	lock
 	msgbox DewfordTown_Text_DewfordGymLocked, MSGBOX_SIGN
+	release
 	end
 
 DewfordTown_EventScript_Briney::
