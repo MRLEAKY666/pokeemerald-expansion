@@ -1789,9 +1789,11 @@ u32 GetSpanPerImage(u32 shape, u32 size)
     return sSpanPerImage[shape][size];
 }
 
+#define PAL_TAG_UNIQUE_PAL 0xFFFF
+
 u8 LoadUniqueSpritePalette(const struct SpritePalette *palette, struct BoxPokemon *boxMon)
 {
-    u8 index = IndexOfSpritePaletteTag(0xFFFF);
+    u8 index = IndexOfSpritePaletteTag(PAL_TAG_UNIQUE_PAL);
 
     if (index == 0xFF)
     {

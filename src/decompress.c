@@ -315,6 +315,6 @@ void LoadUncompressedUniqueSpritePalette(const u16 *pal, struct BoxPokemon *boxM
 {
     struct SpritePalette spritePal;
     spritePal.data = pal;
-    spritePal.tag = GetBoxMonData(boxMon, MON_DATA_SPECIES);
+    spritePal.tag = GetBoxMonData(boxMon, MON_DATA_SPECIES_OR_EGG);
     LoadUniqueSpritePalette(&spritePal, boxMon);
 }
