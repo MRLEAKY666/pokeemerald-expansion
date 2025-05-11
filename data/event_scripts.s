@@ -592,20 +592,21 @@ EventScript_WhiteOut::
 	end
 
 EventScript_AfterWhiteOutHeal::
-	lockall
+	lock
 	specialvar VAR_RESULT, CountPartyAliveNonEggMons
 	goto_if_ge VAR_RESULT, 1, EventScript_RanFromTrainer
 	msgbox gText_FirstShouldRestoreMonsHealth
-	special ChoosePartyMon
+	special ChoosePartyMonFainted
 	waitstate
 	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, EventScript_ItsDangerousToGoAlone
 	special HealAfterWhiteOut
+	callnative UpdateFollowingPokemon
 	call_if_unset FLAG_DEFEATED_RUSTBORO_GYM, EventScript_AfterWhiteOutHealMsgPreRoxanne
 	call_if_set FLAG_DEFEATED_RUSTBORO_GYM, EventScript_AfterWhiteOutHealMsg
 	applymovement VAR_LAST_TALKED, Movement_PkmnCenterNurse_Bow
 	waitmovement 0
 	fadedefaultbgm
-	releaseall
+	release
 	end
 
 EventScript_AfterWhiteOutHealMsgPreRoxanne::
@@ -623,10 +624,11 @@ EventScript_AfterWhiteOutMomHeal::
 	specialvar VAR_RESULT, CountPartyAliveNonEggMons
 	goto_if_ge VAR_RESULT, 1, PlayersHouse_1F_EventScript_MomHealsParty
 	msgbox gText_HadQuiteAnExperienceTakeRest
-	special ChoosePartyMon
+	special ChoosePartyMonFainted
 	waitstate
 	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, EventScript_ItsDangerousToGoAloneMom
 	special HealAfterWhiteOut
+	callnative UpdateFollowingPokemon
 	msgbox gText_MomExplainHPGetPotions
 	fadedefaultbgm
 	releaseall

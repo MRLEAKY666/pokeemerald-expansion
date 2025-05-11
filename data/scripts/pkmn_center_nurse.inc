@@ -32,7 +32,8 @@ EventScript_PkmnCenterNurse_NotEnoughMoney::
 EventScript_PkmnCenterNurse_Goodbye::
 	message gText_WeHopeToSeeYouAgain
 	hidemoneybox
-	return
+	release
+	end
 
 @ VAR_0x8004 is 1 when player has Gold Card; jumps are identical
 EventScript_PkmnCenterNurse_HealPkmn::

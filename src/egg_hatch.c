@@ -952,7 +952,7 @@ u8 GetEggCyclesToSubtract(void)
 
 u16 CountPartyAliveNonEggMons(void)
 {
-    u16 aliveNonEggMonsCount = CountStorageNonEggMons();
-    aliveNonEggMonsCount += CountPartyAliveNonEggMonsExcept(PARTY_SIZE);
+    u16 aliveNonEggMonsCount/*  = CountStorageNonEggMons() */; // commented out to fix whiteout/forfeit mechanic?
+    aliveNonEggMonsCount /* + */= CountPartyAliveNonEggMonsExcept(PARTY_SIZE);
     return aliveNonEggMonsCount;
 }
