@@ -14,13 +14,13 @@ Fields with description and/or example of usage
 Required fields for trainers:
     - Name
     - Pic
-Optional (but still recommended) fields for trainers:
+Optional (but still recommended) fields for trainers: 
     - Class (if not specified, PkMn Trainer will be used)
     - Gender (Male/Female, affects random gender weights of party if not specified)
     - Music
     - Items (Some Item / Another Item / Third Item)
             (Can also be specified with ITEM_SOME_ITEM)
-    - Double Battle (Yes/No, defaults to No)
+    - Battle Type (Singles / Doubles, defaults to Singles)
     - AI (Ai Flag / Another Flag / Third Flag / ...
           see "constants/battle_ai.h" for all flags)
     - Mugshot (enable Mugshots during battle transition
