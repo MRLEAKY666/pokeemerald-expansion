@@ -825,7 +825,7 @@ DewfordTown_Text_YeahDefinitionOfInRightNow:
 DewfordTown_Text_DewfordGymLocked:
 	.string "There's a note on the door…\p"
 	.string "I left to do some training on the West\n"
-	.string "side of the island. Come back later.\l"
+	.string "side of the island. Come back later.\p"
 	.string "- BRAWLY$"
 
 `

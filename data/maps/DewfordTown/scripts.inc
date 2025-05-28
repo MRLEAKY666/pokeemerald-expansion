@@ -1653,6 +1653,6 @@ DewfordTown_Text_DewfordGymLocked:
 # 827 "data//maps/DewfordTown/scripts.pory"
 	.string "I left to do some training on the West\n"
 # 828 "data//maps/DewfordTown/scripts.pory"
-	.string "side of the island. Come back later.\l"
+	.string "side of the island. Come back later.\p"
 # 829 "data//maps/DewfordTown/scripts.pory"
 	.string "- BRAWLY$"

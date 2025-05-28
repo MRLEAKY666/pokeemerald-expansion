@@ -176,7 +176,7 @@ FortreeCity_Text_GymSign:
 FortreeCity_Text_LockedGymSign:
 	.string "There's a note on the door…\p"
 	.string "I left to do some training to the South\n"
-	.string "of the city. Come back later.\l"
+	.string "of the city. Come back later.\p"
 	.string "- WINONA$" 
 
 `

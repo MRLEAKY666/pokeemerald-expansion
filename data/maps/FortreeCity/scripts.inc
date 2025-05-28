@@ -355,6 +355,6 @@ FortreeCity_Text_LockedGymSign:
 # 178 "data//maps/FortreeCity/scripts.pory"
 	.string "I left to do some training to the South\n"
 # 179 "data//maps/FortreeCity/scripts.pory"
-	.string "of the city. Come back later.\l"
+	.string "of the city. Come back later.\p"
 # 180 "data//maps/FortreeCity/scripts.pory"
 	.string "- WINONA$"
