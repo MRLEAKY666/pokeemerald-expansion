@@ -245,7 +245,7 @@ MossdeepCity_Gym_EventScript_Switch1::
 # 123 "data//maps/MossdeepCity_Gym/scripts.pory"
 	setflag FLAG_MOSSDEEP_GYM_SWITCH_1
 # 124 "data//maps/MossdeepCity_Gym/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_Gym_Movement_WaitAfterSwitchUse
+	applymovement LOCALID_PLAYER, MossdeepCity_Gym_Movement_WaitAfterSwitchUse
 # 125 "data//maps/MossdeepCity_Gym/scripts.pory"
 	waitmovement 0
 # 126 "data//maps/MossdeepCity_Gym/scripts.pory"
@@ -275,7 +275,7 @@ MossdeepCity_Gym_EventScript_ClearSwitch1::
 # 138 "data//maps/MossdeepCity_Gym/scripts.pory"
 	clearflag FLAG_MOSSDEEP_GYM_SWITCH_1
 # 139 "data//maps/MossdeepCity_Gym/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_Gym_Movement_WaitAfterSwitchUse
+	applymovement LOCALID_PLAYER, MossdeepCity_Gym_Movement_WaitAfterSwitchUse
 # 140 "data//maps/MossdeepCity_Gym/scripts.pory"
 	waitmovement 0
 # 141 "data//maps/MossdeepCity_Gym/scripts.pory"
@@ -297,7 +297,7 @@ MossdeepCity_Gym_EventScript_Switch2::
 # 149 "data//maps/MossdeepCity_Gym/scripts.pory"
 	setflag FLAG_MOSSDEEP_GYM_SWITCH_2
 # 150 "data//maps/MossdeepCity_Gym/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_Gym_Movement_WaitAfterSwitchUse
+	applymovement LOCALID_PLAYER, MossdeepCity_Gym_Movement_WaitAfterSwitchUse
 # 151 "data//maps/MossdeepCity_Gym/scripts.pory"
 	waitmovement 0
 # 152 "data//maps/MossdeepCity_Gym/scripts.pory"
@@ -315,7 +315,7 @@ MossdeepCity_Gym_EventScript_ClearSwitch2::
 # 158 "data//maps/MossdeepCity_Gym/scripts.pory"
 	clearflag FLAG_MOSSDEEP_GYM_SWITCH_2
 # 159 "data//maps/MossdeepCity_Gym/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_Gym_Movement_WaitAfterSwitchUse
+	applymovement LOCALID_PLAYER, MossdeepCity_Gym_Movement_WaitAfterSwitchUse
 # 160 "data//maps/MossdeepCity_Gym/scripts.pory"
 	waitmovement 0
 # 161 "data//maps/MossdeepCity_Gym/scripts.pory"
@@ -337,7 +337,7 @@ MossdeepCity_Gym_EventScript_Switch3::
 # 169 "data//maps/MossdeepCity_Gym/scripts.pory"
 	setflag FLAG_MOSSDEEP_GYM_SWITCH_3
 # 170 "data//maps/MossdeepCity_Gym/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_Gym_Movement_WaitAfterSwitchUse
+	applymovement LOCALID_PLAYER, MossdeepCity_Gym_Movement_WaitAfterSwitchUse
 # 171 "data//maps/MossdeepCity_Gym/scripts.pory"
 	waitmovement 0
 # 172 "data//maps/MossdeepCity_Gym/scripts.pory"
@@ -355,7 +355,7 @@ MossdeepCity_Gym_EventScript_ClearSwitch3::
 # 178 "data//maps/MossdeepCity_Gym/scripts.pory"
 	clearflag FLAG_MOSSDEEP_GYM_SWITCH_3
 # 179 "data//maps/MossdeepCity_Gym/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_Gym_Movement_WaitAfterSwitchUse
+	applymovement LOCALID_PLAYER, MossdeepCity_Gym_Movement_WaitAfterSwitchUse
 # 180 "data//maps/MossdeepCity_Gym/scripts.pory"
 	waitmovement 0
 # 181 "data//maps/MossdeepCity_Gym/scripts.pory"
@@ -377,7 +377,7 @@ MossdeepCity_Gym_EventScript_Switch4::
 # 189 "data//maps/MossdeepCity_Gym/scripts.pory"
 	setflag FLAG_MOSSDEEP_GYM_SWITCH_4
 # 190 "data//maps/MossdeepCity_Gym/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_Gym_Movement_WaitAfterSwitchUse
+	applymovement LOCALID_PLAYER, MossdeepCity_Gym_Movement_WaitAfterSwitchUse
 # 191 "data//maps/MossdeepCity_Gym/scripts.pory"
 	waitmovement 0
 # 192 "data//maps/MossdeepCity_Gym/scripts.pory"
@@ -395,7 +395,7 @@ MossdeepCity_Gym_EventScript_ClearSwitch4::
 # 198 "data//maps/MossdeepCity_Gym/scripts.pory"
 	clearflag FLAG_MOSSDEEP_GYM_SWITCH_4
 # 199 "data//maps/MossdeepCity_Gym/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_Gym_Movement_WaitAfterSwitchUse
+	applymovement LOCALID_PLAYER, MossdeepCity_Gym_Movement_WaitAfterSwitchUse
 # 200 "data//maps/MossdeepCity_Gym/scripts.pory"
 	waitmovement 0
 # 201 "data//maps/MossdeepCity_Gym/scripts.pory"

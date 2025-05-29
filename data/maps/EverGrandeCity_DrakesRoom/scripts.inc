@@ -25,7 +25,7 @@ EverGrandeCity_DrakesRoom_OnWarp:
 # 13 "data//maps/EverGrandeCity_DrakesRoom/scripts.pory"
 EverGrandeCity_DrakesRoom_EventScript_PlayerTurnNorth::
 # 14 "data//maps/EverGrandeCity_DrakesRoom/scripts.pory"
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	turnobject LOCALID_PLAYER, DIR_NORTH
 # 15 "data//maps/EverGrandeCity_DrakesRoom/scripts.pory"
 	end
 # 16 "data//maps/EverGrandeCity_DrakesRoom/scripts.pory"

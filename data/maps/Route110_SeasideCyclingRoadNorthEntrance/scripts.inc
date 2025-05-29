@@ -75,7 +75,7 @@ Route110_SeasideCyclingRoadNorthEntrance_EventScript_NoBike::
 # 38 "data//maps/Route110_SeasideCyclingRoadNorthEntrance/scripts.pory"
 	closemessage
 # 39 "data//maps/Route110_SeasideCyclingRoadNorthEntrance/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Route110_SeasideCyclingRoadNorthEntrance_Movement_PushPlayerBackFromCounter
+	applymovement LOCALID_PLAYER, Route110_SeasideCyclingRoadNorthEntrance_Movement_PushPlayerBackFromCounter
 # 40 "data//maps/Route110_SeasideCyclingRoadNorthEntrance/scripts.pory"
 	waitmovement 0
 # 41 "data//maps/Route110_SeasideCyclingRoadNorthEntrance/scripts.pory"

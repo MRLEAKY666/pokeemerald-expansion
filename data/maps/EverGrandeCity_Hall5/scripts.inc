@@ -27,6 +27,6 @@ EverGrandeCity_Hall5_OnTransition:
 # 14 "data//maps/EverGrandeCity_Hall5/scripts.pory"
 EverGrandeCity_Hall5_EventScript_TurnPlayerNorth::
 # 15 "data//maps/EverGrandeCity_Hall5/scripts.pory"
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	turnobject LOCALID_PLAYER, DIR_NORTH
 # 16 "data//maps/EverGrandeCity_Hall5/scripts.pory"
 	end

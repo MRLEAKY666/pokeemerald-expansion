@@ -29,7 +29,7 @@ Route121_SafariZoneEntrance_EventScript_ExitSafariZone::
 # 15 "data//maps/Route121_SafariZoneEntrance/scripts.pory"
 	lockall
 # 16 "data//maps/Route121_SafariZoneEntrance/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Route121_SafariZoneEntrance_Movement_ExitSafariZone
+	applymovement LOCALID_PLAYER, Route121_SafariZoneEntrance_Movement_ExitSafariZone
 # 17 "data//maps/Route121_SafariZoneEntrance/scripts.pory"
 	waitmovement 0
 # 18 "data//maps/Route121_SafariZoneEntrance/scripts.pory"
@@ -103,7 +103,7 @@ Route121_SafariZoneEntrance_EventScript_EntranceCounterTrigger::
 # 52 "data//maps/Route121_SafariZoneEntrance/scripts.pory"
 	lockall
 # 53 "data//maps/Route121_SafariZoneEntrance/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 # 54 "data//maps/Route121_SafariZoneEntrance/scripts.pory"
 	waitmovement 0
 # 55 "data//maps/Route121_SafariZoneEntrance/scripts.pory"
@@ -155,7 +155,7 @@ Route121_SafariZoneEntrance_EventScript_TryEnterSafariZone::
 # 78 "data//maps/Route121_SafariZoneEntrance/scripts.pory"
 	hidemoneybox
 # 79 "data//maps/Route121_SafariZoneEntrance/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Route121_SafariZoneEntrance_Movement_EnterSafariZone
+	applymovement LOCALID_PLAYER, Route121_SafariZoneEntrance_Movement_EnterSafariZone
 # 80 "data//maps/Route121_SafariZoneEntrance/scripts.pory"
 	waitmovement 0
 # 81 "data//maps/Route121_SafariZoneEntrance/scripts.pory"
@@ -223,7 +223,7 @@ Route121_SafariZoneEntrance_EventScript_MovePlayerBackFromCounter::
 # 112 "data//maps/Route121_SafariZoneEntrance/scripts.pory"
 	hidemoneybox
 # 113 "data//maps/Route121_SafariZoneEntrance/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Route121_SafariZoneEntrance_Movement_BackAwayFromCounter
+	applymovement LOCALID_PLAYER, Route121_SafariZoneEntrance_Movement_BackAwayFromCounter
 # 114 "data//maps/Route121_SafariZoneEntrance/scripts.pory"
 	waitmovement 0
 # 115 "data//maps/Route121_SafariZoneEntrance/scripts.pory"
