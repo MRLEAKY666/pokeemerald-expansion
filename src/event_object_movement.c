@@ -1427,25 +1427,16 @@ u8 GetObjectEventIdByLocalId(u8 localId)
 static u8 InitObjectEventStateFromTemplate(const struct ObjectEventTemplate *template, u8 mapNum, u8 mapGroup)
 {
     struct ObjectEvent *objectEvent;
-    const struct ObjectEventTemplate *cloneTemplate = template;
     u8 objectEventId;
-    s16 x, y;
-
-    if (template->kind == OBJ_KIND_CLONE) {
-        const struct MapHeader *mapHeader;
-        mapGroup = cloneTemplate->targetMapGroup;
-        mapNum = cloneTemplate->targetMapNum;
-        mapHeader = Overworld_GetMapHeaderByGroupAndId(mapGroup, mapNum);
-        template = &(mapHeader->events->objectEvents[cloneTemplate->targetLocalId-1]);
-    }
-
+    s16 x;
+    s16 y;
 
     if (GetAvailableObjectEventId(template->localId, mapNum, mapGroup, &objectEventId))
         return OBJECT_EVENTS_COUNT;
     objectEvent = &gObjectEvents[objectEventId];
     ClearObjectEvent(objectEvent);
-    x = cloneTemplate->x + MAP_OFFSET;
-    y = cloneTemplate->y + MAP_OFFSET;
+    x = template->x + MAP_OFFSET;
+    y = template->y + MAP_OFFSET;
     objectEvent->active = TRUE;
     objectEvent->triggerGroundEffectsOnMove = TRUE;
     objectEvent->graphicsId = template->graphicsId;
@@ -1499,7 +1490,7 @@ u8 Unref_TryInitLocalObjectEvent(u8 localId)
         else if (InTrainerHill())
             objectEventCount = HILL_TRAINERS_PER_FLOOR;
         else
-            objectEventCount = gSaveBlock1Ptr->objectEventCount;
+            objectEventCount = gMapHeader.events->objectEventCount;
 
         for (i = 0; i < objectEventCount; i++)
         {
@@ -2769,7 +2760,7 @@ void TrySpawnObjectEvents(s16 cameraX, s16 cameraY)
         else if (InTrainerHill())
             objectCount = HILL_TRAINERS_PER_FLOOR;
         else
-            objectCount = gSaveBlock1Ptr->objectEventCount;
+            objectCount = gMapHeader.events->objectEventCount;
 
         for (i = 0; i < objectCount; i++)
         {
