@@ -1736,7 +1736,12 @@
       "height": 1
     },
     {
-      "id": "MAPSEC_MISTCLAD_COVE"
+      "id": "MAPSEC_MISTCLAD_COVE",
+      "name": "MISTCLAD COVE",
+      "x": 14,
+      "y": 4,
+      "width": 1,
+      "height": 2
     }
   ]
 }
