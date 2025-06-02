@@ -4490,6 +4490,16 @@
       "secondary_tileset": "gTileset_Fortree",
       "border_filepath": "data/layouts/MistcladCove/border.bin",
       "blockdata_filepath": "data/layouts/MistcladCove/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROOT_CELLAR_ENTRANCE",
+      "name": "RootCellarEntrance_Layout",
+      "width": 5,
+      "height": 5,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/RootCellarEntrance/border.bin",
+      "blockdata_filepath": "data/layouts/RootCellarEntrance/map.bin"
     }
   ]
 }

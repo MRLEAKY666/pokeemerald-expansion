@@ -1,0 +1,36 @@
+{
+  "id": "MAP_ROOT_CELLAR_ENTRANCE",
+  "name": "RootCellarEntrance",
+  "layout": "LAYOUT_ROOT_CELLAR_ENTRANCE",
+  "music": "MUS_DUMMY",
+  "region_map_section": "MAPSEC_FORTREE_CLIFFS",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": true,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [],
+  "warp_events": [
+    {
+      "x": 2,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_ROOT_CELLAR_ENTRANCE",
+      "dest_warp_id": "0"
+    },
+    {
+      "warp_id": "WARP_ID_ROOT_CELLAR_ENTRANCE",
+      "x": 2,
+      "y": 3,
+      "elevation": 0,
+      "dest_map": "MAP_FORTREE_CLIFFS",
+      "dest_warp_id": "WARP_ID_FORTREE_CLIFFS_ROOT_CELLAR"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}

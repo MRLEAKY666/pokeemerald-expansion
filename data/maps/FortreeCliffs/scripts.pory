@@ -1,0 +1,33 @@
+raw`
+
+FortreeCliffs_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, FortreeCliffs_OnTransition
+	.byte 0
+
+FortreeCliffs_OnTransition:
+	call FortreeCliffs_EventScript_ResetWildMons
+	end
+
+FortreeCliffs_EventScript_Snorlax::
+	lock
+	faceplayer
+	waitse
+	playmoncry SPECIES_SNORLAX, CRY_MODE_ENCOUNTER
+	msgbox FortreeCliffs_Text_Snorlax, MSGBOX_DEFAULT
+	delay 10
+	waitmoncry
+	setwildbattle SPECIES_SNORLAX, 60
+	dowildbattle
+	fadescreenswapbuffers FADE_TO_BLACK
+	removeobject VAR_LAST_TALKED
+	fadescreenswapbuffers FADE_FROM_BLACK
+	release
+	end
+
+FortreeCliffs_EventScript_ResetWildMons::
+	clearflag FLAG_FORTREE_CLIFFS_SNORLAX
+	end
+
+FortreeCliffs_Text_Snorlax:
+	.string "Snooooooooo!$"
+`

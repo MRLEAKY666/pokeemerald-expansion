@@ -457,7 +457,16 @@
       "flag": "0"
     }
   ],
-  "warp_events": [],
+  "warp_events": [
+    {
+      "warp_id": "WARP_ID_FORTREE_CLIFFS_ROOT_CELLAR",
+      "x": 28,
+      "y": 117,
+      "elevation": 0,
+      "dest_map": "MAP_ROOT_CELLAR_ENTRANCE",
+      "dest_warp_id": "WARP_ID_ROOT_CELLAR_ENTRANCE"
+    }
+  ],
   "coord_events": [
     {
       "type": "weather",
