@@ -342,13 +342,13 @@ void Script_SetVarTimeOfDay(void)
         VarSet(VAR_TIME_OF_DAY, 0);
         break;
     case TIME_DAY:
-        VarSet(VAR_TIME_OF_DAY, 1);
-        break;
-    case TIME_EVENING:
         VarSet(VAR_TIME_OF_DAY, 2);
         break;
+    case TIME_EVENING:
+        VarSet(VAR_TIME_OF_DAY, 4);
+        break;
     case TIME_NIGHT:
-        VarSet(VAR_TIME_OF_DAY, 3);
+        VarSet(VAR_TIME_OF_DAY, 6);
         break;
     }
 }
