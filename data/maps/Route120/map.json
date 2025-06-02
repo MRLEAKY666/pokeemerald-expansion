@@ -24,9 +24,14 @@
       "direction": "right"
     },
     {
-      "map": "MAP_KIRI_KIRI_MOUNTAIN",
+      "map": "MAP_FORTREE_CLIFFS",
       "offset": 20,
       "direction": "left"
+    },
+    {
+      "map": "MAP_MISTCLAD_COVE",
+      "offset": 0,
+      "direction": "down"
     }
   ],
   "object_events": [
@@ -267,7 +272,7 @@
       "flag": "FLAG_HIDE_ROUTE_120_GABBY_AND_TY_1"
     },
     {
-       "local_id": "LOCALID_ROUTE120_GABBY_2",
+      "local_id": "LOCALID_ROUTE120_GABBY_2",
       "graphics_id": "OBJ_EVENT_GFX_REPORTER_F",
       "x": 36,
       "y": 5,

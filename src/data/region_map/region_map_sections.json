@@ -282,7 +282,7 @@
     },
     {
       "id": "MAPSEC_ROUTE_120",
-      "name": "ROUTE 120",
+      "name": "SOUTH ROUTE 120",
       "x": 13,
       "y": 0,
       "width": 1,
@@ -1720,8 +1720,8 @@
       "height": 1
     },
     {
-      "id": "MAPSEC_KIRIKIRI_MOUNTAIN",
-      "name": "KIRIKIRI MOUNTAIN",
+      "id": "MAPSEC_FORTREE_CLIFFS",
+      "name": "FORTREE CLIFFS",
       "x": 12,
       "y": 1,
       "width": 1,
@@ -1734,6 +1734,9 @@
       "y": 4,
       "width": 2,
       "height": 1
+    },
+    {
+      "id": "MAPSEC_MISTCLAD_COVE"
     }
   ]
 }

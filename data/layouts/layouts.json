@@ -374,7 +374,7 @@
     {
       "id": "LAYOUT_ROUTE122",
       "name": "Route122_Layout",
-      "width": 40,
+      "width": 60,
       "height": 40,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Lilycove",
@@ -4462,14 +4462,14 @@
       "blockdata_filepath": "data/layouts/FortreeWoods_House1/map.bin"
     },
     {
-      "id": "LAYOUT_KIRI_KIRI_MOUNTAIN",
-      "name": "KiriKiriMountain_Layout",
+      "id": "LAYOUT_FORTREE_CLIFFS",
+      "name": "FortreeCliffs_Layout",
       "width": 40,
       "height": 120,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Fortree",
-      "border_filepath": "data/layouts/KiriKiriMountain/border.bin",
-      "blockdata_filepath": "data/layouts/KiriKiriMountain/map.bin"
+      "border_filepath": "data/layouts/FortreeCliffs/border.bin",
+      "blockdata_filepath": "data/layouts/FortreeCliffs/map.bin"
     },
     {
       "id": "LAYOUT_VERDANT_PLATEAU",
@@ -4480,6 +4480,16 @@
       "secondary_tileset": "gTileset_Mauville",
       "border_filepath": "data/layouts/VerdantPlateau/border.bin",
       "blockdata_filepath": "data/layouts/VerdantPlateau/map.bin"
+    },
+    {
+      "id": "LAYOUT_MISTCLAD_COVE",
+      "name": "MistcladCove_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Fortree",
+      "border_filepath": "data/layouts/MistcladCove/border.bin",
+      "blockdata_filepath": "data/layouts/MistcladCove/map.bin"
     }
   ]
 }

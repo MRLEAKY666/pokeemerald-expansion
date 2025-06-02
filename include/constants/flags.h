@@ -53,7 +53,7 @@
 #define FLAG_MET_WALLACE_HOUSE    0x27 // PREVIOUSLY Unused Flag
 #define FLAG_ROAMING_BEASTS_CAUGHT    0x28 // PREVIOUSLY Unused Flag
 #define FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE_HOUSE    0x29 // previously Unused Flag
-#define FLAG_KIRIKIRI_MOUNTAIN_SNORLAX    0x2A // Unused Flag
+#define FLAG_FORTREE_CLIFFS_SNORLAX    0x2A // Unused Flag
 #define FLAG_GRANITE_COVE_SNOVER    0x2B // previously Flag
 #define FLAG_GRANITE_COVE_ABOMASNOW    0x2C // previously Flag
 #define FLAG_FORTREE_LOCKED_GYM_SIGN    0x2D // previously Unused Flag

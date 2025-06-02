@@ -1248,7 +1248,9 @@ Common_EventScript_ExitSafeArea::
 
 	.include "data/maps/FortreeWoods_House1/scripts.inc"
 
-	.include "data/maps/KiriKiriMountain/scripts.inc"
+	.include "data/maps/FortreeCliffs/scripts.inc"
 	.include "data/scripts/dexnav.inc"
 
 	.include "data/maps/VerdantPlateau/scripts.inc"
+
+	.include "data/maps/MistcladCove/scripts.inc"

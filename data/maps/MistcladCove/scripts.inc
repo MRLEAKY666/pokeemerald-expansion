@@ -1,0 +1,2 @@
+MistcladCove_MapScripts::
+	.byte 0

@@ -15,7 +15,7 @@
   "connections": [
     {
       "map": "MAP_ROUTE122",
-      "offset": 100,
+      "offset": 80,
       "direction": "up"
     },
     {
@@ -24,8 +24,13 @@
       "direction": "left"
     },
     {
-      "map": "MAP_KIRI_KIRI_MOUNTAIN",
+      "map": "MAP_FORTREE_CLIFFS",
       "offset": 0,
+      "direction": "up"
+    },
+    {
+      "map": "MAP_MISTCLAD_COVE",
+      "offset": 40,
       "direction": "up"
     }
   ],
