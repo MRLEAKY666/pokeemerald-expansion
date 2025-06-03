@@ -4500,6 +4500,26 @@
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/RootCellarEntrance/border.bin",
       "blockdata_filepath": "data/layouts/RootCellarEntrance/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROOT_CELLAR",
+      "name": "RootCellar_Layout",
+      "width": 13,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/RootCellar/border.bin",
+      "blockdata_filepath": "data/layouts/RootCellar/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROOT_CELLAR_HOUSE_ENTRANCE",
+      "name": "RootCellarHouseEntrance_Layout",
+      "width": 5,
+      "height": 5,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/RootCellarHouseEntrance/border.bin",
+      "blockdata_filepath": "data/layouts/RootCellarHouseEntrance/map.bin"
     }
   ]
 }

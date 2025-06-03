@@ -1,33 +1,33 @@
 raw`
 
 FortreeCliffs_MapScripts::
+	map_script MAP_SCRIPT_ON_RESUME, FortreeCliffs_OnResume
 	map_script MAP_SCRIPT_ON_TRANSITION, FortreeCliffs_OnTransition
 	.byte 0
 
-FortreeCliffs_OnTransition:
-	call FortreeCliffs_EventScript_ResetWildMons
+FortreeCliffs_OnResume:
+	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, FortreeCliffs_EventScript_TryRemoveWildMons
 	end
 
-FortreeCliffs_EventScript_Snorlax::
-	lock
-	faceplayer
-	waitse
-	playmoncry SPECIES_SNORLAX, CRY_MODE_ENCOUNTER
-	msgbox FortreeCliffs_Text_Snorlax, MSGBOX_DEFAULT
-	delay 10
-	waitmoncry
-	setwildbattle SPECIES_SNORLAX, 60
-	dowildbattle
-	fadescreenswapbuffers FADE_TO_BLACK
+FortreeCliffs_EventScript_TryRemoveWildMons::
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
 	removeobject VAR_LAST_TALKED
-	fadescreenswapbuffers FADE_FROM_BLACK
-	release
+	return
+
+FortreeCliffs_OnTransition:
+	@ call FortreeCliffs_EventScript_ResetWildMons
 	end
 
 FortreeCliffs_EventScript_ResetWildMons::
-	clearflag FLAG_FORTREE_CLIFFS_SNORLAX
 	end
 
-FortreeCliffs_Text_Snorlax:
-	.string "Snooooooooo!$"
+FortreeCliffs_EventScript_BadVibeRock::
+	lock
+	msgbox FortreeCliffs_Text_BadVibeRock, MSGBOX_DEFAULT
+	release
+	end
+
+FortreeCliffs_Text_BadVibeRock:
+	.string "This rock gives off a bad vibe…$"
 `

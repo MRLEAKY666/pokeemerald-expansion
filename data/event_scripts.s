@@ -1256,3 +1256,7 @@ Common_EventScript_ExitSafeArea::
 	.include "data/maps/MistcladCove/scripts.inc"
 
 	.include "data/maps/RootCellarEntrance/scripts.inc"
+
+	.include "data/maps/RootCellar/scripts.inc"
+
+	.include "data/maps/RootCellarHouseEntrance/scripts.inc"

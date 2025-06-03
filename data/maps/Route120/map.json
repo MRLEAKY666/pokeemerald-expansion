@@ -24,14 +24,14 @@
       "direction": "right"
     },
     {
-      "map": "MAP_FORTREE_CLIFFS",
-      "offset": 20,
-      "direction": "left"
-    },
-    {
       "map": "MAP_MISTCLAD_COVE",
       "offset": 0,
       "direction": "down"
+    },
+    {
+      "map": "MAP_FORTREE_CLIFFS",
+      "offset": 20,
+      "direction": "left"
     }
   ],
   "object_events": [

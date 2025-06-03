@@ -620,7 +620,8 @@
     "Route113_GlassWorkshop"
   ],
   "gMapGroup_IndoorRoute123": [
-    "Route123_BerryMastersHouse"
+    "Route123_BerryMastersHouse",
+    "RootCellarHouseEntrance"
   ],
   "gMapGroup_IndoorRoute119": [
     "Route119_WeatherInstitute_1F",
@@ -631,6 +632,7 @@
     "Route124_DivingTreasureHuntersHouse"
   ],
   "gMapGroup_IndoorFortreeCliffs": [
-    "RootCellarEntrance"
+    "RootCellarEntrance",
+    "RootCellar"
   ]
 }

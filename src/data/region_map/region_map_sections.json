@@ -282,7 +282,7 @@
     },
     {
       "id": "MAPSEC_ROUTE_120",
-      "name": "SOUTH ROUTE 120",
+      "name": "ROUTE 120",
       "x": 13,
       "y": 0,
       "width": 1,
@@ -1721,7 +1721,7 @@
     },
     {
       "id": "MAPSEC_FORTREE_CLIFFS",
-      "name": "ROOT CELLAR",
+      "name": "FORTREE CLIFFS",
       "x": 12,
       "y": 1,
       "width": 1,
