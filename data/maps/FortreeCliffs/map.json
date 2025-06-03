@@ -499,6 +499,33 @@
       "trainer_sight_or_berry_tree_id": "BERRY_TREE_FORTREE_CLIFFS_POMEG_5",
       "script": "BerryTreeScript",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",
+      "x": 0,
+      "y": 85,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_CutTree",
+      "flag": "FLAG_TEMP_13"
+    },
+    {
+      "local_id": "LOCALID_FORTREE_CLIFFS_KECLEON_6",
+      "graphics_id": "OBJ_EVENT_GFX_KECLEON",
+      "x": 9,
+      "y": 93,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "FortreeCliffs_EventScript_Kecleon6",
+      "flag": "FLAG_FORTREE_CLIFFS_KECLEON_6"
     }
   ],
   "warp_events": [
