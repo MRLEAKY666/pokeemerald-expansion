@@ -867,12 +867,22 @@
 #define TRAINER_FLANNERY_1B                 861
 #define TRAINER_WINONA_1B                   862
 #define TRAINER_WINONA_1C                   863
+#define TRAINER_FORTREE_CLIFFS_NINJA_1      864
+#define TRAINER_FORTREE_CLIFFS_NINJA_2      865
+#define TRAINER_FORTREE_CLIFFS_NINJA_3      866
+#define TRAINER_FORTREE_CLIFFS_NINJA_4      867
+#define TRAINER_FORTREE_CLIFFS_NINJA_5      868
+#define TRAINER_FORTREE_CLIFFS_NINJA_6      869
+#define TRAINER_FORTREE_CLIFFS_EXPERT_1     870
+#define TRAINER_FORTREE_CLIFFS_BIRDKEEPER_1 871
+#define TRAINER_FORTREE_CLIFFS_RANGER_1     872
+#define TRAINER_FORTREE_CLIFFS_RANGER_2     873
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT                      864
+#define TRAINERS_COUNT                      874
 #define MAX_TRAINERS_COUNT                  904
 #define TRAINER_PARTNER(partner)           (MAX_TRAINERS_COUNT + partner)
 

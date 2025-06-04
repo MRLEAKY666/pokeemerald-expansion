@@ -18854,6 +18854,282 @@ Tags: Ace
 - Dragon Dance
 - Aerial Ace
 
+=== TRAINER_FORTREE_CLIFFS_NINJA_1 ===
+Name: NAME-ME
+Class: Ninja Boy
+Pic: Ninja Boy
+Gender: Male
+Music: Suspicious
+Items: Hyper Potion
+Double Battle: No
+AI: Basic Trainer / Risky
+
+Croagunk
+Level: 31
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Sucker Punch
+- Swagger
+- Toxic
+- Protect
+
+Nincada
+Level: 32
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Harden
+- Mud Slap
+- Dig
+- Shadow Ball
+
+=== TRAINER_FORTREE_CLIFFS_NINJA_2 ===
+Name: NAME-ME
+Class: Ninja Boy
+Pic: Ninja Boy
+Gender: Male
+Music: Suspicious
+Items: Hyper Potion
+Double Battle: No
+AI: Basic Trainer / Risky
+
+Koffing
+Level: 32
+IVs: 12 HP / 12 Atk / 20 Def / 12 SpA / 20 SpD / 0 Spe
+- Gyro Ball
+- Curse
+- Pain Split
+- Smokescreen
+
+Koffing
+Level: 32
+IVs: 12 HP / 12 Atk / 20 Def / 12 SpA / 20 SpD / 0 Spe
+- Rest
+- Curse
+- Snore
+- Sleep Talk
+
+=== TRAINER_FORTREE_CLIFFS_NINJA_3 ===
+Name: NAME-ME
+Class: Ninja Boy
+Pic: Ninja Boy
+Gender: Male
+Music: Suspicious
+Items: Hyper Potion
+Double Battle: No
+AI: Basic Trainer / Risky
+
+Golbat
+Level: 32
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Aerial Ace
+- Swagger
+- Haze
+- Astonish
+
+Ninjask
+Level: 32
+IVs: 12 HP / 30 Atk / 12 Def / 12 SpA / 12 SpD / 22 Spe
+- Aerial Ace
+- Slash
+- Swords Dance
+- Double Team
+
+=== TRAINER_FORTREE_CLIFFS_EXPERT_1 ===
+Name: OJII
+Class: Expert
+Pic: Expert M
+Gender: Male
+Music: Intense
+Items: Hyper Potion / Hyper Potion
+Double Battle: No
+AI: Basic Trainer / Smart Switching / Ace Pokemon
+
+Drapion
+Level: 36
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Toxic Spikes
+- Swagger
+- Acupressure
+- Ice Fang
+
+Crobat
+Level: 34
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Toxic
+- Double Team
+- Swagger
+- Haze
+
+Shedinja
+Level: 37
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Silver Wind
+- Sand Attack
+- Shadow Ball
+- Spite
+
+=== TRAINER_FORTREE_CLIFFS_NINJA_4 ===
+Name: NAME-ME
+Class: Ninja Boy
+Pic: Ninja Boy
+Gender: Male
+Music: Suspicious
+Double Battle: No
+AI: Basic Trainer / Risky
+
+Dustox
+Level: 34
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Quiver Dance
+- Moonlight
+- Bug Buzz
+- Aerial Ace
+
+Kecleon
+Level: 32
+Ability: Color Change
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Recover
+- Shadow Sneak
+- Skill Swap
+- Defense Curl
+
+=== TRAINER_FORTREE_CLIFFS_NINJA_5 ===
+Name: NAME-ME
+Class: Ninja Boy
+Pic: Ninja Boy
+Gender: Male
+Music: Suspicious
+Double Battle: No
+AI: Basic Trainer / Risky
+
+Ninjask
+Level: 31
+Ability: Speed Boost
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Substitute
+- Swords Dance
+- Baton Pass
+- Protect
+
+Kecleon
+Level: 34
+Ability: Protean
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Ancient Power
+- Shadow Ball
+- Drain Punch
+- Dig
+
+Frogadier
+Level: 32
+Ability: Protean
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Smokescreen
+- Lick
+- Water Pulse
+- U-Turn
+
+=== TRAINER_FORTREE_CLIFFS_NINJA_6 ===
+Name: NAME-ME
+Class: Ninja Boy
+Pic: Ninja Boy
+Gender: Male
+Music: Suspicious
+Double Battle: No
+AI: Basic Trainer / Risky
+
+Koffing
+Level: 34
+Ability: Speed Boost
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Sludge Bomb
+- Curse
+- Haze
+- Fire Blast
+
+Croagunk
+Level: 34
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Mud Bomb
+- Vacuum Wave
+- Fake Out
+- Swagger
+
+=== TRAINER_FORTREE_CLIFFS_RANGER_1 ===
+Name: NAME-ME
+Class: Pkmn Ranger
+Pic: Pokemon Ranger F
+Gender: Male
+Music: Cool
+Double Battle: No
+AI: Basic Trainer
+
+Aipom @ Passho Berry
+Level: 34
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Bounce
+- Fake Out
+- Screech
+- Double Hit
+
+Arcanine @ Passho Berry
+Level: 34
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- ExtremeSpeed
+- Howl
+- Morning Sun
+- Flamethrower
+
+=== TRAINER_FORTREE_CLIFFS_RANGER_2 ===
+Name: NAME-ME
+Class: Pkmn Ranger
+Pic: Pokemon Ranger M
+Gender: Male
+Music: Cool
+Double Battle: No
+AI: Basic Trainer
+
+Ambipom
+Level: 34
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Fake Out
+- Bounce
+- Screech
+- Double Hit
+
+Azumarill
+Level: 31
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Aqua Ring
+- Double-Edge
+- Belly Drum
+- Rollout
+
+=== TRAINER_FORTREE_CLIFFS_BIRDKEEPER_1 ===
+Name: NAME-ME
+Class: Bird Keeper
+Pic: Bird Keeper
+Gender: Male
+Music: Cool
+Double Battle: No
+AI: Basic Trainer
+
+Murkrow
+Level: 34
+Ability: Super Luck
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Assurance
+- Wing Attack
+- Taunt
+- Night Shade
+
+Sirfetch'd @ Leek
+Level: 33
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- First Impression
+- Close Combat
+- Brave Bird
+- Swords Dance
+
 === TRAINER_RED ===
 Name: RED
 Class: Rival

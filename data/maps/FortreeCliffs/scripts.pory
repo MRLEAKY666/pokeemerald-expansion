@@ -28,6 +28,150 @@ FortreeCliffs_EventScript_BadVibeRock::
 	release
 	end
 
+FortreeCliffs_EventScript_Ninja1::
+	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_1, FortreeCliffs_Text_Ninja1Intro, FortreeCliffs_Text_Ninja1Defeat
+	msgbox FortreeCliffs_Text_Ninja1PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+FortreeCliffs_EventScript_Ninja2::
+	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_2, FortreeCliffs_Text_Ninja2Intro, FortreeCliffs_Text_Ninja2Defeat
+	msgbox FortreeCliffs_Text_Ninja2PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+FortreeCliffs_EventScript_Ninja3::
+	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_3, FortreeCliffs_Text_Ninja3Intro, FortreeCliffs_Text_Ninja3Defeat
+	msgbox FortreeCliffs_Text_Ninja3PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+FortreeCliffs_EventScript_Expert1::
+	trainerbattle_single TRAINER_FORTREE_CLIFFS_EXPERT_1, FortreeCliffs_Text_Expert1Intro, FortreeCliffs_Text_Expert1Defeat
+	msgbox FortreeCliffs_Text_Expert1PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+FortreeCliffs_EventScript_Ninja4::
+	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_4, FortreeCliffs_Text_Ninja4Intro, FortreeCliffs_Text_Ninja4Defeat
+	msgbox FortreeCliffs_Text_Ninja4PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+FortreeCliffs_EventScript_Ninja5::
+	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_5, FortreeCliffs_Text_Ninja5Intro, FortreeCliffs_Text_Ninja5Defeat
+	msgbox FortreeCliffs_Text_Ninja5PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+FortreeCliffs_EventScript_Ninja6::
+	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_6, FortreeCliffs_Text_Ninja6Intro, FortreeCliffs_Text_Ninja6Defeat
+	msgbox FortreeCliffs_Text_Ninja6PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+FortreeCliffs_EventScript_BirdKeeper1::
+	trainerbattle_single TRAINER_FORTREE_CLIFFS_BIRDKEEPER_1, FortreeCliffs_Text_BirdKeeper1Intro, FortreeCliffs_Text_BirdKeeper1Defeat
+	msgbox FortreeCliffs_Text_BirdKeeper1PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+FortreeCliffs_EventScript_Ranger1::
+	trainerbattle_single TRAINER_FORTREE_CLIFFS_RANGER_1, FortreeCliffs_Text_Ranger1Intro, FortreeCliffs_Text_Ranger1Defeat
+	msgbox FortreeCliffs_Text_Ranger1PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+FortreeCliffs_EventScript_Ranger2::
+	trainerbattle_single TRAINER_FORTREE_CLIFFS_RANGER_2, FortreeCliffs_Text_Ranger2Intro, FortreeCliffs_Text_Ranger2Defeat
+	msgbox FortreeCliffs_Text_Ranger2PostBattle, MSGBOX_AUTOCLOSE
+	end
+
 FortreeCliffs_Text_BadVibeRock:
 	.string "This rock gives off a bad vibe…$"
+
+FortreeCliffs_Text_Ninja1Intro:
+	.string "Our grandpa is annoying as heck!$"
+
+FortreeCliffs_Text_Ninja1PostBattle:
+	.string "Ha! Idiot!$"
+
+FortreeCliffs_Text_Ninja1Defeat:
+	.string "You're annoying too!$"
+
+FortreeCliffs_Text_Ninja2Intro:
+	.string "Our grandpa is annoying as heck!$"
+
+FortreeCliffs_Text_Ninja2PostBattle:
+	.string "Ha! Idiot!$"
+
+FortreeCliffs_Text_Ninja2Defeat:
+	.string "You're annoying too!$"
+
+FortreeCliffs_Text_Ninja3Intro:
+	.string "Our grandpa is annoying as heck!$"
+
+FortreeCliffs_Text_Ninja3PostBattle:
+	.string "Ha! Idiot!$"
+
+FortreeCliffs_Text_Ninja3Defeat:
+	.string "You're annoying too!$"
+
+FortreeCliffs_Text_Ninja4Intro:
+	.string "Surprise! I've been studying KECLEON!$"
+
+FortreeCliffs_Text_Ninja4PostBattle:
+	.string "My camouflage is perfect!$"
+
+FortreeCliffs_Text_Ninja4Defeat:
+	.string "$"
+
+FortreeCliffs_Text_Ninja5Intro:
+	.string "I'm the star pupil!$"
+
+FortreeCliffs_Text_Ninja5PostBattle:
+	.string "That's why I'm Grandpa's favorite!$"
+
+FortreeCliffs_Text_Ninja5Defeat:
+	.string "I'm such a disappointment…$"
+
+FortreeCliffs_Text_Ninja6Intro:
+	.string "I'm trying to take it easy here!$"
+
+FortreeCliffs_Text_Ninja6PostBattle:
+	.string "Resting pays off just as much as training.$"
+
+FortreeCliffs_Text_Ninja6Defeat:
+	.string "I guess I should be trying harder…$"
+
+FortreeCliffs_Text_Expert1Intro:
+	.string "Training my grandchildren is rewarding,\n"
+	.string "but they can also be quite irksome!$"
+
+FortreeCliffs_Text_Expert1PostBattle:
+	.string "I'm always dealing with children…$"
+
+FortreeCliffs_Text_Expert1Defeat:
+	.string "Finally, a fellow adult!$"
+
+FortreeCliffs_Text_Ranger1Intro:
+	.string "Do you have the right berries?$"
+
+FortreeCliffs_Text_Ranger1PostBattle:
+	.string "Collect more berries, and learn their\n"
+	.string "effects.$"
+
+FortreeCliffs_Text_Ranger1Defeat:
+	.string "I need more berries now!$"
+
+FortreeCliffs_Text_Ranger2Intro:
+	.string "Are you prepared for this terrain?$"
+
+FortreeCliffs_Text_Ranger2PostBattle:
+	.string "Before exploring far from town,\n"
+	.string "double check your supplies!$"
+
+FortreeCliffs_Text_Ranger2Defeat:
+	.string "I wasn't prepared for this!$"
+
+FortreeCliffs_Text_BirdKeeper1Intro:
+	.string "WINONA trains here, on the highest cliffs!$"
+
+FortreeCliffs_Text_BirdKeeper1PostBattle:
+	.string "I simply mirrored WINONA's training.$"
+
+FortreeCliffs_Text_BirdKeeper1Defeat:
+	.string "How does WINONA fly so high?$"
+
 `
