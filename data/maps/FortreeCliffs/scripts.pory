@@ -184,6 +184,7 @@ FortreeCliffs_EventScript_FlyPlayerToStartingNest::
 	delay 15
 	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                         @ hide player
 	waitfieldeffect FLDEFF_NPCFLY_OUT
+	setflag FLAG_HIDE_MAP_NAME_POPUP
 	warpcontinuescript MAP_FORTREE_CLIFFS, 24, 13, FortreeCliffs_EventScript_BraviaryLandsWithPlayer         @ landing coords         
 	end
 
@@ -193,6 +194,7 @@ FortreeCliffs_EventScript_FlyPlayerToNest2::
 	delay 15
 	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                         @ hide player
 	waitfieldeffect FLDEFF_NPCFLY_OUT
+	setflag FLAG_HIDE_MAP_NAME_POPUP
 	warpcontinuescript MAP_FORTREE_CLIFFS, 14, 19, FortreeCliffs_EventScript_BraviaryLandsWithPlayer         @ landing coords         
 	end
 
@@ -202,6 +204,7 @@ FortreeCliffs_EventScript_FlyPlayerToNest3::
 	delay 15
 	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                         @ hide player
 	waitfieldeffect FLDEFF_NPCFLY_OUT
+	setflag FLAG_HIDE_MAP_NAME_POPUP
 	warpcontinuescript MAP_FORTREE_CLIFFS, 22, 77, FortreeCliffs_EventScript_BraviaryLandsWithPlayer         @ landing coords         
 	end
 
@@ -211,6 +214,7 @@ FortreeCliffs_EventScript_FlyPlayerToLakeshoreNest::
 	delay 15
 	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                         @ hide player
 	waitfieldeffect FLDEFF_NPCFLY_OUT
+	setflag FLAG_HIDE_MAP_NAME_POPUP
 	warpcontinuescript MAP_FORTREE_CLIFFS, 13, 63, FortreeCliffs_EventScript_BraviaryLandsWithPlayer         @ landing coords         
 	end
 
@@ -220,6 +224,7 @@ FortreeCliffs_EventScript_FlyPlayerToNest5::
 	delay 15
 	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                         @ hide player
 	waitfieldeffect FLDEFF_NPCFLY_OUT
+	setflag FLAG_HIDE_MAP_NAME_POPUP
 	warpcontinuescript MAP_FORTREE_CLIFFS, 24, 42, FortreeCliffs_EventScript_BraviaryLandsWithPlayer         @ landing coords         
 	end
 
@@ -237,7 +242,8 @@ FortreeCliffs_EventScript_BraviaryLandsWithPlayer::
 	waitmovement LOCALID_FORTREE_CLIFFS_BRAVIARY_1        
 	showobjectat LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS                              @ show updated bird 
 	applymovement LOCALID_FORTREE_CLIFFS_BRAVIARY_1, FortreeCliffs_Movement_BraviaryLands 
-	waitmovement LOCALID_FORTREE_CLIFFS_BRAVIARY_1        
+	waitmovement LOCALID_FORTREE_CLIFFS_BRAVIARY_1   
+	clearflag FLAG_HIDE_MAP_NAME_POPUP     
 	release
 	end
 
@@ -250,7 +256,7 @@ FortreeCliffs_EventScript_TryGiveBraviaryBerry::
 	fadescreenswapbuffers FADE_TO_BLACK
 	special Bag_ChooseBerry
 	waitstate
-	playmoncry SPECIES_BRAVIARY, CRY_MODE_ENCOUNTER
+	playmoncry SPECIES_BRAVIARY, CRY_MODE_NORMAL
 	waitmoncry
 	goto_if_eq VAR_ITEM_ID, 0, FortreeCliffs_EventScript_DidntGiveBerry
 	switch VAR_ITEM_ID                                                                                 @ check that the berry is one bird likes 
@@ -284,30 +290,33 @@ FortreeCliffs_EventScript_GiveFirstBerry::
 	setvar VAR_FORTREE_CLIFFS_BRAVIARY_TRUST, 1
 	removeitem VAR_ITEM_ID
 	copyvar VAR_BRAVIARY_BERRY_1, VAR_ITEM_ID
+	bufferitemname STR_VAR_1, VAR_ITEM_ID
+	msgbox FortreeCliffs_Text_BraviaryAcceptedBerry, MSGBOX_DEFAULT
 	playmoncry SPECIES_BRAVIARY, CRY_MODE_HIGH_PITCH
 	waitmoncry
 	msgbox FortreeCliffs_Text_GaveFirstBerry, MSGBOX_DEFAULT
-	@ goto FortreeCliffs_EventScript_BraviaryRoutingSwitch
 	return
 
 FortreeCliffs_EventScript_GiveSecondBerry::
 	setvar VAR_FORTREE_CLIFFS_BRAVIARY_TRUST, 2
 	removeitem VAR_ITEM_ID
 	copyvar VAR_BRAVIARY_BERRY_2, VAR_ITEM_ID
+	bufferitemname STR_VAR_1, VAR_ITEM_ID
+	msgbox FortreeCliffs_Text_BraviaryAcceptedBerry, MSGBOX_DEFAULT
 	playmoncry SPECIES_BRAVIARY, CRY_MODE_HIGH_PITCH
 	waitmoncry
 	msgbox FortreeCliffs_Text_GaveSecondBerry, MSGBOX_DEFAULT
-	@ goto FortreeCliffs_EventScript_BraviaryRoutingSwitch
 	return
 
 FortreeCliffs_EventScript_GiveThirdBerry::
 	setvar VAR_FORTREE_CLIFFS_BRAVIARY_TRUST, 3
 	removeitem VAR_ITEM_ID
 	copyvar VAR_BRAVIARY_BERRY_3, VAR_ITEM_ID
+	bufferitemname STR_VAR_1, VAR_ITEM_ID
+	msgbox FortreeCliffs_Text_BraviaryAcceptedBerry, MSGBOX_DEFAULT
 	playmoncry SPECIES_BRAVIARY, CRY_MODE_HIGH_PITCH
 	waitmoncry
 	msgbox FortreeCliffs_Text_GaveThirdBerry, MSGBOX_DEFAULT
-	@ goto FortreeCliffs_EventScript_BraviaryRoutingSwitch
 	return
 
 FortreeCliffs_EventScript_WantsYouToFollow::
@@ -459,6 +468,9 @@ FortreeCliffs_Text_FlewToTheNextNest:
 FortreeCliffs_Text_WantsYouToFollow:
 	.string "BRAVIARY flew to another nest…\p"
 	.string "but it looks like it wants you to follow!$"
+
+FortreeCliffs_Text_BraviaryAcceptedBerry:
+	.string "BRAVIARY accepted the {STR_VAR_1}.$"
 
 FortreeCliffs_Text_GaveFirstBerry:
 	.string "The harsh look in BRAVIARY's eyes\n"
