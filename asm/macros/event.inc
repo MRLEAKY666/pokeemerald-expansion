@@ -521,6 +521,15 @@
 	formatwarp \map, \a, \b, \c
 	.endm
 
+	@ Warps to a map, and plays the script passed to it
+	.macro warpcontinuescript map:req, X:req, Y:req, script:req, startBlack=TRUE
+	.byte SCR_OP_WARPCONTINUESCRIPT
+	.2byte \map
+	.2byte \X
+	.2byte \Y
+	.4byte \script
+	.endm
+
 	@ Retrieves the player's zero-indexed x- and y-coordinates in the map, and stores them in the specified variables.
 	.macro getplayerxy x:req, y:req
 	.byte SCR_OP_GETPLAYERXY

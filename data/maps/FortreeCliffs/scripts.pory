@@ -102,8 +102,8 @@ FortreeCliffs_EventScript_BraviaryRoutingSwitch::                               
 	case 3, FortreeCliffs_EventScript_BraviarySouthernNestSwitch
 	switch VAR_FORTREE_CLIFFS_BIRD_LOCATION                                                                @ choose next nest based on current nest
 	case 0, FortreeCliffs_EventScript_MoveBraviaryToNest2
-	case 1, FortreeCliffs_EventScript_MoveBraviaryToLakeshoreNest                                          @ nest 4
-	case 2, FortreeCliffs_EventScript_MoveBraviaryToNest3
+	case 1, FortreeCliffs_EventScript_MoveBraviaryToNest3
+	case 2, FortreeCliffs_EventScript_MoveBraviaryToLakeshoreNest                                          @ nest 4
 	case 3, FortreeCliffs_EventScript_MoveBraviaryToNest5
 	case 4, FortreeCliffs_EventScript_MoveBraviaryToStartingNest                                           @ nest 1
 	return
@@ -179,99 +179,67 @@ FortreeCliffs_EventScript_MoveBraviaryToNest5::
 	return
 
 FortreeCliffs_EventScript_FlyPlayerToStartingNest::
-	setobjectmovementtype LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MOVEMENT_TYPE_INVISIBLE                     @ hide updated bird 
-	setfieldeffectargument 0, 1                                                                           @ fly away
+	setfieldeffectargument 0, LOCALID_PLAYER                                                               @ fly away
 	dofieldeffect FLDEFF_NPCFLY_OUT
 	delay 15
-	setobjectmovementtype LOCALID_PLAYER, MOVEMENT_TYPE_INVISIBLE                                         @ hide player
+	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                         @ hide player
 	waitfieldeffect FLDEFF_NPCFLY_OUT
-
-	@ fadescreenswapbuffers FADE_TO_BLACK                                                                    @ warp to next nest
-	warpsilent MAP_FORTREE_CLIFFS, 24, 13                                                                 @ landing coords
-
-	setfieldeffectargument 0, 1                                                                             @ animate landing
-	dofieldeffect FLDEFF_NPCFLY_OUT
-	waitfieldeffect FLDEFF_NPCFLY_OUT
-	setobjectmovementtype LOCALID_PLAYER, MOVEMENT_TYPE_FACE_DOWN                                        @ show player
-	return
+	warpcontinuescript MAP_FORTREE_CLIFFS, 24, 13, FortreeCliffs_EventScript_BraviaryLandsWithPlayer         @ landing coords         
+	end
 
 FortreeCliffs_EventScript_FlyPlayerToNest2::
-	setobjectmovementtype LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MOVEMENT_TYPE_INVISIBLE                     @ hide updated bird 
-	setfieldeffectargument 0, 1                                                                           @ fly away
+	setfieldeffectargument 0, LOCALID_PLAYER                                                               @ fly away
 	dofieldeffect FLDEFF_NPCFLY_OUT
 	delay 15
-	setobjectmovementtype LOCALID_PLAYER, MOVEMENT_TYPE_INVISIBLE                                         @ hide player
+	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                         @ hide player
 	waitfieldeffect FLDEFF_NPCFLY_OUT
-
-	@ fadescreenswapbuffers FADE_TO_BLACK                                                                    @ warp to next nest
-	warpsilent MAP_FORTREE_CLIFFS, 14, 19                                                                 @ landing coords
-
-	setfieldeffectargument 0, 1                                                                             @ animate landing
-	dofieldeffect FLDEFF_NPCFLY_OUT
-	waitfieldeffect FLDEFF_NPCFLY_OUT
-	setobjectmovementtype LOCALID_PLAYER, MOVEMENT_TYPE_FACE_DOWN                                        @ show player
-	return
+	warpcontinuescript MAP_FORTREE_CLIFFS, 14, 19, FortreeCliffs_EventScript_BraviaryLandsWithPlayer         @ landing coords         
+	end
 
 FortreeCliffs_EventScript_FlyPlayerToNest3::
-	setobjectmovementtype LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MOVEMENT_TYPE_INVISIBLE                     @ hide updated bird 
-	setfieldeffectargument 0, 1                                                                           @ fly away
+	setfieldeffectargument 0, LOCALID_PLAYER                                                               @ fly away
 	dofieldeffect FLDEFF_NPCFLY_OUT
 	delay 15
-	setobjectmovementtype LOCALID_PLAYER, MOVEMENT_TYPE_INVISIBLE                                         @ hide player
+	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                         @ hide player
 	waitfieldeffect FLDEFF_NPCFLY_OUT
-
-	@ fadescreenswapbuffers FADE_TO_BLACK                                                                    @ warp to next nest
-	warpsilent MAP_FORTREE_CLIFFS, 22, 77                                                                 @ landing coords
-
-	setfieldeffectargument 0, 1                                                                             @ animate landing
-	dofieldeffect FLDEFF_NPCFLY_OUT
-	waitfieldeffect FLDEFF_NPCFLY_OUT
-	setobjectmovementtype LOCALID_PLAYER, MOVEMENT_TYPE_FACE_DOWN                                        @ show player
-	return
+	warpcontinuescript MAP_FORTREE_CLIFFS, 22, 77, FortreeCliffs_EventScript_BraviaryLandsWithPlayer         @ landing coords         
+	end
 
 FortreeCliffs_EventScript_FlyPlayerToLakeshoreNest::
-	setobjectmovementtype LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MOVEMENT_TYPE_INVISIBLE                     @ hide updated bird 
-	setfieldeffectargument 0, 1                                                                           @ fly away
+	setfieldeffectargument 0, LOCALID_PLAYER                                                               @ fly away
 	dofieldeffect FLDEFF_NPCFLY_OUT
 	delay 15
-	setobjectmovementtype LOCALID_PLAYER, MOVEMENT_TYPE_INVISIBLE                                         @ hide player
+	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                         @ hide player
 	waitfieldeffect FLDEFF_NPCFLY_OUT
-
-	@ fadescreenswapbuffers FADE_TO_BLACK                                                                    @ warp to next nest
-	warpsilent MAP_FORTREE_CLIFFS, 13, 63                                                                 @ landing coords
-
-	setfieldeffectargument 0, 1                                                                             @ animate landing
-	dofieldeffect FLDEFF_NPCFLY_OUT
-	waitfieldeffect FLDEFF_NPCFLY_OUT
-	setobjectmovementtype LOCALID_PLAYER, MOVEMENT_TYPE_FACE_DOWN                                        @ show player
-	return
+	warpcontinuescript MAP_FORTREE_CLIFFS, 13, 63, FortreeCliffs_EventScript_BraviaryLandsWithPlayer         @ landing coords         
+	end
 
 FortreeCliffs_EventScript_FlyPlayerToNest5::
-	setfieldeffectargument 0, LOCALID_PLAYER                                                        @ fly away
+	setfieldeffectargument 0, LOCALID_PLAYER                                                               @ fly away
 	dofieldeffect FLDEFF_NPCFLY_OUT
 	delay 15
-	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                 @ hide player
+	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                         @ hide player
 	waitfieldeffect FLDEFF_NPCFLY_OUT
+	warpcontinuescript MAP_FORTREE_CLIFFS, 24, 42, FortreeCliffs_EventScript_BraviaryLandsWithPlayer         @ landing coords         
+	end
 
-	waitbuttonpress @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ to stop and check script flow                                         
-
-	waitbuttonpress @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ to stop and check script flow
-
-	warpsilent MAP_FORTREE_CLIFFS, 24, 42                                                           @ landing coords
-	fadescreenswapbuffers FADE_TO_BLACK                  
-	waitstate
+FortreeCliffs_EventScript_BraviaryLandsWithPlayer::
 	hideobjectat LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS                              @ hide updated bird 
 	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS 
-
-	setfieldeffectargument 0, LOCALID_PLAYER                                                        @ animate landing
+	fadescreen FADE_FROM_BLACK
+	setfieldeffectargument 0, LOCALID_PLAYER                                                        @ animate player landing
 	dofieldeffect FLDEFF_NPCFLY_OUT
-	waitfieldeffect FLDEFF_NPCFLY_OUT
-
-	@ showobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                 @ show player
-
-	@ showobjectat LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS                              @ show updated bird 
-
-	return
+	delay 15
+	showobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                 @ reshow player
+	waitfieldeffect FLDEFF_FLY_IN
+	setobjectsubpriority LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS, 3
+	applymovement LOCALID_FORTREE_CLIFFS_BRAVIARY_1, FortreeCliffs_Movement_BraviaryJumpUp            @ braviary landing begins
+	waitmovement LOCALID_FORTREE_CLIFFS_BRAVIARY_1        
+	showobjectat LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS                              @ show updated bird 
+	applymovement LOCALID_FORTREE_CLIFFS_BRAVIARY_1, FortreeCliffs_Movement_BraviaryLands 
+	waitmovement LOCALID_FORTREE_CLIFFS_BRAVIARY_1        
+	release
+	end
 
 FortreeCliffs_EventScript_OfferBraviaryBerry::
 	msgbox FortreeCliffs_Text_SkepticalBraviary, MSGBOX_YESNO
@@ -455,6 +423,15 @@ FortreeCliffs_Movement_BraviaryFlyOff:
 	slide_up
 	slide_up
 	slide_up
+	walk_down
+	step_end
+
+FortreeCliffs_Movement_BraviaryJumpUp::
+	jump_2_up
+	step_end
+
+FortreeCliffs_Movement_BraviaryLands::
+	walk_down
 	walk_down
 	step_end
 
