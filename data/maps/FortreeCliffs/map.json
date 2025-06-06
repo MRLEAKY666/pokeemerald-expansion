@@ -105,7 +105,7 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "3",
+      "trainer_sight_or_berry_tree_id": "4",
       "script": "FortreeCliffs_EventScript_Ninja6",
       "flag": "0"
     },
@@ -191,8 +191,8 @@
     {
       "local_id": "LOCALID_FORTREE_CLIFFS_KECLEON_4",
       "graphics_id": "OBJ_EVENT_GFX_KECLEON",
-      "x": 22,
-      "y": 77,
+      "x": 13,
+      "y": 51,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_INVISIBLE",
       "movement_range_x": 0,
@@ -211,12 +211,13 @@
       "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "FortreeCliffs_EventScript_Ranger1",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_FORTREE_CLIFFS_NEST",
       "graphics_id": "OBJ_EVENT_GFX_AZUMARILL",
       "x": 24,
       "y": 12,
@@ -226,60 +227,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_AZUMARILL",
-      "x": 14,
-      "y": 18,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_AZUMARILL",
-      "x": 24,
-      "y": 41,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_AZUMARILL",
-      "x": 13,
-      "y": 62,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_AZUMARILL",
-      "x": 22,
-      "y": 76,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "FortreeCliffs_EventScript_Nest",
+      "flag": "FLAG_FORTREE_CLIFFS_NEST_1"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_AZUMARILL",
@@ -377,19 +326,6 @@
       "flag": "FLAG_TEMP_12"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(BRAVIARY)",
-      "x": 24,
-      "y": 8,
-      "elevation": 4,
-      "movement_type": "MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_DOWN",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
-    },
-    {
       "local_id": "LOCALID_FORTREE_CLIFFS_RANGER_2",
       "graphics_id": "OBJ_EVENT_GFX_CAMPER",
       "x": 15,
@@ -398,7 +334,7 @@
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "FortreeCliffs_EventScript_Ranger2",
       "flag": "0"
@@ -412,8 +348,8 @@
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "4",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "5",
       "script": "FortreeCliffs_EventScript_BirdKeeper1",
       "flag": "0"
     },
@@ -523,6 +459,20 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "FortreeCliffs_EventScript_Kecleon6",
       "flag": "FLAG_FORTREE_CLIFFS_KECLEON_6"
+    },
+    {
+      "local_id": "LOCALID_FORTREE_CLIFFS_BRAVIARY_1",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(BRAVIARY)",
+      "x": 24,
+      "y": 8,
+      "elevation": 4,
+      "movement_type": "MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_FORTREE_CLIFFS_NEST_1"
     }
   ],
   "warp_events": [

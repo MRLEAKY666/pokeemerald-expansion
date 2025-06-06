@@ -47205,7 +47205,7 @@ F_TRAINER_FEMALE |
     [DIFFICULTY_NORMAL][TRAINER_FORTREE_CLIFFS_EXPERT_1] =
     {
 #line 18936
-        .trainerName = _("OJI"),
+        .trainerName = _("OJII"),
 #line 18937
         .trainerClass = TRAINER_CLASS_EXPERT,
 #line 18938
@@ -47229,7 +47229,7 @@ F_TRAINER_FEMALE |
 #line 18947
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 18946
-            .lvl = 35,
+            .lvl = 36,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -47247,7 +47247,7 @@ F_TRAINER_FEMALE |
 #line 18955
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 18954
-            .lvl = 32,
+            .lvl = 34,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -47265,7 +47265,7 @@ F_TRAINER_FEMALE |
 #line 18963
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 18962
-            .lvl = 34,
+            .lvl = 37,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {

@@ -17,7 +17,42 @@ FortreeCliffs_EventScript_TryRemoveWildMons::
 
 FortreeCliffs_OnTransition:
 	@ call FortreeCliffs_EventScript_ResetWildMons
+	call FortreeCliffs_EventScript_BraviaryOnTransitionSwitch
 	end
+
+FortreeCliffs_EventScript_BraviaryOnTransitionSwitch::
+	switch VAR_FORTREE_CLIFFS_BIRD_LOCATION                                                 @ place objects at correct spot when map loads
+	case 0, FortreeCliffs_EventScript_PlaceBraviaryAtNest1
+	case 1, FortreeCliffs_EventScript_PlaceBraviaryAtNest2                                             
+	case 2, FortreeCliffs_EventScript_PlaceBraviaryAtNest3
+	case 3, FortreeCliffs_EventScript_PlaceBraviaryAtNest4
+	case 4, FortreeCliffs_EventScript_PlaceBraviaryAtNest5                                           
+	return
+
+FortreeCliffs_EventScript_PlaceBraviaryAtNest1::
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 24, 12                                                    @ move sign to nest 1 
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 24, 8                                               @ move bird to nest 1
+	return
+
+FortreeCliffs_EventScript_PlaceBraviaryAtNest2::  
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 14, 18                                                    @ move sign to nest 2 
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 14, 14                                              @ move bird to nest 2
+	return
+
+FortreeCliffs_EventScript_PlaceBraviaryAtNest3::       
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 22, 76                                                    @ move sign to nest 3 
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 22, 72                                              @ move bird to nest 3
+	return
+
+FortreeCliffs_EventScript_PlaceBraviaryAtNest4::
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 13, 62                                                    @ move sign to nest 4 
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 13, 58                                              @ move bird to nest 4
+	return
+
+FortreeCliffs_EventScript_PlaceBraviaryAtNest5::
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 24, 41                                                    @ move sign to nest 5 
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 24, 37                                              @ move bird to nest 5
+	return
 
 FortreeCliffs_EventScript_ResetWildMons::
 	end
@@ -27,6 +62,314 @@ FortreeCliffs_EventScript_BadVibeRock::
 	msgbox FortreeCliffs_Text_BadVibeRock, MSGBOX_DEFAULT
 	release
 	end
+
+FortreeCliffs_EventScript_Nest::
+	@ lock
+	clearflag FLAG_TEMP_5
+	special SpawnCameraObject                                                                               @ pan camera up 
+	applymovement OBJ_EVENT_ID_CAMERA, FortreeCliffs_Movement_CameraPanUp
+	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
+	
+	call_if_lt VAR_FORTREE_CLIFFS_BRAVIARY_TRUST, 3, FortreeCliffs_EventScript_OfferBraviaryBerry           @ Ask to offer berry if untrusted
+	call_if_ge VAR_FORTREE_CLIFFS_BRAVIARY_TRUST, 4, FortreeCliffs_EventScript_BraviaryWantsToFly           @ Ask to fly
+
+	call FortreeCliffs_EventScript_BraviaryRoutingSwitch                                                    @ choose which nest to fly to
+
+	goto_if_eq VAR_FORTREE_CLIFFS_BRAVIARY_TRUST, 3, FortreeCliffs_EventScript_WantsYouToFollow             @ ending with slight text difference after third berry and before first flight
+	msgbox FortreeCliffs_Text_FlewToTheNextNest, MSGBOX_DEFAULT
+	closemessage
+	special SpawnCameraObject                                                                               @ pan back down
+	applymovement OBJ_EVENT_ID_CAMERA, FortreeCliffs_Movement_CameraPanDown
+	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
+	release
+	end
+
+FortreeCliffs_EventScript_BraviaryRoutingSwitch::                                                          @ handles updating object locations and vars
+	waitse                                                                                                 @ fly away animation and cry
+	playmoncry SPECIES_BRAVIARY, CRY_MODE_ENCOUNTER
+	delay 15
+	setobjectsubpriority LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS, 3
+	applymovement LOCALID_FORTREE_CLIFFS_BRAVIARY_1, FortreeCliffs_Movement_BraviaryFlyOff
+	applymovement LOCALID_FORTREE_CLIFFS_NEST, FortreeCliffs_Movement_BraviaryFlyOff
+	waitmovement LOCALID_FORTREE_CLIFFS_BRAVIARY_1
+	waitmoncry
+	switch VAR_FORTREE_CLIFFS_BRAVIARY_TRUST                                                                  
+	case 0, FortreeCliffs_EventScript_BraviaryNorthernNestSwitch                                           @ stay in northern nests if low trust
+	case 1, FortreeCliffs_EventScript_BraviaryNorthernNestSwitch
+	case 2, FortreeCliffs_EventScript_BraviarySouthernNestSwitch                                           @ stay in southern nests if mid trust
+	case 3, FortreeCliffs_EventScript_BraviarySouthernNestSwitch
+	switch VAR_FORTREE_CLIFFS_BIRD_LOCATION                                                                @ choose next nest based on current nest
+	case 0, FortreeCliffs_EventScript_MoveBraviaryToNest2
+	case 1, FortreeCliffs_EventScript_MoveBraviaryToLakeshoreNest                                          @ nest 4
+	case 2, FortreeCliffs_EventScript_MoveBraviaryToNest3
+	case 3, FortreeCliffs_EventScript_MoveBraviaryToNest5
+	case 4, FortreeCliffs_EventScript_MoveBraviaryToStartingNest                                           @ nest 1
+	return
+
+FortreeCliffs_EventScript_BraviaryNorthernNestSwitch::
+	goto_if_eq VAR_FORTREE_CLIFFS_BIRD_LOCATION, 1, FortreeCliffs_EventScript_MoveBraviaryToStartingNest  
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 14, 18                                                    @ move sign to nest 2 
+	setobjectxy LOCALID_FORTREE_CLIFFS_NEST, 14, 18
+	setvar VAR_FORTREE_CLIFFS_BIRD_LOCATION, 1                                                             @ update location var to nest 2
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 14, 14                                              @ move bird to nest 2
+	setobjectxy LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 14, 14
+	resetobjectsubpriority LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS
+	return
+
+FortreeCliffs_EventScript_BraviarySouthernNestSwitch::
+	goto_if_eq VAR_FORTREE_CLIFFS_BIRD_LOCATION, 2, FortreeCliffs_EventScript_MoveBraviaryToLakeshoreNest      
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 22, 76                                                    @ move sign to nest 3 
+	setobjectxy LOCALID_FORTREE_CLIFFS_NEST, 22, 76
+	setvar VAR_FORTREE_CLIFFS_BIRD_LOCATION, 2                                                             @ update location var to nest 3
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 22, 72                                              @ move bird to nest 3
+	setobjectxy LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 22, 72
+	resetobjectsubpriority LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS
+	return
+
+FortreeCliffs_EventScript_MoveBraviaryToStartingNest::
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 24, 12                                                    @ move sign to nest 1 
+	setobjectxy LOCALID_FORTREE_CLIFFS_NEST, 24, 12
+	setvar VAR_FORTREE_CLIFFS_BIRD_LOCATION, 0                                                             @ update location var to nest 1
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 24, 8                                               @ move bird to nest 1
+	setobjectxy LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 24, 8
+	resetobjectsubpriority LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS
+	call_if_set FLAG_TEMP_5, FortreeCliffs_EventScript_FlyPlayerToStartingNest
+	return
+
+FortreeCliffs_EventScript_MoveBraviaryToNest2::  
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 14, 18                                                    @ move sign to nest 2 
+	setobjectxy LOCALID_FORTREE_CLIFFS_NEST, 14, 18
+	setvar VAR_FORTREE_CLIFFS_BIRD_LOCATION, 1                                                             @ update location var to nest 2
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 14, 14                                              @ move bird to nest 2
+	setobjectxy LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 14, 14
+	resetobjectsubpriority LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS
+	call_if_set FLAG_TEMP_5, FortreeCliffs_EventScript_FlyPlayerToNest2
+	return
+
+FortreeCliffs_EventScript_MoveBraviaryToLakeshoreNest:: 
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 13, 62                                                    @ move sign to nest 4 
+	setobjectxy LOCALID_FORTREE_CLIFFS_NEST, 13, 62
+	setvar VAR_FORTREE_CLIFFS_BIRD_LOCATION, 3                                                             @ update location var to nest 4
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 13, 58                                              @ move bird to nest 4
+	setobjectxy LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 13, 58
+	resetobjectsubpriority LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS
+	call_if_set FLAG_TEMP_5, FortreeCliffs_EventScript_FlyPlayerToLakeshoreNest
+	return
+
+FortreeCliffs_EventScript_MoveBraviaryToNest3::     
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 22, 76                                                    @ move sign to nest 3 
+	setobjectxy LOCALID_FORTREE_CLIFFS_NEST, 22, 76
+	setvar VAR_FORTREE_CLIFFS_BIRD_LOCATION, 2                                                             @ update location var to nest 3
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 22, 72                                              @ move bird to nest 3
+	setobjectxy LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 22, 72
+	resetobjectsubpriority LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS
+	call_if_set FLAG_TEMP_5, FortreeCliffs_EventScript_FlyPlayerToNest3
+	return
+
+FortreeCliffs_EventScript_MoveBraviaryToNest5::
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 24, 41                                                    @ move sign to nest 5 
+	setobjectxy LOCALID_FORTREE_CLIFFS_NEST, 24, 41
+	setvar VAR_FORTREE_CLIFFS_BIRD_LOCATION, 4                                                             @ update location var to nest 5
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 24, 37                                              @ move bird to nest 5
+	setobjectxy LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 24, 37
+	resetobjectsubpriority LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS
+	call_if_set FLAG_TEMP_5, FortreeCliffs_EventScript_FlyPlayerToNest5
+	return
+
+FortreeCliffs_EventScript_FlyPlayerToStartingNest::
+	setobjectmovementtype LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MOVEMENT_TYPE_INVISIBLE                     @ hide updated bird 
+	setfieldeffectargument 0, 1                                                                           @ fly away
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	delay 15
+	setobjectmovementtype LOCALID_PLAYER, MOVEMENT_TYPE_INVISIBLE                                         @ hide player
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+
+	@ fadescreenswapbuffers FADE_TO_BLACK                                                                    @ warp to next nest
+	warpsilent MAP_FORTREE_CLIFFS, 24, 13                                                                 @ landing coords
+
+	setfieldeffectargument 0, 1                                                                             @ animate landing
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+	setobjectmovementtype LOCALID_PLAYER, MOVEMENT_TYPE_FACE_DOWN                                        @ show player
+	return
+
+FortreeCliffs_EventScript_FlyPlayerToNest2::
+	setobjectmovementtype LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MOVEMENT_TYPE_INVISIBLE                     @ hide updated bird 
+	setfieldeffectargument 0, 1                                                                           @ fly away
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	delay 15
+	setobjectmovementtype LOCALID_PLAYER, MOVEMENT_TYPE_INVISIBLE                                         @ hide player
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+
+	@ fadescreenswapbuffers FADE_TO_BLACK                                                                    @ warp to next nest
+	warpsilent MAP_FORTREE_CLIFFS, 14, 19                                                                 @ landing coords
+
+	setfieldeffectargument 0, 1                                                                             @ animate landing
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+	setobjectmovementtype LOCALID_PLAYER, MOVEMENT_TYPE_FACE_DOWN                                        @ show player
+	return
+
+FortreeCliffs_EventScript_FlyPlayerToNest3::
+	setobjectmovementtype LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MOVEMENT_TYPE_INVISIBLE                     @ hide updated bird 
+	setfieldeffectargument 0, 1                                                                           @ fly away
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	delay 15
+	setobjectmovementtype LOCALID_PLAYER, MOVEMENT_TYPE_INVISIBLE                                         @ hide player
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+
+	@ fadescreenswapbuffers FADE_TO_BLACK                                                                    @ warp to next nest
+	warpsilent MAP_FORTREE_CLIFFS, 22, 77                                                                 @ landing coords
+
+	setfieldeffectargument 0, 1                                                                             @ animate landing
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+	setobjectmovementtype LOCALID_PLAYER, MOVEMENT_TYPE_FACE_DOWN                                        @ show player
+	return
+
+FortreeCliffs_EventScript_FlyPlayerToLakeshoreNest::
+	setobjectmovementtype LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MOVEMENT_TYPE_INVISIBLE                     @ hide updated bird 
+	setfieldeffectargument 0, 1                                                                           @ fly away
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	delay 15
+	setobjectmovementtype LOCALID_PLAYER, MOVEMENT_TYPE_INVISIBLE                                         @ hide player
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+
+	@ fadescreenswapbuffers FADE_TO_BLACK                                                                    @ warp to next nest
+	warpsilent MAP_FORTREE_CLIFFS, 13, 63                                                                 @ landing coords
+
+	setfieldeffectargument 0, 1                                                                             @ animate landing
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+	setobjectmovementtype LOCALID_PLAYER, MOVEMENT_TYPE_FACE_DOWN                                        @ show player
+	return
+
+FortreeCliffs_EventScript_FlyPlayerToNest5::
+	setfieldeffectargument 0, LOCALID_PLAYER                                                        @ fly away
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	delay 15
+	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                 @ hide player
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+
+	waitbuttonpress @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ to stop and check script flow                                         
+
+	waitbuttonpress @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ to stop and check script flow
+
+	warpsilent MAP_FORTREE_CLIFFS, 24, 42                                                           @ landing coords
+	fadescreenswapbuffers FADE_TO_BLACK                  
+	waitstate
+	hideobjectat LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS                              @ hide updated bird 
+	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS 
+
+	setfieldeffectargument 0, LOCALID_PLAYER                                                        @ animate landing
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+
+	@ showobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                 @ show player
+
+	@ showobjectat LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS                              @ show updated bird 
+
+	return
+
+FortreeCliffs_EventScript_OfferBraviaryBerry::
+	msgbox FortreeCliffs_Text_SkepticalBraviary, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, FortreeCliffs_EventScript_TryGiveBraviaryBerry
+	return
+
+FortreeCliffs_EventScript_TryGiveBraviaryBerry::
+	fadescreenswapbuffers FADE_TO_BLACK
+	special Bag_ChooseBerry
+	waitstate
+	playmoncry SPECIES_BRAVIARY, CRY_MODE_ENCOUNTER
+	waitmoncry
+	goto_if_eq VAR_ITEM_ID, 0, FortreeCliffs_EventScript_DidntGiveBerry
+	switch VAR_ITEM_ID                                                                                 @ check that the berry is one bird likes 
+	case ITEM_POMEG_BERRY, FortreeCliffs_EventScript_InspectBerryOffering 
+	case ITEM_KELPSY_BERRY, FortreeCliffs_EventScript_InspectBerryOffering 
+	case ITEM_QUALOT_BERRY, FortreeCliffs_EventScript_InspectBerryOffering 
+	case ITEM_HONDEW_BERRY, FortreeCliffs_EventScript_InspectBerryOffering 
+	case ITEM_GREPA_BERRY, FortreeCliffs_EventScript_InspectBerryOffering 
+	case ITEM_TAMATO_BERRY, FortreeCliffs_EventScript_InspectBerryOffering 
+	playmoncry SPECIES_BRAVIARY, CRY_MODE_WEAK
+	msgbox FortreeCliffs_Text_BraviaryUninterested, MSGBOX_DEFAULT
+	waitmoncry
+	return
+
+FortreeCliffs_EventScript_InspectBerryOffering::
+	goto_if_eq VAR_ITEM_ID, VAR_BRAVIARY_BERRY_1, FortreeCliffs_EventScript_BraviaryUninterested                  @ can't give duplicates
+	goto_if_eq VAR_ITEM_ID, VAR_BRAVIARY_BERRY_2, FortreeCliffs_EventScript_BraviaryUninterested
+	goto_if_eq VAR_ITEM_ID, VAR_BRAVIARY_BERRY_3, FortreeCliffs_EventScript_BraviaryUninterested
+	goto_if_eq VAR_BRAVIARY_BERRY_1, 0, FortreeCliffs_EventScript_GiveFirstBerry                                  @ check how many have been given
+	goto_if_eq VAR_BRAVIARY_BERRY_2, 0, FortreeCliffs_EventScript_GiveSecondBerry
+	goto_if_eq VAR_BRAVIARY_BERRY_3, 0, FortreeCliffs_EventScript_GiveThirdBerry
+	end
+
+FortreeCliffs_EventScript_BraviaryUninterested::
+	playmoncry SPECIES_BRAVIARY, CRY_MODE_WEAK
+	msgbox FortreeCliffs_Text_BraviaryUninterested, MSGBOX_DEFAULT
+	waitmoncry
+	return
+
+FortreeCliffs_EventScript_GiveFirstBerry::
+	setvar VAR_FORTREE_CLIFFS_BRAVIARY_TRUST, 1
+	removeitem VAR_ITEM_ID
+	copyvar VAR_BRAVIARY_BERRY_1, VAR_ITEM_ID
+	playmoncry SPECIES_BRAVIARY, CRY_MODE_HIGH_PITCH
+	waitmoncry
+	msgbox FortreeCliffs_Text_GaveFirstBerry, MSGBOX_DEFAULT
+	@ goto FortreeCliffs_EventScript_BraviaryRoutingSwitch
+	return
+
+FortreeCliffs_EventScript_GiveSecondBerry::
+	setvar VAR_FORTREE_CLIFFS_BRAVIARY_TRUST, 2
+	removeitem VAR_ITEM_ID
+	copyvar VAR_BRAVIARY_BERRY_2, VAR_ITEM_ID
+	playmoncry SPECIES_BRAVIARY, CRY_MODE_HIGH_PITCH
+	waitmoncry
+	msgbox FortreeCliffs_Text_GaveSecondBerry, MSGBOX_DEFAULT
+	@ goto FortreeCliffs_EventScript_BraviaryRoutingSwitch
+	return
+
+FortreeCliffs_EventScript_GiveThirdBerry::
+	setvar VAR_FORTREE_CLIFFS_BRAVIARY_TRUST, 3
+	removeitem VAR_ITEM_ID
+	copyvar VAR_BRAVIARY_BERRY_3, VAR_ITEM_ID
+	playmoncry SPECIES_BRAVIARY, CRY_MODE_HIGH_PITCH
+	waitmoncry
+	msgbox FortreeCliffs_Text_GaveThirdBerry, MSGBOX_DEFAULT
+	@ goto FortreeCliffs_EventScript_BraviaryRoutingSwitch
+	return
+
+FortreeCliffs_EventScript_WantsYouToFollow::
+	setvar VAR_FORTREE_CLIFFS_BRAVIARY_TRUST, 4
+	msgbox FortreeCliffs_Text_WantsYouToFollow, MSGBOX_DEFAULT
+	closemessage
+	special SpawnCameraObject                                                                               @ pan back down
+	applymovement OBJ_EVENT_ID_CAMERA, FortreeCliffs_Movement_CameraPanDown
+	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
+	release
+	end
+
+FortreeCliffs_EventScript_BraviaryWantsToFly::
+	msgbox FortreeCliffs_Text_AskingToFly, MSGBOX_YESNO
+	closemessage
+	goto_if_eq VAR_RESULT, NO, FortreeCliffs_EventScript_DeclinedFlight
+	setflag FLAG_TEMP_5
+	return
+
+FortreeCliffs_EventScript_DeclinedFlight::
+	special SpawnCameraObject                                                                               @ pan back down
+	applymovement OBJ_EVENT_ID_CAMERA, FortreeCliffs_Movement_CameraPanDown
+	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
+	release
+	end
+
+FortreeCliffs_EventScript_DidntGiveBerry::
+	return
 
 FortreeCliffs_EventScript_Ninja1::
 	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_1, FortreeCliffs_Text_Ninja1Intro, FortreeCliffs_Text_Ninja1Defeat
@@ -78,8 +421,79 @@ FortreeCliffs_EventScript_Ranger2::
 	msgbox FortreeCliffs_Text_Ranger2PostBattle, MSGBOX_AUTOCLOSE
 	end
 
+FortreeCliffs_Movement_CameraPanUp:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+FortreeCliffs_Movement_CameraPanDown:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+FortreeCliffs_Movement_BraviaryFlyOff:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	walk_down
+	step_end
+
+FortreeCliffs_Text_SkepticalBraviary:
+	.string "This BRAVIARY is looking at you\n"
+	.string "with skepticism.\p"
+	.string "Try offering it a BERRY?$"
+
+FortreeCliffs_Text_AskingToFly:
+	.string "BRAVIARY is looking at you\n"
+	.string "approvingly.\p"
+	.string "Try asking for help navigating the\n" 
+	.string "cliffs?$"
+
+FortreeCliffs_Text_BraviaryUninterested:
+	.string "BRAVIARY doesn't seem interested\n"
+	.string "this berry…$"
+
 FortreeCliffs_Text_BadVibeRock:
 	.string "This rock gives off a bad vibe…$"
+
+FortreeCliffs_Text_FlewToTheNextNest:
+	.string "BRAVIARY flew to another nest…$"
+
+FortreeCliffs_Text_WantsYouToFollow:
+	.string "BRAVIARY flew to another nest…\p"
+	.string "but it looks like it wants you to follow!$"
+
+FortreeCliffs_Text_GaveFirstBerry:
+	.string "The harsh look in BRAVIARY's eyes\n"
+	.string "softened a bit.\p"
+	.string "You may be able to gain its trust!$"
+
+FortreeCliffs_Text_GaveSecondBerry:
+	.string "BRAVIARY seems a bit more relaxed\n"
+	.string "in your presence.$"
+
+FortreeCliffs_Text_GaveThirdBerry:
+	.string "BRAVIARY is looking at you approvingly!$"
 
 FortreeCliffs_Text_Ninja1Intro:
 	.string "Our grandpa is annoying as heck!$"
