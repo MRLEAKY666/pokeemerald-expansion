@@ -145,8 +145,8 @@ static const u16 sVoltorbFlipPalettes[][16] =
     INCBIN_U16("graphics/rogue_voltorbflip/gameboard.gbapal"),
 };
 
-static const u32 sVoltorbFlipTilemap[] = INCBIN_U32("graphics/rogue_voltorbflip/gameboard.bin.lz");
-static const u32 sVoltorbFlipTiles[] = INCBIN_U32("graphics/rogue_voltorbflip/gameboard.4bpp.lz");
+static const u32 sVoltorbFlipTilemap[] = INCBIN_U32("graphics/rogue_voltorbflip/gameboard.bin.smolTM");
+static const u32 sVoltorbFlipTiles[] = INCBIN_U32("graphics/rogue_voltorbflip/gameboard.4bpp.smol");
 
 static const u8 sVoltorbFlipSpriteSheetData[] = INCBIN_U8("graphics/rogue_voltorbflip/sprites.4bpp");
 static const u16 sVoltorbFlipPaletteSpriteData[] = INCBIN_U16("graphics/rogue_voltorbflip/sprites.gbapal");
@@ -521,7 +521,7 @@ void CB2_ShowVoltorbFlip(void)
     DecompressAndCopyTileDataToVram(1, &sVoltorbFlipTiles, 0, 0, 0);
     while (FreeTempTileDataBuffersIfPossible())
         ;
-    LZDecompressWram(sVoltorbFlipTilemap, sVoltorbFlipTilemapPtr);
+    DecompressDataWithHeaderWram(sVoltorbFlipTilemap, sVoltorbFlipTilemapPtr);
     CopyBgTilemapBufferToVram(1);
     BlendPalettes(PALETTES_ALL, 16, RGB_BLACK);
     BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
