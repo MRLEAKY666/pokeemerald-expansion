@@ -29,6 +29,35 @@ FortreeCliffs_EventScript_BraviaryOnTransitionSwitch::
 	case 4, FortreeCliffs_EventScript_PlaceBraviaryAtNest5                                           
 	return
 
+FortreeCliffs_EventScript_Winona::
+	lock
+	faceplayer
+	msgbox FortreeCliffs_Text_Winona1, MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	msgbox FortreeCliffs_Text_Winona2, MSGBOX_DEFAULT
+	closemessage
+	delay 5
+	turnobject LOCALID_FORTREE_CLIFFS_WINONA, DIR_WEST
+	delay 60
+	msgbox FortreeCliffs_Text_Winona3a, MSGBOX_DEFAULT
+	closemessage
+	delay 15
+	applymovement LOCALID_FORTREE_CLIFFS_WINONA, Common_Movement_FacePlayer
+	delay 15
+	msgbox FortreeCliffs_Text_Winona3, MSGBOX_DEFAULT
+	giveitem ITEM_SAFETY_GOGGLES
+	msgbox FortreeCliffs_Text_Winona4, MSGBOX_DEFAULT
+	closemessage
+	setfieldeffectargument 0, 1
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	delay 15
+	removeobject LOCALID_FORTREE_CLIFFS_WINONA
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+	setvar VAR_WINONA_LOCATION, 1
+	release
+	end
+
 FortreeCliffs_EventScript_PlaceBraviaryAtNest1::
 	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 24, 12                                                    @ move sign to nest 1 
 	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 24, 8                                               @ move bird to nest 1
@@ -66,6 +95,7 @@ FortreeCliffs_EventScript_BadVibeRock::
 FortreeCliffs_EventScript_Nest::
 	@ lock
 	clearflag FLAG_TEMP_5
+	hidefollower 0
 	special SpawnCameraObject                                                                               @ pan camera up 
 	applymovement OBJ_EVENT_ID_CAMERA, FortreeCliffs_Movement_CameraPanUp
 	waitmovement OBJ_EVENT_ID_CAMERA
@@ -179,7 +209,7 @@ FortreeCliffs_EventScript_MoveBraviaryToNest5::
 	return
 
 FortreeCliffs_EventScript_FlyPlayerToStartingNest::
-	setfieldeffectargument 0, LOCALID_PLAYER                                                               @ fly away
+	setfieldeffectargument 0, 1                                                               @ fly away
 	dofieldeffect FLDEFF_NPCFLY_OUT
 	delay 15
 	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                         @ hide player
@@ -189,7 +219,7 @@ FortreeCliffs_EventScript_FlyPlayerToStartingNest::
 	end
 
 FortreeCliffs_EventScript_FlyPlayerToNest2::
-	setfieldeffectargument 0, LOCALID_PLAYER                                                               @ fly away
+	setfieldeffectargument 0, 1                                                               @ fly away
 	dofieldeffect FLDEFF_NPCFLY_OUT
 	delay 15
 	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                         @ hide player
@@ -199,7 +229,7 @@ FortreeCliffs_EventScript_FlyPlayerToNest2::
 	end
 
 FortreeCliffs_EventScript_FlyPlayerToNest3::
-	setfieldeffectargument 0, LOCALID_PLAYER                                                               @ fly away
+	setfieldeffectargument 0, 1                                                               @ fly away
 	dofieldeffect FLDEFF_NPCFLY_OUT
 	delay 15
 	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                         @ hide player
@@ -209,7 +239,7 @@ FortreeCliffs_EventScript_FlyPlayerToNest3::
 	end
 
 FortreeCliffs_EventScript_FlyPlayerToLakeshoreNest::
-	setfieldeffectargument 0, LOCALID_PLAYER                                                               @ fly away
+	setfieldeffectargument 0, 1                                                               @ fly away
 	dofieldeffect FLDEFF_NPCFLY_OUT
 	delay 15
 	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                         @ hide player
@@ -219,7 +249,7 @@ FortreeCliffs_EventScript_FlyPlayerToLakeshoreNest::
 	end
 
 FortreeCliffs_EventScript_FlyPlayerToNest5::
-	setfieldeffectargument 0, LOCALID_PLAYER                                                               @ fly away
+	setfieldeffectargument 0, 1                                                               @ fly away
 	dofieldeffect FLDEFF_NPCFLY_OUT
 	delay 15
 	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                         @ hide player
@@ -232,11 +262,11 @@ FortreeCliffs_EventScript_BraviaryLandsWithPlayer::
 	hideobjectat LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS                              @ hide updated bird 
 	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS 
 	fadescreen FADE_FROM_BLACK
-	setfieldeffectargument 0, LOCALID_PLAYER                                                        @ animate player landing
+	setfieldeffectargument 0, 1                                                        @ animate player landing
 	dofieldeffect FLDEFF_NPCFLY_OUT
 	delay 15
 	showobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                 @ reshow player
-	waitfieldeffect FLDEFF_FLY_IN
+	waitfieldeffect FLDEFF_NPCFLY_OUT
 	setobjectsubpriority LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS, 3
 	applymovement LOCALID_FORTREE_CLIFFS_BRAVIARY_1, FortreeCliffs_Movement_BraviaryJumpUp            @ braviary landing begins
 	waitmovement LOCALID_FORTREE_CLIFFS_BRAVIARY_1        
@@ -419,10 +449,6 @@ FortreeCliffs_Movement_BraviaryFlyOff:
 	walk_up
 	walk_up
 	walk_up
-	walk_up
-	slide_up
-	slide_up
-	slide_up
 	slide_up
 	slide_up
 	slide_up
@@ -483,6 +509,28 @@ FortreeCliffs_Text_GaveSecondBerry:
 
 FortreeCliffs_Text_GaveThirdBerry:
 	.string "BRAVIARY is looking at you approvingly!$"
+
+FortreeCliffs_Text_Winona1:
+	.string "… … … … … …$"
+
+FortreeCliffs_Text_Winona2:
+	.string "I train atop these cliffs\n"
+	.string "because of my devotion to reaching\l"
+	.string "the greatest heights.\p"
+	.string "Very few TRAINERS ever soar so high\n"
+	.string "above FORTREE's thick forests and\l"
+	.string "steep cliffs.$"
+
+FortreeCliffs_Text_Winona3:
+	.string "Take this and meet me at my gym if you\n"
+	.string "think you're up to the challenge.$"
+
+FortreeCliffs_Text_Winona3a:
+	.string "If you made it here, then perhaps you\n" 
+	.string "are ready to fly.$"
+
+FortreeCliffs_Text_Winona4:
+	.string "Until we meet again, {PLAYER}.$"
 
 FortreeCliffs_Text_Ninja1Intro:
 	.string "Our grandpa is annoying as heck!$"
@@ -575,6 +623,8 @@ FortreeCliffs_Text_BirdKeeper1PostBattle:
 	.string "I simply mirrored WINONA's training.$"
 
 FortreeCliffs_Text_BirdKeeper1Defeat:
-	.string "How does WINONA fly so high?$"
+	.string "How does WINONA fly so high?\p"
+	.string "She is friends with powerful\n"
+	.string "BIRD POKéMON!$"
 
 `

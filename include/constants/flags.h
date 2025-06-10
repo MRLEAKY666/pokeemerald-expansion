@@ -13,7 +13,7 @@
 #define FLAG_TEMP_2      (TEMP_FLAGS_START + 0x2)
 #define FLAG_TEMP_3      (TEMP_FLAGS_START + 0x3)
 #define FLAG_TEMP_4      (TEMP_FLAGS_START + 0x4)
-#define FLAG_TEMP_5      (TEMP_FLAGS_START + 0x5)  // Unused Flag
+#define FLAG_TEMP_5      (TEMP_FLAGS_START + 0x5)  // 
 #define FLAG_TEMP_6      (TEMP_FLAGS_START + 0x6)  // Unused Flag
 #define FLAG_TEMP_7      (TEMP_FLAGS_START + 0x7)  // Unused Flag
 #define FLAG_TEMP_8      (TEMP_FLAGS_START + 0x8)  // Unused Flag
@@ -737,10 +737,10 @@
 #define FLAG_UNUSED_0x2B2  0x2B2 // Unused Flag
 #define FLAG_UNUSED_0x2B3  0x2B3 // Unused Flag
 #define FLAG_FORTREE_CLIFFS_NEST_1  0x2B4 // previously Unused Flag
-#define FLAG_FORTREE_CLIFFS_NEST_2  0x2B5 // previously Unused Flag
-#define FLAG_FORTREE_CLIFFS_NEST_3  0x2B6 // previously Unused Flag
-#define FLAG_FORTREE_CLIFFS_NEST_4  0x2B7 // previously Unused Flag
-#define FLAG_FORTREE_CLIFFS_NEST_5  0x2B8 // PREVIOUSLY Unused Flag
+#define FLAG_FORTREE_CLIFFS_WINONA  0x2B5 // previously Unused Flag
+#define FLAG_UNUSED_0x2B6  0x2B6 // Unused Flag
+#define FLAG_UNUSED_0x2B7  0x2B7 // Unused Flag
+#define FLAG_UNUSED_0x2B8  0x2B8 // Unused Flag
 #define FLAG_HIDE_FORTREE_WOODS_RAYQUAZA  0x2B9 // PREVIOUSLY Unused Flag
 #define FLAG_HIDE_ZAPDOS  0x2BA // PREVIOUSLY Unused Flag
 #define FLAG_HIDE_MOLTRES  0x2BB // PREVIOUSLY Unused Flag
