@@ -1,1 +1,7 @@
-mapscripts RootCellar_MapScripts {}
+raw `
+RootCellar_MapScripts::
+	.byte 0
+
+
+
+`
