@@ -915,20 +915,6 @@ SootopolisCity_EventScript_StevenHelpWallace::
 
 SootopolisCity_EventScript_StevenMaxieArchieLeft::
 	msgbox SootopolisCity_Text_MaxieArchieLeft, MSGBOX_DEFAULT
-	msgbox SootopolisCity_Text_StevenGiveDevonScope, MSGBOX_DEFAULT
-	giveitem ITEM_DEVON_SCOPE
-	setflag FLAG_RECEIVED_DEVON_SCOPE
-	setflag FLAG_HIDE_SOOTOPOLIS_CITY_STEVEN
-	msgbox SootopolisCity_Text_StevenUntilNextTime, MSGBOX_DEFAULT
-	waitmessage
-	@ delay 50
-	setfieldeffectargument 0, 1
-	dofieldeffect FLDEFF_NPCFLY_OUT
-	delay 15
-	removeobject LOCALID_SOOTOPOLIS_STEVEN
-	waitfieldeffect FLDEFF_NPCFLY_OUT
-	@ warpsilent MAP_SOOTOPOLIS_CITY, 31, 34
-	@ waitstate
 	releaseall
 	end
 
