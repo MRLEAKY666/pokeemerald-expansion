@@ -38,7 +38,11 @@ MistcladCove_EventScript_TryRemoveWildMons::
 	return
 
 MistcladCove_EventScript_TrySetSun::
-	call_if_le VAR_TIME_OF_DAY, 3, MistcladCove_EventScript_SetSun
+	switch VAR_TIME_OF_DAY
+	case 0, MistcladCove_EventScript_ClearSun
+	case 1, MistcladCove_EventScript_ClearSun
+	case 2, MistcladCove_EventScript_SetSun
+	case 3, MistcladCove_EventScript_SetSun
 	call_if_ge VAR_TIME_OF_DAY, 4, MistcladCove_EventScript_ClearSun
 	end
 

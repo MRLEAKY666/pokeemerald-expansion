@@ -17,9 +17,18 @@ Debug_CheatStart::
 	setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
 	setvar VAR_BIRCH_LAB_STATE, 2
 	setvar VAR_ROUTE101_STATE, 3
-	givemon SPECIES_TREECKO, 20, ITEM_NONE
-	givemon SPECIES_TORCHIC, 20, ITEM_NONE
-	givemon SPECIES_MUDKIP, 20, ITEM_NONE
+	givemon SPECIES_MEW, 100, ITEM_NONE
+	givemon SPECIES_CHARIZARD, 100, ITEM_NONE
+	givemon SPECIES_BLASTOISE, 100, ITEM_NONE
+	giveitem ITEM_MASTER_BALL, 99
+	giveitem ITEM_HM_CUT
+	giveitem ITEM_HM_FLASH
+	giveitem ITEM_HM_ROCK_SMASH
+	giveitem ITEM_HM_SURF
+	giveitem ITEM_HM_STRENGTH
+	giveitem ITEM_HM_FLY
+	giveitem ITEM_HM_DIVE
+	giveitem ITEM_HM_WATERFALL
 	setflag FLAG_SYS_POKEDEX_GET
 	special SetUnlockedPokedexFlags
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
@@ -33,6 +42,7 @@ Debug_CheatStart::
 	setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 2 @ 2: Met Rival's Mom (and is corresponding gender)
 	setvar VAR_LITTLEROOT_HOUSES_STATE_MAY, 2 @ 2: Met Rival's Mom (and is corresponding gender)
 	setvar VAR_LITTLEROOT_RIVAL_STATE, 4 @ 4: Received Pokedex
+	setvar VAR_PETALBURG_CITY_STATE, 3 @ skip wally tutorial skip scene 
 	setflag FLAG_RECEIVED_BIKE
 	additem ITEM_ACRO_BIKE
 	setvar VAR_BRINEY_HOUSE_STATE, 1
@@ -174,8 +184,15 @@ Debug_EventScript_Script_3::
 	end
 
 Debug_EventScript_Script_4::
+@	SET VAR_TEMP_D TO CURRENT MAP	
+@	getplayerxy VAR_TEMP_E, VAR_TEMP_F
+@	warp VAR_TEMP_D, VAR_TEMP_E, VAR_TEMP_F
+	msgbox DebugScript_Text_ReloadMapDoesntWork, MSGBOX_DEFAULT
 	release
 	end
+
+DebugScript_Text_ReloadMapDoesntWork:
+	.string "This one doesn't work yet :-/$"
 
 Debug_EventScript_Script_5::
 	release

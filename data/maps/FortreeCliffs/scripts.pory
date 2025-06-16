@@ -13,16 +13,19 @@ FortreeCliffs_OnFrame:
 	.2byte 0
 
 FortreeCliffs_OnWarp:
- 	map_script_2 VAR_FORTREE_CLIFFS_BIRD_LOCATION, 0, FortreeCliffs_EventScript_SetThunderstorm
- 	map_script_2 VAR_FORTREE_CLIFFS_BIRD_LOCATION, 1, FortreeCliffs_EventScript_SetThunderstorm
- 	map_script_2 VAR_FORTREE_CLIFFS_BIRD_LOCATION, 2, FortreeCliffs_EventScript_TrySetSun
- 	map_script_2 VAR_FORTREE_CLIFFS_BIRD_LOCATION, 3, FortreeCliffs_EventScript_TrySetSun
- 	map_script_2 VAR_FORTREE_CLIFFS_BIRD_LOCATION, 4, FortreeCliffs_EventScript_TrySetSun
+ 	map_script_2 VAR_TEMP_0, 0, FortreeCliffs_EventScript_SetWeatherOnWarp
  	.2byte 0
 
 FortreeCliffs_OnResume:
 	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, FortreeCliffs_EventScript_TryRemoveWildMons
 	end
+
+FortreeCliffs_EventScript_SetWeatherOnWarp::
+	getplayerxy VAR_TEMP_E, VAR_TEMP_F
+	goto_if_le VAR_TEMP_F, 38, FortreeCliffs_EventScript_SetThunderstorm
+	goto_if_ge VAR_TEMP_F, 88, FortreeCliffs_EventScript_SetFog
+	goto FortreeCliffs_EventScript_TrySetSun
+	return
 
 FortreeCliffs_OnTransition:
 	@ call FortreeCliffs_EventScript_ResetWildMons
@@ -65,7 +68,11 @@ FortreeCliffs_EventScript_BraviaryOnTransitionSwitch::
 	return
 
 FortreeCliffs_EventScript_TrySetSun::
-	call_if_le VAR_TIME_OF_DAY, 3, FortreeCliffs_EventScript_SetSun
+	switch VAR_TIME_OF_DAY
+	case 0, FortreeCliffs_EventScript_ClearSun
+	case 1, FortreeCliffs_EventScript_ClearSun
+	case 2, FortreeCliffs_EventScript_SetSun
+	case 3, FortreeCliffs_EventScript_SetSun
 	call_if_ge VAR_TIME_OF_DAY, 4, FortreeCliffs_EventScript_ClearSun
 	return
 
@@ -81,6 +88,11 @@ FortreeCliffs_EventScript_ClearSun::
 
 FortreeCliffs_EventScript_SetThunderstorm::
 	setweather WEATHER_RAIN_THUNDERSTORM
+	doweather
+	return
+
+FortreeCliffs_EventScript_SetFog::
+	setweather WEATHER_FOG_HORIZONTAL
 	doweather
 	return
 
