@@ -12247,7 +12247,7 @@
               {
                 "min_level": 32,
                 "max_level": 35,
-                "species": "SPECIES_LEDYBA"
+                "species": "SPECIES_SKORUPI"
               },
               {
                 "min_level": 32,
@@ -12262,7 +12262,7 @@
               {
                 "min_level": 32,
                 "max_level": 35,
-                "species": "SPECIES_SWABLU"
+                "species": "SPECIES_WINGULL"
               },
               {
                 "min_level": 34,
@@ -12272,7 +12272,7 @@
               {
                 "min_level": 34,
                 "max_level": 36,
-                "species": "SPECIES_NATU"
+                "species": "SPECIES_WATTREL"
               },
               {
                 "min_level": 35,
