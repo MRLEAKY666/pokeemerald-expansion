@@ -4,12 +4,21 @@ FortreeCliffs_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, FortreeCliffs_OnResume
 	map_script MAP_SCRIPT_ON_TRANSITION, FortreeCliffs_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, FortreeCliffs_OnFrame
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, FortreeCliffs_OnWarp
 	.byte 0
 
 FortreeCliffs_OnFrame:
 	map_script_2 VAR_TIME_OF_DAY, 2, FortreeCliffs_EventScript_SwitchToDaytime
 	map_script_2 VAR_TIME_OF_DAY, 4, FortreeCliffs_EventScript_SwitchToNighttime
 	.2byte 0
+
+FortreeCliffs_OnWarp:
+ 	map_script_2 VAR_FORTREE_CLIFFS_BIRD_LOCATION, 0, FortreeCliffs_EventScript_SetThunderstorm
+ 	map_script_2 VAR_FORTREE_CLIFFS_BIRD_LOCATION, 1, FortreeCliffs_EventScript_SetThunderstorm
+ 	map_script_2 VAR_FORTREE_CLIFFS_BIRD_LOCATION, 2, FortreeCliffs_EventScript_TrySetSun
+ 	map_script_2 VAR_FORTREE_CLIFFS_BIRD_LOCATION, 3, FortreeCliffs_EventScript_TrySetSun
+ 	map_script_2 VAR_FORTREE_CLIFFS_BIRD_LOCATION, 4, FortreeCliffs_EventScript_TrySetSun
+ 	.2byte 0
 
 FortreeCliffs_OnResume:
 	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, FortreeCliffs_EventScript_TryRemoveWildMons
@@ -24,21 +33,21 @@ FortreeCliffs_EventScript_SwitchToDaytime::
 	addvar VAR_TIME_OF_DAY, 1
 	getplayerxy VAR_TEMP_E, VAR_TEMP_F
 	goto_if_le VAR_TEMP_F, 87, FortreeCliffs_EventScript_SetSunElevationCheck
-	end
+	return
 
 FortreeCliffs_EventScript_SwitchToNighttime::
 	addvar VAR_TIME_OF_DAY, 1
 	getplayerxy VAR_TEMP_E, VAR_TEMP_F
 	goto_if_le VAR_TEMP_F, 87, FortreeCliffs_EventScript_ClearSunElevationCheck
-	end
+	return
 
 FortreeCliffs_EventScript_SetSunElevationCheck::
 	goto_if_ge VAR_TEMP_F, 40, FortreeCliffs_EventScript_SetSun
-	end
+	return
 
 FortreeCliffs_EventScript_ClearSunElevationCheck::
 	goto_if_ge VAR_TEMP_F, 40, FortreeCliffs_EventScript_ClearSun
-	end
+	return
 
 FortreeCliffs_EventScript_TryRemoveWildMons::
 	specialvar VAR_RESULT, GetBattleOutcome
@@ -58,7 +67,7 @@ FortreeCliffs_EventScript_BraviaryOnTransitionSwitch::
 FortreeCliffs_EventScript_TrySetSun::
 	call_if_le VAR_TIME_OF_DAY, 3, FortreeCliffs_EventScript_SetSun
 	call_if_ge VAR_TIME_OF_DAY, 4, FortreeCliffs_EventScript_ClearSun
-	end
+	return
 
 FortreeCliffs_EventScript_SetSun::
 	setweather WEATHER_SUNNY_CLOUDS
@@ -67,6 +76,11 @@ FortreeCliffs_EventScript_SetSun::
 
 FortreeCliffs_EventScript_ClearSun::
 	setweather WEATHER_NONE
+	doweather
+	return
+
+FortreeCliffs_EventScript_SetThunderstorm::
+	setweather WEATHER_RAIN_THUNDERSTORM
 	doweather
 	return
 
