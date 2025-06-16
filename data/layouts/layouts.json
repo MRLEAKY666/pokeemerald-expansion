@@ -4520,6 +4520,16 @@
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/RootCellarHouseEntrance/border.bin",
       "blockdata_filepath": "data/layouts/RootCellarHouseEntrance/map.bin"
+    },
+    {
+      "id": "LAYOUT_UNDERWATER_ROUTE122",
+      "name": "Underwater_Route122_Layout",
+      "width": 60,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Underwater",
+      "border_filepath": "data/layouts/Underwater_Route122/border.bin",
+      "blockdata_filepath": "data/layouts/Underwater_Route122/map.bin"
     }
   ]
 }

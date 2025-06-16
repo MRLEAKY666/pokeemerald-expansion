@@ -1263,3 +1263,5 @@ Common_EventScript_ExitSafeArea::
 	.include "data/maps/RootCellar/scripts.inc"
 
 	.include "data/maps/RootCellarHouseEntrance/scripts.inc"
+
+	.include "data/maps/Underwater_Route122/scripts.inc"

@@ -489,7 +489,7 @@
   "coord_events": [
     {
       "type": "weather",
-      "x": 39,
+      "x": 38,
       "y": 99,
       "elevation": 0,
       "weather": "COORD_EVENT_WEATHER_FOG_HORIZONTAL"
