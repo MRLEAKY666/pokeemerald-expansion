@@ -47657,123 +47657,200 @@ F_TRAINER_FEMALE |
         },
     },
 #line 19133
-    [DIFFICULTY_NORMAL][TRAINER_RED] =
+    [DIFFICULTY_NORMAL][TRAINER_MISTCLAD_COVE_NINJA_1] =
     {
 #line 19134
-        .trainerName = _("RED"),
+        .trainerName = _("NAME-ME"),
 #line 19135
-        .trainerClass = TRAINER_CLASS_RIVAL,
+        .trainerClass = TRAINER_CLASS_NINJA_BOY,
 #line 19136
-        .trainerPic = TRAINER_PIC_RED,
+        .trainerPic = TRAINER_PIC_NINJA_BOY,
         .encounterMusic_gender =
 #line 19138
-            TRAINER_ENCOUNTER_MUSIC_MALE,
+            TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
 #line 19139
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+#line 19140
+        .aiFlags = AI_FLAG_BASIC_TRAINER,
+        .partySize = 3,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 19142
+            .species = SPECIES_NUZLEAF,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 19145
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+#line 19144
+            .ability = ABILITY_CHLOROPHYLL,
+#line 19143
+            .lvl = 30,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 19146
+                MOVE_FAINT_ATTACK,
+                MOVE_SOLAR_BEAM,
+                MOVE_SYNTHESIS,
+                MOVE_NASTY_PLOT,
+            },
+            },
+            {
+#line 19151
+            .species = SPECIES_KOFFING,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 19153
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+#line 19152
+            .lvl = 32,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 19154
+                MOVE_SELFDESTRUCT,
+                MOVE_SWAGGER,
+                MOVE_CLEAR_SMOG,
+                MOVE_GRUDGE,
+            },
+            },
+            {
+#line 19159
+            .species = SPECIES_CASTFORM,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 19161
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+#line 19160
+            .lvl = 34,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 19162
+                MOVE_EMBER,
+                MOVE_SCALD,
+                MOVE_SOLAR_BEAM,
+                MOVE_HEX,
+            },
+            },
+        },
+    },
+#line 19167
+    [DIFFICULTY_NORMAL][TRAINER_RED] =
+    {
+#line 19168
+        .trainerName = _("RED"),
+#line 19169
+        .trainerClass = TRAINER_CLASS_RIVAL,
+#line 19170
+        .trainerPic = TRAINER_PIC_RED,
+        .encounterMusic_gender =
+#line 19172
+            TRAINER_ENCOUNTER_MUSIC_MALE,
+#line 19173
+        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 19141
+#line 19175
             .species = SPECIES_CHARMANDER,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 19143
+#line 19177
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 19142
+#line 19176
             .lvl = 5,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 19145
+#line 19179
     [DIFFICULTY_NORMAL][TRAINER_LEAF] =
     {
-#line 19146
+#line 19180
         .trainerName = _("LEAF"),
-#line 19147
+#line 19181
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 19148
+#line 19182
         .trainerPic = TRAINER_PIC_LEAF,
         .encounterMusic_gender =
-#line 19149
+#line 19183
 F_TRAINER_FEMALE | 
-#line 19150
+#line 19184
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 19151
+#line 19185
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 19153
+#line 19187
             .species = SPECIES_BULBASAUR,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 19155
+#line 19189
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 19154
+#line 19188
             .lvl = 5,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 19157
+#line 19191
     [DIFFICULTY_NORMAL][TRAINER_BRENDAN_PLACEHOLDER] =
     {
-#line 19158
+#line 19192
         .trainerName = _("BRENDAN"),
-#line 19159
+#line 19193
         .trainerClass = TRAINER_CLASS_RS_PROTAG,
-#line 19160
+#line 19194
         .trainerPic = TRAINER_PIC_RS_BRENDAN,
         .encounterMusic_gender =
-#line 19162
+#line 19196
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 19163
+#line 19197
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 19165
+#line 19199
             .species = SPECIES_GROUDON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 19167
+#line 19201
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 19166
+#line 19200
             .lvl = 5,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
         },
     },
-#line 19169
+#line 19203
     [DIFFICULTY_NORMAL][TRAINER_MAY_PLACEHOLDER] =
     {
-#line 19170
+#line 19204
         .trainerName = _("MAY"),
-#line 19171
+#line 19205
         .trainerClass = TRAINER_CLASS_RS_PROTAG,
-#line 19172
+#line 19206
         .trainerPic = TRAINER_PIC_RS_MAY,
         .encounterMusic_gender =
-#line 19173
+#line 19207
 F_TRAINER_FEMALE | 
-#line 19174
+#line 19208
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 19175
+#line 19209
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 19177
+#line 19211
             .species = SPECIES_KYOGRE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 19179
+#line 19213
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
-#line 19178
+#line 19212
             .lvl = 5,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,

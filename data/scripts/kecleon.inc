@@ -97,6 +97,20 @@ FortreeCliffs_EventScript_Kecleon6::
 	goto EventScript_Kecleon
 	end
 
+MistcladCove_EventScript_Kecleon1::
+	lock
+	faceplayer
+	setvar VAR_0x8009, 15
+	goto EventScript_Kecleon
+	end
+
+MistcladCove_EventScript_Kecleon2::
+	lock
+	faceplayer
+	setvar VAR_0x8009, 16
+	goto EventScript_Kecleon
+	end
+
 EventScript_Kecleon::
 	checkitem ITEM_DEVON_SCOPE
 	goto_if_eq VAR_RESULT, TRUE, EventScript_AskUseDevonScope

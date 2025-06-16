@@ -9,27 +9,27 @@ FortreeCliffs_MapScripts::
 # 5 "data//maps/FortreeCliffs/scripts.pory"
 	map_script MAP_SCRIPT_ON_TRANSITION, FortreeCliffs_OnTransition
 # 6 "data//maps/FortreeCliffs/scripts.pory"
-	.byte 0
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, FortreeCliffs_OnFrame
 # 7 "data//maps/FortreeCliffs/scripts.pory"
-
+	.byte 0
 # 8 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_OnResume:
-# 9 "data//maps/FortreeCliffs/scripts.pory"
-	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, FortreeCliffs_EventScript_TryRemoveWildMons
-# 10 "data//maps/FortreeCliffs/scripts.pory"
-	end
-# 11 "data//maps/FortreeCliffs/scripts.pory"
 
+# 9 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_OnFrame:
+# 10 "data//maps/FortreeCliffs/scripts.pory"
+	map_script_2 VAR_TIME_OF_DAY, 2, FortreeCliffs_EventScript_SwitchToDaytime
+# 11 "data//maps/FortreeCliffs/scripts.pory"
+	map_script_2 VAR_TIME_OF_DAY, 4, FortreeCliffs_EventScript_SwitchToNighttime
 # 12 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_TryRemoveWildMons::
+	.2byte 0
 # 13 "data//maps/FortreeCliffs/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
+
 # 14 "data//maps/FortreeCliffs/scripts.pory"
-	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
+FortreeCliffs_OnResume:
 # 15 "data//maps/FortreeCliffs/scripts.pory"
-	removeobject VAR_LAST_TALKED
+	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, FortreeCliffs_EventScript_TryRemoveWildMons
 # 16 "data//maps/FortreeCliffs/scripts.pory"
-	return
+	end
 # 17 "data//maps/FortreeCliffs/scripts.pory"
 
 # 18 "data//maps/FortreeCliffs/scripts.pory"
@@ -43,1214 +43,1296 @@ FortreeCliffs_OnTransition:
 # 22 "data//maps/FortreeCliffs/scripts.pory"
 
 # 23 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_BraviaryOnTransitionSwitch::
+FortreeCliffs_EventScript_SwitchToDaytime::
 # 24 "data//maps/FortreeCliffs/scripts.pory"
-	switch VAR_FORTREE_CLIFFS_BIRD_LOCATION                                                 @ place objects at correct spot when map loads
+	addvar VAR_TIME_OF_DAY, 1
 # 25 "data//maps/FortreeCliffs/scripts.pory"
-	case 0, FortreeCliffs_EventScript_PlaceBraviaryAtNest1
+	getplayerxy VAR_TEMP_E, VAR_TEMP_F
 # 26 "data//maps/FortreeCliffs/scripts.pory"
-	case 1, FortreeCliffs_EventScript_PlaceBraviaryAtNest2                                             
+	goto_if_le VAR_TEMP_F, 87, FortreeCliffs_EventScript_SetSunElevationCheck
 # 27 "data//maps/FortreeCliffs/scripts.pory"
-	case 2, FortreeCliffs_EventScript_PlaceBraviaryAtNest3
+	end
 # 28 "data//maps/FortreeCliffs/scripts.pory"
-	case 3, FortreeCliffs_EventScript_PlaceBraviaryAtNest4
+
 # 29 "data//maps/FortreeCliffs/scripts.pory"
-	case 4, FortreeCliffs_EventScript_PlaceBraviaryAtNest5                                           
+FortreeCliffs_EventScript_SwitchToNighttime::
 # 30 "data//maps/FortreeCliffs/scripts.pory"
-	return
+	addvar VAR_TIME_OF_DAY, 1
 # 31 "data//maps/FortreeCliffs/scripts.pory"
-
+	getplayerxy VAR_TEMP_E, VAR_TEMP_F
 # 32 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_Winona::
+	goto_if_le VAR_TEMP_F, 87, FortreeCliffs_EventScript_ClearSunElevationCheck
 # 33 "data//maps/FortreeCliffs/scripts.pory"
-	lock
+	end
 # 34 "data//maps/FortreeCliffs/scripts.pory"
-	faceplayer
+
 # 35 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_Winona1, MSGBOX_DEFAULT
+FortreeCliffs_EventScript_SetSunElevationCheck::
 # 36 "data//maps/FortreeCliffs/scripts.pory"
-	closemessage
+	goto_if_ge VAR_TEMP_F, 40, FortreeCliffs_EventScript_SetSun
 # 37 "data//maps/FortreeCliffs/scripts.pory"
-	delay 30
+	end
 # 38 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_Winona2, MSGBOX_DEFAULT
+
 # 39 "data//maps/FortreeCliffs/scripts.pory"
-	closemessage
+FortreeCliffs_EventScript_ClearSunElevationCheck::
 # 40 "data//maps/FortreeCliffs/scripts.pory"
-	delay 5
+	goto_if_ge VAR_TEMP_F, 40, FortreeCliffs_EventScript_ClearSun
 # 41 "data//maps/FortreeCliffs/scripts.pory"
-	turnobject LOCALID_FORTREE_CLIFFS_WINONA, DIR_WEST
+	end
 # 42 "data//maps/FortreeCliffs/scripts.pory"
-	delay 60
+
 # 43 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_Winona3a, MSGBOX_DEFAULT
+FortreeCliffs_EventScript_TryRemoveWildMons::
 # 44 "data//maps/FortreeCliffs/scripts.pory"
-	closemessage
+	specialvar VAR_RESULT, GetBattleOutcome
 # 45 "data//maps/FortreeCliffs/scripts.pory"
-	delay 15
+	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
 # 46 "data//maps/FortreeCliffs/scripts.pory"
-	applymovement LOCALID_FORTREE_CLIFFS_WINONA, Common_Movement_FacePlayer
+	removeobject VAR_LAST_TALKED
 # 47 "data//maps/FortreeCliffs/scripts.pory"
-	delay 15
+	return
 # 48 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_Winona3, MSGBOX_DEFAULT
+
 # 49 "data//maps/FortreeCliffs/scripts.pory"
-	giveitem ITEM_SAFETY_GOGGLES
+FortreeCliffs_EventScript_BraviaryOnTransitionSwitch::
 # 50 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_Winona4, MSGBOX_DEFAULT
+	switch VAR_FORTREE_CLIFFS_BIRD_LOCATION                                                 @ place objects at correct spot when map loads
 # 51 "data//maps/FortreeCliffs/scripts.pory"
-	closemessage
+	case 0, FortreeCliffs_EventScript_PlaceBraviaryAtNest1
 # 52 "data//maps/FortreeCliffs/scripts.pory"
-	setfieldeffectargument 0, 1
+	case 1, FortreeCliffs_EventScript_PlaceBraviaryAtNest2                                             
 # 53 "data//maps/FortreeCliffs/scripts.pory"
-	dofieldeffect FLDEFF_NPCFLY_OUT
+	case 2, FortreeCliffs_EventScript_PlaceBraviaryAtNest3
 # 54 "data//maps/FortreeCliffs/scripts.pory"
-	delay 15
+	case 3, FortreeCliffs_EventScript_PlaceBraviaryAtNest4
 # 55 "data//maps/FortreeCliffs/scripts.pory"
-	removeobject LOCALID_FORTREE_CLIFFS_WINONA
+	case 4, FortreeCliffs_EventScript_PlaceBraviaryAtNest5                                           
 # 56 "data//maps/FortreeCliffs/scripts.pory"
-	waitfieldeffect FLDEFF_NPCFLY_OUT
+	return
 # 57 "data//maps/FortreeCliffs/scripts.pory"
-	setvar VAR_WINONA_LOCATION, 1
+
 # 58 "data//maps/FortreeCliffs/scripts.pory"
-	release
+FortreeCliffs_EventScript_TrySetSun::
 # 59 "data//maps/FortreeCliffs/scripts.pory"
-	end
+	call_if_le VAR_TIME_OF_DAY, 3, FortreeCliffs_EventScript_SetSun
 # 60 "data//maps/FortreeCliffs/scripts.pory"
-
+	call_if_ge VAR_TIME_OF_DAY, 4, FortreeCliffs_EventScript_ClearSun
 # 61 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_PlaceBraviaryAtNest1::
+	end
 # 62 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 24, 12                                                    @ move sign to nest 1 
+
 # 63 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 24, 8                                               @ move bird to nest 1
+FortreeCliffs_EventScript_SetSun::
 # 64 "data//maps/FortreeCliffs/scripts.pory"
-	return
+	setweather WEATHER_SUNNY_CLOUDS
 # 65 "data//maps/FortreeCliffs/scripts.pory"
-
+	doweather
 # 66 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_PlaceBraviaryAtNest2::  
+	return
 # 67 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 14, 18                                                    @ move sign to nest 2 
+
 # 68 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 14, 14                                              @ move bird to nest 2
+FortreeCliffs_EventScript_ClearSun::
 # 69 "data//maps/FortreeCliffs/scripts.pory"
-	return
+	setweather WEATHER_NONE
 # 70 "data//maps/FortreeCliffs/scripts.pory"
-
+	doweather
 # 71 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_PlaceBraviaryAtNest3::       
+	return
 # 72 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 22, 76                                                    @ move sign to nest 3 
+
 # 73 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 22, 72                                              @ move bird to nest 3
+FortreeCliffs_EventScript_Winona::
 # 74 "data//maps/FortreeCliffs/scripts.pory"
-	return
-# 75 "data//maps/FortreeCliffs/scripts.pory"
-
-# 76 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_PlaceBraviaryAtNest4::
-# 77 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 13, 62                                                    @ move sign to nest 4 
-# 78 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 13, 58                                              @ move bird to nest 4
-# 79 "data//maps/FortreeCliffs/scripts.pory"
-	return
-# 80 "data//maps/FortreeCliffs/scripts.pory"
-
-# 81 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_PlaceBraviaryAtNest5::
-# 82 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 24, 41                                                    @ move sign to nest 5 
-# 83 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 24, 37                                              @ move bird to nest 5
-# 84 "data//maps/FortreeCliffs/scripts.pory"
-	return
-# 85 "data//maps/FortreeCliffs/scripts.pory"
-
-# 86 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_ResetWildMons::
-# 87 "data//maps/FortreeCliffs/scripts.pory"
-	end
-# 88 "data//maps/FortreeCliffs/scripts.pory"
-
-# 89 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_BadVibeRock::
-# 90 "data//maps/FortreeCliffs/scripts.pory"
 	lock
+# 75 "data//maps/FortreeCliffs/scripts.pory"
+	faceplayer
+# 76 "data//maps/FortreeCliffs/scripts.pory"
+	msgbox FortreeCliffs_Text_Winona1, MSGBOX_DEFAULT
+# 77 "data//maps/FortreeCliffs/scripts.pory"
+	closemessage
+# 78 "data//maps/FortreeCliffs/scripts.pory"
+	delay 30
+# 79 "data//maps/FortreeCliffs/scripts.pory"
+	msgbox FortreeCliffs_Text_Winona2, MSGBOX_DEFAULT
+# 80 "data//maps/FortreeCliffs/scripts.pory"
+	closemessage
+# 81 "data//maps/FortreeCliffs/scripts.pory"
+	delay 5
+# 82 "data//maps/FortreeCliffs/scripts.pory"
+	turnobject LOCALID_FORTREE_CLIFFS_WINONA, DIR_WEST
+# 83 "data//maps/FortreeCliffs/scripts.pory"
+	delay 60
+# 84 "data//maps/FortreeCliffs/scripts.pory"
+	msgbox FortreeCliffs_Text_Winona3a, MSGBOX_DEFAULT
+# 85 "data//maps/FortreeCliffs/scripts.pory"
+	closemessage
+# 86 "data//maps/FortreeCliffs/scripts.pory"
+	delay 15
+# 87 "data//maps/FortreeCliffs/scripts.pory"
+	applymovement LOCALID_FORTREE_CLIFFS_WINONA, Common_Movement_FacePlayer
+# 88 "data//maps/FortreeCliffs/scripts.pory"
+	delay 15
+# 89 "data//maps/FortreeCliffs/scripts.pory"
+	msgbox FortreeCliffs_Text_Winona3, MSGBOX_DEFAULT
+# 90 "data//maps/FortreeCliffs/scripts.pory"
+	giveitem ITEM_SAFETY_GOGGLES
 # 91 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_BadVibeRock, MSGBOX_DEFAULT
+	msgbox FortreeCliffs_Text_Winona4, MSGBOX_DEFAULT
 # 92 "data//maps/FortreeCliffs/scripts.pory"
-	release
+	closemessage
 # 93 "data//maps/FortreeCliffs/scripts.pory"
-	end
+	setfieldeffectargument 0, 1
 # 94 "data//maps/FortreeCliffs/scripts.pory"
-
+	dofieldeffect FLDEFF_NPCFLY_OUT
 # 95 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_Nest::
+	delay 15
 # 96 "data//maps/FortreeCliffs/scripts.pory"
-	@ lock
+	removeobject LOCALID_FORTREE_CLIFFS_WINONA
 # 97 "data//maps/FortreeCliffs/scripts.pory"
-	clearflag FLAG_TEMP_5
+	waitfieldeffect FLDEFF_NPCFLY_OUT
 # 98 "data//maps/FortreeCliffs/scripts.pory"
-	hidefollower 0
+	setvar VAR_WINONA_LOCATION, 1
 # 99 "data//maps/FortreeCliffs/scripts.pory"
-	special SpawnCameraObject                                                                               @ pan camera up 
+	release
 # 100 "data//maps/FortreeCliffs/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, FortreeCliffs_Movement_CameraPanUp
+	end
 # 101 "data//maps/FortreeCliffs/scripts.pory"
-	waitmovement OBJ_EVENT_ID_CAMERA
+
 # 102 "data//maps/FortreeCliffs/scripts.pory"
-	special RemoveCameraObject
+FortreeCliffs_EventScript_PlaceBraviaryAtNest1::
 # 103 "data//maps/FortreeCliffs/scripts.pory"
-	
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 24, 12                                                    @ move sign to nest 1 
 # 104 "data//maps/FortreeCliffs/scripts.pory"
-	call_if_lt VAR_FORTREE_CLIFFS_BRAVIARY_TRUST, 3, FortreeCliffs_EventScript_OfferBraviaryBerry           @ Ask to offer berry if untrusted
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 24, 8                                               @ move bird to nest 1
 # 105 "data//maps/FortreeCliffs/scripts.pory"
-	call_if_ge VAR_FORTREE_CLIFFS_BRAVIARY_TRUST, 4, FortreeCliffs_EventScript_BraviaryWantsToFly           @ Ask to fly
+	return
 # 106 "data//maps/FortreeCliffs/scripts.pory"
 
 # 107 "data//maps/FortreeCliffs/scripts.pory"
-	call FortreeCliffs_EventScript_BraviaryRoutingSwitch                                                    @ choose which nest to fly to
+FortreeCliffs_EventScript_PlaceBraviaryAtNest2::  
 # 108 "data//maps/FortreeCliffs/scripts.pory"
-
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 14, 18                                                    @ move sign to nest 2 
 # 109 "data//maps/FortreeCliffs/scripts.pory"
-	goto_if_eq VAR_FORTREE_CLIFFS_BRAVIARY_TRUST, 3, FortreeCliffs_EventScript_WantsYouToFollow             @ ending with slight text difference after third berry and before first flight
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 14, 14                                              @ move bird to nest 2
 # 110 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_FlewToTheNextNest, MSGBOX_DEFAULT
+	return
 # 111 "data//maps/FortreeCliffs/scripts.pory"
-	closemessage
+
 # 112 "data//maps/FortreeCliffs/scripts.pory"
-	special SpawnCameraObject                                                                               @ pan back down
+FortreeCliffs_EventScript_PlaceBraviaryAtNest3::       
 # 113 "data//maps/FortreeCliffs/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, FortreeCliffs_Movement_CameraPanDown
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 22, 76                                                    @ move sign to nest 3 
 # 114 "data//maps/FortreeCliffs/scripts.pory"
-	waitmovement OBJ_EVENT_ID_CAMERA
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 22, 72                                              @ move bird to nest 3
 # 115 "data//maps/FortreeCliffs/scripts.pory"
-	special RemoveCameraObject
+	return
 # 116 "data//maps/FortreeCliffs/scripts.pory"
-	release
+
 # 117 "data//maps/FortreeCliffs/scripts.pory"
-	end
+FortreeCliffs_EventScript_PlaceBraviaryAtNest4::
 # 118 "data//maps/FortreeCliffs/scripts.pory"
-
-# 119 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_BraviaryRoutingSwitch::                                                          @ handles updating object locations and vars
-# 120 "data//maps/FortreeCliffs/scripts.pory"
-	waitse                                                                                                 @ fly away animation and cry
-# 121 "data//maps/FortreeCliffs/scripts.pory"
-	playmoncry SPECIES_BRAVIARY, CRY_MODE_ENCOUNTER
-# 122 "data//maps/FortreeCliffs/scripts.pory"
-	delay 15
-# 123 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectsubpriority LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS, 3
-# 124 "data//maps/FortreeCliffs/scripts.pory"
-	applymovement LOCALID_FORTREE_CLIFFS_BRAVIARY_1, FortreeCliffs_Movement_BraviaryFlyOff
-# 125 "data//maps/FortreeCliffs/scripts.pory"
-	applymovement LOCALID_FORTREE_CLIFFS_NEST, FortreeCliffs_Movement_BraviaryFlyOff
-# 126 "data//maps/FortreeCliffs/scripts.pory"
-	waitmovement LOCALID_FORTREE_CLIFFS_BRAVIARY_1
-# 127 "data//maps/FortreeCliffs/scripts.pory"
-	waitmoncry
-# 128 "data//maps/FortreeCliffs/scripts.pory"
-	switch VAR_FORTREE_CLIFFS_BRAVIARY_TRUST                                                                  
-# 129 "data//maps/FortreeCliffs/scripts.pory"
-	case 0, FortreeCliffs_EventScript_BraviaryNorthernNestSwitch                                           @ stay in northern nests if low trust
-# 130 "data//maps/FortreeCliffs/scripts.pory"
-	case 1, FortreeCliffs_EventScript_BraviaryNorthernNestSwitch
-# 131 "data//maps/FortreeCliffs/scripts.pory"
-	case 2, FortreeCliffs_EventScript_BraviarySouthernNestSwitch                                           @ stay in southern nests if mid trust
-# 132 "data//maps/FortreeCliffs/scripts.pory"
-	case 3, FortreeCliffs_EventScript_BraviarySouthernNestSwitch
-# 133 "data//maps/FortreeCliffs/scripts.pory"
-	switch VAR_FORTREE_CLIFFS_BIRD_LOCATION                                                                @ choose next nest based on current nest
-# 134 "data//maps/FortreeCliffs/scripts.pory"
-	case 0, FortreeCliffs_EventScript_MoveBraviaryToNest2
-# 135 "data//maps/FortreeCliffs/scripts.pory"
-	case 1, FortreeCliffs_EventScript_MoveBraviaryToNest3
-# 136 "data//maps/FortreeCliffs/scripts.pory"
-	case 2, FortreeCliffs_EventScript_MoveBraviaryToLakeshoreNest                                          @ nest 4
-# 137 "data//maps/FortreeCliffs/scripts.pory"
-	case 3, FortreeCliffs_EventScript_MoveBraviaryToNest5
-# 138 "data//maps/FortreeCliffs/scripts.pory"
-	case 4, FortreeCliffs_EventScript_MoveBraviaryToStartingNest                                           @ nest 1
-# 139 "data//maps/FortreeCliffs/scripts.pory"
-	return
-# 140 "data//maps/FortreeCliffs/scripts.pory"
-
-# 141 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_BraviaryNorthernNestSwitch::
-# 142 "data//maps/FortreeCliffs/scripts.pory"
-	goto_if_eq VAR_FORTREE_CLIFFS_BIRD_LOCATION, 1, FortreeCliffs_EventScript_MoveBraviaryToStartingNest  
-# 143 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 14, 18                                                    @ move sign to nest 2 
-# 144 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxy LOCALID_FORTREE_CLIFFS_NEST, 14, 18
-# 145 "data//maps/FortreeCliffs/scripts.pory"
-	setvar VAR_FORTREE_CLIFFS_BIRD_LOCATION, 1                                                             @ update location var to nest 2
-# 146 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 14, 14                                              @ move bird to nest 2
-# 147 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxy LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 14, 14
-# 148 "data//maps/FortreeCliffs/scripts.pory"
-	resetobjectsubpriority LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS
-# 149 "data//maps/FortreeCliffs/scripts.pory"
-	return
-# 150 "data//maps/FortreeCliffs/scripts.pory"
-
-# 151 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_BraviarySouthernNestSwitch::
-# 152 "data//maps/FortreeCliffs/scripts.pory"
-	goto_if_eq VAR_FORTREE_CLIFFS_BIRD_LOCATION, 2, FortreeCliffs_EventScript_MoveBraviaryToLakeshoreNest      
-# 153 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 22, 76                                                    @ move sign to nest 3 
-# 154 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxy LOCALID_FORTREE_CLIFFS_NEST, 22, 76
-# 155 "data//maps/FortreeCliffs/scripts.pory"
-	setvar VAR_FORTREE_CLIFFS_BIRD_LOCATION, 2                                                             @ update location var to nest 3
-# 156 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 22, 72                                              @ move bird to nest 3
-# 157 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxy LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 22, 72
-# 158 "data//maps/FortreeCliffs/scripts.pory"
-	resetobjectsubpriority LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS
-# 159 "data//maps/FortreeCliffs/scripts.pory"
-	return
-# 160 "data//maps/FortreeCliffs/scripts.pory"
-
-# 161 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_MoveBraviaryToStartingNest::
-# 162 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 24, 12                                                    @ move sign to nest 1 
-# 163 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxy LOCALID_FORTREE_CLIFFS_NEST, 24, 12
-# 164 "data//maps/FortreeCliffs/scripts.pory"
-	setvar VAR_FORTREE_CLIFFS_BIRD_LOCATION, 0                                                             @ update location var to nest 1
-# 165 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 24, 8                                               @ move bird to nest 1
-# 166 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxy LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 24, 8
-# 167 "data//maps/FortreeCliffs/scripts.pory"
-	resetobjectsubpriority LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS
-# 168 "data//maps/FortreeCliffs/scripts.pory"
-	call_if_set FLAG_TEMP_5, FortreeCliffs_EventScript_FlyPlayerToStartingNest
-# 169 "data//maps/FortreeCliffs/scripts.pory"
-	return
-# 170 "data//maps/FortreeCliffs/scripts.pory"
-
-# 171 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_MoveBraviaryToNest2::  
-# 172 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 14, 18                                                    @ move sign to nest 2 
-# 173 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxy LOCALID_FORTREE_CLIFFS_NEST, 14, 18
-# 174 "data//maps/FortreeCliffs/scripts.pory"
-	setvar VAR_FORTREE_CLIFFS_BIRD_LOCATION, 1                                                             @ update location var to nest 2
-# 175 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 14, 14                                              @ move bird to nest 2
-# 176 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxy LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 14, 14
-# 177 "data//maps/FortreeCliffs/scripts.pory"
-	resetobjectsubpriority LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS
-# 178 "data//maps/FortreeCliffs/scripts.pory"
-	call_if_set FLAG_TEMP_5, FortreeCliffs_EventScript_FlyPlayerToNest2
-# 179 "data//maps/FortreeCliffs/scripts.pory"
-	return
-# 180 "data//maps/FortreeCliffs/scripts.pory"
-
-# 181 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_MoveBraviaryToLakeshoreNest:: 
-# 182 "data//maps/FortreeCliffs/scripts.pory"
 	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 13, 62                                                    @ move sign to nest 4 
-# 183 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxy LOCALID_FORTREE_CLIFFS_NEST, 13, 62
-# 184 "data//maps/FortreeCliffs/scripts.pory"
-	setvar VAR_FORTREE_CLIFFS_BIRD_LOCATION, 3                                                             @ update location var to nest 4
-# 185 "data//maps/FortreeCliffs/scripts.pory"
+# 119 "data//maps/FortreeCliffs/scripts.pory"
 	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 13, 58                                              @ move bird to nest 4
-# 186 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxy LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 13, 58
-# 187 "data//maps/FortreeCliffs/scripts.pory"
-	resetobjectsubpriority LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS
-# 188 "data//maps/FortreeCliffs/scripts.pory"
-	call_if_set FLAG_TEMP_5, FortreeCliffs_EventScript_FlyPlayerToLakeshoreNest
-# 189 "data//maps/FortreeCliffs/scripts.pory"
+# 120 "data//maps/FortreeCliffs/scripts.pory"
 	return
-# 190 "data//maps/FortreeCliffs/scripts.pory"
+# 121 "data//maps/FortreeCliffs/scripts.pory"
 
-# 191 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_MoveBraviaryToNest3::     
-# 192 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 22, 76                                                    @ move sign to nest 3 
-# 193 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxy LOCALID_FORTREE_CLIFFS_NEST, 22, 76
-# 194 "data//maps/FortreeCliffs/scripts.pory"
-	setvar VAR_FORTREE_CLIFFS_BIRD_LOCATION, 2                                                             @ update location var to nest 3
-# 195 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 22, 72                                              @ move bird to nest 3
-# 196 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxy LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 22, 72
-# 197 "data//maps/FortreeCliffs/scripts.pory"
-	resetobjectsubpriority LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS
-# 198 "data//maps/FortreeCliffs/scripts.pory"
-	call_if_set FLAG_TEMP_5, FortreeCliffs_EventScript_FlyPlayerToNest3
-# 199 "data//maps/FortreeCliffs/scripts.pory"
-	return
-# 200 "data//maps/FortreeCliffs/scripts.pory"
-
-# 201 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_MoveBraviaryToNest5::
-# 202 "data//maps/FortreeCliffs/scripts.pory"
+# 122 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_EventScript_PlaceBraviaryAtNest5::
+# 123 "data//maps/FortreeCliffs/scripts.pory"
 	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 24, 41                                                    @ move sign to nest 5 
-# 203 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxy LOCALID_FORTREE_CLIFFS_NEST, 24, 41
-# 204 "data//maps/FortreeCliffs/scripts.pory"
-	setvar VAR_FORTREE_CLIFFS_BIRD_LOCATION, 4                                                             @ update location var to nest 5
-# 205 "data//maps/FortreeCliffs/scripts.pory"
+# 124 "data//maps/FortreeCliffs/scripts.pory"
 	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 24, 37                                              @ move bird to nest 5
-# 206 "data//maps/FortreeCliffs/scripts.pory"
-	setobjectxy LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 24, 37
-# 207 "data//maps/FortreeCliffs/scripts.pory"
-	resetobjectsubpriority LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS
-# 208 "data//maps/FortreeCliffs/scripts.pory"
-	call_if_set FLAG_TEMP_5, FortreeCliffs_EventScript_FlyPlayerToNest5
-# 209 "data//maps/FortreeCliffs/scripts.pory"
+# 125 "data//maps/FortreeCliffs/scripts.pory"
 	return
-# 210 "data//maps/FortreeCliffs/scripts.pory"
+# 126 "data//maps/FortreeCliffs/scripts.pory"
 
-# 211 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_FlyPlayerToStartingNest::
-# 212 "data//maps/FortreeCliffs/scripts.pory"
-	setfieldeffectargument 0, 1                                                               @ fly away
-# 213 "data//maps/FortreeCliffs/scripts.pory"
-	dofieldeffect FLDEFF_NPCFLY_OUT
-# 214 "data//maps/FortreeCliffs/scripts.pory"
-	delay 15
-# 215 "data//maps/FortreeCliffs/scripts.pory"
-	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                         @ hide player
-# 216 "data//maps/FortreeCliffs/scripts.pory"
-	waitfieldeffect FLDEFF_NPCFLY_OUT
-# 217 "data//maps/FortreeCliffs/scripts.pory"
-	setflag FLAG_HIDE_MAP_NAME_POPUP
-# 218 "data//maps/FortreeCliffs/scripts.pory"
-	warpcontinuescript MAP_FORTREE_CLIFFS, 24, 13, FortreeCliffs_EventScript_BraviaryLandsWithPlayer         @ landing coords         
-# 219 "data//maps/FortreeCliffs/scripts.pory"
+# 127 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_EventScript_ResetWildMons::
+# 128 "data//maps/FortreeCliffs/scripts.pory"
 	end
-# 220 "data//maps/FortreeCliffs/scripts.pory"
+# 129 "data//maps/FortreeCliffs/scripts.pory"
 
-# 221 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_FlyPlayerToNest2::
-# 222 "data//maps/FortreeCliffs/scripts.pory"
-	setfieldeffectargument 0, 1                                                               @ fly away
-# 223 "data//maps/FortreeCliffs/scripts.pory"
-	dofieldeffect FLDEFF_NPCFLY_OUT
-# 224 "data//maps/FortreeCliffs/scripts.pory"
-	delay 15
-# 225 "data//maps/FortreeCliffs/scripts.pory"
-	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                         @ hide player
-# 226 "data//maps/FortreeCliffs/scripts.pory"
-	waitfieldeffect FLDEFF_NPCFLY_OUT
-# 227 "data//maps/FortreeCliffs/scripts.pory"
-	setflag FLAG_HIDE_MAP_NAME_POPUP
-# 228 "data//maps/FortreeCliffs/scripts.pory"
-	warpcontinuescript MAP_FORTREE_CLIFFS, 14, 19, FortreeCliffs_EventScript_BraviaryLandsWithPlayer         @ landing coords         
-# 229 "data//maps/FortreeCliffs/scripts.pory"
+# 130 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_EventScript_BadVibeRock::
+# 131 "data//maps/FortreeCliffs/scripts.pory"
+	lock
+# 132 "data//maps/FortreeCliffs/scripts.pory"
+	msgbox FortreeCliffs_Text_BadVibeRock, MSGBOX_DEFAULT
+# 133 "data//maps/FortreeCliffs/scripts.pory"
+	release
+# 134 "data//maps/FortreeCliffs/scripts.pory"
 	end
-# 230 "data//maps/FortreeCliffs/scripts.pory"
+# 135 "data//maps/FortreeCliffs/scripts.pory"
 
-# 231 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_FlyPlayerToNest3::
-# 232 "data//maps/FortreeCliffs/scripts.pory"
-	setfieldeffectargument 0, 1                                                               @ fly away
-# 233 "data//maps/FortreeCliffs/scripts.pory"
-	dofieldeffect FLDEFF_NPCFLY_OUT
-# 234 "data//maps/FortreeCliffs/scripts.pory"
-	delay 15
-# 235 "data//maps/FortreeCliffs/scripts.pory"
-	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                         @ hide player
-# 236 "data//maps/FortreeCliffs/scripts.pory"
-	waitfieldeffect FLDEFF_NPCFLY_OUT
-# 237 "data//maps/FortreeCliffs/scripts.pory"
-	setflag FLAG_HIDE_MAP_NAME_POPUP
-# 238 "data//maps/FortreeCliffs/scripts.pory"
-	warpcontinuescript MAP_FORTREE_CLIFFS, 22, 77, FortreeCliffs_EventScript_BraviaryLandsWithPlayer         @ landing coords         
-# 239 "data//maps/FortreeCliffs/scripts.pory"
+# 136 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_EventScript_Nest::
+# 137 "data//maps/FortreeCliffs/scripts.pory"
+	@ lock
+# 138 "data//maps/FortreeCliffs/scripts.pory"
+	clearflag FLAG_TEMP_5
+# 139 "data//maps/FortreeCliffs/scripts.pory"
+	hidefollower 0
+# 140 "data//maps/FortreeCliffs/scripts.pory"
+	special SpawnCameraObject                                                                               @ pan camera up 
+# 141 "data//maps/FortreeCliffs/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, FortreeCliffs_Movement_CameraPanUp
+# 142 "data//maps/FortreeCliffs/scripts.pory"
+	waitmovement OBJ_EVENT_ID_CAMERA
+# 143 "data//maps/FortreeCliffs/scripts.pory"
+	special RemoveCameraObject
+# 144 "data//maps/FortreeCliffs/scripts.pory"
+	
+# 145 "data//maps/FortreeCliffs/scripts.pory"
+	call_if_lt VAR_FORTREE_CLIFFS_BRAVIARY_TRUST, 3, FortreeCliffs_EventScript_OfferBraviaryBerry           @ Ask to offer berry if untrusted
+# 146 "data//maps/FortreeCliffs/scripts.pory"
+	call_if_ge VAR_FORTREE_CLIFFS_BRAVIARY_TRUST, 4, FortreeCliffs_EventScript_BraviaryWantsToFly           @ Ask to fly
+# 147 "data//maps/FortreeCliffs/scripts.pory"
+
+# 148 "data//maps/FortreeCliffs/scripts.pory"
+	call FortreeCliffs_EventScript_BraviaryRoutingSwitch                                                    @ choose which nest to fly to
+# 149 "data//maps/FortreeCliffs/scripts.pory"
+
+# 150 "data//maps/FortreeCliffs/scripts.pory"
+	goto_if_eq VAR_FORTREE_CLIFFS_BRAVIARY_TRUST, 3, FortreeCliffs_EventScript_WantsYouToFollow             @ ending with slight text difference after third berry and before first flight
+# 151 "data//maps/FortreeCliffs/scripts.pory"
+	msgbox FortreeCliffs_Text_FlewToTheNextNest, MSGBOX_DEFAULT
+# 152 "data//maps/FortreeCliffs/scripts.pory"
+	closemessage
+# 153 "data//maps/FortreeCliffs/scripts.pory"
+	special SpawnCameraObject                                                                               @ pan back down
+# 154 "data//maps/FortreeCliffs/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, FortreeCliffs_Movement_CameraPanDown
+# 155 "data//maps/FortreeCliffs/scripts.pory"
+	waitmovement OBJ_EVENT_ID_CAMERA
+# 156 "data//maps/FortreeCliffs/scripts.pory"
+	special RemoveCameraObject
+# 157 "data//maps/FortreeCliffs/scripts.pory"
+	release
+# 158 "data//maps/FortreeCliffs/scripts.pory"
 	end
-# 240 "data//maps/FortreeCliffs/scripts.pory"
+# 159 "data//maps/FortreeCliffs/scripts.pory"
 
-# 241 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_FlyPlayerToLakeshoreNest::
-# 242 "data//maps/FortreeCliffs/scripts.pory"
-	setfieldeffectargument 0, 1                                                               @ fly away
-# 243 "data//maps/FortreeCliffs/scripts.pory"
-	dofieldeffect FLDEFF_NPCFLY_OUT
-# 244 "data//maps/FortreeCliffs/scripts.pory"
+# 160 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_EventScript_BraviaryRoutingSwitch::                                                          @ handles updating object locations and vars
+# 161 "data//maps/FortreeCliffs/scripts.pory"
+	waitse                                                                                                 @ fly away animation and cry
+# 162 "data//maps/FortreeCliffs/scripts.pory"
+	playmoncry SPECIES_BRAVIARY, CRY_MODE_ENCOUNTER
+# 163 "data//maps/FortreeCliffs/scripts.pory"
 	delay 15
-# 245 "data//maps/FortreeCliffs/scripts.pory"
-	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                         @ hide player
-# 246 "data//maps/FortreeCliffs/scripts.pory"
-	waitfieldeffect FLDEFF_NPCFLY_OUT
-# 247 "data//maps/FortreeCliffs/scripts.pory"
-	setflag FLAG_HIDE_MAP_NAME_POPUP
-# 248 "data//maps/FortreeCliffs/scripts.pory"
-	warpcontinuescript MAP_FORTREE_CLIFFS, 13, 63, FortreeCliffs_EventScript_BraviaryLandsWithPlayer         @ landing coords         
-# 249 "data//maps/FortreeCliffs/scripts.pory"
-	end
-# 250 "data//maps/FortreeCliffs/scripts.pory"
-
-# 251 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_FlyPlayerToNest5::
-# 252 "data//maps/FortreeCliffs/scripts.pory"
-	setfieldeffectargument 0, 1                                                               @ fly away
-# 253 "data//maps/FortreeCliffs/scripts.pory"
-	dofieldeffect FLDEFF_NPCFLY_OUT
-# 254 "data//maps/FortreeCliffs/scripts.pory"
-	delay 15
-# 255 "data//maps/FortreeCliffs/scripts.pory"
-	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                         @ hide player
-# 256 "data//maps/FortreeCliffs/scripts.pory"
-	waitfieldeffect FLDEFF_NPCFLY_OUT
-# 257 "data//maps/FortreeCliffs/scripts.pory"
-	setflag FLAG_HIDE_MAP_NAME_POPUP
-# 258 "data//maps/FortreeCliffs/scripts.pory"
-	warpcontinuescript MAP_FORTREE_CLIFFS, 24, 42, FortreeCliffs_EventScript_BraviaryLandsWithPlayer         @ landing coords         
-# 259 "data//maps/FortreeCliffs/scripts.pory"
-	end
-# 260 "data//maps/FortreeCliffs/scripts.pory"
-
-# 261 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_BraviaryLandsWithPlayer::
-# 262 "data//maps/FortreeCliffs/scripts.pory"
-	hideobjectat LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS                              @ hide updated bird 
-# 263 "data//maps/FortreeCliffs/scripts.pory"
-	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS 
-# 264 "data//maps/FortreeCliffs/scripts.pory"
-	fadescreen FADE_FROM_BLACK
-# 265 "data//maps/FortreeCliffs/scripts.pory"
-	setfieldeffectargument 0, 1                                                        @ animate player landing
-# 266 "data//maps/FortreeCliffs/scripts.pory"
-	dofieldeffect FLDEFF_NPCFLY_OUT
-# 267 "data//maps/FortreeCliffs/scripts.pory"
-	delay 15
-# 268 "data//maps/FortreeCliffs/scripts.pory"
-	showobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                 @ reshow player
-# 269 "data//maps/FortreeCliffs/scripts.pory"
-	waitfieldeffect FLDEFF_NPCFLY_OUT
-# 270 "data//maps/FortreeCliffs/scripts.pory"
+# 164 "data//maps/FortreeCliffs/scripts.pory"
 	setobjectsubpriority LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS, 3
+# 165 "data//maps/FortreeCliffs/scripts.pory"
+	applymovement LOCALID_FORTREE_CLIFFS_BRAVIARY_1, FortreeCliffs_Movement_BraviaryFlyOff
+# 166 "data//maps/FortreeCliffs/scripts.pory"
+	applymovement LOCALID_FORTREE_CLIFFS_NEST, FortreeCliffs_Movement_BraviaryFlyOff
+# 167 "data//maps/FortreeCliffs/scripts.pory"
+	waitmovement LOCALID_FORTREE_CLIFFS_BRAVIARY_1
+# 168 "data//maps/FortreeCliffs/scripts.pory"
+	waitmoncry
+# 169 "data//maps/FortreeCliffs/scripts.pory"
+	switch VAR_FORTREE_CLIFFS_BRAVIARY_TRUST                                                                  
+# 170 "data//maps/FortreeCliffs/scripts.pory"
+	case 0, FortreeCliffs_EventScript_BraviaryNorthernNestSwitch                                           @ stay in northern nests if low trust
+# 171 "data//maps/FortreeCliffs/scripts.pory"
+	case 1, FortreeCliffs_EventScript_BraviaryNorthernNestSwitch
+# 172 "data//maps/FortreeCliffs/scripts.pory"
+	case 2, FortreeCliffs_EventScript_BraviarySouthernNestSwitch                                           @ stay in southern nests if mid trust
+# 173 "data//maps/FortreeCliffs/scripts.pory"
+	case 3, FortreeCliffs_EventScript_BraviarySouthernNestSwitch
+# 174 "data//maps/FortreeCliffs/scripts.pory"
+	switch VAR_FORTREE_CLIFFS_BIRD_LOCATION                                                                @ choose next nest based on current nest
+# 175 "data//maps/FortreeCliffs/scripts.pory"
+	case 0, FortreeCliffs_EventScript_MoveBraviaryToNest2
+# 176 "data//maps/FortreeCliffs/scripts.pory"
+	case 1, FortreeCliffs_EventScript_MoveBraviaryToNest3
+# 177 "data//maps/FortreeCliffs/scripts.pory"
+	case 2, FortreeCliffs_EventScript_MoveBraviaryToLakeshoreNest                                          @ nest 4
+# 178 "data//maps/FortreeCliffs/scripts.pory"
+	case 3, FortreeCliffs_EventScript_MoveBraviaryToNest5
+# 179 "data//maps/FortreeCliffs/scripts.pory"
+	case 4, FortreeCliffs_EventScript_MoveBraviaryToStartingNest                                           @ nest 1
+# 180 "data//maps/FortreeCliffs/scripts.pory"
+	return
+# 181 "data//maps/FortreeCliffs/scripts.pory"
+
+# 182 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_EventScript_BraviaryNorthernNestSwitch::
+# 183 "data//maps/FortreeCliffs/scripts.pory"
+	goto_if_eq VAR_FORTREE_CLIFFS_BIRD_LOCATION, 1, FortreeCliffs_EventScript_MoveBraviaryToStartingNest  
+# 184 "data//maps/FortreeCliffs/scripts.pory"
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 14, 18                                                    @ move sign to nest 2 
+# 185 "data//maps/FortreeCliffs/scripts.pory"
+	setobjectxy LOCALID_FORTREE_CLIFFS_NEST, 14, 18
+# 186 "data//maps/FortreeCliffs/scripts.pory"
+	setvar VAR_FORTREE_CLIFFS_BIRD_LOCATION, 1                                                             @ update location var to nest 2
+# 187 "data//maps/FortreeCliffs/scripts.pory"
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 14, 14                                              @ move bird to nest 2
+# 188 "data//maps/FortreeCliffs/scripts.pory"
+	setobjectxy LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 14, 14
+# 189 "data//maps/FortreeCliffs/scripts.pory"
+	resetobjectsubpriority LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS
+# 190 "data//maps/FortreeCliffs/scripts.pory"
+	return
+# 191 "data//maps/FortreeCliffs/scripts.pory"
+
+# 192 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_EventScript_BraviarySouthernNestSwitch::
+# 193 "data//maps/FortreeCliffs/scripts.pory"
+	goto_if_eq VAR_FORTREE_CLIFFS_BIRD_LOCATION, 2, FortreeCliffs_EventScript_MoveBraviaryToLakeshoreNest      
+# 194 "data//maps/FortreeCliffs/scripts.pory"
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 22, 76                                                    @ move sign to nest 3 
+# 195 "data//maps/FortreeCliffs/scripts.pory"
+	setobjectxy LOCALID_FORTREE_CLIFFS_NEST, 22, 76
+# 196 "data//maps/FortreeCliffs/scripts.pory"
+	setvar VAR_FORTREE_CLIFFS_BIRD_LOCATION, 2                                                             @ update location var to nest 3
+# 197 "data//maps/FortreeCliffs/scripts.pory"
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 22, 72                                              @ move bird to nest 3
+# 198 "data//maps/FortreeCliffs/scripts.pory"
+	setobjectxy LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 22, 72
+# 199 "data//maps/FortreeCliffs/scripts.pory"
+	resetobjectsubpriority LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS
+# 200 "data//maps/FortreeCliffs/scripts.pory"
+	return
+# 201 "data//maps/FortreeCliffs/scripts.pory"
+
+# 202 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_EventScript_MoveBraviaryToStartingNest::
+# 203 "data//maps/FortreeCliffs/scripts.pory"
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 24, 12                                                    @ move sign to nest 1 
+# 204 "data//maps/FortreeCliffs/scripts.pory"
+	setobjectxy LOCALID_FORTREE_CLIFFS_NEST, 24, 12
+# 205 "data//maps/FortreeCliffs/scripts.pory"
+	setvar VAR_FORTREE_CLIFFS_BIRD_LOCATION, 0                                                             @ update location var to nest 1
+# 206 "data//maps/FortreeCliffs/scripts.pory"
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 24, 8                                               @ move bird to nest 1
+# 207 "data//maps/FortreeCliffs/scripts.pory"
+	setobjectxy LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 24, 8
+# 208 "data//maps/FortreeCliffs/scripts.pory"
+	resetobjectsubpriority LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS
+# 209 "data//maps/FortreeCliffs/scripts.pory"
+	call_if_set FLAG_TEMP_5, FortreeCliffs_EventScript_FlyPlayerToStartingNest
+# 210 "data//maps/FortreeCliffs/scripts.pory"
+	return
+# 211 "data//maps/FortreeCliffs/scripts.pory"
+
+# 212 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_EventScript_MoveBraviaryToNest2::  
+# 213 "data//maps/FortreeCliffs/scripts.pory"
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 14, 18                                                    @ move sign to nest 2 
+# 214 "data//maps/FortreeCliffs/scripts.pory"
+	setobjectxy LOCALID_FORTREE_CLIFFS_NEST, 14, 18
+# 215 "data//maps/FortreeCliffs/scripts.pory"
+	setvar VAR_FORTREE_CLIFFS_BIRD_LOCATION, 1                                                             @ update location var to nest 2
+# 216 "data//maps/FortreeCliffs/scripts.pory"
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 14, 14                                              @ move bird to nest 2
+# 217 "data//maps/FortreeCliffs/scripts.pory"
+	setobjectxy LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 14, 14
+# 218 "data//maps/FortreeCliffs/scripts.pory"
+	resetobjectsubpriority LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS
+# 219 "data//maps/FortreeCliffs/scripts.pory"
+	call_if_set FLAG_TEMP_5, FortreeCliffs_EventScript_FlyPlayerToNest2
+# 220 "data//maps/FortreeCliffs/scripts.pory"
+	return
+# 221 "data//maps/FortreeCliffs/scripts.pory"
+
+# 222 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_EventScript_MoveBraviaryToLakeshoreNest:: 
+# 223 "data//maps/FortreeCliffs/scripts.pory"
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 13, 62                                                    @ move sign to nest 4 
+# 224 "data//maps/FortreeCliffs/scripts.pory"
+	setobjectxy LOCALID_FORTREE_CLIFFS_NEST, 13, 62
+# 225 "data//maps/FortreeCliffs/scripts.pory"
+	setvar VAR_FORTREE_CLIFFS_BIRD_LOCATION, 3                                                             @ update location var to nest 4
+# 226 "data//maps/FortreeCliffs/scripts.pory"
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 13, 58                                              @ move bird to nest 4
+# 227 "data//maps/FortreeCliffs/scripts.pory"
+	setobjectxy LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 13, 58
+# 228 "data//maps/FortreeCliffs/scripts.pory"
+	resetobjectsubpriority LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS
+# 229 "data//maps/FortreeCliffs/scripts.pory"
+	call_if_set FLAG_TEMP_5, FortreeCliffs_EventScript_FlyPlayerToLakeshoreNest
+# 230 "data//maps/FortreeCliffs/scripts.pory"
+	return
+# 231 "data//maps/FortreeCliffs/scripts.pory"
+
+# 232 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_EventScript_MoveBraviaryToNest3::     
+# 233 "data//maps/FortreeCliffs/scripts.pory"
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 22, 76                                                    @ move sign to nest 3 
+# 234 "data//maps/FortreeCliffs/scripts.pory"
+	setobjectxy LOCALID_FORTREE_CLIFFS_NEST, 22, 76
+# 235 "data//maps/FortreeCliffs/scripts.pory"
+	setvar VAR_FORTREE_CLIFFS_BIRD_LOCATION, 2                                                             @ update location var to nest 3
+# 236 "data//maps/FortreeCliffs/scripts.pory"
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 22, 72                                              @ move bird to nest 3
+# 237 "data//maps/FortreeCliffs/scripts.pory"
+	setobjectxy LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 22, 72
+# 238 "data//maps/FortreeCliffs/scripts.pory"
+	resetobjectsubpriority LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS
+# 239 "data//maps/FortreeCliffs/scripts.pory"
+	call_if_set FLAG_TEMP_5, FortreeCliffs_EventScript_FlyPlayerToNest3
+# 240 "data//maps/FortreeCliffs/scripts.pory"
+	return
+# 241 "data//maps/FortreeCliffs/scripts.pory"
+
+# 242 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_EventScript_MoveBraviaryToNest5::
+# 243 "data//maps/FortreeCliffs/scripts.pory"
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_NEST, 24, 41                                                    @ move sign to nest 5 
+# 244 "data//maps/FortreeCliffs/scripts.pory"
+	setobjectxy LOCALID_FORTREE_CLIFFS_NEST, 24, 41
+# 245 "data//maps/FortreeCliffs/scripts.pory"
+	setvar VAR_FORTREE_CLIFFS_BIRD_LOCATION, 4                                                             @ update location var to nest 5
+# 246 "data//maps/FortreeCliffs/scripts.pory"
+	setobjectxyperm LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 24, 37                                              @ move bird to nest 5
+# 247 "data//maps/FortreeCliffs/scripts.pory"
+	setobjectxy LOCALID_FORTREE_CLIFFS_BRAVIARY_1, 24, 37
+# 248 "data//maps/FortreeCliffs/scripts.pory"
+	resetobjectsubpriority LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS
+# 249 "data//maps/FortreeCliffs/scripts.pory"
+	call_if_set FLAG_TEMP_5, FortreeCliffs_EventScript_FlyPlayerToNest5
+# 250 "data//maps/FortreeCliffs/scripts.pory"
+	return
+# 251 "data//maps/FortreeCliffs/scripts.pory"
+
+# 252 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_EventScript_FlyPlayerToStartingNest::
+# 253 "data//maps/FortreeCliffs/scripts.pory"
+	setfieldeffectargument 0, 1                                                               @ fly away
+# 254 "data//maps/FortreeCliffs/scripts.pory"
+	dofieldeffect FLDEFF_NPCFLY_OUT
+# 255 "data//maps/FortreeCliffs/scripts.pory"
+	delay 15
+# 256 "data//maps/FortreeCliffs/scripts.pory"
+	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                         @ hide player
+# 257 "data//maps/FortreeCliffs/scripts.pory"
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+# 258 "data//maps/FortreeCliffs/scripts.pory"
+	setflag FLAG_HIDE_MAP_NAME_POPUP
+# 259 "data//maps/FortreeCliffs/scripts.pory"
+	warpcontinuescript MAP_FORTREE_CLIFFS, 24, 13, FortreeCliffs_EventScript_BraviaryLandsWithPlayer         @ landing coords         
+# 260 "data//maps/FortreeCliffs/scripts.pory"
+	end
+# 261 "data//maps/FortreeCliffs/scripts.pory"
+
+# 262 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_EventScript_FlyPlayerToNest2::
+# 263 "data//maps/FortreeCliffs/scripts.pory"
+	setfieldeffectargument 0, 1                                                               @ fly away
+# 264 "data//maps/FortreeCliffs/scripts.pory"
+	dofieldeffect FLDEFF_NPCFLY_OUT
+# 265 "data//maps/FortreeCliffs/scripts.pory"
+	delay 15
+# 266 "data//maps/FortreeCliffs/scripts.pory"
+	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                         @ hide player
+# 267 "data//maps/FortreeCliffs/scripts.pory"
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+# 268 "data//maps/FortreeCliffs/scripts.pory"
+	setflag FLAG_HIDE_MAP_NAME_POPUP
+# 269 "data//maps/FortreeCliffs/scripts.pory"
+	warpcontinuescript MAP_FORTREE_CLIFFS, 14, 19, FortreeCliffs_EventScript_BraviaryLandsWithPlayer         @ landing coords         
+# 270 "data//maps/FortreeCliffs/scripts.pory"
+	end
 # 271 "data//maps/FortreeCliffs/scripts.pory"
-	applymovement LOCALID_FORTREE_CLIFFS_BRAVIARY_1, FortreeCliffs_Movement_BraviaryJumpUp            @ braviary landing begins
+
 # 272 "data//maps/FortreeCliffs/scripts.pory"
-	waitmovement LOCALID_FORTREE_CLIFFS_BRAVIARY_1        
+FortreeCliffs_EventScript_FlyPlayerToNest3::
 # 273 "data//maps/FortreeCliffs/scripts.pory"
-	showobjectat LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS                              @ show updated bird 
+	setfieldeffectargument 0, 1                                                               @ fly away
 # 274 "data//maps/FortreeCliffs/scripts.pory"
-	applymovement LOCALID_FORTREE_CLIFFS_BRAVIARY_1, FortreeCliffs_Movement_BraviaryLands 
+	dofieldeffect FLDEFF_NPCFLY_OUT
 # 275 "data//maps/FortreeCliffs/scripts.pory"
-	waitmovement LOCALID_FORTREE_CLIFFS_BRAVIARY_1   
+	delay 15
 # 276 "data//maps/FortreeCliffs/scripts.pory"
-	clearflag FLAG_HIDE_MAP_NAME_POPUP     
+	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                         @ hide player
 # 277 "data//maps/FortreeCliffs/scripts.pory"
-	release
+	waitfieldeffect FLDEFF_NPCFLY_OUT
 # 278 "data//maps/FortreeCliffs/scripts.pory"
-	end
+	setflag FLAG_HIDE_MAP_NAME_POPUP
 # 279 "data//maps/FortreeCliffs/scripts.pory"
-
+	warpcontinuescript MAP_FORTREE_CLIFFS, 22, 77, FortreeCliffs_EventScript_BraviaryLandsWithPlayer         @ landing coords         
 # 280 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_OfferBraviaryBerry::
+	end
 # 281 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_SkepticalBraviary, MSGBOX_YESNO
+
 # 282 "data//maps/FortreeCliffs/scripts.pory"
-	goto_if_eq VAR_RESULT, YES, FortreeCliffs_EventScript_TryGiveBraviaryBerry
+FortreeCliffs_EventScript_FlyPlayerToLakeshoreNest::
 # 283 "data//maps/FortreeCliffs/scripts.pory"
-	return
+	setfieldeffectargument 0, 1                                                               @ fly away
 # 284 "data//maps/FortreeCliffs/scripts.pory"
-
+	dofieldeffect FLDEFF_NPCFLY_OUT
 # 285 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_TryGiveBraviaryBerry::
+	delay 15
 # 286 "data//maps/FortreeCliffs/scripts.pory"
-	fadescreenswapbuffers FADE_TO_BLACK
+	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                         @ hide player
 # 287 "data//maps/FortreeCliffs/scripts.pory"
-	special Bag_ChooseBerry
+	waitfieldeffect FLDEFF_NPCFLY_OUT
 # 288 "data//maps/FortreeCliffs/scripts.pory"
-	waitstate
+	setflag FLAG_HIDE_MAP_NAME_POPUP
 # 289 "data//maps/FortreeCliffs/scripts.pory"
-	playmoncry SPECIES_BRAVIARY, CRY_MODE_NORMAL
+	warpcontinuescript MAP_FORTREE_CLIFFS, 13, 63, FortreeCliffs_EventScript_BraviaryLandsWithPlayer         @ landing coords         
 # 290 "data//maps/FortreeCliffs/scripts.pory"
-	waitmoncry
+	end
 # 291 "data//maps/FortreeCliffs/scripts.pory"
-	goto_if_eq VAR_ITEM_ID, 0, FortreeCliffs_EventScript_DidntGiveBerry
+
 # 292 "data//maps/FortreeCliffs/scripts.pory"
-	switch VAR_ITEM_ID                                                                                 @ check that the berry is one bird likes 
+FortreeCliffs_EventScript_FlyPlayerToNest5::
 # 293 "data//maps/FortreeCliffs/scripts.pory"
-	case ITEM_POMEG_BERRY, FortreeCliffs_EventScript_InspectBerryOffering 
+	setfieldeffectargument 0, 1                                                               @ fly away
 # 294 "data//maps/FortreeCliffs/scripts.pory"
-	case ITEM_KELPSY_BERRY, FortreeCliffs_EventScript_InspectBerryOffering 
+	dofieldeffect FLDEFF_NPCFLY_OUT
 # 295 "data//maps/FortreeCliffs/scripts.pory"
-	case ITEM_QUALOT_BERRY, FortreeCliffs_EventScript_InspectBerryOffering 
+	delay 15
 # 296 "data//maps/FortreeCliffs/scripts.pory"
-	case ITEM_HONDEW_BERRY, FortreeCliffs_EventScript_InspectBerryOffering 
+	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                         @ hide player
 # 297 "data//maps/FortreeCliffs/scripts.pory"
-	case ITEM_GREPA_BERRY, FortreeCliffs_EventScript_InspectBerryOffering 
+	waitfieldeffect FLDEFF_NPCFLY_OUT
 # 298 "data//maps/FortreeCliffs/scripts.pory"
-	case ITEM_TAMATO_BERRY, FortreeCliffs_EventScript_InspectBerryOffering 
+	setflag FLAG_HIDE_MAP_NAME_POPUP
 # 299 "data//maps/FortreeCliffs/scripts.pory"
-	playmoncry SPECIES_BRAVIARY, CRY_MODE_WEAK
+	warpcontinuescript MAP_FORTREE_CLIFFS, 24, 42, FortreeCliffs_EventScript_BraviaryLandsWithPlayer         @ landing coords         
 # 300 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_BraviaryUninterested, MSGBOX_DEFAULT
+	end
 # 301 "data//maps/FortreeCliffs/scripts.pory"
-	waitmoncry
+
 # 302 "data//maps/FortreeCliffs/scripts.pory"
-	return
+FortreeCliffs_EventScript_BraviaryLandsWithPlayer::
 # 303 "data//maps/FortreeCliffs/scripts.pory"
-
+	hideobjectat LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS                              @ hide updated bird 
 # 304 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_InspectBerryOffering::
+	hideobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS 
 # 305 "data//maps/FortreeCliffs/scripts.pory"
-	goto_if_eq VAR_ITEM_ID, VAR_BRAVIARY_BERRY_1, FortreeCliffs_EventScript_BraviaryUninterested                  @ can't give duplicates
+	fadescreen FADE_FROM_BLACK
 # 306 "data//maps/FortreeCliffs/scripts.pory"
-	goto_if_eq VAR_ITEM_ID, VAR_BRAVIARY_BERRY_2, FortreeCliffs_EventScript_BraviaryUninterested
+	setfieldeffectargument 0, 1                                                        @ animate player landing
 # 307 "data//maps/FortreeCliffs/scripts.pory"
-	goto_if_eq VAR_ITEM_ID, VAR_BRAVIARY_BERRY_3, FortreeCliffs_EventScript_BraviaryUninterested
+	dofieldeffect FLDEFF_NPCFLY_OUT
 # 308 "data//maps/FortreeCliffs/scripts.pory"
-	goto_if_eq VAR_BRAVIARY_BERRY_1, 0, FortreeCliffs_EventScript_GiveFirstBerry                                  @ check how many have been given
+	delay 15
 # 309 "data//maps/FortreeCliffs/scripts.pory"
-	goto_if_eq VAR_BRAVIARY_BERRY_2, 0, FortreeCliffs_EventScript_GiveSecondBerry
+	showobjectat LOCALID_PLAYER, MAP_FORTREE_CLIFFS                                                 @ reshow player
 # 310 "data//maps/FortreeCliffs/scripts.pory"
-	goto_if_eq VAR_BRAVIARY_BERRY_3, 0, FortreeCliffs_EventScript_GiveThirdBerry
+	waitfieldeffect FLDEFF_NPCFLY_OUT
 # 311 "data//maps/FortreeCliffs/scripts.pory"
-	end
+	setobjectsubpriority LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS, 3
 # 312 "data//maps/FortreeCliffs/scripts.pory"
-
+	applymovement LOCALID_FORTREE_CLIFFS_BRAVIARY_1, FortreeCliffs_Movement_BraviaryJumpUp            @ braviary landing begins
 # 313 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_BraviaryUninterested::
+	waitmovement LOCALID_FORTREE_CLIFFS_BRAVIARY_1        
 # 314 "data//maps/FortreeCliffs/scripts.pory"
-	playmoncry SPECIES_BRAVIARY, CRY_MODE_WEAK
+	showobjectat LOCALID_FORTREE_CLIFFS_BRAVIARY_1, MAP_FORTREE_CLIFFS                              @ show updated bird 
 # 315 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_BraviaryUninterested, MSGBOX_DEFAULT
+	applymovement LOCALID_FORTREE_CLIFFS_BRAVIARY_1, FortreeCliffs_Movement_BraviaryLands 
 # 316 "data//maps/FortreeCliffs/scripts.pory"
-	waitmoncry
+	waitmovement LOCALID_FORTREE_CLIFFS_BRAVIARY_1   
 # 317 "data//maps/FortreeCliffs/scripts.pory"
-	return
+	clearflag FLAG_HIDE_MAP_NAME_POPUP     
 # 318 "data//maps/FortreeCliffs/scripts.pory"
-
+	release
 # 319 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_GiveFirstBerry::
+	end
 # 320 "data//maps/FortreeCliffs/scripts.pory"
-	setvar VAR_FORTREE_CLIFFS_BRAVIARY_TRUST, 1
+
 # 321 "data//maps/FortreeCliffs/scripts.pory"
-	removeitem VAR_ITEM_ID
+FortreeCliffs_EventScript_OfferBraviaryBerry::
 # 322 "data//maps/FortreeCliffs/scripts.pory"
-	copyvar VAR_BRAVIARY_BERRY_1, VAR_ITEM_ID
+	msgbox FortreeCliffs_Text_SkepticalBraviary, MSGBOX_YESNO
 # 323 "data//maps/FortreeCliffs/scripts.pory"
-	bufferitemname STR_VAR_1, VAR_ITEM_ID
+	goto_if_eq VAR_RESULT, YES, FortreeCliffs_EventScript_TryGiveBraviaryBerry
 # 324 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_BraviaryAcceptedBerry, MSGBOX_DEFAULT
+	return
 # 325 "data//maps/FortreeCliffs/scripts.pory"
-	playmoncry SPECIES_BRAVIARY, CRY_MODE_HIGH_PITCH
+
 # 326 "data//maps/FortreeCliffs/scripts.pory"
-	waitmoncry
+FortreeCliffs_EventScript_TryGiveBraviaryBerry::
 # 327 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_GaveFirstBerry, MSGBOX_DEFAULT
+	fadescreenswapbuffers FADE_TO_BLACK
 # 328 "data//maps/FortreeCliffs/scripts.pory"
-	return
+	special Bag_ChooseBerry
 # 329 "data//maps/FortreeCliffs/scripts.pory"
-
+	waitstate
 # 330 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_GiveSecondBerry::
+	playmoncry SPECIES_BRAVIARY, CRY_MODE_NORMAL
 # 331 "data//maps/FortreeCliffs/scripts.pory"
-	setvar VAR_FORTREE_CLIFFS_BRAVIARY_TRUST, 2
+	waitmoncry
 # 332 "data//maps/FortreeCliffs/scripts.pory"
-	removeitem VAR_ITEM_ID
+	goto_if_eq VAR_ITEM_ID, 0, FortreeCliffs_EventScript_DidntGiveBerry
 # 333 "data//maps/FortreeCliffs/scripts.pory"
-	copyvar VAR_BRAVIARY_BERRY_2, VAR_ITEM_ID
+	switch VAR_ITEM_ID                                                                                 @ check that the berry is one bird likes 
 # 334 "data//maps/FortreeCliffs/scripts.pory"
-	bufferitemname STR_VAR_1, VAR_ITEM_ID
+	case ITEM_POMEG_BERRY, FortreeCliffs_EventScript_InspectBerryOffering 
 # 335 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_BraviaryAcceptedBerry, MSGBOX_DEFAULT
+	case ITEM_KELPSY_BERRY, FortreeCliffs_EventScript_InspectBerryOffering 
 # 336 "data//maps/FortreeCliffs/scripts.pory"
-	playmoncry SPECIES_BRAVIARY, CRY_MODE_HIGH_PITCH
+	case ITEM_QUALOT_BERRY, FortreeCliffs_EventScript_InspectBerryOffering 
 # 337 "data//maps/FortreeCliffs/scripts.pory"
-	waitmoncry
+	case ITEM_HONDEW_BERRY, FortreeCliffs_EventScript_InspectBerryOffering 
 # 338 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_GaveSecondBerry, MSGBOX_DEFAULT
+	case ITEM_GREPA_BERRY, FortreeCliffs_EventScript_InspectBerryOffering 
 # 339 "data//maps/FortreeCliffs/scripts.pory"
-	return
+	case ITEM_TAMATO_BERRY, FortreeCliffs_EventScript_InspectBerryOffering 
 # 340 "data//maps/FortreeCliffs/scripts.pory"
-
+	playmoncry SPECIES_BRAVIARY, CRY_MODE_WEAK
 # 341 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_GiveThirdBerry::
+	msgbox FortreeCliffs_Text_BraviaryUninterested, MSGBOX_DEFAULT
 # 342 "data//maps/FortreeCliffs/scripts.pory"
-	setvar VAR_FORTREE_CLIFFS_BRAVIARY_TRUST, 3
-# 343 "data//maps/FortreeCliffs/scripts.pory"
-	removeitem VAR_ITEM_ID
-# 344 "data//maps/FortreeCliffs/scripts.pory"
-	copyvar VAR_BRAVIARY_BERRY_3, VAR_ITEM_ID
-# 345 "data//maps/FortreeCliffs/scripts.pory"
-	bufferitemname STR_VAR_1, VAR_ITEM_ID
-# 346 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_BraviaryAcceptedBerry, MSGBOX_DEFAULT
-# 347 "data//maps/FortreeCliffs/scripts.pory"
-	playmoncry SPECIES_BRAVIARY, CRY_MODE_HIGH_PITCH
-# 348 "data//maps/FortreeCliffs/scripts.pory"
 	waitmoncry
+# 343 "data//maps/FortreeCliffs/scripts.pory"
+	return
+# 344 "data//maps/FortreeCliffs/scripts.pory"
+
+# 345 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_EventScript_InspectBerryOffering::
+# 346 "data//maps/FortreeCliffs/scripts.pory"
+	goto_if_eq VAR_ITEM_ID, VAR_BRAVIARY_BERRY_1, FortreeCliffs_EventScript_BraviaryUninterested                  @ can't give duplicates
+# 347 "data//maps/FortreeCliffs/scripts.pory"
+	goto_if_eq VAR_ITEM_ID, VAR_BRAVIARY_BERRY_2, FortreeCliffs_EventScript_BraviaryUninterested
+# 348 "data//maps/FortreeCliffs/scripts.pory"
+	goto_if_eq VAR_ITEM_ID, VAR_BRAVIARY_BERRY_3, FortreeCliffs_EventScript_BraviaryUninterested
 # 349 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_GaveThirdBerry, MSGBOX_DEFAULT
+	goto_if_eq VAR_BRAVIARY_BERRY_1, 0, FortreeCliffs_EventScript_GiveFirstBerry                                  @ check how many have been given
 # 350 "data//maps/FortreeCliffs/scripts.pory"
-	return
+	goto_if_eq VAR_BRAVIARY_BERRY_2, 0, FortreeCliffs_EventScript_GiveSecondBerry
 # 351 "data//maps/FortreeCliffs/scripts.pory"
-
+	goto_if_eq VAR_BRAVIARY_BERRY_3, 0, FortreeCliffs_EventScript_GiveThirdBerry
 # 352 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_WantsYouToFollow::
+	end
 # 353 "data//maps/FortreeCliffs/scripts.pory"
-	setvar VAR_FORTREE_CLIFFS_BRAVIARY_TRUST, 4
+
 # 354 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_WantsYouToFollow, MSGBOX_DEFAULT
+FortreeCliffs_EventScript_BraviaryUninterested::
 # 355 "data//maps/FortreeCliffs/scripts.pory"
-	closemessage
+	playmoncry SPECIES_BRAVIARY, CRY_MODE_WEAK
 # 356 "data//maps/FortreeCliffs/scripts.pory"
-	special SpawnCameraObject                                                                               @ pan back down
+	msgbox FortreeCliffs_Text_BraviaryUninterested, MSGBOX_DEFAULT
 # 357 "data//maps/FortreeCliffs/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, FortreeCliffs_Movement_CameraPanDown
+	waitmoncry
 # 358 "data//maps/FortreeCliffs/scripts.pory"
-	waitmovement OBJ_EVENT_ID_CAMERA
+	return
 # 359 "data//maps/FortreeCliffs/scripts.pory"
-	special RemoveCameraObject
+
 # 360 "data//maps/FortreeCliffs/scripts.pory"
-	release
+FortreeCliffs_EventScript_GiveFirstBerry::
 # 361 "data//maps/FortreeCliffs/scripts.pory"
-	end
+	setvar VAR_FORTREE_CLIFFS_BRAVIARY_TRUST, 1
 # 362 "data//maps/FortreeCliffs/scripts.pory"
-
+	removeitem VAR_ITEM_ID
 # 363 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_BraviaryWantsToFly::
+	copyvar VAR_BRAVIARY_BERRY_1, VAR_ITEM_ID
 # 364 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_AskingToFly, MSGBOX_YESNO
+	bufferitemname STR_VAR_1, VAR_ITEM_ID
 # 365 "data//maps/FortreeCliffs/scripts.pory"
-	closemessage
+	msgbox FortreeCliffs_Text_BraviaryAcceptedBerry, MSGBOX_DEFAULT
 # 366 "data//maps/FortreeCliffs/scripts.pory"
-	goto_if_eq VAR_RESULT, NO, FortreeCliffs_EventScript_DeclinedFlight
+	playmoncry SPECIES_BRAVIARY, CRY_MODE_HIGH_PITCH
 # 367 "data//maps/FortreeCliffs/scripts.pory"
-	setflag FLAG_TEMP_5
+	waitmoncry
 # 368 "data//maps/FortreeCliffs/scripts.pory"
-	return
+	msgbox FortreeCliffs_Text_GaveFirstBerry, MSGBOX_DEFAULT
 # 369 "data//maps/FortreeCliffs/scripts.pory"
-
-# 370 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_DeclinedFlight::
-# 371 "data//maps/FortreeCliffs/scripts.pory"
-	special SpawnCameraObject                                                                               @ pan back down
-# 372 "data//maps/FortreeCliffs/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, FortreeCliffs_Movement_CameraPanDown
-# 373 "data//maps/FortreeCliffs/scripts.pory"
-	waitmovement OBJ_EVENT_ID_CAMERA
-# 374 "data//maps/FortreeCliffs/scripts.pory"
-	special RemoveCameraObject
-# 375 "data//maps/FortreeCliffs/scripts.pory"
-	release
-# 376 "data//maps/FortreeCliffs/scripts.pory"
-	end
-# 377 "data//maps/FortreeCliffs/scripts.pory"
-
-# 378 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_DidntGiveBerry::
-# 379 "data//maps/FortreeCliffs/scripts.pory"
 	return
+# 370 "data//maps/FortreeCliffs/scripts.pory"
+
+# 371 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_EventScript_GiveSecondBerry::
+# 372 "data//maps/FortreeCliffs/scripts.pory"
+	setvar VAR_FORTREE_CLIFFS_BRAVIARY_TRUST, 2
+# 373 "data//maps/FortreeCliffs/scripts.pory"
+	removeitem VAR_ITEM_ID
+# 374 "data//maps/FortreeCliffs/scripts.pory"
+	copyvar VAR_BRAVIARY_BERRY_2, VAR_ITEM_ID
+# 375 "data//maps/FortreeCliffs/scripts.pory"
+	bufferitemname STR_VAR_1, VAR_ITEM_ID
+# 376 "data//maps/FortreeCliffs/scripts.pory"
+	msgbox FortreeCliffs_Text_BraviaryAcceptedBerry, MSGBOX_DEFAULT
+# 377 "data//maps/FortreeCliffs/scripts.pory"
+	playmoncry SPECIES_BRAVIARY, CRY_MODE_HIGH_PITCH
+# 378 "data//maps/FortreeCliffs/scripts.pory"
+	waitmoncry
+# 379 "data//maps/FortreeCliffs/scripts.pory"
+	msgbox FortreeCliffs_Text_GaveSecondBerry, MSGBOX_DEFAULT
 # 380 "data//maps/FortreeCliffs/scripts.pory"
-
+	return
 # 381 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_Ninja1::
+
 # 382 "data//maps/FortreeCliffs/scripts.pory"
-	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_1, FortreeCliffs_Text_Ninja1Intro, FortreeCliffs_Text_Ninja1Defeat
+FortreeCliffs_EventScript_GiveThirdBerry::
 # 383 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_Ninja1PostBattle, MSGBOX_AUTOCLOSE
+	setvar VAR_FORTREE_CLIFFS_BRAVIARY_TRUST, 3
 # 384 "data//maps/FortreeCliffs/scripts.pory"
-	end
+	removeitem VAR_ITEM_ID
 # 385 "data//maps/FortreeCliffs/scripts.pory"
-
+	copyvar VAR_BRAVIARY_BERRY_3, VAR_ITEM_ID
 # 386 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_Ninja2::
+	bufferitemname STR_VAR_1, VAR_ITEM_ID
 # 387 "data//maps/FortreeCliffs/scripts.pory"
-	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_2, FortreeCliffs_Text_Ninja2Intro, FortreeCliffs_Text_Ninja2Defeat
+	msgbox FortreeCliffs_Text_BraviaryAcceptedBerry, MSGBOX_DEFAULT
 # 388 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_Ninja2PostBattle, MSGBOX_AUTOCLOSE
+	playmoncry SPECIES_BRAVIARY, CRY_MODE_HIGH_PITCH
 # 389 "data//maps/FortreeCliffs/scripts.pory"
-	end
+	waitmoncry
 # 390 "data//maps/FortreeCliffs/scripts.pory"
-
+	msgbox FortreeCliffs_Text_GaveThirdBerry, MSGBOX_DEFAULT
 # 391 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_Ninja3::
+	return
 # 392 "data//maps/FortreeCliffs/scripts.pory"
-	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_3, FortreeCliffs_Text_Ninja3Intro, FortreeCliffs_Text_Ninja3Defeat
+
 # 393 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_Ninja3PostBattle, MSGBOX_AUTOCLOSE
+FortreeCliffs_EventScript_WantsYouToFollow::
 # 394 "data//maps/FortreeCliffs/scripts.pory"
-	end
+	setvar VAR_FORTREE_CLIFFS_BRAVIARY_TRUST, 4
 # 395 "data//maps/FortreeCliffs/scripts.pory"
-
+	msgbox FortreeCliffs_Text_WantsYouToFollow, MSGBOX_DEFAULT
 # 396 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_Expert1::
+	closemessage
 # 397 "data//maps/FortreeCliffs/scripts.pory"
-	trainerbattle_single TRAINER_FORTREE_CLIFFS_EXPERT_1, FortreeCliffs_Text_Expert1Intro, FortreeCliffs_Text_Expert1Defeat
+	special SpawnCameraObject                                                                               @ pan back down
 # 398 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_Expert1PostBattle, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_CAMERA, FortreeCliffs_Movement_CameraPanDown
 # 399 "data//maps/FortreeCliffs/scripts.pory"
-	end
+	waitmovement OBJ_EVENT_ID_CAMERA
 # 400 "data//maps/FortreeCliffs/scripts.pory"
-
+	special RemoveCameraObject
 # 401 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_Ninja4::
+	release
 # 402 "data//maps/FortreeCliffs/scripts.pory"
-	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_4, FortreeCliffs_Text_Ninja4Intro, FortreeCliffs_Text_Ninja4Defeat
+	end
 # 403 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_Ninja4PostBattle, MSGBOX_AUTOCLOSE
-# 404 "data//maps/FortreeCliffs/scripts.pory"
-	end
-# 405 "data//maps/FortreeCliffs/scripts.pory"
 
+# 404 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_EventScript_BraviaryWantsToFly::
+# 405 "data//maps/FortreeCliffs/scripts.pory"
+	msgbox FortreeCliffs_Text_AskingToFly, MSGBOX_YESNO
 # 406 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_Ninja5::
+	closemessage
 # 407 "data//maps/FortreeCliffs/scripts.pory"
-	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_5, FortreeCliffs_Text_Ninja5Intro, FortreeCliffs_Text_Ninja5Defeat
+	goto_if_eq VAR_RESULT, NO, FortreeCliffs_EventScript_DeclinedFlight
 # 408 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_Ninja5PostBattle, MSGBOX_AUTOCLOSE
+	setflag FLAG_TEMP_5
 # 409 "data//maps/FortreeCliffs/scripts.pory"
-	end
+	return
 # 410 "data//maps/FortreeCliffs/scripts.pory"
 
 # 411 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_Ninja6::
+FortreeCliffs_EventScript_DeclinedFlight::
 # 412 "data//maps/FortreeCliffs/scripts.pory"
-	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_6, FortreeCliffs_Text_Ninja6Intro, FortreeCliffs_Text_Ninja6Defeat
+	special SpawnCameraObject                                                                               @ pan back down
 # 413 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_Ninja6PostBattle, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_CAMERA, FortreeCliffs_Movement_CameraPanDown
 # 414 "data//maps/FortreeCliffs/scripts.pory"
-	end
+	waitmovement OBJ_EVENT_ID_CAMERA
 # 415 "data//maps/FortreeCliffs/scripts.pory"
-
+	special RemoveCameraObject
 # 416 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_BirdKeeper1::
+	release
 # 417 "data//maps/FortreeCliffs/scripts.pory"
-	trainerbattle_single TRAINER_FORTREE_CLIFFS_BIRDKEEPER_1, FortreeCliffs_Text_BirdKeeper1Intro, FortreeCliffs_Text_BirdKeeper1Defeat
+	end
 # 418 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_BirdKeeper1PostBattle, MSGBOX_AUTOCLOSE
+
 # 419 "data//maps/FortreeCliffs/scripts.pory"
-	end
+FortreeCliffs_EventScript_DidntGiveBerry::
 # 420 "data//maps/FortreeCliffs/scripts.pory"
-
+	return
 # 421 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_Ranger1::
+
 # 422 "data//maps/FortreeCliffs/scripts.pory"
-	trainerbattle_single TRAINER_FORTREE_CLIFFS_RANGER_1, FortreeCliffs_Text_Ranger1Intro, FortreeCliffs_Text_Ranger1Defeat
+FortreeCliffs_EventScript_Ninja1::
 # 423 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_Ranger1PostBattle, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_1, FortreeCliffs_Text_Ninja1Intro, FortreeCliffs_Text_Ninja1Defeat
 # 424 "data//maps/FortreeCliffs/scripts.pory"
-	end
+	msgbox FortreeCliffs_Text_Ninja1PostBattle, MSGBOX_AUTOCLOSE
 # 425 "data//maps/FortreeCliffs/scripts.pory"
-
-# 426 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_EventScript_Ranger2::
-# 427 "data//maps/FortreeCliffs/scripts.pory"
-	trainerbattle_single TRAINER_FORTREE_CLIFFS_RANGER_2, FortreeCliffs_Text_Ranger2Intro, FortreeCliffs_Text_Ranger2Defeat
-# 428 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_Ranger2PostBattle, MSGBOX_AUTOCLOSE
-# 429 "data//maps/FortreeCliffs/scripts.pory"
 	end
+# 426 "data//maps/FortreeCliffs/scripts.pory"
+
+# 427 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_EventScript_Ninja2::
+# 428 "data//maps/FortreeCliffs/scripts.pory"
+	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_2, FortreeCliffs_Text_Ninja2Intro, FortreeCliffs_Text_Ninja2Defeat
+# 429 "data//maps/FortreeCliffs/scripts.pory"
+	msgbox FortreeCliffs_Text_Ninja2PostBattle, MSGBOX_AUTOCLOSE
 # 430 "data//maps/FortreeCliffs/scripts.pory"
-
+	end
 # 431 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Movement_CameraPanUp:
+
 # 432 "data//maps/FortreeCliffs/scripts.pory"
-	walk_up
+FortreeCliffs_EventScript_Ninja3::
 # 433 "data//maps/FortreeCliffs/scripts.pory"
-	walk_up
+	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_3, FortreeCliffs_Text_Ninja3Intro, FortreeCliffs_Text_Ninja3Defeat
 # 434 "data//maps/FortreeCliffs/scripts.pory"
-	walk_up
+	msgbox FortreeCliffs_Text_Ninja3PostBattle, MSGBOX_AUTOCLOSE
 # 435 "data//maps/FortreeCliffs/scripts.pory"
-	walk_up
+	end
 # 436 "data//maps/FortreeCliffs/scripts.pory"
-	step_end
+
 # 437 "data//maps/FortreeCliffs/scripts.pory"
-
+FortreeCliffs_EventScript_Expert1::
 # 438 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Movement_CameraPanDown:
+	trainerbattle_single TRAINER_FORTREE_CLIFFS_EXPERT_1, FortreeCliffs_Text_Expert1Intro, FortreeCliffs_Text_Expert1Defeat
 # 439 "data//maps/FortreeCliffs/scripts.pory"
-	walk_down
+	msgbox FortreeCliffs_Text_Expert1PostBattle, MSGBOX_AUTOCLOSE
 # 440 "data//maps/FortreeCliffs/scripts.pory"
-	walk_down
+	end
 # 441 "data//maps/FortreeCliffs/scripts.pory"
-	walk_down
+
 # 442 "data//maps/FortreeCliffs/scripts.pory"
-	walk_down
+FortreeCliffs_EventScript_Ninja4::
 # 443 "data//maps/FortreeCliffs/scripts.pory"
-	step_end
+	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_4, FortreeCliffs_Text_Ninja4Intro, FortreeCliffs_Text_Ninja4Defeat
 # 444 "data//maps/FortreeCliffs/scripts.pory"
-
+	msgbox FortreeCliffs_Text_Ninja4PostBattle, MSGBOX_AUTOCLOSE
 # 445 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Movement_BraviaryFlyOff:
+	end
 # 446 "data//maps/FortreeCliffs/scripts.pory"
-	walk_up
+
 # 447 "data//maps/FortreeCliffs/scripts.pory"
-	walk_up
+FortreeCliffs_EventScript_Ninja5::
 # 448 "data//maps/FortreeCliffs/scripts.pory"
-	walk_up
+	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_5, FortreeCliffs_Text_Ninja5Intro, FortreeCliffs_Text_Ninja5Defeat
 # 449 "data//maps/FortreeCliffs/scripts.pory"
-	walk_up
+	msgbox FortreeCliffs_Text_Ninja5PostBattle, MSGBOX_AUTOCLOSE
 # 450 "data//maps/FortreeCliffs/scripts.pory"
-	walk_up
+	end
 # 451 "data//maps/FortreeCliffs/scripts.pory"
-	walk_up
+
 # 452 "data//maps/FortreeCliffs/scripts.pory"
-	slide_up
+FortreeCliffs_EventScript_Ninja6::
 # 453 "data//maps/FortreeCliffs/scripts.pory"
-	slide_up
+	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_6, FortreeCliffs_Text_Ninja6Intro, FortreeCliffs_Text_Ninja6Defeat
 # 454 "data//maps/FortreeCliffs/scripts.pory"
-	slide_up
+	msgbox FortreeCliffs_Text_Ninja6PostBattle, MSGBOX_AUTOCLOSE
 # 455 "data//maps/FortreeCliffs/scripts.pory"
-	slide_up
+	end
 # 456 "data//maps/FortreeCliffs/scripts.pory"
-	slide_up
+
 # 457 "data//maps/FortreeCliffs/scripts.pory"
-	slide_up
+FortreeCliffs_EventScript_BirdKeeper1::
 # 458 "data//maps/FortreeCliffs/scripts.pory"
-	slide_up
+	trainerbattle_single TRAINER_FORTREE_CLIFFS_BIRDKEEPER_1, FortreeCliffs_Text_BirdKeeper1Intro, FortreeCliffs_Text_BirdKeeper1Defeat
 # 459 "data//maps/FortreeCliffs/scripts.pory"
-	slide_up
+	msgbox FortreeCliffs_Text_BirdKeeper1PostBattle, MSGBOX_AUTOCLOSE
 # 460 "data//maps/FortreeCliffs/scripts.pory"
-	slide_up
+	end
 # 461 "data//maps/FortreeCliffs/scripts.pory"
-	walk_down
+
 # 462 "data//maps/FortreeCliffs/scripts.pory"
-	step_end
+FortreeCliffs_EventScript_Ranger1::
 # 463 "data//maps/FortreeCliffs/scripts.pory"
-
+	trainerbattle_single TRAINER_FORTREE_CLIFFS_RANGER_1, FortreeCliffs_Text_Ranger1Intro, FortreeCliffs_Text_Ranger1Defeat
 # 464 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Movement_BraviaryJumpUp::
+	msgbox FortreeCliffs_Text_Ranger1PostBattle, MSGBOX_AUTOCLOSE
 # 465 "data//maps/FortreeCliffs/scripts.pory"
-	jump_2_up
+	end
 # 466 "data//maps/FortreeCliffs/scripts.pory"
-	step_end
+
 # 467 "data//maps/FortreeCliffs/scripts.pory"
-
+FortreeCliffs_EventScript_Ranger2::
 # 468 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Movement_BraviaryLands::
+	trainerbattle_single TRAINER_FORTREE_CLIFFS_RANGER_2, FortreeCliffs_Text_Ranger2Intro, FortreeCliffs_Text_Ranger2Defeat
 # 469 "data//maps/FortreeCliffs/scripts.pory"
-	walk_down
+	msgbox FortreeCliffs_Text_Ranger2PostBattle, MSGBOX_AUTOCLOSE
 # 470 "data//maps/FortreeCliffs/scripts.pory"
-	walk_down
+	end
 # 471 "data//maps/FortreeCliffs/scripts.pory"
-	step_end
+
 # 472 "data//maps/FortreeCliffs/scripts.pory"
-
+FortreeCliffs_Movement_CameraPanUp:
 # 473 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_SkepticalBraviary:
+	walk_up
 # 474 "data//maps/FortreeCliffs/scripts.pory"
-	.string "This BRAVIARY is looking at you\n"
+	walk_up
 # 475 "data//maps/FortreeCliffs/scripts.pory"
-	.string "with skepticism.\p"
+	walk_up
 # 476 "data//maps/FortreeCliffs/scripts.pory"
-	.string "Try offering it a BERRY?$"
+	walk_up
 # 477 "data//maps/FortreeCliffs/scripts.pory"
-
+	step_end
 # 478 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_AskingToFly:
+
 # 479 "data//maps/FortreeCliffs/scripts.pory"
-	.string "BRAVIARY is looking at you\n"
+FortreeCliffs_Movement_CameraPanDown:
 # 480 "data//maps/FortreeCliffs/scripts.pory"
-	.string "approvingly.\p"
+	walk_down
 # 481 "data//maps/FortreeCliffs/scripts.pory"
-	.string "Try asking for help navigating the\n" 
+	walk_down
 # 482 "data//maps/FortreeCliffs/scripts.pory"
-	.string "cliffs?$"
+	walk_down
 # 483 "data//maps/FortreeCliffs/scripts.pory"
-
+	walk_down
 # 484 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_BraviaryUninterested:
+	step_end
 # 485 "data//maps/FortreeCliffs/scripts.pory"
-	.string "BRAVIARY doesn't seem interested\n"
+
 # 486 "data//maps/FortreeCliffs/scripts.pory"
-	.string "this berry…$"
+FortreeCliffs_Movement_BraviaryFlyOff:
 # 487 "data//maps/FortreeCliffs/scripts.pory"
-
+	walk_up
 # 488 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_BadVibeRock:
+	walk_up
 # 489 "data//maps/FortreeCliffs/scripts.pory"
-	.string "This rock gives off a bad vibe…$"
+	walk_up
 # 490 "data//maps/FortreeCliffs/scripts.pory"
-
+	walk_up
 # 491 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_FlewToTheNextNest:
+	walk_up
 # 492 "data//maps/FortreeCliffs/scripts.pory"
-	.string "BRAVIARY flew to another nest…$"
+	walk_up
 # 493 "data//maps/FortreeCliffs/scripts.pory"
-
+	slide_up
 # 494 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_WantsYouToFollow:
+	slide_up
 # 495 "data//maps/FortreeCliffs/scripts.pory"
-	.string "BRAVIARY flew to another nest…\p"
+	slide_up
 # 496 "data//maps/FortreeCliffs/scripts.pory"
-	.string "but it looks like it wants you to follow!$"
+	slide_up
 # 497 "data//maps/FortreeCliffs/scripts.pory"
-
+	slide_up
 # 498 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_BraviaryAcceptedBerry:
+	slide_up
 # 499 "data//maps/FortreeCliffs/scripts.pory"
-	.string "BRAVIARY accepted the {STR_VAR_1}.$"
+	slide_up
 # 500 "data//maps/FortreeCliffs/scripts.pory"
-
+	slide_up
 # 501 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_GaveFirstBerry:
+	slide_up
 # 502 "data//maps/FortreeCliffs/scripts.pory"
-	.string "The harsh look in BRAVIARY's eyes\n"
+	walk_down
 # 503 "data//maps/FortreeCliffs/scripts.pory"
-	.string "softened a bit.\p"
+	step_end
 # 504 "data//maps/FortreeCliffs/scripts.pory"
-	.string "You may be able to gain its trust!$"
+
 # 505 "data//maps/FortreeCliffs/scripts.pory"
-
+FortreeCliffs_Movement_BraviaryJumpUp::
 # 506 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_GaveSecondBerry:
+	jump_2_up
 # 507 "data//maps/FortreeCliffs/scripts.pory"
-	.string "BRAVIARY seems a bit more relaxed\n"
+	step_end
 # 508 "data//maps/FortreeCliffs/scripts.pory"
-	.string "in your presence.$"
+
 # 509 "data//maps/FortreeCliffs/scripts.pory"
-
+FortreeCliffs_Movement_BraviaryLands::
 # 510 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_GaveThirdBerry:
+	walk_down
 # 511 "data//maps/FortreeCliffs/scripts.pory"
-	.string "BRAVIARY is looking at you approvingly!$"
+	walk_down
 # 512 "data//maps/FortreeCliffs/scripts.pory"
-
+	step_end
 # 513 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Winona1:
+
 # 514 "data//maps/FortreeCliffs/scripts.pory"
-	.string "… … … … … …$"
+FortreeCliffs_Text_SkepticalBraviary:
 # 515 "data//maps/FortreeCliffs/scripts.pory"
-
+	.string "This BRAVIARY is looking at you\n"
 # 516 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Winona2:
+	.string "with skepticism.\p"
 # 517 "data//maps/FortreeCliffs/scripts.pory"
-	.string "I train atop these cliffs\n"
+	.string "Try offering it a BERRY?$"
 # 518 "data//maps/FortreeCliffs/scripts.pory"
-	.string "because of my devotion to reaching\l"
+
 # 519 "data//maps/FortreeCliffs/scripts.pory"
-	.string "the greatest heights.\p"
+FortreeCliffs_Text_AskingToFly:
 # 520 "data//maps/FortreeCliffs/scripts.pory"
-	.string "Very few TRAINERS ever soar so high\n"
+	.string "BRAVIARY is looking at you\n"
 # 521 "data//maps/FortreeCliffs/scripts.pory"
-	.string "above FORTREE's thick forests and\l"
+	.string "approvingly.\p"
 # 522 "data//maps/FortreeCliffs/scripts.pory"
-	.string "steep cliffs.$"
+	.string "Try asking for help navigating the\n" 
 # 523 "data//maps/FortreeCliffs/scripts.pory"
-
+	.string "cliffs?$"
 # 524 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Winona3:
-# 525 "data//maps/FortreeCliffs/scripts.pory"
-	.string "Take this and meet me at my gym if you\n"
-# 526 "data//maps/FortreeCliffs/scripts.pory"
-	.string "think you're up to the challenge.$"
-# 527 "data//maps/FortreeCliffs/scripts.pory"
 
+# 525 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_Text_BraviaryUninterested:
+# 526 "data//maps/FortreeCliffs/scripts.pory"
+	.string "BRAVIARY doesn't seem interested\n"
+# 527 "data//maps/FortreeCliffs/scripts.pory"
+	.string "this berry…$"
 # 528 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Winona3a:
+
 # 529 "data//maps/FortreeCliffs/scripts.pory"
-	.string "If you made it here, then perhaps you\n" 
+FortreeCliffs_Text_BadVibeRock:
 # 530 "data//maps/FortreeCliffs/scripts.pory"
-	.string "are ready to fly.$"
+	.string "This rock gives off a bad vibe…$"
 # 531 "data//maps/FortreeCliffs/scripts.pory"
 
 # 532 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Winona4:
+FortreeCliffs_Text_FlewToTheNextNest:
 # 533 "data//maps/FortreeCliffs/scripts.pory"
-	.string "Until we meet again, {PLAYER}.$"
+	.string "BRAVIARY flew to another nest…$"
 # 534 "data//maps/FortreeCliffs/scripts.pory"
 
 # 535 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Ninja1Intro:
+FortreeCliffs_Text_WantsYouToFollow:
 # 536 "data//maps/FortreeCliffs/scripts.pory"
-	.string "Our grandpa is annoying as heck!$"
+	.string "BRAVIARY flew to another nest…\p"
 # 537 "data//maps/FortreeCliffs/scripts.pory"
-
+	.string "but it looks like it wants you to follow!$"
 # 538 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Ninja1PostBattle:
+
 # 539 "data//maps/FortreeCliffs/scripts.pory"
-	.string "Ha! Idiot!$"
+FortreeCliffs_Text_BraviaryAcceptedBerry:
 # 540 "data//maps/FortreeCliffs/scripts.pory"
-
+	.string "BRAVIARY accepted the {STR_VAR_1}.$"
 # 541 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Ninja1Defeat:
-# 542 "data//maps/FortreeCliffs/scripts.pory"
-	.string "You're annoying too!$"
-# 543 "data//maps/FortreeCliffs/scripts.pory"
 
+# 542 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_Text_GaveFirstBerry:
+# 543 "data//maps/FortreeCliffs/scripts.pory"
+	.string "The harsh look in BRAVIARY's eyes\n"
 # 544 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Ninja2Intro:
+	.string "softened a bit.\p"
 # 545 "data//maps/FortreeCliffs/scripts.pory"
-	.string "Our grandpa is annoying as heck!$"
+	.string "You may be able to gain its trust!$"
 # 546 "data//maps/FortreeCliffs/scripts.pory"
 
 # 547 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Ninja2PostBattle:
+FortreeCliffs_Text_GaveSecondBerry:
 # 548 "data//maps/FortreeCliffs/scripts.pory"
-	.string "Ha! Idiot!$"
+	.string "BRAVIARY seems a bit more relaxed\n"
 # 549 "data//maps/FortreeCliffs/scripts.pory"
-
+	.string "in your presence.$"
 # 550 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Ninja2Defeat:
+
 # 551 "data//maps/FortreeCliffs/scripts.pory"
-	.string "You're annoying too!$"
+FortreeCliffs_Text_GaveThirdBerry:
 # 552 "data//maps/FortreeCliffs/scripts.pory"
-
+	.string "BRAVIARY is looking at you approvingly!$"
 # 553 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Ninja3Intro:
+
 # 554 "data//maps/FortreeCliffs/scripts.pory"
-	.string "Our grandpa is annoying as heck!$"
+FortreeCliffs_Text_Winona1:
 # 555 "data//maps/FortreeCliffs/scripts.pory"
-
+	.string "… … … … … …$"
 # 556 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Ninja3PostBattle:
+
 # 557 "data//maps/FortreeCliffs/scripts.pory"
-	.string "Ha! Idiot!$"
+FortreeCliffs_Text_Winona2:
 # 558 "data//maps/FortreeCliffs/scripts.pory"
-
+	.string "I train atop these cliffs\n"
 # 559 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Ninja3Defeat:
+	.string "because of my devotion to reaching\l"
 # 560 "data//maps/FortreeCliffs/scripts.pory"
-	.string "You're annoying too!$"
+	.string "the greatest heights.\p"
 # 561 "data//maps/FortreeCliffs/scripts.pory"
-
+	.string "Very few TRAINERS ever soar so high\n"
 # 562 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Ninja4Intro:
+	.string "above FORTREE's thick forests and\l"
 # 563 "data//maps/FortreeCliffs/scripts.pory"
-	.string "Surprise! I've been studying KECLEON!$"
+	.string "steep cliffs.$"
 # 564 "data//maps/FortreeCliffs/scripts.pory"
 
 # 565 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Ninja4PostBattle:
+FortreeCliffs_Text_Winona3:
 # 566 "data//maps/FortreeCliffs/scripts.pory"
-	.string "My camouflage is perfect!$"
+	.string "Take this and meet me at my gym if you\n"
 # 567 "data//maps/FortreeCliffs/scripts.pory"
-
+	.string "think you're up to the challenge.$"
 # 568 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Ninja4Defeat:
+
 # 569 "data//maps/FortreeCliffs/scripts.pory"
-	.string "$"
+FortreeCliffs_Text_Winona3a:
 # 570 "data//maps/FortreeCliffs/scripts.pory"
-
+	.string "If you made it here, then perhaps you\n" 
 # 571 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Ninja5Intro:
+	.string "are ready to fly.$"
 # 572 "data//maps/FortreeCliffs/scripts.pory"
-	.string "I'm the star pupil!$"
+
 # 573 "data//maps/FortreeCliffs/scripts.pory"
-
+FortreeCliffs_Text_Winona4:
 # 574 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Ninja5PostBattle:
+	.string "Until we meet again, {PLAYER}.$"
 # 575 "data//maps/FortreeCliffs/scripts.pory"
-	.string "That's why I'm Grandpa's favorite!$"
+
 # 576 "data//maps/FortreeCliffs/scripts.pory"
-
+FortreeCliffs_Text_Ninja1Intro:
 # 577 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Ninja5Defeat:
+	.string "Our grandpa is annoying as heck!$"
 # 578 "data//maps/FortreeCliffs/scripts.pory"
-	.string "I'm such a disappointment…$"
+
 # 579 "data//maps/FortreeCliffs/scripts.pory"
-
+FortreeCliffs_Text_Ninja1PostBattle:
 # 580 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Ninja6Intro:
+	.string "Ha! Idiot!$"
 # 581 "data//maps/FortreeCliffs/scripts.pory"
-	.string "I'm trying to take it easy here!$"
+
 # 582 "data//maps/FortreeCliffs/scripts.pory"
-
+FortreeCliffs_Text_Ninja1Defeat:
 # 583 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Ninja6PostBattle:
+	.string "You're annoying too!$"
 # 584 "data//maps/FortreeCliffs/scripts.pory"
-	.string "Resting pays off just as much as training.$"
+
 # 585 "data//maps/FortreeCliffs/scripts.pory"
-
+FortreeCliffs_Text_Ninja2Intro:
 # 586 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Ninja6Defeat:
+	.string "Our grandpa is annoying as heck!$"
 # 587 "data//maps/FortreeCliffs/scripts.pory"
-	.string "I guess I should be trying harder…$"
+
 # 588 "data//maps/FortreeCliffs/scripts.pory"
-
+FortreeCliffs_Text_Ninja2PostBattle:
 # 589 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Expert1Intro:
+	.string "Ha! Idiot!$"
 # 590 "data//maps/FortreeCliffs/scripts.pory"
-	.string "Training my grandchildren is rewarding,\n"
+
 # 591 "data//maps/FortreeCliffs/scripts.pory"
-	.string "but they can also be quite irksome!$"
+FortreeCliffs_Text_Ninja2Defeat:
 # 592 "data//maps/FortreeCliffs/scripts.pory"
-
+	.string "You're annoying too!$"
 # 593 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Expert1PostBattle:
+
 # 594 "data//maps/FortreeCliffs/scripts.pory"
-	.string "I'm always dealing with children…$"
+FortreeCliffs_Text_Ninja3Intro:
 # 595 "data//maps/FortreeCliffs/scripts.pory"
-
+	.string "Our grandpa is annoying as heck!$"
 # 596 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Expert1Defeat:
+
 # 597 "data//maps/FortreeCliffs/scripts.pory"
-	.string "Finally, a fellow adult!$"
+FortreeCliffs_Text_Ninja3PostBattle:
 # 598 "data//maps/FortreeCliffs/scripts.pory"
-
+	.string "Ha! Idiot!$"
 # 599 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Ranger1Intro:
-# 600 "data//maps/FortreeCliffs/scripts.pory"
-	.string "Do you have the right berries?$"
-# 601 "data//maps/FortreeCliffs/scripts.pory"
 
+# 600 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_Text_Ninja3Defeat:
+# 601 "data//maps/FortreeCliffs/scripts.pory"
+	.string "You're annoying too!$"
 # 602 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Ranger1PostBattle:
+
 # 603 "data//maps/FortreeCliffs/scripts.pory"
-	.string "Collect more berries, and learn their\n"
+FortreeCliffs_Text_Ninja4Intro:
 # 604 "data//maps/FortreeCliffs/scripts.pory"
-	.string "effects.$"
+	.string "Surprise! I've been studying KECLEON!$"
 # 605 "data//maps/FortreeCliffs/scripts.pory"
 
 # 606 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Ranger1Defeat:
+FortreeCliffs_Text_Ninja4PostBattle:
 # 607 "data//maps/FortreeCliffs/scripts.pory"
-	.string "I need more berries now!$"
+	.string "My camouflage is perfect!$"
 # 608 "data//maps/FortreeCliffs/scripts.pory"
 
 # 609 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Ranger2Intro:
+FortreeCliffs_Text_Ninja4Defeat:
 # 610 "data//maps/FortreeCliffs/scripts.pory"
-	.string "Are you prepared for this terrain?$"
+	.string "$"
 # 611 "data//maps/FortreeCliffs/scripts.pory"
 
 # 612 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Ranger2PostBattle:
+FortreeCliffs_Text_Ninja5Intro:
 # 613 "data//maps/FortreeCliffs/scripts.pory"
-	.string "Before exploring far from town,\n"
+	.string "I'm the star pupil!$"
 # 614 "data//maps/FortreeCliffs/scripts.pory"
-	.string "double check your supplies!$"
+
 # 615 "data//maps/FortreeCliffs/scripts.pory"
-
+FortreeCliffs_Text_Ninja5PostBattle:
 # 616 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_Ranger2Defeat:
+	.string "That's why I'm Grandpa's favorite!$"
 # 617 "data//maps/FortreeCliffs/scripts.pory"
-	.string "I wasn't prepared for this!$"
+
 # 618 "data//maps/FortreeCliffs/scripts.pory"
-
+FortreeCliffs_Text_Ninja5Defeat:
 # 619 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_BirdKeeper1Intro:
+	.string "I'm such a disappointment…$"
 # 620 "data//maps/FortreeCliffs/scripts.pory"
-	.string "WINONA trains here, on the highest cliffs!$"
+
 # 621 "data//maps/FortreeCliffs/scripts.pory"
-
+FortreeCliffs_Text_Ninja6Intro:
 # 622 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_BirdKeeper1PostBattle:
+	.string "I'm trying to take it easy here!$"
 # 623 "data//maps/FortreeCliffs/scripts.pory"
-	.string "I simply mirrored WINONA's training.$"
-# 624 "data//maps/FortreeCliffs/scripts.pory"
 
+# 624 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_Text_Ninja6PostBattle:
 # 625 "data//maps/FortreeCliffs/scripts.pory"
-FortreeCliffs_Text_BirdKeeper1Defeat:
+	.string "Resting pays off just as much as training.$"
 # 626 "data//maps/FortreeCliffs/scripts.pory"
-	.string "How does WINONA fly so high?\p"
+
 # 627 "data//maps/FortreeCliffs/scripts.pory"
-	.string "She is friends with powerful\n"
+FortreeCliffs_Text_Ninja6Defeat:
 # 628 "data//maps/FortreeCliffs/scripts.pory"
+	.string "I guess I should be trying harder…$"
+# 629 "data//maps/FortreeCliffs/scripts.pory"
+
+# 630 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_Text_Expert1Intro:
+# 631 "data//maps/FortreeCliffs/scripts.pory"
+	.string "Training my grandchildren is rewarding,\n"
+# 632 "data//maps/FortreeCliffs/scripts.pory"
+	.string "but they can also be quite irksome!$"
+# 633 "data//maps/FortreeCliffs/scripts.pory"
+
+# 634 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_Text_Expert1PostBattle:
+# 635 "data//maps/FortreeCliffs/scripts.pory"
+	.string "I'm always dealing with children…$"
+# 636 "data//maps/FortreeCliffs/scripts.pory"
+
+# 637 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_Text_Expert1Defeat:
+# 638 "data//maps/FortreeCliffs/scripts.pory"
+	.string "Finally, a fellow adult!$"
+# 639 "data//maps/FortreeCliffs/scripts.pory"
+
+# 640 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_Text_Ranger1Intro:
+# 641 "data//maps/FortreeCliffs/scripts.pory"
+	.string "Do you have the right berries?$"
+# 642 "data//maps/FortreeCliffs/scripts.pory"
+
+# 643 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_Text_Ranger1PostBattle:
+# 644 "data//maps/FortreeCliffs/scripts.pory"
+	.string "Collect more berries, and learn their\n"
+# 645 "data//maps/FortreeCliffs/scripts.pory"
+	.string "effects.$"
+# 646 "data//maps/FortreeCliffs/scripts.pory"
+
+# 647 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_Text_Ranger1Defeat:
+# 648 "data//maps/FortreeCliffs/scripts.pory"
+	.string "I need more berries now!$"
+# 649 "data//maps/FortreeCliffs/scripts.pory"
+
+# 650 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_Text_Ranger2Intro:
+# 651 "data//maps/FortreeCliffs/scripts.pory"
+	.string "Are you prepared for this terrain?$"
+# 652 "data//maps/FortreeCliffs/scripts.pory"
+
+# 653 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_Text_Ranger2PostBattle:
+# 654 "data//maps/FortreeCliffs/scripts.pory"
+	.string "Before exploring far from town,\n"
+# 655 "data//maps/FortreeCliffs/scripts.pory"
+	.string "double check your supplies!$"
+# 656 "data//maps/FortreeCliffs/scripts.pory"
+
+# 657 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_Text_Ranger2Defeat:
+# 658 "data//maps/FortreeCliffs/scripts.pory"
+	.string "I wasn't prepared for this!$"
+# 659 "data//maps/FortreeCliffs/scripts.pory"
+
+# 660 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_Text_BirdKeeper1Intro:
+# 661 "data//maps/FortreeCliffs/scripts.pory"
+	.string "WINONA trains here, on the highest cliffs!$"
+# 662 "data//maps/FortreeCliffs/scripts.pory"
+
+# 663 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_Text_BirdKeeper1PostBattle:
+# 664 "data//maps/FortreeCliffs/scripts.pory"
+	.string "I simply mirrored WINONA's training.$"
+# 665 "data//maps/FortreeCliffs/scripts.pory"
+
+# 666 "data//maps/FortreeCliffs/scripts.pory"
+FortreeCliffs_Text_BirdKeeper1Defeat:
+# 667 "data//maps/FortreeCliffs/scripts.pory"
+	.string "How does WINONA fly so high?\p"
+# 668 "data//maps/FortreeCliffs/scripts.pory"
+	.string "She is friends with powerful\n"
+# 669 "data//maps/FortreeCliffs/scripts.pory"
 	.string "BIRD POKéMON!$"

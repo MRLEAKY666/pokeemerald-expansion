@@ -3,10 +3,41 @@ raw`
 FortreeCliffs_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, FortreeCliffs_OnResume
 	map_script MAP_SCRIPT_ON_TRANSITION, FortreeCliffs_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, FortreeCliffs_OnFrame
 	.byte 0
+
+FortreeCliffs_OnFrame:
+	map_script_2 VAR_TIME_OF_DAY, 2, FortreeCliffs_EventScript_SwitchToDaytime
+	map_script_2 VAR_TIME_OF_DAY, 4, FortreeCliffs_EventScript_SwitchToNighttime
+	.2byte 0
 
 FortreeCliffs_OnResume:
 	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, FortreeCliffs_EventScript_TryRemoveWildMons
+	end
+
+FortreeCliffs_OnTransition:
+	@ call FortreeCliffs_EventScript_ResetWildMons
+	call FortreeCliffs_EventScript_BraviaryOnTransitionSwitch
+	end
+
+FortreeCliffs_EventScript_SwitchToDaytime::
+	addvar VAR_TIME_OF_DAY, 1
+	getplayerxy VAR_TEMP_E, VAR_TEMP_F
+	goto_if_le VAR_TEMP_F, 87, FortreeCliffs_EventScript_SetSunElevationCheck
+	end
+
+FortreeCliffs_EventScript_SwitchToNighttime::
+	addvar VAR_TIME_OF_DAY, 1
+	getplayerxy VAR_TEMP_E, VAR_TEMP_F
+	goto_if_le VAR_TEMP_F, 87, FortreeCliffs_EventScript_ClearSunElevationCheck
+	end
+
+FortreeCliffs_EventScript_SetSunElevationCheck::
+	goto_if_ge VAR_TEMP_F, 40, FortreeCliffs_EventScript_SetSun
+	end
+
+FortreeCliffs_EventScript_ClearSunElevationCheck::
+	goto_if_ge VAR_TEMP_F, 40, FortreeCliffs_EventScript_ClearSun
 	end
 
 FortreeCliffs_EventScript_TryRemoveWildMons::
@@ -15,11 +46,6 @@ FortreeCliffs_EventScript_TryRemoveWildMons::
 	removeobject VAR_LAST_TALKED
 	return
 
-FortreeCliffs_OnTransition:
-	@ call FortreeCliffs_EventScript_ResetWildMons
-	call FortreeCliffs_EventScript_BraviaryOnTransitionSwitch
-	end
-
 FortreeCliffs_EventScript_BraviaryOnTransitionSwitch::
 	switch VAR_FORTREE_CLIFFS_BIRD_LOCATION                                                 @ place objects at correct spot when map loads
 	case 0, FortreeCliffs_EventScript_PlaceBraviaryAtNest1
@@ -27,6 +53,21 @@ FortreeCliffs_EventScript_BraviaryOnTransitionSwitch::
 	case 2, FortreeCliffs_EventScript_PlaceBraviaryAtNest3
 	case 3, FortreeCliffs_EventScript_PlaceBraviaryAtNest4
 	case 4, FortreeCliffs_EventScript_PlaceBraviaryAtNest5                                           
+	return
+
+FortreeCliffs_EventScript_TrySetSun::
+	call_if_le VAR_TIME_OF_DAY, 3, FortreeCliffs_EventScript_SetSun
+	call_if_ge VAR_TIME_OF_DAY, 4, FortreeCliffs_EventScript_ClearSun
+	end
+
+FortreeCliffs_EventScript_SetSun::
+	setweather WEATHER_SUNNY_CLOUDS
+	doweather
+	return
+
+FortreeCliffs_EventScript_ClearSun::
+	setweather WEATHER_NONE
+	doweather
 	return
 
 FortreeCliffs_EventScript_Winona::

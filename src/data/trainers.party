@@ -19130,6 +19130,40 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Brave Bird
 - Swords Dance
 
+=== TRAINER_MISTCLAD_COVE_NINJA_1 ===
+Name: NAME-ME
+Class: Ninja Boy
+Pic: Ninja Boy 
+Gender: Male
+Music: Suspicious
+Double Battle: No
+AI: Basic Trainer
+
+Nuzleaf
+Level: 30
+Ability: Chlorophyll
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Faint Attack
+- Solar Beam
+- Synthesis
+- Nasty Plot
+
+Koffing
+Level: 32
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Selfdestruct
+- Swagger
+- Clear Smog
+- Grudge
+
+Castform
+Level: 34
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Ember
+- Scald
+- Solar Beam
+- Hex
+
 === TRAINER_RED ===
 Name: RED
 Class: Rival

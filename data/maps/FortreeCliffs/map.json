@@ -503,41 +503,6 @@
     },
     {
       "type": "weather",
-      "x": 39,
-      "y": 85,
-      "elevation": 0,
-      "weather": "COORD_EVENT_WEATHER_SUNNY_CLOUDS"
-    },
-    {
-      "type": "weather",
-      "x": 39,
-      "y": 83,
-      "elevation": 0,
-      "weather": "COORD_EVENT_WEATHER_SUNNY_CLOUDS"
-    },
-    {
-      "type": "weather",
-      "x": 39,
-      "y": 82,
-      "elevation": 0,
-      "weather": "COORD_EVENT_WEATHER_SUNNY_CLOUDS"
-    },
-    {
-      "type": "weather",
-      "x": 31,
-      "y": 60,
-      "elevation": 0,
-      "weather": "COORD_EVENT_WEATHER_SUNNY_CLOUDS"
-    },
-    {
-      "type": "weather",
-      "x": 17,
-      "y": 42,
-      "elevation": 0,
-      "weather": "COORD_EVENT_WEATHER_SUNNY_CLOUDS"
-    },
-    {
-      "type": "weather",
       "x": 20,
       "y": 1,
       "elevation": 0,
@@ -602,13 +567,6 @@
     {
       "type": "weather",
       "x": 28,
-      "y": 40,
-      "elevation": 0,
-      "weather": "COORD_EVENT_WEATHER_SUNNY_CLOUDS"
-    },
-    {
-      "type": "weather",
-      "x": 28,
       "y": 38,
       "elevation": 0,
       "weather": "COORD_EVENT_WEATHER_RAIN_THUNDERSTORM"
@@ -626,6 +584,81 @@
       "y": 90,
       "elevation": 0,
       "weather": "COORD_EVENT_WEATHER_FOG_HORIZONTAL"
+    },
+    {
+      "type": "trigger",
+      "x": 17,
+      "y": 42,
+      "elevation": 0,
+      "var": "NULL",
+      "var_value": "0",
+      "script": "FortreeCliffs_EventScript_TrySetSun"
+    },
+    {
+      "type": "trigger",
+      "x": 31,
+      "y": 60,
+      "elevation": 0,
+      "var": "NULL",
+      "var_value": "0",
+      "script": "FortreeCliffs_EventScript_TrySetSun"
+    },
+    {
+      "type": "trigger",
+      "x": 39,
+      "y": 82,
+      "elevation": 0,
+      "var": "NULL",
+      "var_value": "0",
+      "script": "FortreeCliffs_EventScript_TrySetSun"
+    },
+    {
+      "type": "trigger",
+      "x": 39,
+      "y": 83,
+      "elevation": 0,
+      "var": "NULL",
+      "var_value": "0",
+      "script": "FortreeCliffs_EventScript_TrySetSun"
+    },
+    {
+      "type": "trigger",
+      "x": 39,
+      "y": 85,
+      "elevation": 0,
+      "var": "NULL",
+      "var_value": "0",
+      "script": "FortreeCliffs_EventScript_TrySetSun"
+    },
+    {
+      "type": "weather",
+      "x": 0,
+      "y": 91,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_SUNNY"
+    },
+    {
+      "type": "weather",
+      "x": 0,
+      "y": 92,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_SUNNY"
+    },
+    {
+      "type": "weather",
+      "x": 0,
+      "y": 93,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_SUNNY"
+    },
+    {
+      "type": "trigger",
+      "x": 28,
+      "y": 40,
+      "elevation": 0,
+      "var": "NULL",
+      "var_value": "0",
+      "script": "FortreeCliffs_EventScript_TrySetSun"
     }
   ],
   "bg_events": []

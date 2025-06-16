@@ -36,7 +36,7 @@
   ],
   "object_events": [
     {
-      "local_id": "LOCALID_MISTCLADCOVE_RIVAL",
+      "local_id": "LOCALID_MISTCLAD_COVE_RIVAL",
       "graphics_id": "OBJ_EVENT_GFX_VAR_0",
       "x": 30,
       "y": 27,
@@ -46,10 +46,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "MistcladCove_EventScript_Rival",
+      "flag": "FLAG_MISTCLAD_COVE_RIVAL"
     },
     {
+      "local_id": "LOCALID_MISTCLAD_COVE_KECLEON_1",
       "graphics_id": "OBJ_EVENT_GFX_KECLEON",
       "x": 11,
       "y": 16,
@@ -59,10 +60,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "MistcladCove_EventScript_Kecleon1",
+      "flag": "FLAG_MISTCLAD_COVE_KECLEON_1"
     },
     {
+      "local_id": "LOCALID_MISTCLAD_COVE_KECLEON_2",
       "graphics_id": "OBJ_EVENT_GFX_KECLEON",
       "x": 1,
       "y": 3,
@@ -72,10 +74,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "MistcladCove_EventScript_Kecleon2",
+      "flag": "FLAG_MISTCLAD_COVE_KECLEON_2"
     },
     {
+      "local_id": "LOCALID_MISTCLAD_COVE_NINJA_1",
       "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
       "x": 0,
       "y": 1,
@@ -85,7 +88,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_BURIED",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "MistcladCove_EventScript_Ninja1",
       "flag": "0"
     }
   ],
@@ -93,17 +96,28 @@
   "coord_events": [
     {
       "type": "weather",
+      "x": 9,
+      "y": 17,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_FOG_HORIZONTAL"
+    },
+    {
+      "type": "trigger",
+      "x": 0,
+      "y": 3,
+      "elevation": 0,
+      "var": "NULL",
+      "var_value": "0",
+      "script": "MistcladCove_EventScript_TrySetSun"
+    },
+    {
+      "type": "trigger",
       "x": 10,
       "y": 14,
       "elevation": 0,
-      "weather": "COORD_EVENT_WEATHER_SUNNY_CLOUDS"
-    },
-    {
-      "type": "weather",
-      "x": 12,
-      "y": 16,
-      "elevation": 0,
-      "weather": "COORD_EVENT_WEATHER_FOG_HORIZONTAL"
+      "var": "NULL",
+      "var_value": "0",
+      "script": "MistcladCove_EventScript_TrySetSun"
     }
   ],
   "bg_events": []

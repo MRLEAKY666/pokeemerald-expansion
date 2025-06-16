@@ -738,9 +738,9 @@
 #define FLAG_UNUSED_0x2B3  0x2B3 // Unused Flag
 #define FLAG_FORTREE_CLIFFS_NEST_1  0x2B4 // previously Unused Flag
 #define FLAG_FORTREE_CLIFFS_WINONA  0x2B5 // previously Unused Flag
-#define FLAG_UNUSED_0x2B6  0x2B6 // Unused Flag
-#define FLAG_UNUSED_0x2B7  0x2B7 // Unused Flag
-#define FLAG_UNUSED_0x2B8  0x2B8 // Unused Flag
+#define FLAG_MISTCLAD_COVE_KECLEON_1  0x2B6 // previously Unused Flag
+#define FLAG_MISTCLAD_COVE_KECLEON_2  0x2B7 // previously Unused Flag
+#define FLAG_MISTCLAD_COVE_RIVAL  0x2B8 // previously Unused Flag
 #define FLAG_HIDE_FORTREE_WOODS_RAYQUAZA  0x2B9 // PREVIOUSLY Unused Flag
 #define FLAG_HIDE_ZAPDOS  0x2BA // PREVIOUSLY Unused Flag
 #define FLAG_HIDE_MOLTRES  0x2BB // PREVIOUSLY Unused Flag

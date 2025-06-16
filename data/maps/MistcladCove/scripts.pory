@@ -1,6 +1,250 @@
 raw`
 
 MistcladCove_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, MistcladCove_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, MistcladCove_OnResume
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, MistcladCove_OnFrame
 	.byte 0
+
+MistcladCove_OnFrame:
+	map_script_2 VAR_TIME_OF_DAY, 2, MistcladCove_EventScript_SwitchToDaytime
+	map_script_2 VAR_TIME_OF_DAY, 4, MistcladCove_EventScript_SwitchToNighttime
+	.2byte 0
+
+MistcladCove_EventScript_SwitchToDaytime::
+	addvar VAR_TIME_OF_DAY, 1
+	getplayerxy VAR_TEMP_E, VAR_TEMP_F
+	goto_if_le VAR_TEMP_F, 16, MistcladCove_EventScript_SetSun
+	end
+
+MistcladCove_EventScript_SwitchToNighttime::
+	addvar VAR_TIME_OF_DAY, 1
+	getplayerxy VAR_TEMP_E, VAR_TEMP_F
+	goto_if_le VAR_TEMP_F, 16, MistcladCove_EventScript_ClearSun
+	end
+
+MistcladCove_OnTransition::
+	call Common_EventScript_SetupRivalGfxId
+	end
+
+MistcladCove_OnResume:
+	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, MistcladCove_EventScript_TryRemoveWildMons
+	end
+
+MistcladCove_EventScript_TryRemoveWildMons::
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
+	removeobject VAR_LAST_TALKED
+	return
+
+MistcladCove_EventScript_TrySetSun::
+	call_if_le VAR_TIME_OF_DAY, 3, MistcladCove_EventScript_SetSun
+	call_if_ge VAR_TIME_OF_DAY, 4, MistcladCove_EventScript_ClearSun
+	end
+
+MistcladCove_EventScript_SetSun::
+	setweather WEATHER_SUNNY_CLOUDS
+	doweather
+	return
+
+MistcladCove_EventScript_ClearSun::
+	setweather WEATHER_NONE
+	doweather
+	return
+
+MistcladCove_EventScript_Rival::
+	lock
+	faceplayer
+	fadeoutbgm 2
+	msgbox MistcladCove_Text_Rival_A, MSGBOX_DEFAULT
+	closemessage
+	delay 60
+	msgbox MistcladCove_Text_Rival_B, MSGBOX_DEFAULT
+	getobjectfacingdirection LOCALID_MISTCLAD_COVE_RIVAL, VAR_RESULT
+	switch VAR_RESULT
+	case DIR_NORTH, MistcladCove_EventScript_RivalLeavesNorth
+	case DIR_SOUTH, MistcladCove_EventScript_RivalLeavesSouth
+	case DIR_EAST, MistcladCove_EventScript_RivalLeavesEast
+	case DIR_WEST, MistcladCove_EventScript_RivalLeavesWest
+	end
+
+MistcladCove_EventScript_RivalLeavesNorth::
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceRight
+	waitmovement
+	delay 20
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceLeft
+	waitmovement
+	delay 30
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FacePlayer
+	waitmovement
+	delay 30
+	msgbox MistcladCove_Text_Rival_C, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_WalkInPlaceUp
+	waitmovement
+	giveitem ITEM_DEVON_SCOPE
+	msgbox MistcladCove_Text_Rival_D, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceDown
+	waitmovement
+	delay 60
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FacePlayer
+	waitmovement
+	msgbox MistcladCove_Text_Rival_E, MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	setfieldeffectargument 0, 1
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	delay 15
+	removeobject VAR_LAST_TALKED
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+	fadeinbgm 1
+	release
+	end
+
+MistcladCove_EventScript_RivalLeavesSouth::
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceRight
+	waitmovement
+	delay 20
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceLeft
+	waitmovement
+	delay 30
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FacePlayer
+	waitmovement
+	delay 30
+	msgbox MistcladCove_Text_Rival_C, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_WalkInPlaceDown
+	waitmovement
+	giveitem ITEM_DEVON_SCOPE
+	msgbox MistcladCove_Text_Rival_D, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceUp
+	waitmovement
+	delay 60
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FacePlayer
+	waitmovement
+	msgbox MistcladCove_Text_Rival_E, MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	setfieldeffectargument 0, 1
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	delay 15
+	removeobject VAR_LAST_TALKED
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+	fadeinbgm 1
+	release
+	end
+
+MistcladCove_EventScript_RivalLeavesEast::
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceUp
+	waitmovement
+	delay 20
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceDown
+	waitmovement
+	delay 30
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FacePlayer
+	waitmovement
+	delay 30
+	msgbox MistcladCove_Text_Rival_C, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_WalkInPlaceRight
+	waitmovement
+	giveitem ITEM_DEVON_SCOPE
+	msgbox MistcladCove_Text_Rival_D, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceLeft
+	waitmovement
+	delay 60
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FacePlayer
+	waitmovement
+	msgbox MistcladCove_Text_Rival_E, MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	setfieldeffectargument 0, 1
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	delay 15
+	removeobject VAR_LAST_TALKED
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+	fadeinbgm 1
+	release
+	end
+
+MistcladCove_EventScript_RivalLeavesWest::
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceUp
+	waitmovement
+	delay 20
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceDown
+	waitmovement
+	delay 30
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FacePlayer
+	waitmovement
+	delay 30
+	msgbox MistcladCove_Text_Rival_C, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_WalkInPlaceLeft
+	waitmovement
+	giveitem ITEM_DEVON_SCOPE
+	msgbox MistcladCove_Text_Rival_D, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceRight
+	waitmovement
+	delay 60
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FacePlayer
+	waitmovement
+	msgbox MistcladCove_Text_Rival_E, MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	setfieldeffectargument 0, 1
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	delay 15
+	removeobject VAR_LAST_TALKED
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+	fadeinbgm 1
+	release
+	end
+
+MistcladCove_EventScript_Ninja1::
+	trainerbattle_single TRAINER_MISTCLAD_COVE_NINJA_1, MistcladCove_Text_Ninja1Intro, MistcladCove_Text_Ninja1Defeat
+	msgbox MistcladCove_Text_Ninja1PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+MistcladCove_Text_Ninja1Intro:
+	.string "My cousins finally let me train\n"
+	.string "with them today!$"
+
+MistcladCove_Text_Ninja1Defeat:
+	.string "Maybe I should have stayed home…$"
+
+MistcladCove_Text_Ninja1PostBattle:
+	.string "I'm already the best!$"
+
+MistcladCove_Text_Rival_A:
+	.string "{RIVAL}: … … … … … … … … … …$"
+
+MistcladCove_Text_Rival_B:
+	.string "We just keep running into each\n"
+	.string "other, {PLAYER}.\p"
+	.string "I was headed back home, but I got\n"
+	.string "turned around in this thick mist.$"
+
+MistcladCove_Text_Rival_C:
+	.string "I thought this would make it easier\n"
+	.string "get around out here, but I got\l"
+	.string "lost anyway…\p"
+	.string "You should use it instead.$"
+
+MistcladCove_Text_Rival_D:
+	.string "You can use that to see the\n"
+	.string "invisible POKéMON who live here.$"
+
+MistcladCove_Text_Rival_E:
+	.string "I'm just going to FLY back to\n"
+	.string "LITTLEROOT…\p"
+	.string "If you're tough enough to explore\n"
+	.string "here, make sure to collect a lot\l"
+	.string "of POKéDEX data!\p"
+	.string "Good luck, {PLAYER}…\p"
+	.string "See ya!$"
 
 `
