@@ -19,6 +19,7 @@ Route119_OnTransition:
 	call Common_EventScript_SetupRivalOnBikeGfxId
 	call_if_eq VAR_WEATHER_INSTITUTE_STATE, 1, Route119_EventScript_MoveInstituteWorkersDownstairs
 	special SetRoute119Weather
+	goto_if_set FLAG_BADGE08_GET, Route119_EventScript_TrySetupStevenScene
 	end
 
 Route119_EventScript_MoveInstituteWorkersDownstairs::
@@ -26,6 +27,87 @@ Route119_EventScript_MoveInstituteWorkersDownstairs::
 	clearflag FLAG_HIDE_WEATHER_INSTITUTE_1F_WORKERS
 	setvar VAR_WEATHER_INSTITUTE_STATE, 2
 	return
+
+Route119_EventScript_TrySetupStevenScene::
+	goto_if_unset FLAG_RECEIVED_DEVON_SCOPE, Route119_EventScript_SetupStevenScene
+	return
+
+Route119_EventScript_SetupStevenScene::
+	setvar VAR_ROUTE119_STATE, 2
+	return
+
+Route119_EventScript_StevenScene1::
+	lock
+	showobjectat LOCALID_ROUTE119_STEVEN, MAP_ROUTE119
+	applymovement LOCALID_ROUTE119_STEVEN, Route119_Movement_StevenApproach1
+	delay 40
+	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
+	waitmovement
+	delay 60
+	msgbox Route119_Text_Steven1, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_ROUTE119_STEVEN, Common_Movement_WalkInPlaceDown
+	waitmovement
+	giveitem ITEM_DEVON_SCOPE
+	setflag FLAG_RECEIVED_DEVON_SCOPE
+	msgbox Route119_Text_Steven2, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_ROUTE119_STEVEN, Common_Movement_FaceUp
+	waitmovement
+	delay 45
+	applymovement LOCALID_ROUTE119_STEVEN, Common_Movement_FacePlayer
+	waitmovement
+	delay 20
+	msgbox Route119_Text_Steven3, MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	setfieldeffectargument 0, 1
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	delay 15
+	setobjectxy LOCALID_ROUTE119_STEVEN, 26, 21
+	setobjectxyperm LOCALID_ROUTE119_STEVEN, 26, 21
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+	setvar VAR_ROUTE119_STATE, 3
+	setflag FLAG_MISTCLAD_COVE_RIVAL
+	release
+	end
+
+Route119_EventScript_StevenScene2::
+	lock
+	showobjectat LOCALID_ROUTE119_STEVEN, MAP_ROUTE119
+	applymovement LOCALID_ROUTE119_STEVEN, Route119_Movement_StevenApproach2
+	delay 55
+	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
+	waitmovement
+	delay 60
+	msgbox Route119_Text_Steven1, MSGBOX_DEFAULT
+	closemessage
+	delay 15
+	applymovement LOCALID_ROUTE119_STEVEN, Common_Movement_WalkInPlaceDown
+	waitmovement
+	giveitem ITEM_DEVON_SCOPE
+	setflag FLAG_RECEIVED_DEVON_SCOPE
+	msgbox Route119_Text_Steven2, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_ROUTE119_STEVEN, Common_Movement_FaceUp
+	waitmovement
+	delay 45
+	applymovement LOCALID_ROUTE119_STEVEN, Common_Movement_FacePlayer
+	waitmovement
+	delay 20
+	msgbox Route119_Text_Steven3, MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	setfieldeffectargument 0, 1
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	delay 15
+	setobjectxy LOCALID_ROUTE119_STEVEN, 26, 21
+	setobjectxyperm LOCALID_ROUTE119_STEVEN, 26, 21
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+	setvar VAR_ROUTE119_STATE, 3
+	setflag FLAG_MISTCLAD_COVE_RIVAL
+	release
+	end
 
 Route119_EventScript_RivalTrigger1::
 	setvar VAR_TEMP_1, 1
@@ -282,6 +364,25 @@ Route119_Movement_ScottExit2:
 	walk_up
 	step_end
 
+Route119_Movement_StevenApproach1:
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+Route119_Movement_StevenApproach2:
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
 Route119_EventScript_CyclingTriathleteM::
 	msgbox Route119_Text_TallGrassSnaresBikeTires, MSGBOX_NPC
 	end
@@ -456,6 +557,25 @@ Route119_EventScript_ScottWonAtFortreeGymCall::
 	addvar VAR_SCOTT_STATE, 1
 	releaseall
 	end
+
+Route119_Text_Steven1:
+	.string "STEVEN: {PLAYER}!\n"
+	.string "I thought you might be around here!\p"
+	.string "I thought I saw RAYQUAZA fly this way\n"
+	.string "after the events in SOOTOPOLIS.\p"
+	.string "Oh! But I guess you must be on your way\n"
+	.string "to complete your BADGE collection.\p"
+	.string "WINONA can be hard to track down\n"
+	.string "sometimes, so this may come in handy.$"
+
+Route119_Text_Steven2:
+	.string "That's something the old man's company\n"
+	.string "cooked up to deal with all the pesky\l"
+	.string "KECLEON who live around here.$"
+
+Route119_Text_Steven3:
+	.string "Good luck, {PLAYER}.\p"
+	.string "I'm sure I'll see you again very soon…$"
 
 Route119_Text_MayIntro:
 	.string "MAY: {PLAYER}{KUN}!\n"

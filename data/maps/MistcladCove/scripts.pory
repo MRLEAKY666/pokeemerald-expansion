@@ -83,6 +83,7 @@ MistcladCove_EventScript_RivalLeavesNorth::
 	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_WalkInPlaceUp
 	waitmovement
 	giveitem ITEM_DEVON_SCOPE
+	setflag FLAG_RECEIVED_DEVON_SCOPE
 	msgbox MistcladCove_Text_Rival_D, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceDown
@@ -117,6 +118,7 @@ MistcladCove_EventScript_RivalLeavesSouth::
 	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_WalkInPlaceDown
 	waitmovement
 	giveitem ITEM_DEVON_SCOPE
+	setflag FLAG_RECEIVED_DEVON_SCOPE
 	msgbox MistcladCove_Text_Rival_D, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceUp
@@ -151,6 +153,7 @@ MistcladCove_EventScript_RivalLeavesEast::
 	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_WalkInPlaceRight
 	waitmovement
 	giveitem ITEM_DEVON_SCOPE
+	setflag FLAG_RECEIVED_DEVON_SCOPE
 	msgbox MistcladCove_Text_Rival_D, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceLeft
@@ -185,6 +188,7 @@ MistcladCove_EventScript_RivalLeavesWest::
 	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_WalkInPlaceLeft
 	waitmovement
 	giveitem ITEM_DEVON_SCOPE
+	setflag FLAG_RECEIVED_DEVON_SCOPE
 	msgbox MistcladCove_Text_Rival_D, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceRight

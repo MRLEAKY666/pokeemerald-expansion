@@ -69,9 +69,9 @@ Route120_OnLoad:
 # 35 "data//maps/Route120/scripts.pory"
 	call_if_unset FLAG_REGI_DOORS_OPENED, Route120_EventScript_CloseAncientTomb
 # 36 "data//maps/Route120/scripts.pory"
-	call_if_set FLAG_RECEIVED_DEVON_SCOPE, Route120_EventScript_SetBridgeClearMetatiles
+@ 	call_if_set FLAG_RECEIVED_DEVON_SCOPE, Route120_EventScript_SetBridgeClearMetatiles
 # 37 "data//maps/Route120/scripts.pory"
-	call_if_unset FLAG_RECEIVED_DEVON_SCOPE, Route120_EventScript_SetBridgeKecleonMovement
+@	call_if_unset FLAG_RECEIVED_DEVON_SCOPE, Route120_EventScript_SetBridgeKecleonMovement
 # 38 "data//maps/Route120/scripts.pory"
 	end
 # 39 "data//maps/Route120/scripts.pory"
