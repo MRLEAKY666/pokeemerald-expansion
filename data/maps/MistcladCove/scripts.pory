@@ -25,6 +25,8 @@ MistcladCove_EventScript_SwitchToNighttime::
 
 MistcladCove_OnTransition::
 	call Common_EventScript_SetupRivalGfxId
+	getplayerxy VAR_TEMP_E, VAR_TEMP_F
+	goto_if_ge VAR_TEMP_F, 13, MistcladCove_EventScript_SetFog
 	end
 
 MistcladCove_OnResume:
@@ -53,6 +55,11 @@ MistcladCove_EventScript_SetSun::
 
 MistcladCove_EventScript_ClearSun::
 	setweather WEATHER_NONE
+	doweather
+	return
+
+MistcladCove_EventScript_SetFog::
+	setweather WEATHER_FOG_HORIZONTAL
 	doweather
 	return
 

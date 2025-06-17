@@ -29,6 +29,8 @@ FortreeCliffs_EventScript_SetWeatherOnWarp::
 
 FortreeCliffs_OnTransition:
 	@ call FortreeCliffs_EventScript_ResetWildMons
+	getplayerxy VAR_TEMP_E, VAR_TEMP_F
+	call_if_ge VAR_TEMP_F, 88, FortreeCliffs_EventScript_SetFog
 	call FortreeCliffs_EventScript_BraviaryOnTransitionSwitch
 	end
 

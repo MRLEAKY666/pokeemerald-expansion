@@ -226,7 +226,22 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "weather",
+      "x": 20,
+      "y": 19,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_RAIN_THUNDERSTORM"
+    },
+    {
+      "type": "weather",
+      "x": 20,
+      "y": 18,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_SUNNY"
+    }
+  ],
   "bg_events": [
     {
       "type": "sign",

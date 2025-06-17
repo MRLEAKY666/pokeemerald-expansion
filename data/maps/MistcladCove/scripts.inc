@@ -53,460 +53,474 @@ MistcladCove_OnTransition::
 # 27 "data//maps/MistcladCove/scripts.pory"
 	call Common_EventScript_SetupRivalGfxId
 # 28 "data//maps/MistcladCove/scripts.pory"
-	end
+	getplayerxy VAR_TEMP_E, VAR_TEMP_F
 # 29 "data//maps/MistcladCove/scripts.pory"
-
+	goto_if_ge VAR_TEMP_F, 13, MistcladCove_EventScript_SetFog
 # 30 "data//maps/MistcladCove/scripts.pory"
-MistcladCove_OnResume:
+	end
 # 31 "data//maps/MistcladCove/scripts.pory"
-	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, MistcladCove_EventScript_TryRemoveWildMons
+
 # 32 "data//maps/MistcladCove/scripts.pory"
-	end
+MistcladCove_OnResume:
 # 33 "data//maps/MistcladCove/scripts.pory"
-
+	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, MistcladCove_EventScript_TryRemoveWildMons
 # 34 "data//maps/MistcladCove/scripts.pory"
-MistcladCove_EventScript_TryRemoveWildMons::
+	end
 # 35 "data//maps/MistcladCove/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
+
 # 36 "data//maps/MistcladCove/scripts.pory"
-	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
+MistcladCove_EventScript_TryRemoveWildMons::
 # 37 "data//maps/MistcladCove/scripts.pory"
-	removeobject VAR_LAST_TALKED
+	specialvar VAR_RESULT, GetBattleOutcome
 # 38 "data//maps/MistcladCove/scripts.pory"
-	return
+	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
 # 39 "data//maps/MistcladCove/scripts.pory"
-
+	removeobject VAR_LAST_TALKED
 # 40 "data//maps/MistcladCove/scripts.pory"
-MistcladCove_EventScript_TrySetSun::
+	return
 # 41 "data//maps/MistcladCove/scripts.pory"
-	switch VAR_TIME_OF_DAY
+
 # 42 "data//maps/MistcladCove/scripts.pory"
-	case 0, MistcladCove_EventScript_ClearSun
+MistcladCove_EventScript_TrySetSun::
 # 43 "data//maps/MistcladCove/scripts.pory"
-	case 1, MistcladCove_EventScript_ClearSun
+	switch VAR_TIME_OF_DAY
 # 44 "data//maps/MistcladCove/scripts.pory"
-	case 2, MistcladCove_EventScript_SetSun
+	case 0, MistcladCove_EventScript_ClearSun
 # 45 "data//maps/MistcladCove/scripts.pory"
-	case 3, MistcladCove_EventScript_SetSun
+	case 1, MistcladCove_EventScript_ClearSun
 # 46 "data//maps/MistcladCove/scripts.pory"
-	call_if_ge VAR_TIME_OF_DAY, 4, MistcladCove_EventScript_ClearSun
+	case 2, MistcladCove_EventScript_SetSun
 # 47 "data//maps/MistcladCove/scripts.pory"
-	end
+	case 3, MistcladCove_EventScript_SetSun
 # 48 "data//maps/MistcladCove/scripts.pory"
-
+	call_if_ge VAR_TIME_OF_DAY, 4, MistcladCove_EventScript_ClearSun
 # 49 "data//maps/MistcladCove/scripts.pory"
-MistcladCove_EventScript_SetSun::
-# 50 "data//maps/MistcladCove/scripts.pory"
-	setweather WEATHER_SUNNY_CLOUDS
-# 51 "data//maps/MistcladCove/scripts.pory"
-	doweather
-# 52 "data//maps/MistcladCove/scripts.pory"
-	return
-# 53 "data//maps/MistcladCove/scripts.pory"
-
-# 54 "data//maps/MistcladCove/scripts.pory"
-MistcladCove_EventScript_ClearSun::
-# 55 "data//maps/MistcladCove/scripts.pory"
-	setweather WEATHER_NONE
-# 56 "data//maps/MistcladCove/scripts.pory"
-	doweather
-# 57 "data//maps/MistcladCove/scripts.pory"
-	return
-# 58 "data//maps/MistcladCove/scripts.pory"
-
-# 59 "data//maps/MistcladCove/scripts.pory"
-MistcladCove_EventScript_Rival::
-# 60 "data//maps/MistcladCove/scripts.pory"
-	lock
-# 61 "data//maps/MistcladCove/scripts.pory"
-	faceplayer
-# 62 "data//maps/MistcladCove/scripts.pory"
-	fadeoutbgm 2
-# 63 "data//maps/MistcladCove/scripts.pory"
-	msgbox MistcladCove_Text_Rival_A, MSGBOX_DEFAULT
-# 64 "data//maps/MistcladCove/scripts.pory"
-	closemessage
-# 65 "data//maps/MistcladCove/scripts.pory"
-	delay 60
-# 66 "data//maps/MistcladCove/scripts.pory"
-	msgbox MistcladCove_Text_Rival_B, MSGBOX_DEFAULT
-# 67 "data//maps/MistcladCove/scripts.pory"
-	getobjectfacingdirection LOCALID_MISTCLAD_COVE_RIVAL, VAR_RESULT
-# 68 "data//maps/MistcladCove/scripts.pory"
-	switch VAR_RESULT
-# 69 "data//maps/MistcladCove/scripts.pory"
-	case DIR_NORTH, MistcladCove_EventScript_RivalLeavesNorth
-# 70 "data//maps/MistcladCove/scripts.pory"
-	case DIR_SOUTH, MistcladCove_EventScript_RivalLeavesSouth
-# 71 "data//maps/MistcladCove/scripts.pory"
-	case DIR_EAST, MistcladCove_EventScript_RivalLeavesEast
-# 72 "data//maps/MistcladCove/scripts.pory"
-	case DIR_WEST, MistcladCove_EventScript_RivalLeavesWest
-# 73 "data//maps/MistcladCove/scripts.pory"
 	end
-# 74 "data//maps/MistcladCove/scripts.pory"
+# 50 "data//maps/MistcladCove/scripts.pory"
 
-# 75 "data//maps/MistcladCove/scripts.pory"
-MistcladCove_EventScript_RivalLeavesNorth::
-# 76 "data//maps/MistcladCove/scripts.pory"
-	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceRight
-# 77 "data//maps/MistcladCove/scripts.pory"
-	waitmovement
-# 78 "data//maps/MistcladCove/scripts.pory"
-	delay 20
-# 79 "data//maps/MistcladCove/scripts.pory"
-	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceLeft
-# 80 "data//maps/MistcladCove/scripts.pory"
-	waitmovement
-# 81 "data//maps/MistcladCove/scripts.pory"
-	delay 30
-# 82 "data//maps/MistcladCove/scripts.pory"
-	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FacePlayer
-# 83 "data//maps/MistcladCove/scripts.pory"
-	waitmovement
-# 84 "data//maps/MistcladCove/scripts.pory"
-	delay 30
-# 85 "data//maps/MistcladCove/scripts.pory"
-	msgbox MistcladCove_Text_Rival_C, MSGBOX_DEFAULT
-# 86 "data//maps/MistcladCove/scripts.pory"
+# 51 "data//maps/MistcladCove/scripts.pory"
+MistcladCove_EventScript_SetSun::
+# 52 "data//maps/MistcladCove/scripts.pory"
+	setweather WEATHER_SUNNY_CLOUDS
+# 53 "data//maps/MistcladCove/scripts.pory"
+	doweather
+# 54 "data//maps/MistcladCove/scripts.pory"
+	return
+# 55 "data//maps/MistcladCove/scripts.pory"
+
+# 56 "data//maps/MistcladCove/scripts.pory"
+MistcladCove_EventScript_ClearSun::
+# 57 "data//maps/MistcladCove/scripts.pory"
+	setweather WEATHER_NONE
+# 58 "data//maps/MistcladCove/scripts.pory"
+	doweather
+# 59 "data//maps/MistcladCove/scripts.pory"
+	return
+# 60 "data//maps/MistcladCove/scripts.pory"
+
+# 61 "data//maps/MistcladCove/scripts.pory"
+MistcladCove_EventScript_SetFog::
+# 62 "data//maps/MistcladCove/scripts.pory"
+	setweather WEATHER_FOG_HORIZONTAL
+# 63 "data//maps/MistcladCove/scripts.pory"
+	doweather
+# 64 "data//maps/MistcladCove/scripts.pory"
+	return
+# 65 "data//maps/MistcladCove/scripts.pory"
+
+# 66 "data//maps/MistcladCove/scripts.pory"
+MistcladCove_EventScript_Rival::
+# 67 "data//maps/MistcladCove/scripts.pory"
+	lock
+# 68 "data//maps/MistcladCove/scripts.pory"
+	faceplayer
+# 69 "data//maps/MistcladCove/scripts.pory"
+	fadeoutbgm 2
+# 70 "data//maps/MistcladCove/scripts.pory"
+	msgbox MistcladCove_Text_Rival_A, MSGBOX_DEFAULT
+# 71 "data//maps/MistcladCove/scripts.pory"
 	closemessage
-# 87 "data//maps/MistcladCove/scripts.pory"
-	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_WalkInPlaceUp
-# 88 "data//maps/MistcladCove/scripts.pory"
-	waitmovement
-# 89 "data//maps/MistcladCove/scripts.pory"
-	giveitem ITEM_DEVON_SCOPE
-# 90 "data//maps/MistcladCove/scripts.pory"
-	setflag FLAG_RECEIVED_DEVON_SCOPE
-# 91 "data//maps/MistcladCove/scripts.pory"
-	msgbox MistcladCove_Text_Rival_D, MSGBOX_DEFAULT
-# 92 "data//maps/MistcladCove/scripts.pory"
-	closemessage
-# 93 "data//maps/MistcladCove/scripts.pory"
-	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceDown
-# 94 "data//maps/MistcladCove/scripts.pory"
-	waitmovement
-# 95 "data//maps/MistcladCove/scripts.pory"
+# 72 "data//maps/MistcladCove/scripts.pory"
 	delay 60
-# 96 "data//maps/MistcladCove/scripts.pory"
-	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FacePlayer
-# 97 "data//maps/MistcladCove/scripts.pory"
+# 73 "data//maps/MistcladCove/scripts.pory"
+	msgbox MistcladCove_Text_Rival_B, MSGBOX_DEFAULT
+# 74 "data//maps/MistcladCove/scripts.pory"
+	getobjectfacingdirection LOCALID_MISTCLAD_COVE_RIVAL, VAR_RESULT
+# 75 "data//maps/MistcladCove/scripts.pory"
+	switch VAR_RESULT
+# 76 "data//maps/MistcladCove/scripts.pory"
+	case DIR_NORTH, MistcladCove_EventScript_RivalLeavesNorth
+# 77 "data//maps/MistcladCove/scripts.pory"
+	case DIR_SOUTH, MistcladCove_EventScript_RivalLeavesSouth
+# 78 "data//maps/MistcladCove/scripts.pory"
+	case DIR_EAST, MistcladCove_EventScript_RivalLeavesEast
+# 79 "data//maps/MistcladCove/scripts.pory"
+	case DIR_WEST, MistcladCove_EventScript_RivalLeavesWest
+# 80 "data//maps/MistcladCove/scripts.pory"
+	end
+# 81 "data//maps/MistcladCove/scripts.pory"
+
+# 82 "data//maps/MistcladCove/scripts.pory"
+MistcladCove_EventScript_RivalLeavesNorth::
+# 83 "data//maps/MistcladCove/scripts.pory"
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceRight
+# 84 "data//maps/MistcladCove/scripts.pory"
 	waitmovement
+# 85 "data//maps/MistcladCove/scripts.pory"
+	delay 20
+# 86 "data//maps/MistcladCove/scripts.pory"
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceLeft
+# 87 "data//maps/MistcladCove/scripts.pory"
+	waitmovement
+# 88 "data//maps/MistcladCove/scripts.pory"
+	delay 30
+# 89 "data//maps/MistcladCove/scripts.pory"
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FacePlayer
+# 90 "data//maps/MistcladCove/scripts.pory"
+	waitmovement
+# 91 "data//maps/MistcladCove/scripts.pory"
+	delay 30
+# 92 "data//maps/MistcladCove/scripts.pory"
+	msgbox MistcladCove_Text_Rival_C, MSGBOX_DEFAULT
+# 93 "data//maps/MistcladCove/scripts.pory"
+	closemessage
+# 94 "data//maps/MistcladCove/scripts.pory"
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_WalkInPlaceUp
+# 95 "data//maps/MistcladCove/scripts.pory"
+	waitmovement
+# 96 "data//maps/MistcladCove/scripts.pory"
+	giveitem ITEM_DEVON_SCOPE
+# 97 "data//maps/MistcladCove/scripts.pory"
+	setflag FLAG_RECEIVED_DEVON_SCOPE
 # 98 "data//maps/MistcladCove/scripts.pory"
-	msgbox MistcladCove_Text_Rival_E, MSGBOX_DEFAULT
+	msgbox MistcladCove_Text_Rival_D, MSGBOX_DEFAULT
 # 99 "data//maps/MistcladCove/scripts.pory"
 	closemessage
 # 100 "data//maps/MistcladCove/scripts.pory"
-	delay 30
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceDown
 # 101 "data//maps/MistcladCove/scripts.pory"
-	setfieldeffectargument 0, 1
+	waitmovement
 # 102 "data//maps/MistcladCove/scripts.pory"
-	dofieldeffect FLDEFF_NPCFLY_OUT
-# 103 "data//maps/MistcladCove/scripts.pory"
-	delay 15
-# 104 "data//maps/MistcladCove/scripts.pory"
-	removeobject VAR_LAST_TALKED
-# 105 "data//maps/MistcladCove/scripts.pory"
-	waitfieldeffect FLDEFF_NPCFLY_OUT
-# 106 "data//maps/MistcladCove/scripts.pory"
-	fadeinbgm 1
-# 107 "data//maps/MistcladCove/scripts.pory"
-	release
-# 108 "data//maps/MistcladCove/scripts.pory"
-	end
-# 109 "data//maps/MistcladCove/scripts.pory"
-
-# 110 "data//maps/MistcladCove/scripts.pory"
-MistcladCove_EventScript_RivalLeavesSouth::
-# 111 "data//maps/MistcladCove/scripts.pory"
-	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceRight
-# 112 "data//maps/MistcladCove/scripts.pory"
-	waitmovement
-# 113 "data//maps/MistcladCove/scripts.pory"
-	delay 20
-# 114 "data//maps/MistcladCove/scripts.pory"
-	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceLeft
-# 115 "data//maps/MistcladCove/scripts.pory"
-	waitmovement
-# 116 "data//maps/MistcladCove/scripts.pory"
-	delay 30
-# 117 "data//maps/MistcladCove/scripts.pory"
-	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FacePlayer
-# 118 "data//maps/MistcladCove/scripts.pory"
-	waitmovement
-# 119 "data//maps/MistcladCove/scripts.pory"
-	delay 30
-# 120 "data//maps/MistcladCove/scripts.pory"
-	msgbox MistcladCove_Text_Rival_C, MSGBOX_DEFAULT
-# 121 "data//maps/MistcladCove/scripts.pory"
-	closemessage
-# 122 "data//maps/MistcladCove/scripts.pory"
-	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_WalkInPlaceDown
-# 123 "data//maps/MistcladCove/scripts.pory"
-	waitmovement
-# 124 "data//maps/MistcladCove/scripts.pory"
-	giveitem ITEM_DEVON_SCOPE
-# 125 "data//maps/MistcladCove/scripts.pory"
-	setflag FLAG_RECEIVED_DEVON_SCOPE
-# 126 "data//maps/MistcladCove/scripts.pory"
-	msgbox MistcladCove_Text_Rival_D, MSGBOX_DEFAULT
-# 127 "data//maps/MistcladCove/scripts.pory"
-	closemessage
-# 128 "data//maps/MistcladCove/scripts.pory"
-	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceUp
-# 129 "data//maps/MistcladCove/scripts.pory"
-	waitmovement
-# 130 "data//maps/MistcladCove/scripts.pory"
 	delay 60
-# 131 "data//maps/MistcladCove/scripts.pory"
+# 103 "data//maps/MistcladCove/scripts.pory"
 	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FacePlayer
-# 132 "data//maps/MistcladCove/scripts.pory"
+# 104 "data//maps/MistcladCove/scripts.pory"
 	waitmovement
-# 133 "data//maps/MistcladCove/scripts.pory"
+# 105 "data//maps/MistcladCove/scripts.pory"
 	msgbox MistcladCove_Text_Rival_E, MSGBOX_DEFAULT
+# 106 "data//maps/MistcladCove/scripts.pory"
+	closemessage
+# 107 "data//maps/MistcladCove/scripts.pory"
+	delay 30
+# 108 "data//maps/MistcladCove/scripts.pory"
+	setfieldeffectargument 0, 1
+# 109 "data//maps/MistcladCove/scripts.pory"
+	dofieldeffect FLDEFF_NPCFLY_OUT
+# 110 "data//maps/MistcladCove/scripts.pory"
+	delay 15
+# 111 "data//maps/MistcladCove/scripts.pory"
+	removeobject VAR_LAST_TALKED
+# 112 "data//maps/MistcladCove/scripts.pory"
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+# 113 "data//maps/MistcladCove/scripts.pory"
+	fadeinbgm 1
+# 114 "data//maps/MistcladCove/scripts.pory"
+	release
+# 115 "data//maps/MistcladCove/scripts.pory"
+	end
+# 116 "data//maps/MistcladCove/scripts.pory"
+
+# 117 "data//maps/MistcladCove/scripts.pory"
+MistcladCove_EventScript_RivalLeavesSouth::
+# 118 "data//maps/MistcladCove/scripts.pory"
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceRight
+# 119 "data//maps/MistcladCove/scripts.pory"
+	waitmovement
+# 120 "data//maps/MistcladCove/scripts.pory"
+	delay 20
+# 121 "data//maps/MistcladCove/scripts.pory"
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceLeft
+# 122 "data//maps/MistcladCove/scripts.pory"
+	waitmovement
+# 123 "data//maps/MistcladCove/scripts.pory"
+	delay 30
+# 124 "data//maps/MistcladCove/scripts.pory"
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FacePlayer
+# 125 "data//maps/MistcladCove/scripts.pory"
+	waitmovement
+# 126 "data//maps/MistcladCove/scripts.pory"
+	delay 30
+# 127 "data//maps/MistcladCove/scripts.pory"
+	msgbox MistcladCove_Text_Rival_C, MSGBOX_DEFAULT
+# 128 "data//maps/MistcladCove/scripts.pory"
+	closemessage
+# 129 "data//maps/MistcladCove/scripts.pory"
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_WalkInPlaceDown
+# 130 "data//maps/MistcladCove/scripts.pory"
+	waitmovement
+# 131 "data//maps/MistcladCove/scripts.pory"
+	giveitem ITEM_DEVON_SCOPE
+# 132 "data//maps/MistcladCove/scripts.pory"
+	setflag FLAG_RECEIVED_DEVON_SCOPE
+# 133 "data//maps/MistcladCove/scripts.pory"
+	msgbox MistcladCove_Text_Rival_D, MSGBOX_DEFAULT
 # 134 "data//maps/MistcladCove/scripts.pory"
 	closemessage
 # 135 "data//maps/MistcladCove/scripts.pory"
-	delay 30
-# 136 "data//maps/MistcladCove/scripts.pory"
-	setfieldeffectargument 0, 1
-# 137 "data//maps/MistcladCove/scripts.pory"
-	dofieldeffect FLDEFF_NPCFLY_OUT
-# 138 "data//maps/MistcladCove/scripts.pory"
-	delay 15
-# 139 "data//maps/MistcladCove/scripts.pory"
-	removeobject VAR_LAST_TALKED
-# 140 "data//maps/MistcladCove/scripts.pory"
-	waitfieldeffect FLDEFF_NPCFLY_OUT
-# 141 "data//maps/MistcladCove/scripts.pory"
-	fadeinbgm 1
-# 142 "data//maps/MistcladCove/scripts.pory"
-	release
-# 143 "data//maps/MistcladCove/scripts.pory"
-	end
-# 144 "data//maps/MistcladCove/scripts.pory"
-
-# 145 "data//maps/MistcladCove/scripts.pory"
-MistcladCove_EventScript_RivalLeavesEast::
-# 146 "data//maps/MistcladCove/scripts.pory"
 	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceUp
-# 147 "data//maps/MistcladCove/scripts.pory"
+# 136 "data//maps/MistcladCove/scripts.pory"
 	waitmovement
-# 148 "data//maps/MistcladCove/scripts.pory"
-	delay 20
-# 149 "data//maps/MistcladCove/scripts.pory"
-	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceDown
-# 150 "data//maps/MistcladCove/scripts.pory"
-	waitmovement
-# 151 "data//maps/MistcladCove/scripts.pory"
-	delay 30
-# 152 "data//maps/MistcladCove/scripts.pory"
-	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FacePlayer
-# 153 "data//maps/MistcladCove/scripts.pory"
-	waitmovement
-# 154 "data//maps/MistcladCove/scripts.pory"
-	delay 30
-# 155 "data//maps/MistcladCove/scripts.pory"
-	msgbox MistcladCove_Text_Rival_C, MSGBOX_DEFAULT
-# 156 "data//maps/MistcladCove/scripts.pory"
-	closemessage
-# 157 "data//maps/MistcladCove/scripts.pory"
-	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_WalkInPlaceRight
-# 158 "data//maps/MistcladCove/scripts.pory"
-	waitmovement
-# 159 "data//maps/MistcladCove/scripts.pory"
-	giveitem ITEM_DEVON_SCOPE
-# 160 "data//maps/MistcladCove/scripts.pory"
-	setflag FLAG_RECEIVED_DEVON_SCOPE
-# 161 "data//maps/MistcladCove/scripts.pory"
-	msgbox MistcladCove_Text_Rival_D, MSGBOX_DEFAULT
-# 162 "data//maps/MistcladCove/scripts.pory"
-	closemessage
-# 163 "data//maps/MistcladCove/scripts.pory"
-	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceLeft
-# 164 "data//maps/MistcladCove/scripts.pory"
-	waitmovement
-# 165 "data//maps/MistcladCove/scripts.pory"
+# 137 "data//maps/MistcladCove/scripts.pory"
 	delay 60
-# 166 "data//maps/MistcladCove/scripts.pory"
+# 138 "data//maps/MistcladCove/scripts.pory"
 	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FacePlayer
-# 167 "data//maps/MistcladCove/scripts.pory"
+# 139 "data//maps/MistcladCove/scripts.pory"
 	waitmovement
-# 168 "data//maps/MistcladCove/scripts.pory"
+# 140 "data//maps/MistcladCove/scripts.pory"
 	msgbox MistcladCove_Text_Rival_E, MSGBOX_DEFAULT
+# 141 "data//maps/MistcladCove/scripts.pory"
+	closemessage
+# 142 "data//maps/MistcladCove/scripts.pory"
+	delay 30
+# 143 "data//maps/MistcladCove/scripts.pory"
+	setfieldeffectargument 0, 1
+# 144 "data//maps/MistcladCove/scripts.pory"
+	dofieldeffect FLDEFF_NPCFLY_OUT
+# 145 "data//maps/MistcladCove/scripts.pory"
+	delay 15
+# 146 "data//maps/MistcladCove/scripts.pory"
+	removeobject VAR_LAST_TALKED
+# 147 "data//maps/MistcladCove/scripts.pory"
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+# 148 "data//maps/MistcladCove/scripts.pory"
+	fadeinbgm 1
+# 149 "data//maps/MistcladCove/scripts.pory"
+	release
+# 150 "data//maps/MistcladCove/scripts.pory"
+	end
+# 151 "data//maps/MistcladCove/scripts.pory"
+
+# 152 "data//maps/MistcladCove/scripts.pory"
+MistcladCove_EventScript_RivalLeavesEast::
+# 153 "data//maps/MistcladCove/scripts.pory"
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceUp
+# 154 "data//maps/MistcladCove/scripts.pory"
+	waitmovement
+# 155 "data//maps/MistcladCove/scripts.pory"
+	delay 20
+# 156 "data//maps/MistcladCove/scripts.pory"
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceDown
+# 157 "data//maps/MistcladCove/scripts.pory"
+	waitmovement
+# 158 "data//maps/MistcladCove/scripts.pory"
+	delay 30
+# 159 "data//maps/MistcladCove/scripts.pory"
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FacePlayer
+# 160 "data//maps/MistcladCove/scripts.pory"
+	waitmovement
+# 161 "data//maps/MistcladCove/scripts.pory"
+	delay 30
+# 162 "data//maps/MistcladCove/scripts.pory"
+	msgbox MistcladCove_Text_Rival_C, MSGBOX_DEFAULT
+# 163 "data//maps/MistcladCove/scripts.pory"
+	closemessage
+# 164 "data//maps/MistcladCove/scripts.pory"
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_WalkInPlaceRight
+# 165 "data//maps/MistcladCove/scripts.pory"
+	waitmovement
+# 166 "data//maps/MistcladCove/scripts.pory"
+	giveitem ITEM_DEVON_SCOPE
+# 167 "data//maps/MistcladCove/scripts.pory"
+	setflag FLAG_RECEIVED_DEVON_SCOPE
+# 168 "data//maps/MistcladCove/scripts.pory"
+	msgbox MistcladCove_Text_Rival_D, MSGBOX_DEFAULT
 # 169 "data//maps/MistcladCove/scripts.pory"
 	closemessage
 # 170 "data//maps/MistcladCove/scripts.pory"
-	delay 30
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceLeft
 # 171 "data//maps/MistcladCove/scripts.pory"
-	setfieldeffectargument 0, 1
+	waitmovement
 # 172 "data//maps/MistcladCove/scripts.pory"
-	dofieldeffect FLDEFF_NPCFLY_OUT
-# 173 "data//maps/MistcladCove/scripts.pory"
-	delay 15
-# 174 "data//maps/MistcladCove/scripts.pory"
-	removeobject VAR_LAST_TALKED
-# 175 "data//maps/MistcladCove/scripts.pory"
-	waitfieldeffect FLDEFF_NPCFLY_OUT
-# 176 "data//maps/MistcladCove/scripts.pory"
-	fadeinbgm 1
-# 177 "data//maps/MistcladCove/scripts.pory"
-	release
-# 178 "data//maps/MistcladCove/scripts.pory"
-	end
-# 179 "data//maps/MistcladCove/scripts.pory"
-
-# 180 "data//maps/MistcladCove/scripts.pory"
-MistcladCove_EventScript_RivalLeavesWest::
-# 181 "data//maps/MistcladCove/scripts.pory"
-	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceUp
-# 182 "data//maps/MistcladCove/scripts.pory"
-	waitmovement
-# 183 "data//maps/MistcladCove/scripts.pory"
-	delay 20
-# 184 "data//maps/MistcladCove/scripts.pory"
-	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceDown
-# 185 "data//maps/MistcladCove/scripts.pory"
-	waitmovement
-# 186 "data//maps/MistcladCove/scripts.pory"
-	delay 30
-# 187 "data//maps/MistcladCove/scripts.pory"
-	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FacePlayer
-# 188 "data//maps/MistcladCove/scripts.pory"
-	waitmovement
-# 189 "data//maps/MistcladCove/scripts.pory"
-	delay 30
-# 190 "data//maps/MistcladCove/scripts.pory"
-	msgbox MistcladCove_Text_Rival_C, MSGBOX_DEFAULT
-# 191 "data//maps/MistcladCove/scripts.pory"
-	closemessage
-# 192 "data//maps/MistcladCove/scripts.pory"
-	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_WalkInPlaceLeft
-# 193 "data//maps/MistcladCove/scripts.pory"
-	waitmovement
-# 194 "data//maps/MistcladCove/scripts.pory"
-	giveitem ITEM_DEVON_SCOPE
-# 195 "data//maps/MistcladCove/scripts.pory"
-	setflag FLAG_RECEIVED_DEVON_SCOPE
-# 196 "data//maps/MistcladCove/scripts.pory"
-	msgbox MistcladCove_Text_Rival_D, MSGBOX_DEFAULT
-# 197 "data//maps/MistcladCove/scripts.pory"
-	closemessage
-# 198 "data//maps/MistcladCove/scripts.pory"
-	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceRight
-# 199 "data//maps/MistcladCove/scripts.pory"
-	waitmovement
-# 200 "data//maps/MistcladCove/scripts.pory"
 	delay 60
-# 201 "data//maps/MistcladCove/scripts.pory"
+# 173 "data//maps/MistcladCove/scripts.pory"
 	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FacePlayer
-# 202 "data//maps/MistcladCove/scripts.pory"
+# 174 "data//maps/MistcladCove/scripts.pory"
 	waitmovement
-# 203 "data//maps/MistcladCove/scripts.pory"
+# 175 "data//maps/MistcladCove/scripts.pory"
 	msgbox MistcladCove_Text_Rival_E, MSGBOX_DEFAULT
+# 176 "data//maps/MistcladCove/scripts.pory"
+	closemessage
+# 177 "data//maps/MistcladCove/scripts.pory"
+	delay 30
+# 178 "data//maps/MistcladCove/scripts.pory"
+	setfieldeffectargument 0, 1
+# 179 "data//maps/MistcladCove/scripts.pory"
+	dofieldeffect FLDEFF_NPCFLY_OUT
+# 180 "data//maps/MistcladCove/scripts.pory"
+	delay 15
+# 181 "data//maps/MistcladCove/scripts.pory"
+	removeobject VAR_LAST_TALKED
+# 182 "data//maps/MistcladCove/scripts.pory"
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+# 183 "data//maps/MistcladCove/scripts.pory"
+	fadeinbgm 1
+# 184 "data//maps/MistcladCove/scripts.pory"
+	release
+# 185 "data//maps/MistcladCove/scripts.pory"
+	end
+# 186 "data//maps/MistcladCove/scripts.pory"
+
+# 187 "data//maps/MistcladCove/scripts.pory"
+MistcladCove_EventScript_RivalLeavesWest::
+# 188 "data//maps/MistcladCove/scripts.pory"
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceUp
+# 189 "data//maps/MistcladCove/scripts.pory"
+	waitmovement
+# 190 "data//maps/MistcladCove/scripts.pory"
+	delay 20
+# 191 "data//maps/MistcladCove/scripts.pory"
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceDown
+# 192 "data//maps/MistcladCove/scripts.pory"
+	waitmovement
+# 193 "data//maps/MistcladCove/scripts.pory"
+	delay 30
+# 194 "data//maps/MistcladCove/scripts.pory"
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FacePlayer
+# 195 "data//maps/MistcladCove/scripts.pory"
+	waitmovement
+# 196 "data//maps/MistcladCove/scripts.pory"
+	delay 30
+# 197 "data//maps/MistcladCove/scripts.pory"
+	msgbox MistcladCove_Text_Rival_C, MSGBOX_DEFAULT
+# 198 "data//maps/MistcladCove/scripts.pory"
+	closemessage
+# 199 "data//maps/MistcladCove/scripts.pory"
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_WalkInPlaceLeft
+# 200 "data//maps/MistcladCove/scripts.pory"
+	waitmovement
+# 201 "data//maps/MistcladCove/scripts.pory"
+	giveitem ITEM_DEVON_SCOPE
+# 202 "data//maps/MistcladCove/scripts.pory"
+	setflag FLAG_RECEIVED_DEVON_SCOPE
+# 203 "data//maps/MistcladCove/scripts.pory"
+	msgbox MistcladCove_Text_Rival_D, MSGBOX_DEFAULT
 # 204 "data//maps/MistcladCove/scripts.pory"
 	closemessage
 # 205 "data//maps/MistcladCove/scripts.pory"
-	delay 30
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FaceRight
 # 206 "data//maps/MistcladCove/scripts.pory"
-	setfieldeffectargument 0, 1
+	waitmovement
 # 207 "data//maps/MistcladCove/scripts.pory"
-	dofieldeffect FLDEFF_NPCFLY_OUT
+	delay 60
 # 208 "data//maps/MistcladCove/scripts.pory"
-	delay 15
+	applymovement LOCALID_MISTCLAD_COVE_RIVAL, Common_Movement_FacePlayer
 # 209 "data//maps/MistcladCove/scripts.pory"
-	removeobject VAR_LAST_TALKED
+	waitmovement
 # 210 "data//maps/MistcladCove/scripts.pory"
-	waitfieldeffect FLDEFF_NPCFLY_OUT
+	msgbox MistcladCove_Text_Rival_E, MSGBOX_DEFAULT
 # 211 "data//maps/MistcladCove/scripts.pory"
-	fadeinbgm 1
+	closemessage
 # 212 "data//maps/MistcladCove/scripts.pory"
-	release
+	delay 30
 # 213 "data//maps/MistcladCove/scripts.pory"
-	end
+	setfieldeffectargument 0, 1
 # 214 "data//maps/MistcladCove/scripts.pory"
-
+	dofieldeffect FLDEFF_NPCFLY_OUT
 # 215 "data//maps/MistcladCove/scripts.pory"
-MistcladCove_EventScript_Ninja1::
+	delay 15
 # 216 "data//maps/MistcladCove/scripts.pory"
-	trainerbattle_single TRAINER_MISTCLAD_COVE_NINJA_1, MistcladCove_Text_Ninja1Intro, MistcladCove_Text_Ninja1Defeat
+	removeobject VAR_LAST_TALKED
 # 217 "data//maps/MistcladCove/scripts.pory"
-	msgbox MistcladCove_Text_Ninja1PostBattle, MSGBOX_AUTOCLOSE
+	waitfieldeffect FLDEFF_NPCFLY_OUT
 # 218 "data//maps/MistcladCove/scripts.pory"
-	end
+	fadeinbgm 1
 # 219 "data//maps/MistcladCove/scripts.pory"
-
+	release
 # 220 "data//maps/MistcladCove/scripts.pory"
-MistcladCove_Text_Ninja1Intro:
+	end
 # 221 "data//maps/MistcladCove/scripts.pory"
-	.string "My cousins finally let me train\n"
-# 222 "data//maps/MistcladCove/scripts.pory"
-	.string "with them today!$"
-# 223 "data//maps/MistcladCove/scripts.pory"
 
+# 222 "data//maps/MistcladCove/scripts.pory"
+MistcladCove_EventScript_Ninja1::
+# 223 "data//maps/MistcladCove/scripts.pory"
+	trainerbattle_single TRAINER_MISTCLAD_COVE_NINJA_1, MistcladCove_Text_Ninja1Intro, MistcladCove_Text_Ninja1Defeat
 # 224 "data//maps/MistcladCove/scripts.pory"
-MistcladCove_Text_Ninja1Defeat:
+	msgbox MistcladCove_Text_Ninja1PostBattle, MSGBOX_AUTOCLOSE
 # 225 "data//maps/MistcladCove/scripts.pory"
-	.string "Maybe I should have stayed home…$"
+	end
 # 226 "data//maps/MistcladCove/scripts.pory"
 
 # 227 "data//maps/MistcladCove/scripts.pory"
-MistcladCove_Text_Ninja1PostBattle:
+MistcladCove_Text_Ninja1Intro:
 # 228 "data//maps/MistcladCove/scripts.pory"
-	.string "I'm already the best!$"
+	.string "My cousins finally let me train\n"
 # 229 "data//maps/MistcladCove/scripts.pory"
-
+	.string "with them today!$"
 # 230 "data//maps/MistcladCove/scripts.pory"
-MistcladCove_Text_Rival_A:
+
 # 231 "data//maps/MistcladCove/scripts.pory"
-	.string "{RIVAL}: … … … … … … … … … …$"
+MistcladCove_Text_Ninja1Defeat:
 # 232 "data//maps/MistcladCove/scripts.pory"
-
+	.string "Maybe I should have stayed home…$"
 # 233 "data//maps/MistcladCove/scripts.pory"
-MistcladCove_Text_Rival_B:
+
 # 234 "data//maps/MistcladCove/scripts.pory"
-	.string "We just keep running into each\n"
+MistcladCove_Text_Ninja1PostBattle:
 # 235 "data//maps/MistcladCove/scripts.pory"
-	.string "other, {PLAYER}.\p"
+	.string "I'm already the best!$"
 # 236 "data//maps/MistcladCove/scripts.pory"
-	.string "I was headed back home, but I got\n"
+
 # 237 "data//maps/MistcladCove/scripts.pory"
-	.string "turned around in this thick mist.$"
+MistcladCove_Text_Rival_A:
 # 238 "data//maps/MistcladCove/scripts.pory"
-
+	.string "{RIVAL}: … … … … … … … … … …$"
 # 239 "data//maps/MistcladCove/scripts.pory"
-MistcladCove_Text_Rival_C:
+
 # 240 "data//maps/MistcladCove/scripts.pory"
-	.string "I thought this would make it easier\n"
+MistcladCove_Text_Rival_B:
 # 241 "data//maps/MistcladCove/scripts.pory"
-	.string "get around out here, but I got\l"
+	.string "We just keep running into each\n"
 # 242 "data//maps/MistcladCove/scripts.pory"
-	.string "lost anyway…\p"
+	.string "other, {PLAYER}.\p"
 # 243 "data//maps/MistcladCove/scripts.pory"
-	.string "You should use it instead.$"
+	.string "I was headed back home, but I got\n"
 # 244 "data//maps/MistcladCove/scripts.pory"
-
+	.string "turned around in this thick mist.$"
 # 245 "data//maps/MistcladCove/scripts.pory"
-MistcladCove_Text_Rival_D:
-# 246 "data//maps/MistcladCove/scripts.pory"
-	.string "You can use that to see the\n"
-# 247 "data//maps/MistcladCove/scripts.pory"
-	.string "invisible POKéMON who live here.$"
-# 248 "data//maps/MistcladCove/scripts.pory"
 
+# 246 "data//maps/MistcladCove/scripts.pory"
+MistcladCove_Text_Rival_C:
+# 247 "data//maps/MistcladCove/scripts.pory"
+	.string "I thought this would make it easier\n"
+# 248 "data//maps/MistcladCove/scripts.pory"
+	.string "get around out here, but I got\l"
 # 249 "data//maps/MistcladCove/scripts.pory"
-MistcladCove_Text_Rival_E:
+	.string "lost anyway…\p"
 # 250 "data//maps/MistcladCove/scripts.pory"
-	.string "I'm just going to FLY back to\n"
+	.string "You should use it instead.$"
 # 251 "data//maps/MistcladCove/scripts.pory"
-	.string "LITTLEROOT…\p"
+
 # 252 "data//maps/MistcladCove/scripts.pory"
-	.string "If you're tough enough to explore\n"
+MistcladCove_Text_Rival_D:
 # 253 "data//maps/MistcladCove/scripts.pory"
-	.string "here, make sure to collect a lot\l"
+	.string "You can use that to see the\n"
 # 254 "data//maps/MistcladCove/scripts.pory"
-	.string "of POKéDEX data!\p"
+	.string "invisible POKéMON who live here.$"
 # 255 "data//maps/MistcladCove/scripts.pory"
-	.string "Good luck, {PLAYER}…\p"
+
 # 256 "data//maps/MistcladCove/scripts.pory"
+MistcladCove_Text_Rival_E:
+# 257 "data//maps/MistcladCove/scripts.pory"
+	.string "I'm just going to FLY back to\n"
+# 258 "data//maps/MistcladCove/scripts.pory"
+	.string "LITTLEROOT…\p"
+# 259 "data//maps/MistcladCove/scripts.pory"
+	.string "If you're tough enough to explore\n"
+# 260 "data//maps/MistcladCove/scripts.pory"
+	.string "here, make sure to collect a lot\l"
+# 261 "data//maps/MistcladCove/scripts.pory"
+	.string "of POKéDEX data!\p"
+# 262 "data//maps/MistcladCove/scripts.pory"
+	.string "Good luck, {PLAYER}…\p"
+# 263 "data//maps/MistcladCove/scripts.pory"
 	.string "See ya!$"
