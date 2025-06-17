@@ -1613,6 +1613,8 @@ const u16 gTilesetPalettes_MysteryEventsHouse[][16] =
     INCBIN_U16("data/tilesets/secondary/mystery_events_house/palettes/15.gbapal"),
 };
 
+const u32 gTilesetTiles_UnionRoom[] = INCBIN_U32("data/tilesets/secondary/union_room/tiles.4bpp.fastSmol");
+
 const u16 gTilesetPalettes_UnionRoom[][16] =
 {
     INCBIN_U16("data/tilesets/secondary/union_room/palettes/00.gbapal"),
@@ -1633,7 +1635,7 @@ const u16 gTilesetPalettes_UnionRoom[][16] =
     INCBIN_U16("data/tilesets/secondary/union_room/palettes/15.gbapal"),
 };
 
-const u32 gTilesetTiles_UnionRoom[] = INCBIN_U32("data/tilesets/secondary/union_room/tiles.4bpp.fastSmol");
+const u32 gTilesetTiles_Mauville_OG[] = INCBIN_U32("data/tilesets/secondary/mauville_og/tiles.4bpp.fastSmol");
 
 const u16 gTilesetPalettes_Mauville_OG[][16] =
 {
@@ -1652,7 +1654,7 @@ const u16 gTilesetPalettes_Mauville_OG[][16] =
     INCBIN_U16("data/tilesets/secondary/mauville_og/palettes/12.gbapal"),
 };
 
-const u32 gTilesetTiles_Mauville_OG[] = INCBIN_U32("data/tilesets/secondary/mauville_og/tiles.4bpp.fastSmol");
+const u32 gTilesetTiles_Dewford_OG[] = INCBIN_U32("data/tilesets/secondary/dewford_og/tiles.4bpp.fastSmol");
 
 const u16 gTilesetPalettes_Dewford_OG[][16] =
 {
@@ -1671,7 +1673,7 @@ const u16 gTilesetPalettes_Dewford_OG[][16] =
     INCBIN_U16("data/tilesets/secondary/dewford_og/palettes/12.gbapal"),
 };
 
-const u32 gTilesetTiles_Dewford_OG[] = INCBIN_U32("data/tilesets/secondary/dewford_og/tiles.4bpp.fastSmol");
+const u32 gTilesetTiles_Fortree_OG[] = INCBIN_U32("data/tilesets/secondary/fortree_og/tiles.4bpp.fastSmol");
 
 const u16 gTilesetPalettes_Fortree_OG[][16] =
 {
@@ -1690,7 +1692,7 @@ const u16 gTilesetPalettes_Fortree_OG[][16] =
     INCBIN_U16("data/tilesets/secondary/fortree_og/palettes/12.gbapal"),
 };
 
-const u32 gTilesetTiles_Fortree_OG[] = INCBIN_U32("data/tilesets/secondary/fortree_og/tiles.4bpp.fastSmol");
+const u32 gTilesetTiles_Fortree_fogproof[] = INCBIN_U32("data/tilesets/secondary/fortree_fogproof/tiles.4bpp.fastSmol");
 
 const u16 gTilesetPalettes_Fortree_fogproof[][16] =
 {
@@ -1709,7 +1711,7 @@ const u16 gTilesetPalettes_Fortree_fogproof[][16] =
     INCBIN_U16("data/tilesets/secondary/fortree_fogproof/palettes/12.gbapal"),
 };
 
-const u32 gTilesetTiles_Fortree_fogproof[] = INCBIN_U32("data/tilesets/secondary/fortree_og/tiles.4bpp.fastSmol");
+const u32 gTilesetTiles_Lavaridge_OG[] = INCBIN_U32("data/tilesets/secondary/lavaridge_og/tiles.4bpp.fastSmol");
 
 const u16 gTilesetPalettes_Lavaridge_OG[][16] =
 {
@@ -1728,7 +1730,7 @@ const u16 gTilesetPalettes_Lavaridge_OG[][16] =
     INCBIN_U16("data/tilesets/secondary/lavaridge_og/palettes/12.gbapal"),
 };
 
-const u32 gTilesetTiles_Lavaridge_OG[] = INCBIN_U32("data/tilesets/secondary/lavaridge_og/tiles.4bpp.fastSmol");
+const u32 gTilesetTiles_General_OG[] = INCBIN_U32("data/tilesets/primary/general_og/tiles.4bpp.smol");
 
 const u16 gTilesetPalettes_General_OG[][16] =
 {
@@ -1746,5 +1748,3 @@ const u16 gTilesetPalettes_General_OG[][16] =
     INCBIN_U16("data/tilesets/primary/general_og/palettes/11.gbapal"),
     INCBIN_U16("data/tilesets/primary/general_og/palettes/12.gbapal"),
 };
-
-const u32 gTilesetTiles_General_OG[] = INCBIN_U32("data/tilesets/primary/general_og/tiles.4bpp.smol");
