@@ -167,20 +167,22 @@ RootCellar_EventScript_Shelf1::
 	end
 
 RootCellar_EventScript_Shelf1GiveItem2::
-	giveitem VAR_TEMP_5
-	closemessage
 	setmetatile 2, 2, METATILE_Cave_RootCellar_Shelf_Empty, TRUE
-	special DrawWholeMapView
 	setvar VAR_ROOT_CELLAR_SHELF_1, 2
+	goto_if_eq VAR_TEMP_5, SPECIES_APPLIN, RootCellar_EventScript_ApplinAttacks
+	giveitem VAR_TEMP_5
+	special DrawWholeMapView
+	closemessage
 	release
 	end
 
 RootCellar_EventScript_Shelf1GiveItem1::
-	giveitem VAR_TEMP_5
-	closemessage
 	setmetatile 2, 2, METATILE_Cave_RootCellar_Shelf_B_Half, TRUE
-	special DrawWholeMapView
 	setvar VAR_ROOT_CELLAR_SHELF_1, 1
+	goto_if_eq VAR_TEMP_5, SPECIES_APPLIN, RootCellar_EventScript_ApplinAttacks
+	giveitem VAR_TEMP_5
+	special DrawWholeMapView
+	closemessage
 	release
 	end
 
@@ -196,20 +198,22 @@ RootCellar_EventScript_Shelf2::
 	end
 
 RootCellar_EventScript_Shelf2GiveItem2::
-	giveitem VAR_TEMP_5
-	closemessage
 	setmetatile 10, 2, METATILE_Cave_RootCellar_Shelf_Empty, TRUE
-	special DrawWholeMapView
 	setvar VAR_ROOT_CELLAR_SHELF_2, 2
+	goto_if_eq VAR_TEMP_5, SPECIES_APPLIN, RootCellar_EventScript_ApplinAttacks
+	giveitem VAR_TEMP_5
+	special DrawWholeMapView
+	closemessage
 	release
 	end
 
 RootCellar_EventScript_Shelf2GiveItem1::
-	giveitem VAR_TEMP_5
-	closemessage
 	setmetatile 10, 2, METATILE_Cave_RootCellar_Shelf_A_Half, TRUE
-	special DrawWholeMapView
 	setvar VAR_ROOT_CELLAR_SHELF_2, 1
+	goto_if_eq VAR_TEMP_5, SPECIES_APPLIN, RootCellar_EventScript_ApplinAttacks
+	giveitem VAR_TEMP_5
+	special DrawWholeMapView
+	closemessage
 	release
 	end
 
@@ -225,20 +229,22 @@ RootCellar_EventScript_Shelf3::
 	end
 
 RootCellar_EventScript_Shelf3GiveItem2::
-	giveitem VAR_TEMP_5
-	closemessage
 	setmetatile 2, 9, METATILE_Cave_RootCellar_Shelf_Empty, TRUE
-	special DrawWholeMapView
 	setvar VAR_ROOT_CELLAR_SHELF_3, 2
+	goto_if_eq VAR_TEMP_5, SPECIES_APPLIN, RootCellar_EventScript_ApplinAttacks
+	giveitem VAR_TEMP_5
+	special DrawWholeMapView
+	closemessage
 	release
 	end
 
 RootCellar_EventScript_Shelf3GiveItem1::
-	giveitem VAR_TEMP_5
-	closemessage
 	setmetatile 2, 9, METATILE_Cave_RootCellar_Shelf_A_Half, TRUE
-	special DrawWholeMapView
 	setvar VAR_ROOT_CELLAR_SHELF_3, 1
+	goto_if_eq VAR_TEMP_5, SPECIES_APPLIN, RootCellar_EventScript_ApplinAttacks
+	giveitem VAR_TEMP_5
+	special DrawWholeMapView
+	closemessage
 	release
 	end
 
@@ -254,20 +260,22 @@ RootCellar_EventScript_Shelf4::
 	end
 
 RootCellar_EventScript_Shelf4GiveItem2::
-	giveitem VAR_TEMP_5
-	closemessage
 	setmetatile 10, 12, METATILE_Cave_RootCellar_Shelf_Empty, TRUE
-	special DrawWholeMapView
 	setvar VAR_ROOT_CELLAR_SHELF_4, 2
+	goto_if_eq VAR_TEMP_5, SPECIES_APPLIN, RootCellar_EventScript_ApplinAttacks
+	giveitem VAR_TEMP_5
+	special DrawWholeMapView
+	closemessage
 	release
 	end
 
 RootCellar_EventScript_Shelf4GiveItem1::
-	giveitem VAR_TEMP_5
-	closemessage
 	setmetatile 10, 12, METATILE_Cave_RootCellar_Shelf_B_Half, TRUE
-	special DrawWholeMapView
 	setvar VAR_ROOT_CELLAR_SHELF_4, 1
+	goto_if_eq VAR_TEMP_5, SPECIES_APPLIN, RootCellar_EventScript_ApplinAttacks
+	giveitem VAR_TEMP_5
+	special DrawWholeMapView
+	closemessage
 	release
 	end
 
@@ -290,6 +298,20 @@ RootCellar_EventScript_ShelfIsEmpty::
 RootCellar_EventScript_LeftShelfAlone::
 	release
 	end
+
+RootCellar_EventScript_ApplinAttacks::
+	message RootCellar_Text_APokemonAppeared
+	waitmessage
+	waitbuttonpress
+	waitse
+	playmoncry SPECIES_SHUCKLE, CRY_MODE_ENCOUNTER
+	delay 10
+	waitmoncry
+	setwildbattle SPECIES_APPLIN, 50
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	dowildbattle
+	release
+	end
 	
 RootCellar_Text_ShelfIsEmpty:
 	.string "This shelf has been depleted!$"
@@ -305,6 +327,9 @@ RootCellar_Text_FoundBerryMastersShelf:
 	.string "secret stash of BERRY JUICE and\l"
 	.string "other natural remedies.\p"
 	.string "Take some for yourself?$"
+
+RootCellar_Text_APokemonAppeared:
+	.string "A Pokémon appeared!$"
 
 
 `
@@ -323,7 +348,13 @@ script RootCellar_EventScript_RandomiseRootCellarItem {
 			setvar(VAR_TEMP_5, ITEM_BIG_ROOT)
 		}
 		elif(var(VAR_RESULT) <= 16){
-			setvar(VAR_TEMP_5, ITEM_LEFTOVERS)
+			randompercentage(50)
+			if(var(VAR_RESULT) == TRUE){
+				setvar(VAR_TEMP_5, SPECIES_APPLIN)
+			}
+			else{
+				setvar(VAR_TEMP_5, ITEM_LEFTOVERS)
+			}
 		}
 		elif(var(VAR_RESULT) <= 32){
 			setvar(VAR_TEMP_5, ITEM_ENERGY_ROOT)
