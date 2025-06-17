@@ -353,7 +353,17 @@ script RootCellar_EventScript_RandomiseRootCellarItem {
 				setvar(VAR_TEMP_5, SPECIES_APPLIN)
 			}
 			else{
-				setvar(VAR_TEMP_5, ITEM_LEFTOVERS)
+				random(4)
+				switch (var(VAR_RESULT)) {
+					case 0:
+						setvar(VAR_TEMP_5, ITEM_LEFTOVERS)
+					case 1:
+						setvar(VAR_TEMP_5, ITEM_SWEET_APPLE)
+					case 2:
+						setvar(VAR_TEMP_5, ITEM_TART_APPLE)
+					case 3:
+						setvar(VAR_TEMP_5, ITEM_SYRUPY_APPLE)
+				}
 			}
 		}
 		elif(var(VAR_RESULT) <= 32){
