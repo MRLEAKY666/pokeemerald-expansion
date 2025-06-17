@@ -622,7 +622,8 @@
   ],
   "gMapGroup_IndoorRoute123": [
     "Route123_BerryMastersHouse",
-    "RootCellarHouseEntrance"
+    "RootCellarHouseEntrance",
+    "Route123_BerryMastersHouse_RootCellarOpen"
   ],
   "gMapGroup_IndoorRoute119": [
     "Route119_WeatherInstitute_1F",

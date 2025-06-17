@@ -1,1 +1,67 @@
-mapscripts RootCellarHouseEntrance_MapScripts {}
+raw `
+RootCellarHouseEntrance_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, RootCellarHouseEntrance_MapScripts_OnTransition
+    map_script MAP_SCRIPT_ON_FRAME_TABLE, RootCellarHouseEntrance_MapScripts_OnFrame
+	.byte 0
+
+RootCellarHouseEntrance_MapScripts_OnFrame:
+    map_script_2 VAR_TEMP_0, 1, RootCellarHouseEntrance_EventScript_BerryMaster
+	.2byte 0
+
+RootCellarHouseEntrance_MapScripts_OnTransition::
+    call_if_unset FLAG_DISCOVERED_ROOT_CELLAR, RootCellarHouseEntrance_EventScript_QueueBerryMasterScene
+    end
+
+RootCellarHouseEntrance_EventScript_QueueBerryMasterScene::
+    setvar VAR_TEMP_0, 1
+    return
+
+RootCellarHouseEntrance_EventScript_BerryMaster::
+    lock
+    delay 15
+    playse SE_PIN
+    waitse
+    msgbox RootCellarHouseEntrance_Text_BerryMaster1, MSGBOX_DEFAULT
+    closemessage
+    delay 20
+    applymovement LOCALID_ROOT_CELLAR_HOUSE_ENTRANCE_BERRY_MASTER, Common_Movement_FaceUp
+    setobjectxy LOCALID_ROOT_CELLAR_HOUSE_ENTRANCE_BERRY_MASTER, 2, 3
+    showobjectat LOCALID_ROOT_CELLAR_HOUSE_ENTRANCE_BERRY_MASTER, MAP_ROOT_CELLAR_HOUSE_ENTRANCE
+    playse SE_EXIT
+    waitse
+    applymovement LOCALID_ROOT_CELLAR_HOUSE_ENTRANCE_BERRY_MASTER, RootCellarHouseEntrance_Movement_BerryMasterWalkUp
+    waitmovement LOCALID_ROOT_CELLAR_HOUSE_ENTRANCE_BERRY_MASTER
+    delay 15
+    msgbox RootCellarHouseEntrance_Text_BerryMaster2, MSGBOX_DEFAULT
+    closemessage
+    delay 30
+    applymovement LOCALID_ROOT_CELLAR_HOUSE_ENTRANCE_BERRY_MASTER, RootCellarHouseEntrance_Movement_BerryMasterWalkDown
+    applymovement LOCALID_PLAYER, RootCellarHouseEntrance_Movement_BerryMasterWalkDown
+    waitmovement
+    hideobjectat LOCALID_ROOT_CELLAR_HOUSE_ENTRANCE_BERRY_MASTER, MAP_ROOT_CELLAR_HOUSE_ENTRANCE
+    playse SE_EXIT
+    applymovement LOCALID_PLAYER, RootCellarHouseEntrance_Movement_BerryMasterWalkDown
+    setflag FLAG_DISCOVERED_ROOT_CELLAR
+    setvar VAR_TEMP_0, 0
+    warp MAP_ROUTE123_BERRY_MASTERS_HOUSE, WARP_ID_BERRY_MASTER_CELLAR_DOOR
+    end
+
+RootCellarHouseEntrance_Text_BerryMaster1:
+    .string "???: What's that back there?!$"
+
+RootCellarHouseEntrance_Text_BerryMaster2:
+    .string "BERRY MASTER: Ah! a TRAINER found my\n"
+    .string "root cellar!\p"
+    .string "Well come on through!\l"
+    .string "And I'm always glad to give you some\n"
+    .string "berries, but don't go sneaking around!$"
+
+RootCellarHouseEntrance_Movement_BerryMasterWalkUp:
+    walk_up
+    step_end
+
+RootCellarHouseEntrance_Movement_BerryMasterWalkDown:
+    walk_down
+    step_end
+
+`

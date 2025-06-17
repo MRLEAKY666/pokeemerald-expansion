@@ -144,5 +144,62 @@ void ResetRandomItem(void)
 
 void ResetWildOverworldMons(void)
 {
-    FlagClear(FLAG_GRANITE_COVE_SNOVER);
+    if (FlagGet(FLAG_GRANITE_COVE_SNOVER)) 
+    {
+        FlagClear(FLAG_GRANITE_COVE_SNOVER);
+    }
+    if (FlagGet(FLAG_ROOT_CELLAR_SHUCKLE_1))
+    {
+        if (Random() % 2)
+        {
+            FlagClear(FLAG_ROOT_CELLAR_SHUCKLE_1);
+        }
+    }
+    if (FlagGet(FLAG_ROOT_CELLAR_SHUCKLE_2))
+    {
+        if (Random() % 2)
+        {
+            FlagClear(FLAG_ROOT_CELLAR_SHUCKLE_2);
+        }
+    }
+    if (FlagGet(FLAG_ROOT_CELLAR_SPINARAK_1))
+    {
+        if (Random() % 2)
+        {
+            FlagClear(FLAG_ROOT_CELLAR_SPINARAK_1);
+        }
+    }
+    if (FlagGet(FLAG_ROOT_CELLAR_SPINARAK_2))
+    {
+        if (Random() % 2)
+        {
+            FlagClear(FLAG_ROOT_CELLAR_SPINARAK_2);
+        }
+    }
+}
+
+void RestockBerryMasterCellar(void)
+{
+    u32 CoinFlip;
+
+    if (VarGet(VAR_ROOT_CELLAR_SHELF_1) > 0)
+    {
+        CoinFlip = Random() % 2;
+        VarSet(VAR_ROOT_CELLAR_SHELF_1, (VarGet(VAR_ROOT_CELLAR_SHELF_1) - CoinFlip));
+    }
+    if (VarGet(VAR_ROOT_CELLAR_SHELF_2) > 0)
+    {
+        CoinFlip = Random() % 2;
+        VarSet(VAR_ROOT_CELLAR_SHELF_2, (VarGet(VAR_ROOT_CELLAR_SHELF_2) - CoinFlip));
+    }
+    if (VarGet(VAR_ROOT_CELLAR_SHELF_3) > 0)
+    {
+        CoinFlip = Random() % 3;
+        VarSet(VAR_ROOT_CELLAR_SHELF_3, (VarGet(VAR_ROOT_CELLAR_SHELF_3) - CoinFlip));
+    }
+    if (VarGet(VAR_ROOT_CELLAR_SHELF_4) > 0)
+    {
+        CoinFlip = Random() % 2;
+        VarSet(VAR_ROOT_CELLAR_SHELF_4, (VarGet(VAR_ROOT_CELLAR_SHELF_4) - CoinFlip));
+    }
 }

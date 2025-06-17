@@ -23,6 +23,7 @@ EventScript_GotoTrainerScript::
 
 EventScript_ObjectApproachPlayer::
 	lock
+	playse SE_PIN
 	special DoTrainerApproach
 	waitstate
 	gotonative LoadTrainerObjectScript

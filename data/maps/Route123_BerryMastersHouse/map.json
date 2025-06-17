@@ -58,8 +58,8 @@
     },
     {
       "warp_id": "WARP_ID_BERRY_MASTER_CELLAR_DOOR",
-      "x": 3,
-      "y": 2,
+      "x": 1,
+      "y": 1,
       "elevation": 0,
       "dest_map": "MAP_ROOT_CELLAR_HOUSE_ENTRANCE",
       "dest_warp_id": "WARP_ID_ROOT_CELLAR_HOUSE_ENTRANCE"

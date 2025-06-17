@@ -6,5 +6,6 @@ bool8 IsMirageIslandPresent(void);
 void UpdateBirchState(u16 days);
 void ResetRandomItem(void);
 void ResetWildOverworldMons(void);
+void RestockBerryMasterCellar(void);
 
 #endif // GUARD_TIME_EVENTS_H

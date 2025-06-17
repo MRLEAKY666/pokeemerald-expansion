@@ -5,7 +5,12 @@ Route123_BerryMastersHouse_MapScripts::
 
 Route123_BerryMastersHouse_OnTransition:
 	setflag FLAG_LANDMARK_BERRY_MASTERS_HOUSE
+	goto_if_set FLAG_DISCOVERED_ROOT_CELLAR, Route123_BerryMastersHouse_EventScript_SetCellarDoorOpen
 	end
+
+Route123_BerryMastersHouse_EventScript_SetCellarDoorOpen::
+	setmaplayoutindex LAYOUT_ROUTE123_BERRY_MASTERS_HOUSE_ROOT_CELLAR_OPEN
+	return
 
 Route123_BerryMastersHouse_EventScript_BerryMaster::
 	lock

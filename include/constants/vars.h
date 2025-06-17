@@ -143,10 +143,10 @@
 #define VAR_ROUTE128_STATE                               0x407B
 #define VAR_ROUTE129_STATE                               0x407C // Unused Var
 #define VAR_ROUTE130_STATE                               0x407D // Unused Var
-#define VAR_ROUTE131_STATE                               0x407E // Unused Var
-#define VAR_ROUTE132_STATE                               0x407F // Unused Var
-#define VAR_ROUTE133_STATE                               0x4080 // Unused Var
-#define VAR_ROUTE134_STATE                               0x4081 // Unused Var
+#define VAR_ROOT_CELLAR_SHELF_1                               0x407E // previously Unused Var
+#define VAR_ROOT_CELLAR_SHELF_2                               0x407F // previously Unused Var
+#define VAR_ROOT_CELLAR_SHELF_3                               0x4080 // previously Unused Var
+#define VAR_ROOT_CELLAR_SHELF_4                               0x4081 // previously Unused Var
 #define VAR_LITTLEROOT_HOUSES_STATE_MAY                  0x4082
 #define VAR_TIME_OF_DAY                                0x4083 // le 3 = day, ge 4 = night
 #define VAR_BIRCH_LAB_STATE                              0x4084

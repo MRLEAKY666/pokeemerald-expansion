@@ -217,6 +217,9 @@ const u16 gMetatileAttributes_Dewford_OG[] = INCBIN_U16("data/tilesets/secondary
 const u16 gMetatiles_Fortree_OG[] = INCBIN_U16("data/tilesets/secondary/fortree_og/metatiles.bin");
 const u16 gMetatileAttributes_Fortree_OG[] = INCBIN_U16("data/tilesets/secondary/fortree_og/metatile_attributes.bin");
 
+const u16 gMetatiles_Fortree_fogproof[] = INCBIN_U16("data/tilesets/secondary/fortree_fogproof/metatiles.bin");
+const u16 gMetatileAttributes_Fortree_fogproof[] = INCBIN_U16("data/tilesets/secondary/fortree_fogproof/metatile_attributes.bin");
+
 const u16 gMetatiles_Lavaridge_OG[] = INCBIN_U16("data/tilesets/secondary/lavaridge_og/metatiles.bin");
 const u16 gMetatileAttributes_Lavaridge_OG[] = INCBIN_U16("data/tilesets/secondary/lavaridge_og/metatile_attributes.bin");
 

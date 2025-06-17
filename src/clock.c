@@ -57,6 +57,7 @@ static void UpdatePerDay(struct Time *localTime)
         UpdateDaysPassedSinceFormChange(daysSince);
         ResetRandomItem();
         ResetWildOverworldMons();
+        RestockBerryMasterCellar();
         *days = localTime->days;
     }
 }

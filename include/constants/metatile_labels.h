@@ -121,6 +121,11 @@
 #define METATILE_Cave_CrackedFloor                       0x82F
 #define METATILE_Cave_CrackedFloor_Hole                  0x806
 #define METATILE_Cave_EntranceCover                      0x829
+#define METATILE_Cave_RootCellar_Shelf_A_Full            0x99E
+#define METATILE_Cave_RootCellar_Shelf_A_Half            0x9A1
+#define METATILE_Cave_RootCellar_Shelf_B_Full            0x9A0
+#define METATILE_Cave_RootCellar_Shelf_B_Half            0x9A2
+#define METATILE_Cave_RootCellar_Shelf_Empty             0x9A3
 #define METATILE_Cave_SealedChamberBraille_Mid           0x835
 #define METATILE_Cave_SealedChamberEntrance_BottomLeft   0x832
 #define METATILE_Cave_SealedChamberEntrance_BottomMid    0x833

@@ -1692,6 +1692,25 @@ const u16 gTilesetPalettes_Fortree_OG[][16] =
 
 const u32 gTilesetTiles_Fortree_OG[] = INCBIN_U32("data/tilesets/secondary/fortree_og/tiles.4bpp.fastSmol");
 
+const u16 gTilesetPalettes_Fortree_fogproof[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/fortree_fogproof/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/fortree_fogproof/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/fortree_fogproof/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/fortree_fogproof/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/fortree_fogproof/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/fortree_fogproof/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/fortree_fogproof/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/fortree_fogproof/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/fortree_fogproof/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/fortree_fogproof/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/fortree_fogproof/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/fortree_fogproof/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/fortree_fogproof/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_Fortree_fogproof[] = INCBIN_U32("data/tilesets/secondary/fortree_og/tiles.4bpp.fastSmol");
+
 const u16 gTilesetPalettes_Lavaridge_OG[][16] =
 {
     INCBIN_U16("data/tilesets/secondary/lavaridge_og/palettes/00.gbapal"),

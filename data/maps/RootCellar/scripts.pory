@@ -1,7 +1,306 @@
 raw `
 RootCellar_MapScripts::
+    map_script MAP_SCRIPT_ON_RESUME, RootCellar_OnTransition
+    map_script MAP_SCRIPT_ON_RESUME, RootCellar_OnResume
 	.byte 0
 
+RootCellar_OnTransition:
+	call RootCellar_EventScript_SetShelf1State
+	call RootCellar_EventScript_SetShelf2State
+	call RootCellar_EventScript_SetShelf3State
+	call RootCellar_EventScript_SetShelf4State
+	end
+
+RootCellar_EventScript_SetShelf1State::
+	setvar VAR_TEMP_E, 2
+	setvar VAR_TEMP_F, 2
+	switch VAR_ROOT_CELLAR_SHELF_1
+	case 1, RootCellar_EventScript_SetShelfBHalf
+	case 2, RootCellar_EventScript_SetShelfEmpty
+	return
+
+RootCellar_EventScript_SetShelf2State::
+	setvar VAR_TEMP_E, 10
+	setvar VAR_TEMP_F, 2
+	switch VAR_ROOT_CELLAR_SHELF_2
+	case 1, RootCellar_EventScript_SetShelfAHalf
+	case 2, RootCellar_EventScript_SetShelfEmpty
+	return
+
+RootCellar_EventScript_SetShelf3State::
+	setvar VAR_TEMP_E, 2
+	setvar VAR_TEMP_F, 9
+	switch VAR_ROOT_CELLAR_SHELF_3
+	case 1, RootCellar_EventScript_SetShelfAHalf
+	case 2, RootCellar_EventScript_SetShelfEmpty
+	return
+
+RootCellar_EventScript_SetShelf4State::
+	setvar VAR_TEMP_E, 10
+	setvar VAR_TEMP_F, 12
+	switch VAR_ROOT_CELLAR_SHELF_4
+	case 1, RootCellar_EventScript_SetShelfBHalf
+	case 2, RootCellar_EventScript_SetShelfEmpty
+	return
+
+RootCellar_EventScript_SetShelfAHalf::
+	setmetatile VAR_TEMP_E, VAR_TEMP_F, METATILE_Cave_RootCellar_Shelf_A_Half, TRUE
+	return
+
+RootCellar_EventScript_SetShelfBHalf::
+	setmetatile VAR_TEMP_E, VAR_TEMP_F, METATILE_Cave_RootCellar_Shelf_B_Half, TRUE
+	return
+
+RootCellar_EventScript_SetShelfEmpty::
+	setmetatile VAR_TEMP_E, VAR_TEMP_F, METATILE_Cave_RootCellar_Shelf_Empty, TRUE
+	return
+
+RootCellar_OnResume:
+	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, RootCellar_EventScript_TryRemoveWildMon
+	end
+
+RootCellar_EventScript_TryRemoveWildMon::
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
+	removeobject VAR_LAST_TALKED
+	return
+
+RootCellar_EventScript_Shuckle1::
+	lock
+	faceplayer
+	waitse
+	playmoncry SPECIES_SHUCKLE, CRY_MODE_ENCOUNTER
+	delay 10
+	waitmoncry
+	setwildbattle SPECIES_SHUCKLE, 40
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	dowildbattle
+	@ waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setvar VAR_0x8004, SPECIES_SHUCKLE
+    specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, RootCellar_EventScript_DefeatedWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, RootCellar_EventScript_RanWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, RootCellar_EventScript_RanWildMon
+	release
+	end
+
+RootCellar_EventScript_Shuckle2::
+	lock
+	faceplayer
+	waitse
+	playmoncry SPECIES_SHUCKLE, CRY_MODE_ENCOUNTER
+	delay 10
+	waitmoncry
+	setwildbattle SPECIES_SHUCKLE, 40
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	dowildbattle
+	@ waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setvar VAR_0x8004, SPECIES_SHUCKLE
+    specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, RootCellar_EventScript_DefeatedWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, RootCellar_EventScript_RanWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, RootCellar_EventScript_RanWildMon
+	release
+	end
+
+RootCellar_EventScript_Spinarak1::
+	lock
+	faceplayer
+	waitse
+	playmoncry SPECIES_SPINARAK, CRY_MODE_ENCOUNTER
+	delay 10
+	waitmoncry
+	setwildbattle SPECIES_SPINARAK, 40
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	dowildbattle
+	@ waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setvar VAR_0x8004, SPECIES_SPINARAK
+    specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, RootCellar_EventScript_DefeatedWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, RootCellar_EventScript_RanWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, RootCellar_EventScript_RanWildMon
+	release
+	end
+
+RootCellar_EventScript_Spinarak2::
+	lock
+	faceplayer
+	waitse
+	playmoncry SPECIES_SPINARAK, CRY_MODE_ENCOUNTER
+	delay 10
+	waitmoncry
+	setwildbattle SPECIES_SPINARAK, 40
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	dowildbattle
+	@ waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setvar VAR_0x8004, SPECIES_SPINARAK
+    specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, RootCellar_EventScript_DefeatedWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, RootCellar_EventScript_RanWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, RootCellar_EventScript_RanWildMon
+	release
+	end
+
+RootCellar_EventScript_DefeatedWildMon::
+    goto Common_EventScript_RemoveStaticPokemon
+	release
+	end
+
+RootCellar_EventScript_RanWildMon::
+	goto Common_EventScript_WildMonFled
+	release
+	end
+
+RootCellar_EventScript_Shelf1::
+	lock
+	goto_if_ge VAR_ROOT_CELLAR_SHELF_1, 2, RootCellar_EventScript_ShelfIsEmpty
+	call_if_unset FLAG_DISCOVERED_ROOT_CELLAR, RootCellar_EventScript_FoundAShelf
+	call_if_set FLAG_DISCOVERED_ROOT_CELLAR, RootCellar_EventScript_FoundBerryMastersShelf
+	goto_if_eq VAR_ROOT_CELLAR_SHELF_1, 1, RootCellar_EventScript_Shelf1GiveItem2
+	goto_if_eq VAR_ROOT_CELLAR_SHELF_1, 0, RootCellar_EventScript_Shelf1GiveItem1
+	release
+	end
+
+RootCellar_EventScript_Shelf1GiveItem2::
+	giveitem ITEM_BERRY_JUICE
+	closemessage
+	setmetatile 2, 2, METATILE_Cave_RootCellar_Shelf_Empty, TRUE
+	special DrawWholeMapView
+	setvar VAR_ROOT_CELLAR_SHELF_1, 2
+	release
+	end
+
+RootCellar_EventScript_Shelf1GiveItem1::
+	giveitem ITEM_BERRY_JUICE
+	closemessage
+	setmetatile 2, 2, METATILE_Cave_RootCellar_Shelf_B_Half, TRUE
+	special DrawWholeMapView
+	setvar VAR_ROOT_CELLAR_SHELF_1, 1
+	release
+	end
+
+RootCellar_EventScript_Shelf2::
+	lock
+	goto_if_ge VAR_ROOT_CELLAR_SHELF_2, 2, RootCellar_EventScript_ShelfIsEmpty
+	call_if_unset FLAG_DISCOVERED_ROOT_CELLAR, RootCellar_EventScript_FoundAShelf
+	call_if_set FLAG_DISCOVERED_ROOT_CELLAR, RootCellar_EventScript_FoundBerryMastersShelf
+	goto_if_eq VAR_ROOT_CELLAR_SHELF_2, 1, RootCellar_EventScript_Shelf2GiveItem2
+	goto_if_eq VAR_ROOT_CELLAR_SHELF_2, 0, RootCellar_EventScript_Shelf2GiveItem1
+	release
+	end
+
+RootCellar_EventScript_Shelf2GiveItem2::
+	giveitem ITEM_BERRY_JUICE
+	closemessage
+	setmetatile 10, 2, METATILE_Cave_RootCellar_Shelf_Empty, TRUE
+	special DrawWholeMapView
+	setvar VAR_ROOT_CELLAR_SHELF_2, 2
+	release
+	end
+
+RootCellar_EventScript_Shelf2GiveItem1::
+	giveitem ITEM_BERRY_JUICE
+	closemessage
+	setmetatile 10, 2, METATILE_Cave_RootCellar_Shelf_A_Half, TRUE
+	special DrawWholeMapView
+	setvar VAR_ROOT_CELLAR_SHELF_2, 1
+	release
+	end
+
+RootCellar_EventScript_Shelf3::
+	lock
+	goto_if_ge VAR_ROOT_CELLAR_SHELF_3, 2, RootCellar_EventScript_ShelfIsEmpty
+	call_if_unset FLAG_DISCOVERED_ROOT_CELLAR, RootCellar_EventScript_FoundAShelf
+	call_if_set FLAG_DISCOVERED_ROOT_CELLAR, RootCellar_EventScript_FoundBerryMastersShelf
+	goto_if_eq VAR_ROOT_CELLAR_SHELF_3, 1, RootCellar_EventScript_Shelf3GiveItem2
+	goto_if_eq VAR_ROOT_CELLAR_SHELF_3, 0, RootCellar_EventScript_Shelf3GiveItem1
+	release
+	end
+
+RootCellar_EventScript_Shelf3GiveItem2::
+	giveitem ITEM_BERRY_JUICE
+	closemessage
+	setmetatile 2, 9, METATILE_Cave_RootCellar_Shelf_Empty, TRUE
+	special DrawWholeMapView
+	setvar VAR_ROOT_CELLAR_SHELF_3, 2
+	release
+	end
+
+RootCellar_EventScript_Shelf3GiveItem1::
+	giveitem ITEM_BERRY_JUICE
+	closemessage
+	setmetatile 2, 9, METATILE_Cave_RootCellar_Shelf_A_Half, TRUE
+	special DrawWholeMapView
+	setvar VAR_ROOT_CELLAR_SHELF_3, 1
+	release
+	end
+
+RootCellar_EventScript_Shelf4::
+	lock
+	goto_if_ge VAR_ROOT_CELLAR_SHELF_4, 2, RootCellar_EventScript_ShelfIsEmpty
+	call_if_unset FLAG_DISCOVERED_ROOT_CELLAR, RootCellar_EventScript_FoundAShelf
+	call_if_set FLAG_DISCOVERED_ROOT_CELLAR, RootCellar_EventScript_FoundBerryMastersShelf
+	goto_if_eq VAR_ROOT_CELLAR_SHELF_4, 1, RootCellar_EventScript_Shelf4GiveItem2
+	goto_if_eq VAR_ROOT_CELLAR_SHELF_4, 0, RootCellar_EventScript_Shelf4GiveItem1
+	release
+	end
+
+RootCellar_EventScript_Shelf4GiveItem2::
+	giveitem ITEM_BERRY_JUICE
+	closemessage
+	setmetatile 10, 12, METATILE_Cave_RootCellar_Shelf_Empty, TRUE
+	special DrawWholeMapView
+	setvar VAR_ROOT_CELLAR_SHELF_4, 2
+	release
+	end
+
+RootCellar_EventScript_Shelf4GiveItem1::
+	giveitem ITEM_BERRY_JUICE
+	closemessage
+	setmetatile 10, 12, METATILE_Cave_RootCellar_Shelf_B_Half, TRUE
+	special DrawWholeMapView
+	setvar VAR_ROOT_CELLAR_SHELF_4, 1
+	release
+	end
+
+RootCellar_EventScript_FoundAShelf::
+	msgbox RootCellar_Text_FoundAShelf, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, RootCellar_EventScript_LeftShelfAlone
+	return
+
+RootCellar_EventScript_FoundBerryMastersShelf::
+	msgbox RootCellar_Text_FoundBerryMastersShelf, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, RootCellar_EventScript_LeftShelfAlone
+	return
+
+RootCellar_EventScript_ShelfIsEmpty::
+	msgbox RootCellar_Text_ShelfIsEmpty, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+RootCellar_EventScript_LeftShelfAlone::
+	release
+	end
+	
+RootCellar_Text_ShelfIsEmpty:
+	.string "This shelf has been depleted!$"
+
+RootCellar_Text_FoundAShelf:
+	.string "Someone has been stashing their\n"
+	.string "BERRY JUICE and other natural\l"
+	.string "remedies here.\p"
+	.string "Take some for yourself?$"
+
+RootCellar_Text_FoundBerryMastersShelf:
+	.string "This must be the BERRY MASTER's\n"
+	.string "secret stash of BERRY JUICE and\l"
+	.string "other natural remedies.\p"
+	.string "Take some for yourself?$"
 
 
 `

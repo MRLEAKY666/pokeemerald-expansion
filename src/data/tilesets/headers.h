@@ -873,6 +873,17 @@ const struct Tileset gTileset_Fortree_OG =
     .callback = NULL,
 };
 
+const struct Tileset gTileset_Fortree_fogproof =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Fortree_fogproof,
+    .palettes = gTilesetPalettes_Fortree_fogproof,
+    .metatiles = gMetatiles_Fortree_fogproof,
+    .metatileAttributes = gMetatileAttributes_Fortree_fogproof,
+    .callback = NULL,
+};
+
 const struct Tileset gTileset_Lavaridge_OG =
 {
     .isCompressed = TRUE,

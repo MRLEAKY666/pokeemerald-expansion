@@ -63,10 +63,10 @@
 #define FLAG_FORTREE_CLIFFS_KECLEON_4    0x31 // Unused Flag
 #define FLAG_FORTREE_CLIFFS_KECLEON_5    0x32 // Unused Flag
 #define FLAG_FORTREE_CLIFFS_KECLEON_6    0x33 // Unused Flag
-#define FLAG_UNUSED_0x034    0x34 // Unused Flag
-#define FLAG_UNUSED_0x035    0x35 // Unused Flag
-#define FLAG_UNUSED_0x036    0x36 // Unused Flag
-#define FLAG_UNUSED_0x037    0x37 // Unused Flag
+#define FLAG_ROOT_CELLAR_SHUCKLE_1    0x34 // previously Unused Flag
+#define FLAG_ROOT_CELLAR_SHUCKLE_2    0x35 // previously Unused Flag
+#define FLAG_ROOT_CELLAR_SPINARAK_1    0x36 // previously Unused Flag
+#define FLAG_ROOT_CELLAR_SPINARAK_2    0x37 // previously Unused Flag
 #define FLAG_UNUSED_0x038    0x38 // Unused Flag
 #define FLAG_UNUSED_0x039    0x39 // Unused Flag
 #define FLAG_UNUSED_0x03A    0x3A // Unused Flag
@@ -255,7 +255,7 @@
 #define FLAG_RECEIVED_TM_ROAR                0xE7
 #define FLAG_RECEIVED_TM_GIGA_DRAIN          0xE8
 
-#define FLAG_UNUSED_0x0E9                    0xE9 // Unused Flag
+#define FLAG_DISCOVERED_ROOT_CELLAR                    0xE9 // previously Unused Flag
 
 #define FLAG_RECEIVED_TM_REST                0xEA
 #define FLAG_RECEIVED_TM_ATTRACT             0xEB

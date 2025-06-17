@@ -47,7 +47,7 @@
       "width": 40,
       "height": 20,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Fortree",
+      "secondary_tileset": "gTileset_Fortree_fogproof",
       "border_filepath": "data/layouts/FortreeCity/border.bin",
       "blockdata_filepath": "data/layouts/FortreeCity/map.bin"
     },
@@ -347,7 +347,7 @@
       "width": 40,
       "height": 140,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Fortree",
+      "secondary_tileset": "gTileset_Fortree_fogproof",
       "border_filepath": "data/layouts/Route119/border.bin",
       "blockdata_filepath": "data/layouts/Route119/map.bin"
     },
@@ -4467,7 +4467,7 @@
       "width": 40,
       "height": 120,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Fortree",
+      "secondary_tileset": "gTileset_Fortree_fogproof",
       "border_filepath": "data/layouts/FortreeCliffs/border.bin",
       "blockdata_filepath": "data/layouts/FortreeCliffs/map.bin"
     },
@@ -4487,7 +4487,7 @@
       "width": 40,
       "height": 40,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Fortree",
+      "secondary_tileset": "gTileset_Fortree_fogproof",
       "border_filepath": "data/layouts/MistcladCove/border.bin",
       "blockdata_filepath": "data/layouts/MistcladCove/map.bin"
     },
@@ -4530,6 +4530,16 @@
       "secondary_tileset": "gTileset_Underwater",
       "border_filepath": "data/layouts/Underwater_Route122/border.bin",
       "blockdata_filepath": "data/layouts/Underwater_Route122/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE123_BERRY_MASTERS_HOUSE_ROOT_CELLAR_OPEN",
+      "name": "Route123_BerryMastersHouse_RootCellarOpen_Layout",
+      "width": 11,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/Route123_BerryMastersHouse_RootCellarOpen/border.bin",
+      "blockdata_filepath": "data/layouts/Route123_BerryMastersHouse_RootCellarOpen/map.bin"
     }
   ]
 }
