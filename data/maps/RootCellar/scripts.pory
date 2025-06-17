@@ -160,13 +160,14 @@ RootCellar_EventScript_Shelf1::
 	goto_if_ge VAR_ROOT_CELLAR_SHELF_1, 2, RootCellar_EventScript_ShelfIsEmpty
 	call_if_unset FLAG_DISCOVERED_ROOT_CELLAR, RootCellar_EventScript_FoundAShelf
 	call_if_set FLAG_DISCOVERED_ROOT_CELLAR, RootCellar_EventScript_FoundBerryMastersShelf
+	call RootCellar_EventScript_RandomiseRootCellarItem
 	goto_if_eq VAR_ROOT_CELLAR_SHELF_1, 1, RootCellar_EventScript_Shelf1GiveItem2
 	goto_if_eq VAR_ROOT_CELLAR_SHELF_1, 0, RootCellar_EventScript_Shelf1GiveItem1
 	release
 	end
 
 RootCellar_EventScript_Shelf1GiveItem2::
-	giveitem ITEM_BERRY_JUICE
+	giveitem VAR_TEMP_5
 	closemessage
 	setmetatile 2, 2, METATILE_Cave_RootCellar_Shelf_Empty, TRUE
 	special DrawWholeMapView
@@ -175,7 +176,7 @@ RootCellar_EventScript_Shelf1GiveItem2::
 	end
 
 RootCellar_EventScript_Shelf1GiveItem1::
-	giveitem ITEM_BERRY_JUICE
+	giveitem VAR_TEMP_5
 	closemessage
 	setmetatile 2, 2, METATILE_Cave_RootCellar_Shelf_B_Half, TRUE
 	special DrawWholeMapView
@@ -188,13 +189,14 @@ RootCellar_EventScript_Shelf2::
 	goto_if_ge VAR_ROOT_CELLAR_SHELF_2, 2, RootCellar_EventScript_ShelfIsEmpty
 	call_if_unset FLAG_DISCOVERED_ROOT_CELLAR, RootCellar_EventScript_FoundAShelf
 	call_if_set FLAG_DISCOVERED_ROOT_CELLAR, RootCellar_EventScript_FoundBerryMastersShelf
+	call RootCellar_EventScript_RandomiseRootCellarItem
 	goto_if_eq VAR_ROOT_CELLAR_SHELF_2, 1, RootCellar_EventScript_Shelf2GiveItem2
 	goto_if_eq VAR_ROOT_CELLAR_SHELF_2, 0, RootCellar_EventScript_Shelf2GiveItem1
 	release
 	end
 
 RootCellar_EventScript_Shelf2GiveItem2::
-	giveitem ITEM_BERRY_JUICE
+	giveitem VAR_TEMP_5
 	closemessage
 	setmetatile 10, 2, METATILE_Cave_RootCellar_Shelf_Empty, TRUE
 	special DrawWholeMapView
@@ -203,7 +205,7 @@ RootCellar_EventScript_Shelf2GiveItem2::
 	end
 
 RootCellar_EventScript_Shelf2GiveItem1::
-	giveitem ITEM_BERRY_JUICE
+	giveitem VAR_TEMP_5
 	closemessage
 	setmetatile 10, 2, METATILE_Cave_RootCellar_Shelf_A_Half, TRUE
 	special DrawWholeMapView
@@ -216,13 +218,14 @@ RootCellar_EventScript_Shelf3::
 	goto_if_ge VAR_ROOT_CELLAR_SHELF_3, 2, RootCellar_EventScript_ShelfIsEmpty
 	call_if_unset FLAG_DISCOVERED_ROOT_CELLAR, RootCellar_EventScript_FoundAShelf
 	call_if_set FLAG_DISCOVERED_ROOT_CELLAR, RootCellar_EventScript_FoundBerryMastersShelf
+	call RootCellar_EventScript_RandomiseRootCellarItem
 	goto_if_eq VAR_ROOT_CELLAR_SHELF_3, 1, RootCellar_EventScript_Shelf3GiveItem2
 	goto_if_eq VAR_ROOT_CELLAR_SHELF_3, 0, RootCellar_EventScript_Shelf3GiveItem1
 	release
 	end
 
 RootCellar_EventScript_Shelf3GiveItem2::
-	giveitem ITEM_BERRY_JUICE
+	giveitem VAR_TEMP_5
 	closemessage
 	setmetatile 2, 9, METATILE_Cave_RootCellar_Shelf_Empty, TRUE
 	special DrawWholeMapView
@@ -231,7 +234,7 @@ RootCellar_EventScript_Shelf3GiveItem2::
 	end
 
 RootCellar_EventScript_Shelf3GiveItem1::
-	giveitem ITEM_BERRY_JUICE
+	giveitem VAR_TEMP_5
 	closemessage
 	setmetatile 2, 9, METATILE_Cave_RootCellar_Shelf_A_Half, TRUE
 	special DrawWholeMapView
@@ -244,13 +247,14 @@ RootCellar_EventScript_Shelf4::
 	goto_if_ge VAR_ROOT_CELLAR_SHELF_4, 2, RootCellar_EventScript_ShelfIsEmpty
 	call_if_unset FLAG_DISCOVERED_ROOT_CELLAR, RootCellar_EventScript_FoundAShelf
 	call_if_set FLAG_DISCOVERED_ROOT_CELLAR, RootCellar_EventScript_FoundBerryMastersShelf
+	call RootCellar_EventScript_RandomiseRootCellarItem
 	goto_if_eq VAR_ROOT_CELLAR_SHELF_4, 1, RootCellar_EventScript_Shelf4GiveItem2
 	goto_if_eq VAR_ROOT_CELLAR_SHELF_4, 0, RootCellar_EventScript_Shelf4GiveItem1
 	release
 	end
 
 RootCellar_EventScript_Shelf4GiveItem2::
-	giveitem ITEM_BERRY_JUICE
+	giveitem VAR_TEMP_5
 	closemessage
 	setmetatile 10, 12, METATILE_Cave_RootCellar_Shelf_Empty, TRUE
 	special DrawWholeMapView
@@ -259,7 +263,7 @@ RootCellar_EventScript_Shelf4GiveItem2::
 	end
 
 RootCellar_EventScript_Shelf4GiveItem1::
-	giveitem ITEM_BERRY_JUICE
+	giveitem VAR_TEMP_5
 	closemessage
 	setmetatile 10, 12, METATILE_Cave_RootCellar_Shelf_B_Half, TRUE
 	special DrawWholeMapView
@@ -304,3 +308,68 @@ RootCellar_Text_FoundBerryMastersShelf:
 
 
 `
+
+script RootCellar_EventScript_RandomiseRootCellarItem {
+	randompercentage(50)
+	if(var(VAR_RESULT) == TRUE){
+		setvar(VAR_TEMP_5, ITEM_BERRY_JUICE)
+	}
+	else{
+		random(100)
+		if(var(VAR_RESULT) == 0){
+			setvar(VAR_TEMP_5, ITEM_REVIVAL_HERB)
+		}
+		elif(var(VAR_RESULT) <= 4){
+			setvar(VAR_TEMP_5, ITEM_BIG_ROOT)
+		}
+		elif(var(VAR_RESULT) <= 16){
+			setvar(VAR_TEMP_5, ITEM_LEFTOVERS)
+		}
+		elif(var(VAR_RESULT) <= 32){
+			setvar(VAR_TEMP_5, ITEM_ENERGY_ROOT)
+		}
+		elif(var(VAR_RESULT) <= 64){
+			random(16)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setvar(VAR_TEMP_5, ITEM_OCCA_BERRY)
+				case 1:
+					setvar(VAR_TEMP_5, ITEM_PASSHO_BERRY)
+				case 2:
+					setvar(VAR_TEMP_5, ITEM_WACAN_BERRY)
+				case 3:
+					setvar(VAR_TEMP_5, ITEM_RINDO_BERRY)
+				case 4:
+					setvar(VAR_TEMP_5, ITEM_YACHE_BERRY)
+				case 5:
+					setvar(VAR_TEMP_5, ITEM_CHOPLE_BERRY)
+				case 6:
+					setvar(VAR_TEMP_5, ITEM_KEBIA_BERRY)
+				case 7:
+					setvar(VAR_TEMP_5, ITEM_SHUCA_BERRY)
+				case 8:
+					setvar(VAR_TEMP_5, ITEM_COBA_BERRY)
+				case 9:
+					setvar(VAR_TEMP_5, ITEM_PAYAPA_BERRY)
+				case 10:
+					setvar(VAR_TEMP_5, ITEM_TANGA_BERRY)
+				case 11:
+					setvar(VAR_TEMP_5, ITEM_CHARTI_BERRY)
+				case 12:
+					setvar(VAR_TEMP_5, ITEM_KASIB_BERRY)
+				case 13:
+					setvar(VAR_TEMP_5, ITEM_HABAN_BERRY)
+				case 14:
+					setvar(VAR_TEMP_5, ITEM_COLBUR_BERRY)
+				case 15:
+					setvar(VAR_TEMP_5, ITEM_BABIRI_BERRY)
+				case 16:
+					setvar(VAR_TEMP_5, ITEM_CHILAN_BERRY)
+			}
+		}
+		else{
+			setvar(VAR_TEMP_5, ITEM_BERRY_JUICE)
+		}
+	}
+	return
+}
