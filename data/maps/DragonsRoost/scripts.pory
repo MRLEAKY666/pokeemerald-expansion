@@ -61,7 +61,6 @@ DragonsRoost_EventScript_TryShowZapdos::
 
 DragonsRoost_EventScript_Rayquaza::
 	lock
-
 	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
 	setvar VAR_0x8004, 1  @ vertical pan
 	setvar VAR_0x8005, 1  @ horizontal pan
@@ -75,31 +74,23 @@ DragonsRoost_EventScript_Rayquaza::
 	delay 10
 	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
 	waitmovement LOCALID_PLAYER
-
 	setweather WEATHER_SUNNY
 	doweather
 	delay 10
 	fadeoutbgm 1
-
 	getobjectxy LOCALID_PLAYER, CURRENT_POSITION, VAR_TEMP_E, VAR_TEMP_F
-
 	setobjectxyperm LOCALID_DRAGONS_ROOST_PLAYER_CLONE, VAR_TEMP_E, VAR_TEMP_F
 	setobjectxy LOCALID_DRAGONS_ROOST_PLAYER_CLONE, VAR_TEMP_E, VAR_TEMP_F
 	clearflag FLAG_DRAGONS_ROOST_CLONE
 	addobject LOCALID_DRAGONS_ROOST_PLAYER_CLONE, MAP_DRAGONS_ROOST
-
 	applymovement LOCALID_DRAGONS_ROOST_PLAYER_CLONE, Common_Movement_FaceUp
 	waitmovement LOCALID_DRAGONS_ROOST_PLAYER_CLONE
-
 	hideobjectat LOCALID_PLAYER, MAP_DRAGONS_ROOST
 	showobjectat LOCALID_DRAGONS_ROOST_PLAYER_CLONE, MAP_DRAGONS_ROOST
-	
 	applymovement LOCALID_DRAGONS_ROOST_RAYQUAZA, DragonsRoost_Movement_RayquazaFlyDown
-
 	applymovement LOCALID_PLAYER, DragonsRoost_Movement_CameraPanUpI
 	hidefollower
 	waitmovement LOCALID_DRAGONS_ROOST_RAYQUAZA
-
 	setvar VAR_DRAGONS_ROOST_RAYQUAZA_SCENE_STATE, 2
 	release 
 	end 
