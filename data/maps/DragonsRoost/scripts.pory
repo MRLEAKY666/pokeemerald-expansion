@@ -2,7 +2,7 @@ raw `
 
 DragonsRoost_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, DragonsRoost_OnResume
-	map_script MAP_SCRIPT_ON_RESUME, DragonsRoost_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, DragonsRoost_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, DragonsRoost_OnFrame
 	.byte 0
 
@@ -28,7 +28,27 @@ DragonsRoost_EventScript_TryRemoveWildMon::
 DragonsRoost_OnTransition:
 	call_if_set FLAG_CAUGHT_ZAPDOS, DragonsRoost_EventScript_HideZapdos
 	call_if_unset FLAG_CAUGHT_ZAPDOS, DragonsRoost_EventScript_TryShowZapdos
+	call_if_unset FLAG_DRAGONS_ROOST_CLONE, DragonsRoost_EventScript_HideClone
+	call DragonsRoost_EventScript_SetupPlayerCloneGfxId
 	end
+
+DragonsRoost_EventScript_HideClone::
+	removeobject LOCALID_DRAGONS_ROOST_PLAYER_CLONE
+	return
+
+DragonsRoost_EventScript_SetupPlayerCloneGfxId::
+	checkplayergender
+	goto_if_eq VAR_RESULT, MALE, DragonsRoost_EventScript_PlayerCloneMale
+	goto_if_eq VAR_RESULT, FEMALE, DragonsRoost_EventScript_PlayerCloneFemale
+	end
+
+DragonsRoost_EventScript_PlayerCloneMale::
+	setvar VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
+	return
+
+DragonsRoost_EventScript_PlayerCloneFemale::
+	setvar VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
+	return
 
 DragonsRoost_EventScript_HideZapdos::
 	setflag FLAG_HIDE_ZAPDOS
@@ -40,21 +60,52 @@ DragonsRoost_EventScript_TryShowZapdos::
 	return
 
 DragonsRoost_EventScript_Rayquaza::
-	@ lock
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	lock
+
 	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
 	setvar VAR_0x8004, 1  @ vertical pan
 	setvar VAR_0x8005, 1  @ horizontal pan
 	setvar VAR_0x8006, 8  @ num shakes
 	setvar VAR_0x8007, 3  @ shake delay
 	special ShakeCamera
+	waitstate
+	delay 10
+	applymovement LOCALID_PLAYER, Common_Movement_ExclamationMark
+	playse SE_PIN
+	delay 10
+	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
+	waitmovement LOCALID_PLAYER
+
+	setweather WEATHER_SUNNY
+	doweather
+	delay 10
 	fadeoutbgm 1
+
+	getobjectxy LOCALID_PLAYER, CURRENT_POSITION, VAR_TEMP_E, VAR_TEMP_F
+
+	setobjectxyperm LOCALID_DRAGONS_ROOST_PLAYER_CLONE, VAR_TEMP_E, VAR_TEMP_F
+	setobjectxy LOCALID_DRAGONS_ROOST_PLAYER_CLONE, VAR_TEMP_E, VAR_TEMP_F
+	clearflag FLAG_DRAGONS_ROOST_CLONE
+	addobject LOCALID_DRAGONS_ROOST_PLAYER_CLONE, MAP_DRAGONS_ROOST
+
+	applymovement LOCALID_DRAGONS_ROOST_PLAYER_CLONE, Common_Movement_FaceUp
+	waitmovement LOCALID_DRAGONS_ROOST_PLAYER_CLONE
+
+	hideobjectat LOCALID_PLAYER, MAP_DRAGONS_ROOST
+	showobjectat LOCALID_DRAGONS_ROOST_PLAYER_CLONE, MAP_DRAGONS_ROOST
+	
 	applymovement LOCALID_DRAGONS_ROOST_RAYQUAZA, DragonsRoost_Movement_RayquazaFlyDown
-	special SpawnCameraObject
-	applymovement LOCALID_CAMERA, DragonsRoost_Movement_CameraPanUpI
-	waitmovement LOCALID_CAMERA
-	special RemoveCameraObject
-	waitse
+
+	applymovement LOCALID_PLAYER, DragonsRoost_Movement_CameraPanUpI
+	hidefollower
+	waitmovement LOCALID_DRAGONS_ROOST_RAYQUAZA
+
+	setvar VAR_DRAGONS_ROOST_RAYQUAZA_SCENE_STATE, 2
+	release 
+	end 
+
+DragonsRoost_EventScript_ContinueRayquazaScene::
+
 	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
 	setvar VAR_0x8004, 1  @ vertical pan
 	setvar VAR_0x8005, 1  @ horizontal pan
@@ -71,14 +122,19 @@ DragonsRoost_EventScript_Rayquaza::
 	special ShakeCamera
 	waitstate
 	waitmoncry
-	setvar VAR_DRAGONS_ROOST_RAYQUAZA_SCENE_STATE, 2
-	release 
-	end 
 
-DragonsRoost_EventScript_ContinueRayquazaScene::
 	msgbox DragonsRoost_Text_RayquazaAppeared, MSGBOX_DEFAULT
 	closemessage
-	delay 60
+
+	playmoncry SPECIES_RAYQUAZA, CRY_MODE_FAINT
+	setvar VAR_0x8004, 1  @ vertical pan
+	setvar VAR_0x8005, 1  @ horizontal pan
+	setvar VAR_0x8006, 8  @ num shakes
+	setvar VAR_0x8007, 3  @ shake delay
+	special ShakeCamera
+	waitstate
+
+	delay 45
 	applymovement LOCALID_DRAGONS_ROOST_RAYQUAZA, DragonsRoost_Movement_RayquazaFlyOff
 	waitmovement LOCALID_DRAGONS_ROOST_RAYQUAZA
 	removeobject LOCALID_DRAGONS_ROOST_RAYQUAZA
@@ -86,13 +142,18 @@ DragonsRoost_EventScript_ContinueRayquazaScene::
 	closemessage
 	delay 20
 	fadeinbgm 2
-	special SpawnCameraObject
+
+	applymovement LOCALID_PLAYER, DragonsRoost_Movement_CameraPanDownII
+	waitmovement LOCALID_PLAYER
+	removeobject LOCALID_DRAGONS_ROOST_PLAYER_CLONE
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	applymovement LOCALID_CAMERA, DragonsRoost_Movement_CameraPanDownII
-	waitmovement LOCALID_CAMERA
-	special RemoveCameraObject
+	showobjectat LOCALID_PLAYER, MAP_DRAGONS_ROOST
+	waitmovement LOCALID_PLAYER
+
+	resetweather
+	doweather
 	setvar VAR_DRAGONS_ROOST_RAYQUAZA_SCENE_STATE, 3
-	releaseall
+	release
 	end
 
 DragonsRoost_EventScript_DoRayquazaCry::
@@ -130,6 +191,12 @@ DragonsRoost_EventScript_DoMeteoriteSparkle::
 	delay 10
 	clearflag FLAG_DRAGONS_ROOST_METEORITE
 	setvar VAR_DRAGONS_ROOST_RAYQUAZA_SCENE_STATE, 4
+	release
+	end
+
+DragonsRoost_EventScript_Clone::
+	lock
+	msgbox DragonsRoost_Text_Clone, MSGBOX_DEFAULT 
 	release
 	end
 
@@ -427,12 +494,12 @@ DragonsRoost_Movement_RayquazaFlyOff:
 
 DragonsRoost_Movement_CameraPanUpI:
 	walk_slow_up
+	walk_up
+	walk_up
+	walk_fast_up
+	walk_fast_up
+	walk_up
 	walk_slow_up
-	walk_up
-	walk_up
-	walk_up
-	walk_faster_up
-	walk_faster_up
 	step_end
 
 DragonsRoost_Movement_CameraPanUpII:
@@ -457,10 +524,10 @@ DragonsRoost_Movement_CameraPanDownI:
 
 DragonsRoost_Movement_CameraPanDownII:
 	walk_fast_down
-	walk_faster_down
-	walk_down
-	walk_down
-	walk_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
 	walk_down
 	walk_slow_down
 	step_end
@@ -525,12 +592,16 @@ DragonsRoost_Text_RayquazaFlewOff:
 	.string "towards SKY PILLAR!$"
 
 DragonsRoost_Text_RayquazaAppeared:
-	.string "RAYQUAZA appeared!$"
+	.string "RAYQUAZA appeared from beyond the\n" 
+	.string "cliff's edge!$"
 
 DragonsRoost_Text_RayquazaIsHere:
 	.string "RAYQUAZA roared nearby!$"
 
 DragonsRoost_Text_HaxorusAttacked:
 	.string "HAXORUS approached aggresively!$"
+
+DragonsRoost_Text_Clone:
+	.string "Where am I?$"
 
 `

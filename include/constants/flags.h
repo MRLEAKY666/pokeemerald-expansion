@@ -69,7 +69,7 @@
 #define FLAG_ROOT_CELLAR_SPINARAK_2    0x37 // previously Unused Flag
 #define FLAG_DRAGONS_ROOST_METEORITE    0x38 // previoously Unused Flag
 #define FLAG_DEFEATED_DRAGONS_ROOST_HAXORUS    0x39 // previously Unused Flag
-#define FLAG_UNUSED_0x03A    0x3A // Unused Flag
+#define FLAG_DRAGONS_ROOST_CLONE    0x3A // previously Unused Flag
 #define FLAG_UNUSED_0x03B    0x3B // Unused Flag
 #define FLAG_UNUSED_0x03C    0x3C // Unused Flag
 #define FLAG_UNUSED_0x03D    0x3D // Unused Flag
