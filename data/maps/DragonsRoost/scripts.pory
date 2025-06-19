@@ -7,7 +7,8 @@ DragonsRoost_MapScripts::
 	.byte 0
 
 DragonsRoost_OnFrame:
-	map_script_2 VAR_DRAGONS_ROOST_RAYQUAZA_SCENE_STATE, 0, DragonsRoost_EventScript_DoRayquazaCry
+	@ map_script_2 VAR_DRAGONS_ROOST_RAYQUAZA_SCENE_STATE, 0, DragonsRoost_EventScript_DoRayquazaCry
+	@ map_script_2 VAR_TEMP_1, 1, DragonsRoost_EventScript_DoRayquazaCry
 	map_script_2 VAR_DRAGONS_ROOST_RAYQUAZA_SCENE_STATE, 2, DragonsRoost_EventScript_ContinueRayquazaScene
 	map_script_2 VAR_DRAGONS_ROOST_RAYQUAZA_SCENE_STATE, 3, DragonsRoost_EventScript_DoMeteoriteSparkle
 	.2byte 0
@@ -26,11 +27,21 @@ DragonsRoost_EventScript_TryRemoveWildMon::
 	return
 
 DragonsRoost_OnTransition:
+	call_if_unset FLAG_DRAGONS_ROOST_METEORITE, DragonsRoost_EventScript_PrepRepeatSparkle
+	call_if_le VAR_DRAGONS_ROOST_RAYQUAZA_SCENE_STATE, 1, DragonsRoost_EventScript_PrepRayquazaCry
 	call_if_set FLAG_CAUGHT_ZAPDOS, DragonsRoost_EventScript_HideZapdos
 	call_if_unset FLAG_CAUGHT_ZAPDOS, DragonsRoost_EventScript_TryShowZapdos
 	call_if_unset FLAG_DRAGONS_ROOST_CLONE, DragonsRoost_EventScript_HideClone
 	call DragonsRoost_EventScript_SetupPlayerCloneGfxId
 	end
+
+DragonsRoost_EventScript_PrepRayquazaCry::
+	setvar VAR_TEMP_1, 1
+	return
+
+DragonsRoost_EventScript_PrepRepeatSparkle::
+	setvar VAR_TEMP_2, 1
+	return
 
 DragonsRoost_EventScript_HideClone::
 	removeobject LOCALID_DRAGONS_ROOST_PLAYER_CLONE
@@ -168,6 +179,7 @@ DragonsRoost_EventScript_DoRayquazaCry::
 	msgbox DragonsRoost_Text_RayquazaIsHere, MSGBOX_DEFAULT
 	closemessage
 	setvar VAR_DRAGONS_ROOST_RAYQUAZA_SCENE_STATE, 1
+	setvar VAR_TEMP_1, 0
 	release
 	end
 
@@ -182,6 +194,7 @@ DragonsRoost_EventScript_DoMeteoriteSparkle::
 	delay 10
 	clearflag FLAG_DRAGONS_ROOST_METEORITE
 	setvar VAR_DRAGONS_ROOST_RAYQUAZA_SCENE_STATE, 4
+	setvar VAR_TEMP_2, 0
 	release
 	end
 
@@ -587,7 +600,7 @@ DragonsRoost_Text_RayquazaAppeared:
 	.string "cliff's edge!$"
 
 DragonsRoost_Text_RayquazaIsHere:
-	.string "RAYQUAZA roared nearby!$"
+	.string "It sounds like RAYQUAZA is nearby!$"
 
 DragonsRoost_Text_HaxorusAttacked:
 	.string "HAXORUS approached aggresively!$"
