@@ -2925,7 +2925,7 @@ Route119_Text_DaemonDefeat:
 
 Route119_Text_DaemonPostBattle:
 	.string "I heard RAYQUAZA had been sighted\n"
-	.string "flying over INFINITY COAST.\l"
+	.string "flying over DRAGON'S ROOST.\l"
 	.string "But where is the entrance?$"
 
 Route119_Text_DaytonIntro:

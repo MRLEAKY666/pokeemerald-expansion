@@ -4412,14 +4412,14 @@
       "blockdata_filepath": "data/layouts/SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked/map.bin"
     },
     {
-      "id": "LAYOUT_INFINITY_COAST",
-      "name": "InfinityCoast_Layout",
+      "id": "LAYOUT_DRAGONS_ROOST",
+      "name": "DragonsRoost_Layout",
       "width": 120,
       "height": 60,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Fortree_fogproof",
-      "border_filepath": "data/layouts/InfinityCoast/border.bin",
-      "blockdata_filepath": "data/layouts/InfinityCoast/map.bin"
+      "border_filepath": "data/layouts/DragonsRoost/border.bin",
+      "blockdata_filepath": "data/layouts/DragonsRoost/map.bin"
     },
     {
       "id": "LAYOUT_GRANITE_COVE",
@@ -4452,14 +4452,14 @@
       "blockdata_filepath": "data/layouts/GraniteCave_ArticunosRoom/map.bin"
     },
     {
-      "id": "LAYOUT_INFINITY_COAST_HOUSE1",
-      "name": "InfinityCoast_House1_Layout",
+      "id": "LAYOUT_DRAGONS_ROOST_HOUSE1",
+      "name": "DragonsRoost_House1_Layout",
       "width": 8,
       "height": 6,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_GenericBuilding",
-      "border_filepath": "data/layouts/InfinityCoast_House1/border.bin",
-      "blockdata_filepath": "data/layouts/InfinityCoast_House1/map.bin"
+      "border_filepath": "data/layouts/DragonsRoost_House1/border.bin",
+      "blockdata_filepath": "data/layouts/DragonsRoost_House1/map.bin"
     },
     {
       "id": "LAYOUT_FORTREE_CLIFFS",

@@ -1,9 +1,9 @@
 {
-  "id": "MAP_INFINITY_COAST_HOUSE1",
-  "name": "InfinityCoast_House1",
-  "layout": "LAYOUT_INFINITY_COAST_HOUSE1",
+  "id": "MAP_DRAGONS_ROOST_HOUSE1",
+  "name": "DragonsRoost_House1",
+  "layout": "LAYOUT_DRAGONS_ROOST_HOUSE1",
   "music": "MUS_DUMMY",
-  "region_map_section": "MAPSEC_INFINITY_COAST",
+  "region_map_section": "MAPSEC_DRAGONS_ROOST",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -24,7 +24,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "InfinityCoast_House1_EventScript_OldLady",
+      "script": "DragonsRoost_House1_EventScript_OldLady",
       "flag": "0"
     },
     {
@@ -37,7 +37,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "InfinityCoast_House1_EventScript_Drampa",
+      "script": "DragonsRoost_House1_EventScript_Drampa",
       "flag": "0"
     }
   ],
@@ -46,14 +46,14 @@
       "x": 4,
       "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_INFINITY_COAST",
+      "dest_map": "MAP_DRAGONS_ROOST",
       "dest_warp_id": "8"
     },
     {
       "x": 3,
       "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_INFINITY_COAST",
+      "dest_map": "MAP_DRAGONS_ROOST",
       "dest_warp_id": "8"
     }
   ],

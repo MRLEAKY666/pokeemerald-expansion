@@ -11493,8 +11493,8 @@
           }
         },
         {
-          "map": "MAP_INFINITY_COAST",
-          "base_label": "gInfinityCoast0",
+          "map": "MAP_DRAGONS_ROOST",
+          "base_label": "gDragonsRoost0",
           "land_mons": {
             "encounter_rate": 10,
             "mons": [
