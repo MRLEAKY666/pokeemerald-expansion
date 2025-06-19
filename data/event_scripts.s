@@ -1241,7 +1241,7 @@ Common_EventScript_ExitSafeArea::
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
 
-	.include "data/maps/FortreeWoods/scripts.inc"
+	.include "data/maps/InfinityCoast/scripts.inc"
 
 	.include "data/maps/GraniteCove/scripts.inc"
 
@@ -1249,7 +1249,7 @@ Common_EventScript_ExitSafeArea::
 
 	.include "data/maps/GraniteCave_ArticunosRoom/scripts.inc"
 
-	.include "data/maps/FortreeWoods_House1/scripts.inc"
+	.include "data/maps/InfinityCoast_House1/scripts.inc"
 
 	.include "data/maps/FortreeCliffs/scripts.inc"
 	.include "data/scripts/dexnav.inc"

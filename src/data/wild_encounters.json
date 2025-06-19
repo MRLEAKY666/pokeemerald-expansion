@@ -11493,8 +11493,8 @@
           }
         },
         {
-          "map": "MAP_FORTREE_WOODS",
-          "base_label": "gFortreeWoods0",
+          "map": "MAP_INFINITY_COAST",
+          "base_label": "gInfinityCoast0",
           "land_mons": {
             "encounter_rate": 10,
             "mons": [

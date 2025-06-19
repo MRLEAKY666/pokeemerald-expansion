@@ -170,6 +170,7 @@ RootCellar_EventScript_Shelf1GiveItem2::
 	setmetatile 2, 2, METATILE_Cave_RootCellar_Shelf_Empty, TRUE
 	setvar VAR_ROOT_CELLAR_SHELF_1, 2
 	goto_if_eq VAR_TEMP_5, SPECIES_APPLIN, RootCellar_EventScript_ApplinAttacks
+	waitse
 	giveitem VAR_TEMP_5
 	special DrawWholeMapView
 	closemessage
@@ -180,6 +181,7 @@ RootCellar_EventScript_Shelf1GiveItem1::
 	setmetatile 2, 2, METATILE_Cave_RootCellar_Shelf_B_Half, TRUE
 	setvar VAR_ROOT_CELLAR_SHELF_1, 1
 	goto_if_eq VAR_TEMP_5, SPECIES_APPLIN, RootCellar_EventScript_ApplinAttacks
+	waitse
 	giveitem VAR_TEMP_5
 	special DrawWholeMapView
 	closemessage
@@ -201,6 +203,7 @@ RootCellar_EventScript_Shelf2GiveItem2::
 	setmetatile 10, 2, METATILE_Cave_RootCellar_Shelf_Empty, TRUE
 	setvar VAR_ROOT_CELLAR_SHELF_2, 2
 	goto_if_eq VAR_TEMP_5, SPECIES_APPLIN, RootCellar_EventScript_ApplinAttacks
+	waitse
 	giveitem VAR_TEMP_5
 	special DrawWholeMapView
 	closemessage
@@ -211,6 +214,7 @@ RootCellar_EventScript_Shelf2GiveItem1::
 	setmetatile 10, 2, METATILE_Cave_RootCellar_Shelf_A_Half, TRUE
 	setvar VAR_ROOT_CELLAR_SHELF_2, 1
 	goto_if_eq VAR_TEMP_5, SPECIES_APPLIN, RootCellar_EventScript_ApplinAttacks
+	waitse
 	giveitem VAR_TEMP_5
 	special DrawWholeMapView
 	closemessage

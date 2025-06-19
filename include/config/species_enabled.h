@@ -407,8 +407,8 @@
 #define P_FAMILY_SKRELP                  TRUE
 #define P_FAMILY_CLAUNCHER               FALSE
 #define P_FAMILY_HELIOPTILE              TRUE
-#define P_FAMILY_TYRUNT                  FALSE
-#define P_FAMILY_AMAURA                  FALSE
+#define P_FAMILY_TYRUNT                  TRUE
+#define P_FAMILY_AMAURA                  TRUE
 #define P_FAMILY_HAWLUCHA                TRUE
 #define P_FAMILY_DEDENNE                 FALSE
 #define P_FAMILY_CARBINK                 FALSE

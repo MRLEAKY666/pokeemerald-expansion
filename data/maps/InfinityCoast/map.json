@@ -1,23 +1,34 @@
 {
-  "id": "MAP_FORTREE_WOODS",
-  "name": "FortreeWoods",
-  "layout": "LAYOUT_FORTREE_WOODS",
-  "music": "MUS_PETALBURG_WOODS",
-  "region_map_section": "MAPSEC_FORTREE_WOODS",
+  "id": "MAP_INFINITY_COAST",
+  "name": "InfinityCoast",
+  "layout": "LAYOUT_INFINITY_COAST",
+  "music": "MUS_HALL_OF_FAME_ROOM",
+  "region_map_section": "MAPSEC_INFINITY_COAST",
   "requires_flash": false,
-  "weather": "WEATHER_SHADE",
+  "weather": "WEATHER_RAIN_THUNDERSTORM",
   "map_type": "MAP_TYPE_ROUTE",
   "allow_cycling": true,
   "allow_escaping": false,
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": [
+    {
+      "map": "MAP_ROUTE111",
+      "offset": 0,
+      "direction": "down"
+    },
+    {
+      "map": "MAP_ROUTE119",
+      "offset": 80,
+      "direction": "down"
+    }
+  ],
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 37,
-      "y": 16,
+      "x": 15,
+      "y": 18,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 1,
@@ -25,12 +36,12 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Common_EventScript_FindMysteryItem",
-      "flag": "FLAG_ITEM_FORTREE_WOODS_I"
+      "flag": "FLAG_ITEM_INFINITY_COAST_I"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 22,
-      "y": 7,
+      "x": 38,
+      "y": 26,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 1,
@@ -38,77 +49,12 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Common_EventScript_FindMysteryItem",
-      "flag": "FLAG_ITEM_FORTREE_WOODS_II"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 59,
-      "y": 34,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Common_EventScript_FindMysteryItem",
-      "flag": "FLAG_ITEM_FORTREE_WOODS_III"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 42,
-      "y": 46,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Common_EventScript_FindMysteryItem",
-      "flag": "FLAG_ITEM_FORTREE_WOODS_IV"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 28,
-      "y": 49,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Common_EventScript_FindMysteryItem",
-      "flag": "FLAG_ITEM_FORTREE_WOODS_V"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 12,
-      "y": 45,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Common_EventScript_FindMysteryItem",
-      "flag": "FLAG_ITEM_FORTREE_WOODS_VI"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 9,
-      "y": 16,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Common_EventScript_FindMysteryItem",
-      "flag": "FLAG_ITEM_FORTREE_WOODS_VII"
+      "flag": "FLAG_ITEM_INFINITY_COAST_II"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 13,
-      "y": 21,
+      "y": 37,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 1,
@@ -116,12 +62,12 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Common_EventScript_FindMysteryItem",
-      "flag": "FLAG_ITEM_FORTREE_WOODS_VIII"
+      "flag": "FLAG_ITEM_INFINITY_COAST_III"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 32,
-      "y": 44,
+      "x": 52,
+      "y": 33,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 1,
@@ -129,37 +75,11 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Common_EventScript_FindMysteryItem",
-      "flag": "FLAG_ITEM_FORTREE_WOODS_IX"
+      "flag": "FLAG_ITEM_INFINITY_COAST_IV"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 44,
-      "y": 22,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Common_EventScript_FindMysteryItem",
-      "flag": "FLAG_ITEM_FORTREE_WOODS_X"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 44,
-      "y": 5,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Common_EventScript_FindMysteryItem",
-      "flag": "FLAG_ITEM_FORTREE_WOODS_XI"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 59,
+      "x": 50,
       "y": 19,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -168,64 +88,12 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Common_EventScript_FindMysteryItem",
-      "flag": "FLAG_ITEM_FORTREE_WOODS_XII"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 53,
-      "y": 15,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Common_EventScript_FindMysteryItem",
-      "flag": "FLAG_ITEM_FORTREE_WOODS_XIII"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 23,
-      "y": 50,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Common_EventScript_FindMysteryItem",
-      "flag": "FLAG_ITEM_FORTREE_WOODS_XIV"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 34,
-      "y": 49,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Common_EventScript_FindMysteryItem",
-      "flag": "FLAG_ITEM_FORTREE_WOODS_XV"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 49,
-      "y": 45,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Common_EventScript_FindMysteryItem",
-      "flag": "FLAG_ITEM_FORTREE_WOODS_XVI"
+      "flag": "FLAG_ITEM_INFINITY_COAST_V"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 54,
-      "y": 48,
+      "y": 22,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 1,
@@ -233,12 +101,51 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Common_EventScript_FindMysteryItem",
-      "flag": "FLAG_ITEM_FORTREE_WOODS_XVII"
+      "flag": "FLAG_ITEM_INFINITY_COAST_VI"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 63,
+      "y": 24,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_FindMysteryItem",
+      "flag": "FLAG_ITEM_INFINITY_COAST_VII"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 38,
+      "y": 23,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_FindMysteryItem",
+      "flag": "FLAG_ITEM_INFINITY_COAST_VIII"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 32,
+      "y": 36,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_FindMysteryItem",
+      "flag": "FLAG_ITEM_INFINITY_COAST_IX"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 51,
-      "y": 46,
+      "y": 28,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 1,
@@ -246,12 +153,12 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Common_EventScript_FindMysteryItem",
-      "flag": "FLAG_ITEM_FORTREE_WOODS_XVIII"
+      "flag": "FLAG_ITEM_INFINITY_COAST_X"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 59,
-      "y": 44,
+      "x": 40,
+      "y": 18,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 1,
@@ -259,63 +166,11 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Common_EventScript_FindMysteryItem",
-      "flag": "FLAG_ITEM_FORTREE_WOODS_XIX"
+      "flag": "FLAG_ITEM_INFINITY_COAST_XI"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 19,
-      "y": 8,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Common_EventScript_FindMysteryItem",
-      "flag": "FLAG_ITEM_FORTREE_WOODS_XX"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 0,
-      "y": 7,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Common_EventScript_FindMysteryItem",
-      "flag": "FLAG_ITEM_FORTREE_WOODS_XXI"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 54,
-      "y": 32,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Common_EventScript_FindMysteryItem",
-      "flag": "FLAG_ITEM_FORTREE_WOODS_XXII"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 3,
-      "y": 43,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Common_EventScript_FindMysteryItem",
-      "flag": "FLAG_ITEM_FORTREE_WOODS_XXIII"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 49,
+      "x": 52,
       "y": 25,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -324,12 +179,12 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Common_EventScript_FindMysteryItem",
-      "flag": "FLAG_ITEM_FORTREE_WOODS_XXIV"
+      "flag": "FLAG_ITEM_INFINITY_COAST_XII"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 0,
-      "y": 27,
+      "x": 68,
+      "y": 22,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 1,
@@ -337,12 +192,168 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Common_EventScript_FindMysteryItem",
-      "flag": "FLAG_ITEM_FORTREE_WOODS_XXV"
+      "flag": "FLAG_ITEM_INFINITY_COAST_XIII"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 62,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_FindMysteryItem",
+      "flag": "FLAG_ITEM_INFINITY_COAST_XIV"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 63,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_FindMysteryItem",
+      "flag": "FLAG_ITEM_INFINITY_COAST_XV"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 64,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_FindMysteryItem",
+      "flag": "FLAG_ITEM_INFINITY_COAST_XVI"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 65,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_FindMysteryItem",
+      "flag": "FLAG_ITEM_INFINITY_COAST_XVII"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 66,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_FindMysteryItem",
+      "flag": "FLAG_ITEM_INFINITY_COAST_XVIII"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 67,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_FindMysteryItem",
+      "flag": "FLAG_ITEM_INFINITY_COAST_XIX"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 68,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_FindMysteryItem",
+      "flag": "FLAG_ITEM_INFINITY_COAST_XX"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 69,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_FindMysteryItem",
+      "flag": "FLAG_ITEM_INFINITY_COAST_XXI"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 70,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_FindMysteryItem",
+      "flag": "FLAG_ITEM_INFINITY_COAST_XXII"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 71,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_FindMysteryItem",
+      "flag": "FLAG_ITEM_INFINITY_COAST_XXIII"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 72,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_FindMysteryItem",
+      "flag": "FLAG_ITEM_INFINITY_COAST_XXIV"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 73,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_FindMysteryItem",
+      "flag": "FLAG_ITEM_INFINITY_COAST_XXV"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",
-      "x": 8,
-      "y": 21,
+      "x": 39,
+      "y": 31,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -354,21 +365,22 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(ZAPDOS)",
-      "x": 44,
-      "y": 37,
+      "x": 31,
+      "y": 55,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "FortreeWoods_EventScript_Zapdos",
+      "script": "InfinityCoast_EventScript_Zapdos",
       "flag": "FLAG_HIDE_ZAPDOS"
     },
     {
+      "local_id": "LOCALID_INFINITY_COAST_RAYQUAZA",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(RAYQUAZA)",
-      "x": 18,
-      "y": 16,
+      "x": 49,
+      "y": 6,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_DOWN",
       "movement_range_x": 0,
@@ -376,122 +388,190 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_FORTREE_WOODS_RAYQUAZA"
+      "flag": "FLAG_HIDE_INFINITY_COAST_RAYQUAZA"
+    },
+    {
+      "local_id": "LOCALID_INFINITY_COAST_CARNIVINE1",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CARNIVINE)",
+      "x": 47,
+      "y": 34,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 2,
+      "movement_range_y": 2,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "InfinityCoast_EventScript_Carnivine1",
+      "flag": "FLAG_INFINITY_COAST_CARNIVINE1"
+    },
+    {
+      "local_id": "LOCALID_INFINITY_COAST_CROCONAW",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CROCONAW)",
+      "x": 59,
+      "y": 24,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 2,
+      "movement_range_y": 2,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "InfinityCoast_EventScript_Croconaw",
+      "flag": "FLAG_INFINITY_COAST_CROCONAW"
+    },
+    {
+      "local_id": "LOCALID_INFINITY_COAST_AURORUS",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(AURORUS)",
+      "x": 20,
+      "y": 41,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 2,
+      "movement_range_y": 2,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "InfinityCoast_EventScript_Aurorus",
+      "flag": "FLAG_INFINITY_COAST_AURORUS"
+    },
+    {
+      "local_id": "LOCALID_INFINITY_COAST_DRAGONAIR",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DRAGONAIR)",
+      "x": 74,
+      "y": 28,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 2,
+      "movement_range_y": 2,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "InfinityCoast_EventScript_Dragonair",
+      "flag": "FLAG_INFINITY_COAST_DRAGONAIR"
+    },
+    {
+      "local_id": "LOCALID_INFINITY_COAST_GYARADOS",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GYARADOS)",
+      "x": 63,
+      "y": 45,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 2,
+      "movement_range_y": 2,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "InfinityCoast_EventScript_Gyarados",
+      "flag": "FLAG_INFINITY_COAST_GYARADOS"
+    },
+    {
+      "local_id": "LOCALID_INFINITY_COAST_TYRANTRUM",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TYRANTRUM)",
+      "x": 13,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "InfinityCoast_EventScript_Tyrantrum",
+      "flag": "FLAG_INFINITY_COAST_TYRANTRUM"
+    },
+    {
+      "local_id": "LOCALID_INFINITY_COAST_HAXORUS",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HAXORUS)",
+      "x": 45,
+      "y": 23,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 2,
+      "movement_range_y": 2,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_DEFEATED_INFINITY_COAST_HAXORUS"
     }
   ],
-  "warp_events": [
-    {
-      "x": 17,
-      "y": 50,
-      "elevation": 0,
-      "dest_map": "MAP_ROUTE119",
-      "dest_warp_id": "2"
-    },
-    {
-      "x": 18,
-      "y": 50,
-      "elevation": 0,
-      "dest_map": "MAP_ROUTE119",
-      "dest_warp_id": "3"
-    },
-    {
-      "x": 41,
-      "y": 20,
-      "elevation": 0,
-      "dest_map": "MAP_FORTREE_WOODS",
-      "dest_warp_id": "3"
-    },
-    {
-      "x": 56,
-      "y": 10,
-      "elevation": 0,
-      "dest_map": "MAP_FORTREE_WOODS",
-      "dest_warp_id": "2"
-    },
-    {
-      "x": 6,
-      "y": 3,
-      "elevation": 0,
-      "dest_map": "MAP_FORTREE_WOODS",
-      "dest_warp_id": "5"
-    },
-    {
-      "x": 3,
-      "y": 38,
-      "elevation": 0,
-      "dest_map": "MAP_FORTREE_WOODS",
-      "dest_warp_id": "4"
-    },
-    {
-      "x": 14,
-      "y": 26,
-      "elevation": 0,
-      "dest_map": "MAP_FORTREE_WOODS",
-      "dest_warp_id": "7"
-    },
-    {
-      "x": 26,
-      "y": 29,
-      "elevation": 0,
-      "dest_map": "MAP_FORTREE_WOODS",
-      "dest_warp_id": "6"
-    },
-    {
-      "x": 57,
-      "y": 38,
-      "elevation": 0,
-      "dest_map": "MAP_FORTREE_WOODS_HOUSE1",
-      "dest_warp_id": "0"
-    }
-  ],
+  "warp_events": [],
   "coord_events": [
     {
       "type": "trigger",
-      "x": 16,
-      "y": 29,
+      "x": 50,
+      "y": 13,
       "elevation": 0,
-      "var": "VAR_FORTREE_WOODS_RAYQUAZA_CRY_DONE",
-      "var_value": "0",
-      "script": "FortreeWoods_EventScript_Rayquaza"
+      "var": "VAR_INFINITY_COAST_RAYQUAZA_SCENE_STATE",
+      "var_value": "1",
+      "script": "InfinityCoast_EventScript_Rayquaza"
     },
     {
       "type": "trigger",
-      "x": 17,
-      "y": 29,
+      "x": 48,
+      "y": 13,
       "elevation": 0,
-      "var": "VAR_FORTREE_WOODS_RAYQUAZA_CRY_DONE",
-      "var_value": "0",
-      "script": "FortreeWoods_EventScript_Rayquaza"
+      "var": "VAR_INFINITY_COAST_RAYQUAZA_SCENE_STATE",
+      "var_value": "1",
+      "script": "InfinityCoast_EventScript_Rayquaza"
     },
     {
       "type": "trigger",
-      "x": 18,
-      "y": 29,
+      "x": 49,
+      "y": 13,
       "elevation": 0,
-      "var": "VAR_FORTREE_WOODS_RAYQUAZA_CRY_DONE",
-      "var_value": "0",
-      "script": "FortreeWoods_EventScript_Rayquaza"
+      "var": "VAR_INFINITY_COAST_RAYQUAZA_SCENE_STATE",
+      "var_value": "1",
+      "script": "InfinityCoast_EventScript_Rayquaza"
     },
     {
       "type": "trigger",
-      "x": 19,
-      "y": 29,
+      "x": 43,
+      "y": 26,
       "elevation": 0,
-      "var": "VAR_FORTREE_WOODS_RAYQUAZA_CRY_DONE",
-      "var_value": "0",
-      "script": "FortreeWoods_EventScript_Rayquaza"
+      "var": "VAR_INFINITY_COAST_RAYQUAZA_SCENE_STATE",
+      "var_value": "1",
+      "script": "InfinityCoast_EventScript_HaxorusB"
     },
     {
       "type": "trigger",
-      "x": 20,
-      "y": 29,
+      "x": 41,
+      "y": 24,
       "elevation": 0,
-      "var": "VAR_FORTREE_WOODS_RAYQUAZA_CRY_DONE",
-      "var_value": "0",
-      "script": "FortreeWoods_EventScript_Rayquaza"
+      "var": "VAR_INFINITY_COAST_RAYQUAZA_SCENE_STATE",
+      "var_value": "1",
+      "script": "InfinityCoast_EventScript_HaxorusA"
+    },
+    {
+      "type": "trigger",
+      "x": 44,
+      "y": 26,
+      "elevation": 0,
+      "var": "VAR_INFINITY_COAST_RAYQUAZA_SCENE_STATE",
+      "var_value": "1",
+      "script": "InfinityCoast_EventScript_HaxorusC"
+    },
+    {
+      "type": "trigger",
+      "x": 46,
+      "y": 27,
+      "elevation": 0,
+      "var": "VAR_INFINITY_COAST_RAYQUAZA_SCENE_STATE",
+      "var_value": "1",
+      "script": "InfinityCoast_EventScript_HaxorusE"
+    },
+    {
+      "type": "trigger",
+      "x": 45,
+      "y": 27,
+      "elevation": 0,
+      "var": "VAR_INFINITY_COAST_RAYQUAZA_SCENE_STATE",
+      "var_value": "1",
+      "script": "InfinityCoast_EventScript_HaxorusD"
     }
   ],
   "bg_events": [
-
+    {
+      "type": "hidden_item",
+      "x": 49,
+      "y": 10,
+      "elevation": 0,
+      "item": "ITEM_METEORITE",
+      "flag": "FLAG_INFINITY_COAST_METEORITE"
+    }
   ]
 }

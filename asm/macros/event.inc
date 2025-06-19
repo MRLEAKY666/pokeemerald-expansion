@@ -2186,6 +2186,17 @@
 	settotemboost \battler, 0, 0, 0, 0, 0, 0, 2
 	.endm
 
+	.macro setwildbossmon battler:req
+	settotemboost \battler, 2, 2, 2, 2, 2
+	setflag FLAG_NO_CATCHING
+	setflag FLAG_NO_RUNNING
+	.endm
+
+	.macro endwildbossmon
+	clearflag FLAG_NO_CATCHING
+	clearflag FLAG_NO_RUNNING
+	.endm
+
 	@ Attempts to trigger a special evolution method in the overworld.
 	@ There may be other conditions required which are coded for in GetEvolutionTargetSpecies.
 	@ EX: tryspecialevo EVO_WATER_SCROLL, FALSE, FALSE triggers Kubfu's EVO_WATER_SCROLL evolution

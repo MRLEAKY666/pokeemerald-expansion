@@ -343,257 +343,257 @@ RootCellar_EventScript_Shelf1GiveItem2::
 # 172 "data//maps/RootCellar/scripts.pory"
 	goto_if_eq VAR_TEMP_5, SPECIES_APPLIN, RootCellar_EventScript_ApplinAttacks
 # 173 "data//maps/RootCellar/scripts.pory"
-	giveitem VAR_TEMP_5
+	waitse
 # 174 "data//maps/RootCellar/scripts.pory"
-	special DrawWholeMapView
+	giveitem VAR_TEMP_5
 # 175 "data//maps/RootCellar/scripts.pory"
-	closemessage
+	special DrawWholeMapView
 # 176 "data//maps/RootCellar/scripts.pory"
-	release
+	closemessage
 # 177 "data//maps/RootCellar/scripts.pory"
-	end
+	release
 # 178 "data//maps/RootCellar/scripts.pory"
-
+	end
 # 179 "data//maps/RootCellar/scripts.pory"
-RootCellar_EventScript_Shelf1GiveItem1::
+
 # 180 "data//maps/RootCellar/scripts.pory"
-	setmetatile 2, 2, METATILE_Cave_RootCellar_Shelf_B_Half, TRUE
+RootCellar_EventScript_Shelf1GiveItem1::
 # 181 "data//maps/RootCellar/scripts.pory"
-	setvar VAR_ROOT_CELLAR_SHELF_1, 1
+	setmetatile 2, 2, METATILE_Cave_RootCellar_Shelf_B_Half, TRUE
 # 182 "data//maps/RootCellar/scripts.pory"
-	goto_if_eq VAR_TEMP_5, SPECIES_APPLIN, RootCellar_EventScript_ApplinAttacks
+	setvar VAR_ROOT_CELLAR_SHELF_1, 1
 # 183 "data//maps/RootCellar/scripts.pory"
-	giveitem VAR_TEMP_5
+	goto_if_eq VAR_TEMP_5, SPECIES_APPLIN, RootCellar_EventScript_ApplinAttacks
 # 184 "data//maps/RootCellar/scripts.pory"
-	special DrawWholeMapView
+	waitse
 # 185 "data//maps/RootCellar/scripts.pory"
-	closemessage
+	giveitem VAR_TEMP_5
 # 186 "data//maps/RootCellar/scripts.pory"
-	release
+	special DrawWholeMapView
 # 187 "data//maps/RootCellar/scripts.pory"
-	end
+	closemessage
 # 188 "data//maps/RootCellar/scripts.pory"
-
+	release
 # 189 "data//maps/RootCellar/scripts.pory"
-RootCellar_EventScript_Shelf2::
+	end
 # 190 "data//maps/RootCellar/scripts.pory"
-	lock
+
 # 191 "data//maps/RootCellar/scripts.pory"
-	goto_if_ge VAR_ROOT_CELLAR_SHELF_2, 2, RootCellar_EventScript_ShelfIsEmpty
+RootCellar_EventScript_Shelf2::
 # 192 "data//maps/RootCellar/scripts.pory"
-	call_if_unset FLAG_DISCOVERED_ROOT_CELLAR, RootCellar_EventScript_FoundAShelf
+	lock
 # 193 "data//maps/RootCellar/scripts.pory"
-	call_if_set FLAG_DISCOVERED_ROOT_CELLAR, RootCellar_EventScript_FoundBerryMastersShelf
+	goto_if_ge VAR_ROOT_CELLAR_SHELF_2, 2, RootCellar_EventScript_ShelfIsEmpty
 # 194 "data//maps/RootCellar/scripts.pory"
-	call RootCellar_EventScript_RandomiseRootCellarItem
+	call_if_unset FLAG_DISCOVERED_ROOT_CELLAR, RootCellar_EventScript_FoundAShelf
 # 195 "data//maps/RootCellar/scripts.pory"
-	goto_if_eq VAR_ROOT_CELLAR_SHELF_2, 1, RootCellar_EventScript_Shelf2GiveItem2
+	call_if_set FLAG_DISCOVERED_ROOT_CELLAR, RootCellar_EventScript_FoundBerryMastersShelf
 # 196 "data//maps/RootCellar/scripts.pory"
-	goto_if_eq VAR_ROOT_CELLAR_SHELF_2, 0, RootCellar_EventScript_Shelf2GiveItem1
+	call RootCellar_EventScript_RandomiseRootCellarItem
 # 197 "data//maps/RootCellar/scripts.pory"
-	release
+	goto_if_eq VAR_ROOT_CELLAR_SHELF_2, 1, RootCellar_EventScript_Shelf2GiveItem2
 # 198 "data//maps/RootCellar/scripts.pory"
-	end
+	goto_if_eq VAR_ROOT_CELLAR_SHELF_2, 0, RootCellar_EventScript_Shelf2GiveItem1
 # 199 "data//maps/RootCellar/scripts.pory"
-
+	release
 # 200 "data//maps/RootCellar/scripts.pory"
-RootCellar_EventScript_Shelf2GiveItem2::
+	end
 # 201 "data//maps/RootCellar/scripts.pory"
-	setmetatile 10, 2, METATILE_Cave_RootCellar_Shelf_Empty, TRUE
+
 # 202 "data//maps/RootCellar/scripts.pory"
-	setvar VAR_ROOT_CELLAR_SHELF_2, 2
+RootCellar_EventScript_Shelf2GiveItem2::
 # 203 "data//maps/RootCellar/scripts.pory"
-	goto_if_eq VAR_TEMP_5, SPECIES_APPLIN, RootCellar_EventScript_ApplinAttacks
+	setmetatile 10, 2, METATILE_Cave_RootCellar_Shelf_Empty, TRUE
 # 204 "data//maps/RootCellar/scripts.pory"
-	giveitem VAR_TEMP_5
+	setvar VAR_ROOT_CELLAR_SHELF_2, 2
 # 205 "data//maps/RootCellar/scripts.pory"
-	special DrawWholeMapView
+	goto_if_eq VAR_TEMP_5, SPECIES_APPLIN, RootCellar_EventScript_ApplinAttacks
 # 206 "data//maps/RootCellar/scripts.pory"
-	closemessage
+	waitse
 # 207 "data//maps/RootCellar/scripts.pory"
-	release
+	giveitem VAR_TEMP_5
 # 208 "data//maps/RootCellar/scripts.pory"
-	end
+	special DrawWholeMapView
 # 209 "data//maps/RootCellar/scripts.pory"
-
+	closemessage
 # 210 "data//maps/RootCellar/scripts.pory"
-RootCellar_EventScript_Shelf2GiveItem1::
+	release
 # 211 "data//maps/RootCellar/scripts.pory"
-	setmetatile 10, 2, METATILE_Cave_RootCellar_Shelf_A_Half, TRUE
+	end
 # 212 "data//maps/RootCellar/scripts.pory"
-	setvar VAR_ROOT_CELLAR_SHELF_2, 1
+
 # 213 "data//maps/RootCellar/scripts.pory"
-	goto_if_eq VAR_TEMP_5, SPECIES_APPLIN, RootCellar_EventScript_ApplinAttacks
+RootCellar_EventScript_Shelf2GiveItem1::
 # 214 "data//maps/RootCellar/scripts.pory"
-	giveitem VAR_TEMP_5
+	setmetatile 10, 2, METATILE_Cave_RootCellar_Shelf_A_Half, TRUE
 # 215 "data//maps/RootCellar/scripts.pory"
-	special DrawWholeMapView
+	setvar VAR_ROOT_CELLAR_SHELF_2, 1
 # 216 "data//maps/RootCellar/scripts.pory"
-	closemessage
+	goto_if_eq VAR_TEMP_5, SPECIES_APPLIN, RootCellar_EventScript_ApplinAttacks
 # 217 "data//maps/RootCellar/scripts.pory"
-	release
+	waitse
 # 218 "data//maps/RootCellar/scripts.pory"
-	end
+	giveitem VAR_TEMP_5
 # 219 "data//maps/RootCellar/scripts.pory"
-
+	special DrawWholeMapView
 # 220 "data//maps/RootCellar/scripts.pory"
-RootCellar_EventScript_Shelf3::
+	closemessage
 # 221 "data//maps/RootCellar/scripts.pory"
-	lock
+	release
 # 222 "data//maps/RootCellar/scripts.pory"
-	goto_if_ge VAR_ROOT_CELLAR_SHELF_3, 2, RootCellar_EventScript_ShelfIsEmpty
+	end
 # 223 "data//maps/RootCellar/scripts.pory"
-	call_if_unset FLAG_DISCOVERED_ROOT_CELLAR, RootCellar_EventScript_FoundAShelf
+
 # 224 "data//maps/RootCellar/scripts.pory"
-	call_if_set FLAG_DISCOVERED_ROOT_CELLAR, RootCellar_EventScript_FoundBerryMastersShelf
+RootCellar_EventScript_Shelf3::
 # 225 "data//maps/RootCellar/scripts.pory"
-	call RootCellar_EventScript_RandomiseRootCellarItem
-# 226 "data//maps/RootCellar/scripts.pory"
-	goto_if_eq VAR_ROOT_CELLAR_SHELF_3, 1, RootCellar_EventScript_Shelf3GiveItem2
-# 227 "data//maps/RootCellar/scripts.pory"
-	goto_if_eq VAR_ROOT_CELLAR_SHELF_3, 0, RootCellar_EventScript_Shelf3GiveItem1
-# 228 "data//maps/RootCellar/scripts.pory"
-	release
-# 229 "data//maps/RootCellar/scripts.pory"
-	end
-# 230 "data//maps/RootCellar/scripts.pory"
-
-# 231 "data//maps/RootCellar/scripts.pory"
-RootCellar_EventScript_Shelf3GiveItem2::
-# 232 "data//maps/RootCellar/scripts.pory"
-	setmetatile 2, 9, METATILE_Cave_RootCellar_Shelf_Empty, TRUE
-# 233 "data//maps/RootCellar/scripts.pory"
-	setvar VAR_ROOT_CELLAR_SHELF_3, 2
-# 234 "data//maps/RootCellar/scripts.pory"
-	goto_if_eq VAR_TEMP_5, SPECIES_APPLIN, RootCellar_EventScript_ApplinAttacks
-# 235 "data//maps/RootCellar/scripts.pory"
-	giveitem VAR_TEMP_5
-# 236 "data//maps/RootCellar/scripts.pory"
-	special DrawWholeMapView
-# 237 "data//maps/RootCellar/scripts.pory"
-	closemessage
-# 238 "data//maps/RootCellar/scripts.pory"
-	release
-# 239 "data//maps/RootCellar/scripts.pory"
-	end
-# 240 "data//maps/RootCellar/scripts.pory"
-
-# 241 "data//maps/RootCellar/scripts.pory"
-RootCellar_EventScript_Shelf3GiveItem1::
-# 242 "data//maps/RootCellar/scripts.pory"
-	setmetatile 2, 9, METATILE_Cave_RootCellar_Shelf_A_Half, TRUE
-# 243 "data//maps/RootCellar/scripts.pory"
-	setvar VAR_ROOT_CELLAR_SHELF_3, 1
-# 244 "data//maps/RootCellar/scripts.pory"
-	goto_if_eq VAR_TEMP_5, SPECIES_APPLIN, RootCellar_EventScript_ApplinAttacks
-# 245 "data//maps/RootCellar/scripts.pory"
-	giveitem VAR_TEMP_5
-# 246 "data//maps/RootCellar/scripts.pory"
-	special DrawWholeMapView
-# 247 "data//maps/RootCellar/scripts.pory"
-	closemessage
-# 248 "data//maps/RootCellar/scripts.pory"
-	release
-# 249 "data//maps/RootCellar/scripts.pory"
-	end
-# 250 "data//maps/RootCellar/scripts.pory"
-
-# 251 "data//maps/RootCellar/scripts.pory"
-RootCellar_EventScript_Shelf4::
-# 252 "data//maps/RootCellar/scripts.pory"
 	lock
-# 253 "data//maps/RootCellar/scripts.pory"
-	goto_if_ge VAR_ROOT_CELLAR_SHELF_4, 2, RootCellar_EventScript_ShelfIsEmpty
-# 254 "data//maps/RootCellar/scripts.pory"
+# 226 "data//maps/RootCellar/scripts.pory"
+	goto_if_ge VAR_ROOT_CELLAR_SHELF_3, 2, RootCellar_EventScript_ShelfIsEmpty
+# 227 "data//maps/RootCellar/scripts.pory"
 	call_if_unset FLAG_DISCOVERED_ROOT_CELLAR, RootCellar_EventScript_FoundAShelf
-# 255 "data//maps/RootCellar/scripts.pory"
+# 228 "data//maps/RootCellar/scripts.pory"
 	call_if_set FLAG_DISCOVERED_ROOT_CELLAR, RootCellar_EventScript_FoundBerryMastersShelf
-# 256 "data//maps/RootCellar/scripts.pory"
+# 229 "data//maps/RootCellar/scripts.pory"
 	call RootCellar_EventScript_RandomiseRootCellarItem
+# 230 "data//maps/RootCellar/scripts.pory"
+	goto_if_eq VAR_ROOT_CELLAR_SHELF_3, 1, RootCellar_EventScript_Shelf3GiveItem2
+# 231 "data//maps/RootCellar/scripts.pory"
+	goto_if_eq VAR_ROOT_CELLAR_SHELF_3, 0, RootCellar_EventScript_Shelf3GiveItem1
+# 232 "data//maps/RootCellar/scripts.pory"
+	release
+# 233 "data//maps/RootCellar/scripts.pory"
+	end
+# 234 "data//maps/RootCellar/scripts.pory"
+
+# 235 "data//maps/RootCellar/scripts.pory"
+RootCellar_EventScript_Shelf3GiveItem2::
+# 236 "data//maps/RootCellar/scripts.pory"
+	setmetatile 2, 9, METATILE_Cave_RootCellar_Shelf_Empty, TRUE
+# 237 "data//maps/RootCellar/scripts.pory"
+	setvar VAR_ROOT_CELLAR_SHELF_3, 2
+# 238 "data//maps/RootCellar/scripts.pory"
+	goto_if_eq VAR_TEMP_5, SPECIES_APPLIN, RootCellar_EventScript_ApplinAttacks
+# 239 "data//maps/RootCellar/scripts.pory"
+	giveitem VAR_TEMP_5
+# 240 "data//maps/RootCellar/scripts.pory"
+	special DrawWholeMapView
+# 241 "data//maps/RootCellar/scripts.pory"
+	closemessage
+# 242 "data//maps/RootCellar/scripts.pory"
+	release
+# 243 "data//maps/RootCellar/scripts.pory"
+	end
+# 244 "data//maps/RootCellar/scripts.pory"
+
+# 245 "data//maps/RootCellar/scripts.pory"
+RootCellar_EventScript_Shelf3GiveItem1::
+# 246 "data//maps/RootCellar/scripts.pory"
+	setmetatile 2, 9, METATILE_Cave_RootCellar_Shelf_A_Half, TRUE
+# 247 "data//maps/RootCellar/scripts.pory"
+	setvar VAR_ROOT_CELLAR_SHELF_3, 1
+# 248 "data//maps/RootCellar/scripts.pory"
+	goto_if_eq VAR_TEMP_5, SPECIES_APPLIN, RootCellar_EventScript_ApplinAttacks
+# 249 "data//maps/RootCellar/scripts.pory"
+	giveitem VAR_TEMP_5
+# 250 "data//maps/RootCellar/scripts.pory"
+	special DrawWholeMapView
+# 251 "data//maps/RootCellar/scripts.pory"
+	closemessage
+# 252 "data//maps/RootCellar/scripts.pory"
+	release
+# 253 "data//maps/RootCellar/scripts.pory"
+	end
+# 254 "data//maps/RootCellar/scripts.pory"
+
+# 255 "data//maps/RootCellar/scripts.pory"
+RootCellar_EventScript_Shelf4::
+# 256 "data//maps/RootCellar/scripts.pory"
+	lock
 # 257 "data//maps/RootCellar/scripts.pory"
-	goto_if_eq VAR_ROOT_CELLAR_SHELF_4, 1, RootCellar_EventScript_Shelf4GiveItem2
+	goto_if_ge VAR_ROOT_CELLAR_SHELF_4, 2, RootCellar_EventScript_ShelfIsEmpty
 # 258 "data//maps/RootCellar/scripts.pory"
-	goto_if_eq VAR_ROOT_CELLAR_SHELF_4, 0, RootCellar_EventScript_Shelf4GiveItem1
+	call_if_unset FLAG_DISCOVERED_ROOT_CELLAR, RootCellar_EventScript_FoundAShelf
 # 259 "data//maps/RootCellar/scripts.pory"
-	release
+	call_if_set FLAG_DISCOVERED_ROOT_CELLAR, RootCellar_EventScript_FoundBerryMastersShelf
 # 260 "data//maps/RootCellar/scripts.pory"
-	end
+	call RootCellar_EventScript_RandomiseRootCellarItem
 # 261 "data//maps/RootCellar/scripts.pory"
-
+	goto_if_eq VAR_ROOT_CELLAR_SHELF_4, 1, RootCellar_EventScript_Shelf4GiveItem2
 # 262 "data//maps/RootCellar/scripts.pory"
-RootCellar_EventScript_Shelf4GiveItem2::
+	goto_if_eq VAR_ROOT_CELLAR_SHELF_4, 0, RootCellar_EventScript_Shelf4GiveItem1
 # 263 "data//maps/RootCellar/scripts.pory"
-	setmetatile 10, 12, METATILE_Cave_RootCellar_Shelf_Empty, TRUE
+	release
 # 264 "data//maps/RootCellar/scripts.pory"
-	setvar VAR_ROOT_CELLAR_SHELF_4, 2
+	end
 # 265 "data//maps/RootCellar/scripts.pory"
-	goto_if_eq VAR_TEMP_5, SPECIES_APPLIN, RootCellar_EventScript_ApplinAttacks
+
 # 266 "data//maps/RootCellar/scripts.pory"
-	giveitem VAR_TEMP_5
+RootCellar_EventScript_Shelf4GiveItem2::
 # 267 "data//maps/RootCellar/scripts.pory"
-	special DrawWholeMapView
+	setmetatile 10, 12, METATILE_Cave_RootCellar_Shelf_Empty, TRUE
 # 268 "data//maps/RootCellar/scripts.pory"
-	closemessage
+	setvar VAR_ROOT_CELLAR_SHELF_4, 2
 # 269 "data//maps/RootCellar/scripts.pory"
-	release
-# 270 "data//maps/RootCellar/scripts.pory"
-	end
-# 271 "data//maps/RootCellar/scripts.pory"
-
-# 272 "data//maps/RootCellar/scripts.pory"
-RootCellar_EventScript_Shelf4GiveItem1::
-# 273 "data//maps/RootCellar/scripts.pory"
-	setmetatile 10, 12, METATILE_Cave_RootCellar_Shelf_B_Half, TRUE
-# 274 "data//maps/RootCellar/scripts.pory"
-	setvar VAR_ROOT_CELLAR_SHELF_4, 1
-# 275 "data//maps/RootCellar/scripts.pory"
 	goto_if_eq VAR_TEMP_5, SPECIES_APPLIN, RootCellar_EventScript_ApplinAttacks
-# 276 "data//maps/RootCellar/scripts.pory"
+# 270 "data//maps/RootCellar/scripts.pory"
 	giveitem VAR_TEMP_5
-# 277 "data//maps/RootCellar/scripts.pory"
+# 271 "data//maps/RootCellar/scripts.pory"
 	special DrawWholeMapView
+# 272 "data//maps/RootCellar/scripts.pory"
+	closemessage
+# 273 "data//maps/RootCellar/scripts.pory"
+	release
+# 274 "data//maps/RootCellar/scripts.pory"
+	end
+# 275 "data//maps/RootCellar/scripts.pory"
+
+# 276 "data//maps/RootCellar/scripts.pory"
+RootCellar_EventScript_Shelf4GiveItem1::
+# 277 "data//maps/RootCellar/scripts.pory"
+	setmetatile 10, 12, METATILE_Cave_RootCellar_Shelf_B_Half, TRUE
 # 278 "data//maps/RootCellar/scripts.pory"
-	closemessage
+	setvar VAR_ROOT_CELLAR_SHELF_4, 1
 # 279 "data//maps/RootCellar/scripts.pory"
-	release
+	goto_if_eq VAR_TEMP_5, SPECIES_APPLIN, RootCellar_EventScript_ApplinAttacks
 # 280 "data//maps/RootCellar/scripts.pory"
-	end
+	giveitem VAR_TEMP_5
 # 281 "data//maps/RootCellar/scripts.pory"
-
+	special DrawWholeMapView
 # 282 "data//maps/RootCellar/scripts.pory"
-RootCellar_EventScript_FoundAShelf::
-# 283 "data//maps/RootCellar/scripts.pory"
-	msgbox RootCellar_Text_FoundAShelf, MSGBOX_YESNO
-# 284 "data//maps/RootCellar/scripts.pory"
-	goto_if_eq VAR_RESULT, NO, RootCellar_EventScript_LeftShelfAlone
-# 285 "data//maps/RootCellar/scripts.pory"
-	return
-# 286 "data//maps/RootCellar/scripts.pory"
-
-# 287 "data//maps/RootCellar/scripts.pory"
-RootCellar_EventScript_FoundBerryMastersShelf::
-# 288 "data//maps/RootCellar/scripts.pory"
-	msgbox RootCellar_Text_FoundBerryMastersShelf, MSGBOX_YESNO
-# 289 "data//maps/RootCellar/scripts.pory"
-	goto_if_eq VAR_RESULT, NO, RootCellar_EventScript_LeftShelfAlone
-# 290 "data//maps/RootCellar/scripts.pory"
-	return
-# 291 "data//maps/RootCellar/scripts.pory"
-
-# 292 "data//maps/RootCellar/scripts.pory"
-RootCellar_EventScript_ShelfIsEmpty::
-# 293 "data//maps/RootCellar/scripts.pory"
-	msgbox RootCellar_Text_ShelfIsEmpty, MSGBOX_DEFAULT
-# 294 "data//maps/RootCellar/scripts.pory"
 	closemessage
-# 295 "data//maps/RootCellar/scripts.pory"
+# 283 "data//maps/RootCellar/scripts.pory"
 	release
-# 296 "data//maps/RootCellar/scripts.pory"
+# 284 "data//maps/RootCellar/scripts.pory"
 	end
-# 297 "data//maps/RootCellar/scripts.pory"
+# 285 "data//maps/RootCellar/scripts.pory"
 
+# 286 "data//maps/RootCellar/scripts.pory"
+RootCellar_EventScript_FoundAShelf::
+# 287 "data//maps/RootCellar/scripts.pory"
+	msgbox RootCellar_Text_FoundAShelf, MSGBOX_YESNO
+# 288 "data//maps/RootCellar/scripts.pory"
+	goto_if_eq VAR_RESULT, NO, RootCellar_EventScript_LeftShelfAlone
+# 289 "data//maps/RootCellar/scripts.pory"
+	return
+# 290 "data//maps/RootCellar/scripts.pory"
+
+# 291 "data//maps/RootCellar/scripts.pory"
+RootCellar_EventScript_FoundBerryMastersShelf::
+# 292 "data//maps/RootCellar/scripts.pory"
+	msgbox RootCellar_Text_FoundBerryMastersShelf, MSGBOX_YESNO
+# 293 "data//maps/RootCellar/scripts.pory"
+	goto_if_eq VAR_RESULT, NO, RootCellar_EventScript_LeftShelfAlone
+# 294 "data//maps/RootCellar/scripts.pory"
+	return
+# 295 "data//maps/RootCellar/scripts.pory"
+
+# 296 "data//maps/RootCellar/scripts.pory"
+RootCellar_EventScript_ShelfIsEmpty::
+# 297 "data//maps/RootCellar/scripts.pory"
+	msgbox RootCellar_Text_ShelfIsEmpty, MSGBOX_DEFAULT
 # 298 "data//maps/RootCellar/scripts.pory"
-RootCellar_EventScript_LeftShelfAlone::
+	closemessage
 # 299 "data//maps/RootCellar/scripts.pory"
 	release
 # 300 "data//maps/RootCellar/scripts.pory"
@@ -601,284 +601,292 @@ RootCellar_EventScript_LeftShelfAlone::
 # 301 "data//maps/RootCellar/scripts.pory"
 
 # 302 "data//maps/RootCellar/scripts.pory"
-RootCellar_EventScript_ApplinAttacks::
+RootCellar_EventScript_LeftShelfAlone::
 # 303 "data//maps/RootCellar/scripts.pory"
-	message RootCellar_Text_APokemonAppeared
-# 304 "data//maps/RootCellar/scripts.pory"
-	waitmessage
-# 305 "data//maps/RootCellar/scripts.pory"
-	waitbuttonpress
-# 306 "data//maps/RootCellar/scripts.pory"
-	waitse
-# 307 "data//maps/RootCellar/scripts.pory"
-	playmoncry SPECIES_SHUCKLE, CRY_MODE_ENCOUNTER
-# 308 "data//maps/RootCellar/scripts.pory"
-	delay 10
-# 309 "data//maps/RootCellar/scripts.pory"
-	waitmoncry
-# 310 "data//maps/RootCellar/scripts.pory"
-	setwildbattle SPECIES_APPLIN, 50
-# 311 "data//maps/RootCellar/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
-# 312 "data//maps/RootCellar/scripts.pory"
-	dowildbattle
-# 313 "data//maps/RootCellar/scripts.pory"
 	release
-# 314 "data//maps/RootCellar/scripts.pory"
+# 304 "data//maps/RootCellar/scripts.pory"
 	end
+# 305 "data//maps/RootCellar/scripts.pory"
+
+# 306 "data//maps/RootCellar/scripts.pory"
+RootCellar_EventScript_ApplinAttacks::
+# 307 "data//maps/RootCellar/scripts.pory"
+	message RootCellar_Text_APokemonAppeared
+# 308 "data//maps/RootCellar/scripts.pory"
+	waitmessage
+# 309 "data//maps/RootCellar/scripts.pory"
+	waitbuttonpress
+# 310 "data//maps/RootCellar/scripts.pory"
+	waitse
+# 311 "data//maps/RootCellar/scripts.pory"
+	playmoncry SPECIES_SHUCKLE, CRY_MODE_ENCOUNTER
+# 312 "data//maps/RootCellar/scripts.pory"
+	delay 10
+# 313 "data//maps/RootCellar/scripts.pory"
+	waitmoncry
+# 314 "data//maps/RootCellar/scripts.pory"
+	setwildbattle SPECIES_APPLIN, 50
 # 315 "data//maps/RootCellar/scripts.pory"
-	
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
 # 316 "data//maps/RootCellar/scripts.pory"
-RootCellar_Text_ShelfIsEmpty:
+	dowildbattle
 # 317 "data//maps/RootCellar/scripts.pory"
-	.string "This shelf has been depleted!$"
+	release
 # 318 "data//maps/RootCellar/scripts.pory"
-
+	end
 # 319 "data//maps/RootCellar/scripts.pory"
-RootCellar_Text_FoundAShelf:
+	
 # 320 "data//maps/RootCellar/scripts.pory"
-	.string "Someone has been stashing their\n"
+RootCellar_Text_ShelfIsEmpty:
 # 321 "data//maps/RootCellar/scripts.pory"
-	.string "BERRY JUICE and other natural\l"
+	.string "This shelf has been depleted!$"
 # 322 "data//maps/RootCellar/scripts.pory"
-	.string "remedies here.\p"
+
 # 323 "data//maps/RootCellar/scripts.pory"
-	.string "Take some for yourself?$"
+RootCellar_Text_FoundAShelf:
 # 324 "data//maps/RootCellar/scripts.pory"
-
+	.string "Someone has been stashing their\n"
 # 325 "data//maps/RootCellar/scripts.pory"
-RootCellar_Text_FoundBerryMastersShelf:
+	.string "BERRY JUICE and other natural\l"
 # 326 "data//maps/RootCellar/scripts.pory"
-	.string "This must be the BERRY MASTER's\n"
+	.string "remedies here.\p"
 # 327 "data//maps/RootCellar/scripts.pory"
-	.string "secret stash of BERRY JUICE and\l"
-# 328 "data//maps/RootCellar/scripts.pory"
-	.string "other natural remedies.\p"
-# 329 "data//maps/RootCellar/scripts.pory"
 	.string "Take some for yourself?$"
-# 330 "data//maps/RootCellar/scripts.pory"
+# 328 "data//maps/RootCellar/scripts.pory"
 
+# 329 "data//maps/RootCellar/scripts.pory"
+RootCellar_Text_FoundBerryMastersShelf:
+# 330 "data//maps/RootCellar/scripts.pory"
+	.string "This must be the BERRY MASTER's\n"
 # 331 "data//maps/RootCellar/scripts.pory"
-RootCellar_Text_APokemonAppeared:
+	.string "secret stash of BERRY JUICE and\l"
 # 332 "data//maps/RootCellar/scripts.pory"
+	.string "other natural remedies.\p"
+# 333 "data//maps/RootCellar/scripts.pory"
+	.string "Take some for yourself?$"
+# 334 "data//maps/RootCellar/scripts.pory"
+
+# 335 "data//maps/RootCellar/scripts.pory"
+RootCellar_Text_APokemonAppeared:
+# 336 "data//maps/RootCellar/scripts.pory"
 	.string "A Pokémon appeared!$"
 
 RootCellar_EventScript_RandomiseRootCellarItem::
-# 338 "data//maps/RootCellar/scripts.pory"
+# 342 "data//maps/RootCellar/scripts.pory"
 	randompercentage 50
-# 339 "data//maps/RootCellar/scripts.pory"
+# 343 "data//maps/RootCellar/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq RootCellar_EventScript_RandomiseRootCellarItem_2
-# 343 "data//maps/RootCellar/scripts.pory"
+# 347 "data//maps/RootCellar/scripts.pory"
 	random 100
-# 344 "data//maps/RootCellar/scripts.pory"
+# 348 "data//maps/RootCellar/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_eq RootCellar_EventScript_RandomiseRootCellarItem_5
-# 347 "data//maps/RootCellar/scripts.pory"
+# 351 "data//maps/RootCellar/scripts.pory"
 	compare VAR_RESULT, 4
 	goto_if_le RootCellar_EventScript_RandomiseRootCellarItem_6
-# 350 "data//maps/RootCellar/scripts.pory"
+# 354 "data//maps/RootCellar/scripts.pory"
 	compare VAR_RESULT, 16
 	goto_if_le RootCellar_EventScript_RandomiseRootCellarItem_7
-# 369 "data//maps/RootCellar/scripts.pory"
+# 373 "data//maps/RootCellar/scripts.pory"
 	compare VAR_RESULT, 32
 	goto_if_le RootCellar_EventScript_RandomiseRootCellarItem_8
-# 372 "data//maps/RootCellar/scripts.pory"
+# 376 "data//maps/RootCellar/scripts.pory"
 	compare VAR_RESULT, 64
 	goto_if_le RootCellar_EventScript_RandomiseRootCellarItem_9
-# 412 "data//maps/RootCellar/scripts.pory"
+# 416 "data//maps/RootCellar/scripts.pory"
 	setvar VAR_TEMP_5, ITEM_BERRY_JUICE
 RootCellar_EventScript_RandomiseRootCellarItem_1:
 	return
 
 RootCellar_EventScript_RandomiseRootCellarItem_2:
-# 340 "data//maps/RootCellar/scripts.pory"
+# 344 "data//maps/RootCellar/scripts.pory"
 	setvar VAR_TEMP_5, ITEM_BERRY_JUICE
 	goto RootCellar_EventScript_RandomiseRootCellarItem_1
 
 RootCellar_EventScript_RandomiseRootCellarItem_5:
-# 345 "data//maps/RootCellar/scripts.pory"
+# 349 "data//maps/RootCellar/scripts.pory"
 	setvar VAR_TEMP_5, ITEM_REVIVAL_HERB
 	goto RootCellar_EventScript_RandomiseRootCellarItem_1
 
 RootCellar_EventScript_RandomiseRootCellarItem_6:
-# 348 "data//maps/RootCellar/scripts.pory"
+# 352 "data//maps/RootCellar/scripts.pory"
 	setvar VAR_TEMP_5, ITEM_BIG_ROOT
 	goto RootCellar_EventScript_RandomiseRootCellarItem_1
 
 RootCellar_EventScript_RandomiseRootCellarItem_7:
-# 351 "data//maps/RootCellar/scripts.pory"
+# 355 "data//maps/RootCellar/scripts.pory"
 	randompercentage 50
-# 352 "data//maps/RootCellar/scripts.pory"
+# 356 "data//maps/RootCellar/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq RootCellar_EventScript_RandomiseRootCellarItem_16
-# 356 "data//maps/RootCellar/scripts.pory"
-	random 4
-# 357 "data//maps/RootCellar/scripts.pory"
-	switch VAR_RESULT
-# 358 "data//maps/RootCellar/scripts.pory"
-	case 0, RootCellar_EventScript_RandomiseRootCellarItem_38
 # 360 "data//maps/RootCellar/scripts.pory"
-	case 1, RootCellar_EventScript_RandomiseRootCellarItem_39
+	random 4
+# 361 "data//maps/RootCellar/scripts.pory"
+	switch VAR_RESULT
 # 362 "data//maps/RootCellar/scripts.pory"
-	case 2, RootCellar_EventScript_RandomiseRootCellarItem_40
+	case 0, RootCellar_EventScript_RandomiseRootCellarItem_38
 # 364 "data//maps/RootCellar/scripts.pory"
+	case 1, RootCellar_EventScript_RandomiseRootCellarItem_39
+# 366 "data//maps/RootCellar/scripts.pory"
+	case 2, RootCellar_EventScript_RandomiseRootCellarItem_40
+# 368 "data//maps/RootCellar/scripts.pory"
 	case 3, RootCellar_EventScript_RandomiseRootCellarItem_41
 	goto RootCellar_EventScript_RandomiseRootCellarItem_1
 
 RootCellar_EventScript_RandomiseRootCellarItem_8:
-# 370 "data//maps/RootCellar/scripts.pory"
+# 374 "data//maps/RootCellar/scripts.pory"
 	setvar VAR_TEMP_5, ITEM_ENERGY_ROOT
 	goto RootCellar_EventScript_RandomiseRootCellarItem_1
 
 RootCellar_EventScript_RandomiseRootCellarItem_9:
-# 373 "data//maps/RootCellar/scripts.pory"
-	random 16
-# 374 "data//maps/RootCellar/scripts.pory"
-	switch VAR_RESULT
-# 375 "data//maps/RootCellar/scripts.pory"
-	case 0, RootCellar_EventScript_RandomiseRootCellarItem_20
 # 377 "data//maps/RootCellar/scripts.pory"
-	case 1, RootCellar_EventScript_RandomiseRootCellarItem_21
+	random 16
+# 378 "data//maps/RootCellar/scripts.pory"
+	switch VAR_RESULT
 # 379 "data//maps/RootCellar/scripts.pory"
-	case 2, RootCellar_EventScript_RandomiseRootCellarItem_22
+	case 0, RootCellar_EventScript_RandomiseRootCellarItem_20
 # 381 "data//maps/RootCellar/scripts.pory"
-	case 3, RootCellar_EventScript_RandomiseRootCellarItem_23
+	case 1, RootCellar_EventScript_RandomiseRootCellarItem_21
 # 383 "data//maps/RootCellar/scripts.pory"
-	case 4, RootCellar_EventScript_RandomiseRootCellarItem_24
+	case 2, RootCellar_EventScript_RandomiseRootCellarItem_22
 # 385 "data//maps/RootCellar/scripts.pory"
-	case 5, RootCellar_EventScript_RandomiseRootCellarItem_25
+	case 3, RootCellar_EventScript_RandomiseRootCellarItem_23
 # 387 "data//maps/RootCellar/scripts.pory"
-	case 6, RootCellar_EventScript_RandomiseRootCellarItem_26
+	case 4, RootCellar_EventScript_RandomiseRootCellarItem_24
 # 389 "data//maps/RootCellar/scripts.pory"
-	case 7, RootCellar_EventScript_RandomiseRootCellarItem_27
+	case 5, RootCellar_EventScript_RandomiseRootCellarItem_25
 # 391 "data//maps/RootCellar/scripts.pory"
-	case 8, RootCellar_EventScript_RandomiseRootCellarItem_28
+	case 6, RootCellar_EventScript_RandomiseRootCellarItem_26
 # 393 "data//maps/RootCellar/scripts.pory"
-	case 9, RootCellar_EventScript_RandomiseRootCellarItem_29
+	case 7, RootCellar_EventScript_RandomiseRootCellarItem_27
 # 395 "data//maps/RootCellar/scripts.pory"
-	case 10, RootCellar_EventScript_RandomiseRootCellarItem_30
+	case 8, RootCellar_EventScript_RandomiseRootCellarItem_28
 # 397 "data//maps/RootCellar/scripts.pory"
-	case 11, RootCellar_EventScript_RandomiseRootCellarItem_31
+	case 9, RootCellar_EventScript_RandomiseRootCellarItem_29
 # 399 "data//maps/RootCellar/scripts.pory"
-	case 12, RootCellar_EventScript_RandomiseRootCellarItem_32
+	case 10, RootCellar_EventScript_RandomiseRootCellarItem_30
 # 401 "data//maps/RootCellar/scripts.pory"
-	case 13, RootCellar_EventScript_RandomiseRootCellarItem_33
+	case 11, RootCellar_EventScript_RandomiseRootCellarItem_31
 # 403 "data//maps/RootCellar/scripts.pory"
-	case 14, RootCellar_EventScript_RandomiseRootCellarItem_34
+	case 12, RootCellar_EventScript_RandomiseRootCellarItem_32
 # 405 "data//maps/RootCellar/scripts.pory"
-	case 15, RootCellar_EventScript_RandomiseRootCellarItem_35
+	case 13, RootCellar_EventScript_RandomiseRootCellarItem_33
 # 407 "data//maps/RootCellar/scripts.pory"
+	case 14, RootCellar_EventScript_RandomiseRootCellarItem_34
+# 409 "data//maps/RootCellar/scripts.pory"
+	case 15, RootCellar_EventScript_RandomiseRootCellarItem_35
+# 411 "data//maps/RootCellar/scripts.pory"
 	case 16, RootCellar_EventScript_RandomiseRootCellarItem_36
 	goto RootCellar_EventScript_RandomiseRootCellarItem_1
 
 RootCellar_EventScript_RandomiseRootCellarItem_16:
-# 353 "data//maps/RootCellar/scripts.pory"
+# 357 "data//maps/RootCellar/scripts.pory"
 	setvar VAR_TEMP_5, SPECIES_APPLIN
 	goto RootCellar_EventScript_RandomiseRootCellarItem_1
 
 RootCellar_EventScript_RandomiseRootCellarItem_20:
-# 376 "data//maps/RootCellar/scripts.pory"
+# 380 "data//maps/RootCellar/scripts.pory"
 	setvar VAR_TEMP_5, ITEM_OCCA_BERRY
 	goto RootCellar_EventScript_RandomiseRootCellarItem_1
 
 RootCellar_EventScript_RandomiseRootCellarItem_21:
-# 378 "data//maps/RootCellar/scripts.pory"
+# 382 "data//maps/RootCellar/scripts.pory"
 	setvar VAR_TEMP_5, ITEM_PASSHO_BERRY
 	goto RootCellar_EventScript_RandomiseRootCellarItem_1
 
 RootCellar_EventScript_RandomiseRootCellarItem_22:
-# 380 "data//maps/RootCellar/scripts.pory"
+# 384 "data//maps/RootCellar/scripts.pory"
 	setvar VAR_TEMP_5, ITEM_WACAN_BERRY
 	goto RootCellar_EventScript_RandomiseRootCellarItem_1
 
 RootCellar_EventScript_RandomiseRootCellarItem_23:
-# 382 "data//maps/RootCellar/scripts.pory"
+# 386 "data//maps/RootCellar/scripts.pory"
 	setvar VAR_TEMP_5, ITEM_RINDO_BERRY
 	goto RootCellar_EventScript_RandomiseRootCellarItem_1
 
 RootCellar_EventScript_RandomiseRootCellarItem_24:
-# 384 "data//maps/RootCellar/scripts.pory"
+# 388 "data//maps/RootCellar/scripts.pory"
 	setvar VAR_TEMP_5, ITEM_YACHE_BERRY
 	goto RootCellar_EventScript_RandomiseRootCellarItem_1
 
 RootCellar_EventScript_RandomiseRootCellarItem_25:
-# 386 "data//maps/RootCellar/scripts.pory"
+# 390 "data//maps/RootCellar/scripts.pory"
 	setvar VAR_TEMP_5, ITEM_CHOPLE_BERRY
 	goto RootCellar_EventScript_RandomiseRootCellarItem_1
 
 RootCellar_EventScript_RandomiseRootCellarItem_26:
-# 388 "data//maps/RootCellar/scripts.pory"
+# 392 "data//maps/RootCellar/scripts.pory"
 	setvar VAR_TEMP_5, ITEM_KEBIA_BERRY
 	goto RootCellar_EventScript_RandomiseRootCellarItem_1
 
 RootCellar_EventScript_RandomiseRootCellarItem_27:
-# 390 "data//maps/RootCellar/scripts.pory"
+# 394 "data//maps/RootCellar/scripts.pory"
 	setvar VAR_TEMP_5, ITEM_SHUCA_BERRY
 	goto RootCellar_EventScript_RandomiseRootCellarItem_1
 
 RootCellar_EventScript_RandomiseRootCellarItem_28:
-# 392 "data//maps/RootCellar/scripts.pory"
+# 396 "data//maps/RootCellar/scripts.pory"
 	setvar VAR_TEMP_5, ITEM_COBA_BERRY
 	goto RootCellar_EventScript_RandomiseRootCellarItem_1
 
 RootCellar_EventScript_RandomiseRootCellarItem_29:
-# 394 "data//maps/RootCellar/scripts.pory"
+# 398 "data//maps/RootCellar/scripts.pory"
 	setvar VAR_TEMP_5, ITEM_PAYAPA_BERRY
 	goto RootCellar_EventScript_RandomiseRootCellarItem_1
 
 RootCellar_EventScript_RandomiseRootCellarItem_30:
-# 396 "data//maps/RootCellar/scripts.pory"
+# 400 "data//maps/RootCellar/scripts.pory"
 	setvar VAR_TEMP_5, ITEM_TANGA_BERRY
 	goto RootCellar_EventScript_RandomiseRootCellarItem_1
 
 RootCellar_EventScript_RandomiseRootCellarItem_31:
-# 398 "data//maps/RootCellar/scripts.pory"
+# 402 "data//maps/RootCellar/scripts.pory"
 	setvar VAR_TEMP_5, ITEM_CHARTI_BERRY
 	goto RootCellar_EventScript_RandomiseRootCellarItem_1
 
 RootCellar_EventScript_RandomiseRootCellarItem_32:
-# 400 "data//maps/RootCellar/scripts.pory"
+# 404 "data//maps/RootCellar/scripts.pory"
 	setvar VAR_TEMP_5, ITEM_KASIB_BERRY
 	goto RootCellar_EventScript_RandomiseRootCellarItem_1
 
 RootCellar_EventScript_RandomiseRootCellarItem_33:
-# 402 "data//maps/RootCellar/scripts.pory"
+# 406 "data//maps/RootCellar/scripts.pory"
 	setvar VAR_TEMP_5, ITEM_HABAN_BERRY
 	goto RootCellar_EventScript_RandomiseRootCellarItem_1
 
 RootCellar_EventScript_RandomiseRootCellarItem_34:
-# 404 "data//maps/RootCellar/scripts.pory"
+# 408 "data//maps/RootCellar/scripts.pory"
 	setvar VAR_TEMP_5, ITEM_COLBUR_BERRY
 	goto RootCellar_EventScript_RandomiseRootCellarItem_1
 
 RootCellar_EventScript_RandomiseRootCellarItem_35:
-# 406 "data//maps/RootCellar/scripts.pory"
+# 410 "data//maps/RootCellar/scripts.pory"
 	setvar VAR_TEMP_5, ITEM_BABIRI_BERRY
 	goto RootCellar_EventScript_RandomiseRootCellarItem_1
 
 RootCellar_EventScript_RandomiseRootCellarItem_36:
-# 408 "data//maps/RootCellar/scripts.pory"
+# 412 "data//maps/RootCellar/scripts.pory"
 	setvar VAR_TEMP_5, ITEM_CHILAN_BERRY
 	goto RootCellar_EventScript_RandomiseRootCellarItem_1
 
 RootCellar_EventScript_RandomiseRootCellarItem_38:
-# 359 "data//maps/RootCellar/scripts.pory"
+# 363 "data//maps/RootCellar/scripts.pory"
 	setvar VAR_TEMP_5, ITEM_LEFTOVERS
 	goto RootCellar_EventScript_RandomiseRootCellarItem_1
 
 RootCellar_EventScript_RandomiseRootCellarItem_39:
-# 361 "data//maps/RootCellar/scripts.pory"
+# 365 "data//maps/RootCellar/scripts.pory"
 	setvar VAR_TEMP_5, ITEM_SWEET_APPLE
 	goto RootCellar_EventScript_RandomiseRootCellarItem_1
 
 RootCellar_EventScript_RandomiseRootCellarItem_40:
-# 363 "data//maps/RootCellar/scripts.pory"
+# 367 "data//maps/RootCellar/scripts.pory"
 	setvar VAR_TEMP_5, ITEM_TART_APPLE
 	goto RootCellar_EventScript_RandomiseRootCellarItem_1
 
 RootCellar_EventScript_RandomiseRootCellarItem_41:
-# 365 "data//maps/RootCellar/scripts.pory"
+# 369 "data//maps/RootCellar/scripts.pory"
 	setvar VAR_TEMP_5, ITEM_SYRUPY_APPLE
 	goto RootCellar_EventScript_RandomiseRootCellarItem_1
 

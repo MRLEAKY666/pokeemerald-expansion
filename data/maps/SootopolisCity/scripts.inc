@@ -1171,7 +1171,7 @@ SootopolisCity_EventScript_RayquazaSceneFromDive::
 # 586 "data//maps/SootopolisCity/scripts.pory"
 	clearflag FLAG_LEGENDARIES_IN_SOOTOPOLIS
 # 587 "data//maps/SootopolisCity/scripts.pory"
-	fadenewbgm MUS_SURF
+	fadenewbgm MUS_SOOTOPOLIS
 # 588 "data//maps/SootopolisCity/scripts.pory"
 	delay 120
 # 589 "data//maps/SootopolisCity/scripts.pory"
