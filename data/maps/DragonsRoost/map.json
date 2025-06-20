@@ -501,6 +501,20 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "DragonsRoost_EventScript_Clone",
       "flag": "FLAG_DRAGONS_ROOST_CLONE"
+    },
+    {
+      "local_id": "LOCALID_DRAGONS_ROOST_CARNIVINE2",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CARNIVINE)",
+      "x": 61,
+      "y": 51,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 2,
+      "movement_range_y": 2,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "DragonsRoost_EventScript_Carnivine2",
+      "flag": "FLAG_DRAGONS_ROOST_CARNIVINE2"
     }
   ],
   "warp_events": [],

@@ -176,6 +176,62 @@ void ResetWildOverworldMons(void)
             FlagClear(FLAG_ROOT_CELLAR_SPINARAK_2);
         }
     }
+    if (FlagGet(FLAG_DRAGONS_ROOST_CROCONAW))
+    {
+        if (Random() % 2)
+        {
+            FlagClear(FLAG_DRAGONS_ROOST_CROCONAW);
+        }
+    }
+    if (FlagGet(FLAG_DRAGONS_ROOST_DRAGONAIR))
+    {
+        if (Random() % 2)
+        {
+            FlagClear(FLAG_DRAGONS_ROOST_DRAGONAIR);
+        }
+    }
+    if (FlagGet(FLAG_DRAGONS_ROOST_GYARADOS))
+    {
+        if (Random() % 2)
+        {
+            FlagClear(FLAG_DRAGONS_ROOST_GYARADOS);
+        }
+    }
+    if (FlagGet(FLAG_DRAGONS_ROOST_CARNIVINE1))
+    {
+        if (Random() % 2)
+        {
+            FlagClear(FLAG_DRAGONS_ROOST_CARNIVINE1);
+        }
+    }
+    if (FlagGet(FLAG_DRAGONS_ROOST_CARNIVINE2))
+    {
+        if (Random() % 2)
+        {
+            FlagClear(FLAG_DRAGONS_ROOST_CARNIVINE2);
+        }
+    }
+    if (FlagGet(FLAG_DRAGONS_ROOST_AURORUS))
+    {
+        if (Random() % 2)
+        {
+            FlagClear(FLAG_DRAGONS_ROOST_AURORUS);
+        }
+    }
+    if (FlagGet(FLAG_DRAGONS_ROOST_AURORUS))
+    {
+        if (Random() % 2)
+        {
+            FlagClear(FLAG_DRAGONS_ROOST_AURORUS);
+        }
+    }
+    if (FlagGet(FLAG_DRAGONS_ROOST_TYRANTRUM))
+    {
+        if (Random() % 2)
+        {
+            FlagClear(FLAG_DRAGONS_ROOST_TYRANTRUM);
+        }
+    }
 }
 
 void RestockBerryMasterCellar(void)

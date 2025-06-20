@@ -2188,13 +2188,13 @@
 
 	.macro setwildbossmon battler:req
 	settotemboost \battler, 2, 2, 2, 2, 2
-	setflag FLAG_NO_CATCHING
-	setflag FLAG_NO_RUNNING
+	setflag FLAG_TEMP_NO_CATCHING
+	setflag FLAG_TEMP_NO_RUNNING
 	.endm
 
 	.macro endwildbossmon
-	clearflag FLAG_NO_CATCHING
-	clearflag FLAG_NO_RUNNING
+	clearflag FLAG_TEMP_NO_CATCHING
+	clearflag FLAG_TEMP_NO_RUNNING
 	.endm
 
 	@ Attempts to trigger a special evolution method in the overworld.

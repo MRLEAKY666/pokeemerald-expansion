@@ -33,6 +33,7 @@ DragonsRoost_OnTransition:
 	call_if_unset FLAG_CAUGHT_ZAPDOS, DragonsRoost_EventScript_TryShowZapdos
 	call_if_unset FLAG_DRAGONS_ROOST_CLONE, DragonsRoost_EventScript_HideClone
 	call DragonsRoost_EventScript_SetupPlayerCloneGfxId
+	call DragonsRoost_EventScript_RandomiseOvrWrldMonPos
 	end
 
 DragonsRoost_EventScript_PrepRayquazaCry::
@@ -303,6 +304,26 @@ DragonsRoost_EventScript_Dragonair::
 	end
 
 DragonsRoost_EventScript_Carnivine1::
+	lock
+	faceplayer
+	waitse
+	playmoncry SPECIES_CARNIVINE, CRY_MODE_ENCOUNTER
+	delay 10
+	waitmoncry
+	setwildbattle SPECIES_CARNIVINE, 50
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	dowildbattle
+	@ waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setvar VAR_0x8004, SPECIES_CARNIVINE
+    specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, DragonsRoost_EventScript_DefeatedWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, DragonsRoost_EventScript_RanWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, DragonsRoost_EventScript_RanWildMon
+	release
+	end
+
+DragonsRoost_EventScript_Carnivine2::
 	lock
 	faceplayer
 	waitse
@@ -609,3 +630,44 @@ DragonsRoost_Text_Clone:
 	.string "Where am I?$"
 
 `
+
+script DragonsRoost_EventScript_RandomiseOvrWrldMonPos{
+	if (var(VAR_DRAGONS_ROOST_RAYQUAZA_SCENE_STATE) >= 3){
+		random(3)
+		switch (var(VAR_RESULT)){
+		case 0: 
+			goto(DragonsRoost_EventScript_OvrWrldMonPosA)
+		case 1: 
+			goto(DragonsRoost_EventScript_OvrWrldMonPosB)
+		case 2: 
+			goto(DragonsRoost_EventScript_OvrWrldMonPosC)
+		}
+	}
+	else{
+		goto(DragonsRoost_EventScript_OvrWrldMonPosA)
+	}
+}
+
+script DragonsRoost_EventScript_OvrWrldMonPosA{
+	setobjectxyperm(LOCALID_DRAGONS_ROOST_AURORUS, 20, 41)
+	setobjectxyperm(LOCALID_DRAGONS_ROOST_CROCONAW, 59, 24)
+	setobjectxyperm(LOCALID_DRAGONS_ROOST_GYARADOS, 73, 39)
+	setobjectxyperm(LOCALID_DRAGONS_ROOST_DRAGONAIR, 115, 42)
+	return
+}
+
+script DragonsRoost_EventScript_OvrWrldMonPosB{
+	setobjectxyperm(LOCALID_DRAGONS_ROOST_AURORUS, 59, 24)
+	setobjectxyperm(LOCALID_DRAGONS_ROOST_CROCONAW, 20, 41)
+	setobjectxyperm(LOCALID_DRAGONS_ROOST_GYARADOS, 90, 45)
+	setobjectxyperm(LOCALID_DRAGONS_ROOST_DRAGONAIR, 74, 28)
+	return
+}
+
+script DragonsRoost_EventScript_OvrWrldMonPosC{
+	setobjectxyperm(LOCALID_DRAGONS_ROOST_AURORUS, 20, 41)
+	setobjectxyperm(LOCALID_DRAGONS_ROOST_CROCONAW, 47, 25)
+	setobjectxyperm(LOCALID_DRAGONS_ROOST_GYARADOS, 83, 34)
+	setobjectxyperm(LOCALID_DRAGONS_ROOST_DRAGONAIR, 73, 39)
+	return
+}

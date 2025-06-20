@@ -54,10 +54,12 @@ GraniteCove_EventScript_Abomasnow::
 	delay 10
 	waitmoncry
 	closemessage
+	setwildbossmon 1
 	setwildbattle SPECIES_ABOMASNOW, 40
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	dowildbattle
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	endwildbossmon
 	setvar VAR_0x8004, SPECIES_ABOMASNOW
     specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, GraniteCove_EventScript_DefeatedWildMon

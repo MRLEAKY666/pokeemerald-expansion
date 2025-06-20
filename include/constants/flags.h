@@ -729,7 +729,7 @@
 #define FLAG_UNUSED_0x2AA  0x2AA // Unused Flag
 #define FLAG_UNUSED_0x2AB  0x2AB // Unused Flag
 #define FLAG_UNUSED_0x2AC  0x2AC // Unused Flag
-#define FLAG_UNUSED_0x2AD  0x2AD // Unused Flag
+#define FLAG_DRAGONS_ROOST_CARNIVINE2  0x2AD // Unused Flag
 #define FLAG_DRAGONS_ROOST_CROCONAW  0x2AE // Unused Flag
 #define FLAG_DRAGONS_ROOST_AURORUS  0x2AF // Unused Flag
 #define FLAG_DRAGONS_ROOST_CARNIVINE1  0x2B0 // Unused Flag
@@ -1390,8 +1390,8 @@
 #define FLAG_SYS_DEXNAV_GET                           (SYSTEM_FLAGS + 0x21) // previously Unused Flag
 #define FLAG_SYS_DEXNAV_DETECTOR                           (SYSTEM_FLAGS + 0x22) // previously Unused Flag
 #define FLAG_SYS_DEXNAV_SEARCH                           (SYSTEM_FLAGS + 0x23) // previously Unused Flag
-#define FLAG_NO_CATCHING                           (SYSTEM_FLAGS + 0x24) // 
-#define FLAG_NO_RUNNING                           (SYSTEM_FLAGS + 0x25) // 
+#define FLAG_UNUSED_0x884                           (SYSTEM_FLAGS + 0x24) // 
+#define FLAG_UNUSED_0x885                           (SYSTEM_FLAGS + 0x25) // 
 #define FLAG_UNUSED_0x886                           (SYSTEM_FLAGS + 0x26) // Unused Flag
 #define FLAG_UNUSED_0x887                           (SYSTEM_FLAGS + 0x27) // Unused Flag
 
@@ -1757,6 +1757,8 @@
 #define FLAG_TEMP_REGICE_PUZZLE_FAILED          FLAG_TEMP_3
 #define FLAG_TEMP_HIDE_FOLLOWER                 FLAG_TEMP_E
 #define FLAG_TEMP_HIDE_MIRAGE_ISLAND_BERRY_TREE FLAG_TEMP_11
+#define FLAG_TEMP_NO_CATCHING                   FLAG_TEMP_C
+#define FLAG_TEMP_NO_RUNNING                    FLAG_TEMP_D
 
 #if TESTING
 #define TESTING_FLAGS_START                     0x5000
