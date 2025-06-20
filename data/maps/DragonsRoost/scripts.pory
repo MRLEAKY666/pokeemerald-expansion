@@ -250,8 +250,8 @@ DragonsRoost_EventScript_Croconaw::
 	faceplayer
 	waitse
 	playmoncry SPECIES_CROCONAW, CRY_MODE_ENCOUNTER
-	delay 10
 	waitmoncry
+	delay 10
 	setwildbattle SPECIES_CROCONAW, 50
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	dowildbattle
@@ -270,8 +270,8 @@ DragonsRoost_EventScript_Aurorus::
 	faceplayer
 	waitse
 	playmoncry SPECIES_AURORUS, CRY_MODE_ENCOUNTER
-	delay 10
 	waitmoncry
+	delay 10
 	setwildbattle SPECIES_AURORUS, 50
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	dowildbattle
@@ -290,8 +290,8 @@ DragonsRoost_EventScript_Dragonair::
 	faceplayer
 	waitse
 	playmoncry SPECIES_DRAGONAIR, CRY_MODE_ENCOUNTER
-	delay 10
 	waitmoncry
+	delay 10
 	setwildbattle SPECIES_DRAGONAIR, 50
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	dowildbattle
@@ -310,8 +310,8 @@ DragonsRoost_EventScript_Carnivine1::
 	faceplayer
 	waitse
 	playmoncry SPECIES_CARNIVINE, CRY_MODE_ENCOUNTER
-	delay 10
 	waitmoncry
+	delay 10
 	setwildbattle SPECIES_CARNIVINE, 50
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	dowildbattle
@@ -330,8 +330,8 @@ DragonsRoost_EventScript_Carnivine2::
 	faceplayer
 	waitse
 	playmoncry SPECIES_CARNIVINE, CRY_MODE_ENCOUNTER
-	delay 10
 	waitmoncry
+	delay 10
 	setwildbattle SPECIES_CARNIVINE, 50
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	dowildbattle
@@ -350,8 +350,8 @@ DragonsRoost_EventScript_Gyarados::
 	faceplayer
 	waitse
 	playmoncry SPECIES_GYARADOS, CRY_MODE_ENCOUNTER
-	delay 10
 	waitmoncry
+	delay 10
 	setwildbattle SPECIES_GYARADOS, 50
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	dowildbattle

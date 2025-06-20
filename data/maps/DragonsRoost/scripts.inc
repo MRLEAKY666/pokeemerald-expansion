@@ -503,9 +503,9 @@ DragonsRoost_EventScript_Croconaw::
 # 252 "data//maps/DragonsRoost/scripts.pory"
 	playmoncry SPECIES_CROCONAW, CRY_MODE_ENCOUNTER
 # 253 "data//maps/DragonsRoost/scripts.pory"
-	delay 10
-# 254 "data//maps/DragonsRoost/scripts.pory"
 	waitmoncry
+# 254 "data//maps/DragonsRoost/scripts.pory"
+	delay 10
 # 255 "data//maps/DragonsRoost/scripts.pory"
 	setwildbattle SPECIES_CROCONAW, 50
 # 256 "data//maps/DragonsRoost/scripts.pory"
@@ -543,9 +543,9 @@ DragonsRoost_EventScript_Aurorus::
 # 272 "data//maps/DragonsRoost/scripts.pory"
 	playmoncry SPECIES_AURORUS, CRY_MODE_ENCOUNTER
 # 273 "data//maps/DragonsRoost/scripts.pory"
-	delay 10
-# 274 "data//maps/DragonsRoost/scripts.pory"
 	waitmoncry
+# 274 "data//maps/DragonsRoost/scripts.pory"
+	delay 10
 # 275 "data//maps/DragonsRoost/scripts.pory"
 	setwildbattle SPECIES_AURORUS, 50
 # 276 "data//maps/DragonsRoost/scripts.pory"
@@ -583,9 +583,9 @@ DragonsRoost_EventScript_Dragonair::
 # 292 "data//maps/DragonsRoost/scripts.pory"
 	playmoncry SPECIES_DRAGONAIR, CRY_MODE_ENCOUNTER
 # 293 "data//maps/DragonsRoost/scripts.pory"
-	delay 10
-# 294 "data//maps/DragonsRoost/scripts.pory"
 	waitmoncry
+# 294 "data//maps/DragonsRoost/scripts.pory"
+	delay 10
 # 295 "data//maps/DragonsRoost/scripts.pory"
 	setwildbattle SPECIES_DRAGONAIR, 50
 # 296 "data//maps/DragonsRoost/scripts.pory"
@@ -623,9 +623,9 @@ DragonsRoost_EventScript_Carnivine1::
 # 312 "data//maps/DragonsRoost/scripts.pory"
 	playmoncry SPECIES_CARNIVINE, CRY_MODE_ENCOUNTER
 # 313 "data//maps/DragonsRoost/scripts.pory"
-	delay 10
-# 314 "data//maps/DragonsRoost/scripts.pory"
 	waitmoncry
+# 314 "data//maps/DragonsRoost/scripts.pory"
+	delay 10
 # 315 "data//maps/DragonsRoost/scripts.pory"
 	setwildbattle SPECIES_CARNIVINE, 50
 # 316 "data//maps/DragonsRoost/scripts.pory"
@@ -663,9 +663,9 @@ DragonsRoost_EventScript_Carnivine2::
 # 332 "data//maps/DragonsRoost/scripts.pory"
 	playmoncry SPECIES_CARNIVINE, CRY_MODE_ENCOUNTER
 # 333 "data//maps/DragonsRoost/scripts.pory"
-	delay 10
-# 334 "data//maps/DragonsRoost/scripts.pory"
 	waitmoncry
+# 334 "data//maps/DragonsRoost/scripts.pory"
+	delay 10
 # 335 "data//maps/DragonsRoost/scripts.pory"
 	setwildbattle SPECIES_CARNIVINE, 50
 # 336 "data//maps/DragonsRoost/scripts.pory"
@@ -703,9 +703,9 @@ DragonsRoost_EventScript_Gyarados::
 # 352 "data//maps/DragonsRoost/scripts.pory"
 	playmoncry SPECIES_GYARADOS, CRY_MODE_ENCOUNTER
 # 353 "data//maps/DragonsRoost/scripts.pory"
-	delay 10
-# 354 "data//maps/DragonsRoost/scripts.pory"
 	waitmoncry
+# 354 "data//maps/DragonsRoost/scripts.pory"
+	delay 10
 # 355 "data//maps/DragonsRoost/scripts.pory"
 	setwildbattle SPECIES_GYARADOS, 50
 # 356 "data//maps/DragonsRoost/scripts.pory"

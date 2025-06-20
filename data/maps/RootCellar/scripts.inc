@@ -143,9 +143,9 @@ RootCellar_EventScript_Shuckle1::
 # 72 "data//maps/RootCellar/scripts.pory"
 	playmoncry SPECIES_SHUCKLE, CRY_MODE_ENCOUNTER
 # 73 "data//maps/RootCellar/scripts.pory"
-	delay 10
-# 74 "data//maps/RootCellar/scripts.pory"
 	waitmoncry
+# 74 "data//maps/RootCellar/scripts.pory"
+	delay 10
 # 75 "data//maps/RootCellar/scripts.pory"
 	setwildbattle SPECIES_SHUCKLE, 40
 # 76 "data//maps/RootCellar/scripts.pory"
@@ -183,9 +183,9 @@ RootCellar_EventScript_Shuckle2::
 # 92 "data//maps/RootCellar/scripts.pory"
 	playmoncry SPECIES_SHUCKLE, CRY_MODE_ENCOUNTER
 # 93 "data//maps/RootCellar/scripts.pory"
-	delay 10
-# 94 "data//maps/RootCellar/scripts.pory"
 	waitmoncry
+# 94 "data//maps/RootCellar/scripts.pory"
+	delay 10
 # 95 "data//maps/RootCellar/scripts.pory"
 	setwildbattle SPECIES_SHUCKLE, 40
 # 96 "data//maps/RootCellar/scripts.pory"
@@ -223,9 +223,9 @@ RootCellar_EventScript_Spinarak1::
 # 112 "data//maps/RootCellar/scripts.pory"
 	playmoncry SPECIES_SPINARAK, CRY_MODE_ENCOUNTER
 # 113 "data//maps/RootCellar/scripts.pory"
-	delay 10
-# 114 "data//maps/RootCellar/scripts.pory"
 	waitmoncry
+# 114 "data//maps/RootCellar/scripts.pory"
+	delay 10
 # 115 "data//maps/RootCellar/scripts.pory"
 	setwildbattle SPECIES_SPINARAK, 40
 # 116 "data//maps/RootCellar/scripts.pory"
@@ -263,9 +263,9 @@ RootCellar_EventScript_Spinarak2::
 # 132 "data//maps/RootCellar/scripts.pory"
 	playmoncry SPECIES_SPINARAK, CRY_MODE_ENCOUNTER
 # 133 "data//maps/RootCellar/scripts.pory"
-	delay 10
-# 134 "data//maps/RootCellar/scripts.pory"
 	waitmoncry
+# 134 "data//maps/RootCellar/scripts.pory"
+	delay 10
 # 135 "data//maps/RootCellar/scripts.pory"
 	setwildbattle SPECIES_SPINARAK, 40
 # 136 "data//maps/RootCellar/scripts.pory"
@@ -621,9 +621,9 @@ RootCellar_EventScript_ApplinAttacks::
 # 311 "data//maps/RootCellar/scripts.pory"
 	playmoncry SPECIES_SHUCKLE, CRY_MODE_ENCOUNTER
 # 312 "data//maps/RootCellar/scripts.pory"
-	delay 10
-# 313 "data//maps/RootCellar/scripts.pory"
 	waitmoncry
+# 313 "data//maps/RootCellar/scripts.pory"
+	delay 10
 # 314 "data//maps/RootCellar/scripts.pory"
 	setwildbattle SPECIES_APPLIN, 50
 # 315 "data//maps/RootCellar/scripts.pory"

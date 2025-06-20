@@ -70,8 +70,8 @@ RootCellar_EventScript_Shuckle1::
 	faceplayer
 	waitse
 	playmoncry SPECIES_SHUCKLE, CRY_MODE_ENCOUNTER
-	delay 10
 	waitmoncry
+	delay 10
 	setwildbattle SPECIES_SHUCKLE, 40
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	dowildbattle
@@ -90,8 +90,8 @@ RootCellar_EventScript_Shuckle2::
 	faceplayer
 	waitse
 	playmoncry SPECIES_SHUCKLE, CRY_MODE_ENCOUNTER
-	delay 10
 	waitmoncry
+	delay 10
 	setwildbattle SPECIES_SHUCKLE, 40
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	dowildbattle
@@ -110,8 +110,8 @@ RootCellar_EventScript_Spinarak1::
 	faceplayer
 	waitse
 	playmoncry SPECIES_SPINARAK, CRY_MODE_ENCOUNTER
-	delay 10
 	waitmoncry
+	delay 10
 	setwildbattle SPECIES_SPINARAK, 40
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	dowildbattle
@@ -130,8 +130,8 @@ RootCellar_EventScript_Spinarak2::
 	faceplayer
 	waitse
 	playmoncry SPECIES_SPINARAK, CRY_MODE_ENCOUNTER
-	delay 10
 	waitmoncry
+	delay 10
 	setwildbattle SPECIES_SPINARAK, 40
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	dowildbattle
@@ -309,8 +309,8 @@ RootCellar_EventScript_ApplinAttacks::
 	waitbuttonpress
 	waitse
 	playmoncry SPECIES_SHUCKLE, CRY_MODE_ENCOUNTER
-	delay 10
 	waitmoncry
+	delay 10
 	setwildbattle SPECIES_APPLIN, 50
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	dowildbattle
