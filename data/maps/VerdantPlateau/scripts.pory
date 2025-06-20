@@ -8,7 +8,10 @@ VerdantPlateau_MapScripts::
 	.byte 0
 
 VerdantPlateau_OnLoad:
-	call_if_le VAR_TIME_OF_DAY, 3, VerdantPlateau_EventScript_SetSun
+	call_if_eq VAR_TIME_OF_DAY, 2, VerdantPlateau_EventScript_SetSun
+	call_if_eq VAR_TIME_OF_DAY, 3, VerdantPlateau_EventScript_SetSun
+	call_if_eq VAR_TIME_OF_DAY, 4, VerdantPlateau_EventScript_SetSun
+	call_if_eq VAR_TIME_OF_DAY, 5, VerdantPlateau_EventScript_SetSun
 	call_if_unset FLAG_PLATEAU_LEADER_EVENT, VerdantPlateau_EventScript_SetupTeamLeaderGfxId
 	end
 
@@ -17,10 +20,22 @@ VerdantPlateau_EventScript_SetSun::
 	doweather
 	return
 
+VerdantPlateau_EventScript_SetSunOnFrame::
+	addvar VAR_TIME_OF_DAY, 1
+	setweather WEATHER_SUNNY_CLOUDS
+	doweather
+	return
+
+VerdantPlateau_EventScript_ClearSun::
+	setweather WEATHER_NONE
+	doweather
+	return
+
 VerdantPlateau_EventScript_SetupTeamLeaderGfxId::
 	call_if_set FLAG_HIDE_PLATEAU_LEADER, VerdantPlateau_EventScript_ShowPlateauLeader
-	goto_if_le VAR_TIME_OF_DAY, 3, VerdantPlateau_EventScript_ShowMaxie
-	goto_if_ge VAR_TIME_OF_DAY, 4, VerdantPlateau_EventScript_ShowArchie
+	goto_if_le VAR_TIME_OF_DAY, 1, VerdantPlateau_EventScript_ShowArchie
+	goto_if_le VAR_TIME_OF_DAY, 5, VerdantPlateau_EventScript_ShowMaxie
+	goto_if_ge VAR_TIME_OF_DAY, 6, VerdantPlateau_EventScript_ShowArchie
 	return
 
 VerdantPlateau_EventScript_ShowPlateauLeader::
@@ -29,13 +44,13 @@ VerdantPlateau_EventScript_ShowPlateauLeader::
 
 VerdantPlateau_EventScript_ShowMaxie::
 	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_MAXIE
-	call_if_eq VAR_TIME_OF_DAY, 0, VerdantPlateau_EventScript_IncrementTimeOfDay
 	call_if_eq VAR_TIME_OF_DAY, 2, VerdantPlateau_EventScript_IncrementTimeOfDay
+	call_if_eq VAR_TIME_OF_DAY, 4, VerdantPlateau_EventScript_IncrementTimeOfDay
 	return
 
 VerdantPlateau_EventScript_ShowArchie::
 	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_ARCHIE
-	call_if_eq VAR_TIME_OF_DAY, 4, VerdantPlateau_EventScript_IncrementTimeOfDay
+	call_if_eq VAR_TIME_OF_DAY, 0, VerdantPlateau_EventScript_IncrementTimeOfDay
 	call_if_eq VAR_TIME_OF_DAY, 6, VerdantPlateau_EventScript_IncrementTimeOfDay
 	return
 
@@ -44,8 +59,9 @@ VerdantPlateau_EventScript_IncrementTimeOfDay::
 	return
 
 VerdantPlateau_OnFrame:
-	map_script_2 VAR_TIME_OF_DAY, 0, VerdantPlateau_EventScript_SwitchToDaytime
-	map_script_2 VAR_TIME_OF_DAY, 4, VerdantPlateau_EventScript_SwitchToNighttime
+	map_script_2 VAR_TIME_OF_DAY, 2, VerdantPlateau_EventScript_SwitchToDaytime
+	@ map_script_2 VAR_TIME_OF_DAY, 2, VerdantPlateau_EventScript_SetSunOnFrame
+	map_script_2 VAR_TIME_OF_DAY, 6, VerdantPlateau_EventScript_SwitchToNighttime
 	.2byte 0
 
 VerdantPlateau_EventScript_SwitchToDaytime::
@@ -55,6 +71,7 @@ VerdantPlateau_EventScript_SwitchToDaytime::
 	removeobject LOCALID_TEAMLEADER
 	setflag FLAG_HIDE_PLATEAU_LEADER
 	addvar VAR_TIME_OF_DAY, 1
+	call VerdantPlateau_EventScript_SetSun
 	@ clearflag FLAG_FORCE_LOAD_OFFSCREEN_OBJEV
 	end
 
@@ -65,6 +82,7 @@ VerdantPlateau_EventScript_SwitchToNighttime::
 	removeobject LOCALID_TEAMLEADER
 	setflag FLAG_HIDE_PLATEAU_LEADER
 	addvar VAR_TIME_OF_DAY, 1
+	call VerdantPlateau_EventScript_ClearSun
 	@ clearflag FLAG_FORCE_LOAD_OFFSCREEN_OBJEV
 	end
 
