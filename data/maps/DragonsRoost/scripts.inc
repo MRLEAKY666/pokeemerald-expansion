@@ -357,711 +357,711 @@ DragonsRoost_EventScript_DoRayquazaCry::
 # 179 "data//maps/DragonsRoost/scripts.pory"
 	@ waitmovement 0
 # 180 "data//maps/DragonsRoost/scripts.pory"
-	msgbox DragonsRoost_Text_RayquazaIsHere, MSGBOX_DEFAULT
+	waitmoncry
 # 181 "data//maps/DragonsRoost/scripts.pory"
-	closemessage
+	delay 20
 # 182 "data//maps/DragonsRoost/scripts.pory"
-	setvar VAR_DRAGONS_ROOST_RAYQUAZA_SCENE_STATE, 1
+	msgbox DragonsRoost_Text_RayquazaIsHere, MSGBOX_DEFAULT
 # 183 "data//maps/DragonsRoost/scripts.pory"
-	setvar VAR_TEMP_1, 0
+	closemessage
 # 184 "data//maps/DragonsRoost/scripts.pory"
-	release
+	setvar VAR_DRAGONS_ROOST_RAYQUAZA_SCENE_STATE, 1
 # 185 "data//maps/DragonsRoost/scripts.pory"
-	end
+	setvar VAR_TEMP_1, 0
 # 186 "data//maps/DragonsRoost/scripts.pory"
-
+	release
 # 187 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_EventScript_DoMeteoriteSparkle::
+	end
 # 188 "data//maps/DragonsRoost/scripts.pory"
-	lock
+
 # 189 "data//maps/DragonsRoost/scripts.pory"
-	playse SE_PIN
+DragonsRoost_EventScript_DoMeteoriteSparkle::
 # 190 "data//maps/DragonsRoost/scripts.pory"
-	dofieldeffectsparkle 49, 10, 0
+	lock
 # 191 "data//maps/DragonsRoost/scripts.pory"
-	delay 45
+	playse SE_PIN
 # 192 "data//maps/DragonsRoost/scripts.pory"
-	playse SE_PIN
-# 193 "data//maps/DragonsRoost/scripts.pory"
 	dofieldeffectsparkle 49, 10, 0
+# 193 "data//maps/DragonsRoost/scripts.pory"
+	delay 45
 # 194 "data//maps/DragonsRoost/scripts.pory"
-	waitfieldeffect FLDEFF_SPARKLE
+	playse SE_PIN
 # 195 "data//maps/DragonsRoost/scripts.pory"
-	delay 10
+	dofieldeffectsparkle 49, 10, 0
 # 196 "data//maps/DragonsRoost/scripts.pory"
-	clearflag FLAG_DRAGONS_ROOST_METEORITE
+	waitfieldeffect FLDEFF_SPARKLE
 # 197 "data//maps/DragonsRoost/scripts.pory"
-	setvar VAR_DRAGONS_ROOST_RAYQUAZA_SCENE_STATE, 4
+	delay 10
 # 198 "data//maps/DragonsRoost/scripts.pory"
-	setvar VAR_TEMP_2, 0
+	clearflag FLAG_DRAGONS_ROOST_METEORITE
 # 199 "data//maps/DragonsRoost/scripts.pory"
-	release
+	setvar VAR_DRAGONS_ROOST_RAYQUAZA_SCENE_STATE, 4
 # 200 "data//maps/DragonsRoost/scripts.pory"
-	end
+	setvar VAR_TEMP_2, 0
 # 201 "data//maps/DragonsRoost/scripts.pory"
-
+	release
 # 202 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_EventScript_Clone::
+	end
 # 203 "data//maps/DragonsRoost/scripts.pory"
-	lock
+
 # 204 "data//maps/DragonsRoost/scripts.pory"
-	msgbox DragonsRoost_Text_Clone, MSGBOX_DEFAULT 
+DragonsRoost_EventScript_Clone::
 # 205 "data//maps/DragonsRoost/scripts.pory"
-	release
+	lock
 # 206 "data//maps/DragonsRoost/scripts.pory"
-	end
+	msgbox DragonsRoost_Text_Clone, MSGBOX_DEFAULT 
 # 207 "data//maps/DragonsRoost/scripts.pory"
-
+	release
 # 208 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_EventScript_TryRemoveZapdos::
+	end
 # 209 "data//maps/DragonsRoost/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
+
 # 210 "data//maps/DragonsRoost/scripts.pory"
-	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
+DragonsRoost_EventScript_TryRemoveZapdos::
 # 211 "data//maps/DragonsRoost/scripts.pory"
-	removeobject VAR_LAST_TALKED
-# 212 "data//maps/DragonsRoost/scripts.pory"
-	return
-# 213 "data//maps/DragonsRoost/scripts.pory"
-
-# 214 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_EventScript_Zapdos::
-# 215 "data//maps/DragonsRoost/scripts.pory"
-	lock
-# 216 "data//maps/DragonsRoost/scripts.pory"
-	faceplayer
-# 217 "data//maps/DragonsRoost/scripts.pory"
-	waitse
-# 218 "data//maps/DragonsRoost/scripts.pory"
-	playmoncry SPECIES_ZAPDOS, CRY_MODE_ENCOUNTER
-# 219 "data//maps/DragonsRoost/scripts.pory"
-	delay 40
-# 220 "data//maps/DragonsRoost/scripts.pory"
-	waitmoncry
-# 221 "data//maps/DragonsRoost/scripts.pory"
-	setwildbattle SPECIES_ZAPDOS, 50
-# 222 "data//maps/DragonsRoost/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
-# 223 "data//maps/DragonsRoost/scripts.pory"
-	special StartRegiBattle
-# 224 "data//maps/DragonsRoost/scripts.pory"
-	waitstate
-# 225 "data//maps/DragonsRoost/scripts.pory"
-	clearflag FLAG_SYS_CTRL_OBJ_DELETE
-# 226 "data//maps/DragonsRoost/scripts.pory"
 	specialvar VAR_RESULT, GetBattleOutcome
+# 212 "data//maps/DragonsRoost/scripts.pory"
+	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
+# 213 "data//maps/DragonsRoost/scripts.pory"
+	removeobject VAR_LAST_TALKED
+# 214 "data//maps/DragonsRoost/scripts.pory"
+	return
+# 215 "data//maps/DragonsRoost/scripts.pory"
+
+# 216 "data//maps/DragonsRoost/scripts.pory"
+DragonsRoost_EventScript_Zapdos::
+# 217 "data//maps/DragonsRoost/scripts.pory"
+	lock
+# 218 "data//maps/DragonsRoost/scripts.pory"
+	faceplayer
+# 219 "data//maps/DragonsRoost/scripts.pory"
+	waitse
+# 220 "data//maps/DragonsRoost/scripts.pory"
+	playmoncry SPECIES_ZAPDOS, CRY_MODE_ENCOUNTER
+# 221 "data//maps/DragonsRoost/scripts.pory"
+	delay 40
+# 222 "data//maps/DragonsRoost/scripts.pory"
+	waitmoncry
+# 223 "data//maps/DragonsRoost/scripts.pory"
+	setwildbattle SPECIES_ZAPDOS, 50
+# 224 "data//maps/DragonsRoost/scripts.pory"
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+# 225 "data//maps/DragonsRoost/scripts.pory"
+	special StartRegiBattle
+# 226 "data//maps/DragonsRoost/scripts.pory"
+	waitstate
 # 227 "data//maps/DragonsRoost/scripts.pory"
-	goto_if_eq VAR_RESULT, B_OUTCOME_WON, DragonsRoost_EventScript_DefeatedZapdos
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 # 228 "data//maps/DragonsRoost/scripts.pory"
-	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, DragonsRoost_EventScript_RanFromZapdos
+	specialvar VAR_RESULT, GetBattleOutcome
 # 229 "data//maps/DragonsRoost/scripts.pory"
-	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, DragonsRoost_EventScript_RanFromZapdos
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, DragonsRoost_EventScript_DefeatedZapdos
 # 230 "data//maps/DragonsRoost/scripts.pory"
-	setflag FLAG_CAUGHT_ZAPDOS
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, DragonsRoost_EventScript_RanFromZapdos
 # 231 "data//maps/DragonsRoost/scripts.pory"
-	release
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, DragonsRoost_EventScript_RanFromZapdos
 # 232 "data//maps/DragonsRoost/scripts.pory"
-	end
+	setflag FLAG_CAUGHT_ZAPDOS
 # 233 "data//maps/DragonsRoost/scripts.pory"
-
+	release
 # 234 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_EventScript_DefeatedZapdos::
+	end
 # 235 "data//maps/DragonsRoost/scripts.pory"
-	setflag FLAG_DEFEATED_ZAPDOS
+
 # 236 "data//maps/DragonsRoost/scripts.pory"
-	goto Common_EventScript_RemoveStaticPokemon
+DragonsRoost_EventScript_DefeatedZapdos::
 # 237 "data//maps/DragonsRoost/scripts.pory"
-	release
+	setflag FLAG_DEFEATED_ZAPDOS
 # 238 "data//maps/DragonsRoost/scripts.pory"
-	end
+	goto Common_EventScript_RemoveStaticPokemon
 # 239 "data//maps/DragonsRoost/scripts.pory"
-
+	release
 # 240 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_EventScript_RanFromZapdos::
+	end
 # 241 "data//maps/DragonsRoost/scripts.pory"
-	setvar VAR_0x8004, SPECIES_ZAPDOS
+
 # 242 "data//maps/DragonsRoost/scripts.pory"
-	goto Common_EventScript_LegendaryFlewAway
+DragonsRoost_EventScript_RanFromZapdos::
 # 243 "data//maps/DragonsRoost/scripts.pory"
-	release
+	setvar VAR_0x8004, SPECIES_ZAPDOS
 # 244 "data//maps/DragonsRoost/scripts.pory"
-	end
+	goto Common_EventScript_LegendaryFlewAway
 # 245 "data//maps/DragonsRoost/scripts.pory"
-
+	release
 # 246 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_EventScript_Croconaw::
+	end
 # 247 "data//maps/DragonsRoost/scripts.pory"
-	lock
+
 # 248 "data//maps/DragonsRoost/scripts.pory"
-	faceplayer
+DragonsRoost_EventScript_Croconaw::
 # 249 "data//maps/DragonsRoost/scripts.pory"
-	waitse
+	lock
 # 250 "data//maps/DragonsRoost/scripts.pory"
-	playmoncry SPECIES_CROCONAW, CRY_MODE_ENCOUNTER
+	faceplayer
 # 251 "data//maps/DragonsRoost/scripts.pory"
-	delay 10
+	waitse
 # 252 "data//maps/DragonsRoost/scripts.pory"
-	waitmoncry
+	playmoncry SPECIES_CROCONAW, CRY_MODE_ENCOUNTER
 # 253 "data//maps/DragonsRoost/scripts.pory"
-	setwildbattle SPECIES_CROCONAW, 50
+	delay 10
 # 254 "data//maps/DragonsRoost/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	waitmoncry
 # 255 "data//maps/DragonsRoost/scripts.pory"
-	dowildbattle
+	setwildbattle SPECIES_CROCONAW, 50
 # 256 "data//maps/DragonsRoost/scripts.pory"
-	@ waitstate
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
 # 257 "data//maps/DragonsRoost/scripts.pory"
-	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	dowildbattle
 # 258 "data//maps/DragonsRoost/scripts.pory"
-	setvar VAR_0x8004, SPECIES_CROCONAW
+	@ waitstate
 # 259 "data//maps/DragonsRoost/scripts.pory"
-    specialvar VAR_RESULT, GetBattleOutcome
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 # 260 "data//maps/DragonsRoost/scripts.pory"
-	goto_if_eq VAR_RESULT, B_OUTCOME_WON, DragonsRoost_EventScript_DefeatedWildMon
+	setvar VAR_0x8004, SPECIES_CROCONAW
 # 261 "data//maps/DragonsRoost/scripts.pory"
-    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, DragonsRoost_EventScript_RanWildMon
+    specialvar VAR_RESULT, GetBattleOutcome
 # 262 "data//maps/DragonsRoost/scripts.pory"
-    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, DragonsRoost_EventScript_RanWildMon
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, DragonsRoost_EventScript_DefeatedWildMon
 # 263 "data//maps/DragonsRoost/scripts.pory"
-	release
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, DragonsRoost_EventScript_RanWildMon
 # 264 "data//maps/DragonsRoost/scripts.pory"
-	end
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, DragonsRoost_EventScript_RanWildMon
 # 265 "data//maps/DragonsRoost/scripts.pory"
-
+	release
 # 266 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_EventScript_Aurorus::
+	end
 # 267 "data//maps/DragonsRoost/scripts.pory"
-	lock
+
 # 268 "data//maps/DragonsRoost/scripts.pory"
-	faceplayer
+DragonsRoost_EventScript_Aurorus::
 # 269 "data//maps/DragonsRoost/scripts.pory"
-	waitse
+	lock
 # 270 "data//maps/DragonsRoost/scripts.pory"
-	playmoncry SPECIES_AURORUS, CRY_MODE_ENCOUNTER
+	faceplayer
 # 271 "data//maps/DragonsRoost/scripts.pory"
-	delay 10
+	waitse
 # 272 "data//maps/DragonsRoost/scripts.pory"
-	waitmoncry
+	playmoncry SPECIES_AURORUS, CRY_MODE_ENCOUNTER
 # 273 "data//maps/DragonsRoost/scripts.pory"
-	setwildbattle SPECIES_AURORUS, 50
+	delay 10
 # 274 "data//maps/DragonsRoost/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	waitmoncry
 # 275 "data//maps/DragonsRoost/scripts.pory"
-	dowildbattle
+	setwildbattle SPECIES_AURORUS, 50
 # 276 "data//maps/DragonsRoost/scripts.pory"
-	@ waitstate
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
 # 277 "data//maps/DragonsRoost/scripts.pory"
-	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	dowildbattle
 # 278 "data//maps/DragonsRoost/scripts.pory"
-	setvar VAR_0x8004, SPECIES_AURORUS
+	@ waitstate
 # 279 "data//maps/DragonsRoost/scripts.pory"
-    specialvar VAR_RESULT, GetBattleOutcome
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 # 280 "data//maps/DragonsRoost/scripts.pory"
-	goto_if_eq VAR_RESULT, B_OUTCOME_WON, DragonsRoost_EventScript_DefeatedWildMon
+	setvar VAR_0x8004, SPECIES_AURORUS
 # 281 "data//maps/DragonsRoost/scripts.pory"
-    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, DragonsRoost_EventScript_RanWildMon
+    specialvar VAR_RESULT, GetBattleOutcome
 # 282 "data//maps/DragonsRoost/scripts.pory"
-    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, DragonsRoost_EventScript_RanWildMon
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, DragonsRoost_EventScript_DefeatedWildMon
 # 283 "data//maps/DragonsRoost/scripts.pory"
-	release
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, DragonsRoost_EventScript_RanWildMon
 # 284 "data//maps/DragonsRoost/scripts.pory"
-	end
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, DragonsRoost_EventScript_RanWildMon
 # 285 "data//maps/DragonsRoost/scripts.pory"
-
+	release
 # 286 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_EventScript_Dragonair::
+	end
 # 287 "data//maps/DragonsRoost/scripts.pory"
-	lock
+
 # 288 "data//maps/DragonsRoost/scripts.pory"
-	faceplayer
+DragonsRoost_EventScript_Dragonair::
 # 289 "data//maps/DragonsRoost/scripts.pory"
-	waitse
+	lock
 # 290 "data//maps/DragonsRoost/scripts.pory"
-	playmoncry SPECIES_DRAGONAIR, CRY_MODE_ENCOUNTER
+	faceplayer
 # 291 "data//maps/DragonsRoost/scripts.pory"
-	delay 10
+	waitse
 # 292 "data//maps/DragonsRoost/scripts.pory"
-	waitmoncry
+	playmoncry SPECIES_DRAGONAIR, CRY_MODE_ENCOUNTER
 # 293 "data//maps/DragonsRoost/scripts.pory"
-	setwildbattle SPECIES_DRAGONAIR, 50
+	delay 10
 # 294 "data//maps/DragonsRoost/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	waitmoncry
 # 295 "data//maps/DragonsRoost/scripts.pory"
-	dowildbattle
+	setwildbattle SPECIES_DRAGONAIR, 50
 # 296 "data//maps/DragonsRoost/scripts.pory"
-	@ waitstate
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
 # 297 "data//maps/DragonsRoost/scripts.pory"
-	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	dowildbattle
 # 298 "data//maps/DragonsRoost/scripts.pory"
-	setvar VAR_0x8004, SPECIES_DRAGONAIR
+	@ waitstate
 # 299 "data//maps/DragonsRoost/scripts.pory"
-    specialvar VAR_RESULT, GetBattleOutcome
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 # 300 "data//maps/DragonsRoost/scripts.pory"
-	goto_if_eq VAR_RESULT, B_OUTCOME_WON, DragonsRoost_EventScript_DefeatedWildMon
+	setvar VAR_0x8004, SPECIES_DRAGONAIR
 # 301 "data//maps/DragonsRoost/scripts.pory"
-    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, DragonsRoost_EventScript_RanWildMon
+    specialvar VAR_RESULT, GetBattleOutcome
 # 302 "data//maps/DragonsRoost/scripts.pory"
-    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, DragonsRoost_EventScript_RanWildMon
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, DragonsRoost_EventScript_DefeatedWildMon
 # 303 "data//maps/DragonsRoost/scripts.pory"
-	release
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, DragonsRoost_EventScript_RanWildMon
 # 304 "data//maps/DragonsRoost/scripts.pory"
-	end
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, DragonsRoost_EventScript_RanWildMon
 # 305 "data//maps/DragonsRoost/scripts.pory"
-
+	release
 # 306 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_EventScript_Carnivine1::
+	end
 # 307 "data//maps/DragonsRoost/scripts.pory"
-	lock
+
 # 308 "data//maps/DragonsRoost/scripts.pory"
-	faceplayer
+DragonsRoost_EventScript_Carnivine1::
 # 309 "data//maps/DragonsRoost/scripts.pory"
-	waitse
+	lock
 # 310 "data//maps/DragonsRoost/scripts.pory"
-	playmoncry SPECIES_CARNIVINE, CRY_MODE_ENCOUNTER
+	faceplayer
 # 311 "data//maps/DragonsRoost/scripts.pory"
-	delay 10
+	waitse
 # 312 "data//maps/DragonsRoost/scripts.pory"
-	waitmoncry
-# 313 "data//maps/DragonsRoost/scripts.pory"
-	setwildbattle SPECIES_CARNIVINE, 50
-# 314 "data//maps/DragonsRoost/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
-# 315 "data//maps/DragonsRoost/scripts.pory"
-	dowildbattle
-# 316 "data//maps/DragonsRoost/scripts.pory"
-	@ waitstate
-# 317 "data//maps/DragonsRoost/scripts.pory"
-	clearflag FLAG_SYS_CTRL_OBJ_DELETE
-# 318 "data//maps/DragonsRoost/scripts.pory"
-	setvar VAR_0x8004, SPECIES_CARNIVINE
-# 319 "data//maps/DragonsRoost/scripts.pory"
-    specialvar VAR_RESULT, GetBattleOutcome
-# 320 "data//maps/DragonsRoost/scripts.pory"
-	goto_if_eq VAR_RESULT, B_OUTCOME_WON, DragonsRoost_EventScript_DefeatedWildMon
-# 321 "data//maps/DragonsRoost/scripts.pory"
-    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, DragonsRoost_EventScript_RanWildMon
-# 322 "data//maps/DragonsRoost/scripts.pory"
-    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, DragonsRoost_EventScript_RanWildMon
-# 323 "data//maps/DragonsRoost/scripts.pory"
-	release
-# 324 "data//maps/DragonsRoost/scripts.pory"
-	end
-# 325 "data//maps/DragonsRoost/scripts.pory"
-
-# 326 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_EventScript_Carnivine2::
-# 327 "data//maps/DragonsRoost/scripts.pory"
-	lock
-# 328 "data//maps/DragonsRoost/scripts.pory"
-	faceplayer
-# 329 "data//maps/DragonsRoost/scripts.pory"
-	waitse
-# 330 "data//maps/DragonsRoost/scripts.pory"
 	playmoncry SPECIES_CARNIVINE, CRY_MODE_ENCOUNTER
-# 331 "data//maps/DragonsRoost/scripts.pory"
+# 313 "data//maps/DragonsRoost/scripts.pory"
 	delay 10
-# 332 "data//maps/DragonsRoost/scripts.pory"
+# 314 "data//maps/DragonsRoost/scripts.pory"
 	waitmoncry
-# 333 "data//maps/DragonsRoost/scripts.pory"
+# 315 "data//maps/DragonsRoost/scripts.pory"
 	setwildbattle SPECIES_CARNIVINE, 50
-# 334 "data//maps/DragonsRoost/scripts.pory"
+# 316 "data//maps/DragonsRoost/scripts.pory"
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
-# 335 "data//maps/DragonsRoost/scripts.pory"
+# 317 "data//maps/DragonsRoost/scripts.pory"
 	dowildbattle
-# 336 "data//maps/DragonsRoost/scripts.pory"
+# 318 "data//maps/DragonsRoost/scripts.pory"
 	@ waitstate
-# 337 "data//maps/DragonsRoost/scripts.pory"
+# 319 "data//maps/DragonsRoost/scripts.pory"
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
-# 338 "data//maps/DragonsRoost/scripts.pory"
+# 320 "data//maps/DragonsRoost/scripts.pory"
 	setvar VAR_0x8004, SPECIES_CARNIVINE
-# 339 "data//maps/DragonsRoost/scripts.pory"
+# 321 "data//maps/DragonsRoost/scripts.pory"
     specialvar VAR_RESULT, GetBattleOutcome
-# 340 "data//maps/DragonsRoost/scripts.pory"
+# 322 "data//maps/DragonsRoost/scripts.pory"
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, DragonsRoost_EventScript_DefeatedWildMon
-# 341 "data//maps/DragonsRoost/scripts.pory"
+# 323 "data//maps/DragonsRoost/scripts.pory"
     goto_if_eq VAR_RESULT, B_OUTCOME_RAN, DragonsRoost_EventScript_RanWildMon
-# 342 "data//maps/DragonsRoost/scripts.pory"
+# 324 "data//maps/DragonsRoost/scripts.pory"
     goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, DragonsRoost_EventScript_RanWildMon
-# 343 "data//maps/DragonsRoost/scripts.pory"
+# 325 "data//maps/DragonsRoost/scripts.pory"
 	release
-# 344 "data//maps/DragonsRoost/scripts.pory"
+# 326 "data//maps/DragonsRoost/scripts.pory"
 	end
-# 345 "data//maps/DragonsRoost/scripts.pory"
+# 327 "data//maps/DragonsRoost/scripts.pory"
 
-# 346 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_EventScript_Gyarados::
-# 347 "data//maps/DragonsRoost/scripts.pory"
+# 328 "data//maps/DragonsRoost/scripts.pory"
+DragonsRoost_EventScript_Carnivine2::
+# 329 "data//maps/DragonsRoost/scripts.pory"
 	lock
-# 348 "data//maps/DragonsRoost/scripts.pory"
+# 330 "data//maps/DragonsRoost/scripts.pory"
 	faceplayer
-# 349 "data//maps/DragonsRoost/scripts.pory"
+# 331 "data//maps/DragonsRoost/scripts.pory"
 	waitse
-# 350 "data//maps/DragonsRoost/scripts.pory"
-	playmoncry SPECIES_GYARADOS, CRY_MODE_ENCOUNTER
-# 351 "data//maps/DragonsRoost/scripts.pory"
+# 332 "data//maps/DragonsRoost/scripts.pory"
+	playmoncry SPECIES_CARNIVINE, CRY_MODE_ENCOUNTER
+# 333 "data//maps/DragonsRoost/scripts.pory"
 	delay 10
-# 352 "data//maps/DragonsRoost/scripts.pory"
+# 334 "data//maps/DragonsRoost/scripts.pory"
 	waitmoncry
-# 353 "data//maps/DragonsRoost/scripts.pory"
-	setwildbattle SPECIES_GYARADOS, 50
-# 354 "data//maps/DragonsRoost/scripts.pory"
+# 335 "data//maps/DragonsRoost/scripts.pory"
+	setwildbattle SPECIES_CARNIVINE, 50
+# 336 "data//maps/DragonsRoost/scripts.pory"
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
-# 355 "data//maps/DragonsRoost/scripts.pory"
+# 337 "data//maps/DragonsRoost/scripts.pory"
 	dowildbattle
-# 356 "data//maps/DragonsRoost/scripts.pory"
+# 338 "data//maps/DragonsRoost/scripts.pory"
 	@ waitstate
-# 357 "data//maps/DragonsRoost/scripts.pory"
+# 339 "data//maps/DragonsRoost/scripts.pory"
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
-# 358 "data//maps/DragonsRoost/scripts.pory"
-	setvar VAR_0x8004, SPECIES_GYARADOS
-# 359 "data//maps/DragonsRoost/scripts.pory"
+# 340 "data//maps/DragonsRoost/scripts.pory"
+	setvar VAR_0x8004, SPECIES_CARNIVINE
+# 341 "data//maps/DragonsRoost/scripts.pory"
     specialvar VAR_RESULT, GetBattleOutcome
-# 360 "data//maps/DragonsRoost/scripts.pory"
+# 342 "data//maps/DragonsRoost/scripts.pory"
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, DragonsRoost_EventScript_DefeatedWildMon
-# 361 "data//maps/DragonsRoost/scripts.pory"
+# 343 "data//maps/DragonsRoost/scripts.pory"
     goto_if_eq VAR_RESULT, B_OUTCOME_RAN, DragonsRoost_EventScript_RanWildMon
-# 362 "data//maps/DragonsRoost/scripts.pory"
+# 344 "data//maps/DragonsRoost/scripts.pory"
     goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, DragonsRoost_EventScript_RanWildMon
+# 345 "data//maps/DragonsRoost/scripts.pory"
+	release
+# 346 "data//maps/DragonsRoost/scripts.pory"
+	end
+# 347 "data//maps/DragonsRoost/scripts.pory"
+
+# 348 "data//maps/DragonsRoost/scripts.pory"
+DragonsRoost_EventScript_Gyarados::
+# 349 "data//maps/DragonsRoost/scripts.pory"
+	lock
+# 350 "data//maps/DragonsRoost/scripts.pory"
+	faceplayer
+# 351 "data//maps/DragonsRoost/scripts.pory"
+	waitse
+# 352 "data//maps/DragonsRoost/scripts.pory"
+	playmoncry SPECIES_GYARADOS, CRY_MODE_ENCOUNTER
+# 353 "data//maps/DragonsRoost/scripts.pory"
+	delay 10
+# 354 "data//maps/DragonsRoost/scripts.pory"
+	waitmoncry
+# 355 "data//maps/DragonsRoost/scripts.pory"
+	setwildbattle SPECIES_GYARADOS, 50
+# 356 "data//maps/DragonsRoost/scripts.pory"
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+# 357 "data//maps/DragonsRoost/scripts.pory"
+	dowildbattle
+# 358 "data//maps/DragonsRoost/scripts.pory"
+	@ waitstate
+# 359 "data//maps/DragonsRoost/scripts.pory"
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+# 360 "data//maps/DragonsRoost/scripts.pory"
+	setvar VAR_0x8004, SPECIES_GYARADOS
+# 361 "data//maps/DragonsRoost/scripts.pory"
+    specialvar VAR_RESULT, GetBattleOutcome
+# 362 "data//maps/DragonsRoost/scripts.pory"
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, DragonsRoost_EventScript_DefeatedWildMon
 # 363 "data//maps/DragonsRoost/scripts.pory"
-	release
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, DragonsRoost_EventScript_RanWildMon
 # 364 "data//maps/DragonsRoost/scripts.pory"
-	end
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, DragonsRoost_EventScript_RanWildMon
 # 365 "data//maps/DragonsRoost/scripts.pory"
-
-# 366 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_EventScript_HaxorusNothing::
-# 367 "data//maps/DragonsRoost/scripts.pory"
 	release
+# 366 "data//maps/DragonsRoost/scripts.pory"
+	end
+# 367 "data//maps/DragonsRoost/scripts.pory"
+
 # 368 "data//maps/DragonsRoost/scripts.pory"
-	end
+DragonsRoost_EventScript_HaxorusNothing::
 # 369 "data//maps/DragonsRoost/scripts.pory"
-
+	release
 # 370 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_EventScript_HaxorusA::
+	end
 # 371 "data//maps/DragonsRoost/scripts.pory"
-	goto_if_set FLAG_DEFEATED_DRAGONS_ROOST_HAXORUS, DragonsRoost_EventScript_HaxorusNothing
+
 # 372 "data//maps/DragonsRoost/scripts.pory"
-	lock
+DragonsRoost_EventScript_HaxorusA::
 # 373 "data//maps/DragonsRoost/scripts.pory"
-	applymovement LOCALID_DRAGONS_ROOST_HAXORUS, Common_Movement_FaceLeft
+	goto_if_set FLAG_DEFEATED_DRAGONS_ROOST_HAXORUS, DragonsRoost_EventScript_HaxorusNothing
 # 374 "data//maps/DragonsRoost/scripts.pory"
-	waitmovement
+	lock
 # 375 "data//maps/DragonsRoost/scripts.pory"
-	playse SE_PIN
+	applymovement LOCALID_DRAGONS_ROOST_HAXORUS, Common_Movement_FaceLeft
 # 376 "data//maps/DragonsRoost/scripts.pory"
-	applymovement LOCALID_DRAGONS_ROOST_HAXORUS, Common_Movement_ExclamationMark
+	waitmovement
 # 377 "data//maps/DragonsRoost/scripts.pory"
-	waitmovement
+	playse SE_PIN
 # 378 "data//maps/DragonsRoost/scripts.pory"
-	delay 20
+	applymovement LOCALID_DRAGONS_ROOST_HAXORUS, Common_Movement_ExclamationMark
 # 379 "data//maps/DragonsRoost/scripts.pory"
-	applymovement LOCALID_DRAGONS_ROOST_HAXORUS, DragonsRoost_Movement_HaxorusApproachA
+	waitmovement
 # 380 "data//maps/DragonsRoost/scripts.pory"
-	delay 10
+	delay 20
 # 381 "data//maps/DragonsRoost/scripts.pory"
-	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
+	applymovement LOCALID_DRAGONS_ROOST_HAXORUS, DragonsRoost_Movement_HaxorusApproachA
 # 382 "data//maps/DragonsRoost/scripts.pory"
-	waitmovement LOCALID_DRAGONS_ROOST_HAXORUS
+	delay 10
 # 383 "data//maps/DragonsRoost/scripts.pory"
-	delay 15
+	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
 # 384 "data//maps/DragonsRoost/scripts.pory"
-	msgbox DragonsRoost_Text_HaxorusAttacked, MSGBOX_DEFAULT
+	waitmovement LOCALID_DRAGONS_ROOST_HAXORUS
 # 385 "data//maps/DragonsRoost/scripts.pory"
-	closemessage
+	delay 15
 # 386 "data//maps/DragonsRoost/scripts.pory"
-	goto DragonsRoost_EventScript_Haxorus
+	msgbox DragonsRoost_Text_HaxorusAttacked, MSGBOX_DEFAULT
 # 387 "data//maps/DragonsRoost/scripts.pory"
-	end
+	closemessage
 # 388 "data//maps/DragonsRoost/scripts.pory"
-
+	goto DragonsRoost_EventScript_Haxorus
 # 389 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_EventScript_HaxorusB::
+	end
 # 390 "data//maps/DragonsRoost/scripts.pory"
-	goto_if_set FLAG_DEFEATED_DRAGONS_ROOST_HAXORUS, DragonsRoost_EventScript_HaxorusNothing
+
 # 391 "data//maps/DragonsRoost/scripts.pory"
-	lock
+DragonsRoost_EventScript_HaxorusB::
 # 392 "data//maps/DragonsRoost/scripts.pory"
-	applymovement LOCALID_DRAGONS_ROOST_HAXORUS, Common_Movement_FaceDown
+	goto_if_set FLAG_DEFEATED_DRAGONS_ROOST_HAXORUS, DragonsRoost_EventScript_HaxorusNothing
 # 393 "data//maps/DragonsRoost/scripts.pory"
-	waitmovement
+	lock
 # 394 "data//maps/DragonsRoost/scripts.pory"
-	playse SE_PIN
+	applymovement LOCALID_DRAGONS_ROOST_HAXORUS, Common_Movement_FaceDown
 # 395 "data//maps/DragonsRoost/scripts.pory"
-	applymovement LOCALID_DRAGONS_ROOST_HAXORUS, Common_Movement_ExclamationMark
+	waitmovement
 # 396 "data//maps/DragonsRoost/scripts.pory"
-	waitmovement
+	playse SE_PIN
 # 397 "data//maps/DragonsRoost/scripts.pory"
-	delay 20
+	applymovement LOCALID_DRAGONS_ROOST_HAXORUS, Common_Movement_ExclamationMark
 # 398 "data//maps/DragonsRoost/scripts.pory"
-	applymovement LOCALID_DRAGONS_ROOST_HAXORUS, DragonsRoost_Movement_HaxorusApproachB
+	waitmovement
 # 399 "data//maps/DragonsRoost/scripts.pory"
-	delay 10
+	delay 20
 # 400 "data//maps/DragonsRoost/scripts.pory"
-	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
+	applymovement LOCALID_DRAGONS_ROOST_HAXORUS, DragonsRoost_Movement_HaxorusApproachB
 # 401 "data//maps/DragonsRoost/scripts.pory"
-	waitmovement LOCALID_DRAGONS_ROOST_HAXORUS
+	delay 10
 # 402 "data//maps/DragonsRoost/scripts.pory"
-	delay 15
+	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
 # 403 "data//maps/DragonsRoost/scripts.pory"
-	msgbox DragonsRoost_Text_HaxorusAttacked, MSGBOX_DEFAULT
+	waitmovement LOCALID_DRAGONS_ROOST_HAXORUS
 # 404 "data//maps/DragonsRoost/scripts.pory"
-	closemessage
+	delay 15
 # 405 "data//maps/DragonsRoost/scripts.pory"
-	goto DragonsRoost_EventScript_Haxorus
+	msgbox DragonsRoost_Text_HaxorusAttacked, MSGBOX_DEFAULT
 # 406 "data//maps/DragonsRoost/scripts.pory"
-	end
+	closemessage
 # 407 "data//maps/DragonsRoost/scripts.pory"
-
+	goto DragonsRoost_EventScript_Haxorus
 # 408 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_EventScript_HaxorusC::
+	end
 # 409 "data//maps/DragonsRoost/scripts.pory"
-	goto_if_set FLAG_DEFEATED_DRAGONS_ROOST_HAXORUS, DragonsRoost_EventScript_HaxorusNothing
+
 # 410 "data//maps/DragonsRoost/scripts.pory"
-	lock
+DragonsRoost_EventScript_HaxorusC::
 # 411 "data//maps/DragonsRoost/scripts.pory"
-	applymovement LOCALID_DRAGONS_ROOST_HAXORUS, Common_Movement_FaceDown
+	goto_if_set FLAG_DEFEATED_DRAGONS_ROOST_HAXORUS, DragonsRoost_EventScript_HaxorusNothing
 # 412 "data//maps/DragonsRoost/scripts.pory"
-	waitmovement
+	lock
 # 413 "data//maps/DragonsRoost/scripts.pory"
-	playse SE_PIN
+	applymovement LOCALID_DRAGONS_ROOST_HAXORUS, Common_Movement_FaceDown
 # 414 "data//maps/DragonsRoost/scripts.pory"
-	applymovement LOCALID_DRAGONS_ROOST_HAXORUS, Common_Movement_ExclamationMark
+	waitmovement
 # 415 "data//maps/DragonsRoost/scripts.pory"
-	waitmovement
+	playse SE_PIN
 # 416 "data//maps/DragonsRoost/scripts.pory"
-	delay 20
+	applymovement LOCALID_DRAGONS_ROOST_HAXORUS, Common_Movement_ExclamationMark
 # 417 "data//maps/DragonsRoost/scripts.pory"
-	applymovement LOCALID_DRAGONS_ROOST_HAXORUS, DragonsRoost_Movement_HaxorusApproachC
+	waitmovement
 # 418 "data//maps/DragonsRoost/scripts.pory"
-	delay 10
+	delay 20
 # 419 "data//maps/DragonsRoost/scripts.pory"
-	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
+	applymovement LOCALID_DRAGONS_ROOST_HAXORUS, DragonsRoost_Movement_HaxorusApproachC
 # 420 "data//maps/DragonsRoost/scripts.pory"
-	waitmovement LOCALID_DRAGONS_ROOST_HAXORUS
+	delay 10
 # 421 "data//maps/DragonsRoost/scripts.pory"
-	delay 15
+	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
 # 422 "data//maps/DragonsRoost/scripts.pory"
-	msgbox DragonsRoost_Text_HaxorusAttacked, MSGBOX_DEFAULT
+	waitmovement LOCALID_DRAGONS_ROOST_HAXORUS
 # 423 "data//maps/DragonsRoost/scripts.pory"
-	closemessage
+	delay 15
 # 424 "data//maps/DragonsRoost/scripts.pory"
-	goto DragonsRoost_EventScript_Haxorus
+	msgbox DragonsRoost_Text_HaxorusAttacked, MSGBOX_DEFAULT
 # 425 "data//maps/DragonsRoost/scripts.pory"
-	end
+	closemessage
 # 426 "data//maps/DragonsRoost/scripts.pory"
-
+	goto DragonsRoost_EventScript_Haxorus
 # 427 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_EventScript_HaxorusD::
+	end
 # 428 "data//maps/DragonsRoost/scripts.pory"
-	goto_if_set FLAG_DEFEATED_DRAGONS_ROOST_HAXORUS, DragonsRoost_EventScript_HaxorusNothing
+
 # 429 "data//maps/DragonsRoost/scripts.pory"
-	lock
+DragonsRoost_EventScript_HaxorusD::
 # 430 "data//maps/DragonsRoost/scripts.pory"
-	applymovement LOCALID_DRAGONS_ROOST_HAXORUS, Common_Movement_FaceDown
-# 431 "data//maps/DragonsRoost/scripts.pory"
-	waitmovement
-# 432 "data//maps/DragonsRoost/scripts.pory"
-	playse SE_PIN
-# 433 "data//maps/DragonsRoost/scripts.pory"
-	applymovement LOCALID_DRAGONS_ROOST_HAXORUS, Common_Movement_ExclamationMark
-# 434 "data//maps/DragonsRoost/scripts.pory"
-	waitmovement
-# 435 "data//maps/DragonsRoost/scripts.pory"
-	delay 20
-# 436 "data//maps/DragonsRoost/scripts.pory"
-	applymovement LOCALID_DRAGONS_ROOST_HAXORUS, DragonsRoost_Movement_HaxorusApproachD
-# 437 "data//maps/DragonsRoost/scripts.pory"
-	delay 10
-# 438 "data//maps/DragonsRoost/scripts.pory"
-	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
-# 439 "data//maps/DragonsRoost/scripts.pory"
-	waitmovement LOCALID_DRAGONS_ROOST_HAXORUS
-# 440 "data//maps/DragonsRoost/scripts.pory"
-	delay 15
-# 441 "data//maps/DragonsRoost/scripts.pory"
-	msgbox DragonsRoost_Text_HaxorusAttacked, MSGBOX_DEFAULT
-# 442 "data//maps/DragonsRoost/scripts.pory"
-	closemessage
-# 443 "data//maps/DragonsRoost/scripts.pory"
-	goto DragonsRoost_EventScript_Haxorus
-# 444 "data//maps/DragonsRoost/scripts.pory"
-	end
-# 445 "data//maps/DragonsRoost/scripts.pory"
-
-# 446 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_EventScript_HaxorusE::
-# 447 "data//maps/DragonsRoost/scripts.pory"
 	goto_if_set FLAG_DEFEATED_DRAGONS_ROOST_HAXORUS, DragonsRoost_EventScript_HaxorusNothing
-# 448 "data//maps/DragonsRoost/scripts.pory"
+# 431 "data//maps/DragonsRoost/scripts.pory"
 	lock
-# 449 "data//maps/DragonsRoost/scripts.pory"
+# 432 "data//maps/DragonsRoost/scripts.pory"
 	applymovement LOCALID_DRAGONS_ROOST_HAXORUS, Common_Movement_FaceDown
-# 450 "data//maps/DragonsRoost/scripts.pory"
+# 433 "data//maps/DragonsRoost/scripts.pory"
 	waitmovement
-# 451 "data//maps/DragonsRoost/scripts.pory"
+# 434 "data//maps/DragonsRoost/scripts.pory"
 	playse SE_PIN
-# 452 "data//maps/DragonsRoost/scripts.pory"
+# 435 "data//maps/DragonsRoost/scripts.pory"
 	applymovement LOCALID_DRAGONS_ROOST_HAXORUS, Common_Movement_ExclamationMark
-# 453 "data//maps/DragonsRoost/scripts.pory"
+# 436 "data//maps/DragonsRoost/scripts.pory"
 	waitmovement
-# 454 "data//maps/DragonsRoost/scripts.pory"
+# 437 "data//maps/DragonsRoost/scripts.pory"
 	delay 20
-# 455 "data//maps/DragonsRoost/scripts.pory"
-	applymovement LOCALID_DRAGONS_ROOST_HAXORUS, DragonsRoost_Movement_HaxorusApproachE
-# 456 "data//maps/DragonsRoost/scripts.pory"
+# 438 "data//maps/DragonsRoost/scripts.pory"
+	applymovement LOCALID_DRAGONS_ROOST_HAXORUS, DragonsRoost_Movement_HaxorusApproachD
+# 439 "data//maps/DragonsRoost/scripts.pory"
 	delay 10
-# 457 "data//maps/DragonsRoost/scripts.pory"
+# 440 "data//maps/DragonsRoost/scripts.pory"
 	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
-# 458 "data//maps/DragonsRoost/scripts.pory"
+# 441 "data//maps/DragonsRoost/scripts.pory"
 	waitmovement LOCALID_DRAGONS_ROOST_HAXORUS
-# 459 "data//maps/DragonsRoost/scripts.pory"
+# 442 "data//maps/DragonsRoost/scripts.pory"
 	delay 15
-# 460 "data//maps/DragonsRoost/scripts.pory"
+# 443 "data//maps/DragonsRoost/scripts.pory"
 	msgbox DragonsRoost_Text_HaxorusAttacked, MSGBOX_DEFAULT
-# 461 "data//maps/DragonsRoost/scripts.pory"
+# 444 "data//maps/DragonsRoost/scripts.pory"
 	closemessage
-# 462 "data//maps/DragonsRoost/scripts.pory"
+# 445 "data//maps/DragonsRoost/scripts.pory"
 	goto DragonsRoost_EventScript_Haxorus
-# 463 "data//maps/DragonsRoost/scripts.pory"
+# 446 "data//maps/DragonsRoost/scripts.pory"
 	end
-# 464 "data//maps/DragonsRoost/scripts.pory"
+# 447 "data//maps/DragonsRoost/scripts.pory"
 
-# 465 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_EventScript_Haxorus::
-# 466 "data//maps/DragonsRoost/scripts.pory"
+# 448 "data//maps/DragonsRoost/scripts.pory"
+DragonsRoost_EventScript_HaxorusE::
+# 449 "data//maps/DragonsRoost/scripts.pory"
+	goto_if_set FLAG_DEFEATED_DRAGONS_ROOST_HAXORUS, DragonsRoost_EventScript_HaxorusNothing
+# 450 "data//maps/DragonsRoost/scripts.pory"
+	lock
+# 451 "data//maps/DragonsRoost/scripts.pory"
+	applymovement LOCALID_DRAGONS_ROOST_HAXORUS, Common_Movement_FaceDown
+# 452 "data//maps/DragonsRoost/scripts.pory"
+	waitmovement
+# 453 "data//maps/DragonsRoost/scripts.pory"
+	playse SE_PIN
+# 454 "data//maps/DragonsRoost/scripts.pory"
+	applymovement LOCALID_DRAGONS_ROOST_HAXORUS, Common_Movement_ExclamationMark
+# 455 "data//maps/DragonsRoost/scripts.pory"
+	waitmovement
+# 456 "data//maps/DragonsRoost/scripts.pory"
+	delay 20
+# 457 "data//maps/DragonsRoost/scripts.pory"
+	applymovement LOCALID_DRAGONS_ROOST_HAXORUS, DragonsRoost_Movement_HaxorusApproachE
+# 458 "data//maps/DragonsRoost/scripts.pory"
 	delay 10
+# 459 "data//maps/DragonsRoost/scripts.pory"
+	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
+# 460 "data//maps/DragonsRoost/scripts.pory"
+	waitmovement LOCALID_DRAGONS_ROOST_HAXORUS
+# 461 "data//maps/DragonsRoost/scripts.pory"
+	delay 15
+# 462 "data//maps/DragonsRoost/scripts.pory"
+	msgbox DragonsRoost_Text_HaxorusAttacked, MSGBOX_DEFAULT
+# 463 "data//maps/DragonsRoost/scripts.pory"
+	closemessage
+# 464 "data//maps/DragonsRoost/scripts.pory"
+	goto DragonsRoost_EventScript_Haxorus
+# 465 "data//maps/DragonsRoost/scripts.pory"
+	end
+# 466 "data//maps/DragonsRoost/scripts.pory"
+
 # 467 "data//maps/DragonsRoost/scripts.pory"
-	playmoncry SPECIES_HAXORUS, CRY_MODE_ENCOUNTER
+DragonsRoost_EventScript_Haxorus::
 # 468 "data//maps/DragonsRoost/scripts.pory"
 	delay 10
 # 469 "data//maps/DragonsRoost/scripts.pory"
-	waitmoncry
+	playmoncry SPECIES_HAXORUS, CRY_MODE_ENCOUNTER
 # 470 "data//maps/DragonsRoost/scripts.pory"
-	setvar VAR_LAST_TALKED, LOCALID_DRAGONS_ROOST_HAXORUS
-# 471 "data//maps/DragonsRoost/scripts.pory"
-	setwildbossmon 1
-# 472 "data//maps/DragonsRoost/scripts.pory"
-	setwildbattle SPECIES_HAXORUS, 60
-# 473 "data//maps/DragonsRoost/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
-# 474 "data//maps/DragonsRoost/scripts.pory"
-	special StartRegiBattle
-# 475 "data//maps/DragonsRoost/scripts.pory"
-	waitstate
-# 476 "data//maps/DragonsRoost/scripts.pory"
-	clearflag FLAG_SYS_CTRL_OBJ_DELETE
-# 477 "data//maps/DragonsRoost/scripts.pory"
-	endwildbossmon
-# 478 "data//maps/DragonsRoost/scripts.pory"
-	setvar VAR_0x8004, SPECIES_HAXORUS 
-# 479 "data//maps/DragonsRoost/scripts.pory"
-    specialvar VAR_RESULT, GetBattleOutcome
-# 480 "data//maps/DragonsRoost/scripts.pory"
-	goto_if_eq VAR_RESULT, B_OUTCOME_WON, DragonsRoost_EventScript_DefeatedWildMon
-# 481 "data//maps/DragonsRoost/scripts.pory"
-    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, DragonsRoost_EventScript_RanWildMon
-# 482 "data//maps/DragonsRoost/scripts.pory"
-	release
-# 483 "data//maps/DragonsRoost/scripts.pory"
-	end
-# 484 "data//maps/DragonsRoost/scripts.pory"
-
-# 485 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_EventScript_Tyrantrum::
-# 486 "data//maps/DragonsRoost/scripts.pory"
-	lock
-# 487 "data//maps/DragonsRoost/scripts.pory"
-	faceplayer
-# 488 "data//maps/DragonsRoost/scripts.pory"
-	waitse
-# 489 "data//maps/DragonsRoost/scripts.pory"
-	playmoncry SPECIES_TYRANTRUM, CRY_MODE_ENCOUNTER
-# 490 "data//maps/DragonsRoost/scripts.pory"
 	delay 10
-# 491 "data//maps/DragonsRoost/scripts.pory"
+# 471 "data//maps/DragonsRoost/scripts.pory"
 	waitmoncry
-# 492 "data//maps/DragonsRoost/scripts.pory"
-	setwildbattle SPECIES_TYRANTRUM, 50
-# 493 "data//maps/DragonsRoost/scripts.pory"
+# 472 "data//maps/DragonsRoost/scripts.pory"
+	setvar VAR_LAST_TALKED, LOCALID_DRAGONS_ROOST_HAXORUS
+# 473 "data//maps/DragonsRoost/scripts.pory"
+	setwildbossmon 1
+# 474 "data//maps/DragonsRoost/scripts.pory"
+	setwildbattle SPECIES_HAXORUS, 60
+# 475 "data//maps/DragonsRoost/scripts.pory"
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
-# 494 "data//maps/DragonsRoost/scripts.pory"
-	dowildbattle
-# 495 "data//maps/DragonsRoost/scripts.pory"
-	@ waitstate
-# 496 "data//maps/DragonsRoost/scripts.pory"
+# 476 "data//maps/DragonsRoost/scripts.pory"
+	special StartRegiBattle
+# 477 "data//maps/DragonsRoost/scripts.pory"
+	waitstate
+# 478 "data//maps/DragonsRoost/scripts.pory"
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
-# 497 "data//maps/DragonsRoost/scripts.pory"
-	setvar VAR_0x8004, SPECIES_TYRANTRUM
-# 498 "data//maps/DragonsRoost/scripts.pory"
+# 479 "data//maps/DragonsRoost/scripts.pory"
+	endwildbossmon
+# 480 "data//maps/DragonsRoost/scripts.pory"
+	setvar VAR_0x8004, SPECIES_HAXORUS 
+# 481 "data//maps/DragonsRoost/scripts.pory"
     specialvar VAR_RESULT, GetBattleOutcome
-# 499 "data//maps/DragonsRoost/scripts.pory"
+# 482 "data//maps/DragonsRoost/scripts.pory"
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, DragonsRoost_EventScript_DefeatedWildMon
-# 500 "data//maps/DragonsRoost/scripts.pory"
-    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, DragonsRoost_EventScript_RanWildMon
-# 501 "data//maps/DragonsRoost/scripts.pory"
+# 483 "data//maps/DragonsRoost/scripts.pory"
     goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, DragonsRoost_EventScript_RanWildMon
+# 484 "data//maps/DragonsRoost/scripts.pory"
+	release
+# 485 "data//maps/DragonsRoost/scripts.pory"
+	end
+# 486 "data//maps/DragonsRoost/scripts.pory"
+
+# 487 "data//maps/DragonsRoost/scripts.pory"
+DragonsRoost_EventScript_Tyrantrum::
+# 488 "data//maps/DragonsRoost/scripts.pory"
+	lock
+# 489 "data//maps/DragonsRoost/scripts.pory"
+	faceplayer
+# 490 "data//maps/DragonsRoost/scripts.pory"
+	waitse
+# 491 "data//maps/DragonsRoost/scripts.pory"
+	playmoncry SPECIES_TYRANTRUM, CRY_MODE_ENCOUNTER
+# 492 "data//maps/DragonsRoost/scripts.pory"
+	delay 10
+# 493 "data//maps/DragonsRoost/scripts.pory"
+	waitmoncry
+# 494 "data//maps/DragonsRoost/scripts.pory"
+	setwildbattle SPECIES_TYRANTRUM, 50
+# 495 "data//maps/DragonsRoost/scripts.pory"
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+# 496 "data//maps/DragonsRoost/scripts.pory"
+	dowildbattle
+# 497 "data//maps/DragonsRoost/scripts.pory"
+	@ waitstate
+# 498 "data//maps/DragonsRoost/scripts.pory"
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+# 499 "data//maps/DragonsRoost/scripts.pory"
+	setvar VAR_0x8004, SPECIES_TYRANTRUM
+# 500 "data//maps/DragonsRoost/scripts.pory"
+    specialvar VAR_RESULT, GetBattleOutcome
+# 501 "data//maps/DragonsRoost/scripts.pory"
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, DragonsRoost_EventScript_DefeatedWildMon
 # 502 "data//maps/DragonsRoost/scripts.pory"
-	release
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, DragonsRoost_EventScript_RanWildMon
 # 503 "data//maps/DragonsRoost/scripts.pory"
-	end
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, DragonsRoost_EventScript_RanWildMon
 # 504 "data//maps/DragonsRoost/scripts.pory"
-
+	release
 # 505 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_EventScript_DefeatedWildMon::
+	end
 # 506 "data//maps/DragonsRoost/scripts.pory"
-    goto Common_EventScript_RemoveStaticPokemon
+
 # 507 "data//maps/DragonsRoost/scripts.pory"
-	release
+DragonsRoost_EventScript_DefeatedWildMon::
 # 508 "data//maps/DragonsRoost/scripts.pory"
-	end
+    goto Common_EventScript_RemoveStaticPokemon
 # 509 "data//maps/DragonsRoost/scripts.pory"
-
-# 510 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_EventScript_RanWildMon::
-# 511 "data//maps/DragonsRoost/scripts.pory"
-	goto Common_EventScript_WildMonFled
-# 512 "data//maps/DragonsRoost/scripts.pory"
 	release
-# 513 "data//maps/DragonsRoost/scripts.pory"
+# 510 "data//maps/DragonsRoost/scripts.pory"
 	end
+# 511 "data//maps/DragonsRoost/scripts.pory"
+
+# 512 "data//maps/DragonsRoost/scripts.pory"
+DragonsRoost_EventScript_RanWildMon::
+# 513 "data//maps/DragonsRoost/scripts.pory"
+	goto Common_EventScript_WildMonFled
 # 514 "data//maps/DragonsRoost/scripts.pory"
-
+	release
 # 515 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_Movement_RayquazaFlyOff:
+	end
 # 516 "data//maps/DragonsRoost/scripts.pory"
-	delay_16
+
 # 517 "data//maps/DragonsRoost/scripts.pory"
-	fly_up
+DragonsRoost_Movement_RayquazaFlyOff:
 # 518 "data//maps/DragonsRoost/scripts.pory"
-	step_end
+	delay_16
 # 519 "data//maps/DragonsRoost/scripts.pory"
-
+	fly_up
 # 520 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_Movement_CameraPanUpI:
-# 521 "data//maps/DragonsRoost/scripts.pory"
-	walk_slow_up
-# 522 "data//maps/DragonsRoost/scripts.pory"
-	walk_up
-# 523 "data//maps/DragonsRoost/scripts.pory"
-	walk_up
-# 524 "data//maps/DragonsRoost/scripts.pory"
-	walk_fast_up
-# 525 "data//maps/DragonsRoost/scripts.pory"
-	walk_fast_up
-# 526 "data//maps/DragonsRoost/scripts.pory"
-	walk_up
-# 527 "data//maps/DragonsRoost/scripts.pory"
-	walk_slow_up
-# 528 "data//maps/DragonsRoost/scripts.pory"
 	step_end
-# 529 "data//maps/DragonsRoost/scripts.pory"
+# 521 "data//maps/DragonsRoost/scripts.pory"
 
+# 522 "data//maps/DragonsRoost/scripts.pory"
+DragonsRoost_Movement_CameraPanUpI:
+# 523 "data//maps/DragonsRoost/scripts.pory"
+	walk_slow_up
+# 524 "data//maps/DragonsRoost/scripts.pory"
+	walk_up
+# 525 "data//maps/DragonsRoost/scripts.pory"
+	walk_up
+# 526 "data//maps/DragonsRoost/scripts.pory"
+	walk_fast_up
+# 527 "data//maps/DragonsRoost/scripts.pory"
+	walk_fast_up
+# 528 "data//maps/DragonsRoost/scripts.pory"
+	walk_up
+# 529 "data//maps/DragonsRoost/scripts.pory"
+	walk_slow_up
 # 530 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_Movement_CameraPanUpII:
+	step_end
 # 531 "data//maps/DragonsRoost/scripts.pory"
-	walk_slow_up
+
 # 532 "data//maps/DragonsRoost/scripts.pory"
-	walk_slow_up
+DragonsRoost_Movement_CameraPanUpII:
 # 533 "data//maps/DragonsRoost/scripts.pory"
 	walk_slow_up
 # 534 "data//maps/DragonsRoost/scripts.pory"
@@ -1073,15 +1073,15 @@ DragonsRoost_Movement_CameraPanUpII:
 # 537 "data//maps/DragonsRoost/scripts.pory"
 	walk_slow_up
 # 538 "data//maps/DragonsRoost/scripts.pory"
-	step_end
+	walk_slow_up
 # 539 "data//maps/DragonsRoost/scripts.pory"
-
+	walk_slow_up
 # 540 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_Movement_CameraPanDownI:
+	step_end
 # 541 "data//maps/DragonsRoost/scripts.pory"
-	walk_slow_down
+
 # 542 "data//maps/DragonsRoost/scripts.pory"
-	walk_slow_down
+DragonsRoost_Movement_CameraPanDownI:
 # 543 "data//maps/DragonsRoost/scripts.pory"
 	walk_slow_down
 # 544 "data//maps/DragonsRoost/scripts.pory"
@@ -1093,15 +1093,15 @@ DragonsRoost_Movement_CameraPanDownI:
 # 547 "data//maps/DragonsRoost/scripts.pory"
 	walk_slow_down
 # 548 "data//maps/DragonsRoost/scripts.pory"
-	step_end
+	walk_slow_down
 # 549 "data//maps/DragonsRoost/scripts.pory"
-
+	walk_slow_down
 # 550 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_Movement_CameraPanDownII:
+	step_end
 # 551 "data//maps/DragonsRoost/scripts.pory"
-	walk_fast_down
+
 # 552 "data//maps/DragonsRoost/scripts.pory"
-	walk_fast_down
+DragonsRoost_Movement_CameraPanDownII:
 # 553 "data//maps/DragonsRoost/scripts.pory"
 	walk_fast_down
 # 554 "data//maps/DragonsRoost/scripts.pory"
@@ -1109,225 +1109,231 @@ DragonsRoost_Movement_CameraPanDownII:
 # 555 "data//maps/DragonsRoost/scripts.pory"
 	walk_fast_down
 # 556 "data//maps/DragonsRoost/scripts.pory"
-	walk_down
+	walk_fast_down
 # 557 "data//maps/DragonsRoost/scripts.pory"
-	walk_slow_down
+	walk_fast_down
 # 558 "data//maps/DragonsRoost/scripts.pory"
-	step_end
+	walk_down
 # 559 "data//maps/DragonsRoost/scripts.pory"
-
+	walk_slow_down
 # 560 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_Movement_RayquazaFlyDown:
+	step_end
 # 561 "data//maps/DragonsRoost/scripts.pory"
-	walk_slow_up
+
 # 562 "data//maps/DragonsRoost/scripts.pory"
-	walk_slow_up
+DragonsRoost_Movement_RayquazaFlyDown:
 # 563 "data//maps/DragonsRoost/scripts.pory"
-	walk_fast_up
+	walk_slow_up
 # 564 "data//maps/DragonsRoost/scripts.pory"
-	walk_fast_up
+	walk_slow_up
 # 565 "data//maps/DragonsRoost/scripts.pory"
-	walk_down
+	walk_fast_up
 # 566 "data//maps/DragonsRoost/scripts.pory"
-	walk_down
+	walk_fast_up
 # 567 "data//maps/DragonsRoost/scripts.pory"
-	walk_faster_down
+	walk_down
 # 568 "data//maps/DragonsRoost/scripts.pory"
 	walk_down
 # 569 "data//maps/DragonsRoost/scripts.pory"
-	step_end
+	walk_faster_down
 # 570 "data//maps/DragonsRoost/scripts.pory"
-
+	walk_down
 # 571 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_Movement_HaxorusApproachA:
+	step_end
 # 572 "data//maps/DragonsRoost/scripts.pory"
-	walk_fast_left
+
 # 573 "data//maps/DragonsRoost/scripts.pory"
-	walk_fast_left
+DragonsRoost_Movement_HaxorusApproachA:
 # 574 "data//maps/DragonsRoost/scripts.pory"
 	walk_fast_left
 # 575 "data//maps/DragonsRoost/scripts.pory"
 	walk_fast_left
 # 576 "data//maps/DragonsRoost/scripts.pory"
-	walk_in_place_down
-# 577 "data//maps/DragonsRoost/scripts.pory"
-	step_end
-# 578 "data//maps/DragonsRoost/scripts.pory"
-
-# 579 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_Movement_HaxorusApproachB:
-# 580 "data//maps/DragonsRoost/scripts.pory"
-	walk_fast_down
-# 581 "data//maps/DragonsRoost/scripts.pory"
 	walk_fast_left
+# 577 "data//maps/DragonsRoost/scripts.pory"
+	walk_fast_left
+# 578 "data//maps/DragonsRoost/scripts.pory"
+	walk_in_place_down
+# 579 "data//maps/DragonsRoost/scripts.pory"
+	step_end
+# 580 "data//maps/DragonsRoost/scripts.pory"
+
+# 581 "data//maps/DragonsRoost/scripts.pory"
+DragonsRoost_Movement_HaxorusApproachB:
 # 582 "data//maps/DragonsRoost/scripts.pory"
 	walk_fast_down
 # 583 "data//maps/DragonsRoost/scripts.pory"
 	walk_fast_left
 # 584 "data//maps/DragonsRoost/scripts.pory"
-	walk_in_place_down
-# 585 "data//maps/DragonsRoost/scripts.pory"
-	step_end
-# 586 "data//maps/DragonsRoost/scripts.pory"
-
-# 587 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_Movement_HaxorusApproachC:
-# 588 "data//maps/DragonsRoost/scripts.pory"
-	walk_fast_left
-# 589 "data//maps/DragonsRoost/scripts.pory"
 	walk_fast_down
+# 585 "data//maps/DragonsRoost/scripts.pory"
+	walk_fast_left
+# 586 "data//maps/DragonsRoost/scripts.pory"
+	walk_in_place_down
+# 587 "data//maps/DragonsRoost/scripts.pory"
+	step_end
+# 588 "data//maps/DragonsRoost/scripts.pory"
+
+# 589 "data//maps/DragonsRoost/scripts.pory"
+DragonsRoost_Movement_HaxorusApproachC:
 # 590 "data//maps/DragonsRoost/scripts.pory"
 	walk_fast_down
 # 591 "data//maps/DragonsRoost/scripts.pory"
-	step_end
+	walk_fast_left
 # 592 "data//maps/DragonsRoost/scripts.pory"
-
+	walk_fast_down
 # 593 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_Movement_HaxorusApproachD:
+	walk_fast_down
 # 594 "data//maps/DragonsRoost/scripts.pory"
-	walk_fast_down
-# 595 "data//maps/DragonsRoost/scripts.pory"
-	walk_fast_down
-# 596 "data//maps/DragonsRoost/scripts.pory"
-	walk_fast_down
-# 597 "data//maps/DragonsRoost/scripts.pory"
 	step_end
-# 598 "data//maps/DragonsRoost/scripts.pory"
+# 595 "data//maps/DragonsRoost/scripts.pory"
 
+# 596 "data//maps/DragonsRoost/scripts.pory"
+DragonsRoost_Movement_HaxorusApproachD:
+# 597 "data//maps/DragonsRoost/scripts.pory"
+	walk_fast_down
+# 598 "data//maps/DragonsRoost/scripts.pory"
+	walk_fast_down
 # 599 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_Movement_HaxorusApproachE:
+	walk_fast_down
 # 600 "data//maps/DragonsRoost/scripts.pory"
-	walk_fast_down
+	step_end
 # 601 "data//maps/DragonsRoost/scripts.pory"
-	walk_fast_down
+
 # 602 "data//maps/DragonsRoost/scripts.pory"
-	walk_fast_right
+DragonsRoost_Movement_HaxorusApproachE:
 # 603 "data//maps/DragonsRoost/scripts.pory"
 	walk_fast_down
 # 604 "data//maps/DragonsRoost/scripts.pory"
-	step_end
+	walk_fast_down
 # 605 "data//maps/DragonsRoost/scripts.pory"
-
+	walk_fast_right
 # 606 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_Movement_SetInvisible:
+	walk_fast_down
 # 607 "data//maps/DragonsRoost/scripts.pory"
-	set_invisible
+	step_end
 # 608 "data//maps/DragonsRoost/scripts.pory"
-	step_end
+
 # 609 "data//maps/DragonsRoost/scripts.pory"
-
+DragonsRoost_Movement_SetInvisible:
 # 610 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_Movement_SetVisible:
+	set_invisible
 # 611 "data//maps/DragonsRoost/scripts.pory"
-	set_visible
-# 612 "data//maps/DragonsRoost/scripts.pory"
 	step_end
+# 612 "data//maps/DragonsRoost/scripts.pory"
+
 # 613 "data//maps/DragonsRoost/scripts.pory"
-
+DragonsRoost_Movement_SetVisible:
 # 614 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_Text_RayquazaFlewOff:
+	set_visible
 # 615 "data//maps/DragonsRoost/scripts.pory"
-	.string "But it flew off…\p"
+	step_end
 # 616 "data//maps/DragonsRoost/scripts.pory"
-	.string "It seemed like it was headed back\n"
+
 # 617 "data//maps/DragonsRoost/scripts.pory"
-	.string "towards SKY PILLAR!$"
+DragonsRoost_Text_RayquazaFlewOff:
 # 618 "data//maps/DragonsRoost/scripts.pory"
-
+	.string "But it flew off…\p"
 # 619 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_Text_RayquazaAppeared:
+	.string "It seemed like it was headed back\n"
 # 620 "data//maps/DragonsRoost/scripts.pory"
-	.string "RAYQUAZA appeared from beyond the\n" 
+	.string "towards SKY PILLAR!$"
 # 621 "data//maps/DragonsRoost/scripts.pory"
-	.string "cliff's edge!$"
-# 622 "data//maps/DragonsRoost/scripts.pory"
 
+# 622 "data//maps/DragonsRoost/scripts.pory"
+DragonsRoost_Text_RayquazaAppeared:
 # 623 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_Text_RayquazaIsHere:
+	.string "RAYQUAZA appeared from beyond the\n" 
 # 624 "data//maps/DragonsRoost/scripts.pory"
-	.string "It sounds like RAYQUAZA is nearby!$"
+	.string "cliff's edge!$"
 # 625 "data//maps/DragonsRoost/scripts.pory"
 
 # 626 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_Text_HaxorusAttacked:
+DragonsRoost_Text_RayquazaIsHere:
 # 627 "data//maps/DragonsRoost/scripts.pory"
-	.string "HAXORUS approached aggresively!$"
+	.string "It sounds like RAYQUAZA is nearby!$"
 # 628 "data//maps/DragonsRoost/scripts.pory"
 
 # 629 "data//maps/DragonsRoost/scripts.pory"
-DragonsRoost_Text_Clone:
+DragonsRoost_Text_HaxorusAttacked:
 # 630 "data//maps/DragonsRoost/scripts.pory"
+	.string "HAXORUS approached aggresively!$"
+# 631 "data//maps/DragonsRoost/scripts.pory"
+
+# 632 "data//maps/DragonsRoost/scripts.pory"
+DragonsRoost_Text_Clone:
+# 633 "data//maps/DragonsRoost/scripts.pory"
 	.string "Where am I?$"
 
 DragonsRoost_EventScript_RandomiseOvrWrldMonPos::
-# 635 "data//maps/DragonsRoost/scripts.pory"
+# 638 "data//maps/DragonsRoost/scripts.pory"
 	compare VAR_DRAGONS_ROOST_RAYQUAZA_SCENE_STATE, 3
 	goto_if_ge DragonsRoost_EventScript_RandomiseOvrWrldMonPos_1
-# 647 "data//maps/DragonsRoost/scripts.pory"
+# 650 "data//maps/DragonsRoost/scripts.pory"
 	goto DragonsRoost_EventScript_OvrWrldMonPosA
 	return
 
 DragonsRoost_EventScript_RandomiseOvrWrldMonPos_1:
-# 636 "data//maps/DragonsRoost/scripts.pory"
+# 639 "data//maps/DragonsRoost/scripts.pory"
 	random 3
-# 637 "data//maps/DragonsRoost/scripts.pory"
-	switch VAR_RESULT
-# 638 "data//maps/DragonsRoost/scripts.pory"
-	case 0, DragonsRoost_EventScript_RandomiseOvrWrldMonPos_5
 # 640 "data//maps/DragonsRoost/scripts.pory"
+	switch VAR_RESULT
+# 641 "data//maps/DragonsRoost/scripts.pory"
+	case 0, DragonsRoost_EventScript_RandomiseOvrWrldMonPos_5
+# 643 "data//maps/DragonsRoost/scripts.pory"
 	case 1, DragonsRoost_EventScript_RandomiseOvrWrldMonPos_6
-# 642 "data//maps/DragonsRoost/scripts.pory"
+# 645 "data//maps/DragonsRoost/scripts.pory"
 	case 2, DragonsRoost_EventScript_RandomiseOvrWrldMonPos_7
 	return
 
 DragonsRoost_EventScript_RandomiseOvrWrldMonPos_5:
-# 639 "data//maps/DragonsRoost/scripts.pory"
+# 642 "data//maps/DragonsRoost/scripts.pory"
 	goto DragonsRoost_EventScript_OvrWrldMonPosA
 	return
 
 DragonsRoost_EventScript_RandomiseOvrWrldMonPos_6:
-# 641 "data//maps/DragonsRoost/scripts.pory"
+# 644 "data//maps/DragonsRoost/scripts.pory"
 	goto DragonsRoost_EventScript_OvrWrldMonPosB
 	return
 
 DragonsRoost_EventScript_RandomiseOvrWrldMonPos_7:
-# 643 "data//maps/DragonsRoost/scripts.pory"
+# 646 "data//maps/DragonsRoost/scripts.pory"
 	goto DragonsRoost_EventScript_OvrWrldMonPosC
 	return
 
 
 DragonsRoost_EventScript_OvrWrldMonPosA::
-# 652 "data//maps/DragonsRoost/scripts.pory"
-	setobjectxyperm LOCALID_DRAGONS_ROOST_AURORUS, 20, 41
-# 653 "data//maps/DragonsRoost/scripts.pory"
-	setobjectxyperm LOCALID_DRAGONS_ROOST_CROCONAW, 59, 24
-# 654 "data//maps/DragonsRoost/scripts.pory"
-	setobjectxyperm LOCALID_DRAGONS_ROOST_GYARADOS, 73, 39
 # 655 "data//maps/DragonsRoost/scripts.pory"
+	setobjectxyperm LOCALID_DRAGONS_ROOST_AURORUS, 20, 41
+# 656 "data//maps/DragonsRoost/scripts.pory"
+	setobjectxyperm LOCALID_DRAGONS_ROOST_CROCONAW, 59, 24
+# 657 "data//maps/DragonsRoost/scripts.pory"
+	setobjectxyperm LOCALID_DRAGONS_ROOST_GYARADOS, 73, 39
+# 658 "data//maps/DragonsRoost/scripts.pory"
 	setobjectxyperm LOCALID_DRAGONS_ROOST_DRAGONAIR, 115, 42
 	return
 
 
 DragonsRoost_EventScript_OvrWrldMonPosB::
-# 660 "data//maps/DragonsRoost/scripts.pory"
-	setobjectxyperm LOCALID_DRAGONS_ROOST_AURORUS, 59, 24
-# 661 "data//maps/DragonsRoost/scripts.pory"
-	setobjectxyperm LOCALID_DRAGONS_ROOST_CROCONAW, 20, 41
-# 662 "data//maps/DragonsRoost/scripts.pory"
-	setobjectxyperm LOCALID_DRAGONS_ROOST_GYARADOS, 90, 45
 # 663 "data//maps/DragonsRoost/scripts.pory"
+	setobjectxyperm LOCALID_DRAGONS_ROOST_AURORUS, 59, 24
+# 664 "data//maps/DragonsRoost/scripts.pory"
+	setobjectxyperm LOCALID_DRAGONS_ROOST_CROCONAW, 20, 41
+# 665 "data//maps/DragonsRoost/scripts.pory"
+	setobjectxyperm LOCALID_DRAGONS_ROOST_GYARADOS, 90, 45
+# 666 "data//maps/DragonsRoost/scripts.pory"
 	setobjectxyperm LOCALID_DRAGONS_ROOST_DRAGONAIR, 74, 28
 	return
 
 
 DragonsRoost_EventScript_OvrWrldMonPosC::
-# 668 "data//maps/DragonsRoost/scripts.pory"
-	setobjectxyperm LOCALID_DRAGONS_ROOST_AURORUS, 20, 41
-# 669 "data//maps/DragonsRoost/scripts.pory"
-	setobjectxyperm LOCALID_DRAGONS_ROOST_CROCONAW, 47, 25
-# 670 "data//maps/DragonsRoost/scripts.pory"
-	setobjectxyperm LOCALID_DRAGONS_ROOST_GYARADOS, 83, 34
 # 671 "data//maps/DragonsRoost/scripts.pory"
+	setobjectxyperm LOCALID_DRAGONS_ROOST_AURORUS, 20, 41
+# 672 "data//maps/DragonsRoost/scripts.pory"
+	setobjectxyperm LOCALID_DRAGONS_ROOST_CROCONAW, 47, 25
+# 673 "data//maps/DragonsRoost/scripts.pory"
+	setobjectxyperm LOCALID_DRAGONS_ROOST_GYARADOS, 83, 34
+# 674 "data//maps/DragonsRoost/scripts.pory"
 	setobjectxyperm LOCALID_DRAGONS_ROOST_DRAGONAIR, 73, 39
 	return
 

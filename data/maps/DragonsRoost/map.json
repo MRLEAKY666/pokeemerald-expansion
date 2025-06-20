@@ -10,7 +10,7 @@
   "allow_cycling": true,
   "allow_escaping": false,
   "allow_running": true,
-  "show_map_name": true,
+  "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
@@ -548,26 +548,8 @@
     },
     {
       "type": "trigger",
-      "x": 43,
-      "y": 26,
-      "elevation": 0,
-      "var": "VAR_DRAGONS_ROOST_RAYQUAZA_SCENE_STATE",
-      "var_value": "1",
-      "script": "DragonsRoost_EventScript_HaxorusB"
-    },
-    {
-      "type": "trigger",
-      "x": 41,
-      "y": 24,
-      "elevation": 0,
-      "var": "VAR_DRAGONS_ROOST_RAYQUAZA_SCENE_STATE",
-      "var_value": "1",
-      "script": "DragonsRoost_EventScript_HaxorusA"
-    },
-    {
-      "type": "trigger",
       "x": 44,
-      "y": 26,
+      "y": 27,
       "elevation": 0,
       "var": "VAR_DRAGONS_ROOST_RAYQUAZA_SCENE_STATE",
       "var_value": "1",
