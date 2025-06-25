@@ -2,12 +2,6 @@ raw `
 SootopolisCity_House3_MapScripts::
 	.byte 0
 
-SootopolisCity_House3_EventScript_WallaceThanks::
-	msgbox SootopolisCity_House3_Text_WallaceThanks, MSGBOX_DEFAULT
-	waitmessage
-	setflag FLAG_MET_WALLACE_HOUSE
-	return
-
 SootopolisCity_House3_EventScript_Wallace::
 	lock
 	faceplayer
@@ -22,6 +16,12 @@ SootopolisCity_House3_EventScript_Wallace::
 	waitmessage
 	release
 	end
+
+SootopolisCity_House3_EventScript_WallaceThanks::
+	msgbox SootopolisCity_House3_Text_WallaceThanks, MSGBOX_DEFAULT
+	waitmessage
+	setflag FLAG_MET_WALLACE_HOUSE
+	return
 
 SootopolisCity_House3_EventScript_EnteiSpeech::
 	msgbox SootopolisCity_House3_Text_EnteiSpeech, MSGBOX_DEFAULT
