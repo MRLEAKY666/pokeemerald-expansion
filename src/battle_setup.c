@@ -1262,7 +1262,7 @@ static void SaveChangesToPlayerParty(void)
     {
         if ((participatedPokemon >> i & 1) == 1)
         {
-            gSaveBlock1Ptr->playerParty[i] = gPlayerParty[j];
+            SavePlayerPartyMon(i, &gPlayerParty[j]);
             j++;
         }
     }

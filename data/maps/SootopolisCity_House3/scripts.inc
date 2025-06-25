@@ -7,45 +7,45 @@ SootopolisCity_House3_MapScripts::
 # 4 "data//maps/SootopolisCity_House3/scripts.pory"
 
 # 5 "data//maps/SootopolisCity_House3/scripts.pory"
-SootopolisCity_House3_EventScript_WallaceThanks::
-# 6 "data//maps/SootopolisCity_House3/scripts.pory"
-	msgbox SootopolisCity_House3_Text_WallaceThanks, MSGBOX_DEFAULT
-# 7 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
-# 8 "data//maps/SootopolisCity_House3/scripts.pory"
-	setflag FLAG_MET_WALLACE_HOUSE
-# 9 "data//maps/SootopolisCity_House3/scripts.pory"
-	return
-# 10 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 11 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_Wallace::
-# 12 "data//maps/SootopolisCity_House3/scripts.pory"
+# 6 "data//maps/SootopolisCity_House3/scripts.pory"
 	lock
-# 13 "data//maps/SootopolisCity_House3/scripts.pory"
+# 7 "data//maps/SootopolisCity_House3/scripts.pory"
 	faceplayer
-# 14 "data//maps/SootopolisCity_House3/scripts.pory"
+# 8 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_eq VAR_BEAST_SPECIES, SPECIES_HO_OH, SootopolisCity_House3_EventScript_WallaceMeetAtNavelRock
-# 15 "data//maps/SootopolisCity_House3/scripts.pory"
+# 9 "data//maps/SootopolisCity_House3/scripts.pory"
 	call_if_unset FLAG_MET_WALLACE_HOUSE, SootopolisCity_House3_EventScript_WallaceThanks
-# 16 "data//maps/SootopolisCity_House3/scripts.pory"
+# 10 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_WallaceSearchingBeasts, MSGBOX_DEFAULT
-# 17 "data//maps/SootopolisCity_House3/scripts.pory"
+# 11 "data//maps/SootopolisCity_House3/scripts.pory"
 	waitmessage
-# 18 "data//maps/SootopolisCity_House3/scripts.pory"
+# 12 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_eq VAR_BEAST_SPECIES, SPECIES_ENTEI, SootopolisCity_House3_EventScript_EnteiSpeech
-# 19 "data//maps/SootopolisCity_House3/scripts.pory"
+# 13 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_eq VAR_BEAST_SPECIES, SPECIES_SUICUNE, SootopolisCity_House3_EventScript_SuicuneSpeech
-# 20 "data//maps/SootopolisCity_House3/scripts.pory"
+# 14 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_eq VAR_BEAST_SPECIES, SPECIES_RAIKOU, SootopolisCity_House3_EventScript_RaikouSpeech
-# 21 "data//maps/SootopolisCity_House3/scripts.pory"
+# 15 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_AlwaysHunting, MSGBOX_DEFAULT
+# 16 "data//maps/SootopolisCity_House3/scripts.pory"
+	waitmessage
+# 17 "data//maps/SootopolisCity_House3/scripts.pory"
+	release
+# 18 "data//maps/SootopolisCity_House3/scripts.pory"
+	end
+# 19 "data//maps/SootopolisCity_House3/scripts.pory"
+
+# 20 "data//maps/SootopolisCity_House3/scripts.pory"
+SootopolisCity_House3_EventScript_WallaceThanks::
+# 21 "data//maps/SootopolisCity_House3/scripts.pory"
+	msgbox SootopolisCity_House3_Text_WallaceThanks, MSGBOX_DEFAULT
 # 22 "data//maps/SootopolisCity_House3/scripts.pory"
 	waitmessage
 # 23 "data//maps/SootopolisCity_House3/scripts.pory"
-	release
+	setflag FLAG_MET_WALLACE_HOUSE
 # 24 "data//maps/SootopolisCity_House3/scripts.pory"
-	end
+	return
 # 25 "data//maps/SootopolisCity_House3/scripts.pory"
 
 # 26 "data//maps/SootopolisCity_House3/scripts.pory"
