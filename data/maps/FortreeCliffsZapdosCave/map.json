@@ -1,8 +1,8 @@
 {
-  "id": "MAP_FORTREE_CLIFFS_DEN_A",
-  "name": "FortreeCliffsDenA",
-  "layout": "LAYOUT_FORTREE_CLIFFS_DEN_A",
-  "music": "MUS_PETALBURG_WOODS",
+  "id": "MAP_FORTREE_CLIFFS_ZAPDOS_CAVE",
+  "name": "FortreeCliffsZapdosCave",
+  "layout": "LAYOUT_FORTREE_CLIFFS_ZAPDOS_CAVE",
+  "music": "MUS_RG_SEVII_ROUTE",
   "region_map_section": "MAPSEC_FORTREE_CLIFFS",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -15,28 +15,28 @@
   "connections": null,
   "object_events": [
     {
-      "local_id": "LOCALID_FORTREE_CLIFFS_DEN_A_MON",
-      "graphics_id": "OBJ_EVENT_GFX_VAR_5",
-      "x": 4,
-      "y": 3,
+      "local_id": "LOCALID_ZAPDOS_CAVE_ZAPDOS",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ZAPDOS)",
+      "x": 16,
+      "y": 8,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_type": "MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "FortreeCliffsDenA_EventScript_Mon",
-      "flag": "FLAG_FORTREE_CLIFFS_DEN_A_MON"
+      "script": "FortreeCliffsZapdosCave_EventScript_Zapdos",
+      "flag": "FLAG_HIDE_ARTICUNO"
     }
   ],
   "warp_events": [
     {
-      "warp_id": "WARP_ID_FORTREE_CLIFFS_DEN_A",
-      "x": 4,
-      "y": 7,
+      "warp_id": "WARP_ID_FORTREE_CLIFFS_ZAPDOS_CAVE",
+      "x": 21,
+      "y": 26,
       "elevation": 0,
       "dest_map": "MAP_FORTREE_CLIFFS",
-      "dest_warp_id": "WARP_ID_FORTREE_CLIFFS_DEN_A_ENTRANCE"
+      "dest_warp_id": "WARP_ID_FORTREE_CLIFFS_ZAPDOS_ENTRANCE"
     }
   ],
   "coord_events": [],

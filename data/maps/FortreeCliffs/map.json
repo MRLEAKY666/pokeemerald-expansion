@@ -513,6 +513,14 @@
       "elevation": 0,
       "dest_map": "MAP_FORTREE_CLIFFS_DEN_B",
       "dest_warp_id": "WARP_ID_FORTREE_CLIFFS_DEN_B"
+    },
+    {
+      "warp_id": "WARP_ID_FORTREE_CLIFFS_ZAPDOS_ENTRANCE",
+      "x": 30,
+      "y": 21,
+      "elevation": 0,
+      "dest_map": "MAP_FORTREE_CLIFFS_ZAPDOS_CAVE",
+      "dest_warp_id": "WARP_ID_FORTREE_CLIFFS_ZAPDOS_CAVE"
     }
   ],
   "coord_events": [
@@ -529,15 +537,6 @@
       "y": 38,
       "elevation": 0,
       "weather": "COORD_EVENT_WEATHER_RAIN_THUNDERSTORM"
-    },
-    {
-      "type": "trigger",
-      "x": 31,
-      "y": 60,
-      "elevation": 0,
-      "var": "NULL",
-      "var_value": "0",
-      "script": "FortreeCliffs_EventScript_TrySetSun"
     },
     {
       "type": "trigger",

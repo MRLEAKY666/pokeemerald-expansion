@@ -26,7 +26,7 @@ FortreeCliffsDenB_EventScript_TryRemoveWildMon::
 	return
 
 FortreeCliffsDenB_EventScript_Mon::
-    lock
+    lockall
 	faceplayer
 	waitse
     goto_if_eq VAR_FORTREE_CLIFFS_DEN_B_MON, SPECIES_SNORLAX, FortreeCliffsDenB_EventScript_Snorlax

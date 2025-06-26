@@ -50,7 +50,7 @@ FortreeCliffsDenB_EventScript_TryRemoveWildMon::
 # 28 "data//maps/FortreeCliffsDenB/scripts.pory"
 FortreeCliffsDenB_EventScript_Mon::
 # 29 "data//maps/FortreeCliffsDenB/scripts.pory"
-    lock
+    lockall
 # 30 "data//maps/FortreeCliffsDenB/scripts.pory"
 	faceplayer
 # 31 "data//maps/FortreeCliffsDenB/scripts.pory"

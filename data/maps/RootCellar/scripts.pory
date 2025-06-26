@@ -66,7 +66,7 @@ RootCellar_EventScript_TryRemoveWildMon::
 	return
 
 RootCellar_EventScript_Shuckle1::
-	lock
+	lockall
 	faceplayer
 	waitse
 	playmoncry SPECIES_SHUCKLE, CRY_MODE_ENCOUNTER
@@ -86,7 +86,7 @@ RootCellar_EventScript_Shuckle1::
 	end
 
 RootCellar_EventScript_Shuckle2::
-	lock
+	lockall
 	faceplayer
 	waitse
 	playmoncry SPECIES_SHUCKLE, CRY_MODE_ENCOUNTER
@@ -106,7 +106,7 @@ RootCellar_EventScript_Shuckle2::
 	end
 
 RootCellar_EventScript_Spinarak1::
-	lock
+	lockall
 	faceplayer
 	waitse
 	playmoncry SPECIES_SPINARAK, CRY_MODE_ENCOUNTER
@@ -126,7 +126,7 @@ RootCellar_EventScript_Spinarak1::
 	end
 
 RootCellar_EventScript_Spinarak2::
-	lock
+	lockall
 	faceplayer
 	waitse
 	playmoncry SPECIES_SPINARAK, CRY_MODE_ENCOUNTER

@@ -135,7 +135,7 @@ RootCellar_EventScript_TryRemoveWildMon::
 # 68 "data//maps/RootCellar/scripts.pory"
 RootCellar_EventScript_Shuckle1::
 # 69 "data//maps/RootCellar/scripts.pory"
-	lock
+	lockall
 # 70 "data//maps/RootCellar/scripts.pory"
 	faceplayer
 # 71 "data//maps/RootCellar/scripts.pory"
@@ -175,7 +175,7 @@ RootCellar_EventScript_Shuckle1::
 # 88 "data//maps/RootCellar/scripts.pory"
 RootCellar_EventScript_Shuckle2::
 # 89 "data//maps/RootCellar/scripts.pory"
-	lock
+	lockall
 # 90 "data//maps/RootCellar/scripts.pory"
 	faceplayer
 # 91 "data//maps/RootCellar/scripts.pory"
@@ -215,7 +215,7 @@ RootCellar_EventScript_Shuckle2::
 # 108 "data//maps/RootCellar/scripts.pory"
 RootCellar_EventScript_Spinarak1::
 # 109 "data//maps/RootCellar/scripts.pory"
-	lock
+	lockall
 # 110 "data//maps/RootCellar/scripts.pory"
 	faceplayer
 # 111 "data//maps/RootCellar/scripts.pory"
@@ -255,7 +255,7 @@ RootCellar_EventScript_Spinarak1::
 # 128 "data//maps/RootCellar/scripts.pory"
 RootCellar_EventScript_Spinarak2::
 # 129 "data//maps/RootCellar/scripts.pory"
-	lock
+	lockall
 # 130 "data//maps/RootCellar/scripts.pory"
 	faceplayer
 # 131 "data//maps/RootCellar/scripts.pory"
