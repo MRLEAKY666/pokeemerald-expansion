@@ -4495,7 +4495,7 @@
       "id": "LAYOUT_ROOT_CELLAR_ENTRANCE",
       "name": "RootCellarEntrance_Layout",
       "width": 5,
-      "height": 5,
+      "height": 6,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/RootCellarEntrance/border.bin",
@@ -4515,7 +4515,7 @@
       "id": "LAYOUT_ROOT_CELLAR_HOUSE_ENTRANCE",
       "name": "RootCellarHouseEntrance_Layout",
       "width": 5,
-      "height": 5,
+      "height": 6,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/RootCellarHouseEntrance/border.bin",
@@ -4540,6 +4540,36 @@
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/Route123_BerryMastersHouse_RootCellarOpen/border.bin",
       "blockdata_filepath": "data/layouts/Route123_BerryMastersHouse_RootCellarOpen/map.bin"
+    },
+    {
+      "id": "LAYOUT_UNDERWATER_GRANITE_COVE",
+      "name": "Underwater_GraniteCove_Layout",
+      "width": 32,
+      "height": 48,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Underwater",
+      "border_filepath": "data/layouts/Underwater_GraniteCove/border.bin",
+      "blockdata_filepath": "data/layouts/Underwater_GraniteCove/map.bin"
+    },
+    {
+      "id": "LAYOUT_FORTREE_CLIFFS_DEN_A",
+      "name": "FortreeCliffsDenA_Layout",
+      "width": 9,
+      "height": 9,
+      "primary_tileset": "gTileset_SecretBase",
+      "secondary_tileset": "gTileset_SecretBaseBrownCave",
+      "border_filepath": "data/layouts/FortreeCliffsDenA/border.bin",
+      "blockdata_filepath": "data/layouts/FortreeCliffsDenA/map.bin"
+    },
+    {
+      "id": "LAYOUT_FORTREE_CLIFFS_DEN_B",
+      "name": "FortreeCliffsDenB_Layout",
+      "width": 9,
+      "height": 9,
+      "primary_tileset": "gTileset_SecretBase",
+      "secondary_tileset": "gTileset_SecretBaseBrownCave",
+      "border_filepath": "data/layouts/FortreeCliffsDenB/border.bin",
+      "blockdata_filepath": "data/layouts/FortreeCliffsDenB/map.bin"
     }
   ]
 }

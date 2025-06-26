@@ -450,8 +450,8 @@
     {
       "local_id": "LOCALID_FORTREE_CLIFFS_KECLEON_6",
       "graphics_id": "OBJ_EVENT_GFX_KECLEON",
-      "x": 9,
-      "y": 93,
+      "x": 11,
+      "y": 26,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_INVISIBLE",
       "movement_range_x": 0,
@@ -474,6 +474,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "FLAG_FORTREE_CLIFFS_NEST_1"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 15,
+      "y": 33,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_FindMysteryItem",
+      "flag": "FLAG_ITEM_FORTREE_CLIFFS_1"
     }
   ],
   "warp_events": [
@@ -484,6 +497,22 @@
       "elevation": 0,
       "dest_map": "MAP_ROOT_CELLAR_ENTRANCE",
       "dest_warp_id": "WARP_ID_ROOT_CELLAR_ENTRANCE"
+    },
+    {
+      "warp_id": "WARP_ID_FORTREE_CLIFFS_DEN_A_ENTRANCE",
+      "x": 8,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_FORTREE_CLIFFS_DEN_A",
+      "dest_warp_id": "WARP_ID_FORTREE_CLIFFS_DEN_A"
+    },
+    {
+      "warp_id": "WARP_ID_FORTREE_CLIFFS_DEN_B_ENTRANCE",
+      "x": 17,
+      "y": 41,
+      "elevation": 0,
+      "dest_map": "MAP_FORTREE_CLIFFS_DEN_B",
+      "dest_warp_id": "WARP_ID_FORTREE_CLIFFS_DEN_B"
     }
   ],
   "coord_events": [
@@ -500,20 +529,6 @@
       "y": 38,
       "elevation": 0,
       "weather": "COORD_EVENT_WEATHER_RAIN_THUNDERSTORM"
-    },
-    {
-      "type": "weather",
-      "x": 6,
-      "y": 91,
-      "elevation": 0,
-      "weather": "COORD_EVENT_WEATHER_FOG_HORIZONTAL"
-    },
-    {
-      "type": "weather",
-      "x": 6,
-      "y": 90,
-      "elevation": 0,
-      "weather": "COORD_EVENT_WEATHER_FOG_HORIZONTAL"
     },
     {
       "type": "trigger",
@@ -550,27 +565,6 @@
       "var": "NULL",
       "var_value": "0",
       "script": "FortreeCliffs_EventScript_TrySetSun"
-    },
-    {
-      "type": "weather",
-      "x": 2,
-      "y": 89,
-      "elevation": 0,
-      "weather": "COORD_EVENT_WEATHER_SUNNY"
-    },
-    {
-      "type": "weather",
-      "x": 2,
-      "y": 90,
-      "elevation": 0,
-      "weather": "COORD_EVENT_WEATHER_SUNNY"
-    },
-    {
-      "type": "weather",
-      "x": 2,
-      "y": 91,
-      "elevation": 0,
-      "weather": "COORD_EVENT_WEATHER_SUNNY"
     },
     {
       "type": "trigger",

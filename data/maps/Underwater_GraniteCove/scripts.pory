@@ -1,0 +1,19 @@
+mapscripts Underwater_GraniteCove_MapScripts {}
+
+script Underwater_GraniteCove_EventScript_BottomlessHole {
+    lock
+    message(
+        "There's a bottomless hole ahead!\pBetter turn back, who knows what's\ndown there…"
+    )
+    waitmessage
+    waitbuttonpress
+    closemessage
+    applymovement(LOCALID_PLAYER, Underwater_GraniteCove_Movement_TurnBack)
+    waitmovement(LOCALID_PLAYER)
+    release
+    end
+}
+
+movement Underwater_GraniteCove_Movement_TurnBack {
+    walk_up
+}

@@ -1,0 +1,78 @@
+mapscripts FortreeCliffsDenA_MapScripts {
+    MAP_SCRIPT_ON_RESUME: FortreeCliffsDenA_OnResume
+    MAP_SCRIPT_ON_TRANSITION {
+        if (var(VAR_FORTREE_CLIFFS_DEN_A_MON) == SPECIES_SNORLAX) {
+            setvar(VAR_TEMP_5, OBJ_EVENT_GFX_SPECIES(SNORLAX))
+            copyvar(VAR_OBJ_GFX_ID_5, VAR_TEMP_5)
+        }
+        else {
+            setvar(VAR_TEMP_5, OBJ_EVENT_GFX_SPECIES(MUNCHLAX))
+            copyvar(VAR_OBJ_GFX_ID_5, VAR_TEMP_5)
+        }
+    }
+
+}
+
+raw `
+
+FortreeCliffsDenA_OnResume:
+	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, FortreeCliffsDenA_EventScript_TryRemoveWildMon
+	end
+
+FortreeCliffsDenA_EventScript_TryRemoveWildMon::
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
+	removeobject VAR_LAST_TALKED
+	return
+
+FortreeCliffsDenA_EventScript_Mon::
+    lock
+	faceplayer
+	waitse
+    goto_if_eq VAR_FORTREE_CLIFFS_DEN_A_MON, SPECIES_SNORLAX, FortreeCliffsDenA_EventScript_Snorlax
+	playmoncry SPECIES_MUNCHLAX, CRY_MODE_ENCOUNTER
+	waitmoncry
+	delay 10
+	createmon 1, 0, SPECIES_MUNCHLAX, 40
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	dowildbattle
+	@ waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setvar VAR_0x8004, SPECIES_MUNCHLAX
+    specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, FortreeCliffsDenA_EventScript_DefeatedWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, FortreeCliffsDenA_EventScript_RanWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, FortreeCliffsDenA_EventScript_RanWildMon
+	release
+    end
+
+FortreeCliffsDenA_EventScript_Snorlax::
+	playmoncry SPECIES_SNORLAX, CRY_MODE_ENCOUNTER
+	waitmoncry
+	delay 10
+    setwildbossmon 1
+	createmon 1, 0, SPECIES_SNORLAX, 50
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	dowildbattle
+	@ waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+    endwildbossmon
+	setvar VAR_0x8004, SPECIES_SNORLAX
+    specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, FortreeCliffsDenA_EventScript_DefeatedWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, FortreeCliffsDenA_EventScript_RanWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, FortreeCliffsDenA_EventScript_RanWildMon
+	release
+	end
+
+FortreeCliffsDenA_EventScript_DefeatedWildMon::
+    goto Common_EventScript_RemoveStaticPokemon
+	release
+	end
+
+FortreeCliffsDenA_EventScript_RanWildMon::
+	goto Common_EventScript_WildMonFled
+	release
+	end
+
+`

@@ -70,8 +70,8 @@
 #define FLAG_DRAGONS_ROOST_METEORITE    0x38 // previoously Unused Flag
 #define FLAG_DEFEATED_DRAGONS_ROOST_HAXORUS    0x39 // previously Unused Flag
 #define FLAG_DRAGONS_ROOST_CLONE    0x3A // previously Unused Flag
-#define FLAG_UNUSED_0x03B    0x3B // Unused Flag
-#define FLAG_UNUSED_0x03C    0x3C // Unused Flag
+#define FLAG_FORTREE_CLIFFS_DEN_B_MON    0x3B //  Flag
+#define FLAG_FORTREE_CLIFFS_DEN_A_MON    0x3C //  Flag
 #define FLAG_UNUSED_0x03D    0x3D // Unused Flag
 #define FLAG_UNUSED_0x03E    0x3E // Unused Flag
 #define FLAG_UNUSED_0x03F    0x3F // Unused Flag
@@ -1248,7 +1248,7 @@
 #define FLAG_ITEM_DRAGONS_ROOST_XXIII                                          0x4AA // Unused Flag
 #define FLAG_ITEM_DRAGONS_ROOST_XXIV                                           0x4AB // Unused Flag
 #define FLAG_ITEM_DRAGONS_ROOST_XXV                                           0x4AC // Unused Flag
-#define FLAG_UNUSED_0x4AD                                           0x4AD // Unused Flag
+#define FLAG_ITEM_FORTREE_CLIFFS_1                                           0x4AD // Unused Flag
 #define FLAG_UNUSED_0x4AE                                           0x4AE // Unused Flag
 #define FLAG_UNUSED_0x4AF                                           0x4AF // Unused Flag
 #define FLAG_UNUSED_0x4B0                                           0x4B0 // Unused Flag

@@ -232,6 +232,28 @@ void ResetWildOverworldMons(void)
             FlagClear(FLAG_DRAGONS_ROOST_TYRANTRUM);
         }
     }
+    if (FlagGet(FLAG_FORTREE_CLIFFS_DEN_A_MON))
+    {
+        if (Random() % 2)
+        {
+            FlagClear(FLAG_FORTREE_CLIFFS_DEN_A_MON);
+            if (Random() % 5 == 0)
+            {
+                VarSet(VAR_FORTREE_CLIFFS_DEN_A_MON, SPECIES_SNORLAX);
+            }
+        }
+    }
+    if (FlagGet(FLAG_FORTREE_CLIFFS_DEN_B_MON))
+    {
+        if (Random() % 2)
+        {
+            FlagClear(FLAG_FORTREE_CLIFFS_DEN_B_MON);
+            if (Random() % 5 == 0)
+            {
+                VarSet(VAR_FORTREE_CLIFFS_DEN_B_MON, SPECIES_SNORLAX);
+            }
+        }
+    }
 }
 
 void RestockBerryMasterCellar(void)

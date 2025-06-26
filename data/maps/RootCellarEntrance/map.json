@@ -18,7 +18,7 @@
     {
       "warp_id": "WARP_ID_ROOT_CELLAR_ENTRANCE_LADDER",
       "x": 2,
-      "y": 1,
+      "y": 2,
       "elevation": 0,
       "dest_map": "MAP_ROOT_CELLAR",
       "dest_warp_id": "0"
@@ -26,7 +26,7 @@
     {
       "warp_id": "WARP_ID_ROOT_CELLAR_ENTRANCE",
       "x": 2,
-      "y": 3,
+      "y": 4,
       "elevation": 0,
       "dest_map": "MAP_FORTREE_CLIFFS",
       "dest_warp_id": "WARP_ID_FORTREE_CLIFFS_ROOT_CELLAR"

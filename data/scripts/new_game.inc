@@ -284,4 +284,6 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL
 	setflag FLAG_DRAGONS_ROOST_METEORITE
 	call EventScript_ResetAllBerries
+	setflag FLAG_FORTREE_CLIFFS_DEN_A_MON
+	setflag FLAG_FORTREE_CLIFFS_DEN_B_MON
 	end

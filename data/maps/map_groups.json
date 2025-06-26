@@ -439,7 +439,10 @@
     "GraniteCave_ArticunosRoom",
     "DragonsRoost_House1",
     "FortreeCliffs",
-    "VerdantPlateau"
+    "VerdantPlateau",
+    "Underwater_GraniteCove",
+    "FortreeCliffsDenA",
+    "FortreeCliffsDenB"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",

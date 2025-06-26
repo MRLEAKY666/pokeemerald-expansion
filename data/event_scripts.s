@@ -1267,3 +1267,9 @@ Common_EventScript_ExitSafeArea::
 	.include "data/maps/Underwater_Route122/scripts.inc"
 
 	.include "data/maps/Route123_BerryMastersHouse_RootCellarOpen/scripts.inc"
+
+	.include "data/maps/Underwater_GraniteCove/scripts.inc"
+
+	.include "data/maps/FortreeCliffsDenA/scripts.inc"
+
+	.include "data/maps/FortreeCliffsDenB/scripts.inc"
