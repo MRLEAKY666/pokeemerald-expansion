@@ -1542,3 +1542,11 @@ bool8 MetatileBehavior_IsRockStairs(u8 metatileBehavior)
     else
         return FALSE;
 }
+
+bool8 MetatileBehavior_IsBoulderHole(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_BOULDER_HOLE)
+        return TRUE;
+    else
+        return FALSE;
+}

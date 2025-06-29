@@ -34,6 +34,8 @@
 #include "constants/songs.h"
 #include "constants/trainer_types.h"
 
+#include "constants/metatile_labels.h"
+
 #define NUM_FORCED_MOVEMENTS 18
 #define NUM_ACRO_BIKE_COLLISIONS 5
 
@@ -953,10 +955,27 @@ static bool8 TryPushBoulder(s16 x, s16 y, u8 direction)
             x = gObjectEvents[objectEventId].currentCoords.x;
             y = gObjectEvents[objectEventId].currentCoords.y;
             MoveCoords(direction, &x, &y);
-            if (GetCollisionAtCoords(&gObjectEvents[objectEventId], x, y, direction) == COLLISION_NONE
+            if ((GetCollisionAtCoords(&gObjectEvents[objectEventId], x, y, direction) == COLLISION_NONE
+             || MetatileBehavior_IsBoulderHole(MapGridGetMetatileBehaviorAt(x, y)) == TRUE)
              && MetatileBehavior_IsNonAnimDoor(MapGridGetMetatileBehaviorAt(x, y)) == FALSE)
             {
                 StartStrengthAnim(objectEventId, direction);
+                if (MetatileBehavior_IsBoulderHole(MapGridGetMetatileBehaviorAt(x, y)))
+                {
+                    MapGridSetMetatileIdAt(x, y, METATILE_Cave_BoulderHole_Filled);
+                    CurrentMapDrawMetatileAt(x, y);
+
+                    //gObjectEvents[objectEventId].invisible = TRUE;
+                    gObjectEvents[objectEventId].active = FALSE;
+                    FlagSet(GetObjectEventFlagIdByLocalIdAndMap(gObjectEvents[objectEventId].localId, 
+                                                                 gSaveBlock1Ptr->location.mapNum, 
+                                                                 gSaveBlock1Ptr->location.mapGroup));
+
+                    RemoveObjectEventByLocalIdAndMap(gObjectEvents[objectEventId].localId, 
+                                                                 gSaveBlock1Ptr->location.mapNum, 
+                                                                 gSaveBlock1Ptr->location.mapGroup);
+
+                }
                 return TRUE;
             }
         }

@@ -7,7 +7,8 @@ FortreeCliffsZapdosCave_MapScripts::
 
 FortreeCliffsZapdosCave_OnResume:
 	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, FortreeCliffsZapdosCave_EventScript_TryRemoveZapdos
-    end
+	@ setstepcallback STEP_CB_BOULDER_HOLE
+	end
 
 FortreeCliffsZapdosCave_OnTransition:
 	call_if_set FLAG_CAUGHT_ZAPDOS, FortreeCliffsZapdosCave_EventScript_HideZapdos

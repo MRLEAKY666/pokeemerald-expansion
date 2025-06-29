@@ -21,6 +21,10 @@
 #include "constants/songs.h"
 #include "constants/metatile_labels.h"
 
+/* #include "constants/event_objects.h"
+#include "constants/metatile_behaviors.h"
+#include "event_object_movement.h" */
+
 /*  This file handles some persistent tasks that run in the overworld.
  *  - Task_RunTimeBasedEvents: Periodically updates local time and RTC events. Also triggers ambient cries.
  *  - Task_MuddySlope: Handles the metatile animation when the player steps on muddy slopes.
@@ -50,6 +54,7 @@ struct PacifidlogMetatileOffsets
 
 static void DummyPerStepCallback(u8);
 static void AshGrassPerStepCallback(u8);
+//static void BoulderHolesPerStepCallback(u8);
 static void FortreeBridgePerStepCallback(u8);
 static void PacifidlogBridgePerStepCallback(u8);
 static void SootopolisGymIcePerStepCallback(u8);
@@ -65,7 +70,8 @@ static const TaskFunc sPerStepCallbacks[] =
     [STEP_CB_SOOTOPOLIS_ICE]    = SootopolisGymIcePerStepCallback,
     [STEP_CB_TRUCK]             = EndTruckSequence,
     [STEP_CB_SECRET_BASE]       = SecretBasePerStepCallback,
-    [STEP_CB_CRACKED_FLOOR]     = CrackedFloorPerStepCallback
+    [STEP_CB_CRACKED_FLOOR]     = CrackedFloorPerStepCallback/* ,
+    [STEP_CB_BOULDER_HOLE]      = BoulderHolesPerStepCallback */
 };
 
 // Each array has 4 pairs of data, each pair representing two metatiles of a log and their relative position.
@@ -820,6 +826,49 @@ static void AshGrassPerStepCallback(u8 taskId)
 
 #undef tPrevX
 #undef tPrevY
+
+/* #define tPrevX data[1]
+#define tPrevY data[2]
+
+static void ClearObjectEvent(struct ObjectEvent *objectEvent)
+{
+    *objectEvent = (struct ObjectEvent){};
+    objectEvent->localId = LOCALID_PLAYER;
+    objectEvent->mapNum = MAP_NUM(MAP_UNDEFINED);
+    objectEvent->mapGroup = MAP_GROUP(MAP_UNDEFINED);
+    objectEvent->movementActionId = MOVEMENT_ACTION_NONE;
+}
+
+static void BoulderHolesPerStepCallback(u8 taskId)
+{
+    s16 x, y;
+
+    u8 i; 
+
+    for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
+    {
+        if (gObjectEvents[i].graphicsId == OBJ_EVENT_GFX_PUSHABLE_BOULDER)
+        {
+            u16 tileBehavior;
+            x = gObjectEvents[i].currentCoords.x;
+            y = gObjectEvents[i].currentCoords.y;
+            tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
+
+            if (MetatileBehavior_IsBoulderHole(tileBehavior))
+            {
+                MapGridSetMetatileIdAt(x, y, METATILE_Cave_BoulderHole_Filled);
+                CurrentMapDrawMetatileAt(x, y);
+
+                RemoveObjectEventByLocalIdAndMap(gObjectEvents[i].localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
+                ClearObjectEvent(&gObjectEvents[i]);
+            }
+
+        }
+    }
+}
+
+#undef tPrevX
+#undef tPrevY */
 
 // This function uses the constants for gTileset_Cave's metatile labels, but other tilesets with
 // the CrackedFloorPerStepCallback callback use the same metatile numbers for the cracked floor
