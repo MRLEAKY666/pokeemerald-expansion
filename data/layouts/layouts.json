@@ -4580,6 +4580,26 @@
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/FortreeCliffsZapdosCave/border.bin",
       "blockdata_filepath": "data/layouts/FortreeCliffsZapdosCave/map.bin"
+    },
+    {
+      "id": "LAYOUT_FLOODED_CAVERN",
+      "name": "FloodedCavern_Layout",
+      "width": 57,
+      "height": 84,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_MeteorFalls",
+      "border_filepath": "data/layouts/FloodedCavern/border.bin",
+      "blockdata_filepath": "data/layouts/FloodedCavern/map.bin"
+    },
+    {
+      "id": "LAYOUT_FORTREE_CLIFFS_ZAPDOS_CAVE_FLOODED",
+      "name": "FortreeCliffsZapdosCave_Flooded_Layout",
+      "width": 32,
+      "height": 31,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/FortreeCliffsZapdosCave_Flooded/border.bin",
+      "blockdata_filepath": "data/layouts/FortreeCliffsZapdosCave_Flooded/map.bin"
     }
   ]
 }

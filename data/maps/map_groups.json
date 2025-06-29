@@ -436,14 +436,16 @@
     "DragonsRoost",
     "GraniteCove",
     "GraniteCave_LowTide",
+    "Underwater_GraniteCove",
     "GraniteCave_ArticunosRoom",
     "DragonsRoost_House1",
-    "FortreeCliffs",
     "VerdantPlateau",
-    "Underwater_GraniteCove",
+    "FortreeCliffs",
     "FortreeCliffsDenA",
     "FortreeCliffsDenB",
-    "FortreeCliffsZapdosCave"
+    "FortreeCliffsZapdosCave",
+    "FortreeCliffsZapdosCave_Flooded",
+    "FloodedCavern"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",

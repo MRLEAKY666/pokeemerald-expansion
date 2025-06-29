@@ -1,0 +1,17 @@
+raw `
+
+FloodedCavern_MapScripts::
+    map_script MAP_SCRIPT_ON_TRANSITION, FloodedCavern_OnTransition
+    .byte 0
+
+FloodedCavern_OnTransition::
+	getplayerxy VAR_TEMP_E, VAR_TEMP_F
+	call_if_ge VAR_TEMP_F, 14, FloodedCavern_EventScript_SetFog
+	return
+
+FloodedCavern_EventScript_SetFog::
+	setweather WEATHER_FOG_HORIZONTAL
+	doweather
+	return
+
+`

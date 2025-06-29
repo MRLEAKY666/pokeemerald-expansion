@@ -19,6 +19,7 @@ void InitTilesetAnim_Lilycove(void);
 void InitTilesetAnim_Mossdeep(void);
 void InitTilesetAnim_EverGrande(void);
 void InitTilesetAnim_Pacifidlog(void);
+void InitTilesetAnim_MeteorFalls(void);
 void InitTilesetAnim_Sootopolis(void);
 void InitTilesetAnim_BattleFrontierOutsideWest(void);
 void InitTilesetAnim_BattleFrontierOutsideEast(void);

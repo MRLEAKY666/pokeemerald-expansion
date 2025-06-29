@@ -521,6 +521,54 @@
       "elevation": 0,
       "dest_map": "MAP_FORTREE_CLIFFS_ZAPDOS_CAVE",
       "dest_warp_id": "WARP_ID_FORTREE_CLIFFS_ZAPDOS_CAVE"
+    },
+    {
+      "warp_id": "WARP_ID_FORTREE_CLIFFS_CAVERN_EXIT_A",
+      "x": 15,
+      "y": 89,
+      "elevation": 0,
+      "dest_map": "MAP_FLOODED_CAVERN",
+      "dest_warp_id": "WARP_ID_FLOODED_CAVERN_SOUTH_EXIT_A"
+    },
+    {
+      "warp_id": "WARP_ID_FORTREE_CLIFFS_CAVERN_EXIT_B",
+      "x": 16,
+      "y": 89,
+      "elevation": 0,
+      "dest_map": "MAP_FLOODED_CAVERN",
+      "dest_warp_id": "WARP_ID_FLOODED_CAVERN_SOUTH_EXIT_B"
+    },
+    {
+      "warp_id": "WARP_ID_FORTREE_CLIFFS_CAVERN_EXIT_C",
+      "x": 17,
+      "y": 89,
+      "elevation": 0,
+      "dest_map": "MAP_FLOODED_CAVERN",
+      "dest_warp_id": "WARP_ID_FLOODED_CAVERN_SOUTH_EXIT_C"
+    },
+    {
+      "warp_id": "WARP_ID_FORTREE_CLIFFS_CAVERN_EXIT_D",
+      "x": 33,
+      "y": 89,
+      "elevation": 0,
+      "dest_map": "MAP_FLOODED_CAVERN",
+      "dest_warp_id": "WARP_ID_FLOODED_CAVERN_SOUTH_EXIT_D"
+    },
+    {
+      "warp_id": "WARP_ID_FORTREE_CLIFFS_CAVERN_EXIT_E",
+      "x": 34,
+      "y": 89,
+      "elevation": 0,
+      "dest_map": "MAP_FLOODED_CAVERN",
+      "dest_warp_id": "WARP_ID_FLOODED_CAVERN_SOUTH_EXIT_E"
+    },
+    {
+      "warp_id": "WARP_ID_FORTREE_CLIFFS_CAVERN_EXIT_F",
+      "x": 35,
+      "y": 89,
+      "elevation": 0,
+      "dest_map": "MAP_FLOODED_CAVERN",
+      "dest_warp_id": "WARP_ID_FLOODED_CAVERN_SOUTH_EXIT_F"
     }
   ],
   "coord_events": [

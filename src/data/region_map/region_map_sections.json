@@ -1758,6 +1758,14 @@
       "y": 14,
       "width": 1,
       "height": 1
+    },
+    {
+      "id": "MAPSEC_FLOODED_CAVERN",
+      "name": "FLOODED CAVERN",
+      "x": 12,
+      "y": 2,
+      "width": 1,
+      "height": 3
     }
   ]
 }

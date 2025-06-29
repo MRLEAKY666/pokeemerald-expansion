@@ -1275,3 +1275,7 @@ Common_EventScript_ExitSafeArea::
 	.include "data/maps/FortreeCliffsDenB/scripts.inc"
 
 	.include "data/maps/FortreeCliffsZapdosCave/scripts.inc"
+
+	.include "data/maps/FloodedCavern/scripts.inc"
+
+	.include "data/maps/FortreeCliffsZapdosCave_Flooded/scripts.inc"

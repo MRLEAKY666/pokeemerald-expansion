@@ -273,7 +273,7 @@ const struct Tileset gTileset_MeteorFalls =
     .palettes = gTilesetPalettes_MeteorFalls,
     .metatiles = gMetatiles_MeteorFalls,
     .metatileAttributes = gMetatileAttributes_MeteorFalls,
-    .callback = NULL,
+    .callback = InitTilesetAnim_MeteorFalls,
 };
 
 const struct Tileset gTileset_OceanicMuseum =

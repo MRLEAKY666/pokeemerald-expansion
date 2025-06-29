@@ -32,6 +32,7 @@ static void TilesetAnim_Mauville(u16);
 static void TilesetAnim_Lavaridge(u16);
 static void TilesetAnim_EverGrande(u16);
 static void TilesetAnim_Pacifidlog(u16);
+static void TilesetAnim_MeteorFalls(u16);
 static void TilesetAnim_Sootopolis(u16);
 static void TilesetAnim_BattleFrontierOutsideWest(u16);
 static void TilesetAnim_BattleFrontierOutsideEast(u16);
@@ -64,6 +65,7 @@ static void QueueAnimTiles_Lavaridge_Lava(u16);
 static void QueueAnimTiles_EverGrande_Flowers(u16, u8);
 static void QueueAnimTiles_Pacifidlog_LogBridges(u8);
 static void QueueAnimTiles_Pacifidlog_WaterCurrents(u8);
+static void QueueAnimTiles_MeteorFalls_WaterCurrents(u8);
 static void QueueAnimTiles_Sootopolis_StormyWater(u16);
 static void QueueAnimTiles_Underwater_Seaweed(u8);
 static void QueueAnimTiles_Cave_Lava(u16);
@@ -202,6 +204,26 @@ const u16 *const gTilesetAnims_Pacifidlog_WaterCurrents[] = {
     gTilesetAnims_Pacifidlog_WaterCurrents_Frame5,
     gTilesetAnims_Pacifidlog_WaterCurrents_Frame6,
     gTilesetAnims_Pacifidlog_WaterCurrents_Frame7
+};
+
+const u16 gTilesetAnims_MeteorFalls_WaterCurrents_Frame0[] = INCBIN_U16("data/tilesets/secondary/pacifidlog/anim/water_currents/0.4bpp");
+const u16 gTilesetAnims_MeteorFalls_WaterCurrents_Frame1[] = INCBIN_U16("data/tilesets/secondary/pacifidlog/anim/water_currents/1.4bpp");
+const u16 gTilesetAnims_MeteorFalls_WaterCurrents_Frame2[] = INCBIN_U16("data/tilesets/secondary/pacifidlog/anim/water_currents/2.4bpp");
+const u16 gTilesetAnims_MeteorFalls_WaterCurrents_Frame3[] = INCBIN_U16("data/tilesets/secondary/pacifidlog/anim/water_currents/3.4bpp");
+const u16 gTilesetAnims_MeteorFalls_WaterCurrents_Frame4[] = INCBIN_U16("data/tilesets/secondary/pacifidlog/anim/water_currents/4.4bpp");
+const u16 gTilesetAnims_MeteorFalls_WaterCurrents_Frame5[] = INCBIN_U16("data/tilesets/secondary/pacifidlog/anim/water_currents/5.4bpp");
+const u16 gTilesetAnims_MeteorFalls_WaterCurrents_Frame6[] = INCBIN_U16("data/tilesets/secondary/pacifidlog/anim/water_currents/6.4bpp");
+const u16 gTilesetAnims_MeteorFalls_WaterCurrents_Frame7[] = INCBIN_U16("data/tilesets/secondary/pacifidlog/anim/water_currents/7.4bpp");
+
+const u16 *const gTilesetAnims_MeteorFalls_WaterCurrents[] = {
+    gTilesetAnims_MeteorFalls_WaterCurrents_Frame0,
+    gTilesetAnims_MeteorFalls_WaterCurrents_Frame1,
+    gTilesetAnims_MeteorFalls_WaterCurrents_Frame2,
+    gTilesetAnims_MeteorFalls_WaterCurrents_Frame3,
+    gTilesetAnims_MeteorFalls_WaterCurrents_Frame4,
+    gTilesetAnims_MeteorFalls_WaterCurrents_Frame5,
+    gTilesetAnims_MeteorFalls_WaterCurrents_Frame6,
+    gTilesetAnims_MeteorFalls_WaterCurrents_Frame7
 };
 
 const u16 gTilesetAnims_Mauville_Flower1_Frame0[] = INCBIN_U16("data/tilesets/secondary/mauville/anim/flower_1/0.4bpp");
@@ -757,6 +779,13 @@ void InitTilesetAnim_Pacifidlog(void)
     sSecondaryTilesetAnimCallback = TilesetAnim_Pacifidlog;
 }
 
+void InitTilesetAnim_MeteorFalls(void)
+{
+    sSecondaryTilesetAnimCounter = sPrimaryTilesetAnimCounter;
+    sSecondaryTilesetAnimCounterMax = sPrimaryTilesetAnimCounterMax;
+    sSecondaryTilesetAnimCallback = TilesetAnim_MeteorFalls;
+}
+
 void InitTilesetAnim_Sootopolis(void)
 {
     sSecondaryTilesetAnimCounter = 0;
@@ -925,6 +954,12 @@ static void TilesetAnim_Pacifidlog(u16 timer)
         QueueAnimTiles_Pacifidlog_WaterCurrents(timer / 16);
 }
 
+static void TilesetAnim_MeteorFalls(u16 timer)
+{
+    if (timer % 16 == 1)
+        QueueAnimTiles_MeteorFalls_WaterCurrents(timer / 16);
+}
+
 static void TilesetAnim_Sootopolis(u16 timer)
 {
     if (timer % 16 == 0)
@@ -986,6 +1021,12 @@ static void QueueAnimTiles_Pacifidlog_WaterCurrents(u8 timer)
 {
     u8 i = timer % ARRAY_COUNT(gTilesetAnims_Pacifidlog_WaterCurrents);
     AppendTilesetAnimToBuffer(gTilesetAnims_Pacifidlog_WaterCurrents[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(NUM_TILES_IN_PRIMARY + 496)), 8 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_MeteorFalls_WaterCurrents(u8 timer)
+{
+    u8 i = timer % ARRAY_COUNT(gTilesetAnims_MeteorFalls_WaterCurrents);
+    AppendTilesetAnimToBuffer(gTilesetAnims_MeteorFalls_WaterCurrents[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(NUM_TILES_IN_PRIMARY + 496)), 8 * TILE_SIZE_4BPP);
 }
 
 static void QueueAnimTiles_Mauville_Flowers(u16 timer_div, u8 timer_mod)
