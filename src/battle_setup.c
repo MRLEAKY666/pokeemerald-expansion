@@ -534,7 +534,7 @@ void StartSootopolisLegendaryBattle(void)
 {
     LockPlayerFieldControls();
     gMain.savedCallback = CB2_EndScriptedWildBattle;
-    gBattleTypeFlags = BATTLE_TYPE_DOUBLE;
+    gBattleTypeFlags = (BATTLE_TYPE_DOUBLE | BATTLE_TYPE_LEGENDARY);
 
     CreateBattleStartTask(B_TRANSITION_RAYQUAZA, MUS_VS_KYOGRE_GROUDON);
 
