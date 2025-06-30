@@ -200,9 +200,9 @@ Debug_EventScript_Script_5::
 	setflag FLAG_TEMP_NO_CATCHING
 	setflag FLAG_TEMP_NO_RUNNING
 	settotemboost 0, atk=2,def=2,speed=2,spatk=2,spdef=2
-	createmon 0, 0, SPECIES_RAYQUAZA, 70, move1=MOVE_FLY, move2=MOVE_REST, move3=MOVE_DRAGON_DANCE, move4=MOVE_EXTREMESPEED
-	createmon 1, 0, SPECIES_GROUDON, 70
-	createmon 1, 1, SPECIES_KYOGRE, 70
+	createmon 0, 2, SPECIES_RAYQUAZA, 70, move1=MOVE_FLY, move2=MOVE_REST, move3=MOVE_DRAGON_DANCE, move4=MOVE_EXTREMESPEED
+	createmon 1, 1, SPECIES_GROUDON, 70
+	createmon 1, 3, SPECIES_KYOGRE, 70
 	@ setwilddoubleflag
 	special StartSootopolisLegendaryBattle
 	waitstate
