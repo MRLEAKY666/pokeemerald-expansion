@@ -500,6 +500,11 @@
 	formatwarp \map, \a, \b, \c
 	.endm
 
+	@ 
+	.macro warpinplace a, b
+	.byte SCR_OP_WARPINPLACE
+	.endm
+
 	@ Sets the destination that diving or emerging from a dive will take the player to. Note that this only
 	@ applies if the current map does not have a dive/emerge connection. If it does have a corresponding
 	@ map connection then that map and the player's current coordinates will be used as the destination instead.

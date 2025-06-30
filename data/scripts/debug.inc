@@ -184,17 +184,12 @@ Debug_EventScript_Script_3::
 	end
 
 Debug_EventScript_Script_4::
-@	SET VAR_TEMP_D TO CURRENT MAP	
-@	getplayerxy VAR_TEMP_E, VAR_TEMP_F
-@	warp VAR_TEMP_D, VAR_TEMP_E, VAR_TEMP_F
-	msgbox DebugScript_Text_ReloadMapDoesntWork, MSGBOX_DEFAULT
+	warpinplace 
 	release
 	end
 
-DebugScript_Text_ReloadMapDoesntWork:
-	.string "This one doesn't work yet :-/$"
-
 Debug_EventScript_Script_5::
+	lock
 	special SavePlayerParty
 	special ZeroPlayerPartyMons
 	setflag FLAG_TEMP_NO_CATCHING

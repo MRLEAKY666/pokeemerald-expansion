@@ -977,6 +977,22 @@ bool8 ScrCmd_warp(struct ScriptContext *ctx)
     return TRUE;
 }
 
+bool8 ScrCmd_warpinplace(struct ScriptContext *ctx)
+{
+    u8 mapGroup = gSaveBlock1Ptr->location.mapGroup;
+    u8 mapNum = gSaveBlock1Ptr->location.mapNum;
+    u8 warpId = WARP_ID_NONE;
+    u16 x = gSaveBlock1Ptr->pos.x;
+    u16 y = gSaveBlock1Ptr->pos.y;
+
+    Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE | SCREFF_HARDWARE);
+
+    SetWarpDestination(mapGroup, mapNum, warpId, x, y);
+    DoWarp();
+    ResetInitialPlayerAvatarState();
+    return TRUE;
+}
+
 bool8 ScrCmd_warpsilent(struct ScriptContext *ctx)
 {
     u8 mapGroup = ScriptReadByte(ctx);
