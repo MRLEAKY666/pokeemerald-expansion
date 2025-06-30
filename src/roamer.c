@@ -283,8 +283,6 @@ void CreateRoamerMonInstance(u32 roamerIndex)
     struct Pokemon *mon = &gEnemyParty[0];
     ZeroEnemyPartyMons();
     CreateMonWithIVsPersonality(mon, ROAMER(roamerIndex)->species, ROAMER(roamerIndex)->level, ROAMER(roamerIndex)->ivs, ROAMER(roamerIndex)->personality);
-    // The roamer's status field is u16, but SetMonData expects status to be u32, so will set the roamer's status
-    // using the status field and the following 3 bytes (cool, beauty, and cute).
     SetMonData(mon, MON_DATA_STATUS, &status);
     if (ROAMER(roamerIndex)->hp == 0)
     {
