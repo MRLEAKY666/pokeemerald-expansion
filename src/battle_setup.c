@@ -530,6 +530,20 @@ void StartGroudonKyogreBattle(void)
     TryUpdateGymLeaderRematchFromWild();
 }
 
+void StartSootopolisLegendaryBattle(void)
+{
+    LockPlayerFieldControls();
+    gMain.savedCallback = CB2_EndScriptedWildBattle;
+    gBattleTypeFlags = BATTLE_TYPE_DOUBLE;
+
+    CreateBattleStartTask(B_TRANSITION_RAYQUAZA, MUS_VS_KYOGRE_GROUDON);
+
+    /* IncrementGameStat(GAME_STAT_TOTAL_BATTLES);
+    IncrementGameStat(GAME_STAT_WILD_BATTLES);
+    IncrementDailyWildBattles();
+    TryUpdateGymLeaderRematchFromWild(); */
+}
+
 void StartRegiBattle(void)
 {
     u8 transitionId;

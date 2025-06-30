@@ -195,6 +195,19 @@ DebugScript_Text_ReloadMapDoesntWork:
 	.string "This one doesn't work yet :-/$"
 
 Debug_EventScript_Script_5::
+	special SavePlayerParty
+	special ZeroPlayerPartyMons
+	setflag FLAG_TEMP_NO_CATCHING
+	setflag FLAG_TEMP_NO_RUNNING
+	@ setflag FLAG_TEMP_NO_BAG_USE
+	settotemboost 0, atk=2,def=2,speed=2,spatk=2,spdef=2
+	createmon 0, 0, SPECIES_RAYQUAZA, 70, move1=MOVE_FLY, move2=MOVE_REST, move3=MOVE_DRAGON_DANCE, move4=MOVE_EXTREMESPEED
+	createmon 1, 0, SPECIES_GROUDON, 70
+	createmon 1, 1, SPECIES_KYOGRE, 70
+	setwilddoubleflag
+	dowildbattle
+	@ special StartSootopolisLegendaryBattle
+	special LoadPlayerParty
 	release
 	end
 

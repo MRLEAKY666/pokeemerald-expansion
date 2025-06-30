@@ -59,6 +59,7 @@ void BattleSetup_StartScriptedDoubleWildBattle(void);
 void BattleSetup_StartLatiBattle(void);
 void BattleSetup_StartLegendaryBattle(void);
 void StartGroudonKyogreBattle(void);
+void StartSootopolisLegendaryBattle(void);
 void StartRegiBattle(void);
 enum BattleEnvironment BattleSetup_GetEnvironmentId(void);
 u8 GetWildBattleTransition(void);

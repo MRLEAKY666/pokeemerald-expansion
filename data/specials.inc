@@ -567,3 +567,5 @@ gSpecials::
 	def_special ActivateRoamer
 	def_special EnterCode
 	def_special GetCodeFeedback
+	def_special ZeroPlayerPartyMons
+	def_special StartSootopolisLegendaryBattle
