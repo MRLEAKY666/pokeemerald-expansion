@@ -962,7 +962,7 @@ static bool8 TryPushBoulder(s16 x, s16 y, u8 direction)
                 StartStrengthAnim(objectEventId, direction);
                 if (MetatileBehavior_IsBoulderHole(MapGridGetMetatileBehaviorAt(x, y)))
                 {
-                    MapGridSetMetatileIdAt(x, y, METATILE_Cave_BoulderHole_Filled);
+                    /* MapGridSetMetatileIdAt(x, y, METATILE_Cave_BoulderHole_Filled);
                     CurrentMapDrawMetatileAt(x, y);
 
                     //gObjectEvents[objectEventId].invisible = TRUE;
@@ -973,7 +973,9 @@ static bool8 TryPushBoulder(s16 x, s16 y, u8 direction)
 
                     RemoveObjectEventByLocalIdAndMap(gObjectEvents[objectEventId].localId, 
                                                                  gSaveBlock1Ptr->location.mapNum, 
-                                                                 gSaveBlock1Ptr->location.mapGroup);
+                                                                 gSaveBlock1Ptr->location.mapGroup); */
+                    VarSet(VAR_TEMP_CHECK_BOULDER_HOLE, 1);
+                    VarSet(VAR_BOULDER_TO_BE_HOLED, gObjectEvents[objectEventId].localId);
 
                 }
                 return TRUE;
