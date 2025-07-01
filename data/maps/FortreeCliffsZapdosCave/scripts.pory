@@ -54,12 +54,14 @@ FortreeCliffsZapdosCave_EventScript_TryShowZapdos::
 	return
 
 FortreeCliffsZapdosCave_EventScript_Zapdos::
-	lock
+	@ lock
 	faceplayer
+	applymovement LOCALID_ZAPDOS_CAVE_ZAPDOS, Common_Movement_WalkInPlaceFasterDown
 	waitse
 	playmoncry SPECIES_ZAPDOS, CRY_MODE_ENCOUNTER
-	delay 40
+	waitmovement LOCALID_ZAPDOS_CAVE_ZAPDOS
 	waitmoncry
+	delay 40
 	setwildbattle SPECIES_ZAPDOS, 50
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special StartRegiBattle
