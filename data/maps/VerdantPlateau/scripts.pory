@@ -73,6 +73,7 @@ VerdantPlateau_EventScript_SwitchToDaytime::
 	addvar VAR_TIME_OF_DAY, 1
 	call VerdantPlateau_EventScript_SetSun
 	@ clearflag FLAG_FORCE_LOAD_OFFSCREEN_OBJEV
+	releaseall
 	end
 
 VerdantPlateau_EventScript_SwitchToNighttime::
@@ -84,6 +85,7 @@ VerdantPlateau_EventScript_SwitchToNighttime::
 	addvar VAR_TIME_OF_DAY, 1
 	call VerdantPlateau_EventScript_ClearSun
 	@ clearflag FLAG_FORCE_LOAD_OFFSCREEN_OBJEV
+	releaseall
 	end
 
 VerdantPlateau_EventScript_TeamLeader::

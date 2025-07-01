@@ -978,6 +978,9 @@ static bool8 TryPushBoulder(s16 x, s16 y, u8 direction)
              && MetatileBehavior_IsNonAnimDoor(MapGridGetMetatileBehaviorAt(x, y)) == FALSE)
             {
                 StartStrengthAnim(objectEventId, direction);
+            
+                //SetObjEventTemplateCoords(gObjectEvents[objectEventId].localId, x, y);
+
                 if (MetatileBehavior_IsBoulderHole(MapGridGetMetatileBehaviorAt(x, y)))
                 {
                     /* MapGridSetMetatileIdAt(x, y, METATILE_Cave_BoulderHole_Filled);

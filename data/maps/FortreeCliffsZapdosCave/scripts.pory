@@ -14,7 +14,7 @@ FortreeCliffsZapdosCave_EventScript_SinkBoulder::
     waitmovement VAR_BOULDER_TO_BE_HOLED
     getobjectxy VAR_BOULDER_TO_BE_HOLED, CURRENT_POSITION, VAR_TEMP_E, VAR_TEMP_F
     setmetatile VAR_TEMP_E, VAR_TEMP_F, METATILE_Cave_BoulderHole_Filled, FALSE
-    delay 6
+    delay 7
     applymovement VAR_BOULDER_TO_BE_HOLED, FortreeCliffsZapdosCave_Movement_SinkBoulder
 	setvar VAR_0x8004, 2  @ vertical pan
 	setvar VAR_0x8005, 0  @ horizontal pan
@@ -26,6 +26,7 @@ FortreeCliffsZapdosCave_EventScript_SinkBoulder::
     waitse
     removeobject VAR_BOULDER_TO_BE_HOLED
     setvar VAR_TEMP_CHECK_BOULDER_HOLE, 0
+	releaseall
     end
 
 FortreeCliffsZapdosCave_Movement_SinkBoulder::
