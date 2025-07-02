@@ -599,7 +599,7 @@ Gender: Male
 Music: Aqua
 Items: Super Potion / Super Potion
 Double Battle: No
-AI: Basic Trainer
+AI: Basic Trainer / Ace Pokemon
 
 Mightyena
 Level: 43
@@ -613,9 +613,14 @@ Crobat
 Level: 43
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
-Sharpedo @ Sharpedonite
+Sharpedo
+Ability: Speed Boost
 Level: 45
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+IVs: 18 HP / 31 Atk / 18 Def / 31 SpA / 18 SpD / 31 Spe
+- Protect
+- Crunch
+- Surf
+- Skull Bash
 
 === TRAINER_LEAH ===
 Name: LEAH
@@ -14960,7 +14965,7 @@ Crobat
 Level: 45
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
-Camerupt @ Cameruptite  
+Camerupt
 Ability: Solid Rock  
 Level: 46  
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe  
