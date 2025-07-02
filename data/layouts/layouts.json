@@ -4600,6 +4600,16 @@
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/FortreeCliffsZapdosCave_Flooded/border.bin",
       "blockdata_filepath": "data/layouts/FortreeCliffsZapdosCave_Flooded/map.bin"
+    },
+    {
+      "id": "LAYOUT_MAUVILLE_CITY_GAME_CORNER_OG",
+      "name": "MauvilleCity_GameCorner_OG_Layout",
+      "width": 22,
+      "height": 11,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_MauvilleGameCorner_OG",
+      "border_filepath": "data/layouts/MauvilleCity_GameCorner_OG/border.bin",
+      "blockdata_filepath": "data/layouts/MauvilleCity_GameCorner_OG/map.bin"
     }
   ]
 }
