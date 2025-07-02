@@ -551,6 +551,17 @@ const struct Tileset gTileset_MauvilleGameCorner =
     .callback = NULL,
 };
 
+const struct Tileset gTileset_MauvilleGameCorner_OG =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_MauvilleGameCorner,
+    .palettes = gTilesetPalettes_MauvilleGameCorner,
+    .metatiles = gMetatiles_MauvilleGameCorner,
+    .metatileAttributes = gMetatileAttributes_MauvilleGameCorner,
+    .callback = NULL,
+};
+
 const struct Tileset gTileset_RustboroGym =
 {
     .isCompressed = TRUE,
