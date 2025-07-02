@@ -534,7 +534,7 @@ void StartSootopolisLegendaryBattle(void)
 {
     LockPlayerFieldControls();
     gMain.savedCallback = CB2_EndScriptedWildBattle;
-    gBattleTypeFlags = (BATTLE_TYPE_DOUBLE | BATTLE_TYPE_LEGENDARY);
+    gBattleTypeFlags = (WILD_DOUBLE_BATTLE | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_LEGENDARY);
 
     CreateBattleStartTask(B_TRANSITION_RAYQUAZA, MUS_VS_KYOGRE_GROUDON);
 
@@ -639,6 +639,9 @@ enum BattleEnvironment BattleSetup_GetEnvironmentId(void)
 {
     u16 tileBehavior;
     s16 x, y;
+
+    if (FlagGet(FLAG_SOOTOPLIS_BATTLE_ACTIVE)) // force water for when flown to sootopolis for rayquaza battle
+        return BATTLE_ENVIRONMENT_WATER;
 
     if (I_FISHING_ENVIRONMENT >= GEN_4 && gIsFishingEncounter)
         GetXYCoordsOneStepInFrontOfPlayer(&x, &y);

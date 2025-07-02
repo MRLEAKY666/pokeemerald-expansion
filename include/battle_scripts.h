@@ -540,6 +540,8 @@ extern const u8 BattleScript_AlreadyParalyzed[];
 extern const u8 BattleScript_AlreadyBurned[];
 extern const u8 BattleScript_PrintAbilityMadeIneffective[];
 
+extern const u8 BattleScript_RayquazaBattleLost[];                 // rayquaza battle
+
 // zmoves
 extern const u8 BattleScript_ZMoveActivateDamaging[];
 extern const u8 BattleScript_ZMoveActivateStatus[];
@@ -874,5 +876,9 @@ extern const u8 BattleScript_FickleBeamDoubled[];
 extern const u8 BattleScript_QuestionForfeitBattle[];
 extern const u8 BattleScript_ForfeitBattleGaveMoney[];
 extern const u8 BattleScript_AbilityPopUp[];
+//added below for rayquaza battle
+extern const u8 BattleScript_FaintGroudon[];
+extern const u8 BattleScript_FaintKyogre[];
+//added above for rayquaza battle
 
 #endif // GUARD_BATTLE_SCRIPTS_H

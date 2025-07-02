@@ -5497,7 +5497,10 @@ static void HandleEndTurn_BattleLost(void)
     }
     else
     {
-        gBattlescriptCurrInstr = BattleScript_LocalBattleLost;
+        if (FlagGet(FLAG_SOOTOPLIS_BATTLE_ACTIVE))
+            gBattlescriptCurrInstr = BattleScript_RayquazaBattleLost;              // rayquaza battle
+        else
+            gBattlescriptCurrInstr = BattleScript_LocalBattleLost;                // normal
     }
 
     gBattleMainFunc = HandleEndTurn_FinishBattle;

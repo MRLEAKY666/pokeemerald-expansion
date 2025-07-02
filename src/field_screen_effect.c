@@ -1401,6 +1401,10 @@ static const u8 *GenerateRecoveryMessage(u8 taskId)
         return gText_PlayerRegroupCenter;
     else if (!forfeitTrainer && destinationIsPlayersHouse)
         return gText_PlayerScurriedBackHome;
+    //added below for rayquaza battle 
+    else if (FlagGet(FLAG_SOOTOPLIS_BATTLE_ACTIVE))
+        return gText_RayquazaWasDefeated;
+    //added above for rayquaza battle
     else
         return gText_PlayerScurriedToCenter;
 }
@@ -1428,6 +1432,10 @@ static void Task_RushInjuredPokemonToCenter(u8 taskId)
 
         if (PrintWhiteOutRecoveryMessage(taskId, recoveryMessage, 2, 8))
         {
+            //added below for rayquaza battle
+            if (FlagGet(FLAG_SOOTOPLIS_BATTLE_ACTIVE))
+                DoSoftReset();
+            //added above for rayquaza battle
             ObjectEventTurn(&gObjectEvents[gPlayerAvatar.objectEventId], DIR_NORTH);
             gTasks[taskId].tState = FRLG_WHITEOUT_LEAVE_MSG_SCREEN;
         }

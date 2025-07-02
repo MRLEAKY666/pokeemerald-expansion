@@ -205,7 +205,7 @@ SootopolisCity_EventScript_LegendariesSceneFromPokeCenter::
 	fadescreenspeed FADE_TO_BLACK, 8
 	setweather WEATHER_ABNORMAL
 	doweather
-	setvar VAR_0x8004, FALSE @ Just do Groudon/Kyogre fight scene
+	setvar VAR_0x8004, 0 @ Just do Groudon/Kyogre fight scene
 	special Script_DoRayquazaScene
 	waitstate
 	applymovement LOCALID_SOOTOPOLIS_KYOGRE, Common_Movement_WalkInPlaceFasterLeft
@@ -305,7 +305,7 @@ SootopolisCity_EventScript_LegendariesSceneFromDive::
 	fadescreenspeed FADE_TO_BLACK, 8
 	setweather WEATHER_ABNORMAL
 	doweather
-	setvar VAR_0x8004, FALSE @ Just do Groudon/Kyogre fight scene
+	setvar VAR_0x8004, 0 @ Just do Groudon/Kyogre fight scene
 	special Script_DoRayquazaScene
 	waitstate
 	applymovement LOCALID_SOOTOPOLIS_KYOGRE, Common_Movement_WalkInPlaceFasterLeft
@@ -497,9 +497,11 @@ SootopolisCity_EventScript_RayquazaSceneFromPokeCenter::
 	removeobject LOCALID_SOOTOPOLIS_KYOGRE
 	addobject LOCALID_SOOTOPOLIS_RAYQUAZA
 	hideobjectat LOCALID_SOOTOPOLIS_RAYQUAZA, MAP_SOOTOPOLIS_CITY
-	setvar VAR_0x8004, TRUE
+	call SootopolisCity_EventScript_SetupRayquazaVsLegendsBattle
+	setvar VAR_0x8004, 1                                                                      @ 0 ends early, 1 has battle, 2 is vanilla 
 	special Script_DoRayquazaScene
 	waitstate
+	call SootopolisCity_EventScript_ClearRayquazaVsLegendsBattle
 	playse SE_THUNDER
 	special SpawnCameraObject
 	applymovement LOCALID_CAMERA, SootopolisCity_Movement_PanUp
@@ -550,9 +552,11 @@ SootopolisCity_EventScript_RayquazaSceneFromDive::
 	removeobject LOCALID_SOOTOPOLIS_GROUDON
 	removeobject LOCALID_SOOTOPOLIS_KYOGRE
 	addobject LOCALID_SOOTOPOLIS_RAYQUAZA
-	setvar VAR_0x8004, TRUE
+	call SootopolisCity_EventScript_SetupRayquazaVsLegendsBattle
+	setvar VAR_0x8004, 1                                                                      @ 0 ends early, 1 has battle, 2 is vanilla 
 	special Script_DoRayquazaScene
 	waitstate
+	call SootopolisCity_EventScript_ClearRayquazaVsLegendsBattle
 	special SpawnCameraObject
 	applymovement LOCALID_CAMERA, SootopolisCity_Movement_PanUp
 	applymovement LOCALID_PLAYER, SootopolisCity_Movement_PlayerApproachLegendaries
@@ -590,6 +594,25 @@ SootopolisCity_EventScript_RayquazaSceneFromDive::
 	warpwhitefade MAP_SOOTOPOLIS_CITY, 29, 53
 	waitstate
 	end
+	
+SootopolisCity_EventScript_SetupRayquazaVsLegendsBattle::
+	setflag FLAG_SOOTOPLIS_BATTLE_ACTIVE
+	setwilddoubleflag
+	special SavePlayerParty
+	special ZeroPlayerPartyMons
+	setflag FLAG_TEMP_NO_CATCHING
+	@ setflag FLAG_TEMP_SMART_WILD_AI
+	setflag FLAG_TEMP_NO_RUNNING
+	@ settotemboost 0, atk=2,speed=2,evas=2
+	createmon 0, 0, SPECIES_RAYQUAZA, 70, item=ITEM_CHESTO_BERRY, move1=MOVE_FLY, move2=MOVE_REST, move3=MOVE_DRAGON_DANCE, move4=MOVE_EXTREMESPEED, speedIv=0
+	createmon 1, 1, SPECIES_GROUDON, 70, item=ITEM_RED_ORB, move1=MOVE_ANCIENT_POWER, move2=MOVE_LAVA_PLUME, move3=MOVE_BULK_UP, move4=MOVE_FISSURE, speedIv=31
+	createmon 1, 3, SPECIES_KYOGRE, 70, item=ITEM_BLUE_ORB, move1=MOVE_CALM_MIND, move2=MOVE_ANCIENT_POWER, move3=MOVE_SURF, move4=MOVE_SHEER_COLD,  speedIv=31
+	return
+
+SootopolisCity_EventScript_ClearRayquazaVsLegendsBattle::
+	special LoadPlayerParty
+	clearflag FLAG_SOOTOPLIS_BATTLE_ACTIVE
+	return
 
 SootopolisCity_EventScript_SetRoughWater::
 	setmetatile 27, 43, METATILE_Sootopolis_RoughWater, FALSE

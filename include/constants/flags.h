@@ -72,7 +72,7 @@
 #define FLAG_DRAGONS_ROOST_CLONE    0x3A // previously Unused Flag
 #define FLAG_FORTREE_CLIFFS_DEN_B_MON    0x3B //  Flag
 #define FLAG_FORTREE_CLIFFS_DEN_A_MON    0x3C //  Flag
-#define FLAG_UNUSED_0x03D    0x3D // Unused Flag
+#define FLAG_SOOTOPLIS_BATTLE_ACTIVE    0x3D // Unused Flag
 #define FLAG_UNUSED_0x03E    0x3E // Unused Flag
 #define FLAG_UNUSED_0x03F    0x3F // Unused Flag
 #define FLAG_UNUSED_0x040    0x40 // Unused Flag
@@ -1760,6 +1760,7 @@
 #define FLAG_TEMP_NO_BAG_USE                    FLAG_TEMP_B
 #define FLAG_TEMP_NO_CATCHING                   FLAG_TEMP_C
 #define FLAG_TEMP_NO_RUNNING                    FLAG_TEMP_D
+#define FLAG_TEMP_SMART_WILD_AI                 FLAG_TEMP_F
 
 #if TESTING
 #define TESTING_FLAGS_START                     0x5000

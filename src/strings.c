@@ -828,6 +828,9 @@ const u8 gText_ThankYou[] = _("THANK YOU");
 const u8 gText_ByeBye[] = _("BYE-BYE!");
 const u8 gText_PlayerScurriedToCenter[] = _("{PLAYER} scurried to a POKéMON CENTER,\nprotecting the corpses of the dead\nPOKéMON from further harm…\p");
 const u8 gText_PlayerScurriedBackHome[] = _("{PLAYER} scurried back home, protecting\nthe corpses of the dead POKéMON from\nfurther harm…\p");
+//below for rayquaza scene
+const u8 gText_RayquazaWasDefeated[] = _("RAYQUAZA was defeated by the\nrampaging POKéMON…\pHOENN was overtaken by\nthe abnormal weather!\p");
+//above fpr rayquaza scene
 const u8 gText_PlayerRegroupCenter[] = _("{PLAYER} went running back to a POKéMON CENTER\nto regroup and reconsider their battle\nstrategy…\p");
 const u8 gText_PlayerRegroupHome[] = _("{PLAYER} went running back home to regroup\nand reconsider their battle strategy…\p");
 const u8 gText_HatchedFromEgg[] = _("{STR_VAR_1} hatched from the EGG!");

@@ -740,6 +740,10 @@ enum StringID
     STRINGID_POWERCONSTRUCTPRESENCEOFMANY,
     STRINGID_POWERCONSTRUCTTRANSFORM,
     STRINGID_ABILITYSHIELDPROTECTS,
+    STRINGID_GROUDONFAINTED,             // rayquaza battle
+    STRINGID_KYOGREFAINTED,             // rayquaza battle
+    STRINGID_RAYQUAZAWHITEOUT,            // rayquaza battle
+    STRINGID_RAYQUAZAWHITEOUT2,               // rayquaza battle
     STRINGID_COUNT
 };
 

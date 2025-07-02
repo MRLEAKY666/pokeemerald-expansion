@@ -4670,6 +4670,26 @@ static void Cmd_tryfaintmon(void)
             destinyBondBattler = gBattlerTarget;
             faintScript = BattleScript_FaintAttacker;
         }
+        //added below for rayquaza fight
+        else if (FlagGet(FLAG_SOOTOPLIS_BATTLE_ACTIVE))                                   
+        {
+            if (gBattleMons[battler].species == SPECIES_GROUDON || gBattleMons[battler].species == SPECIES_GROUDON_PRIMAL)
+            {
+                destinyBondBattler = gBattlerAttacker;
+                faintScript = BattleScript_FaintGroudon;
+            }
+            else if (gBattleMons[battler].species == SPECIES_KYOGRE || gBattleMons[battler].species == SPECIES_KYOGRE_PRIMAL)
+            {
+                destinyBondBattler = gBattlerAttacker;
+                faintScript = BattleScript_FaintKyogre;
+            }
+            else
+            {
+                destinyBondBattler = gBattlerAttacker;
+                faintScript = BattleScript_FaintTarget;
+            }
+        }
+        //added above for rayquaza fight
         else
         {
             destinyBondBattler = gBattlerAttacker;
@@ -4954,6 +4974,10 @@ static bool32 BattleTypeAllowsExp(void)
               | BATTLE_TYPE_BATTLE_TOWER
               | BATTLE_TYPE_EREADER_TRAINER))
         return FALSE;
+    // added below for rayquaza battle
+    else if (FlagGet(FLAG_SOOTOPLIS_BATTLE_ACTIVE))
+        return FALSE;
+    // added above for rayquaza battle
     else
         return TRUE;
 }

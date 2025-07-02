@@ -28,6 +28,8 @@
 #include "constants/songs.h"
 #include "pokemon_animation.h"
 
+#include "event_data.h" // included for rayquaza battle
+
 static EWRAM_DATA u8 sLinkSendTaskId = 0;
 static EWRAM_DATA u8 sLinkReceiveTaskId = 0;
 
@@ -1895,6 +1897,10 @@ void StartSendOutAnim(u32 battler, bool32 dontClearTransform, bool32 dontClearSu
     {
         if (doSlideIn)
             sendoutType = POKEBALL_PLAYER_SLIDEIN;
+        //added below for rayquaza battle
+        else if (FlagGet(FLAG_SOOTOPLIS_BATTLE_ACTIVE))              
+            sendoutType = POKEBALL_PLAYER_SLIDEIN;   
+        //added above for rayquaza battle                
         else
             sendoutType = POKEBALL_PLAYER_SENDOUT;
     }

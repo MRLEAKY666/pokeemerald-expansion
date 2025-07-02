@@ -19,6 +19,8 @@
 #include "constants/event_objects.h"
 #include "random.h"
 
+#include "battle_setup.h" // included for rayquaza battle
+
 /*
     This file handles the cutscene showing Rayquaza arriving to settle the Groudon/Kyogre fight
     It consists of 5 separate scenes:
@@ -70,7 +72,7 @@ struct RayquazaScene
     TilemapBuffer tilemapBuffers[4];
     u16 unk; // never read
     u8 animId;
-    bool8 endEarly;
+    u8 endEarly;
     s16 revealedLightLine;
     s16 revealedLightTimer;
     u8 unused[12];
@@ -1287,7 +1289,7 @@ static const struct BgTemplate sBgTemplates_ChasesAway[] =
     }
 };
 
-void DoRayquazaScene(u8 animId, bool8 endEarly, void (*exitCallback)(void))
+void DoRayquazaScene(u8 animId, u8 endEarly, void (*exitCallback)(void)) // changed endEarly to u8 for adding additonal states to rayquaza scene 
 {
     sRayScene = AllocZeroed(sizeof(*sRayScene));
     sRayScene->animId = animId;
@@ -1348,11 +1350,17 @@ static void Task_SetNextAnim(u8 taskId)
 {
     if (!gPaletteFade.active)
     {
-        if (sRayScene->endEarly == TRUE)
+        if (sRayScene->endEarly == 0) // set var to 0 for early exit scene
         {
             gTasks[taskId].func = Task_EndAfterFadeScreen;
         }
-        else
+        else if (sRayScene->endEarly == 1) // set var to 1 for rayquaza scene with battle 
+        {
+            sRayScene->animId++;
+            sRayScene->unk = 0;
+            gTasks[taskId].func = sTasksForAnimations[sRayScene->animId];
+        }
+        else if (sRayScene->endEarly == 2) // set var to 2 for vanilla rayquaza scene
         {
             sRayScene->animId++;
             sRayScene->unk = 0;
@@ -2746,6 +2754,12 @@ static void Task_HandleRayChasesAway(u8 taskId)
             // Delay, then start Groudon/Kyogre leaving
             if (tTimer == 64)
             {
+                // added below to commence rayquaza battle
+                if (sRayScene->endEarly == 1)
+                {
+                    StartSootopolisLegendaryBattle();
+                }
+                // added above to commence rayquaza battle
                 ChasesAway_KyogreStartLeave(taskId);
                 ChasesAway_GroudonStartLeave(taskId);
                 tTimer = 0;

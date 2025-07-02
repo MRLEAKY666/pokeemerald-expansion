@@ -81,6 +81,7 @@ static const u8 sText_PlayerDefeatedLinkTrainerTrainer1[] = _("You defeated {B_T
 static const u8 sText_OpponentMon1Appeared[] = _("{B_OPPONENT_MON1_NAME} appeared!\p");
 static const u8 sText_WildPkmnAppeared[] = _("You encountered a wild {B_OPPONENT_MON1_NAME}!\p");
 static const u8 sText_LegendaryPkmnAppeared[] = _("You encountered a wild {B_OPPONENT_MON1_NAME}!\p");
+static const u8 sText_GroudonAndKyogreAppeared[] = _("You can see the super-ancient POKéMON clashing!\p"); // rayquaza battle
 static const u8 sText_WildPkmnAppearedPause[] = _("You encountered a wild {B_OPPONENT_MON1_NAME}!{PAUSE 127}");
 static const u8 sText_TwoWildPkmnAppeared[] = _("Oh! A wild {B_OPPONENT_MON1_NAME} and {B_OPPONENT_MON2_NAME} appeared!\p");
 static const u8 sText_Trainer1WantsToBattle[] = _("You are challenged by {B_TRAINER1_NAME_WITH_CLASS}!\p");
@@ -95,6 +96,7 @@ static const u8 sText_TwoLinkTrainersSentOutPkmn[] = _("{B_LINK_OPPONENT1_NAME} 
 static const u8 sText_LinkTrainerSentOutPkmn2[] = _("{B_LINK_OPPONENT1_NAME} sent out {B_BUFF1}!");
 static const u8 sText_LinkTrainerMultiSentOutPkmn[] = _("{B_LINK_SCR_TRAINER_NAME} sent out {B_BUFF1}!");
 static const u8 sText_GoPkmn[] = _("Go! {B_PLAYER_MON1_NAME}!");
+static const u8 sText_GoRayquaza[] = _("Help RAYQUAZA quell GROUDON and KYOGRE!"); // rayquaza battle
 static const u8 sText_GoTwoPkmn[] = _("Go! {B_PLAYER_MON1_NAME} and {B_PLAYER_MON2_NAME}!");
 static const u8 sText_GoPkmn2[] = _("Go! {B_BUFF1}!");
 static const u8 sText_DoItPkmn[] = _("You're in charge, {B_BUFF1}!");
@@ -900,6 +902,12 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_POWERCONSTRUCTPRESENCEOFMANY]         = COMPOUND_STRING("You sense the presence of many!"),
     [STRINGID_POWERCONSTRUCTTRANSFORM]              = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} transformed into its Complete Forme!"),
     [STRINGID_ABILITYSHIELDPROTECTS]                = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX}'s Ability is protected by the effects of its {B_LAST_ITEM}!"),
+    // added below for rayquaza battle
+    [STRINGID_GROUDONFAINTED]                 = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX}'s rage cooled!\p"),
+    [STRINGID_KYOGREFAINTED]                 = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX}'s onslaught receded!\p"),
+    [STRINGID_RAYQUAZAWHITEOUT]              = COMPOUND_STRING("There are no more POKéMON who can fight!\p"),
+    [STRINGID_RAYQUAZAWHITEOUT2]              = COMPOUND_STRING("KYOGRE and GROUDON's rampage can't be contained!\p"),
+    // add above for rayquaza battle
 };
 
 const u16 gTrainerUsedItemStringIds[] =
@@ -2121,8 +2129,12 @@ void BufferStringBattle(enum StringID stringID, u32 battler)
         }
         else
         {
-            if (gBattleTypeFlags & BATTLE_TYPE_LEGENDARY)
-                stringPtr = sText_LegendaryPkmnAppeared;
+            if (gBattleTypeFlags & BATTLE_TYPE_LEGENDARY){
+                if (FlagGet(FLAG_SOOTOPLIS_BATTLE_ACTIVE))
+                    stringPtr = sText_GroudonAndKyogreAppeared;       // rayquaza battle
+                else
+                    stringPtr = sText_LegendaryPkmnAppeared;        // normal
+            }
             else if (IsDoubleBattle() && IsValidForBattle(GetBattlerMon(GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT))))
                 stringPtr = sText_TwoWildPkmnAppeared;
             else if (gBattleTypeFlags & BATTLE_TYPE_WALLY_TUTORIAL)
@@ -2145,6 +2157,12 @@ void BufferStringBattle(enum StringID stringID, u32 battler)
                 else
                     stringPtr = sText_GoTwoPkmn;
             }
+            // added below for rayquaza battle
+            else if (FlagGet(FLAG_SOOTOPLIS_BATTLE_ACTIVE))
+            {
+                stringPtr = sText_GoRayquaza;
+            }
+            // added above for rayquaza battle
             else
             {
                 stringPtr = sText_GoPkmn;

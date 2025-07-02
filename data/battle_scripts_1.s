@@ -5086,6 +5086,34 @@ BattleScript_FaintTarget::
 	trytrainerslidefirstdownmsg BS_TARGET
 	return
 
+BattleScript_FaintGroudon::
+	tryillusionoff BS_TARGET
+	tryactivategulpmissile
+	tryupdateleaderscresttracker
+	playfaintcry BS_TARGET
+	pause B_WAIT_TIME_LONG
+	dofaintanimation BS_TARGET
+	printstring STRINGID_GROUDONFAINTED
+	cleareffectsonfaint BS_TARGET
+	tryactivatesoulheart
+	tryactivatereceiver BS_TARGET
+	trytrainerslidefirstdownmsg BS_TARGET
+	return
+
+BattleScript_FaintKyogre::
+	tryillusionoff BS_TARGET
+	tryactivategulpmissile
+	tryupdateleaderscresttracker
+	playfaintcry BS_TARGET
+	pause B_WAIT_TIME_LONG
+	dofaintanimation BS_TARGET
+	printstring STRINGID_KYOGREFAINTED
+	cleareffectsonfaint BS_TARGET
+	tryactivatesoulheart
+	tryactivatereceiver BS_TARGET
+	trytrainerslidefirstdownmsg BS_TARGET
+	return
+
 BattleScript_GiveExp::
 	setbyte sGIVEEXP_STATE, 0
 	getexp BS_TARGET
@@ -5254,6 +5282,17 @@ BattleScript_LocalBattleLostEnd::
 BattleScript_LocalBattleLostEnd::
 	end2
 .endif
+
+@ added below for rayquaza battle
+
+BattleScript_RayquazaBattleLost::
+	printstring STRINGID_RAYQUAZAWHITEOUT
+	waitmessage B_WAIT_TIME_LONG
+	printstring STRINGID_RAYQUAZAWHITEOUT2
+	waitmessage B_WAIT_TIME_LONG
+	end2
+
+@ added above for rayquaza battle
 
 BattleScript_CheckDomeDrew::
 	jumpifbyte CMP_EQUAL, gBattleOutcome, B_OUTCOME_DREW, BattleScript_LocalBattleLostEnd_
