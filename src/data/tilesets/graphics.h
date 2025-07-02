@@ -996,6 +996,28 @@ const u16 gTilesetPalettes_MauvilleGameCorner[][16] =
     INCBIN_U16("data/tilesets/secondary/mauville_game_corner/palettes/15.gbapal"),
 };
 
+const u32 gTilesetTiles_MauvilleGameCorner_OG[] = INCBIN_U32("data/tilesets/secondary/mauville_game_corner_OG/tiles.4bpp.fastSmol");
+
+const u16 gTilesetPalettes_MauvilleGameCorner_OG[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/mauville_game_corner_OG/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/mauville_game_corner_OG/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/mauville_game_corner_OG/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/mauville_game_corner_OG/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/mauville_game_corner_OG/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/mauville_game_corner_OG/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/mauville_game_corner_OG/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/mauville_game_corner_OG/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/mauville_game_corner_OG/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/mauville_game_corner_OG/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/mauville_game_corner_OG/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/mauville_game_corner_OG/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/mauville_game_corner_OG/palettes/12.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/mauville_game_corner_OG/palettes/13.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/mauville_game_corner_OG/palettes/14.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/mauville_game_corner_OG/palettes/15.gbapal"),
+};
+
 const u32 gTilesetTiles_Unused2[] = INCBIN_U32("data/tilesets/secondary/unused_2/tiles.4bpp.fastSmol");
 
 const u16 gTilesetPalettes_Unused2[][16] =

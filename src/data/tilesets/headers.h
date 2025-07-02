@@ -555,10 +555,10 @@ const struct Tileset gTileset_MauvilleGameCorner_OG =
 {
     .isCompressed = TRUE,
     .isSecondary = TRUE,
-    .tiles = gTilesetTiles_MauvilleGameCorner,
-    .palettes = gTilesetPalettes_MauvilleGameCorner,
-    .metatiles = gMetatiles_MauvilleGameCorner,
-    .metatileAttributes = gMetatileAttributes_MauvilleGameCorner,
+    .tiles = gTilesetTiles_MauvilleGameCorner_OG,
+    .palettes = gTilesetPalettes_MauvilleGameCorner_OG,
+    .metatiles = gMetatiles_MauvilleGameCorner_OG,
+    .metatileAttributes = gMetatileAttributes_MauvilleGameCorner_OG,
     .callback = NULL,
 };
 
