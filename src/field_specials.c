@@ -71,6 +71,7 @@
 #include "palette.h"
 #include "battle_util.h"
 #include "naming_screen.h"
+#include "rogue_voltorbflip.h"
 
 #include "rogue_voltorbflip.h"
 
