@@ -17,11 +17,11 @@ GraniteCave_1F_EventScript_Hiker::
 # 9 "data//maps/GraniteCave_1F/scripts.pory"
 	msgbox GraniteCave_1F_Text_GetsDarkAheadHereYouGo, MSGBOX_DEFAULT
 # 10 "data//maps/GraniteCave_1F/scripts.pory"
-	giveitem ITEM_HM_FLASH
+	@ giveitem ITEM_HM_FLASH
 # 11 "data//maps/GraniteCave_1F/scripts.pory"
-	setflag FLAG_RECEIVED_HM_FLASH
+	@ setflag FLAG_RECEIVED_HM_FLASH
 # 12 "data//maps/GraniteCave_1F/scripts.pory"
-	msgbox GraniteCave_1F_Text_ExplainFlash, MSGBOX_DEFAULT
+	@ msgbox GraniteCave_1F_Text_ExplainFlash, MSGBOX_DEFAULT
 # 13 "data//maps/GraniteCave_1F/scripts.pory"
 	release
 # 14 "data//maps/GraniteCave_1F/scripts.pory"
@@ -55,24 +55,22 @@ GraniteCave_1F_Text_GetsDarkAheadHereYouGo:
 # 28 "data//maps/GraniteCave_1F/scripts.pory"
 	.string "to be all right, but…\p"
 # 29 "data//maps/GraniteCave_1F/scripts.pory"
-	.string "Well, for us HIKERS, helping out those\n"
+	.string "Well, without FLASH it could get\n"
 # 30 "data//maps/GraniteCave_1F/scripts.pory"
-	.string "that we meet is our motto.\p"
+	.string "pretty dangerous!$"
 # 31 "data//maps/GraniteCave_1F/scripts.pory"
-	.string "Here you go, I'll pass this on to you.$"
-# 32 "data//maps/GraniteCave_1F/scripts.pory"
 
-# 33 "data//maps/GraniteCave_1F/scripts.pory"
+# 32 "data//maps/GraniteCave_1F/scripts.pory"
 GraniteCave_1F_Text_ExplainFlash:
-# 34 "data//maps/GraniteCave_1F/scripts.pory"
+# 33 "data//maps/GraniteCave_1F/scripts.pory"
 	.string "Teach that hidden move FLASH to\n"
-# 35 "data//maps/GraniteCave_1F/scripts.pory"
+# 34 "data//maps/GraniteCave_1F/scripts.pory"
 	.string "a POKéMON and use it.\p"
-# 36 "data//maps/GraniteCave_1F/scripts.pory"
+# 35 "data//maps/GraniteCave_1F/scripts.pory"
 	.string "It lights up even the inky darkness\n"
-# 37 "data//maps/GraniteCave_1F/scripts.pory"
+# 36 "data//maps/GraniteCave_1F/scripts.pory"
 	.string "of caves.\p"
-# 38 "data//maps/GraniteCave_1F/scripts.pory"
+# 37 "data//maps/GraniteCave_1F/scripts.pory"
 	.string "But, to use it, you need the GYM BADGE\n"
-# 39 "data//maps/GraniteCave_1F/scripts.pory"
+# 38 "data//maps/GraniteCave_1F/scripts.pory"
 	.string "from DEWFORD's POKéMON GYM.$"

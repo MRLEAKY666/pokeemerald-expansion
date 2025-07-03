@@ -1,8 +1,125 @@
 raw `
 DewfordTown_House2_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, DewfordTown_House2_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, DewfordTown_House2_OnFrame
 	.byte 0
 
-DewfordTown_House2_EventScript_Man::
+DewfordTown_House2_OnTransition:
+	call_if_le VAR_FLASH_QUEST_STATE, 3, DewfordTown_House2_EventScript_SetupOriginalDwellers
+	call_if_eq VAR_FLASH_QUEST_STATE, 3, DewfordTown_House2_EventScript_TrySetupHouseSwapScene
+	call_if_gt VAR_FLASH_QUEST_STATE, 3, DewfordTown_House2_EventScript_SetupNewDweller
+	end
+
+DewfordTown_House2_OnFrame:
+	map_script_2 VAR_FLASH_QUEST_STATE, 4, DewfordTown_House2_EventScript_HouseSwapScene
+	@ map_script_2 VAR_FLASH_QUEST_STATE, 5, DewfordTown_House2_EventScript_HouseSwapScene
+	.2byte 0
+
+DewfordTown_House2_EventScript_SetupOriginalDwellers::
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_MAN_3
+	return
+
+DewfordTown_House2_EventScript_SetupNewDweller::
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_HIKER
+	setobjectxyperm LOCALID_DEWFORD_HOUSE_SON, 1, 0
+	setobjectmovementtype LOCALID_DEWFORD_HOUSE_SON, MOVEMENT_TYPE_INVISIBLE
+	return
+
+DewfordTown_House2_EventScript_TrySetupHouseSwapScene::
+	checkfollowernpc
+	call_if_eq VAR_RESULT, TRUE, DewfordTown_House2_EventScript_SetupHouseSwapScene
+	end
+
+DewfordTown_House2_EventScript_SetupHouseSwapScene::
+	setvar VAR_FLASH_QUEST_STATE, 4
+	end
+
+DewfordTown_House2_EventScript_HouseSwapScene::
+	@ lock
+	destroyfollowernpc
+	addobject LOCALID_DEWFORD_FLASHGUY
+	setobjectxy LOCALID_DEWFORD_FLASHGUY, 3, 8
+	applymovement LOCALID_PLAYER, DewfordTown_House2_Movement_ArriveForSwapScene
+	waitmovement LOCALID_PLAYER
+	delay 5
+
+	applymovement LOCALID_DEWFORD_FLASHGUY, Common_Movement_FaceUp
+	waitmovement 0
+	applymovement LOCALID_DEWFORD_FLASHGUY, Common_Movement_SetVisible
+	waitmovement LOCALID_DEWFORD_FLASHGUY
+	delay 15
+
+	applymovement LOCALID_DEWFORD_HOUSE_DAD, Common_Movement_ExclamationMark
+	waitmovement LOCALID_DEWFORD_HOUSE_DAD
+	playse SE_PIN
+	delay 5
+	applymovement LOCALID_DEWFORD_HOUSE_DAD, Common_Movement_FaceDown
+	waitmovement LOCALID_DEWFORD_HOUSE_DAD
+	delay 10
+
+	applymovement LOCALID_PLAYER, DewfordTown_House2_Movement_PlayerPosForSwapScene
+	applymovement LOCALID_DEWFORD_FLASHGUY, DewfordTown_House2_Movement_FollowerPosForSwapScene1
+	waitmovement LOCALID_DEWFORD_FLASHGUY
+	delay 15
+
+	applymovement LOCALID_DEWFORD_FLASHGUY, DewfordTown_House2_Movement_FollowerPosForSwapScene2
+	waitmovement LOCALID_DEWFORD_FLASHGUY
+
+	delay 30
+	applymovement LOCALID_DEWFORD_HOUSE_DAD, DewfordTown_House2_Movement_DadConverse
+	applymovement LOCALID_DEWFORD_FLASHGUY, DewfordTown_House2_Movement_GuyConverse
+	waitmovement LOCALID_DEWFORD_FLASHGUY
+	delay 20
+	playse SE_RG_HELP_OPEN
+	waitse
+	delay 30
+
+	applymovement LOCALID_DEWFORD_FLASHGUY, Common_Movement_FaceLeft
+	waitmovement 0
+
+	applymovement LOCALID_DEWFORD_FLASHGUY, Common_Movement_WalkToPlayer
+	waitmovement 0
+
+	msgbox DewfordTown_House2_Text_SwapScene1, MSGBOX_DEFAULT
+
+	applymovement LOCALID_DEWFORD_HOUSE_DAD, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+
+	msgbox DewfordTown_House2_Text_SwapScene2, MSGBOX_DEFAULT
+	waitmessage
+	applymovement LOCALID_DEWFORD_FLASHGUY, Common_Movement_WalkInPlaceFasterLeft
+	msgbox DewfordTown_House2_Text_SwapScene3, MSGBOX_DEFAULT
+	waitmessage
+	applymovement LOCALID_DEWFORD_FLASHGUY, Common_Movement_WalkInPlaceLeft
+	giveitem ITEM_HM_FLASH
+	setflag FLAG_RECEIVED_HM_FLASH
+	msgbox DewfordTown_House2_Text_ExplainFlash, MSGBOX_DEFAULT
+	delay 10
+
+	applymovement LOCALID_DEWFORD_HOUSE_DAD, DewfordTown_House2_Movement_DadReadyToLeave
+	waitmovement 0
+	applymovement LOCALID_DEWFORD_HOUSE_SON, Common_Movement_WalkInPlaceRight
+	waitmovement 0
+	msgbox DewfordTown_House2_Text_SwapScene4, MSGBOX_DEFAULT
+	delay 10
+	applymovement LOCALID_DEWFORD_HOUSE_DAD, Common_Movement_WalkInPlaceDown
+	applymovement LOCALID_DEWFORD_HOUSE_SON, Common_Movement_WalkInPlaceDown
+	waitmovement 0
+	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
+	applymovement LOCALID_DEWFORD_FLASHGUY, Common_Movement_FaceUp
+	waitmovement 0
+	msgbox DewfordTown_House2_Text_SwapScene5, MSGBOX_DEFAULT
+	closemessage
+	setvar VAR_FLASH_QUEST_STATE, 5
+	delay 5
+
+	fadescreenswapbuffers FADE_TO_BLACK
+	warpinplace
+
+	release
+	end
+
+DewfordTown_House2_EventScript_Man_Vanilla::
 	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_SILK_SCARF, DewfordTown_House2_EventScript_ExplainSilkScarf
@@ -10,6 +127,24 @@ DewfordTown_House2_EventScript_Man::
 	giveitem ITEM_SILK_SCARF
 	goto_if_eq VAR_RESULT, FALSE, DewfordTown_House2_EventScript_NoRoomForScarf
 	setflag FLAG_RECEIVED_SILK_SCARF
+	release
+	end
+
+DewfordTown_House2_EventScript_Man::
+	lock
+	faceplayer 
+	goto_if_ge VAR_FLASH_QUEST_STATE, 5, DewfordTown_House2_EventScript_NewResident
+	msgbox DewfordTown_House2_Text_Man1, MSGBOX_DEFAULT
+	call_if_eq VAR_FLASH_QUEST_STATE, 0, DewfordTown_House2_EventScript_StartFlashQuest
+	release
+	end
+
+DewfordTown_House2_EventScript_StartFlashQuest::
+	setvar VAR_FLASH_QUEST_STATE, 1
+	return
+
+DewfordTown_House2_EventScript_NewResident::
+	msgbox DewfordTown_House2_Text_NewResident, MSGBOX_DEFAULT
 	release
 	end
 
@@ -27,6 +162,89 @@ DewfordTown_House2_EventScript_Boy::
 	msgbox DewfordTown_House2_Text_BrawlySoCool, MSGBOX_NPC
 	end
 
+DewfordTown_House2_Movement_ArriveForSwapScene:
+	walk_up
+	step_end
+
+DewfordTown_House2_Movement_PlayerPosForSwapScene:
+	walk_up
+	walk_left
+	face_right
+	step_end
+
+DewfordTown_House2_Movement_FollowerPosForSwapScene1:
+	walk_up
+	step_end
+
+DewfordTown_House2_Movement_FollowerPosForSwapScene2:
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	face_up
+	step_end
+
+DewfordTown_House2_Movement_DadConverse:
+	delay_16
+	delay_16
+	delay_16
+	walk_in_place_down
+	walk_in_place_down
+	delay_16
+	delay_16
+	walk_in_place_down
+	walk_in_place_down
+	delay_16
+	delay_16
+	step_end
+
+DewfordTown_House2_Movement_GuyConverse:
+	walk_in_place_up
+	walk_in_place_up
+	walk_in_place_up
+	delay_16
+	delay_16
+	walk_in_place_up
+	walk_in_place_up
+	delay_16
+	delay_16
+	step_end
+
+Common_Movement_WalkToPlayer:
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+DewfordTown_House2_Movement_DadReadyToLeave:
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+DewfordTown_House2_Text_ExplainFlash:
+	.string "RESTLESS MAN: That HM contains FLASH\p"
+	.string "You'd think I'd want to have that\n"
+	.string "now more than ever…\p"
+	.string "But right now I'm just happy\n"
+	.string "to be here.\p"
+	.string "So don't worry about me, use that HM to\n" 
+	.string "light your way on your adventure!$"
+
+DewfordTown_House2_Text_SwapScene1:
+	.string "RESTLESS MAN: They agreed!!$"
+
+DewfordTown_House2_Text_SwapScene2:
+	.string "SINGLE DAD: That's right, we'll be\n"
+	.string "moving to MAUVILLE CITY right away!$"
+
+DewfordTown_House2_Text_SwapScene3:
+	.string "RESTLESS MAN: Thank you for arranging\n"
+	.string "all this and helping me arrive safely!\p"
+	.string "Let me give you this as a thank you.$"
+
 DewfordTown_House2_Text_WantYouToHaveSilkScarf:
 	.string "Gorge your eyes on this!\p"
 	.string "It's a SILK SCARF. It's right at the\n"
@@ -42,11 +260,37 @@ DewfordTown_House2_Text_NoRoom:
 	.string "have! Why, I would sell all my items\l"
 	.string "in order to get it!$"
 
+DewfordTown_House2_Text_Man1:
+	.string "It's just me and my son living here.\p"
+	.string "Sometimes I worry there isn't a wide\n"
+	.string "enough variety of opportunities and\l"
+	.string "role models here for the boy…\p"
+	.string "Especially as he grows!\p"
+	.string "I think moving somewhere more\n"
+	.string "developed might be good for him.$" 
+
+DewfordTown_House2_Text_SwapScene4:
+	.string "SINGLE DAD: Well son, we should\n"
+	.string "get going!$"
+
+DewfordTown_House2_Text_SwapScene5:
+	.string "Come visit us in MAUVILLE sometime!\l"
+	.string "Goodbye!$"
+
 DewfordTown_House2_Text_ExplainSilkScarf:
 	.string "The SILK SCARF raises the power of\n"
 	.string "NORMAL-type moves.\p"
 	.string "It's a marvelous SCARF that will go\n"
 	.string "with almost all POKéMON!$"
+
+DewfordTown_House2_Text_NewResident:	
+	.string "Oh it's you!\p"
+	.string "How have I been enjoying my life\n"
+	.string "here in DEWFORD TOWN?\p"
+	.string "It's fantastic!\n"
+	.string "The night sky is so full of stars.\p"
+	.string "And I can get lost exploring GRANITE\n"
+	.string "CAVE anytime!$"
 
 DewfordTown_House2_Text_BrawlySoCool:
 	.string "Wow, you bothered to cross the sea\n"

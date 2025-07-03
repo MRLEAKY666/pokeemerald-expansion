@@ -1,6 +1,42 @@
 raw `
 MauvilleCity_House1_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, MauvilleCity_House1_OnTransition
 	.byte 0
+
+MauvilleCity_House1_OnTransition:
+	call_if_le VAR_FLASH_QUEST_STATE, 1, MauvilleCity_House1_EventScript_SetScientist
+	call_if_ge VAR_FLASH_QUEST_STATE, 2, MauvilleCity_House1_EventScript_SetHiker
+	call_if_eq VAR_FLASH_QUEST_STATE, 3, MauvilleCity_House1_EventScript_TryResetAfterFailed
+	call_if_ge VAR_FLASH_QUEST_STATE, 5, MauvilleCity_House1_EventScript_ShowNewResidents
+	end
+
+MauvilleCity_House1_EventScript_SetScientist::
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SCIENTIST_1
+	return
+
+MauvilleCity_House1_EventScript_SetHiker::
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_HIKER
+	return
+
+MauvilleCity_House1_EventScript_ShowNewResidents::
+	clearflag FLAG_FLASH_GUY
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_MAN_3
+	setobjectxyperm LOCALID_MOVED_SON, 1, 3
+	setobjectmovementtype LOCALID_MOVED_SON, MOVEMENT_TYPE_LOOK_AROUND
+	return
+
+MauvilleCity_House1_EventScript_TryResetAfterFailed::
+	checkfollowernpc
+	call_if_eq VAR_RESULT, FALSE, MauvilleCity_House1_EventScript_ResetAfterFailed
+	return
+
+MauvilleCity_House1_EventScript_ResetAfterFailed::
+	clearflag FLAG_FLASH_GUY
+	return
+
+MauvilleCity_House1_EventScript_Boy::
+	msgbox MauvilleCity_House1_Text_WattsonSoCool, MSGBOX_NPC
+	end
 
 MauvilleCity_House1_EventScript_RockSmashDude::
 	lock
@@ -18,6 +54,267 @@ MauvilleCity_House1_EventScript_ReceivedRockSmash::
 	msgbox MauvilleCity_House1_Text_MonCanFlyOutOfSmashedRock, MSGBOX_DEFAULT
 	release
 	end
+
+MauvilleCity_House1_EventScript_MovedDad::
+	lock
+	faceplayer
+	goto_if_set FLAG_RECEIVED_SILK_SCARF, MauvilleCity_House1_EventScript_ExplainSilkScarf
+	msgbox MauvilleCity_House1_Text_WantYouToHaveSilkScarf, MSGBOX_DEFAULT
+	giveitem ITEM_SILK_SCARF
+	goto_if_eq VAR_RESULT, FALSE, MauvilleCity_House1_EventScript_NoRoomForScarf
+	setflag FLAG_RECEIVED_SILK_SCARF
+	release
+	end
+
+MauvilleCity_House1_EventScript_ExplainSilkScarf::
+	msgbox MauvilleCity_House1_Text_ExplainSilkScarf, MSGBOX_DEFAULT
+	release
+	end
+
+MauvilleCity_House1_EventScript_NoRoomForScarf::
+	msgbox MauvilleCity_House1_Text_NoRoom, MSGBOX_DEFAULT
+	release
+	end
+
+MauvilleCity_House1_EventScript_FlashGuy::
+	lock
+	faceplayer
+	goto_if_ge VAR_FLASH_QUEST_STATE, 5, MauvilleCity_House1_EventScript_MovedDad
+	goto_if_eq VAR_FLASH_QUEST_STATE, 2, MauvilleCity_House1_EventScript_FlashGuyReadyToLeave
+	goto_if_eq VAR_FLASH_QUEST_STATE, 3, MauvilleCity_House1_EventScript_FlashGuyReadyAfterFailed
+	msgbox MauvilleCity_House1_Text_FlashGuy1, MSGBOX_DEFAULT
+	msgbox MauvilleCity_House1_Text_FlashGuy2, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, MauvilleCity_House1_EventScript_FlashGuyYouSaidNo
+	goto_if_le VAR_FLASH_QUEST_STATE, 0, MauvilleCity_House1_EventScript_FlashGuyHopes
+	waitmessage
+	waitse
+	applymovement LOCALID_FLASHGUY, Common_Movement_ExclamationMark
+	playse SE_PIN
+	waitmovement 0
+	delay 5
+	msgbox MauvilleCity_House1_Text_FlashGuyYouDo, MSGBOX_DEFAULT
+	msgbox MauvilleCity_House1_Text_FlashGuySomeoneIsMoving, MSGBOX_DEFAULT
+	closemessage
+	delay 15
+	applymovement LOCALID_FLASHGUY, Common_Movement_FaceAwayPlayer
+	waitmovement 0
+	delay 15
+	getobjectfacingdirection LOCALID_FLASHGUY, VAR_RESULT
+	call_if_eq VAR_RESULT, DIR_NORTH, MauvilleCity_House1_EventScript_WalkInPlaceNorth
+	call_if_eq VAR_RESULT, DIR_SOUTH, MauvilleCity_House1_EventScript_WalkInPlaceSouth
+	call_if_eq VAR_RESULT, DIR_EAST, MauvilleCity_House1_EventScript_WalkInPlaceEast
+	call_if_eq VAR_RESULT, DIR_WEST, MauvilleCity_House1_EventScript_WalkInPlaceWest
+	msgbox MauvilleCity_House1_Text_FlashGuyDewford, MSGBOX_DEFAULT
+	waitmessage
+	applymovement LOCALID_FLASHGUY, Common_Movement_FacePlayer
+	waitmovement 0
+	delay 15
+	applymovement LOCALID_FLASHGUY, Common_Movement_ExclamationMark
+	playse SE_PIN
+	waitmovement 0
+	delay 5
+	msgbox MauvilleCity_House1_Text_FlashGuyTakeMeThere, MSGBOX_DEFAULT
+	waitmessage
+	delay 15
+	getobjectfacingdirection LOCALID_FLASHGUY, VAR_RESULT
+	call_if_eq VAR_RESULT, DIR_NORTH, MauvilleCity_House1_EventScript_WalkInPlaceNorth
+	call_if_eq VAR_RESULT, DIR_SOUTH, MauvilleCity_House1_EventScript_WalkInPlaceSouth
+	call_if_eq VAR_RESULT, DIR_EAST, MauvilleCity_House1_EventScript_WalkInPlaceEast
+	call_if_eq VAR_RESULT, DIR_WEST, MauvilleCity_House1_EventScript_WalkInPlaceWest
+	msgbox MauvilleCity_House1_Text_FlashGuyTakeMeThere2, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, MauvilleCity_House1_EventScript_FlashGuyHopes2
+	msgbox MauvilleCity_House1_Text_FlashGuyPrepare, MSGBOX_DEFAULT
+	fadescreenswapbuffers FADE_TO_BLACK
+	removeobject LOCALID_FLASHGUY
+	closemessage
+	delay 60
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_HIKER
+	setvar VAR_FLASH_QUEST_STATE, 2
+	addobject LOCALID_FLASHGUY
+	clearflag FLAG_FLASH_GUY
+	applymovement LOCALID_FLASHGUY, Common_Movement_FacePlayer
+	fadescreenswapbuffers FADE_FROM_BLACK
+	goto_if_eq VAR_FLASH_QUEST_STATE, 2, MauvilleCity_House1_EventScript_FlashGuyReadyToLeave
+	release
+	end
+
+MauvilleCity_House1_EventScript_WalkInPlaceNorth::
+	applymovement LOCALID_FLASHGUY, Common_Movement_WalkInPlaceUp
+	waitmovement 0
+	return
+
+MauvilleCity_House1_EventScript_WalkInPlaceSouth::
+	applymovement LOCALID_FLASHGUY, Common_Movement_WalkInPlaceDown
+	waitmovement 0
+	return
+
+MauvilleCity_House1_EventScript_WalkInPlaceEast::
+	applymovement LOCALID_FLASHGUY, Common_Movement_WalkInPlaceRight
+	waitmovement 0
+	return
+
+MauvilleCity_House1_EventScript_WalkInPlaceWest::
+	applymovement LOCALID_FLASHGUY, Common_Movement_WalkInPlaceLeft
+	waitmovement 0
+	return
+
+MauvilleCity_House1_EventScript_FlashGuyReadyToLeave::
+	msgbox MauvilleCity_House1_Text_FlashGuyReadyToLeave, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, MauvilleCity_House1_EventScript_FlashGuyWhenReadyToLeave
+	setfollowernpc LOCALID_FLASHGUY, FNPC_LEAVE_WHITEOUT, MauvilleCity_House1_EventScript_FlashGuyFollowing
+	facefollowernpc
+	setvar VAR_FLASH_QUEST_STATE, 3
+	msgbox MauvilleCity_House1_Text_FlashGuyLetsGo, MSGBOX_DEFAULT
+	release
+	end
+
+MauvilleCity_House1_EventScript_FlashGuyReadyAfterFailed::
+	msgbox MauvilleCity_House1_Text_FlashGuyReadyAfterFailed, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, MauvilleCity_House1_EventScript_FlashGuyWhenReadyToLeave
+	setfollowernpc LOCALID_FLASHGUY, FNPC_LEAVE_WHITEOUT, MauvilleCity_House1_EventScript_FlashGuyFollowing
+	facefollowernpc
+	msgbox MauvilleCity_House1_Text_FlashGuyLetsGo, MSGBOX_DEFAULT
+	release
+	end
+
+MauvilleCity_House1_EventScript_FlashGuyFollowing::
+	msgbox MauvilleCity_House1_Text_FlashGuyDewfordIsFar, MSGBOX_DEFAULT
+	release
+	end
+
+MauvilleCity_House1_EventScript_FlashGuyYouSaidNo::
+	msgbox MauvilleCity_House1_Text_FlashGuyYouSaidNo, MSGBOX_DEFAULT
+	release
+	end
+
+MauvilleCity_House1_EventScript_FlashGuyHopes::
+	msgbox MauvilleCity_House1_Text_FlashGuyHopes, MSGBOX_DEFAULT
+	release
+	end
+
+MauvilleCity_House1_EventScript_FlashGuyHopes2::
+	msgbox MauvilleCity_House1_Text_FlashGuyHopes2, MSGBOX_DEFAULT
+	release
+	end
+
+MauvilleCity_House1_EventScript_FlashGuyWhenReadyToLeave::
+	msgbox MauvilleCity_House1_Text_FlashGuyWhenReadyToLeave, MSGBOX_DEFAULT
+	release
+	end
+
+MauvilleCity_House1_Text_FlashGuy1:
+	.string "I may look like a metropolitan kind\n"
+	.string "of guy…\p"
+	.string "The kind of guy who favors modern\n"
+	.string "comforts…\p"
+	.string "But the truth is, I've gotten tired\n"
+	.string "Of living here, near the bright lights.\p"
+	.string "At this point, I wouldn't mind moving\n"
+	.string "somewhere slower.\p"
+	.string "Somewhere quieter, where at night it\n"
+	.string "gets truly dark…$"
+
+MauvilleCity_House1_Text_FlashGuy2:
+	.string "Do you know a place like that?$"
+
+MauvilleCity_House1_Text_FlashGuyYouSaidNo:
+	.string "I hope that someday I can finally get\n"
+	.string "away from all the lights…$"
+
+MauvilleCity_House1_Text_FlashGuyHopes:
+	.string "Yeah, right!\p"
+	.string "Don't get my hopes up!$"
+
+MauvilleCity_House1_Text_FlashGuyHopes2:
+	.string "Well then don't get my hopes up!$"
+
+MauvilleCity_House1_Text_FlashGuyYouDo:
+	.string "Oh, you do??$"
+
+MauvilleCity_House1_Text_FlashGuySomeoneIsMoving:
+	.string "You met someone in DEWFORD who's\n"
+	.string "looking to move?$"
+
+MauvilleCity_House1_Text_FlashGuyDewford:
+	.string "DEWFORD is pretty remote…\p"
+	.string "And I've heard GRANITE CAVE is one\n"
+	.string "of the darkest places in HOENN…$"
+
+MauvilleCity_House1_Text_FlashGuyTakeMeThere:
+	.string "I know!\p"
+	.string "I'll offer to trade my house here in\n"
+	.string "MAUVILLE for their place in DEWFORD!\p"
+	.string "After all, MAUVILLE CITY is a great\n"
+	.string "location in a lot of ways!\p"
+	.string "But DEWFORD is far away…$"
+
+MauvilleCity_House1_Text_FlashGuyTakeMeThere2:
+	.string "You're a trainer,\n"
+	.string "and you already know the way…\p"
+	.string "Will you take me there?\n"
+	.string "Please?$"
+
+MauvilleCity_House1_Text_FlashGuyPrepare:
+	.string "The moment I've been dreaming of!\p"
+	.string "Wait right there, I only need a moment\n" 
+	.string "to prepare!$"
+
+MauvilleCity_House1_Text_FlashGuyReadyToLeave:
+	.string "So are you ready to take me to DEWFORD?$"
+
+MauvilleCity_House1_Text_FlashGuyReadyAfterFailed:
+	.string "Wow, that got pretty scary!\p"
+	.string "Do you think you can take me safely\n"
+	.string "to DEWFORD now?$"
+
+MauvilleCity_House1_Text_FlashGuyWhenReadyToLeave:
+	.string "Well, let me know when you're\n"
+	.string "ready to go…$"
+
+MauvilleCity_House1_Text_FlashGuyDewfordIsFar:
+	.string "Wow, DEWFORD TOWN sure is far away…$"
+
+MauvilleCity_House1_Text_FlashGuyLetsGo:
+	.string "Well then, let's go!\p"
+	.string "Off to new horizons, unscathed by\n"
+	.string "modern light polution!$"
+
+MauvilleCity_House1_Text_WantYouToHaveSilkScarf:
+	.string "Ah, my friend!\p"
+	.string "MAUVILLE CITY has been treating us\n"
+	.string "excellently!\p"
+	.string "Since coming here, I've learned just how\n"
+	.string "out of touch people in DEWFORD were\l"
+	.string "about modern trends!\p"
+	.string "For example, gorge your eyes on this!\p"
+	.string "It's a SILK SCARF. It's right at the\n"
+	.string "cutting edge of fashion, yeah!\p"
+	.string "Oh, I can see your eyes twinkling!\n"
+	.string "You appreciate my dazzling style!\p"
+	.string "Oh, you're a delight!\n"
+	.string "Here you go. I want you to have it!\p"
+	.string "Consider it thanks for helping us!$"
+
+MauvilleCity_House1_Text_NoRoom:
+	.string "Oh, you don't have room?\p"
+	.string "Now, listen tight, this SCARF is a must-\n"
+	.string "have! Why, I would sell all my items\l"
+	.string "in order to get it!$"
+
+MauvilleCity_House1_Text_ExplainSilkScarf:
+	.string "The SILK SCARF raises the power of\n"
+	.string "NORMAL-type moves.\p"
+	.string "It's a marvelous SCARF that will go\n"
+	.string "with almost all POKéMON!$"
+
+MauvilleCity_House1_Text_WattsonSoCool:
+	.string "We came all the way across the sea\n"
+	.string "to live in MAUVILLE CITY\p"
+	.string "When we got here, I learned about\n"
+	.string "MAUVILLE's gym leader, WATTSON!\p"
+	.string "He's so cool…\p"
+	.string "He can build all kinds of\n"
+	.string "electronic contraptions!$"
 
 MauvilleCity_House1_Text_ImRockSmashDudeTakeThis:
 	.string "Woohoo!\p"

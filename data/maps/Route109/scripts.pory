@@ -10,6 +10,9 @@ Route109_OnTransition:
 	end
 
 Route109_EventScript_StartDepartForDewford::
+	checkfollowernpc
+	call_if_eq VAR_RESULT, TRUE, Route109_EventScript_HideFollowerNPC
+	waitmovement 0
 	call EventScript_BackupMrBrineyLocation
 	setobjectsubpriority LOCALID_ROUTE109_BRINEY, MAP_ROUTE109, 0
 	setobjectsubpriority LOCALID_PLAYER, MAP_ROUTE109, 0
@@ -21,6 +24,10 @@ Route109_EventScript_StartDepartForDewford::
 	case DIR_WEST, Route109_EventScript_EnterBoatWest
 	case DIR_EAST, Route109_EventScript_EnterBoatEast
 	end
+
+Route109_EventScript_HideFollowerNPC::
+	hidefollowernpc
+	return
 
 Route109_EventScript_EnterBoatSouth::
 	applymovement LOCALID_PLAYER, Route109_Movement_PlayerEnterBoatSouth

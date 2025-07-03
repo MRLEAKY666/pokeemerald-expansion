@@ -170,3 +170,11 @@ Common_Movement_WalkRightFaster::
 Common_Movement_WalkLeftFaster::
     walk_faster_left
     step_end
+
+Common_Movement_SetInvisible::
+	set_invisible
+	step_end
+
+Common_Movement_SetVisible::
+	set_visible
+	step_end

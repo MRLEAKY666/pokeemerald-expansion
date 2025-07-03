@@ -38,6 +38,10 @@ DewfordTown_EventScript_Briney::
 	case MULTI_B_PRESSED, DewfordTown_EventScript_CancelSailSelect
 	end
 
+DewfordTown_EventScript_HideFollowerNPC::
+	hidefollowernpc
+	return
+
 DewfordTown_EventScript_ChoosePetalburg::
 	msgbox DewfordTown_Text_PetalburgWereSettingSail, MSGBOX_DEFAULT
 	closemessage
@@ -129,6 +133,9 @@ DewfordTown_EventScript_FishingNotSoGood::
 	end
 
 DewfordTown_EventScript_SailToPetalburg::
+	checkfollowernpc
+	call_if_eq VAR_RESULT, TRUE, DewfordTown_EventScript_HideFollowerNPC
+	waitmovement 0
 	call EventScript_BackupMrBrineyLocation
 	setobjectsubpriority LOCALID_DEWFORD_BRINEY, MAP_DEWFORD_TOWN, 0
 	setobjectsubpriority LOCALID_PLAYER, MAP_DEWFORD_TOWN, 0
@@ -161,6 +168,9 @@ DewfordTown_EventScript_SailToPetalburg::
 	end
 
 DewfordTown_EventScript_SailToSlateport::
+	checkfollowernpc
+	call_if_eq VAR_RESULT, TRUE, DewfordTown_EventScript_HideFollowerNPC
+	waitmovement 0
 	call EventScript_BackupMrBrineyLocation
 	setobjectsubpriority LOCALID_DEWFORD_BRINEY, MAP_DEWFORD_TOWN, 0
 	setobjectsubpriority LOCALID_PLAYER, MAP_DEWFORD_TOWN, 1
