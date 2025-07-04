@@ -489,7 +489,10 @@ MauvilleCity_GameCorner_OG_EventScript_Uncle::
 	closemessage
 	delay 16
 	call_if_eq VAR_COIN_CASE_QUEST, 2, MauvilleCity_GameCorner_OG_EventScript_TaskedWithRetrievingUncle
+	waitse
+	playse SE_M_SNORE
 	delay 40
+	waitse
 	msgbox MauvilleCity_GameCorner_OG_Text_DriftingOffAgain, MSGBOX_DEFAULT
 	call_if_lt VAR_COIN_CASE_QUEST, 1, MauvilleCity_GameCorner_OG_EventScript_StartCoinCaseQuest
 	release
@@ -523,7 +526,10 @@ MauvilleCity_GameCorner_OG_Text_RetryRetrievingUncle2:
 MauvilleCity_GameCorner_OG_EventScript_DeclineRetryRetrievingUncle::
 	msgbox MauvilleCity_GameCorner_OG_Text_DeclineRetryRetrievingUncle, MSGBOX_DEFAULT
 	closemessage
+	waitse
+	playse SE_M_SNORE
 	delay 60
+	waitse
 	msgbox MauvilleCity_GameCorner_OG_Text_DriftingOffAgain, MSGBOX_DEFAULT
 	call_if_lt VAR_COIN_CASE_QUEST, 1, MauvilleCity_GameCorner_OG_EventScript_StartCoinCaseQuest
 	release
@@ -636,7 +642,10 @@ MauvilleCity_GameCorner_OG_EventScript_NephewMayBeWorried::
 MauvilleCity_GameCorner_OG_EventScript_NephewWorriedEast::
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceRight
 	waitmovement LOCALID_PLAYER
+	waitse
+	playse SE_M_SNORE
 	delay 15
+	waitse
 	msgbox MauvilleCity_GameCorner_OG_Text_DriftingOffAgain, MSGBOX_DEFAULT
 	waitse
 	applymovement LOCALID_GAMECORNER_UNCLE, Common_Movement_FaceOriginalDirection
@@ -647,7 +656,10 @@ MauvilleCity_GameCorner_OG_EventScript_NephewWorriedEast::
 MauvilleCity_GameCorner_OG_EventScript_NephewWorriedNorth::
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceUp
 	waitmovement LOCALID_PLAYER
+	waitse
+	playse SE_M_SNORE
 	delay 15
+	waitse
 	msgbox MauvilleCity_GameCorner_OG_Text_DriftingOffAgain, MSGBOX_DEFAULT
 	waitse
 	applymovement LOCALID_GAMECORNER_UNCLE, Common_Movement_FaceOriginalDirection
@@ -658,7 +670,10 @@ MauvilleCity_GameCorner_OG_EventScript_NephewWorriedNorth::
 MauvilleCity_GameCorner_OG_EventScript_NephewWorriedWest::
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft
 	waitmovement LOCALID_PLAYER
+	waitse
+	playse SE_M_SNORE
 	delay 15
+	waitse
 	msgbox MauvilleCity_GameCorner_OG_Text_DriftingOffAgain, MSGBOX_DEFAULT
 	waitse
 	applymovement LOCALID_GAMECORNER_UNCLE, Common_Movement_FaceOriginalDirection
