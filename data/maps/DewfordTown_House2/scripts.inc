@@ -55,9 +55,9 @@ DewfordTown_House2_EventScript_SetupNewDweller::
 # 28 "data//maps/DewfordTown_House2/scripts.pory"
 DewfordTown_House2_EventScript_TrySetupHouseSwapScene::
 # 29 "data//maps/DewfordTown_House2/scripts.pory"
-	checkfollowernpc
+	getfollowernpc
 # 30 "data//maps/DewfordTown_House2/scripts.pory"
-	call_if_eq VAR_RESULT, TRUE, DewfordTown_House2_EventScript_SetupHouseSwapScene
+	call_if_eq VAR_RESULT, FLAG_FLASH_GUY, DewfordTown_House2_EventScript_SetupHouseSwapScene
 # 31 "data//maps/DewfordTown_House2/scripts.pory"
 	end
 # 32 "data//maps/DewfordTown_House2/scripts.pory"

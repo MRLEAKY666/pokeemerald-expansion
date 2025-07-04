@@ -680,7 +680,6 @@ MauvilleCity_GameCorner_OG_EventScript_FollowingUncleLeaves::
 	warpinplace
 	release
 	end
-	
 
 MauvilleCity_GameCorner_OG_Text_OrCanGoBack:
 	.string "Will you just mind your own\n"

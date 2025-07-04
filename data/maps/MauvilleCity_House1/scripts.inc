@@ -359,328 +359,374 @@ MauvilleCity_House1_EventScript_FlashGuyReadyAfterFailed::
 # 180 "data//maps/MauvilleCity_House1/scripts.pory"
 MauvilleCity_House1_EventScript_FlashGuyFollowing::
 # 181 "data//maps/MauvilleCity_House1/scripts.pory"
-	msgbox MauvilleCity_House1_Text_FlashGuyDewfordIsFar, MSGBOX_DEFAULT
+	faceplayer
 # 182 "data//maps/MauvilleCity_House1/scripts.pory"
-	release
+	msgbox MauvilleCity_House1_Text_FlashGuyDewfordIsFar, MSGBOX_YESNO
 # 183 "data//maps/MauvilleCity_House1/scripts.pory"
-	end
+	goto_if_eq VAR_RESULT, NO, MauvilleCity_House1_EventScript_FollowingFlashGuyLeaves
 # 184 "data//maps/MauvilleCity_House1/scripts.pory"
-
+	msgbox MauvilleCity_House1_Text_FlashGuyLetsGoShort, MSGBOX_DEFAULT
 # 185 "data//maps/MauvilleCity_House1/scripts.pory"
-MauvilleCity_House1_EventScript_FlashGuyYouSaidNo::
+	release
 # 186 "data//maps/MauvilleCity_House1/scripts.pory"
-	msgbox MauvilleCity_House1_Text_FlashGuyYouSaidNo, MSGBOX_DEFAULT
+	end
 # 187 "data//maps/MauvilleCity_House1/scripts.pory"
-	release
+
 # 188 "data//maps/MauvilleCity_House1/scripts.pory"
-	end
+MauvilleCity_House1_EventScript_FollowingFlashGuyLeaves::
 # 189 "data//maps/MauvilleCity_House1/scripts.pory"
-
+	msgbox MauvilleCity_House1_Text_FlashGuyStopsFollowing, MSGBOX_DEFAULT
 # 190 "data//maps/MauvilleCity_House1/scripts.pory"
-MauvilleCity_House1_EventScript_FlashGuyHopes::
+	fadescreenswapbuffers FADE_TO_BLACK
 # 191 "data//maps/MauvilleCity_House1/scripts.pory"
-	msgbox MauvilleCity_House1_Text_FlashGuyHopes, MSGBOX_DEFAULT
+	destroyfollowernpc
 # 192 "data//maps/MauvilleCity_House1/scripts.pory"
-	release
+	warpinplace
 # 193 "data//maps/MauvilleCity_House1/scripts.pory"
-	end
+	release
 # 194 "data//maps/MauvilleCity_House1/scripts.pory"
-
+	end
 # 195 "data//maps/MauvilleCity_House1/scripts.pory"
-MauvilleCity_House1_EventScript_FlashGuyHopes2::
+
 # 196 "data//maps/MauvilleCity_House1/scripts.pory"
-	msgbox MauvilleCity_House1_Text_FlashGuyHopes2, MSGBOX_DEFAULT
+MauvilleCity_House1_EventScript_FlashGuyYouSaidNo::
 # 197 "data//maps/MauvilleCity_House1/scripts.pory"
-	release
+	msgbox MauvilleCity_House1_Text_FlashGuyYouSaidNo, MSGBOX_DEFAULT
 # 198 "data//maps/MauvilleCity_House1/scripts.pory"
-	end
-# 199 "data//maps/MauvilleCity_House1/scripts.pory"
-
-# 200 "data//maps/MauvilleCity_House1/scripts.pory"
-MauvilleCity_House1_EventScript_FlashGuyWhenReadyToLeave::
-# 201 "data//maps/MauvilleCity_House1/scripts.pory"
-	msgbox MauvilleCity_House1_Text_FlashGuyWhenReadyToLeave, MSGBOX_DEFAULT
-# 202 "data//maps/MauvilleCity_House1/scripts.pory"
 	release
-# 203 "data//maps/MauvilleCity_House1/scripts.pory"
+# 199 "data//maps/MauvilleCity_House1/scripts.pory"
 	end
+# 200 "data//maps/MauvilleCity_House1/scripts.pory"
+
+# 201 "data//maps/MauvilleCity_House1/scripts.pory"
+MauvilleCity_House1_EventScript_FlashGuyHopes::
+# 202 "data//maps/MauvilleCity_House1/scripts.pory"
+	msgbox MauvilleCity_House1_Text_FlashGuyHopes, MSGBOX_DEFAULT
+# 203 "data//maps/MauvilleCity_House1/scripts.pory"
+	release
 # 204 "data//maps/MauvilleCity_House1/scripts.pory"
-
+	end
 # 205 "data//maps/MauvilleCity_House1/scripts.pory"
-MauvilleCity_House1_Text_FlashGuy1:
+
 # 206 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "I may look like a metropolitan kind\n"
+MauvilleCity_House1_EventScript_FlashGuyHopes2::
 # 207 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "of guy…\p"
+	msgbox MauvilleCity_House1_Text_FlashGuyHopes2, MSGBOX_DEFAULT
 # 208 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "The kind of guy who favors modern\n"
+	release
 # 209 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "comforts…\p"
+	end
 # 210 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "But the truth is, I've gotten tired\n"
+
 # 211 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Of living here, near the bright lights.\p"
+MauvilleCity_House1_EventScript_FlashGuyWhenReadyToLeave::
 # 212 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "At this point, I wouldn't mind moving\n"
+	msgbox MauvilleCity_House1_Text_FlashGuyWhenReadyToLeave, MSGBOX_DEFAULT
 # 213 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "somewhere slower.\p"
+	release
 # 214 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Somewhere quieter, where at night it\n"
+	end
 # 215 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "gets truly dark…$"
+
 # 216 "data//maps/MauvilleCity_House1/scripts.pory"
-
+MauvilleCity_House1_Text_FlashGuyStopsFollowing:
 # 217 "data//maps/MauvilleCity_House1/scripts.pory"
-MauvilleCity_House1_Text_FlashGuy2:
+	.string "Oh…\l"
 # 218 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Do you know a place like that?$"
+	.string "Okay…\l"
 # 219 "data//maps/MauvilleCity_House1/scripts.pory"
-
+	.string "I guess I'll try and make it\n"
 # 220 "data//maps/MauvilleCity_House1/scripts.pory"
-MauvilleCity_House1_Text_FlashGuyYouSaidNo:
+	.string "back home by myself…\p"
 # 221 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "I hope that someday I can finally get\n"
+	.string "Come find me in MAUVILLE when\n"
 # 222 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "away from all the lights…$"
+	.string "you have time…$"
 # 223 "data//maps/MauvilleCity_House1/scripts.pory"
 
 # 224 "data//maps/MauvilleCity_House1/scripts.pory"
-MauvilleCity_House1_Text_FlashGuyHopes:
+MauvilleCity_House1_Text_FlashGuy1:
 # 225 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Yeah, right!\p"
+	.string "I may look like a metropolitan kind\n"
 # 226 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Don't get my hopes up!$"
+	.string "of guy…\p"
 # 227 "data//maps/MauvilleCity_House1/scripts.pory"
-
+	.string "The kind of guy who favors modern\n"
 # 228 "data//maps/MauvilleCity_House1/scripts.pory"
-MauvilleCity_House1_Text_FlashGuyHopes2:
+	.string "comforts…\p"
 # 229 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Well then don't get my hopes up!$"
+	.string "But the truth is, I've gotten tired\n"
 # 230 "data//maps/MauvilleCity_House1/scripts.pory"
-
+	.string "Of living here, near the bright lights.\p"
 # 231 "data//maps/MauvilleCity_House1/scripts.pory"
-MauvilleCity_House1_Text_FlashGuyYouDo:
+	.string "At this point, I wouldn't mind moving\n"
 # 232 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Oh, you do??$"
+	.string "somewhere slower.\p"
 # 233 "data//maps/MauvilleCity_House1/scripts.pory"
-
+	.string "Somewhere quieter, where at night it\n"
 # 234 "data//maps/MauvilleCity_House1/scripts.pory"
-MauvilleCity_House1_Text_FlashGuySomeoneIsMoving:
+	.string "gets truly dark…$"
 # 235 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "You met someone in DEWFORD who's\n"
-# 236 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "looking to move?$"
-# 237 "data//maps/MauvilleCity_House1/scripts.pory"
 
+# 236 "data//maps/MauvilleCity_House1/scripts.pory"
+MauvilleCity_House1_Text_FlashGuy2:
+# 237 "data//maps/MauvilleCity_House1/scripts.pory"
+	.string "Do you know a place like that?$"
 # 238 "data//maps/MauvilleCity_House1/scripts.pory"
-MauvilleCity_House1_Text_FlashGuyDewford:
+
 # 239 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "DEWFORD is pretty remote…\p"
+MauvilleCity_House1_Text_FlashGuyYouSaidNo:
 # 240 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "And I've heard GRANITE CAVE is one\n"
+	.string "I hope that someday I can finally get\n"
 # 241 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "of the darkest places in HOENN…$"
+	.string "away from all the lights…$"
 # 242 "data//maps/MauvilleCity_House1/scripts.pory"
 
 # 243 "data//maps/MauvilleCity_House1/scripts.pory"
-MauvilleCity_House1_Text_FlashGuyTakeMeThere:
+MauvilleCity_House1_Text_FlashGuyHopes:
 # 244 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "I know!\p"
+	.string "Yeah, right!\p"
 # 245 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "I'll offer to trade my house here in\n"
+	.string "Don't get my hopes up!$"
 # 246 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "MAUVILLE for their place in DEWFORD!\p"
-# 247 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "After all, MAUVILLE CITY is a great\n"
-# 248 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "location in a lot of ways!\p"
-# 249 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "But DEWFORD is far away…$"
-# 250 "data//maps/MauvilleCity_House1/scripts.pory"
 
+# 247 "data//maps/MauvilleCity_House1/scripts.pory"
+MauvilleCity_House1_Text_FlashGuyHopes2:
+# 248 "data//maps/MauvilleCity_House1/scripts.pory"
+	.string "Well then don't get my hopes up!$"
+# 249 "data//maps/MauvilleCity_House1/scripts.pory"
+
+# 250 "data//maps/MauvilleCity_House1/scripts.pory"
+MauvilleCity_House1_Text_FlashGuyYouDo:
 # 251 "data//maps/MauvilleCity_House1/scripts.pory"
-MauvilleCity_House1_Text_FlashGuyTakeMeThere2:
+	.string "Oh, you do??$"
 # 252 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "You're a trainer,\n"
+
 # 253 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "and you already know the way…\p"
+MauvilleCity_House1_Text_FlashGuySomeoneIsMoving:
 # 254 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Will you take me there?\n"
+	.string "You met someone in DEWFORD who's\n"
 # 255 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Please?$"
+	.string "looking to move?$"
 # 256 "data//maps/MauvilleCity_House1/scripts.pory"
 
 # 257 "data//maps/MauvilleCity_House1/scripts.pory"
-MauvilleCity_House1_Text_FlashGuyPrepare:
+MauvilleCity_House1_Text_FlashGuyDewford:
 # 258 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "The moment I've been dreaming of!\p"
+	.string "DEWFORD is pretty remote…\p"
 # 259 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Wait right there, I only need a moment\n" 
+	.string "And I've heard GRANITE CAVE is one\n"
 # 260 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "to prepare!$"
+	.string "of the darkest places in HOENN…$"
 # 261 "data//maps/MauvilleCity_House1/scripts.pory"
 
 # 262 "data//maps/MauvilleCity_House1/scripts.pory"
-MauvilleCity_House1_Text_FlashGuyReadyToLeave:
+MauvilleCity_House1_Text_FlashGuyTakeMeThere:
 # 263 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "So are you ready to take me to DEWFORD?$"
+	.string "I know!\p"
 # 264 "data//maps/MauvilleCity_House1/scripts.pory"
-
+	.string "I'll offer to trade my house here in\n"
 # 265 "data//maps/MauvilleCity_House1/scripts.pory"
-MauvilleCity_House1_Text_FlashGuyReadyAfterFailed:
+	.string "MAUVILLE for their place in DEWFORD!\p"
 # 266 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Wow, that got pretty scary!\p"
+	.string "After all, MAUVILLE CITY is a great\n"
 # 267 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Do you think you can take me safely\n"
+	.string "location in a lot of ways!\p"
 # 268 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "to DEWFORD now?$"
+	.string "But DEWFORD is far away…$"
 # 269 "data//maps/MauvilleCity_House1/scripts.pory"
 
 # 270 "data//maps/MauvilleCity_House1/scripts.pory"
-MauvilleCity_House1_Text_FlashGuyWhenReadyToLeave:
+MauvilleCity_House1_Text_FlashGuyTakeMeThere2:
 # 271 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Well, let me know when you're\n"
+	.string "You're a trainer,\n"
 # 272 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "ready to go…$"
+	.string "and you already know the way…\p"
 # 273 "data//maps/MauvilleCity_House1/scripts.pory"
-
+	.string "Will you take me there?\n"
 # 274 "data//maps/MauvilleCity_House1/scripts.pory"
-MauvilleCity_House1_Text_FlashGuyDewfordIsFar:
+	.string "Please?$"
 # 275 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Wow, DEWFORD TOWN sure is far away…$"
+
 # 276 "data//maps/MauvilleCity_House1/scripts.pory"
-
+MauvilleCity_House1_Text_FlashGuyPrepare:
 # 277 "data//maps/MauvilleCity_House1/scripts.pory"
-MauvilleCity_House1_Text_FlashGuyLetsGo:
+	.string "The moment I've been dreaming of!\p"
 # 278 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Well then, let's go!\p"
+	.string "Wait right there, I only need a moment\n" 
 # 279 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Off to new horizons, unscathed by\n"
+	.string "to prepare!$"
 # 280 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "modern light polution!$"
+
 # 281 "data//maps/MauvilleCity_House1/scripts.pory"
-
+MauvilleCity_House1_Text_FlashGuyReadyToLeave:
 # 282 "data//maps/MauvilleCity_House1/scripts.pory"
-MauvilleCity_House1_Text_WantYouToHaveSilkScarf:
+	.string "So are you ready to take me to DEWFORD?$"
 # 283 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Ah, my friend!\p"
+
 # 284 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "MAUVILLE CITY has been treating us\n"
+MauvilleCity_House1_Text_FlashGuyReadyAfterFailed:
 # 285 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "excellently!\p"
+	.string "Wow, that got pretty scary!\p"
 # 286 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Since coming here, I've learned just how\n"
+	.string "Do you think you can take me safely\n"
 # 287 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "out of touch people in DEWFORD were\l"
+	.string "to DEWFORD now?$"
 # 288 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "about modern trends!\p"
+
 # 289 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "For example, gorge your eyes on this!\p"
+MauvilleCity_House1_Text_FlashGuyWhenReadyToLeave:
 # 290 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "It's a SILK SCARF. It's right at the\n"
+	.string "Well, let me know when you're\n"
 # 291 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "cutting edge of fashion, yeah!\p"
+	.string "ready to go…$"
 # 292 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Oh, I can see your eyes twinkling!\n"
+
 # 293 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "You appreciate my dazzling style!\p"
+MauvilleCity_House1_Text_FlashGuyDewfordIsFar:
 # 294 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Oh, you're a delight!\n"
+	.string "Wow, DEWFORD TOWN sure is far away…\p"
 # 295 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Here you go. I want you to have it!\p"
+	.string "Do you still have time to take me there?$"
 # 296 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Consider it thanks for helping us!$"
+
 # 297 "data//maps/MauvilleCity_House1/scripts.pory"
-
+MauvilleCity_House1_Text_FlashGuyLetsGo:
 # 298 "data//maps/MauvilleCity_House1/scripts.pory"
-MauvilleCity_House1_Text_NoRoom:
+	.string "Well then, let's go!\p"
 # 299 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Oh, you don't have room?\p"
+	.string "Off to new horizons, unscathed by\n"
 # 300 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Now, listen tight, this SCARF is a must-\n"
+	.string "modern light polution!$"
 # 301 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "have! Why, I would sell all my items\l"
+
 # 302 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "in order to get it!$"
+MauvilleCity_House1_Text_FlashGuyLetsGoShort:
 # 303 "data//maps/MauvilleCity_House1/scripts.pory"
-
+	.string "Off we go, to new horizons!$"
 # 304 "data//maps/MauvilleCity_House1/scripts.pory"
-MauvilleCity_House1_Text_ExplainSilkScarf:
+
 # 305 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "The SILK SCARF raises the power of\n"
+MauvilleCity_House1_Text_WantYouToHaveSilkScarf:
 # 306 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "NORMAL-type moves.\p"
+	.string "Ah, my friend!\p"
 # 307 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "It's a marvelous SCARF that will go\n"
+	.string "MAUVILLE CITY has been treating us\n"
 # 308 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "with almost all POKéMON!$"
+	.string "excellently!\p"
 # 309 "data//maps/MauvilleCity_House1/scripts.pory"
-
+	.string "Since coming here, I've learned just how\n"
 # 310 "data//maps/MauvilleCity_House1/scripts.pory"
-MauvilleCity_House1_Text_WattsonSoCool:
+	.string "out of touch people in DEWFORD were\l"
 # 311 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "We came all the way across the sea\n"
+	.string "about modern trends!\p"
 # 312 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "to live in MAUVILLE CITY\p"
+	.string "For example, gorge your eyes on this!\p"
 # 313 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "When we got here, I learned about\n"
+	.string "It's a SILK SCARF. It's right at the\n"
 # 314 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "MAUVILLE's gym leader, WATTSON!\p"
+	.string "cutting edge of fashion, yeah!\p"
 # 315 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "He's so cool…\p"
+	.string "Oh, I can see your eyes twinkling!\n"
 # 316 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "He can build all kinds of\n"
+	.string "You appreciate my dazzling style!\p"
 # 317 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "electronic contraptions!$"
+	.string "Oh, you're a delight!\n"
 # 318 "data//maps/MauvilleCity_House1/scripts.pory"
-
+	.string "Here you go. I want you to have it!\p"
 # 319 "data//maps/MauvilleCity_House1/scripts.pory"
-MauvilleCity_House1_Text_ImRockSmashDudeTakeThis:
+	.string "Consider it thanks for helping us!$"
 # 320 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Woohoo!\p"
+
 # 321 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "I hear people call me the ROCK SMASH\n"
+MauvilleCity_House1_Text_NoRoom:
 # 322 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "GUY, but I find that sort of degrading.\p"
+	.string "Oh, you don't have room?\p"
 # 323 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "I think I deserve a bit more respect,\n"
+	.string "Now, listen tight, this SCARF is a must-\n"
 # 324 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "like maybe the ROCK SMASH DUDE.\p"
+	.string "have! Why, I would sell all my items\l"
 # 325 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Woohoo!\p"
+	.string "in order to get it!$"
 # 326 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Anyways, your POKéMON look pretty\n"
+
 # 327 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "strong.\p"
+MauvilleCity_House1_Text_ExplainSilkScarf:
 # 328 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "I like that!\n"
+	.string "The SILK SCARF raises the power of\n"
 # 329 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Here, take this HIDDEN MACHINE!$"
+	.string "NORMAL-type moves.\p"
 # 330 "data//maps/MauvilleCity_House1/scripts.pory"
-
+	.string "It's a marvelous SCARF that will go\n"
 # 331 "data//maps/MauvilleCity_House1/scripts.pory"
-MauvilleCity_House1_Text_ExplainRockSmash:
+	.string "with almost all POKéMON!$"
 # 332 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "That HM contains ROCK SMASH.\p"
-# 333 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "If you come across large boulders\n"
-# 334 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "that block your path…\p"
-# 335 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Well, use that HM move and smash\n"
-# 336 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "them right out of your way!\p"
-# 337 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Yes, sir! Smash rocks aside, I say!\n"
-# 338 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Woohoo!$"
-# 339 "data//maps/MauvilleCity_House1/scripts.pory"
 
+# 333 "data//maps/MauvilleCity_House1/scripts.pory"
+MauvilleCity_House1_Text_WattsonSoCool:
+# 334 "data//maps/MauvilleCity_House1/scripts.pory"
+	.string "We came all the way across the sea\n"
+# 335 "data//maps/MauvilleCity_House1/scripts.pory"
+	.string "to live in MAUVILLE CITY\p"
+# 336 "data//maps/MauvilleCity_House1/scripts.pory"
+	.string "When we got here, I learned about\n"
+# 337 "data//maps/MauvilleCity_House1/scripts.pory"
+	.string "MAUVILLE's gym leader, WATTSON!\p"
+# 338 "data//maps/MauvilleCity_House1/scripts.pory"
+	.string "He's so cool…\p"
+# 339 "data//maps/MauvilleCity_House1/scripts.pory"
+	.string "He can build all kinds of\n"
 # 340 "data//maps/MauvilleCity_House1/scripts.pory"
-MauvilleCity_House1_Text_MonCanFlyOutOfSmashedRock:
+	.string "electronic contraptions!$"
 # 341 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Hey! If you smash a rock, a POKéMON\n"
+
 # 342 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "could come flying out of hiding.\p"
+MauvilleCity_House1_Text_ImRockSmashDudeTakeThis:
 # 343 "data//maps/MauvilleCity_House1/scripts.pory"
+	.string "Woohoo!\p"
+# 344 "data//maps/MauvilleCity_House1/scripts.pory"
+	.string "I hear people call me the ROCK SMASH\n"
+# 345 "data//maps/MauvilleCity_House1/scripts.pory"
+	.string "GUY, but I find that sort of degrading.\p"
+# 346 "data//maps/MauvilleCity_House1/scripts.pory"
+	.string "I think I deserve a bit more respect,\n"
+# 347 "data//maps/MauvilleCity_House1/scripts.pory"
+	.string "like maybe the ROCK SMASH DUDE.\p"
+# 348 "data//maps/MauvilleCity_House1/scripts.pory"
+	.string "Woohoo!\p"
+# 349 "data//maps/MauvilleCity_House1/scripts.pory"
+	.string "Anyways, your POKéMON look pretty\n"
+# 350 "data//maps/MauvilleCity_House1/scripts.pory"
+	.string "strong.\p"
+# 351 "data//maps/MauvilleCity_House1/scripts.pory"
+	.string "I like that!\n"
+# 352 "data//maps/MauvilleCity_House1/scripts.pory"
+	.string "Here, take this HIDDEN MACHINE!$"
+# 353 "data//maps/MauvilleCity_House1/scripts.pory"
+
+# 354 "data//maps/MauvilleCity_House1/scripts.pory"
+MauvilleCity_House1_Text_ExplainRockSmash:
+# 355 "data//maps/MauvilleCity_House1/scripts.pory"
+	.string "That HM contains ROCK SMASH.\p"
+# 356 "data//maps/MauvilleCity_House1/scripts.pory"
+	.string "If you come across large boulders\n"
+# 357 "data//maps/MauvilleCity_House1/scripts.pory"
+	.string "that block your path…\p"
+# 358 "data//maps/MauvilleCity_House1/scripts.pory"
+	.string "Well, use that HM move and smash\n"
+# 359 "data//maps/MauvilleCity_House1/scripts.pory"
+	.string "them right out of your way!\p"
+# 360 "data//maps/MauvilleCity_House1/scripts.pory"
+	.string "Yes, sir! Smash rocks aside, I say!\n"
+# 361 "data//maps/MauvilleCity_House1/scripts.pory"
+	.string "Woohoo!$"
+# 362 "data//maps/MauvilleCity_House1/scripts.pory"
+
+# 363 "data//maps/MauvilleCity_House1/scripts.pory"
+MauvilleCity_House1_Text_MonCanFlyOutOfSmashedRock:
+# 364 "data//maps/MauvilleCity_House1/scripts.pory"
+	.string "Hey! If you smash a rock, a POKéMON\n"
+# 365 "data//maps/MauvilleCity_House1/scripts.pory"
+	.string "could come flying out of hiding.\p"
+# 366 "data//maps/MauvilleCity_House1/scripts.pory"
 	.string "Woohoo!$"

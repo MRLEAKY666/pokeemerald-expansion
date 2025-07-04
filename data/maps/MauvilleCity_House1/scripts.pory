@@ -178,7 +178,18 @@ MauvilleCity_House1_EventScript_FlashGuyReadyAfterFailed::
 	end
 
 MauvilleCity_House1_EventScript_FlashGuyFollowing::
-	msgbox MauvilleCity_House1_Text_FlashGuyDewfordIsFar, MSGBOX_DEFAULT
+	faceplayer
+	msgbox MauvilleCity_House1_Text_FlashGuyDewfordIsFar, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, MauvilleCity_House1_EventScript_FollowingFlashGuyLeaves
+	msgbox MauvilleCity_House1_Text_FlashGuyLetsGoShort, MSGBOX_DEFAULT
+	release
+	end
+
+MauvilleCity_House1_EventScript_FollowingFlashGuyLeaves::
+	msgbox MauvilleCity_House1_Text_FlashGuyStopsFollowing, MSGBOX_DEFAULT
+	fadescreenswapbuffers FADE_TO_BLACK
+	destroyfollowernpc
+	warpinplace
 	release
 	end
 
@@ -201,6 +212,14 @@ MauvilleCity_House1_EventScript_FlashGuyWhenReadyToLeave::
 	msgbox MauvilleCity_House1_Text_FlashGuyWhenReadyToLeave, MSGBOX_DEFAULT
 	release
 	end
+
+MauvilleCity_House1_Text_FlashGuyStopsFollowing:
+	.string "Oh…\l"
+	.string "Okay…\l"
+	.string "I guess I'll try and make it\n"
+	.string "back home by myself…\p"
+	.string "Come find me in MAUVILLE when\n"
+	.string "you have time…$"
 
 MauvilleCity_House1_Text_FlashGuy1:
 	.string "I may look like a metropolitan kind\n"
@@ -272,12 +291,16 @@ MauvilleCity_House1_Text_FlashGuyWhenReadyToLeave:
 	.string "ready to go…$"
 
 MauvilleCity_House1_Text_FlashGuyDewfordIsFar:
-	.string "Wow, DEWFORD TOWN sure is far away…$"
+	.string "Wow, DEWFORD TOWN sure is far away…\p"
+	.string "Do you still have time to take me there?$"
 
 MauvilleCity_House1_Text_FlashGuyLetsGo:
 	.string "Well then, let's go!\p"
 	.string "Off to new horizons, unscathed by\n"
 	.string "modern light polution!$"
+
+MauvilleCity_House1_Text_FlashGuyLetsGoShort:
+	.string "Off we go, to new horizons!$"
 
 MauvilleCity_House1_Text_WantYouToHaveSilkScarf:
 	.string "Ah, my friend!\p"

@@ -26,8 +26,8 @@ DewfordTown_House2_EventScript_SetupNewDweller::
 	return
 
 DewfordTown_House2_EventScript_TrySetupHouseSwapScene::
-	checkfollowernpc
-	call_if_eq VAR_RESULT, TRUE, DewfordTown_House2_EventScript_SetupHouseSwapScene
+	getfollowernpc
+	call_if_eq VAR_RESULT, FLAG_FLASH_GUY, DewfordTown_House2_EventScript_SetupHouseSwapScene
 	end
 
 DewfordTown_House2_EventScript_SetupHouseSwapScene::
