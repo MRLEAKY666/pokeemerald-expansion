@@ -1,14 +1,348 @@
 raw `
 PetalburgCity_House2_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, PetalburgCity_House2_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, PetalburgCity_House2_OnFrame
 	.byte 0
+
+PetalburgCity_House2_OnTransition::
+	call_if_eq VAR_COIN_CASE_QUEST, 3, PetalburgCity_House2_EventScript_TrySetupCoinCaseScene
+	call_if_eq VAR_COIN_CASE_QUEST, 5, PetalburgCity_House2_EventScript_ShowUncle
+	end
+
+PetalburgCity_House2_OnFrame::
+	map_script_2 VAR_COIN_CASE_QUEST, 4, PetalburgCity_House2_EventScript_CoinCaseScene
+	.2byte 0
+
+PetalburgCity_House2_EventScript_ShowUncle::
+	setobjectxy LOCALID_PETALBURG_UNCLE, 9, 3
+	setobjectxyperm LOCALID_PETALBURG_UNCLE, 9, 3
+	setobjectmovementtype LOCALID_PETALBURG_UNCLE, MOVEMENT_TYPE_FACE_DOWN
+	showobjectat LOCALID_PETALBURG_UNCLE, MAP_PETALBURG_CITY_HOUSE2
+	end
+
+PetalburgCity_House2_EventScript_TrySetupCoinCaseScene::
+	getfollowernpc
+	call_if_eq VAR_RESULT, FLAG_GAME_CORNER_UNC, PetalburgCity_House2_EventScript_SetupCoinCaseScene
+	end
+
+PetalburgCity_House2_EventScript_SetupCoinCaseScene::
+	setvar VAR_COIN_CASE_QUEST, 4
+	setobjectmovementtype LOCALID_PETALBURG_UNCLE, MOVEMENT_TYPE_FACE_DOWN
+	setobjectmovementtype LOCALID_CRAZY_LADY, MOVEMENT_TYPE_LOOK_AROUND
+	@ showobjectat LOCALID_PETALBURG_UNCLE, MAP_PETALBURG_CITY_HOUSE2
+	end
+
+PetalburgCity_House2_EventScript_CoinCaseScene::
+
+	destroyfollowernpc
+	addobject LOCALID_PETALBURG_UNCLE
+	applymovement LOCALID_PETALBURG_UNCLE, Common_Movement_SetInvisible
+	setobjectxy LOCALID_PETALBURG_UNCLE, 3, 7
+
+	applymovement LOCALID_PLAYER, PetalburgCity_House2_Movement_ArriveForSwapScene
+	waitmovement LOCALID_PLAYER
+	delay 5
+
+	applymovement LOCALID_PETALBURG_UNCLE, Common_Movement_FaceUp
+	waitmovement 0
+	applymovement LOCALID_PETALBURG_UNCLE, Common_Movement_SetVisible
+	waitmovement LOCALID_PETALBURG_UNCLE
+	delay 15
+
+	applymovement LOCALID_PETALBURG_NEPHEW, Common_Movement_ExclamationMark
+	waitmovement LOCALID_PETALBURG_NEPHEW
+	playse SE_PIN
+	delay 5
+	applymovement LOCALID_PETALBURG_NEPHEW, Common_Movement_FaceDown
+	waitmovement LOCALID_PETALBURG_NEPHEW
+	delay 10
+
+	applymovement LOCALID_PLAYER, PetalburgCity_House2_Movement_PlayerPosForSwapScene
+	applymovement LOCALID_PETALBURG_UNCLE, PetalburgCity_House2_Movement_FollowerPosForSwapScene1
+	waitmovement LOCALID_PETALBURG_UNCLE
+
+	applymovement LOCALID_PETALBURG_NEPHEW, Common_Movement_FaceLeft
+	applymovement LOCALID_PETALBURG_UNCLE, PetalburgCity_House2_Movement_FollowerPosForSwapScene2
+	waitmovement LOCALID_PETALBURG_UNCLE
+	delay 15
+	applymovement LOCALID_PETALBURG_NEPHEW, PetalburgCity_House2_Movement_NephewApproachUncle
+	waitmovement LOCALID_PETALBURG_NEPHEW
+	delay 16
+
+	applymovement LOCALID_PETALBURG_NEPHEW, PetalburgCity_House2_Movement_NephewReprimandUncle
+	applymovement LOCALID_PETALBURG_UNCLE, PetalburgCity_House2_Movement_UncleGetReprimanded
+	waitmovement LOCALID_PETALBURG_NEPHEW
+	delay 40
+
+	applymovement LOCALID_PETALBURG_NEPHEW, Common_Movement_WalkInPlaceLeft
+	waitmovement LOCALID_PETALBURG_NEPHEW
+	delay 5
+	applymovement LOCALID_PETALBURG_UNCLE, PetalburgCity_House2_Movement_UncleGoAway
+	waitmovement LOCALID_PETALBURG_UNCLE
+	applymovement LOCALID_PETALBURG_NEPHEW, PetalburgCity_House2_Movement_NephewApproachPlayer
+	waitmovement LOCALID_PETALBURG_NEPHEW
+	delay 16
+
+	waitmovement LOCALID_PETALBURG_NEPHEW
+	msgbox PetalburgCity_House2_Text_NephewThankPlayer1, MSGBOX_DEFAULT
+	closemessage
+	delay 20
+
+	applymovement LOCALID_PETALBURG_NEPHEW, Common_Movement_FaceAwayPlayer
+	waitmovement LOCALID_PETALBURG_NEPHEW
+	delay 40
+	applymovement LOCALID_PETALBURG_NEPHEW, Common_Movement_FacePlayer
+	waitmovement LOCALID_PETALBURG_NEPHEW
+
+	delay 40
+	msgbox PetalburgCity_House2_Text_NephewThankPlayer2, MSGBOX_DEFAULT
+	applymovement LOCALID_PETALBURG_NEPHEW, Common_Movement_WalkInPlaceLeft
+	waitmovement LOCALID_PETALBURG_NEPHEW
+
+	giveitem ITEM_COIN_CASE
+	setflag FLAG_RECEIVED_COIN_CASE
+	msgbox PetalburgCity_House2_Text_NephewThankPlayer3, MSGBOX_DEFAULT
+	closemessage
+
+	setvar VAR_COIN_CASE_QUEST, 5
+	releaseall
+
+	end
+
+PetalburgCity_House2_Movement_UncleGetReprimanded:
+	delay_16
+	walk_in_place_faster_right
+	walk_in_place_faster_right
+	delay_16
+	walk_in_place_faster_right
+	walk_in_place_faster_right
+	step_end
+
+PetalburgCity_House2_Movement_NephewReprimandUncle:
+	walk_in_place_faster_left
+	walk_in_place_faster_left
+	delay_16
+	walk_in_place_faster_left
+	walk_in_place_faster_left
+	delay_16
+	walk_in_place_left
+	step_end
+
+PetalburgCity_House2_Movement_UncleGoAway:
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_in_place_down
+	step_end
+
+PetalburgCity_House2_Movement_NephewApproachPlayer:
+	walk_left
+	step_end
 
 PetalburgCity_House2_EventScript_Woman::
 	msgbox PetalburgCity_House2_Text_NormanBecameGymLeader, MSGBOX_NPC
 	end
 
+PetalburgCity_House2_EventScript_CrazyLady::
+	lock
+	faceplayer
+	waitse
+	playse SE_DEX_SEARCH
+	msgbox PetalburgCity_House2_Text_CrazyLady, MSGBOX_DEFAULT
+	waitse
+	closemessage
+	delay 30
+	msgbox PetalburgCity_House2_Text_ShesMutering, MSGBOX_DEFAULT
+	release
+	end
+
 PetalburgCity_House2_EventScript_SchoolKid::
 	msgbox PetalburgCity_House2_Text_BattledNormanOnce, MSGBOX_NPC
 	end
+
+PetalburgCity_House2_EventScript_Nephew::
+	lock
+	faceplayer
+
+	call_if_eq VAR_COIN_CASE_QUEST, 5, PetalburgCity_House2_EventScript_BroughtUncleHome
+
+	call_if_eq VAR_COIN_CASE_QUEST, 3, PetalburgCity_House2_EventScript_TaskedWithRetrievingUncle
+
+	call_if_eq VAR_COIN_CASE_QUEST, 2, PetalburgCity_House2_EventScript_TaskedWithRetrievingUncle
+
+	call_if_lt VAR_COIN_CASE_QUEST, 1, PetalburgCity_House2_EventScript_NotMetUncle
+
+	msgbox PetalburgCity_House2_Text_NephewShort, MSGBOX_DEFAULT
+	closemessage
+
+	delay 24
+	applymovement LOCALID_PETALBURG_NEPHEW, Common_Movement_QuestionMark
+	playse SE_PIN
+	waitse
+	delay 5
+
+	msgbox PetalburgCity_House2_Text_YouveSeenHim, MSGBOX_YESNO
+	call_if_eq VAR_RESULT, NO, PetalburgCity_House2_EventScript_OhWell
+
+	call_if_eq VAR_COIN_CASE_QUEST, 1, PetalburgCity_House2_EventScript_RetrieveUncle
+
+	msgbox PetalburgCity_House2_Text_SoNice, MSGBOX_DEFAULT
+
+	release
+	end
+
+PetalburgCity_House2_EventScript_BroughtUncleHome::
+	msgbox PetalburgCity_House2_Text_BroughtUncleHome, MSGBOX_DEFAULT
+	release
+	end
+
+PetalburgCity_House2_EventScript_Uncle::
+	lock
+	@ faceplayer
+	waitse
+	playse SE_M_SNORE
+	msgbox PetalburgCity_House2_Text_Uncle, MSGBOX_DEFAULT
+	waitse
+	closemessage
+	delay 30
+	msgbox PetalburgCity_House2_Text_HesSleeping, MSGBOX_DEFAULT
+	release
+	end
+
+PetalburgCity_House2_Text_BroughtUncleHome:
+	.string "It was such a big help for you to bring\n"
+	.string "my troublemaker uncle home!\p"
+	.string "It's so much easier to care for my\n"
+	.string "aunt when I don't have to worry about\l"
+	.string "him causing even more problems.$"
+
+PetalburgCity_House2_EventScript_TaskedWithRetrievingUncle::
+	msgbox PetalburgCity_House2_Text_HaventFoundHimYet, MSGBOX_DEFAULT
+	release
+	end
+
+PetalburgCity_House2_EventScript_RetrieveUncle::
+	setvar VAR_COIN_CASE_QUEST, 2
+	return
+
+PetalburgCity_House2_EventScript_NotMetUncle::
+	msgbox PetalburgCity_House2_Text_Nephew, MSGBOX_DEFAULT
+	release
+	end
+
+PetalburgCity_House2_EventScript_OhWell::
+	msgbox PetalburgCity_House2_Text_OhWell, MSGBOX_DEFAULT
+	release
+	end
+
+PetalburgCity_House2_Movement_ArriveForSwapScene:
+	walk_up
+	step_end
+
+PetalburgCity_House2_Movement_PlayerPosForSwapScene:
+	walk_up
+	walk_left
+	face_right
+	step_end
+
+PetalburgCity_House2_Movement_FollowerPosForSwapScene1:
+	walk_up
+	step_end
+
+PetalburgCity_House2_Movement_FollowerPosForSwapScene2:
+	walk_up
+	walk_in_place_right
+	step_end
+
+PetalburgCity_House2_Movement_NephewApproachUncle:
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+PetalburgCity_House2_Text_NephewThankPlayer1:
+	.string "Thanks for bringing my uncle back…\p"
+	.string "Hopefully he will just pass out here.\p"
+	.string "That way I won't have to worry about\n"
+	.string "him sneaking off again.$"
+
+PetalburgCity_House2_Text_NephewThankPlayer2:
+	.string "Hey, you seem like a responsible\n"
+	.string "person.\p"
+	.string "If I give this to you, my uncle won't\n"
+	.string "be able to use it anymore!$"
+
+PetalburgCity_House2_Text_NephewThankPlayer3:
+	.string "You can use that to store coins\n"
+	.string "for the GAME CORNER.\p" 
+	.string "Thanks, really!\p"
+	.string "If my uncle wanders off again,\n"
+	.string "at least I'll know who to call!$"
+
+PetalburgCity_House2_Text_CrazyLady:
+	.string "… … … … … … … … …\n"
+	.string "… … … … … … … … …$"
+
+PetalburgCity_House2_Text_ShesMutering:
+	.string "She's muttering incoherently…$"
+
+PetalburgCity_House2_Text_Uncle:
+	.string "… … … … … … … … …\n"
+	.string "… … … … … … … … …$"
+
+PetalburgCity_House2_Text_HesSleeping:
+	.string "He's sleeping…$"
+
+PetalburgCity_House2_Text_Nephew:
+	.string "Sigh…\p"
+	.string "My uncle has gone missing…\p"
+	.string "He probably sneaked off to gamble\n"
+	.string "in MAUVILLE CITY again…\p"
+	.string "He could be gone for days,\l"
+	.string "but I have to look after my aunt here,\n"
+	.string "so I can't go out to retrieve him…\p"
+	.string "I just hope he doesn't get into any\n"
+	.string "danger out on the road…$"
+
+PetalburgCity_House2_Text_NephewShort:
+	.string "Sigh…\p"
+	.string "My uncle has gone missing…\p"
+	.string "He probably sneaked off to gamble\n"
+	.string "in MAUVILLE CITY again…\p"
+	.string "Sometimes he's gone for days, but\n"
+	.string "I have to look after my aunt here,\l"
+	.string "so I can't go out to retrieve him…$"
+
+PetalburgCity_House2_Text_YouveSeenHim:
+	.string "What?\n"
+	.string "You've seen him??\p"
+	.string "Well since you can get to MAUVILLE\n"
+	.string "and back, would you be willing\l"
+	.string "to retrieve my uncle?\p"
+	.string "It would be a huge help to me and\n"
+	.string "my aunt…$"
+
+PetalburgCity_House2_Text_OhWell:
+	.string "Oh well…\p"
+	.string "I just hope he doesn't get into any\n"
+	.string "danger out on the road…$"
+
+PetalburgCity_House2_Text_SoNice:
+	.string "Wow, that's so nice of you!\p"
+	.string "I hope he's not too much trouble\n"
+	.string "to wrangle!$"
+
+PetalburgCity_House2_Text_HaventFoundHimYet:
+	.string "Have you found my uncle yet?\p"
+	.string "I think he's on a gambling binge\n"
+	.string "in MAUVILLE CITY…\p"
+	.string "I just hope he doesn't get into any\n"
+	.string "danger…$"
 
 PetalburgCity_House2_Text_NormanBecameGymLeader:
 	.string "NORMAN became our town's new\n"

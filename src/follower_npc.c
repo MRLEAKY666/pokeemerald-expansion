@@ -1755,6 +1755,11 @@ void ScriptCheckFollowerNPC(struct ScriptContext *ctx)
     gSpecialVar_Result = PlayerHasFollowerNPC();
 }
 
+void ScriptGetFollowerNPC(struct ScriptContext *ctx)
+{
+    gSpecialVar_Result = GetFollowerNPCData(FNPC_DATA_EVENT_FLAG);
+}
+
 void ScriptUpdateFollowingMon(struct ScriptContext *ctx)
 {
     UpdateFollowingPokemon();

@@ -80,17 +80,18 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_GAMECORNER_UNCLE",
       "graphics_id": "OBJ_EVENT_GFX_POKEFAN_M",
       "x": 19,
-      "y": 4,
+      "y": 3,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MauvilleCity_GameCorner_OG_EventScript_PokefanM",
-      "flag": "0"
+      "script": "MauvilleCity_GameCorner_OG_EventScript_Uncle",
+      "flag": "FLAG_GAME_CORNER_UNC"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",

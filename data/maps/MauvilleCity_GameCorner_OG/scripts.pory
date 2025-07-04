@@ -1,5 +1,6 @@
 raw `
 MauvilleCity_GameCorner_OG_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, MauvilleCity_GameCorner_OG_OnTransition
 	.byte 0
 
     @ Game Corner prices
@@ -12,6 +13,19 @@ MauvilleCity_GameCorner_OG_MapScripts::
 
 	.set COINS_PRICE_50,  1000
 	.set COINS_PRICE_500, 10000
+
+MauvilleCity_GameCorner_OG_OnTransition::
+	call_if_eq VAR_COIN_CASE_QUEST, 3, MauvilleCity_GameCorner_OG_EventScript_TryResetAfterFailed
+	end
+
+MauvilleCity_GameCorner_OG_EventScript_TryResetAfterFailed::
+	checkfollowernpc
+	call_if_eq VAR_RESULT, FALSE, MauvilleCity_GameCorner_OG_EventScript_ResetAfterFailed
+	return
+
+MauvilleCity_GameCorner_OG_EventScript_ResetAfterFailed::
+	clearflag FLAG_GAME_CORNER_UNC
+	return
 
 MauvilleCity_GameCorner_OG_EventScript_CoinsClerk::
 	lock
@@ -467,6 +481,215 @@ MauvilleCity_GameCorner_OG_EventScript_ReceivedStarterDoll::
 	release
 	end
 
+MauvilleCity_GameCorner_OG_EventScript_Uncle::
+	lock
+	faceplayer
+	call_if_eq VAR_COIN_CASE_QUEST, 3, MauvilleCity_GameCorner_OG_EventScript_RetryRetrievingUncle
+	msgbox MauvilleCity_GameCorner_OG_Text_Uncle, MSGBOX_DEFAULT
+	closemessage
+	delay 16
+	call_if_eq VAR_COIN_CASE_QUEST, 2, MauvilleCity_GameCorner_OG_EventScript_TaskedWithRetrievingUncle
+	delay 40
+	msgbox MauvilleCity_GameCorner_OG_Text_DriftingOffAgain, MSGBOX_DEFAULT
+	call_if_lt VAR_COIN_CASE_QUEST, 1, MauvilleCity_GameCorner_OG_EventScript_StartCoinCaseQuest
+	release
+	end
+
+MauvilleCity_GameCorner_OG_EventScript_RetryRetrievingUncle::
+	msgbox MauvilleCity_GameCorner_OG_Text_RetryRetrievingUncle1, MSGBOX_YESNO
+	closemessage
+	goto_if_eq VAR_RESULT, NO, MauvilleCity_GameCorner_OG_EventScript_DeclineRetryRetrievingUncle
+	msgbox MauvilleCity_GameCorner_OG_Text_RetryRetrievingUncle2, MSGBOX_DEFAULT
+	setfollowernpc LOCALID_GAMECORNER_UNCLE, FNPC_LEAVE_WHITEOUT, MauvilleCity_GameCorner_OG_EventScript_UncleIsFollowing
+	facefollowernpc
+	release
+	end
+
+MauvilleCity_GameCorner_OG_Text_RetryRetrievingUncle1:
+	.string "… … … … … … … … …\n"
+	.string "… … … … … … … … …\l"
+	.string "… … … … … … … … …\l"
+	.string "… … … … … … … Huh…?\p"
+	.string "Oh…\l"
+	.string "It's you…\p"
+	.string "You're going to try to take me\n"
+	.string "out of here again?$"
+
+MauvilleCity_GameCorner_OG_Text_RetryRetrievingUncle2:
+	.string "Fine.\p"
+	.string "Let's hurry up and get out of here…\l"
+	.string "And don't get us into trouble this time!$"
+
+MauvilleCity_GameCorner_OG_EventScript_DeclineRetryRetrievingUncle::
+	msgbox MauvilleCity_GameCorner_OG_Text_DeclineRetryRetrievingUncle, MSGBOX_DEFAULT
+	closemessage
+	delay 60
+	msgbox MauvilleCity_GameCorner_OG_Text_DriftingOffAgain, MSGBOX_DEFAULT
+	call_if_lt VAR_COIN_CASE_QUEST, 1, MauvilleCity_GameCorner_OG_EventScript_StartCoinCaseQuest
+	release
+	end
+
+MauvilleCity_GameCorner_OG_Text_DeclineRetryRetrievingUncle:
+	.string "Then quit bothering… …\l"
+	.string "me… … …$"
+
+MauvilleCity_GameCorner_OG_EventScript_StartCoinCaseQuest::
+	setvar VAR_COIN_CASE_QUEST, 1
+	return
+
+MauvilleCity_GameCorner_OG_EventScript_TaskedWithRetrievingUncle::
+
+	getobjectfacingdirection LOCALID_PLAYER, VAR_RESULT
+	call_if_eq VAR_RESULT, DIR_EAST, MauvilleCity_GameCorner_OG_EventScript_PlayerFaceLeft
+	call_if_eq VAR_RESULT, DIR_NORTH, MauvilleCity_GameCorner_OG_EventScript_PlayerFaceSouth
+	call_if_eq VAR_RESULT, DIR_WEST, MauvilleCity_GameCorner_OG_EventScript_PlayerFaceRight
+
+	delay 10
+	applymovement LOCALID_PLAYER, Common_Movement_ExclamationMark
+	playse SE_PIN
+	waitse
+	delay 5
+
+	msgbox MauvilleCity_GameCorner_OG_Text_TaskedWithRetrievingUncle, MSGBOX_YESNO
+	call_if_eq VAR_RESULT, NO, MauvilleCity_GameCorner_OG_EventScript_NephewMayBeWorried
+
+	getobjectfacingdirection LOCALID_PLAYER, VAR_RESULT
+	call_if_eq VAR_RESULT, DIR_WEST, MauvilleCity_GameCorner_OG_EventScript_PlayerWrangleUncleEast
+	call_if_eq VAR_RESULT, DIR_SOUTH, MauvilleCity_GameCorner_OG_EventScript_PlayerWrangleUncleNorth
+	call_if_eq VAR_RESULT, DIR_EAST, MauvilleCity_GameCorner_OG_EventScript_PlayerWrangleUncleWest
+
+	msgbox MauvilleCity_GameCorner_OG_Text_ConvinceUncleToFollow2, MSGBOX_DEFAULT
+	setfollowernpc LOCALID_GAMECORNER_UNCLE, FNPC_LEAVE_WHITEOUT, MauvilleCity_GameCorner_OG_EventScript_UncleIsFollowing
+	facefollowernpc
+	setvar VAR_COIN_CASE_QUEST, 3
+	release
+	end
+
+MauvilleCity_GameCorner_OG_EventScript_PlayerWrangleUncleEast::
+	waitse
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceRight
+	waitmovement LOCALID_PLAYER
+	msgbox MauvilleCity_GameCorner_OG_Text_ConvinceUncleToFollow1, MSGBOX_DEFAULT
+	closemessage
+	waitse
+	playse SE_M_TAKE_DOWN
+	applymovement LOCALID_PLAYER, MauvilleCity_GameCorner_OG_Movement_PlayerWrangleUncleEast
+	applymovement LOCALID_GAMECORNER_UNCLE, MauvilleCity_GameCorner_OG_Movement_UncleGetWrangledEast
+	delay 32
+	playse SE_M_TAKE_DOWN
+	delay 32
+	playse SE_M_TAKE_DOWN
+	delay 32
+	playse SE_M_TAKE_DOWN
+	waitmovement LOCALID_PLAYER
+	return
+
+MauvilleCity_GameCorner_OG_EventScript_PlayerWrangleUncleNorth::
+	waitse
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceUp
+	waitmovement LOCALID_PLAYER
+	msgbox MauvilleCity_GameCorner_OG_Text_ConvinceUncleToFollow1, MSGBOX_DEFAULT
+	closemessage
+	waitse
+	playse SE_M_TAKE_DOWN
+	applymovement LOCALID_PLAYER, MauvilleCity_GameCorner_OG_Movement_PlayerWrangleUncleNorth
+	applymovement LOCALID_GAMECORNER_UNCLE, MauvilleCity_GameCorner_OG_Movement_UncleGetWrangledNorth
+	delay 32
+	playse SE_M_TAKE_DOWN
+	delay 32
+	playse SE_M_TAKE_DOWN
+	delay 32
+	playse SE_M_TAKE_DOWN
+	waitmovement LOCALID_PLAYER
+	return
+
+MauvilleCity_GameCorner_OG_EventScript_PlayerWrangleUncleWest::
+	waitse
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft
+	waitmovement LOCALID_PLAYER
+	msgbox MauvilleCity_GameCorner_OG_Text_ConvinceUncleToFollow1, MSGBOX_DEFAULT
+	closemessage
+	waitse
+	playse SE_M_TAKE_DOWN
+	applymovement LOCALID_PLAYER, MauvilleCity_GameCorner_OG_Movement_PlayerWrangleUncleWest
+	applymovement LOCALID_GAMECORNER_UNCLE, MauvilleCity_GameCorner_OG_Movement_UncleGetWrangledWest
+	delay 32
+	playse SE_M_TAKE_DOWN
+	delay 32
+	playse SE_M_TAKE_DOWN
+	delay 32
+	playse SE_M_TAKE_DOWN
+	waitmovement LOCALID_PLAYER
+	return
+
+MauvilleCity_GameCorner_OG_EventScript_NephewMayBeWorried::
+	@msgbox MauvilleCity_GameCorner_OG_Text_NephewMayBeWorried, MSGBOX_DEFAULT
+	closemessage
+	waitse
+	getobjectfacingdirection LOCALID_PLAYER, VAR_RESULT
+	call_if_eq VAR_RESULT, DIR_WEST, MauvilleCity_GameCorner_OG_EventScript_NephewWorriedEast
+	call_if_eq VAR_RESULT, DIR_SOUTH, MauvilleCity_GameCorner_OG_EventScript_NephewWorriedNorth
+	call_if_eq VAR_RESULT, DIR_EAST, MauvilleCity_GameCorner_OG_EventScript_NephewWorriedWest
+	release
+	end
+
+MauvilleCity_GameCorner_OG_EventScript_NephewWorriedEast::
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceRight
+	waitmovement LOCALID_PLAYER
+	delay 15
+	msgbox MauvilleCity_GameCorner_OG_Text_DriftingOffAgain, MSGBOX_DEFAULT
+	waitse
+	applymovement LOCALID_GAMECORNER_UNCLE, Common_Movement_FaceOriginalDirection
+	waitmovement LOCALID_GAMECORNER_UNCLE
+	release
+	end
+
+MauvilleCity_GameCorner_OG_EventScript_NephewWorriedNorth::
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceUp
+	waitmovement LOCALID_PLAYER
+	delay 15
+	msgbox MauvilleCity_GameCorner_OG_Text_DriftingOffAgain, MSGBOX_DEFAULT
+	waitse
+	applymovement LOCALID_GAMECORNER_UNCLE, Common_Movement_FaceOriginalDirection
+	waitmovement LOCALID_GAMECORNER_UNCLE
+	release
+	end
+
+MauvilleCity_GameCorner_OG_EventScript_NephewWorriedWest::
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft
+	waitmovement LOCALID_PLAYER
+	delay 15
+	msgbox MauvilleCity_GameCorner_OG_Text_DriftingOffAgain, MSGBOX_DEFAULT
+	waitse
+	applymovement LOCALID_GAMECORNER_UNCLE, Common_Movement_FaceOriginalDirection
+	waitmovement LOCALID_GAMECORNER_UNCLE
+	release
+	end
+
+MauvilleCity_GameCorner_OG_EventScript_UncleIsFollowing::
+	msgbox MauvilleCity_GameCorner_OG_Text_OrCanGoBack, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, MauvilleCity_GameCorner_OG_EventScript_FollowingUncleLeaves
+	msgbox MauvilleCity_GameCorner_OG_Text_UncleIsFollowing, MSGBOX_DEFAULT
+	release
+	end
+
+MauvilleCity_GameCorner_OG_EventScript_FollowingUncleLeaves::
+	msgbox MauvilleCity_GameCorner_OG_Text_UncleStopsFollowing, MSGBOX_DEFAULT
+	fadescreenswapbuffers FADE_TO_BLACK
+	destroyfollowernpc
+	warpinplace
+	release
+	end
+	
+
+MauvilleCity_GameCorner_OG_Text_OrCanGoBack:
+	.string "Will you just mind your own\n"
+	.string "business and leave me alone?$"
+
+MauvilleCity_GameCorner_OG_Text_UncleStopsFollowing:
+	.string "WOOHOO!\l"
+	.string "Finally!$"
+
 MauvilleCity_GameCorner_OG_EventScript_PokefanM::
 	lock
 	faceplayer
@@ -658,6 +881,137 @@ MauvilleCity_GameCorner_OG_EventScript_NoCoinCase::
 	msgbox MauvilleCity_GameCorner_OG_Text_CantPlayWithNoCoinCase, MSGBOX_DEFAULT
 	releaseall
 	end
+
+MauvilleCity_GameCorner_OG_Movement_PlayerWrangleUncleEast:
+	walk_in_place_right
+	walk_in_place_right
+	delay_16
+	walk_in_place_right
+	walk_in_place_right
+	delay_16
+	walk_in_place_right
+	walk_in_place_right
+	delay_16
+	step_end
+
+MauvilleCity_GameCorner_OG_Movement_UncleGetWrangledEast:
+	shake_horizontal
+	delay_16
+	shake_horizontal
+	delay_16
+	shake_horizontal
+	delay_16
+	step_end
+
+MauvilleCity_GameCorner_OG_Movement_PlayerWrangleUncleNorth:
+	walk_in_place_up
+	walk_in_place_up
+	delay_16
+	walk_in_place_up
+	walk_in_place_up
+	delay_16
+	walk_in_place_up
+	walk_in_place_up
+	delay_16
+	step_end
+
+MauvilleCity_GameCorner_OG_Movement_UncleGetWrangledNorth:
+	shake_vertical
+	delay_16
+	shake_vertical
+	delay_16
+	shake_vertical
+	delay_16
+	step_end
+
+MauvilleCity_GameCorner_OG_Movement_PlayerWrangleUncleWest:
+	walk_in_place_left
+	walk_in_place_left
+	delay_16
+	walk_in_place_left
+	walk_in_place_left
+	delay_16
+	walk_in_place_left
+	walk_in_place_left
+	delay_16
+	step_end
+
+MauvilleCity_GameCorner_OG_Movement_UncleGetWrangledWest:
+	shake_horizontal
+	delay_16
+	shake_horizontal
+	delay_16
+	shake_horizontal
+	delay_16
+	step_end
+
+MauvilleCity_GameCorner_OG_EventScript_PlayerFaceLeft::
+	applymovement LOCALID_PLAYER, MauvilleCity_GameCorner_OG_Movement_PlayerFaceLeft
+	waitmovement 0
+	return
+
+MauvilleCity_GameCorner_OG_Movement_PlayerFaceLeft:
+	walk_in_place_left
+	step_end
+
+MauvilleCity_GameCorner_OG_EventScript_PlayerFaceSouth::
+	applymovement LOCALID_PLAYER, MauvilleCity_GameCorner_OG_Movement_PlayerFaceSouth
+	waitmovement 0
+	return
+
+MauvilleCity_GameCorner_OG_Movement_PlayerFaceSouth:
+	walk_in_place_down
+	step_end
+
+MauvilleCity_GameCorner_OG_EventScript_PlayerFaceRight::
+	applymovement LOCALID_PLAYER, MauvilleCity_GameCorner_OG_Movement_PlayerFaceRight
+	waitmovement 0
+	return
+
+MauvilleCity_GameCorner_OG_Movement_PlayerFaceRight:
+	walk_in_place_right
+	step_end
+
+MauvilleCity_GameCorner_OG_Text_Uncle:
+	.string "… … … … … … … … …\n"
+	.string "… … … … … … … … …\l"
+	.string "… … … … … … … … …\l"
+	.string "… … … … … … … Huh…?\p"
+	.string "Oh…!\l"
+	.string "Uh…\p"
+	.string "No, I wasn't sleeping…\p"
+	.string "Everything is under control!$"
+
+MauvilleCity_GameCorner_OG_Text_DriftingOffAgain:
+	.string "He seemed to start drifting off again…$"
+
+MauvilleCity_GameCorner_OG_Text_NephewMayBeWorried:
+	.string "His nephew is probably really worried!$"
+
+MauvilleCity_GameCorner_OG_Text_ConvinceUncleToFollow1:
+	.string "Hey! Lay off me you grubby youth!$"
+
+MauvilleCity_GameCorner_OG_Text_ConvinceUncleToFollow2:
+	.string "… … … … … … … … …\n"
+	.string "… … … … … … … What?\p"
+	.string "My nephew? And my wife?\p"
+	.string "But I just got here…!\p"
+	.string "Grr… Fine!\n"
+	.string "Let's hurry back…\p"
+	.string "I'll just show them I'm okay…\p" 
+	.string "and then…\p"
+	.string "then maybe I can come back!$"
+
+MauvilleCity_GameCorner_OG_Text_UncleIsFollowing:
+	.string "Then let's get a move on!\n"
+	.string "The sooner I can show my family\l"
+	.string "that I'm okay, the sooner I can\l"
+	.string "get back to the slots!$"
+
+MauvilleCity_GameCorner_OG_Text_TaskedWithRetrievingUncle:
+	.string "This must be the missing uncle of\n"
+	.string "that kid from PETALBURG!\p"
+	.string "Try to convince him to come with you?$"
 
 MauvilleCity_GameCorner_OG_Text_ThisIsMauvilleGameCorner:
 	.string "This is MAUVILLE GAME CORNER.$"

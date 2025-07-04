@@ -2692,6 +2692,11 @@
 	callnative ScriptCheckFollowerNPC
 	.endm
 
+	@ Sets VAR_RESULT to specific ? of follower
+	.macro getfollowernpc
+	callnative ScriptGetFollowerNPC
+	.endm
+
 	@ Updates Pokemon follower.
 	.macro updatefollowingmon
 	callnative ScriptUpdateFollowingMon

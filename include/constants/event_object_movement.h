@@ -259,6 +259,8 @@
 #define MOVEMENT_ACTION_SURF_STILL_UP                   0xAB
 #define MOVEMENT_ACTION_SURF_STILL_LEFT                 0xAC
 #define MOVEMENT_ACTION_SURF_STILL_RIGHT                0xAD
+#define MOVEMENT_ACTION_SHAKE_HORIZONTAL                0xAE
+#define MOVEMENT_ACTION_SHAKE_VERTICAL                  0xAF
 
 #define MOVEMENT_ACTION_STEP_END 0xFE
 #define MOVEMENT_ACTION_NONE     0xFF
