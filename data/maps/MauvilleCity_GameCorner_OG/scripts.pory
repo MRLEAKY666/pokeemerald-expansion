@@ -10,6 +10,13 @@ MauvilleCity_GameCorner_OG_MapScripts::
 	.set TM_THUNDERBOLT_COINS, 4000
 	.set TM_ICE_BEAM_COINS, 4000
 	.set DOLL_COINS, 1000
+	.set ELECTIRIZER_COINS, 1500
+	.set MAGMARIZER_COINS, 1500
+	.set PROTECTOR_COINS, 1500
+	.set UPGRADE_COINS, 2000
+	.set DUBIOUS_DISC_COINS, 2500 
+	.set METAL_COAT_COINS, 2500
+	.set LINKING_CORD_COINS, 4000
 
 	.set COINS_PRICE_50,  1000
 	.set COINS_PRICE_500, 10000
@@ -248,17 +255,49 @@ MauvilleCity_GameCorner_OG_EventScript_ReturnToChooseTMPrize::
 	waitmessage
 	goto MauvilleCity_GameCorner_OG_EventScript_ChooseTMPrize
 
-MauvilleCity_GameCorner_OG_EventScript_ChooseTMPrize::
-	multichoice 12, 0, MULTI_GAME_CORNER_TMS, FALSE
-	switch VAR_RESULT
-	case 0, MauvilleCity_GameCorner_OG_EventScript_TMDoubleTeam
-	case 1, MauvilleCity_GameCorner_OG_EventScript_TMPsychic
-	case 2, MauvilleCity_GameCorner_OG_EventScript_TMFlamethrower
-	case 3, MauvilleCity_GameCorner_OG_EventScript_TMThunderbolt
-	case 4, MauvilleCity_GameCorner_OG_EventScript_TMIceBeam
-	case 5, MauvilleCity_GameCorner_OG_EventScript_CancelTMSelect
-	goto MauvilleCity_GameCorner_OG_EventScript_CancelTMSelect
+`
+
+script MauvilleCity_GameCorner_OG_EventScript_ChooseTMPrize {
+	//multichoice(12, 0, MULTI_GAME_CORNER_TMS, FALSE)
+	dynmultichoice(10, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, "TM32                1,500 COINS", "TM29                3,500 COINS", 
+																"TM35                4,000 COINS", "TM24                4,000 COINS", 
+																"TM13                4,000 COINS", "Electirizer     1,500 COINS", 
+																"Magmarizer      1,500 COINS", "Protector       1,500 COINS", 
+																"Upgrade           2,500 COINS", "Dubious Disc   2,500 COINS", 
+																"Metal Coat      2,500 COINS", "Linking Cord   4,000 COINS", "Cancel")
+	switch (var(VAR_RESULT)) {
+		case 0:
+			goto(MauvilleCity_GameCorner_OG_EventScript_TMDoubleTeam)
+		case 1:
+			goto(MauvilleCity_GameCorner_OG_EventScript_TMPsychic)
+		case 2:
+			goto(MauvilleCity_GameCorner_OG_EventScript_TMFlamethrower)
+		case 3:
+			goto(MauvilleCity_GameCorner_OG_EventScript_TMThunderbolt)
+		case 4:
+			goto(MauvilleCity_GameCorner_OG_EventScript_TMIceBeam)
+		case 5:
+			goto(MauvilleCity_GameCorner_OG_EventScript_Electirizer)
+		case 6:
+			goto(MauvilleCity_GameCorner_OG_EventScript_Magmarizer)
+		case 7:
+			goto(MauvilleCity_GameCorner_OG_EventScript_Protector)
+		case 8:
+			goto(MauvilleCity_GameCorner_OG_EventScript_Upgrade)
+		case 9:
+			goto(MauvilleCity_GameCorner_OG_EventScript_DubiousDisc)
+		case 10:
+			goto(MauvilleCity_GameCorner_OG_EventScript_MetalCoat)
+		case 11:
+			goto(MauvilleCity_GameCorner_OG_EventScript_LinkingCord)
+		case 12:
+			goto(MauvilleCity_GameCorner_OG_EventScript_CancelTMSelect)
+		}
+	goto(MauvilleCity_GameCorner_OG_EventScript_CancelTMSelect)
 	end
+}
+
+raw `
 
 MauvilleCity_GameCorner_OG_EventScript_TMDoubleTeam::
 	setvar VAR_TEMP_1, 1
@@ -290,18 +329,87 @@ MauvilleCity_GameCorner_OG_EventScript_TMIceBeam::
 	setvar VAR_0x8004, ITEM_TM_ICE_BEAM
 	goto MauvilleCity_GameCorner_OG_EventScript_ConfirmTMPrize
 
-MauvilleCity_GameCorner_OG_EventScript_ConfirmTMPrize::
-	special BufferTMHMMoveName
-	msgbox MauvilleCity_GameCorner_OG_Text_SoYourChoiceIsTheTMX, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, MauvilleCity_GameCorner_OG_EventScript_CancelTMSelect
-	switch VAR_TEMP_1
-	case 1, MauvilleCity_GameCorner_OG_EventScript_BuyTMDoubleTeam
-	case 2, MauvilleCity_GameCorner_OG_EventScript_BuyTMPsychic
-	case 3, MauvilleCity_GameCorner_OG_EventScript_BuyTMFlamethrower
-	case 4, MauvilleCity_GameCorner_OG_EventScript_BuyTMThunderbolt
-	case 5, MauvilleCity_GameCorner_OG_EventScript_BuyTMIceBeam
-	end
+MauvilleCity_GameCorner_OG_EventScript_Electirizer::
+	setvar VAR_TEMP_1, 6
+	bufferitemname STR_VAR_1, ITEM_ELECTIRIZER
+	setvar VAR_0x8004, ITEM_ELECTIRIZER
+	goto MauvilleCity_GameCorner_OG_EventScript_ConfirmTMPrize
 
+MauvilleCity_GameCorner_OG_EventScript_Magmarizer::
+	setvar VAR_TEMP_1, 7
+	bufferitemname STR_VAR_1, ITEM_MAGMARIZER
+	setvar VAR_0x8004, ITEM_MAGMARIZER
+	goto MauvilleCity_GameCorner_OG_EventScript_ConfirmTMPrize
+
+MauvilleCity_GameCorner_OG_EventScript_Protector::
+	setvar VAR_TEMP_1, 8
+	bufferitemname STR_VAR_1, ITEM_PROTECTOR
+	setvar VAR_0x8004, ITEM_PROTECTOR
+	goto MauvilleCity_GameCorner_OG_EventScript_ConfirmTMPrize
+
+MauvilleCity_GameCorner_OG_EventScript_Upgrade::
+	setvar VAR_TEMP_1, 9
+	bufferitemname STR_VAR_1, ITEM_UPGRADE
+	setvar VAR_0x8004, ITEM_UPGRADE
+	goto MauvilleCity_GameCorner_OG_EventScript_ConfirmTMPrize
+
+MauvilleCity_GameCorner_OG_EventScript_DubiousDisc::
+	setvar VAR_TEMP_1, 10
+	bufferitemname STR_VAR_1, ITEM_DUBIOUS_DISC
+	setvar VAR_0x8004, ITEM_DUBIOUS_DISC
+	goto MauvilleCity_GameCorner_OG_EventScript_ConfirmTMPrize
+
+MauvilleCity_GameCorner_OG_EventScript_MetalCoat::
+	setvar VAR_TEMP_1, 11
+	bufferitemname STR_VAR_1, ITEM_METAL_COAT
+	setvar VAR_0x8004, ITEM_METAL_COAT
+	goto MauvilleCity_GameCorner_OG_EventScript_ConfirmTMPrize
+
+MauvilleCity_GameCorner_OG_EventScript_LinkingCord::
+	setvar VAR_TEMP_1, 12
+	bufferitemname STR_VAR_1, ITEM_LINKING_CORD
+	setvar VAR_0x8004, ITEM_LINKING_CORD
+	goto MauvilleCity_GameCorner_OG_EventScript_ConfirmTMPrize
+`
+script MauvilleCity_GameCorner_OG_EventScript_ConfirmTMPrize {
+	if (var(VAR_TEMP_1) <= 5){
+		special(BufferTMHMMoveName)
+		msgbox(MauvilleCity_GameCorner_OG_Text_SoYourChoiceIsTheTMX, MSGBOX_YESNO)
+	}
+	else {
+		msgbox(MauvilleCity_GameCorner_OG_Text_SoYourChoiceIsTheItem, MSGBOX_YESNO)
+	}
+	goto_if_eq(VAR_RESULT, NO, MauvilleCity_GameCorner_OG_EventScript_CancelTMSelect)
+	switch(var(VAR_TEMP_1)){
+	case 1:
+		goto(MauvilleCity_GameCorner_OG_EventScript_BuyTMDoubleTeam)
+	case 2:
+		goto(MauvilleCity_GameCorner_OG_EventScript_BuyTMPsychic)
+	case 3:
+		goto(MauvilleCity_GameCorner_OG_EventScript_BuyTMFlamethrower)
+	case 4:
+		goto(MauvilleCity_GameCorner_OG_EventScript_BuyTMThunderbolt)
+	case 5:
+		goto(MauvilleCity_GameCorner_OG_EventScript_BuyTMIceBeam)
+	case 6:
+		goto(MauvilleCity_GameCorner_OG_EventScript_BuyElectirizer)
+	case 7:
+		goto(MauvilleCity_GameCorner_OG_EventScript_BuyMagmarizer)
+	case 8:
+		goto(MauvilleCity_GameCorner_OG_EventScript_BuyProtector)
+	case 9:
+		goto(MauvilleCity_GameCorner_OG_EventScript_BuyUpgrade)
+	case 10:
+		goto(MauvilleCity_GameCorner_OG_EventScript_BuyDubiousDisc)
+	case 11:
+		goto(MauvilleCity_GameCorner_OG_EventScript_BuyMetalCoat)
+	case 12:
+		goto(MauvilleCity_GameCorner_OG_EventScript_BuyLinkingCord)
+	}
+	end
+}
+
+raw `
 MauvilleCity_GameCorner_OG_EventScript_BuyTMDoubleTeam::
 	checkcoins VAR_TEMP_2
 	goto_if_lt VAR_TEMP_2, TM_DOUBLE_TEAM_COINS, MauvilleCity_GameCorner_OG_EventScript_NotEnoughCoinsForTM
@@ -361,6 +469,97 @@ MauvilleCity_GameCorner_OG_EventScript_BuyTMIceBeam::
 	goto_if_eq VAR_RESULT, FALSE, MauvilleCity_GameCorner_OG_EventScript_NoRoomForTM
 	removecoins TM_ICE_BEAM_COINS
 	additem ITEM_TM_ICE_BEAM
+	updatecoinsbox 1, 1
+	playse SE_SHOP
+	msgbox MauvilleCity_GameCorner_OG_Text_HereYouGo, MSGBOX_DEFAULT
+	goto MauvilleCity_GameCorner_OG_EventScript_ReturnToChooseTMPrize
+	end
+
+MauvilleCity_GameCorner_OG_EventScript_BuyUpgrade::
+	checkcoins VAR_TEMP_2
+	goto_if_lt VAR_TEMP_2, UPGRADE_COINS, MauvilleCity_GameCorner_OG_EventScript_NotEnoughCoinsForTM
+	checkitemspace ITEM_UPGRADE
+	goto_if_eq VAR_RESULT, FALSE, MauvilleCity_GameCorner_OG_EventScript_NoRoomForTM
+	removecoins UPGRADE_COINS
+	additem ITEM_UPGRADE
+	updatecoinsbox 1, 1
+	playse SE_SHOP
+	msgbox MauvilleCity_GameCorner_OG_Text_HereYouGo, MSGBOX_DEFAULT
+	goto MauvilleCity_GameCorner_OG_EventScript_ReturnToChooseTMPrize
+	end
+
+MauvilleCity_GameCorner_OG_EventScript_BuyDubiousDisc::
+	checkcoins VAR_TEMP_2
+	goto_if_lt VAR_TEMP_2, DUBIOUS_DISC_COINS, MauvilleCity_GameCorner_OG_EventScript_NotEnoughCoinsForTM
+	checkitemspace ITEM_DUBIOUS_DISC
+	goto_if_eq VAR_RESULT, FALSE, MauvilleCity_GameCorner_OG_EventScript_NoRoomForTM
+	removecoins DUBIOUS_DISC_COINS
+	additem ITEM_DUBIOUS_DISC
+	updatecoinsbox 1, 1
+	playse SE_SHOP
+	msgbox MauvilleCity_GameCorner_OG_Text_HereYouGo, MSGBOX_DEFAULT
+	goto MauvilleCity_GameCorner_OG_EventScript_ReturnToChooseTMPrize
+	end
+
+MauvilleCity_GameCorner_OG_EventScript_BuyElectirizer::
+	checkcoins VAR_TEMP_2
+	goto_if_lt VAR_TEMP_2, ELECTIRIZER_COINS, MauvilleCity_GameCorner_OG_EventScript_NotEnoughCoinsForTM
+	checkitemspace ITEM_ELECTIRIZER
+	goto_if_eq VAR_RESULT, FALSE, MauvilleCity_GameCorner_OG_EventScript_NoRoomForTM
+	removecoins ELECTIRIZER_COINS
+	additem ITEM_ELECTIRIZER
+	updatecoinsbox 1, 1
+	playse SE_SHOP
+	msgbox MauvilleCity_GameCorner_OG_Text_HereYouGo, MSGBOX_DEFAULT
+	goto MauvilleCity_GameCorner_OG_EventScript_ReturnToChooseTMPrize
+	end
+
+MauvilleCity_GameCorner_OG_EventScript_BuyMagmarizer::
+	checkcoins VAR_TEMP_2
+	goto_if_lt VAR_TEMP_2, MAGMARIZER_COINS, MauvilleCity_GameCorner_OG_EventScript_NotEnoughCoinsForTM
+	checkitemspace ITEM_MAGMARIZER
+	goto_if_eq VAR_RESULT, FALSE, MauvilleCity_GameCorner_OG_EventScript_NoRoomForTM
+	removecoins MAGMARIZER_COINS
+	additem ITEM_MAGMARIZER
+	updatecoinsbox 1, 1
+	playse SE_SHOP
+	msgbox MauvilleCity_GameCorner_OG_Text_HereYouGo, MSGBOX_DEFAULT
+	goto MauvilleCity_GameCorner_OG_EventScript_ReturnToChooseTMPrize
+	end
+
+MauvilleCity_GameCorner_OG_EventScript_BuyProtector::
+	checkcoins VAR_TEMP_2
+	goto_if_lt VAR_TEMP_2, PROTECTOR_COINS, MauvilleCity_GameCorner_OG_EventScript_NotEnoughCoinsForTM
+	checkitemspace ITEM_PROTECTOR
+	goto_if_eq VAR_RESULT, FALSE, MauvilleCity_GameCorner_OG_EventScript_NoRoomForTM
+	removecoins PROTECTOR_COINS
+	additem ITEM_PROTECTOR
+	updatecoinsbox 1, 1
+	playse SE_SHOP
+	msgbox MauvilleCity_GameCorner_OG_Text_HereYouGo, MSGBOX_DEFAULT
+	goto MauvilleCity_GameCorner_OG_EventScript_ReturnToChooseTMPrize
+	end
+
+MauvilleCity_GameCorner_OG_EventScript_BuyMetalCoat::
+	checkcoins VAR_TEMP_2
+	goto_if_lt VAR_TEMP_2, METAL_COAT_COINS, MauvilleCity_GameCorner_OG_EventScript_NotEnoughCoinsForTM
+	checkitemspace ITEM_METAL_COAT
+	goto_if_eq VAR_RESULT, FALSE, MauvilleCity_GameCorner_OG_EventScript_NoRoomForTM
+	removecoins METAL_COAT_COINS
+	additem ITEM_METAL_COAT
+	updatecoinsbox 1, 1
+	playse SE_SHOP
+	msgbox MauvilleCity_GameCorner_OG_Text_HereYouGo, MSGBOX_DEFAULT
+	goto MauvilleCity_GameCorner_OG_EventScript_ReturnToChooseTMPrize
+	end
+
+MauvilleCity_GameCorner_OG_EventScript_BuyLinkingCord::
+	checkcoins VAR_TEMP_2
+	goto_if_lt VAR_TEMP_2, LINKING_CORD_COINS, MauvilleCity_GameCorner_OG_EventScript_NotEnoughCoinsForTM
+	checkitemspace ITEM_LINKING_CORD
+	goto_if_eq VAR_RESULT, FALSE, MauvilleCity_GameCorner_OG_EventScript_NoRoomForTM
+	removecoins LINKING_CORD_COINS
+	additem ITEM_LINKING_CORD
 	updatecoinsbox 1, 1
 	playse SE_SHOP
 	msgbox MauvilleCity_GameCorner_OG_Text_HereYouGo, MSGBOX_DEFAULT
@@ -682,6 +881,7 @@ MauvilleCity_GameCorner_OG_EventScript_NephewWorriedWest::
 	end
 
 MauvilleCity_GameCorner_OG_EventScript_UncleIsFollowing::
+	faceplayer
 	msgbox MauvilleCity_GameCorner_OG_Text_OrCanGoBack, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, MauvilleCity_GameCorner_OG_EventScript_FollowingUncleLeaves
 	msgbox MauvilleCity_GameCorner_OG_Text_UncleIsFollowing, MSGBOX_DEFAULT
@@ -1067,7 +1267,11 @@ MauvilleCity_GameCorner_OG_Text_WhichPrize:
 
 MauvilleCity_GameCorner_OG_Text_SoYourChoiceIsTheTMX:
 	.string "So your choice is\n"
-	.string "the {STR_VAR_1} {STR_VAR_2}?$"
+	.string "{STR_VAR_1} {STR_VAR_2}?$"
+
+MauvilleCity_GameCorner_OG_Text_SoYourChoiceIsTheItem:
+	.string "So your choice is\n"
+	.string "the {STR_VAR_1}?$"
 
 MauvilleCity_GameCorner_OG_Text_SendToYourHomePC:
 	.string "Thank you!\n"

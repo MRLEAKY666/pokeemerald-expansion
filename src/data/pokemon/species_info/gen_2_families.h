@@ -2248,7 +2248,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
     #if P_UPDATED_TYPES >= GEN_6
         .types = MON_TYPES(TYPE_WATER, TYPE_FAIRY),
     #else
-        .types = MON_TYPES(TYPE_WATER),
+        .types = MON_TYPES(TYPE_WATER, TYPE_NORMAL),
     #endif
         .catchRate = 190,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 88 : 58,
@@ -2321,7 +2321,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
     #if P_UPDATED_TYPES >= GEN_6
         .types = MON_TYPES(TYPE_WATER, TYPE_FAIRY),
     #else
-        .types = MON_TYPES(TYPE_WATER),
+        .types = MON_TYPES(TYPE_WATER, TYPE_NORMAL),
     #endif
         .catchRate = 75,
     #if P_UPDATED_EXP_YIELDS >= GEN_8
