@@ -271,7 +271,8 @@ MossdeepCity_GameCorner_1F_Text_DodrioBerryPickingInfo:
 	.string "Press right, up, or left on the\n"
 	.string "{PLUS} Control Pad to move the heads.\p"
 	.string "To play this game, you must have\n"
-	.string "a DODRIO.$"
+	.string "a DODRIO.\p"
+	.string "But this game is currently unavailable…$"
 
 MossdeepCity_GameCorner_1F_Text_TalkToOldManToPlay:
 	.string "If you want to play a game,\n"

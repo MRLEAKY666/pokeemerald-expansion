@@ -77,8 +77,8 @@
 #define FLAG_DERBY_FLAG_RESET    0x3F //  Flag
 #define FLAG_FLASH_GUY    0x40 //  Flag
 #define FLAG_GAME_CORNER_UNC    0x41 //  Flag
-#define FLAG_UNUSED_0x042    0x42 // Unused Flag
-#define FLAG_UNUSED_0x043    0x43 // Unused Flag
+#define FLAG_ORIGINAL_MOSSDEEP_GAME_CORNER    0x42 //  Flag
+#define FLAG_ARCADE_ACCESS    0x43 //  Flag
 #define FLAG_UNUSED_0x044    0x44 // Unused Flag
 #define FLAG_UNUSED_0x045    0x45 // Unused Flag
 #define FLAG_UNUSED_0x046    0x46 // Unused Flag
@@ -120,7 +120,7 @@
 #define FLAG_MOSSDEEP_GYM_SWITCH_3           0x66 //
 #define FLAG_MOSSDEEP_GYM_SWITCH_4           0x67 //
 
-#define FLAG_BIRCH_CALL_METEORITE                    0x68  // Unused Flag
+#define FLAG_BIRCH_CALL_METEORITE                    0x68  //  Flag
 
 #define FLAG_OCEANIC_MUSEUM_MET_REPORTER     0x69
 #define FLAG_RECEIVED_HM_STRENGTH            0x6A

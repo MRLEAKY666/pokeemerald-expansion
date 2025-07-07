@@ -1282,7 +1282,7 @@ MossdeepCity_GameCorner_1F_EventScript_PokemonJumpInfo::
 	release
 	end
 
-MossdeepCity_GameCorner_1F_EventScript_DodrioBerryPickingInfo::
+MossdeepCity_GameCorner_1F_EventScript_DodrioBerryPickingInfo:: 
 	msgbox MossdeepCity_GameCorner_1F_Text_DodrioBerryPickingInfo, MSGBOX_DEFAULT
 	release
 	end

@@ -17,18 +17,113 @@ MossdeepCity_GameCorner_1F_OnFrame:
 MossdeepCity_GameCorner_1F_EventScript_InfoMan::
 	lock
 	faceplayer
-	goto MossdeepCity_GameCorner_1F_EventScript_InfoMan2
+	goto_if_set FLAG_ORIGINAL_MOSSDEEP_GAME_CORNER, MossdeepCity_GameCorner_1F_EventScript_InfoMan2
+
+	checkitem ITEM_COIN_CASE
+	goto_if_eq VAR_RESULT, FALSE, MossdeepCity_GameCorner_1F_EventScript_ArcadeInfoManDenied
+	goto_if_unset FLAG_ARCADE_ACCESS, MossdeepCity_GameCorner_1F_EventScript_ArcadeInfoManDenied
+	
+	goto MossdeepCity_GameCorner_1F_EventScript_ArcadeInfoMan
 	release
 	end
+
+MossdeepCity_GameCorner_1F_EventScript_ArcadeInfoManDenied::
+	msgbox MossdeepCity_GameCorner_1F_Text_ArcadeInfoManDenied, MSGBOX_DEFAULT
+	release
+	end
+
+MossdeepCity_GameCorner_1F_Text_ArcadeInfoManDenied:
+	.string "If you want to get in, talk to\n"
+	.string "the old man to my right.$"
 
 @ Script is redundant, the label in the goto also does lock and faceplayer
 MossdeepCity_GameCorner_1F_EventScript_OldMan::
 	lock
 	faceplayer
-	goto MossdeepCity_GameCorner_1F_EventScript_OldMan2
+	goto_if_set FLAG_ORIGINAL_MOSSDEEP_GAME_CORNER, MossdeepCity_GameCorner_1F_EventScript_OldMan2
+
+	msgbox MossdeepCity_GameCorner_1F_Text_ArcadeOldManCredentials, MSGBOX_DEFAULT
+	closemessage
+	delay 60
+	checkitem ITEM_COIN_CASE
+	goto_if_eq VAR_RESULT, FALSE, MossdeepCity_GameCorner_1F_EventScript_ArcadeOldManDenied
+	goto_if_unset FLAG_ARCADE_ACCESS, MossdeepCity_GameCorner_1F_EventScript_ArcadeOldManDenied
+
+	@ goto MossdeepCity_GameCorner_1F_EventScript_RightThisWay
+
 	release
 	end
 
+MossdeepCity_GameCorner_1F_EventScript_ArcadeOldManDenied::
+	msgbox MossdeepCity_GameCorner_1F_Text_ArcadeOldManDenied, MSGBOX_DEFAULT
+	release
+	end
+
+MossdeepCity_GameCorner_1F_Text_ArcadeOldManCredentials:
+	.string "Oh? You want to enjoy our\n"
+	.string "establishment?\n"
+	.string "Let me check your credentials.$"
+
+MossdeepCity_GameCorner_1F_Text_ArcadeOldManDenied:
+	.string "I'm sorry,\n"
+	.string "You don't meet our requirements…$"
+
+`
+script MossdeepCity_GameCorner_1F_EventScript_ArcadeInfoMan{
+	lock
+	faceplayer
+	message(MossdeepCity_GameCorner_1F_Text_DescribeWhichArcadeGame)
+	waitmessage
+	dynmultichoice( 0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Onix", "DropSpin", "Block Builder", "FlutterFree", "Dodrio Berry Picking")
+	switch (var(VAR_RESULT)) {
+		case 0:
+			msgbox(MossdeepCity_GameCorner_1F_Text_OnixInfo, MSGBOX_DEFAULT)
+			release
+			end
+		case 1:	
+			msgbox(MossdeepCity_GameCorner_1F_Text_DropSpinInfo, MSGBOX_DEFAULT)
+			release
+			end
+		case 2:
+			msgbox(MossdeepCity_GameCorner_1F_Text_BlockBuilderInfo, MSGBOX_DEFAULT)
+			release
+			end
+		case 3:
+			msgbox(MossdeepCity_GameCorner_1F_Text_FlutterFreeInfo, MSGBOX_DEFAULT)
+			release
+			end
+		case 4:
+			goto(MossdeepCity_GameCorner_1F_EventScript_DodrioBerryPickingInfo)
+	}	
+	goto(MossdeepCity_GameCorner_1F_EventScript_MinigameInfoExit)
+	end
+}
+raw`
+
+MossdeepCity_GameCorner_1F_Text_DescribeWhichArcadeGame:
+	.string "I can explain the arcade games,\n"
+	.string "if you'd like.\p"
+	.string "Which game should I describe?$"
+
+MossdeepCity_GameCorner_1F_Text_OnixInfo:
+	.string "“ONIX”\p"
+	.string "Info$"
+
+
+MossdeepCity_GameCorner_1F_Text_DropSpinInfo:
+	.string "“DROPSPIN”\p"
+	.string "Info$"
+	
+
+MossdeepCity_GameCorner_1F_Text_BlockBuilderInfo:
+	.string "“BLOCK BUILDER”\p"
+	.string "Info$"
+	
+
+MossdeepCity_GameCorner_1F_Text_FlutterFreeInfo:
+	.string "“FLUTTERFREE”\p"
+	.string "Info$"
+	
 
 @ Everything below is leftover from RS
 @ The house that was here in RS was moved to Sootopolis and replaced by the Game Corner

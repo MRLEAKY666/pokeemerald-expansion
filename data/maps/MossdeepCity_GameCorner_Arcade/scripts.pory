@@ -1,0 +1,609 @@
+raw`
+MossdeepCity_GameCorner_Arcade_MapScripts::
+	.byte 0
+
+`
+
+script MossdeepCity_Arcade_EventScript_CoinMachine {
+    lock
+    message(MossdeepCity_Arcade_Text_CoinMachine)
+    waitmessage
+    delay(10)
+    showmoneybox(0, 0)
+	showcoinsbox(1, 6)
+    dynmultichoice( 15, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "  50 COINS           ¥1,000", "500 COINS         ¥10,000", "EXIT")
+    switch (var(VAR_RESULT)){
+        case 0:
+            goto(MossdeepCity_Arcade_EventScript_Buy50Coins)
+        case 1:
+            goto(MossdeepCity_Arcade_EventScript_Buy500Coins)
+        case 2:
+            goto(MossdeepCity_Arcade_EventScript_CancelBuyCoins)
+    }
+    goto(MossdeepCity_Arcade_EventScript_CancelBuyCoins)
+    end
+}
+
+raw`
+
+MossdeepCity_Arcade_EventScript_Buy50Coins::
+	checkcoins VAR_TEMP_1
+	goto_if_ge VAR_TEMP_1, (MAX_COINS + 1 - 50), MossdeepCity_Arcade_EventScript_NoRoomForCoins
+	checkmoney 1000
+	goto_if_eq VAR_RESULT, FALSE, MossdeepCity_Arcade_EventScript_NotEnoughMoney
+
+	message MossdeepCity_Arcade_Text_InsertMoney
+    waitmessage
+    delay 5
+    playse SE_DEX_SEARCH
+    waitse
+    delay 10
+	playse SE_VEND
+    delay 5
+	playse SE_VEND
+    delay 7
+	playse SE_VEND
+    delay 5
+	playse SE_VEND
+    delay 8
+	playse SE_VEND
+    delay 10
+	playse SE_VEND
+    waitse
+
+	addcoins 50
+	removemoney 1000
+	updatemoneybox
+	updatecoinsbox 1, 6
+    playse SE_SHOP
+	msgbox MossdeepCity_Arcade_Text_ThankYouHereAreYourCoins, MSGBOX_DEFAULT
+	hidemoneybox
+	hidecoinsbox 0, 5
+	release
+	end
+
+MossdeepCity_Arcade_EventScript_Buy500Coins::
+	checkcoins VAR_TEMP_1
+	goto_if_ge VAR_TEMP_1, (MAX_COINS + 1 - 500), MossdeepCity_Arcade_EventScript_NoRoomForCoins
+	checkmoney 10000
+	goto_if_eq VAR_RESULT, FALSE, MossdeepCity_Arcade_EventScript_NotEnoughMoney
+
+	message MossdeepCity_Arcade_Text_InsertMoney
+    waitmessage
+    delay 5
+    playse SE_DEX_SEARCH
+    waitse
+    delay 10
+	playse SE_VEND
+    delay 5
+	playse SE_VEND
+    delay 7
+	playse SE_VEND
+    delay 5
+	playse SE_VEND
+    delay 8
+	playse SE_VEND
+    delay 10
+	playse SE_VEND
+    waitse
+
+	addcoins 500
+	removemoney 10000
+	updatemoneybox
+	updatecoinsbox 1, 6
+	playse SE_SHOP
+    msgbox MossdeepCity_Arcade_Text_ThankYouHereAreYourCoins, MSGBOX_DEFAULT
+	hidemoneybox
+	hidecoinsbox 0, 5
+	release
+	end
+
+MossdeepCity_Arcade_EventScript_CancelBuyCoins::
+	@ msgbox MossdeepCity_Arcade_Text_DontNeedCoinsThen, MSGBOX_DEFAULT
+	hidemoneybox
+	hidecoinsbox 0, 5
+	release
+	end
+
+MossdeepCity_Arcade_EventScript_NotEnoughMoney::
+	msgbox MossdeepCity_Arcade_Text_NotEnoughMoney, MSGBOX_DEFAULT
+	hidemoneybox
+	hidecoinsbox 0, 5
+	release
+	end
+
+MossdeepCity_Arcade_EventScript_NoRoomForCoins::
+	msgbox MossdeepCity_Arcade_Text_NoRoomForCoins, MSGBOX_DEFAULT
+	hidemoneybox
+	hidecoinsbox 0, 5
+	release
+	end
+
+MossdeepCity_Arcade_EventScript_PinballGuy::
+	lock
+	faceplayer
+	msgbox MossdeepCity_Arcade_Text_PinballGuy, MSGBOX_DEFAULT
+	@ goto MossdeepCity_Arcade_EventScript_NPCReturnToSlots
+    release
+	end
+
+MossdeepCity_Arcade_EventScript_NPCReturnToSlots::
+	closemessage
+	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	end
+`
+
+script MossdeepCity_Arcade_EventScript_CallWaiter{
+    lock
+    delay(5)
+    switch (var(VAR_TEMP_5)){
+    case 1:
+        applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterApproach1)
+        waitmovement(0)
+        delay(5)
+        applymovement(LOCALID_ARCADE_WAITER, Common_Movement_WalkInPlaceLeft)
+    case 2:
+        applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterApproach2)
+        waitmovement(0)
+        delay(5)
+        applymovement(LOCALID_ARCADE_WAITER, Common_Movement_WalkInPlaceDown)
+    case 3:
+        applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterApproach3)
+        waitmovement(0)
+        delay(5)
+        applymovement(LOCALID_ARCADE_WAITER, Common_Movement_WalkInPlaceDown)
+    case 4:
+        applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterApproach4)
+        waitmovement(0)
+        delay(5)
+        applymovement(LOCALID_ARCADE_WAITER, Common_Movement_WalkInPlaceDown)
+    }
+
+    msgbox(format("Oh?\nYou're ready to order now?"), MSGBOX_YESNO)
+    if (var(VAR_RESULT) == YES){ 
+        goto(MossdeepCity_Arcade_EventScript_Waiter)
+    }
+
+    msgbox(MossdeepCity_Arcade_Text_LetMeKnow, MSGBOX_DEFAULT) 
+    closemessage
+
+    switch (var(VAR_TEMP_5)){
+        case 1:
+            applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1)
+        case 2:
+            applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1)
+        case 3:
+            applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave3)
+        case 4:
+            applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave4)
+    }
+
+    waitmovement(0)
+    release
+    end
+}
+
+raw`
+
+MossdeepCity_Arcade_EventScript_BarStool1::
+    lock
+    setvar VAR_TEMP_5, 1                                      @indicates whihc barstool
+    hidefollower
+    delay 5
+    applymovement LOCALID_PLAYER, Common_Movement_FaceRight
+    waitmovement 0
+    delay 5
+    playse SE_PIN
+    applymovement LOCALID_ARCADE_WAITER, Common_Movement_ExclamationMark
+    waitse
+    delay 15
+    applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterApproach1
+    waitmovement 0
+    delay 5
+    msgbox MossdeepCity_Arcade_Text_ReadyToOrder, MSGBOX_YESNO
+    goto_if_eq VAR_RESULT, YES, MossdeepCity_Arcade_EventScript_Waiter
+    msgbox MossdeepCity_Arcade_Text_LetMeKnow, MSGBOX_DEFAULT 
+    closemessage
+    applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1
+    waitmovement 0
+    release
+    end
+
+MossdeepCity_Arcade_EventScript_BarStool2::
+    lock
+    setvar VAR_TEMP_5, 2                                      @indicates whihc barstool
+    hidefollower
+    delay 5
+    applymovement LOCALID_PLAYER, Common_Movement_FaceUp
+    waitmovement 0
+    delay 5
+    playse SE_PIN
+    applymovement LOCALID_ARCADE_WAITER, Common_Movement_ExclamationMark
+    waitse
+    delay 15
+    applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterApproach2
+    waitmovement 0
+    delay 5
+    msgbox MossdeepCity_Arcade_Text_ReadyToOrder, MSGBOX_YESNO
+    goto_if_eq VAR_RESULT, YES, MossdeepCity_Arcade_EventScript_Waiter
+    msgbox MossdeepCity_Arcade_Text_LetMeKnow, MSGBOX_DEFAULT 
+    closemessage
+    applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1
+    waitmovement 0
+    release
+    end
+
+MossdeepCity_Arcade_EventScript_BarStool3::
+    lock
+    setvar VAR_TEMP_5, 3                                      @indicates whihc barstool
+    hidefollower
+    delay 5
+    applymovement LOCALID_PLAYER, Common_Movement_FaceUp
+    waitmovement 0
+    delay 5
+    playse SE_PIN
+    applymovement LOCALID_ARCADE_WAITER, Common_Movement_ExclamationMark
+    waitse
+    delay 15
+    applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterApproach3
+    waitmovement 0
+    delay 5
+    msgbox MossdeepCity_Arcade_Text_ReadyToOrder, MSGBOX_YESNO
+    goto_if_eq VAR_RESULT, YES, MossdeepCity_Arcade_EventScript_Waiter
+    msgbox MossdeepCity_Arcade_Text_LetMeKnow, MSGBOX_DEFAULT 
+    closemessage
+    applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave3
+    waitmovement 0
+    release
+    end
+
+MossdeepCity_Arcade_EventScript_BarStool4::
+    lock
+    setvar VAR_TEMP_5, 4                                      @indicates whihc barstool
+    hidefollower
+    delay 5
+    applymovement LOCALID_PLAYER, Common_Movement_FaceUp
+    waitmovement 0
+    delay 5
+    playse SE_PIN
+    applymovement LOCALID_ARCADE_WAITER, Common_Movement_ExclamationMark
+    waitse
+    delay 15
+    applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterApproach4
+    waitmovement 0
+    delay 5
+    msgbox MossdeepCity_Arcade_Text_ReadyToOrder, MSGBOX_YESNO
+    goto_if_eq VAR_RESULT, YES, MossdeepCity_Arcade_EventScript_Waiter
+    msgbox MossdeepCity_Arcade_Text_LetMeKnow, MSGBOX_DEFAULT 
+    closemessage
+    applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave4
+    waitmovement 0
+    release
+    end
+`
+
+script MossdeepCity_Arcade_EventScript_RichGuy{
+    lock
+    faceplayer
+    msgbox(format("Placeholder."))
+    goto(MossdeepCity_Arcade_EventScript_NPCReturnToSlots)
+    end
+}
+
+script MossdeepCity_Arcade_EventScript_RegularGuy{
+    lock
+    faceplayer
+    msgbox(format("Placeholder."))
+    goto(MossdeepCity_Arcade_EventScript_NPCReturnToSlots)
+    end
+}
+
+script MossdeepCity_Arcade_EventScript_PachinkoGirl{
+    lock
+    faceplayer
+    msgbox(format("I think we're in a basement right now!\pI have no clue how long I've been playing!"))
+    goto(MossdeepCity_Arcade_EventScript_NPCReturnToSlots)
+    end
+}
+
+script MossdeepCity_Arcade_EventScript_OnixBoy{
+    lock
+    faceplayer
+    msgbox(format("Placeholder."))
+    goto(MossdeepCity_Arcade_EventScript_NPCReturnToSlots)
+    end
+}
+
+script MossdeepCity_Arcade_EventScript_BlockGuy{
+    lock
+    faceplayer
+    msgbox(format("Placeholder."))
+    goto(MossdeepCity_Arcade_EventScript_NPCReturnToSlots)
+    end
+}
+
+raw`
+MossdeepCity_Arcade_Text_ReadyToOrder:
+    .string "Welcome!\n"
+    .string "Do you know what you'd like?$"
+
+MossdeepCity_Arcade_Text_LetMeKnow:
+    .string "Well, if you make up your mind\n"
+    .string "just let me know!$"
+
+MossdeepCity_Arcade_Movement_WaiterApproach1:
+    walk_down
+    walk_left
+    delay_16
+    step_end 
+
+MossdeepCity_Arcade_Movement_WaiterApproach2:
+    walk_down
+    walk_left
+    face_down
+    delay_16
+    step_end 
+
+MossdeepCity_Arcade_Movement_WaiterApproach3:
+    walk_down
+    walk_right
+    face_down
+    delay_16
+    step_end 
+
+MossdeepCity_Arcade_Movement_WaiterApproach4:
+    walk_down
+    walk_right
+    walk_right
+    face_down
+    delay_16
+    step_end 
+
+MossdeepCity_Arcade_Movement_WaiterLeave1:
+    delay_16
+    walk_up
+    walk_right
+    face_down
+    step_end
+
+MossdeepCity_Arcade_Movement_WaiterLeave3:
+    delay_16
+    walk_left
+    walk_up
+    face_down
+    step_end
+
+MossdeepCity_Arcade_Movement_WaiterLeave4:
+    delay_16
+    walk_left
+    walk_left
+    walk_up
+    face_down
+    step_end
+
+`
+
+script MossdeepCity_Arcade_EventScript_Waiter {
+    message("What can I get for you?")
+    waitmessage
+    delay(10)
+    if (flag(FLAG_TEMP_2)){
+        hidemoneybox
+        clearflag(FLAG_TEMP_2)
+    }
+    showmoneybox(0, 0)
+    dynmultichoice( 15, 0, FALSE, 5, VAR_TEMP_2, DYN_MULTICHOICE_CB_NONE,   "BERRY JUICE  ¥100",
+                                                                            "FRESH WATER  ¥200", 
+                                                                            "LEMONADE       ¥350",
+                                                                            "MOOMOO MILK  ¥500", 
+                                                                            "EXIT")
+    switch (var(VAR_RESULT)){
+        case 0:
+            setvar(VAR_TEMP_2, 0)
+            msgbox(format("BERRY JUICE? That will be ¥100."), MSGBOX_YESNO)
+            if (var(VAR_RESULT) == NO){
+                setflag(FLAG_TEMP_2)
+                goto(MossdeepCity_Arcade_EventScript_Waiter)
+            }
+            checkmoney(100)
+            if (var(VAR_RESULT) == FALSE) {
+                msgbox("Oh… I'm sorry…\pIt seems like you don't have the money…", MSGBOX_DEFAULT)
+                release
+                end
+            }
+            delay(10)
+            if (var(VAR_TEMP_5) == 1){
+                applymovement(LOCALID_ARCADE_WAITER, Common_Movement_WalkInPlaceLeft)
+            }
+            else {
+                applymovement(LOCALID_ARCADE_WAITER, Common_Movement_WalkInPlaceDown)
+            }
+            removemoney(100)
+            updatemoneybox
+            playse(SE_SHOP)
+            additem(ITEM_BERRY_JUICE)
+            msgbox("Here you are.\nEnjoy!", MSGBOX_DEFAULT)
+            closemessage
+            hidemoneybox
+            switch (var(VAR_TEMP_5)){
+                case 1:
+                    applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1)
+                case 2:
+                    applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1)
+                case 3:
+                    applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave3)
+                case 4:
+                    applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave4)
+            }
+            waitmovement(LOCALID_ARCADE_WAITER)
+            release
+	        end
+        case 1:
+            setvar(VAR_TEMP_2, 1)
+            msgbox(format("FRESH WATER? That will be ¥200."), MSGBOX_YESNO)
+            if (var(VAR_RESULT) == NO){
+                setflag(FLAG_TEMP_2)
+                goto(MossdeepCity_Arcade_EventScript_Waiter)
+            }
+            checkmoney(200)
+            if (var(VAR_RESULT) == FALSE) {
+                msgbox("Oh… I'm sorry…\pIt seems like you don't have the money…", MSGBOX_DEFAULT)
+                release
+                end
+            }
+            delay(10)
+            if (var(VAR_TEMP_5) == 1){
+                applymovement(LOCALID_ARCADE_WAITER, Common_Movement_WalkInPlaceLeft)
+            }
+            else {
+                applymovement(LOCALID_ARCADE_WAITER, Common_Movement_WalkInPlaceDown)
+            }
+            removemoney(200)
+            updatemoneybox
+            playse(SE_SHOP)
+            additem(ITEM_FRESH_WATER)
+            msgbox("Here you are.\nEnjoy!", MSGBOX_DEFAULT)
+            closemessage
+            hidemoneybox
+            switch (var(VAR_TEMP_5)){
+                case 1:
+                    applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1)
+                case 2:
+                    applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1)
+                case 3:
+                    applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave3)
+                case 4:
+                    applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave4)
+            }
+            waitmovement(LOCALID_ARCADE_WAITER)
+            release
+	        end
+        case 2:
+            setvar(VAR_TEMP_2, 2)
+            msgbox(format("LEMONADE? That will be ¥350."), MSGBOX_YESNO)
+            if (var(VAR_RESULT) == NO){
+                setflag(FLAG_TEMP_2)
+                goto(MossdeepCity_Arcade_EventScript_Waiter)
+            }
+            checkmoney(350)
+            if (var(VAR_RESULT) == FALSE) {
+                msgbox("Oh… I'm sorry…\pIt seems like you don't have the money…", MSGBOX_DEFAULT)
+                release
+                end
+            }
+            delay(10)
+            if (var(VAR_TEMP_5) == 1){
+                applymovement(LOCALID_ARCADE_WAITER, Common_Movement_WalkInPlaceLeft)
+            }
+            else {
+                applymovement(LOCALID_ARCADE_WAITER, Common_Movement_WalkInPlaceDown)
+            }
+            removemoney(350)
+            updatemoneybox
+            playse(SE_SHOP)
+            additem(ITEM_LEMONADE)
+            msgbox("Here you are.\nEnjoy!", MSGBOX_DEFAULT)
+            closemessage
+            hidemoneybox
+            switch (var(VAR_TEMP_5)){
+                case 1:
+                    applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1)
+                case 2:
+                    applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1)
+                case 3:
+                    applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave3)
+                case 4:
+                    applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave4)
+            }
+            waitmovement(LOCALID_ARCADE_WAITER)
+            release
+	        end
+        
+        case 3:
+            setvar(VAR_TEMP_2, 3)
+            msgbox(format("MOOMOO MILK? Good choice…\nThat will be ¥500."), MSGBOX_YESNO)
+            if (var(VAR_RESULT) == NO){
+                setflag(FLAG_TEMP_2)
+                goto(MossdeepCity_Arcade_EventScript_Waiter)
+            }
+            checkmoney(500)
+            if (var(VAR_RESULT) == FALSE) {
+                msgbox("Oh… I'm sorry…\pIt seems like you don't have the money…", MSGBOX_DEFAULT)
+                release
+                end
+            }
+            delay(10)
+            if (var(VAR_TEMP_5) == 1){
+                applymovement(LOCALID_ARCADE_WAITER, Common_Movement_WalkInPlaceLeft)
+            }
+            else {
+                applymovement(LOCALID_ARCADE_WAITER, Common_Movement_WalkInPlaceDown)
+            }
+            removemoney(500)
+            updatemoneybox
+            playse(SE_SHOP)
+            additem(ITEM_MOOMOO_MILK)
+            msgbox("Here you are.\nEnjoy!", MSGBOX_DEFAULT)
+            closemessage
+            hidemoneybox
+            switch (var(VAR_TEMP_5)){
+                case 1:
+                    applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1)
+                case 2:
+                    applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1)
+                case 3:
+                    applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave3)
+                case 4:
+                    applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave4)
+            }
+            waitmovement(LOCALID_ARCADE_WAITER)
+            release
+	        end
+        case 4:
+    }
+    hidemoneybox
+    msgbox(MossdeepCity_Arcade_Text_LetMeKnow, MSGBOX_DEFAULT) 
+    closemessage
+    switch (var(VAR_TEMP_5)){
+        case 1:
+            applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1)
+        case 2:
+            applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1)
+        case 3:
+            applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave3)
+        case 4:
+            applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave4)
+    }
+    waitmovement(LOCALID_ARCADE_WAITER)
+    setvar(VAR_TEMP_2, 0)
+    release
+    end
+}
+
+raw`
+
+MossdeepCity_Arcade_Text_PinballGuy:
+    .string "Each pinball machine has a different\n"
+    .string "theme,\p"
+    .string "but they all have crazy lights and\n"
+    .string "sounds!$"
+
+MossdeepCity_Arcade_Text_CoinMachine:
+    .string "It's a coin machine;\n"
+    .string "you can exchange money for COINS.$"
+
+MossdeepCity_Arcade_Text_NotEnoughMoney:
+    .string "You don't have enough money…$"
+
+MossdeepCity_Arcade_Text_InsertMoney:
+    .string "You put your money into the machine…$"
+
+MossdeepCity_Arcade_Text_ThankYouHereAreYourCoins:
+    .string "The machine dispensed your coins!$"
+
+MossdeepCity_Arcade_Text_NoRoomForCoins:
+    .string "You can't hold that many coins!$"
+
+`

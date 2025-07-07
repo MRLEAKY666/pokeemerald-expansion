@@ -12,7 +12,7 @@
   "allow_running": false,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
@@ -62,11 +62,17 @@
       "elevation": 0,
       "dest_map": "MAP_MOSSDEEP_CITY_GAME_CORNER_B1F",
       "dest_warp_id": "0"
+    },
+    {
+      "warp_id": "WARP_ID_MOSSDEEP_GAME_CORNER_STAIRS",
+      "x": 5,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_MOSSDEEP_CITY_GAME_CORNER_ARCADE",
+      "dest_warp_id": "WARP_ID_MOSSDEEP_ARCADE_STAIRS"
     }
   ],
-  "coord_events": [
-
-  ],
+  "coord_events": [],
   "bg_events": [
     {
       "type": "sign",

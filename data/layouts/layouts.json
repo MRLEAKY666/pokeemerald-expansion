@@ -4610,6 +4610,16 @@
       "secondary_tileset": "gTileset_MauvilleGameCorner_OG",
       "border_filepath": "data/layouts/MauvilleCity_GameCorner_OG/border.bin",
       "blockdata_filepath": "data/layouts/MauvilleCity_GameCorner_OG/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOSSDEEP_CITY_GAME_CORNER_ARCADE",
+      "name": "MossdeepCity_GameCorner_Arcade_Layout",
+      "width": 15,
+      "height": 14,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_MossdeepGameCorner",
+      "border_filepath": "data/layouts/MossdeepCity_GameCorner_Arcade/border.bin",
+      "blockdata_filepath": "data/layouts/MossdeepCity_GameCorner_Arcade/map.bin"
     }
   ]
 }

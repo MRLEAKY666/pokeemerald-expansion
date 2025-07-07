@@ -1281,3 +1281,5 @@ Common_EventScript_ExitSafeArea::
 	.include "data/maps/FortreeCliffsZapdosCave_Flooded/scripts.inc"
 
 	.include "data/maps/MauvilleCity_GameCorner_OG/scripts.inc"
+
+	.include "data/maps/MossdeepCity_GameCorner_Arcade/scripts.inc"
