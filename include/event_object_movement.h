@@ -514,4 +514,6 @@ bool8 PlayerIsUnderWaterfall(struct ObjectEvent *objectEvent);
 
 u16 GetObjectEventTrainerSightFlagByObjectEventId(u8 objEventId);
 
+const struct SpritePalette *GetObjectEventPaletteFromTag(u16 tag);
+
 #endif //GUARD_EVENT_OBJECT_MOVEMENT_H
