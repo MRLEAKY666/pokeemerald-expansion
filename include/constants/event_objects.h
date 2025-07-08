@@ -415,6 +415,7 @@
 #define OBJ_EVENT_PAL_TAG_MOLTRES                 0x1126
 #define OBJ_EVENT_PAL_TAG_ZAPDOS                  0x1127
 #define OBJ_EVENT_PAL_TAG_PROF_OAK                0x1128
+#define OBJ_EVENT_PAL_TAG_OLD_MAN_DISGUISE        0x1129
 
 #if OW_FOLLOWERS_POKEBALLS
 // Vanilla

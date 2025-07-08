@@ -284,7 +284,7 @@ const u32 gTrainerFrontPic_Oak[] = INCBIN_U32("graphics/trainers/front_pics/oak.
 const u16 gTrainerPalette_Oak[] = INCBIN_U16("graphics/trainers/front_pics/oak.gbapal");
 
 const u32 gTrainerFrontPic_OldManDisguise[] = INCBIN_U32("graphics/trainers/front_pics/old_man_disguise.4bpp.smol");
-const u16 gTrainerPalette_OldManDisguise[] = INCBIN_U16("graphics/trainers/front_pics/old_man_disguise.gbapal");
+const u16 gTrainerPalette_OldManDisguise[] = INCBIN_U16("graphics/trainers/palettes/old_man_disguise.gbapal");
 
 const u8 gTrainerBackPic_Brendan[] = INCBIN_U8("graphics/trainers/back_pics/brendan.4bpp");
 const u8 gTrainerBackPic_May[] = INCBIN_U8("graphics/trainers/back_pics/may.4bpp");

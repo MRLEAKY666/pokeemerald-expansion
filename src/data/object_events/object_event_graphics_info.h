@@ -5110,7 +5110,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayRSDecorating = 
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisguiseNormal = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_3,
+    .paletteTag = OBJ_EVENT_PAL_TAG_OLD_MAN_DISGUISE,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION,
     .size = 512,
     .width = 16,
@@ -5129,7 +5129,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisguiseNorm
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisguiseAcroBike = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_3,
+    .paletteTag = OBJ_EVENT_PAL_TAG_OLD_MAN_DISGUISE,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION,
     .size = 512,
     .width = 32,
@@ -5148,7 +5148,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisguiseAcro
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisguiseMachBike = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_3,
+    .paletteTag = OBJ_EVENT_PAL_TAG_OLD_MAN_DISGUISE,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION,
     .size = 512,
     .width = 32,
@@ -5167,7 +5167,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisguiseMach
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisguiseSurfing = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_3,
+    .paletteTag = OBJ_EVENT_PAL_TAG_OLD_MAN_DISGUISE,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
     .size = 512,
     .width = 32,
@@ -5186,7 +5186,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisguiseSurf
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisguiseUnderwater = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_3,
+    .paletteTag = OBJ_EVENT_PAL_TAG_OLD_MAN_DISGUISE,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
     .size = 512,
     .width = 32,
@@ -5205,7 +5205,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisguiseUnde
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisguiseFieldMove = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_3,
+    .paletteTag = OBJ_EVENT_PAL_TAG_OLD_MAN_DISGUISE,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION,
     .size = 512,
     .width = 32,
@@ -5224,7 +5224,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisguiseFiel
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisguiseFishing = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_3,
+    .paletteTag = OBJ_EVENT_PAL_TAG_OLD_MAN_DISGUISE,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION,
     .size = 512,
     .width = 32,
@@ -5243,7 +5243,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisguiseFish
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisguiseWatering = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_3,
+    .paletteTag = OBJ_EVENT_PAL_TAG_OLD_MAN_DISGUISE,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION,
     .size = 512,
     .width = 32,
@@ -5262,7 +5262,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisguiseWate
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisguiseDecorating = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_3,
+    .paletteTag = OBJ_EVENT_PAL_TAG_OLD_MAN_DISGUISE,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION,
     .size = 256,
     .width = 16,
