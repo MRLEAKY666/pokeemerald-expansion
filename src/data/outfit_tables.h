@@ -19,6 +19,8 @@ static const u16 sRegionMapPlayerIcon_MayGfx[] = INCBIN_U16("graphics/pokenav/re
 
 static const u16 sRegionMapPlayerIcon_RSMayGfx[] = INCBIN_U16("graphics/pokenav/region_map/rs_may_icon.4bpp");
 
+static const u16 sRegionMapPlayerIcon_OldManDisguiseGfx[] = INCBIN_U16("graphics/pokenav/region_map/old_man_disguise_icon.4bpp");
+
 //! TODO: Should the gfx here be seperated?
 
 static const u8 sFrontierPassPlayerIcons_BrendanMay_Gfx[] = INCBIN_U8("graphics/frontier_pass/map_heads.4bpp");
@@ -28,6 +30,8 @@ static const u8 sFrontierPassPlayerIcons_MayBrendan_Gfx[] = INCBIN_U8("graphics/
 static const u8 sFrontierPassPlayerIcons_RSBrendanMay_Gfx[] = INCBIN_U8("graphics/frontier_pass/rs_map_heads.4bpp");
 
 static const u8 sFrontierPassPlayerIcons_RSMayBrendan_Gfx[] = INCBIN_U8("graphics/frontier_pass/rs_map_heads_swapped.4bpp");
+
+static const u8 sFrontierPassPlayerIcons_OldManDisguise_Gfx[] = INCBIN_U8("graphics/frontier_pass/old_man_disguise_heads.4bpp");
 
 #define REGION_MAP_GFX(m, f) { sRegionMapPlayerIcon_ ## m ## Gfx, sRegionMapPlayerIcon_ ## f ## Gfx }
 
@@ -134,7 +138,7 @@ const struct Outfit gOutfits[OUTFIT_COUNT] =
         .iconsFP = sFrontierPassPlayerIcons_BrendanMay_Gfx,
     },
     [OUTFIT_UNUSUAL_RED] = {
-        .isHidden = FALSE,
+        .isHidden = TRUE,
         .prices = { 200, 500 },
         #if MODERN == 1
         .name = COMPOUND_STRING("UNUSUAL RED"),
@@ -182,7 +186,7 @@ const struct Outfit gOutfits[OUTFIT_COUNT] =
     },
     [OUTFIT_GENDER_SWAPPED_STANDARD] = {
         //! DESC: if sets to TRUE, it will not be shown in the OUTFIT menu if it's locked.
-        .isHidden = FALSE,
+        .isHidden = TRUE,
 
         //! DESC: prices for purchasing them.
         .prices = { 0, 0 },
@@ -254,7 +258,7 @@ const struct Outfit gOutfits[OUTFIT_COUNT] =
         .iconsFP = sFrontierPassPlayerIcons_MayBrendan_Gfx,
     },
     [OUTFIT_GENDER_SWAPPED_RED] = {
-        .isHidden = FALSE,
+        .isHidden = TRUE,
         .prices = { 200, 500 },
         #if MODERN == 1
         .name = COMPOUND_STRING("SWAPPED RED"),
@@ -299,5 +303,52 @@ const struct Outfit gOutfits[OUTFIT_COUNT] =
         },
         .iconsRM = { sRegionMapPlayerIcon_RSMayGfx, sRegionMapPlayerIcon_RSBrendanGfx },
         .iconsFP = sFrontierPassPlayerIcons_RSMayBrendan_Gfx,
+    },
+    [OUTFIT_OLD_MAN] = {
+        .isHidden = TRUE,
+        .prices = { 200, 500 },
+        #if MODERN == 1
+        .name = COMPOUND_STRING("OLD MAN"),
+        .desc = COMPOUND_STRING("A very convincing old man\nDISGUISE."),
+        #else
+        .name = sText_OutfitName_UnusualRed,
+        .desc = sText_OutfitDesc_UnusualRed,
+        #endif
+        .trainerPics = {
+            [MALE]   = {TRAINER_PIC_OLD_MAN_DISGUISE, TRAINER_BACK_PIC_OLD_MAN_DISGUISE},
+            [FEMALE] = {TRAINER_PIC_OLD_MAN_DISGUISE, TRAINER_BACK_PIC_OLD_MAN_DISGUISE}
+        },
+        .avatarGfxIds = {
+           [MALE] = {
+               [PLAYER_AVATAR_STATE_NORMAL] =     OBJ_EVENT_GFX_OLD_MAN_DISGUISE_NORMAL,
+               [PLAYER_AVATAR_STATE_BIKE] =       OBJ_EVENT_GFX_OLD_MAN_DISGUISE_ACRO_BIKE,
+               [PLAYER_AVATAR_STATE_SURFING] =    OBJ_EVENT_GFX_OLD_MAN_DISGUISE_SURFING,
+               [PLAYER_AVATAR_STATE_UNDERWATER] = OBJ_EVENT_GFX_OLD_MAN_DISGUISE_UNDERWATER
+           },
+           [FEMALE] = {
+               [PLAYER_AVATAR_STATE_NORMAL] =     OBJ_EVENT_GFX_OLD_MAN_DISGUISE_NORMAL,
+               [PLAYER_AVATAR_STATE_BIKE] =       OBJ_EVENT_GFX_OLD_MAN_DISGUISE_ACRO_BIKE,
+               [PLAYER_AVATAR_STATE_SURFING] =    OBJ_EVENT_GFX_OLD_MAN_DISGUISE_SURFING,
+               [PLAYER_AVATAR_STATE_UNDERWATER] = OBJ_EVENT_GFX_OLD_MAN_DISGUISE_UNDERWATER
+           },
+        },
+        .animGfxIds = {
+            [MALE] = {
+                [PLAYER_AVATAR_GFX_FIELD_MOVE] = OBJ_EVENT_GFX_OLD_MAN_DISGUISE_FIELD_MOVE,
+                [PLAYER_AVATAR_GFX_FISHING] =    OBJ_EVENT_GFX_OLD_MAN_DISGUISE_FISHING,
+                [PLAYER_AVATAR_GFX_WATERING] =   OBJ_EVENT_GFX_OLD_MAN_DISGUISE_WATERING,
+                [PLAYER_AVATAR_GFX_DECORATING] = OBJ_EVENT_GFX_OLD_MAN_DISGUISE_DECORATING,
+                [PLAYER_AVATAR_GFX_VSSEEKER] =   OBJ_EVENT_GFX_OLD_MAN_DISGUISE_FIELD_MOVE
+            },
+            [FEMALE] = {
+                [PLAYER_AVATAR_GFX_FIELD_MOVE] = OBJ_EVENT_GFX_OLD_MAN_DISGUISE_FIELD_MOVE,
+                [PLAYER_AVATAR_GFX_FISHING] =    OBJ_EVENT_GFX_OLD_MAN_DISGUISE_FISHING,
+                [PLAYER_AVATAR_GFX_WATERING] =   OBJ_EVENT_GFX_OLD_MAN_DISGUISE_WATERING,
+                [PLAYER_AVATAR_GFX_DECORATING] = OBJ_EVENT_GFX_OLD_MAN_DISGUISE_DECORATING,
+                [PLAYER_AVATAR_GFX_VSSEEKER] =   OBJ_EVENT_GFX_OLD_MAN_DISGUISE_FIELD_MOVE
+            },
+        },
+        .iconsRM = { sRegionMapPlayerIcon_OldManDisguiseGfx, sRegionMapPlayerIcon_OldManDisguiseGfx },
+        .iconsFP = sFrontierPassPlayerIcons_OldManDisguise_Gfx,
     },
 };

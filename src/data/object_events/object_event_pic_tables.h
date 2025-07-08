@@ -1434,3 +1434,66 @@ static const struct SpriteFrameImage sPicTable_MayRSWatering[] = {
 static const struct SpriteFrameImage sPicTable_MayRSDecorating[] = {
     obj_frame_tiles(gObjectEventPic_MayRSDecorating),
 };
+
+static const struct SpriteFrameImage sPicTable_OldManDisguiseNormal[] = {
+    overworld_ascending_frames(gObjectEventPic_OldManDisguiseNormalRunning, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_OldManDisguiseAcroBike[] = {
+    overworld_ascending_frames(gObjectEventPic_OldManDisguiseAcroBike, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_OldManDisguiseMachBike[] = {
+    overworld_ascending_frames(gObjectEventPic_OldManDisguiseMachBike, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_OldManDisguiseSurfing[] = {
+    overworld_frame(gObjectEventPic_OldManDisguiseSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_OldManDisguiseSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_OldManDisguiseSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_OldManDisguiseSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_OldManDisguiseSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_OldManDisguiseSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_OldManDisguiseSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_OldManDisguiseSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_OldManDisguiseSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_OldManDisguiseSurfing, 4, 4, 1),
+    overworld_frame(gObjectEventPic_OldManDisguiseSurfing, 4, 4, 3),
+    overworld_frame(gObjectEventPic_OldManDisguiseSurfing, 4, 4, 5),
+};
+
+static const struct SpriteFrameImage sPicTable_OldManDisguiseUnderwater[] = {
+    overworld_frame(gObjectEventPic_OldManDisguiseUnderwater, 4, 4, 0),
+    overworld_frame(gObjectEventPic_OldManDisguiseUnderwater, 4, 4, 1),
+    overworld_frame(gObjectEventPic_OldManDisguiseUnderwater, 4, 4, 2),
+    overworld_frame(gObjectEventPic_OldManDisguiseUnderwater, 4, 4, 0),
+    overworld_frame(gObjectEventPic_OldManDisguiseUnderwater, 4, 4, 0),
+    overworld_frame(gObjectEventPic_OldManDisguiseUnderwater, 4, 4, 1),
+    overworld_frame(gObjectEventPic_OldManDisguiseUnderwater, 4, 4, 1),
+    overworld_frame(gObjectEventPic_OldManDisguiseUnderwater, 4, 4, 2),
+    overworld_frame(gObjectEventPic_OldManDisguiseUnderwater, 4, 4, 2),
+};
+
+static const struct SpriteFrameImage sPicTable_OldManDisguiseFieldMove[] = {
+    overworld_ascending_frames(gObjectEventPic_OldManDisguiseFieldMove, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_OldManDisguiseFishing[] = {
+    overworld_ascending_frames(gObjectEventPic_OldManDisguiseFishing, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_OldManDisguiseWatering[] = {
+    overworld_frame(gObjectEventPic_OldManDisguiseWatering, 4, 4, 0),
+    overworld_frame(gObjectEventPic_OldManDisguiseWatering, 4, 4, 2),
+    overworld_frame(gObjectEventPic_OldManDisguiseWatering, 4, 4, 4),
+    overworld_frame(gObjectEventPic_OldManDisguiseWatering, 4, 4, 1),
+    overworld_frame(gObjectEventPic_OldManDisguiseWatering, 4, 4, 1),
+    overworld_frame(gObjectEventPic_OldManDisguiseWatering, 4, 4, 3),
+    overworld_frame(gObjectEventPic_OldManDisguiseWatering, 4, 4, 3),
+    overworld_frame(gObjectEventPic_OldManDisguiseWatering, 4, 4, 5),
+    overworld_frame(gObjectEventPic_OldManDisguiseWatering, 4, 4, 5),
+};
+
+static const struct SpriteFrameImage sPicTable_OldManDisguiseDecorating[] = {
+    obj_frame_tiles(gObjectEventPic_OldManDisguiseDecorating),
+};

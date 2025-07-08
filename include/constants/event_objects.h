@@ -271,10 +271,20 @@
 #define OBJ_EVENT_GFX_MAY_RS_WATERING            262
 #define OBJ_EVENT_GFX_MAY_RS_DECORATING          263
 
+#define OBJ_EVENT_GFX_OLD_MAN_DISGUISE_NORMAL              264
+#define OBJ_EVENT_GFX_OLD_MAN_DISGUISE_ACRO_BIKE           265
+#define OBJ_EVENT_GFX_OLD_MAN_DISGUISE_MACH_BIKE           266
+#define OBJ_EVENT_GFX_OLD_MAN_DISGUISE_SURFING             267
+#define OBJ_EVENT_GFX_OLD_MAN_DISGUISE_UNDERWATER          268
+#define OBJ_EVENT_GFX_OLD_MAN_DISGUISE_FIELD_MOVE          269
+#define OBJ_EVENT_GFX_OLD_MAN_DISGUISE_FISHING             270
+#define OBJ_EVENT_GFX_OLD_MAN_DISGUISE_WATERING            271
+#define OBJ_EVENT_GFX_OLD_MAN_DISGUISE_DECORATING          272
+
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                        264
+#define NUM_OBJ_EVENT_GFX                        273
 
 
 // These are dynamic object gfx ids.

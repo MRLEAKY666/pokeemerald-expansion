@@ -273,6 +273,16 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayRSFishin
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayRSWatering;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayRSDecorating;
 
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisguiseNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisguiseAcroBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisguiseMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisguiseSurfing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisguiseUnderwater;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisguiseFieldMove;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisguiseFishing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisguiseWatering;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisguiseDecorating;
+
 const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM_OBJ_EVENT_GFX] = {
     [OBJ_EVENT_GFX_BRENDAN_NORMAL] =           &gObjectEventGraphicsInfo_BrendanNormal,
     [OBJ_EVENT_GFX_BRENDAN_MACH_BIKE] =        &gObjectEventGraphicsInfo_BrendanMachBike,
@@ -538,6 +548,15 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_MAY_RS_FISHING] =           &gObjectEventGraphicsInfo_MayRSFishing,
     [OBJ_EVENT_GFX_MAY_RS_WATERING] =          &gObjectEventGraphicsInfo_MayRSWatering,
     [OBJ_EVENT_GFX_MAY_RS_DECORATING] =        &gObjectEventGraphicsInfo_MayRSDecorating,
+    [OBJ_EVENT_GFX_OLD_MAN_DISGUISE_NORMAL] =            &gObjectEventGraphicsInfo_OldManDisguiseNormal,
+    [OBJ_EVENT_GFX_OLD_MAN_DISGUISE_ACRO_BIKE] =         &gObjectEventGraphicsInfo_OldManDisguiseAcroBike,
+    [OBJ_EVENT_GFX_OLD_MAN_DISGUISE_MACH_BIKE] =         &gObjectEventGraphicsInfo_OldManDisguiseMachBike,
+    [OBJ_EVENT_GFX_OLD_MAN_DISGUISE_SURFING] =           &gObjectEventGraphicsInfo_OldManDisguiseSurfing,
+    [OBJ_EVENT_GFX_OLD_MAN_DISGUISE_UNDERWATER] =        &gObjectEventGraphicsInfo_OldManDisguiseUnderwater,
+    [OBJ_EVENT_GFX_OLD_MAN_DISGUISE_FIELD_MOVE] =        &gObjectEventGraphicsInfo_OldManDisguiseFieldMove,
+    [OBJ_EVENT_GFX_OLD_MAN_DISGUISE_FISHING] =           &gObjectEventGraphicsInfo_OldManDisguiseFishing,
+    [OBJ_EVENT_GFX_OLD_MAN_DISGUISE_WATERING] =          &gObjectEventGraphicsInfo_OldManDisguiseWatering,
+    [OBJ_EVENT_GFX_OLD_MAN_DISGUISE_DECORATING] =        &gObjectEventGraphicsInfo_OldManDisguiseDecorating,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

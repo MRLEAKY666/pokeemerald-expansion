@@ -423,6 +423,16 @@ const u32 gObjectEventPic_MayRSFishing[] = INCBIN_U32("graphics/object_events/pi
 const u32 gObjectEventPic_MayRSWatering[] = INCBIN_U32("graphics/object_events/pics/people/may_rs/watering.4bpp");
 const u32 gObjectEventPic_MayRSDecorating[] = INCBIN_U32("graphics/object_events/pics/people/may_rs/decorating.4bpp");
 
+const u32 gObjectEventPic_OldManDisguiseNormalRunning[] = INCBIN_U32("graphics/object_events/pics/people/old_man_disguise/walking.4bpp", "graphics/object_events/pics/people/old_man_disguise/running.4bpp");
+const u32 gObjectEventPic_OldManDisguiseAcroBike[] = INCBIN_U32("graphics/object_events/pics/people/old_man_disguise/acro_bike.4bpp");
+const u32 gObjectEventPic_OldManDisguiseMachBike[] = INCBIN_U32("graphics/object_events/pics/people/old_man_disguise/mach_bike.4bpp");
+const u32 gObjectEventPic_OldManDisguiseSurfing[] = INCBIN_U32("graphics/object_events/pics/people/old_man_disguise/surfing.4bpp");
+const u32 gObjectEventPic_OldManDisguiseUnderwater[] = INCBIN_U32("graphics/object_events/pics/people/old_man_disguise/underwater.4bpp");
+const u32 gObjectEventPic_OldManDisguiseFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/old_man_disguise/field_move.4bpp");
+const u32 gObjectEventPic_OldManDisguiseFishing[] = INCBIN_U32("graphics/object_events/pics/people/old_man_disguise/fishing.4bpp");
+const u32 gObjectEventPic_OldManDisguiseWatering[] = INCBIN_U32("graphics/object_events/pics/people/old_man_disguise/watering.4bpp");
+const u32 gObjectEventPic_OldManDisguiseDecorating[] = INCBIN_U32("graphics/object_events/pics/people/old_man_disguise/decorating.4bpp");
+
 
 #if OW_FOLLOWERS_POKEBALLS
 const u32 gObjectEventPic_MasterBall[] = INCBIN_U32("graphics/object_events/pics/misc/ball_master.4bpp");
