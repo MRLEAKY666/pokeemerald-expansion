@@ -1550,3 +1550,11 @@ bool8 MetatileBehavior_IsBoulderHole(u8 metatileBehavior)
     else
         return FALSE;
 }
+
+bool8 MetatileBehavior_IsWardrobe(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_WARDROBE)
+        return TRUE;
+    else
+        return FALSE;
+}

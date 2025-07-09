@@ -1187,7 +1187,7 @@ Common_EventScript_ExitSafeArea::
 	clearflag FLAG_SYS_SAVE_GET
 	end
 
-Common_EventScript_OpenOutfitBox::
+Common_EventScript_OpenWardrobe::
 	lock
 	msgbox Common_Text_OpenOutfitBox, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, Common_EventScript_ReleaseEnd
