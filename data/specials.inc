@@ -577,3 +577,4 @@ gSpecials::
 	def_special ZeroPlayerPartyMons
 	def_special StartSootopolisLegendaryBattle
 	def_special UseOutfitBoxFromScript
+	def_special SetHiddenNature

@@ -92,7 +92,7 @@ extern const u8 BattleScript_AllStatsUp[];
 extern const u8 BattleScript_RapidSpinAway[];
 extern const u8 BattleScript_WrapFree[];
 extern const u8 BattleScript_LeechSeedFree[];
-extern const u8 BattleScript_SpikesFree[];
+extern const u8 BattleScript_SpinHazardsAway[];
 extern const u8 BattleScript_MonTookFutureAttack[];
 extern const u8 BattleScript_NoMovesLeft[];
 extern const u8 BattleScript_SelectingMoveWithNoPP[];
@@ -312,13 +312,7 @@ extern const u8 BattleScript_SelectingNotAllowedMoveGravityInPalace[];
 extern const u8 BattleScript_SelectingNotAllowedMoveHealBlock[];
 extern const u8 BattleScript_MoveUsedHealBlockPrevents[];
 extern const u8 BattleScript_SelectingNotAllowedMoveHealBlockInPalace[];
-extern const u8 BattleScript_ToxicSpikesFree[];
-extern const u8 BattleScript_StickyWebFree[];
-extern const u8 BattleScript_StealthRockFree[];
-extern const u8 BattleScript_SpikesDefog[];
-extern const u8 BattleScript_ToxicSpikesDefog[];
-extern const u8 BattleScript_StickyWebDefog[];
-extern const u8 BattleScript_StealthRockDefog[];
+extern const u8 BattleScript_DefogClearHazards[];
 extern const u8 BattleScript_MegaEvolution[];
 extern const u8 BattleScript_WishMegaEvolution[];
 extern const u8 BattleScript_MoveEffectClearSmog[];
@@ -529,7 +523,6 @@ extern const u8 BattleScript_CastformWeatherStartsEarly[];
 extern const u8 BattleScript_CastformFormChangeWithStringEnd3[];
 extern const u8 BattleScript_SleepClausePreventsEnd[];
 extern const u8 BattleScript_PowerConstruct[];
-
 extern const u8 BattleScript_AbilityProtectsDoesntAffect[];
 extern const u8 BattleScript_ImmunityProtected[];
 extern const u8 BattleScript_SafeguardProtected[];
@@ -541,6 +534,7 @@ extern const u8 BattleScript_AlreadyPoisoned[];
 extern const u8 BattleScript_AlreadyParalyzed[];
 extern const u8 BattleScript_AlreadyBurned[];
 extern const u8 BattleScript_PrintAbilityMadeIneffective[];
+extern const u8 BattleScript_ItDoesntAffectFoe[];
 
 extern const u8 BattleScript_RayquazaBattleLost[];                 // rayquaza battle
 
@@ -560,8 +554,6 @@ extern const u8 BattleScript_EffectSetWeather[];
 extern const u8 BattleScript_EffectSetTerrain[];
 extern const u8 BattleScript_EffectStonesurge[];
 extern const u8 BattleScript_EffectSteelsurge[];
-extern const u8 BattleScript_SteelsurgeFree[];
-extern const u8 BattleScript_SteelsurgeDefog[];
 extern const u8 BattleScript_DamageNonTypesStarts[];
 extern const u8 BattleScript_DamageNonTypesContinues[];
 extern const u8 BattleScript_DefogTryHazards[];
