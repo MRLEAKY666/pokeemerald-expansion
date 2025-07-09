@@ -3116,7 +3116,7 @@ bool8 ScrCmd_bufferoutfitstr(struct ScriptContext *ctx)
     return TRUE;
 }
 
-bool8 ScrCmd_pokemartoutfit(struct ScriptContext *ctx)
+/* bool8 ScrCmd_pokemartoutfit(struct ScriptContext *ctx)
 {
     const void *ptr = (void *)ScriptReadWord(ctx);
 
@@ -3128,7 +3128,7 @@ bool8 ScrCmd_pokemartoutfit(struct ScriptContext *ctx)
 
     ScriptContext_Stop();
     return TRUE;
-}
+} */
 
 void ScriptSetDoubleBattleFlag(struct ScriptContext *ctx)
 {
