@@ -1870,6 +1870,9 @@ static void SetBattlerMonData(u32 battler, struct Pokemon *party, u32 monId)
 // In normal singles, if follower Pokémon exists, and the Pokémon following is being sent out, have it slide in instead of being thrown
 static bool8 ShouldDoSlideInAnim(u32 battler)
 {
+    if (FlagGet(FLAG_SOOTOPLIS_BATTLE_ACTIVE)) // added this one for rayquaza battle
+        return TRUE;
+
     struct ObjectEvent *followerObj = GetFollowerObject();
     if (!followerObj || followerObj->invisible)
         return FALSE;
@@ -1898,8 +1901,8 @@ void StartSendOutAnim(u32 battler, bool32 dontClearTransform, bool32 dontClearSu
         if (doSlideIn)
             sendoutType = POKEBALL_PLAYER_SLIDEIN;
         //added below for rayquaza battle
-        else if (FlagGet(FLAG_SOOTOPLIS_BATTLE_ACTIVE))              
-            sendoutType = POKEBALL_PLAYER_SLIDEIN;   
+        /* else if (FlagGet(FLAG_SOOTOPLIS_BATTLE_ACTIVE))              
+            sendoutType = POKEBALL_PLAYER_SLIDEIN;   */ 
         //added above for rayquaza battle                
         else
             sendoutType = POKEBALL_PLAYER_SENDOUT;

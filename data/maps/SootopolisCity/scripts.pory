@@ -597,14 +597,15 @@ SootopolisCity_EventScript_RayquazaSceneFromDive::
 	
 SootopolisCity_EventScript_SetupRayquazaVsLegendsBattle::
 	setflag FLAG_SOOTOPLIS_BATTLE_ACTIVE
-	setwilddoubleflag
 	special SavePlayerParty
 	special ZeroPlayerPartyMons
+	setwilddoubleflag
+	givemon SPECIES_RAYQUAZA, 70, item=ITEM_CHESTO_BERRY, move1=MOVE_FLY, move2=MOVE_REST, move3=MOVE_DRAGON_DANCE, move4=MOVE_EXTREMESPEED, speedIv=0
 	setflag FLAG_TEMP_NO_CATCHING
 	@ setflag FLAG_TEMP_SMART_WILD_AI
 	setflag FLAG_TEMP_NO_RUNNING
 	@ settotemboost 0, atk=2,speed=2,evas=2
-	createmon 0, 0, SPECIES_RAYQUAZA, 70, item=ITEM_CHESTO_BERRY, move1=MOVE_FLY, move2=MOVE_REST, move3=MOVE_DRAGON_DANCE, move4=MOVE_EXTREMESPEED, speedIv=0
+	@ createmon 0, 0, SPECIES_RAYQUAZA, 70, item=ITEM_CHESTO_BERRY, move1=MOVE_FLY, move2=MOVE_REST, move3=MOVE_DRAGON_DANCE, move4=MOVE_EXTREMESPEED, speedIv=0
 	createmon 1, 1, SPECIES_GROUDON, 70, item=ITEM_RED_ORB, move1=MOVE_ANCIENT_POWER, move2=MOVE_LAVA_PLUME, move3=MOVE_BULK_UP, move4=MOVE_FISSURE, speedIv=31
 	createmon 1, 3, SPECIES_KYOGRE, 70, item=ITEM_BLUE_ORB, move1=MOVE_CALM_MIND, move2=MOVE_ANCIENT_POWER, move3=MOVE_SURF, move4=MOVE_SHEER_COLD,  speedIv=31
 	return

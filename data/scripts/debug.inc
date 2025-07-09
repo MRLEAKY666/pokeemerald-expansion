@@ -190,18 +190,10 @@ Debug_EventScript_Script_4::
 
 Debug_EventScript_Script_5::
 	lock
-	special SavePlayerParty
-	special ZeroPlayerPartyMons
-	setflag FLAG_TEMP_NO_CATCHING
-	setflag FLAG_TEMP_NO_RUNNING
-	settotemboost 0, atk=2,def=2,speed=2,spatk=2,spdef=2
-	createmon 0, 2, SPECIES_RAYQUAZA, 70, move1=MOVE_FLY, move2=MOVE_REST, move3=MOVE_DRAGON_DANCE, move4=MOVE_EXTREMESPEED
-	createmon 1, 1, SPECIES_GROUDON, 70
-	createmon 1, 3, SPECIES_KYOGRE, 70
-	@ setwilddoubleflag
+	call SootopolisCity_EventScript_SetupRayquazaVsLegendsBattle
 	special StartSootopolisLegendaryBattle
 	waitstate
-	special LoadPlayerParty
+	call SootopolisCity_EventScript_ClearRayquazaVsLegendsBattle
 	release
 	end
 
