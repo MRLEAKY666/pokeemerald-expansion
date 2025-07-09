@@ -161,7 +161,13 @@ script MossdeepCity_Arcade_EventScript_CallWaiter{
         applymovement(LOCALID_ARCADE_WAITER, Common_Movement_WalkInPlaceDown)
     }
 
-    msgbox(format("Oh?\nYou're ready to order now?"), MSGBOX_YESNO)
+    if (flag(FLAG_TEMP_3)){
+        msgbox(format("Oh?\nYou'd like to order something else?"), MSGBOX_YESNO)
+    }
+    else {
+        msgbox(format("Oh?\nYou're ready to order now?"), MSGBOX_YESNO)
+    } 
+
     if (var(VAR_RESULT) == YES){ 
         goto(MossdeepCity_Arcade_EventScript_Waiter)
     }
@@ -202,6 +208,7 @@ MossdeepCity_Arcade_EventScript_BarStool1::
     applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterApproach1
     waitmovement 0
     delay 5
+    call_if_set FLAG_TEMP_3, MossdeepCity_Arcade_EventScript_ClearAlreadyOrderedFlag 
     msgbox MossdeepCity_Arcade_Text_ReadyToOrder, MSGBOX_YESNO
     goto_if_eq VAR_RESULT, YES, MossdeepCity_Arcade_EventScript_Waiter
     msgbox MossdeepCity_Arcade_Text_LetMeKnow, MSGBOX_DEFAULT 
@@ -210,6 +217,10 @@ MossdeepCity_Arcade_EventScript_BarStool1::
     waitmovement 0
     release
     end
+
+MossdeepCity_Arcade_EventScript_ClearAlreadyOrderedFlag::
+    clearflag FLAG_TEMP_3
+    return
 
 MossdeepCity_Arcade_EventScript_BarStool2::
     lock
@@ -226,6 +237,7 @@ MossdeepCity_Arcade_EventScript_BarStool2::
     applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterApproach2
     waitmovement 0
     delay 5
+    call_if_set FLAG_TEMP_3, MossdeepCity_Arcade_EventScript_ClearAlreadyOrderedFlag 
     msgbox MossdeepCity_Arcade_Text_ReadyToOrder, MSGBOX_YESNO
     goto_if_eq VAR_RESULT, YES, MossdeepCity_Arcade_EventScript_Waiter
     msgbox MossdeepCity_Arcade_Text_LetMeKnow, MSGBOX_DEFAULT 
@@ -250,6 +262,7 @@ MossdeepCity_Arcade_EventScript_BarStool3::
     applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterApproach3
     waitmovement 0
     delay 5
+    call_if_set FLAG_TEMP_3, MossdeepCity_Arcade_EventScript_ClearAlreadyOrderedFlag 
     msgbox MossdeepCity_Arcade_Text_ReadyToOrder, MSGBOX_YESNO
     goto_if_eq VAR_RESULT, YES, MossdeepCity_Arcade_EventScript_Waiter
     msgbox MossdeepCity_Arcade_Text_LetMeKnow, MSGBOX_DEFAULT 
@@ -274,6 +287,7 @@ MossdeepCity_Arcade_EventScript_BarStool4::
     applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterApproach4
     waitmovement 0
     delay 5
+    call_if_set FLAG_TEMP_3, MossdeepCity_Arcade_EventScript_ClearAlreadyOrderedFlag 
     msgbox MossdeepCity_Arcade_Text_ReadyToOrder, MSGBOX_YESNO
     goto_if_eq VAR_RESULT, YES, MossdeepCity_Arcade_EventScript_Waiter
     msgbox MossdeepCity_Arcade_Text_LetMeKnow, MSGBOX_DEFAULT 
@@ -438,6 +452,10 @@ script MossdeepCity_Arcade_EventScript_Waiter {
                     applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave4)
             }
             waitmovement(LOCALID_ARCADE_WAITER)
+            setvar(VAR_TEMP_2, 0)
+            if (!flag(FLAG_TEMP_3)){
+                setflag(FLAG_TEMP_3)
+            }
             release
 	        end
         case 1:
@@ -478,6 +496,10 @@ script MossdeepCity_Arcade_EventScript_Waiter {
                     applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave4)
             }
             waitmovement(LOCALID_ARCADE_WAITER)
+            setvar(VAR_TEMP_2, 0)
+            if (!flag(FLAG_TEMP_3)){
+                setflag(FLAG_TEMP_3)
+            }
             release
 	        end
         case 2:
@@ -518,6 +540,10 @@ script MossdeepCity_Arcade_EventScript_Waiter {
                     applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave4)
             }
             waitmovement(LOCALID_ARCADE_WAITER)
+            setvar(VAR_TEMP_2, 0)
+            if (!flag(FLAG_TEMP_3)){
+                setflag(FLAG_TEMP_3)
+            }
             release
 	        end
         
@@ -559,6 +585,10 @@ script MossdeepCity_Arcade_EventScript_Waiter {
                     applymovement(LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave4)
             }
             waitmovement(LOCALID_ARCADE_WAITER)
+            setvar(VAR_TEMP_2, 0)
+            if (!flag(FLAG_TEMP_3)){
+                setflag(FLAG_TEMP_3)
+            }
             release
 	        end
         case 4:

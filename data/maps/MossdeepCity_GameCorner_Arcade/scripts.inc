@@ -285,29 +285,32 @@ MossdeepCity_Arcade_EventScript_CallWaiter::
 	case 4, MossdeepCity_Arcade_EventScript_CallWaiter_6
 MossdeepCity_Arcade_EventScript_CallWaiter_1:
 # 164 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-	msgbox MossdeepCity_Arcade_EventScript_CallWaiter_Text_0, MSGBOX_YESNO
-# 165 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-	compare VAR_RESULT, YES
-	goto_if_eq MossdeepCity_Arcade_EventScript_CallWaiter_8
+	goto_if_set FLAG_TEMP_3, MossdeepCity_Arcade_EventScript_CallWaiter_8
+# 168 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	msgbox MossdeepCity_Arcade_EventScript_CallWaiter_Text_1, MSGBOX_YESNO
 MossdeepCity_Arcade_EventScript_CallWaiter_7:
-# 169 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-	msgbox MossdeepCity_Arcade_Text_LetMeKnow, MSGBOX_DEFAULT
-# 170 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-	closemessage
-# 172 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-	switch VAR_TEMP_5
-# 173 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-	case 1, MossdeepCity_Arcade_EventScript_CallWaiter_12
+# 171 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	compare VAR_RESULT, YES
+	goto_if_eq MossdeepCity_Arcade_EventScript_CallWaiter_12
+MossdeepCity_Arcade_EventScript_CallWaiter_11:
 # 175 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-	case 2, MossdeepCity_Arcade_EventScript_CallWaiter_13
-# 177 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-	case 3, MossdeepCity_Arcade_EventScript_CallWaiter_14
+	msgbox MossdeepCity_Arcade_Text_LetMeKnow, MSGBOX_DEFAULT
+# 176 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	closemessage
+# 178 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	switch VAR_TEMP_5
 # 179 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-	case 4, MossdeepCity_Arcade_EventScript_CallWaiter_15
-MossdeepCity_Arcade_EventScript_CallWaiter_10:
+	case 1, MossdeepCity_Arcade_EventScript_CallWaiter_16
+# 181 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	case 2, MossdeepCity_Arcade_EventScript_CallWaiter_17
 # 183 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	case 3, MossdeepCity_Arcade_EventScript_CallWaiter_18
+# 185 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	case 4, MossdeepCity_Arcade_EventScript_CallWaiter_19
+MossdeepCity_Arcade_EventScript_CallWaiter_14:
+# 189 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	waitmovement 0
-# 184 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 190 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	release
 	end
 
@@ -356,338 +359,331 @@ MossdeepCity_Arcade_EventScript_CallWaiter_6:
 	goto MossdeepCity_Arcade_EventScript_CallWaiter_1
 
 MossdeepCity_Arcade_EventScript_CallWaiter_8:
-# 166 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-	goto MossdeepCity_Arcade_EventScript_Waiter
+# 165 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	msgbox MossdeepCity_Arcade_EventScript_CallWaiter_Text_0, MSGBOX_YESNO
 	goto MossdeepCity_Arcade_EventScript_CallWaiter_7
 
 MossdeepCity_Arcade_EventScript_CallWaiter_12:
-# 174 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-	applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1
-	goto MossdeepCity_Arcade_EventScript_CallWaiter_10
+# 172 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	goto MossdeepCity_Arcade_EventScript_Waiter
+	goto MossdeepCity_Arcade_EventScript_CallWaiter_11
 
-MossdeepCity_Arcade_EventScript_CallWaiter_13:
-# 176 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-	applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1
-	goto MossdeepCity_Arcade_EventScript_CallWaiter_10
-
-MossdeepCity_Arcade_EventScript_CallWaiter_14:
-# 178 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-	applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave3
-	goto MossdeepCity_Arcade_EventScript_CallWaiter_10
-
-MossdeepCity_Arcade_EventScript_CallWaiter_15:
+MossdeepCity_Arcade_EventScript_CallWaiter_16:
 # 180 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1
+	goto MossdeepCity_Arcade_EventScript_CallWaiter_14
+
+MossdeepCity_Arcade_EventScript_CallWaiter_17:
+# 182 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1
+	goto MossdeepCity_Arcade_EventScript_CallWaiter_14
+
+MossdeepCity_Arcade_EventScript_CallWaiter_18:
+# 184 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave3
+	goto MossdeepCity_Arcade_EventScript_CallWaiter_14
+
+MossdeepCity_Arcade_EventScript_CallWaiter_19:
+# 186 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave4
-	goto MossdeepCity_Arcade_EventScript_CallWaiter_10
+	goto MossdeepCity_Arcade_EventScript_CallWaiter_14
 
 
-# 188 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-
-# 189 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-
-# 190 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-MossdeepCity_Arcade_EventScript_BarStool1::
-# 191 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    lock
-# 192 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    setvar VAR_TEMP_5, 1                                      @indicates whihc barstool
-# 193 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    hidefollower
 # 194 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    delay 5
+
 # 195 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    applymovement LOCALID_PLAYER, Common_Movement_FaceRight
+
 # 196 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    waitmovement 0
+MossdeepCity_Arcade_EventScript_BarStool1::
 # 197 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    delay 5
+    lock
 # 198 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    playse SE_PIN
+    setvar VAR_TEMP_5, 1                                      @indicates whihc barstool
 # 199 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    applymovement LOCALID_ARCADE_WAITER, Common_Movement_ExclamationMark
+    hidefollower
 # 200 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    waitse
+    delay 5
 # 201 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    delay 15
+    applymovement LOCALID_PLAYER, Common_Movement_FaceRight
 # 202 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterApproach1
+    waitmovement 0
 # 203 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    waitmovement 0
+    delay 5
 # 204 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    delay 5
+    playse SE_PIN
 # 205 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    msgbox MossdeepCity_Arcade_Text_ReadyToOrder, MSGBOX_YESNO
+    applymovement LOCALID_ARCADE_WAITER, Common_Movement_ExclamationMark
 # 206 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    goto_if_eq VAR_RESULT, YES, MossdeepCity_Arcade_EventScript_Waiter
+    waitse
 # 207 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    msgbox MossdeepCity_Arcade_Text_LetMeKnow, MSGBOX_DEFAULT 
+    delay 15
 # 208 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    closemessage
+    applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterApproach1
 # 209 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1
+    waitmovement 0
 # 210 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    waitmovement 0
+    delay 5
 # 211 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    release
+    call_if_set FLAG_TEMP_3, MossdeepCity_Arcade_EventScript_ClearAlreadyOrderedFlag 
 # 212 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    end
+    msgbox MossdeepCity_Arcade_Text_ReadyToOrder, MSGBOX_YESNO
 # 213 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-
+    goto_if_eq VAR_RESULT, YES, MossdeepCity_Arcade_EventScript_Waiter
 # 214 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-MossdeepCity_Arcade_EventScript_BarStool2::
+    msgbox MossdeepCity_Arcade_Text_LetMeKnow, MSGBOX_DEFAULT 
 # 215 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    lock
+    closemessage
 # 216 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    setvar VAR_TEMP_5, 2                                      @indicates whihc barstool
-# 217 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    hidefollower
-# 218 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    delay 5
-# 219 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    applymovement LOCALID_PLAYER, Common_Movement_FaceUp
-# 220 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    waitmovement 0
-# 221 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    delay 5
-# 222 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    playse SE_PIN
-# 223 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    applymovement LOCALID_ARCADE_WAITER, Common_Movement_ExclamationMark
-# 224 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    waitse
-# 225 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    delay 15
-# 226 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterApproach2
-# 227 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    waitmovement 0
-# 228 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    delay 5
-# 229 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    msgbox MossdeepCity_Arcade_Text_ReadyToOrder, MSGBOX_YESNO
-# 230 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    goto_if_eq VAR_RESULT, YES, MossdeepCity_Arcade_EventScript_Waiter
-# 231 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    msgbox MossdeepCity_Arcade_Text_LetMeKnow, MSGBOX_DEFAULT 
-# 232 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    closemessage
-# 233 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1
+# 217 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    waitmovement 0
+# 218 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    release
+# 219 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    end
+# 220 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+
+# 221 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+MossdeepCity_Arcade_EventScript_ClearAlreadyOrderedFlag::
+# 222 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    clearflag FLAG_TEMP_3
+# 223 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    return
+# 224 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+
+# 225 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+MossdeepCity_Arcade_EventScript_BarStool2::
+# 226 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    lock
+# 227 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    setvar VAR_TEMP_5, 2                                      @indicates whihc barstool
+# 228 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    hidefollower
+# 229 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    delay 5
+# 230 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    applymovement LOCALID_PLAYER, Common_Movement_FaceUp
+# 231 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    waitmovement 0
+# 232 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    delay 5
+# 233 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    playse SE_PIN
 # 234 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    waitmovement 0
+    applymovement LOCALID_ARCADE_WAITER, Common_Movement_ExclamationMark
 # 235 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    release
+    waitse
 # 236 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    end
+    delay 15
 # 237 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-
+    applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterApproach2
 # 238 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-MossdeepCity_Arcade_EventScript_BarStool3::
+    waitmovement 0
 # 239 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    lock
+    delay 5
 # 240 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    setvar VAR_TEMP_5, 3                                      @indicates whihc barstool
+    call_if_set FLAG_TEMP_3, MossdeepCity_Arcade_EventScript_ClearAlreadyOrderedFlag 
 # 241 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    hidefollower
+    msgbox MossdeepCity_Arcade_Text_ReadyToOrder, MSGBOX_YESNO
 # 242 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    delay 5
+    goto_if_eq VAR_RESULT, YES, MossdeepCity_Arcade_EventScript_Waiter
 # 243 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    applymovement LOCALID_PLAYER, Common_Movement_FaceUp
+    msgbox MossdeepCity_Arcade_Text_LetMeKnow, MSGBOX_DEFAULT 
 # 244 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    waitmovement 0
+    closemessage
 # 245 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    delay 5
+    applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1
 # 246 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    playse SE_PIN
+    waitmovement 0
 # 247 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    applymovement LOCALID_ARCADE_WAITER, Common_Movement_ExclamationMark
+    release
 # 248 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    waitse
-# 249 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    delay 15
-# 250 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterApproach3
-# 251 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    waitmovement 0
-# 252 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    delay 5
-# 253 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    msgbox MossdeepCity_Arcade_Text_ReadyToOrder, MSGBOX_YESNO
-# 254 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    goto_if_eq VAR_RESULT, YES, MossdeepCity_Arcade_EventScript_Waiter
-# 255 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    msgbox MossdeepCity_Arcade_Text_LetMeKnow, MSGBOX_DEFAULT 
-# 256 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    closemessage
-# 257 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave3
-# 258 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    waitmovement 0
-# 259 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    release
-# 260 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     end
-# 261 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 249 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 
-# 262 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-MossdeepCity_Arcade_EventScript_BarStool4::
-# 263 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 250 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+MossdeepCity_Arcade_EventScript_BarStool3::
+# 251 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     lock
-# 264 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    setvar VAR_TEMP_5, 4                                      @indicates whihc barstool
-# 265 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 252 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    setvar VAR_TEMP_5, 3                                      @indicates whihc barstool
+# 253 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     hidefollower
-# 266 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 254 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     delay 5
-# 267 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 255 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     applymovement LOCALID_PLAYER, Common_Movement_FaceUp
-# 268 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 256 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     waitmovement 0
-# 269 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 257 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     delay 5
-# 270 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 258 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     playse SE_PIN
-# 271 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 259 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     applymovement LOCALID_ARCADE_WAITER, Common_Movement_ExclamationMark
-# 272 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 260 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     waitse
-# 273 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 261 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     delay 15
-# 274 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterApproach4
-# 275 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 262 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterApproach3
+# 263 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     waitmovement 0
-# 276 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 264 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     delay 5
-# 277 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 265 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    call_if_set FLAG_TEMP_3, MossdeepCity_Arcade_EventScript_ClearAlreadyOrderedFlag 
+# 266 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     msgbox MossdeepCity_Arcade_Text_ReadyToOrder, MSGBOX_YESNO
-# 278 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 267 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     goto_if_eq VAR_RESULT, YES, MossdeepCity_Arcade_EventScript_Waiter
-# 279 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 268 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     msgbox MossdeepCity_Arcade_Text_LetMeKnow, MSGBOX_DEFAULT 
-# 280 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 269 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     closemessage
-# 281 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave4
-# 282 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 270 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave3
+# 271 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     waitmovement 0
-# 283 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 272 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     release
+# 273 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    end
+# 274 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+
+# 275 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+MossdeepCity_Arcade_EventScript_BarStool4::
+# 276 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    lock
+# 277 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    setvar VAR_TEMP_5, 4                                      @indicates whihc barstool
+# 278 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    hidefollower
+# 279 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    delay 5
+# 280 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    applymovement LOCALID_PLAYER, Common_Movement_FaceUp
+# 281 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    waitmovement 0
+# 282 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    delay 5
+# 283 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    playse SE_PIN
 # 284 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    applymovement LOCALID_ARCADE_WAITER, Common_Movement_ExclamationMark
+# 285 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    waitse
+# 286 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    delay 15
+# 287 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterApproach4
+# 288 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    waitmovement 0
+# 289 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    delay 5
+# 290 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    call_if_set FLAG_TEMP_3, MossdeepCity_Arcade_EventScript_ClearAlreadyOrderedFlag 
+# 291 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    msgbox MossdeepCity_Arcade_Text_ReadyToOrder, MSGBOX_YESNO
+# 292 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    goto_if_eq VAR_RESULT, YES, MossdeepCity_Arcade_EventScript_Waiter
+# 293 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    msgbox MossdeepCity_Arcade_Text_LetMeKnow, MSGBOX_DEFAULT 
+# 294 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    closemessage
+# 295 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave4
+# 296 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    waitmovement 0
+# 297 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    release
+# 298 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     end
 
 MossdeepCity_Arcade_EventScript_RichGuy::
-# 288 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 302 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	lock
-# 289 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 303 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	faceplayer
-# 290 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 304 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	msgbox MossdeepCity_Arcade_EventScript_RichGuy_Text_0
-# 291 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 305 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	goto MossdeepCity_Arcade_EventScript_NPCReturnToSlots
 	end
 
 
 MossdeepCity_Arcade_EventScript_RegularGuy::
-# 296 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 310 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	lock
-# 297 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 311 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	faceplayer
-# 298 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 312 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	msgbox MossdeepCity_Arcade_EventScript_RichGuy_Text_0
-# 299 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 313 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	goto MossdeepCity_Arcade_EventScript_NPCReturnToSlots
 	end
 
 
 MossdeepCity_Arcade_EventScript_PachinkoGirl::
-# 304 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 318 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	lock
-# 305 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 319 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	faceplayer
-# 306 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 320 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	msgbox MossdeepCity_Arcade_EventScript_PachinkoGirl_Text_0
-# 307 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 321 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	goto MossdeepCity_Arcade_EventScript_NPCReturnToSlots
 	end
 
 
 MossdeepCity_Arcade_EventScript_OnixBoy::
-# 312 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 326 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	lock
-# 313 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 327 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	faceplayer
-# 314 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 328 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	msgbox MossdeepCity_Arcade_EventScript_RichGuy_Text_0
-# 315 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 329 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	goto MossdeepCity_Arcade_EventScript_NPCReturnToSlots
 	end
 
 
 MossdeepCity_Arcade_EventScript_BlockGuy::
-# 320 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 334 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	lock
-# 321 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 335 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	faceplayer
-# 322 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 336 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	msgbox MossdeepCity_Arcade_EventScript_RichGuy_Text_0
-# 323 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 337 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	goto MossdeepCity_Arcade_EventScript_NPCReturnToSlots
 	end
 
 
-# 327 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-
-# 328 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-MossdeepCity_Arcade_Text_ReadyToOrder:
-# 329 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    .string "Welcome!\n"
-# 330 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    .string "Do you know what you'd like?$"
-# 331 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-
-# 332 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-MossdeepCity_Arcade_Text_LetMeKnow:
-# 333 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    .string "Well, if you make up your mind\n"
-# 334 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    .string "just let me know!$"
-# 335 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-
-# 336 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-MossdeepCity_Arcade_Movement_WaiterApproach1:
-# 337 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    walk_down
-# 338 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    walk_left
-# 339 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    delay_16
-# 340 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    step_end 
 # 341 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 
 # 342 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-MossdeepCity_Arcade_Movement_WaiterApproach2:
+MossdeepCity_Arcade_Text_ReadyToOrder:
 # 343 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    walk_down
+    .string "Welcome!\n"
 # 344 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    walk_left
+    .string "Do you know what you'd like?$"
 # 345 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    face_down
-# 346 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    delay_16
-# 347 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    step_end 
-# 348 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 
+# 346 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+MossdeepCity_Arcade_Text_LetMeKnow:
+# 347 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    .string "Well, if you make up your mind\n"
+# 348 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    .string "just let me know!$"
 # 349 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-MossdeepCity_Arcade_Movement_WaiterApproach3:
+
 # 350 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    walk_down
+MossdeepCity_Arcade_Movement_WaiterApproach1:
 # 351 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    walk_right
+    walk_down
 # 352 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    face_down
+    walk_left
 # 353 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     delay_16
 # 354 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
@@ -695,554 +691,622 @@ MossdeepCity_Arcade_Movement_WaiterApproach3:
 # 355 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 
 # 356 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-MossdeepCity_Arcade_Movement_WaiterApproach4:
+MossdeepCity_Arcade_Movement_WaiterApproach2:
 # 357 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     walk_down
 # 358 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    walk_right
-# 359 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    walk_right
-# 360 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    face_down
-# 361 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    delay_16
-# 362 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    step_end 
-# 363 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-
-# 364 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-MossdeepCity_Arcade_Movement_WaiterLeave1:
-# 365 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    delay_16
-# 366 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    walk_up
-# 367 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    walk_right
-# 368 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    face_down
-# 369 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    step_end
-# 370 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-
-# 371 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-MossdeepCity_Arcade_Movement_WaiterLeave3:
-# 372 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    delay_16
-# 373 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     walk_left
-# 374 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    walk_up
-# 375 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 359 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     face_down
+# 360 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    delay_16
+# 361 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    step_end 
+# 362 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+
+# 363 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+MossdeepCity_Arcade_Movement_WaiterApproach3:
+# 364 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    walk_down
+# 365 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    walk_right
+# 366 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    face_down
+# 367 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    delay_16
+# 368 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    step_end 
+# 369 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+
+# 370 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+MossdeepCity_Arcade_Movement_WaiterApproach4:
+# 371 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    walk_down
+# 372 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    walk_right
+# 373 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    walk_right
+# 374 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    face_down
+# 375 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    delay_16
 # 376 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    step_end
+    step_end 
 # 377 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 
 # 378 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-MossdeepCity_Arcade_Movement_WaiterLeave4:
+MossdeepCity_Arcade_Movement_WaiterLeave1:
 # 379 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     delay_16
 # 380 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    walk_left
-# 381 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    walk_left
-# 382 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     walk_up
-# 383 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 381 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    walk_right
+# 382 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     face_down
+# 383 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    step_end
 # 384 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+
+# 385 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+MossdeepCity_Arcade_Movement_WaiterLeave3:
+# 386 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    delay_16
+# 387 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    walk_left
+# 388 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    walk_up
+# 389 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    face_down
+# 390 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    step_end
+# 391 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+
+# 392 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+MossdeepCity_Arcade_Movement_WaiterLeave4:
+# 393 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    delay_16
+# 394 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    walk_left
+# 395 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    walk_left
+# 396 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    walk_up
+# 397 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    face_down
+# 398 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     step_end
 
 MossdeepCity_Arcade_EventScript_Waiter::
-# 389 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 403 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	message MossdeepCity_Arcade_EventScript_Waiter_Text_0
-# 390 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 404 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	waitmessage
-# 391 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 405 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	delay 10
-# 392 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 406 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	goto_if_set FLAG_TEMP_2, MossdeepCity_Arcade_EventScript_Waiter_2
 MossdeepCity_Arcade_EventScript_Waiter_1:
-# 396 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 410 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	showmoneybox 0, 0
-# 397 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 411 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	dynmultichoice 15, 0, FALSE, 5, VAR_TEMP_2, DYN_MULTICHOICE_CB_NONE, MossdeepCity_Arcade_EventScript_Waiter_Text_1, MossdeepCity_Arcade_EventScript_Waiter_Text_2, MossdeepCity_Arcade_EventScript_Waiter_Text_3, MossdeepCity_Arcade_EventScript_Waiter_Text_4, MossdeepCity_Arcade_EventScript_CoinMachine_Text_2
-# 402 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 416 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	switch VAR_RESULT
-# 403 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 417 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	case 0, MossdeepCity_Arcade_EventScript_Waiter_6
-# 443 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 461 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	case 1, MossdeepCity_Arcade_EventScript_Waiter_7
-# 483 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 505 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	case 2, MossdeepCity_Arcade_EventScript_Waiter_8
-# 524 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 550 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	case 3, MossdeepCity_Arcade_EventScript_Waiter_9
-# 566 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 596 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	hidemoneybox
-# 567 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 597 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	msgbox MossdeepCity_Arcade_Text_LetMeKnow, MSGBOX_DEFAULT
-# 568 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 598 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	closemessage
-# 569 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 599 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	switch VAR_TEMP_5
-# 570 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 600 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	case 1, MossdeepCity_Arcade_EventScript_Waiter_12
-# 572 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 602 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	case 2, MossdeepCity_Arcade_EventScript_Waiter_13
-# 574 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 604 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	case 3, MossdeepCity_Arcade_EventScript_Waiter_14
-# 576 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 606 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	case 4, MossdeepCity_Arcade_EventScript_Waiter_15
 MossdeepCity_Arcade_EventScript_Waiter_10:
-# 579 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 609 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	waitmovement LOCALID_ARCADE_WAITER
-# 580 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 610 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	setvar VAR_TEMP_2, 0
-# 581 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 611 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	release
 	end
 
 MossdeepCity_Arcade_EventScript_Waiter_2:
-# 393 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 407 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	hidemoneybox
-# 394 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 408 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	clearflag FLAG_TEMP_2
 	goto MossdeepCity_Arcade_EventScript_Waiter_1
 
 MossdeepCity_Arcade_EventScript_Waiter_6:
-# 404 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 418 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	setvar VAR_TEMP_2, 0
-# 405 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 419 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	msgbox MossdeepCity_Arcade_EventScript_Waiter_Text_5, MSGBOX_YESNO
-# 406 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 420 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	compare VAR_RESULT, NO
 	goto_if_eq MossdeepCity_Arcade_EventScript_Waiter_17
 MossdeepCity_Arcade_EventScript_Waiter_16:
-# 410 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 424 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	checkmoney 100
-# 411 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 425 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	compare VAR_RESULT, FALSE
 	goto_if_eq MossdeepCity_Arcade_EventScript_Waiter_29
-# 416 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 430 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	delay 10
-# 417 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 431 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	compare VAR_TEMP_5, 1
 	goto_if_eq MossdeepCity_Arcade_EventScript_Waiter_41
-# 421 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 435 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, Common_Movement_WalkInPlaceDown
 MossdeepCity_Arcade_EventScript_Waiter_40:
-# 423 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-	removemoney 100
-# 424 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-	updatemoneybox
-# 425 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-	playse SE_SHOP
-# 426 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-	additem ITEM_BERRY_JUICE
-# 427 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-	msgbox MossdeepCity_Arcade_EventScript_Waiter_Text_7, MSGBOX_DEFAULT
-# 428 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-	closemessage
-# 429 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-	hidemoneybox
-# 430 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-	switch VAR_TEMP_5
-# 431 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-	case 1, MossdeepCity_Arcade_EventScript_Waiter_58
-# 433 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-	case 2, MossdeepCity_Arcade_EventScript_Waiter_59
-# 435 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-	case 3, MossdeepCity_Arcade_EventScript_Waiter_60
 # 437 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	removemoney 100
+# 438 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	updatemoneybox
+# 439 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	playse SE_SHOP
+# 440 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	additem ITEM_BERRY_JUICE
+# 441 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	msgbox MossdeepCity_Arcade_EventScript_Waiter_Text_7, MSGBOX_DEFAULT
+# 442 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	closemessage
+# 443 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	hidemoneybox
+# 444 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	switch VAR_TEMP_5
+# 445 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	case 1, MossdeepCity_Arcade_EventScript_Waiter_58
+# 447 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	case 2, MossdeepCity_Arcade_EventScript_Waiter_59
+# 449 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	case 3, MossdeepCity_Arcade_EventScript_Waiter_60
+# 451 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	case 4, MossdeepCity_Arcade_EventScript_Waiter_61
 MossdeepCity_Arcade_EventScript_Waiter_56:
-# 440 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 454 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	waitmovement LOCALID_ARCADE_WAITER
-# 441 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 455 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	setvar VAR_TEMP_2, 0
+# 456 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	goto_if_unset FLAG_TEMP_3, MossdeepCity_Arcade_EventScript_Waiter_81
+MossdeepCity_Arcade_EventScript_Waiter_80:
+# 459 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	release
 	end
 
 MossdeepCity_Arcade_EventScript_Waiter_7:
-# 444 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 462 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	setvar VAR_TEMP_2, 1
-# 445 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 463 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	msgbox MossdeepCity_Arcade_EventScript_Waiter_Text_8, MSGBOX_YESNO
-# 446 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 464 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	compare VAR_RESULT, NO
 	goto_if_eq MossdeepCity_Arcade_EventScript_Waiter_20
 MossdeepCity_Arcade_EventScript_Waiter_19:
-# 450 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 468 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	checkmoney 200
-# 451 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 469 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	compare VAR_RESULT, FALSE
 	goto_if_eq MossdeepCity_Arcade_EventScript_Waiter_32
-# 456 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 474 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	delay 10
-# 457 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 475 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	compare VAR_TEMP_5, 1
 	goto_if_eq MossdeepCity_Arcade_EventScript_Waiter_45
-# 461 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 479 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, Common_Movement_WalkInPlaceDown
 MossdeepCity_Arcade_EventScript_Waiter_44:
-# 463 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 481 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	removemoney 200
-# 464 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 482 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	updatemoneybox
-# 465 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 483 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	playse SE_SHOP
-# 466 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 484 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	additem ITEM_FRESH_WATER
-# 467 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 485 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	msgbox MossdeepCity_Arcade_EventScript_Waiter_Text_7, MSGBOX_DEFAULT
-# 468 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 486 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	closemessage
-# 469 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 487 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	hidemoneybox
-# 470 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 488 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	switch VAR_TEMP_5
-# 471 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 489 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	case 1, MossdeepCity_Arcade_EventScript_Waiter_64
-# 473 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 491 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	case 2, MossdeepCity_Arcade_EventScript_Waiter_65
-# 475 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 493 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	case 3, MossdeepCity_Arcade_EventScript_Waiter_66
-# 477 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 495 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	case 4, MossdeepCity_Arcade_EventScript_Waiter_67
 MossdeepCity_Arcade_EventScript_Waiter_62:
-# 480 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 498 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	waitmovement LOCALID_ARCADE_WAITER
-# 481 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 499 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	setvar VAR_TEMP_2, 0
+# 500 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	goto_if_unset FLAG_TEMP_3, MossdeepCity_Arcade_EventScript_Waiter_84
+MossdeepCity_Arcade_EventScript_Waiter_83:
+# 503 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	release
 	end
 
 MossdeepCity_Arcade_EventScript_Waiter_8:
-# 484 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 506 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	setvar VAR_TEMP_2, 2
-# 485 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 507 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	msgbox MossdeepCity_Arcade_EventScript_Waiter_Text_9, MSGBOX_YESNO
-# 486 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 508 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	compare VAR_RESULT, NO
 	goto_if_eq MossdeepCity_Arcade_EventScript_Waiter_23
 MossdeepCity_Arcade_EventScript_Waiter_22:
-# 490 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 512 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	checkmoney 350
-# 491 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 513 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	compare VAR_RESULT, FALSE
 	goto_if_eq MossdeepCity_Arcade_EventScript_Waiter_35
-# 496 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 518 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	delay 10
-# 497 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 519 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	compare VAR_TEMP_5, 1
 	goto_if_eq MossdeepCity_Arcade_EventScript_Waiter_49
-# 501 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 523 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, Common_Movement_WalkInPlaceDown
 MossdeepCity_Arcade_EventScript_Waiter_48:
-# 503 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 525 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	removemoney 350
-# 504 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 526 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	updatemoneybox
-# 505 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 527 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	playse SE_SHOP
-# 506 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 528 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	additem ITEM_LEMONADE
-# 507 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 529 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	msgbox MossdeepCity_Arcade_EventScript_Waiter_Text_7, MSGBOX_DEFAULT
-# 508 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 530 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	closemessage
-# 509 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 531 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	hidemoneybox
-# 510 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 532 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	switch VAR_TEMP_5
-# 511 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 533 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	case 1, MossdeepCity_Arcade_EventScript_Waiter_70
-# 513 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 535 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	case 2, MossdeepCity_Arcade_EventScript_Waiter_71
-# 515 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 537 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	case 3, MossdeepCity_Arcade_EventScript_Waiter_72
-# 517 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 539 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	case 4, MossdeepCity_Arcade_EventScript_Waiter_73
 MossdeepCity_Arcade_EventScript_Waiter_68:
-# 520 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 542 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	waitmovement LOCALID_ARCADE_WAITER
-# 521 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 543 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	setvar VAR_TEMP_2, 0
+# 544 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	goto_if_unset FLAG_TEMP_3, MossdeepCity_Arcade_EventScript_Waiter_87
+MossdeepCity_Arcade_EventScript_Waiter_86:
+# 547 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	release
 	end
 
 MossdeepCity_Arcade_EventScript_Waiter_9:
-# 525 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 551 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	setvar VAR_TEMP_2, 3
-# 526 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 552 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	msgbox MossdeepCity_Arcade_EventScript_Waiter_Text_10, MSGBOX_YESNO
-# 527 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 553 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	compare VAR_RESULT, NO
 	goto_if_eq MossdeepCity_Arcade_EventScript_Waiter_26
 MossdeepCity_Arcade_EventScript_Waiter_25:
-# 531 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 557 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	checkmoney 500
-# 532 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 558 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	compare VAR_RESULT, FALSE
 	goto_if_eq MossdeepCity_Arcade_EventScript_Waiter_38
-# 537 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 563 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	delay 10
-# 538 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 564 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	compare VAR_TEMP_5, 1
 	goto_if_eq MossdeepCity_Arcade_EventScript_Waiter_53
-# 542 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 568 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, Common_Movement_WalkInPlaceDown
 MossdeepCity_Arcade_EventScript_Waiter_52:
-# 544 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 570 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	removemoney 500
-# 545 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 571 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	updatemoneybox
-# 546 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 572 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	playse SE_SHOP
-# 547 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 573 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	additem ITEM_MOOMOO_MILK
-# 548 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 574 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	msgbox MossdeepCity_Arcade_EventScript_Waiter_Text_7, MSGBOX_DEFAULT
-# 549 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 575 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	closemessage
-# 550 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 576 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	hidemoneybox
-# 551 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 577 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	switch VAR_TEMP_5
-# 552 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 578 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	case 1, MossdeepCity_Arcade_EventScript_Waiter_76
-# 554 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 580 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	case 2, MossdeepCity_Arcade_EventScript_Waiter_77
-# 556 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 582 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	case 3, MossdeepCity_Arcade_EventScript_Waiter_78
-# 558 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 584 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	case 4, MossdeepCity_Arcade_EventScript_Waiter_79
 MossdeepCity_Arcade_EventScript_Waiter_74:
-# 561 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 587 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	waitmovement LOCALID_ARCADE_WAITER
-# 562 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 588 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	setvar VAR_TEMP_2, 0
+# 589 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	goto_if_unset FLAG_TEMP_3, MossdeepCity_Arcade_EventScript_Waiter_90
+MossdeepCity_Arcade_EventScript_Waiter_89:
+# 592 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	release
 	end
 
 MossdeepCity_Arcade_EventScript_Waiter_12:
-# 571 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 601 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1
 	goto MossdeepCity_Arcade_EventScript_Waiter_10
 
 MossdeepCity_Arcade_EventScript_Waiter_13:
-# 573 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 603 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1
 	goto MossdeepCity_Arcade_EventScript_Waiter_10
 
 MossdeepCity_Arcade_EventScript_Waiter_14:
-# 575 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 605 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave3
 	goto MossdeepCity_Arcade_EventScript_Waiter_10
 
 MossdeepCity_Arcade_EventScript_Waiter_15:
-# 577 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 607 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave4
 	goto MossdeepCity_Arcade_EventScript_Waiter_10
 
 MossdeepCity_Arcade_EventScript_Waiter_17:
-# 407 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 421 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	setflag FLAG_TEMP_2
-# 408 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 422 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	goto MossdeepCity_Arcade_EventScript_Waiter
 	goto MossdeepCity_Arcade_EventScript_Waiter_16
 
 MossdeepCity_Arcade_EventScript_Waiter_20:
-# 447 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 465 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	setflag FLAG_TEMP_2
-# 448 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 466 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	goto MossdeepCity_Arcade_EventScript_Waiter
 	goto MossdeepCity_Arcade_EventScript_Waiter_19
 
 MossdeepCity_Arcade_EventScript_Waiter_23:
-# 487 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 509 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	setflag FLAG_TEMP_2
-# 488 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 510 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	goto MossdeepCity_Arcade_EventScript_Waiter
 	goto MossdeepCity_Arcade_EventScript_Waiter_22
 
 MossdeepCity_Arcade_EventScript_Waiter_26:
-# 528 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 554 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	setflag FLAG_TEMP_2
-# 529 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 555 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	goto MossdeepCity_Arcade_EventScript_Waiter
 	goto MossdeepCity_Arcade_EventScript_Waiter_25
 
 MossdeepCity_Arcade_EventScript_Waiter_29:
-# 412 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 426 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	msgbox MossdeepCity_Arcade_EventScript_Waiter_Text_6, MSGBOX_DEFAULT
-# 413 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 427 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	release
 	end
 
 MossdeepCity_Arcade_EventScript_Waiter_32:
-# 452 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 470 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	msgbox MossdeepCity_Arcade_EventScript_Waiter_Text_6, MSGBOX_DEFAULT
-# 453 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 471 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	release
 	end
 
 MossdeepCity_Arcade_EventScript_Waiter_35:
-# 492 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 514 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	msgbox MossdeepCity_Arcade_EventScript_Waiter_Text_6, MSGBOX_DEFAULT
-# 493 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 515 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	release
 	end
 
 MossdeepCity_Arcade_EventScript_Waiter_38:
-# 533 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 559 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	msgbox MossdeepCity_Arcade_EventScript_Waiter_Text_6, MSGBOX_DEFAULT
-# 534 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 560 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	release
 	end
 
 MossdeepCity_Arcade_EventScript_Waiter_41:
-# 418 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 432 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, Common_Movement_WalkInPlaceLeft
 	goto MossdeepCity_Arcade_EventScript_Waiter_40
 
 MossdeepCity_Arcade_EventScript_Waiter_45:
-# 458 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 476 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, Common_Movement_WalkInPlaceLeft
 	goto MossdeepCity_Arcade_EventScript_Waiter_44
 
 MossdeepCity_Arcade_EventScript_Waiter_49:
-# 498 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 520 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, Common_Movement_WalkInPlaceLeft
 	goto MossdeepCity_Arcade_EventScript_Waiter_48
 
 MossdeepCity_Arcade_EventScript_Waiter_53:
-# 539 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 565 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, Common_Movement_WalkInPlaceLeft
 	goto MossdeepCity_Arcade_EventScript_Waiter_52
 
 MossdeepCity_Arcade_EventScript_Waiter_58:
-# 432 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 446 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1
 	goto MossdeepCity_Arcade_EventScript_Waiter_56
 
 MossdeepCity_Arcade_EventScript_Waiter_59:
-# 434 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 448 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1
 	goto MossdeepCity_Arcade_EventScript_Waiter_56
 
 MossdeepCity_Arcade_EventScript_Waiter_60:
-# 436 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 450 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave3
 	goto MossdeepCity_Arcade_EventScript_Waiter_56
 
 MossdeepCity_Arcade_EventScript_Waiter_61:
-# 438 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 452 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave4
 	goto MossdeepCity_Arcade_EventScript_Waiter_56
 
 MossdeepCity_Arcade_EventScript_Waiter_64:
-# 472 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 490 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1
 	goto MossdeepCity_Arcade_EventScript_Waiter_62
 
 MossdeepCity_Arcade_EventScript_Waiter_65:
-# 474 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 492 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1
 	goto MossdeepCity_Arcade_EventScript_Waiter_62
 
 MossdeepCity_Arcade_EventScript_Waiter_66:
-# 476 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 494 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave3
 	goto MossdeepCity_Arcade_EventScript_Waiter_62
 
 MossdeepCity_Arcade_EventScript_Waiter_67:
-# 478 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 496 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave4
 	goto MossdeepCity_Arcade_EventScript_Waiter_62
 
 MossdeepCity_Arcade_EventScript_Waiter_70:
-# 512 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 534 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1
 	goto MossdeepCity_Arcade_EventScript_Waiter_68
 
 MossdeepCity_Arcade_EventScript_Waiter_71:
-# 514 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 536 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1
 	goto MossdeepCity_Arcade_EventScript_Waiter_68
 
 MossdeepCity_Arcade_EventScript_Waiter_72:
-# 516 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 538 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave3
 	goto MossdeepCity_Arcade_EventScript_Waiter_68
 
 MossdeepCity_Arcade_EventScript_Waiter_73:
-# 518 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 540 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave4
 	goto MossdeepCity_Arcade_EventScript_Waiter_68
 
 MossdeepCity_Arcade_EventScript_Waiter_76:
-# 553 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 579 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1
 	goto MossdeepCity_Arcade_EventScript_Waiter_74
 
 MossdeepCity_Arcade_EventScript_Waiter_77:
-# 555 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 581 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave1
 	goto MossdeepCity_Arcade_EventScript_Waiter_74
 
 MossdeepCity_Arcade_EventScript_Waiter_78:
-# 557 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 583 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave3
 	goto MossdeepCity_Arcade_EventScript_Waiter_74
 
 MossdeepCity_Arcade_EventScript_Waiter_79:
-# 559 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 585 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	applymovement LOCALID_ARCADE_WAITER, MossdeepCity_Arcade_Movement_WaiterLeave4
 	goto MossdeepCity_Arcade_EventScript_Waiter_74
 
+MossdeepCity_Arcade_EventScript_Waiter_81:
+# 457 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	setflag FLAG_TEMP_3
+	goto MossdeepCity_Arcade_EventScript_Waiter_80
 
-# 585 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+MossdeepCity_Arcade_EventScript_Waiter_84:
+# 501 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	setflag FLAG_TEMP_3
+	goto MossdeepCity_Arcade_EventScript_Waiter_83
 
-# 586 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+MossdeepCity_Arcade_EventScript_Waiter_87:
+# 545 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	setflag FLAG_TEMP_3
+	goto MossdeepCity_Arcade_EventScript_Waiter_86
 
-# 587 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-MossdeepCity_Arcade_Text_PinballGuy:
-# 588 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    .string "Each pinball machine has a different\n"
-# 589 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
-    .string "theme,\p"
+MossdeepCity_Arcade_EventScript_Waiter_90:
 # 590 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	setflag FLAG_TEMP_3
+	goto MossdeepCity_Arcade_EventScript_Waiter_89
+
+
+# 615 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+
+# 616 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+
+# 617 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+MossdeepCity_Arcade_Text_PinballGuy:
+# 618 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    .string "Each pinball machine has a different\n"
+# 619 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+    .string "theme,\p"
+# 620 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     .string "but they all have crazy lights and\n"
-# 591 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 621 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     .string "sounds!$"
-# 592 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 622 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 
-# 593 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 623 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 MossdeepCity_Arcade_Text_CoinMachine:
-# 594 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 624 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     .string "It's a coin machine;\n"
-# 595 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 625 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     .string "you can exchange money for COINS.$"
-# 596 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 626 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 
-# 597 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 627 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 MossdeepCity_Arcade_Text_NotEnoughMoney:
-# 598 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 628 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     .string "You don't have enough money…$"
-# 599 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 629 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 
-# 600 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 630 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 MossdeepCity_Arcade_Text_InsertMoney:
-# 601 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 631 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     .string "You put your money into the machine…$"
-# 602 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 632 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 
-# 603 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 633 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 MossdeepCity_Arcade_Text_ThankYouHereAreYourCoins:
-# 604 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 634 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     .string "The machine dispensed your coins!$"
-# 605 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 635 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 
-# 606 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 636 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 MossdeepCity_Arcade_Text_NoRoomForCoins:
-# 607 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 637 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
     .string "You can't hold that many coins!$"
 
 MossdeepCity_Arcade_EventScript_CoinMachine_Text_0:
@@ -1258,61 +1322,66 @@ MossdeepCity_Arcade_EventScript_CoinMachine_Text_2:
 	.string "EXIT$"
 
 MossdeepCity_Arcade_EventScript_CallWaiter_Text_0:
-# 164 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 165 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+	.string "Oh?\n"
+	.string "You'd like to order something else?$"
+
+MossdeepCity_Arcade_EventScript_CallWaiter_Text_1:
+# 168 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	.string "Oh?\n"
 	.string "You're ready to order now?$"
 
 MossdeepCity_Arcade_EventScript_RichGuy_Text_0:
-# 290 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 304 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	.string "Placeholder.$"
 
 MossdeepCity_Arcade_EventScript_PachinkoGirl_Text_0:
-# 306 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 320 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	.string "I think we're in a basement right now!\p"
 	.string "I have no clue how long I've been\n"
 	.string "playing!$"
 
 MossdeepCity_Arcade_EventScript_Waiter_Text_0:
-# 389 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 403 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	.string "What can I get for you?$"
 
 MossdeepCity_Arcade_EventScript_Waiter_Text_1:
-# 397 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 411 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	.string "BERRY JUICE  ¥100$"
 
 MossdeepCity_Arcade_EventScript_Waiter_Text_2:
-# 398 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 412 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	.string "FRESH WATER  ¥200$"
 
 MossdeepCity_Arcade_EventScript_Waiter_Text_3:
-# 399 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 413 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	.string "LEMONADE       ¥350$"
 
 MossdeepCity_Arcade_EventScript_Waiter_Text_4:
-# 400 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 414 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	.string "MOOMOO MILK  ¥500$"
 
 MossdeepCity_Arcade_EventScript_Waiter_Text_5:
-# 405 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 419 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	.string "BERRY JUICE? That will be ¥100.$"
 
 MossdeepCity_Arcade_EventScript_Waiter_Text_6:
-# 412 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 426 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	.string "Oh… I'm sorry…\pIt seems like you don't have the money…$"
 
 MossdeepCity_Arcade_EventScript_Waiter_Text_7:
-# 427 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 441 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	.string "Here you are.\nEnjoy!$"
 
 MossdeepCity_Arcade_EventScript_Waiter_Text_8:
-# 445 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 463 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	.string "FRESH WATER? That will be ¥200.$"
 
 MossdeepCity_Arcade_EventScript_Waiter_Text_9:
-# 485 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 507 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	.string "LEMONADE? That will be ¥350.$"
 
 MossdeepCity_Arcade_EventScript_Waiter_Text_10:
-# 526 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
+# 552 "data//maps/MossdeepCity_GameCorner_Arcade/scripts.pory"
 	.string "MOOMOO MILK? Good choice…\n"
 	.string "That will be ¥500.$"

@@ -78,7 +78,7 @@
 #define FLAG_FLASH_GUY    0x40 //  Flag
 #define FLAG_GAME_CORNER_UNC    0x41 //  Flag
 #define FLAG_ORIGINAL_MOSSDEEP_GAME_CORNER    0x42 //  Flag
-#define FLAG_ARCADE_ACCESS    0x43 //  Flag
+#define FLAG_UNUSED_0x043    0x43 //  Flag
 #define FLAG_UNUSED_0x044    0x44 // Unused Flag
 #define FLAG_UNUSED_0x045    0x45 // Unused Flag
 #define FLAG_UNUSED_0x046    0x46 // Unused Flag

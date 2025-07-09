@@ -2,15 +2,45 @@ raw `
 MossdeepCity_GameCorner_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, MossdeepCity_GameCorner_1F_OnFrame
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, MossdeepCity_GameCorner_1F_OnWarp
-	map_script MAP_SCRIPT_ON_LOAD, CableClub_OnLoad
+	map_script MAP_SCRIPT_ON_TRANSITION, MossdeepCity_GameCorner_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, MossdeepCity_GameCorner_OnResume
 	.byte 0
+
+MossdeepCity_GameCorner_OnTransition:
+	call_if_notwearoutfit OUTFIT_OLD_MAN, MossdeepCity_GameCorner_1F_EventScript_TrySetObviousDisguiseFlag
+	getplayerxy VAR_TEMP_E, VAR_TEMP_F
+	call_if_eq VAR_TEMP_F, 1, MossdeepCity_GameCorner_1F_EventScript_SetExitArcadeFlag
+	end
+
+MossdeepCity_GameCorner_OnResume:
+	call_if_notwearoutfit OUTFIT_OLD_MAN, MossdeepCity_GameCorner_1F_EventScript_TrySetObviousDisguiseFlag
+	end
+
+MossdeepCity_GameCorner_1F_EventScript_TrySetObviousDisguiseFlag::
+	call_if_unset FLAG_TEMP_3, MossdeepCity_GameCorner_1F_EventScript_SetObviousDisguiseFlag
+	return
+
+MossdeepCity_GameCorner_1F_EventScript_SetObviousDisguiseFlag::
+	setflag FLAG_TEMP_3
+	return 
+
+MossdeepCity_GameCorner_1F_EventScript_SetExitArcadeFlag::
+	setvar VAR_TEMP_4, 1
+	return 
 
 MossdeepCity_GameCorner_1F_OnWarp:
 	map_script_2 VAR_CABLE_CLUB_STATE, USING_MINIGAME, CableClub_EventScript_CheckTurnAttendant
+	map_script_2 VAR_TEMP_4, 1, MossdeepCity_GameCorner_1F_OpenGate
 	.2byte 0
 
+MossdeepCity_GameCorner_1F_OpenGate::
+	call EventScript_OpenMossdeepGameCornerBarrier
+	applymovement LOCALID_MOSSDEEP_GC_DOORMAN, Common_Movement_FaceLeft
+	return
+
 MossdeepCity_GameCorner_1F_OnFrame:
-	map_script_2 VAR_CABLE_CLUB_STATE, USING_MINIGAME, CableClub_EventScript_ExitMinigameRoom
+	@ map_script_2 VAR_CABLE_CLUB_STATE, USING_MINIGAME, CableClub_EventScript_ExitMinigameRoom
+	map_script_2 VAR_TEMP_4, 1, MossdeepCity_GameCorner_1F_EventScript_ExitArcade
 	.2byte 0
 
 @ Script is redundant, the label in the goto also does lock and faceplayer
@@ -21,7 +51,7 @@ MossdeepCity_GameCorner_1F_EventScript_InfoMan::
 
 	checkitem ITEM_COIN_CASE
 	goto_if_eq VAR_RESULT, FALSE, MossdeepCity_GameCorner_1F_EventScript_ArcadeInfoManDenied
-	goto_if_unset FLAG_ARCADE_ACCESS, MossdeepCity_GameCorner_1F_EventScript_ArcadeInfoManDenied
+	call_if_notwearoutfit OUTFIT_OLD_MAN, MossdeepCity_GameCorner_1F_EventScript_ArcadeInfoManDenied
 	
 	goto MossdeepCity_GameCorner_1F_EventScript_ArcadeInfoMan
 	release
@@ -43,30 +73,91 @@ MossdeepCity_GameCorner_1F_EventScript_OldMan::
 	goto_if_set FLAG_ORIGINAL_MOSSDEEP_GAME_CORNER, MossdeepCity_GameCorner_1F_EventScript_OldMan2
 
 	msgbox MossdeepCity_GameCorner_1F_Text_ArcadeOldManCredentials, MSGBOX_DEFAULT
-	closemessage
-	delay 60
+	waitmessage
 	checkitem ITEM_COIN_CASE
 	goto_if_eq VAR_RESULT, FALSE, MossdeepCity_GameCorner_1F_EventScript_ArcadeOldManDenied
-	goto_if_unset FLAG_ARCADE_ACCESS, MossdeepCity_GameCorner_1F_EventScript_ArcadeOldManDenied
 
-	@ goto MossdeepCity_GameCorner_1F_EventScript_RightThisWay
+	call_if_wearoutfit OUTFIT_OLD_MAN, MossdeepCity_GameCorner_1F_EventScript_EnterArcade
 
+	msgbox MossdeepCity_GameCorner_1F_Text_ABitYoung, MSGBOX_DEFAULT
 	release
 	end
+
+MossdeepCity_GameCorner_1F_EventScript_ObviousDisguise::
+	msgbox MossdeepCity_GameCorner_1F_Text_ObviousDisguise, MSGBOX_DEFAULT
+	release
+	end
+
+MossdeepCity_GameCorner_1F_Text_ObviousDisguise:
+	.string "You can't fool me, youngster!\p"
+	.string "That's a decent disguise, but\n"
+	.string "I just saw you put it on!$"
+
+MossdeepCity_GameCorner_1F_EventScript_EnterArcade::
+	goto_if_set FLAG_TEMP_3, MossdeepCity_GameCorner_1F_EventScript_ObviousDisguise
+	msgbox MossdeepCity_GameCorner_1F_Text_ApprovedEntry, MSGBOX_DEFAULT
+	closemessage
+	delay 10
+	call EventScript_OpenMossdeepGameCornerBarrier
+	special DrawWholeMapView
+	playse SE_CLICK
+	delay 30
+	applymovement VAR_LAST_TALKED, Movement_AttendantFaceLeft
+	waitmovement 0
+	closemessage
+	applymovement LOCALID_PLAYER, MossdeepCity_GameCorner_1F_Movement_PlayerEnterMinigameRoom
+	waitmovement 0
+	delay 5
+	warp MAP_MOSSDEEP_CITY_GAME_CORNER_ARCADE, 1, 2
+	release
+	end
+
+MossdeepCity_GameCorner_1F_EventScript_ExitArcade::
+	lockall
+	@ call EventScript_OpenMossdeepGameCornerBarrier
+	@ special DrawWholeMapView
+	@ playse SE_CLICK
+	delay 5
+	applymovement LOCALID_PLAYER, Movement_PlayerExitLinkRoom
+	waitmovement 0
+	applymovement LOCALID_MOSSDEEP_GC_DOORMAN, Common_Movement_FaceDown
+	waitmovement LOCALID_MOSSDEEP_GC_DOORMAN
+	delay 5
+	call EventScript_CloseMossdeepGameCornerBarrier
+	special DrawWholeMapView
+	playse SE_CLICK
+	setvar VAR_TEMP_4, 0
+	releaseall
+	end
+
+MossdeepCity_GameCorner_1F_Movement_PlayerEnterMinigameRoom:
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	set_invisible
+	step_end
 
 MossdeepCity_GameCorner_1F_EventScript_ArcadeOldManDenied::
 	msgbox MossdeepCity_GameCorner_1F_Text_ArcadeOldManDenied, MSGBOX_DEFAULT
 	release
 	end
 
+MossdeepCity_GameCorner_1F_Text_ApprovedEntry:
+	.string "Absolutely.\n"
+	.string "Enter right through here.$"
+
 MossdeepCity_GameCorner_1F_Text_ArcadeOldManCredentials:
 	.string "Oh? You want to enjoy our\n"
-	.string "establishment?\n"
-	.string "Let me check your credentials.$"
+	.string "establishment?$"
 
 MossdeepCity_GameCorner_1F_Text_ArcadeOldManDenied:
 	.string "I'm sorry,\n"
-	.string "You don't meet our requirements…$"
+	.string "I can't let you in…$"
+
+MossdeepCity_GameCorner_1F_Text_ABitYoung:
+	.string "Aren't you a bit young?\n"
+	.string "Come back when you're older!$"
 
 `
 script MossdeepCity_GameCorner_1F_EventScript_ArcadeInfoMan{

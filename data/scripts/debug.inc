@@ -20,15 +20,15 @@ Debug_CheatStart::
 	givemon SPECIES_MEW, 100, ITEM_NONE
 	givemon SPECIES_CHARIZARD, 100, ITEM_NONE
 	givemon SPECIES_BLASTOISE, 100, ITEM_NONE
-	giveitem ITEM_MASTER_BALL, 99
-	giveitem ITEM_HM_CUT
-	giveitem ITEM_HM_FLASH
-	giveitem ITEM_HM_ROCK_SMASH
-	giveitem ITEM_HM_SURF
-	giveitem ITEM_HM_STRENGTH
-	giveitem ITEM_HM_FLY
-	giveitem ITEM_HM_DIVE
-	giveitem ITEM_HM_WATERFALL
+	additem ITEM_MASTER_BALL, 99
+	additem ITEM_HM_CUT
+	additem ITEM_HM_FLASH
+	additem ITEM_HM_ROCK_SMASH
+	additem ITEM_HM_SURF
+	additem ITEM_HM_STRENGTH
+	additem ITEM_HM_FLY
+	additem ITEM_HM_DIVE
+	additem ITEM_HM_WATERFALL
 	setflag FLAG_SYS_POKEDEX_GET
 	special SetUnlockedPokedexFlags
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH

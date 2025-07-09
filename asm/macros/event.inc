@@ -1918,7 +1918,7 @@
 	
 	@! Unlocks a locked outfit
 	.macro toggleoutfit outfitId:req, type:req
-	.byte 0xe5
+	.byte 0xe7
 	.2byte \outfitId
 	.byte \type
 	.endm
@@ -1927,7 +1927,7 @@
 	@! OUTFIT_CHECK_FLAG is for checking if it's either unlocked/locked
 	@! OUTFIT_CHECK_USED is for checking if it's currently used
 	.macro getoutfitstatus outfitId:req, data:req
-	.byte 0xe6
+	.byte 0xe8
 	.2byte \outfitId
 	.byte \data
 	.endm
@@ -1935,7 +1935,7 @@
 	@! Buffers either the name or the description strings of an outfit
 	@! to a str var
 	.macro bufferoutfitstr stringVarId:req, outfitId:req, type:req
-	.byte 0xe7
+	.byte 0xe9
 	stringvar \stringVarId
 	.2byte \outfitId
 	.byte \type
@@ -1944,7 +1944,7 @@
 	@ Opens the Pokemart system, offering the specified outfit products for sale.
 	@ Products should be a list of .2byte item values preceded by an .align 2
 	.macro pokemartoutfit products:req
-	.byte 0xe8
+	.byte 0xea
 	.4byte \products
 	.endm
 
@@ -2283,25 +2283,25 @@
 	@! Jumps to \dest if the specified outfit is unlocked
 	.macro call_if_outfitunlocked outfit:req, dest:req
 	checkoutfitflag \outfit
-	call_if FALSE, \dest
+	call_if_eq VAR_RESULT, FALSE, \dest
 	.endm
 
 	@! Jumps to \dest if the specified outfit is locked
 	.macro call_if_outfitlocked outfit:req, dest:req
 	checkoutfitflag \outfit
-	call_if TRUE, \dest
+	call_if_eq VAR_RESULT, TRUE, \dest
 	.endm
 
 	@! Jumps to \dest if the specified outfit is currently wear
 	.macro call_if_wearoutfit outfit:req, dest:req
 	iswearingoutfit \outfit
-	call_if TRUE, \dest
+	call_if_eq VAR_RESULT, TRUE, \dest
 	.endm
 
 	@! Jumps to \dest if the specified outfit is not currently wear
 	.macro call_if_notwearoutfit outfit:req, dest:req
 	iswearingoutfit \outfit
-	call_if FALSE, \dest
+	call_if_eq VAR_RESULT, FALSE, \dest
 	.endm
 
 	@ Sets VAR_RESULT to TRUE if stat can be hyper trained, or to
