@@ -17,7 +17,7 @@
     {
       "local_id": "LOCALID_RIVALS_HOUSE_2F_RIVAL",
       "graphics_id": "OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL",
-      "x": 7,
+      "x": 8,
       "y": 1,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -30,7 +30,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_0",
-      "x": 0,
+      "x": 1,
       "y": 0,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -43,7 +43,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_1",
-      "x": 0,
+      "x": 1,
       "y": 1,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -56,7 +56,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_2",
-      "x": 0,
+      "x": 1,
       "y": 2,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -69,7 +69,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_3",
-      "x": 0,
+      "x": 1,
       "y": 3,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -82,7 +82,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_4",
-      "x": 0,
+      "x": 1,
       "y": 4,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -95,7 +95,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_5",
-      "x": 0,
+      "x": 1,
       "y": 5,
       "elevation": 4,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -108,7 +108,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_6",
-      "x": 1,
+      "x": 2,
       "y": 0,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -121,7 +121,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_7",
-      "x": 1,
+      "x": 2,
       "y": 1,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -134,7 +134,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_8",
-      "x": 1,
+      "x": 2,
       "y": 2,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -147,7 +147,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_9",
-      "x": 1,
+      "x": 2,
       "y": 3,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -160,7 +160,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_A",
-      "x": 1,
+      "x": 2,
       "y": 4,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -173,7 +173,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_B",
-      "x": 1,
+      "x": 2,
       "y": 5,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -187,7 +187,7 @@
     {
       "local_id": "LOCALID_PLAYERS_HOUSE_2F_MOM",
       "graphics_id": "OBJ_EVENT_GFX_MOM",
-      "x": 7,
+      "x": 8,
       "y": 1,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -200,7 +200,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 3,
+      "x": 4,
       "y": 4,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -227,7 +227,7 @@
   ],
   "warp_events": [
     {
-      "x": 7,
+      "x": 8,
       "y": 1,
       "elevation": 0,
       "dest_map": "MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F",
@@ -238,7 +238,7 @@
   "bg_events": [
     {
       "type": "sign",
-      "x": 0,
+      "x": 1,
       "y": 1,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
@@ -246,7 +246,7 @@
     },
     {
       "type": "sign",
-      "x": 1,
+      "x": 2,
       "y": 1,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
@@ -254,7 +254,7 @@
     },
     {
       "type": "sign",
-      "x": 5,
+      "x": 6,
       "y": 1,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
@@ -262,7 +262,7 @@
     },
     {
       "type": "sign",
-      "x": 3,
+      "x": 4,
       "y": 1,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",

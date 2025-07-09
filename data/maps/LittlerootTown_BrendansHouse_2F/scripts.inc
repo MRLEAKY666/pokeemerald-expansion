@@ -47,7 +47,7 @@ LittlerootTown_BrendansHouse_2F_EventScript_TryUpdateBrendanPos::
 # 24 "data//maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
 	goto_if_ge VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2, LittlerootTown_MaysHouse_2F_EventScript_Ret
 # 25 "data//maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-	setobjectxyperm LOCALID_RIVALS_HOUSE_2F_RIVAL, 0, 2
+	setobjectxyperm LOCALID_RIVALS_HOUSE_2F_RIVAL, 1, 2
 # 26 "data//maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
 	setobjectmovementtype LOCALID_RIVALS_HOUSE_2F_RIVAL, MOVEMENT_TYPE_FACE_UP
 # 27 "data//maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
