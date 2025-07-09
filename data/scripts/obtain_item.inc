@@ -103,6 +103,13 @@ EventScript_NoRoomForDecor::
 	setvar VAR_RESULT, FALSE
 	return
 
+EventScript_ObtainedOutfit::
+	playfanfare MUS_OBTAIN_ITEM
+	message gText_ObtainedTheOutfit
+	waitfanfare
+	msgbox gText_OutfitInWardrobe, MSGBOX_DEFAULT
+	return
+
 Std_FindItem::
 	lock
 	faceplayer

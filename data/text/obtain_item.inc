@@ -30,6 +30,13 @@ gText_TheDecorWasTransferredToThePC::
 	.string "The {STR_VAR_2} was transferred\n"
 	.string "to the PC.$"
 
+gText_ObtainedTheOutfit::
+	.string "Obtained the {STR_VAR_1}!$"
+
+gText_OutfitInWardrobe::
+	.string "You can change into the\n"
+	.string "{STR_VAR_1} at a wardrobe.$"
+
 gText_ObtainedTheItems::
 	.string "Obtained {STR_VAR_1} {STR_VAR_2}!$"
 

@@ -96,6 +96,7 @@ void CB2_ReturnToBagMenuPocket(void);
 void CB2_BagMenuFromStartMenu(void);
 u8 GetItemListPosition(u8 pocketId);
 bool8 UseRegisteredKeyItemOnField(u8 button);
+bool8 UseOutfitBoxFromScript(u8 button);
 void CB2_GoToSellMenu(void);
 void GoToBagMenu(u8 location, u8 pocket, void ( *exitCallback)());
 void DoWallyTutorialBagMenu(void);

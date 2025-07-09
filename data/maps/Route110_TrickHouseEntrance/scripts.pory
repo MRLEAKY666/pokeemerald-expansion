@@ -471,14 +471,14 @@ Route110_TrickHouseEntrance_EventScript_EnterPuzzleRoom::
 	applymovement LOCALID_PLAYER, Route110_TrickHouseEntrance_Movement_EnterRoom
 	waitmovement 0
 	switch VAR_TRICK_HOUSE_LEVEL
-	case 0, Route110_TrickHouseEntrance_EventScript_EnterPuzzleRoom1
+	case 0, Route110_TrickHouseEntrance_EventScript_EnterPuzzleRoom8
 	case 1, Route110_TrickHouseEntrance_EventScript_EnterPuzzleRoom2
 	case 2, Route110_TrickHouseEntrance_EventScript_EnterPuzzleRoom3
 	case 3, Route110_TrickHouseEntrance_EventScript_EnterPuzzleRoom4
 	case 4, Route110_TrickHouseEntrance_EventScript_EnterPuzzleRoom5
 	case 5, Route110_TrickHouseEntrance_EventScript_EnterPuzzleRoom6
 	case 6, Route110_TrickHouseEntrance_EventScript_EnterPuzzleRoom7
-	case 7, Route110_TrickHouseEntrance_EventScript_EnterPuzzleRoom8
+	case 7, Route110_TrickHouseEntrance_EventScript_EnterPuzzleRoom1
 	end
 
 Route110_TrickHouseEntrance_Movement_EnterRoom:

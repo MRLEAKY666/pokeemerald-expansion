@@ -2145,6 +2145,27 @@ bool8 UseRegisteredKeyItemOnField(u8 button)
     return TRUE;
 }
 
+bool8 UseOutfitBoxFromScript(u8 button)
+{
+    u8 taskId;
+    u16 registeredItem = ITEM_OUTFIT_BOX;
+    
+    HideMapNamePopUpWindow();
+    ChangeBgY_ScreenOff(0, 0, BG_COORD_SET);
+
+    LockPlayerFieldControls();
+    FreezeObjectEvents();
+    PlayerFreeze();
+    StopPlayerAvatar();
+    gSpecialVar_ItemId = registeredItem;
+    taskId = CreateTask(GetItemFieldFunc(registeredItem), 8);
+    gTasks[taskId].tUsingRegisteredKeyItem = TRUE;
+    return TRUE;
+
+    ScriptContext_SetupScript(EventScript_SelectWithoutRegisteredItem);
+    return TRUE;
+}
+
 #undef tUsingRegisteredKeyItem
 
 static void Task_ItemContext_Sell(u8 taskId)

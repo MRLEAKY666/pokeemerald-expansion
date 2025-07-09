@@ -74,14 +74,14 @@ const struct Outfit gOutfits[OUTFIT_COUNT] =
         //! agbcc doesnt like COMPOUND_STRING on my end
         //! DESC: outfit's name
         #if MODERN == 1
-        .name = COMPOUND_STRING("USUAL GREEN"),
+        .name = COMPOUND_STRING("NORMAL OUTFIT"),
         #else
         .name = sText_OutfitName_UsualGreen,
         #endif
 
         //! DESC: outfit's description
         #if MODERN == 1
-        .desc = COMPOUND_STRING("The usual, but basic OUTFIT."),
+        .desc = COMPOUND_STRING("The usual, but basic\nOUTFIT."),
         #else
         .desc = sText_OutfitDesc_UsualGreen,
         #endif
@@ -141,8 +141,8 @@ const struct Outfit gOutfits[OUTFIT_COUNT] =
         .isHidden = TRUE,
         .prices = { 200, 500 },
         #if MODERN == 1
-        .name = COMPOUND_STRING("UNUSUAL RED"),
-        .desc = COMPOUND_STRING("Rather unusual, but still basic\nOUTFIT."),
+        .name = COMPOUND_STRING("CLASSIC OUTFIT"),
+        .desc = COMPOUND_STRING("A style from a few\nyears ago."),
         #else
         .name = sText_OutfitName_UnusualRed,
         .desc = sText_OutfitDesc_UnusualRed,
@@ -194,14 +194,14 @@ const struct Outfit gOutfits[OUTFIT_COUNT] =
         //! agbcc doesnt like COMPOUND_STRING on my end
         //! DESC: outfit's name
         #if MODERN == 1
-        .name = COMPOUND_STRING("SWAPPED STANDARD"),
+        .name = COMPOUND_STRING("RIVAL DISGUISE"),
         #else
         .name = sText_OutfitName_UsualGreen,
         #endif
 
         //! DESC: outfit's description
         #if MODERN == 1
-        .desc = COMPOUND_STRING("The usual, but basic OUTFIT."),
+        .desc = COMPOUND_STRING("A convincing disguise\nof your rival."),
         #else
         .desc = sText_OutfitDesc_UsualGreen,
         #endif
@@ -261,8 +261,8 @@ const struct Outfit gOutfits[OUTFIT_COUNT] =
         .isHidden = TRUE,
         .prices = { 200, 500 },
         #if MODERN == 1
-        .name = COMPOUND_STRING("SWAPPED RED"),
-        .desc = COMPOUND_STRING("Rather unusual, but still basic\nOUTFIT."),
+        .name = COMPOUND_STRING("RIVAL DISGUISE 2"),
+        .desc = COMPOUND_STRING("A disguise of your\nrival wearing red."),
         #else
         .name = sText_OutfitName_UnusualRed,
         .desc = sText_OutfitDesc_UnusualRed,
@@ -308,7 +308,7 @@ const struct Outfit gOutfits[OUTFIT_COUNT] =
         .isHidden = TRUE,
         .prices = { 200, 500 },
         #if MODERN == 1
-        .name = COMPOUND_STRING("OLD MAN"),
+        .name = COMPOUND_STRING("OLD MAN DISGUISE"),
         .desc = COMPOUND_STRING("A very convincing old man\nDISGUISE."),
         #else
         .name = sText_OutfitName_UnusualRed,

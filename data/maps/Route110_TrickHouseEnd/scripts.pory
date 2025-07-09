@@ -57,7 +57,7 @@ Route110_TrickHouseEnd_EventScript_TrickMaster::
 	end
 
 Route110_TrickHouseEnd_EventScript_CompletedPuzzle1::
-	msgbox Route110_TrickHouseEnd_Text_AllNightToPlantTrees, MSGBOX_DEFAULT
+	msgbox Route110_TrickHouseEnd_Text_AllNightPolishingFloors, MSGBOX_DEFAULT
 	msgbox Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward, MSGBOX_DEFAULT
 	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
 	giveitem ITEM_RARE_CANDY
@@ -72,8 +72,9 @@ Route110_TrickHouseEnd_EventScript_CompletedPuzzle2::
 	msgbox Route110_TrickHouseEnd_Text_AllNightToMakeMaze, MSGBOX_DEFAULT
 	msgbox Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward, MSGBOX_DEFAULT
 	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
-	giveitem ITEM_TIMER_BALL
-	call_if_eq VAR_RESULT, FALSE, Route110_TrickHouseEnd_EventScript_BagFull
+	unlockoutfit OUTFIT_UNUSUAL_RED
+	bufferoutfitname STR_VAR_1, OUTFIT_UNUSUAL_RED 
+	call EventScript_ObtainedOutfit
 	msgbox Route110_TrickHouseEnd_Text_MakeNewTricksToStumpYou, MSGBOX_DEFAULT
 	closemessage
 	call Route110_TrickHouseEnd_EventScript_TrickMasterExit
@@ -84,7 +85,7 @@ Route110_TrickHouseEnd_EventScript_CompletedPuzzle3::
 	msgbox Route110_TrickHouseEnd_Text_AllNightToPreparePanels, MSGBOX_DEFAULT
 	msgbox Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward, MSGBOX_DEFAULT
 	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
-	giveitem ITEM_HARD_STONE
+	giveitem ITEM_TM_TAUNT, 2
 	call_if_eq VAR_RESULT, FALSE, Route110_TrickHouseEnd_EventScript_BagFull
 	msgbox Route110_TrickHouseEnd_Text_MakeNewTricksToStumpYou, MSGBOX_DEFAULT
 	closemessage
@@ -96,7 +97,7 @@ Route110_TrickHouseEnd_EventScript_CompletedPuzzle4::
 	msgbox Route110_TrickHouseEnd_Text_AllNightToShoveBoulders, MSGBOX_DEFAULT
 	msgbox Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward, MSGBOX_DEFAULT
 	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
-	giveitem ITEM_SMOKE_BALL
+	giveitem ITEM_PP_MAX
 	call_if_eq VAR_RESULT, FALSE, Route110_TrickHouseEnd_EventScript_BagFull
 	msgbox Route110_TrickHouseEnd_Text_MakeNewTricksToStumpYou, MSGBOX_DEFAULT
 	closemessage
@@ -108,8 +109,9 @@ Route110_TrickHouseEnd_EventScript_CompletedPuzzle5::
 	msgbox Route110_TrickHouseEnd_Text_AllNightToMakeMechadolls, MSGBOX_DEFAULT
 	msgbox Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward, MSGBOX_DEFAULT
 	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
-	giveitem ITEM_TM_TAUNT, 2
-	call_if_eq VAR_RESULT, FALSE, Route110_TrickHouseEnd_EventScript_BagFull
+	unlockoutfit OUTFIT_GENDER_SWAPPED_STANDARD
+	bufferoutfitname STR_VAR_1, OUTFIT_GENDER_SWAPPED_STANDARD 
+	call EventScript_ObtainedOutfit
 	msgbox Route110_TrickHouseEnd_Text_MakeNewTricksToStumpYou, MSGBOX_DEFAULT
 	closemessage
 	call Route110_TrickHouseEnd_EventScript_TrickMasterExit
@@ -120,8 +122,9 @@ Route110_TrickHouseEnd_EventScript_CompletedPuzzle6::
 	msgbox Route110_TrickHouseEnd_Text_AllNightToInstallDoors, MSGBOX_DEFAULT
 	msgbox Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward, MSGBOX_DEFAULT
 	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
-	giveitem ITEM_MAGNET
-	call_if_eq VAR_RESULT, FALSE, Route110_TrickHouseEnd_EventScript_BagFull
+	unlockoutfit OUTFIT_OLD_MAN
+	bufferoutfitname STR_VAR_1, OUTFIT_OLD_MAN 
+	call EventScript_ObtainedOutfit
 	msgbox Route110_TrickHouseEnd_Text_MakeNewTricksToStumpYou, MSGBOX_DEFAULT
 	closemessage
 	call Route110_TrickHouseEnd_EventScript_TrickMasterExit
@@ -132,8 +135,9 @@ Route110_TrickHouseEnd_EventScript_CompletedPuzzle7::
 	msgbox Route110_TrickHouseEnd_Text_AllNightSettingUpArrows, MSGBOX_DEFAULT
 	msgbox Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward, MSGBOX_DEFAULT
 	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
-	giveitem ITEM_PP_MAX
-	call_if_eq VAR_RESULT, FALSE, Route110_TrickHouseEnd_EventScript_BagFull
+	unlockoutfit OUTFIT_GENDER_SWAPPED_RED
+	bufferoutfitname STR_VAR_1, OUTFIT_GENDER_SWAPPED_RED
+	call EventScript_ObtainedOutfit
 	msgbox Route110_TrickHouseEnd_Text_MakeNewTricksToStumpYou, MSGBOX_DEFAULT
 	closemessage
 	call Route110_TrickHouseEnd_EventScript_TrickMasterExit
@@ -141,7 +145,7 @@ Route110_TrickHouseEnd_EventScript_CompletedPuzzle7::
 	end
 
 Route110_TrickHouseEnd_EventScript_CompletedPuzzle8::
-	msgbox Route110_TrickHouseEnd_Text_AllNightPolishingFloors, MSGBOX_DEFAULT
+	msgbox Route110_TrickHouseEnd_Text_AllNightToPlantTrees, MSGBOX_DEFAULT
 	closemessage
 	call_if_eq VAR_FACING, DIR_SOUTH, Route110_TrickHouseEnd_EventScript_TrickMasterFaceAwaySouth
 	call_if_eq VAR_FACING, DIR_NORTH, Route110_TrickHouseEnd_EventScript_TrickMasterFaceAwayNorth
@@ -256,8 +260,8 @@ Route110_TrickHouseEnd_Text_YouveMadeItToMe:
 Route110_TrickHouseEnd_Text_AllNightToPlantTrees:
 	.string "It took me all night to plant all those\n"
 	.string "trees…\p"
-	.string "You're almost my equal in greatness by\n"
-	.string "one, two, three, four, five, six places!$"
+	.string "You're above me in greatness!\n"
+	.string "Possibly…$"
 
 Route110_TrickHouseEnd_Text_AllNightToMakeMaze:
 	.string "It took me all night to make the maze…\p"
@@ -293,8 +297,8 @@ Route110_TrickHouseEnd_Text_AllNightSettingUpArrows:
 
 Route110_TrickHouseEnd_Text_AllNightPolishingFloors:
 	.string "It took me all night polishing floors…\p"
-	.string "You're above me in greatness!\n"
-	.string "Possibly…$"
+	.string "You're almost my equal in greatness by\n"
+	.string "one, two, three, four, five, six places!$"
 
 Route110_TrickHouseEnd_Text_FountainOfIdeasRunDry:
 	.string "Wh-what should I do?\n"

@@ -1187,6 +1187,24 @@ Common_EventScript_ExitSafeArea::
 	clearflag FLAG_SYS_SAVE_GET
 	end
 
+Common_EventScript_OpenOutfitBox::
+	lock
+	msgbox Common_Text_OpenOutfitBox, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Common_EventScript_ReleaseEnd
+	special UseOutfitBoxFromScript
+	waitstate
+	release
+	end
+
+Common_EventScript_ReleaseEnd::
+	release
+	end
+
+Common_Text_OpenOutfitBox:
+	.string "It's a wardrobe,\n"
+	.string "you can change outfits here.\p"
+	.string "Do you want to change?$"
+
 	.include "data/scripts/pc_transfer.inc"
 	.include "data/scripts/questionnaire.inc"
 	.include "data/scripts/abnormal_weather.inc"

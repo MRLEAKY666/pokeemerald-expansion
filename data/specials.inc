@@ -576,3 +576,4 @@ gSpecials::
 	def_special GetCodeFeedback
 	def_special ZeroPlayerPartyMons
 	def_special StartSootopolisLegendaryBattle
+	def_special UseOutfitBoxFromScript

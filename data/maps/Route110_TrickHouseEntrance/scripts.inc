@@ -945,7 +945,7 @@ Route110_TrickHouseEntrance_EventScript_EnterPuzzleRoom::
 # 473 "data//maps/Route110_TrickHouseEntrance/scripts.pory"
 	switch VAR_TRICK_HOUSE_LEVEL
 # 474 "data//maps/Route110_TrickHouseEntrance/scripts.pory"
-	case 0, Route110_TrickHouseEntrance_EventScript_EnterPuzzleRoom1
+	case 0, Route110_TrickHouseEntrance_EventScript_EnterPuzzleRoom8
 # 475 "data//maps/Route110_TrickHouseEntrance/scripts.pory"
 	case 1, Route110_TrickHouseEntrance_EventScript_EnterPuzzleRoom2
 # 476 "data//maps/Route110_TrickHouseEntrance/scripts.pory"
@@ -959,7 +959,7 @@ Route110_TrickHouseEntrance_EventScript_EnterPuzzleRoom::
 # 480 "data//maps/Route110_TrickHouseEntrance/scripts.pory"
 	case 6, Route110_TrickHouseEntrance_EventScript_EnterPuzzleRoom7
 # 481 "data//maps/Route110_TrickHouseEntrance/scripts.pory"
-	case 7, Route110_TrickHouseEntrance_EventScript_EnterPuzzleRoom8
+	case 7, Route110_TrickHouseEntrance_EventScript_EnterPuzzleRoom1
 # 482 "data//maps/Route110_TrickHouseEntrance/scripts.pory"
 	end
 # 483 "data//maps/Route110_TrickHouseEntrance/scripts.pory"

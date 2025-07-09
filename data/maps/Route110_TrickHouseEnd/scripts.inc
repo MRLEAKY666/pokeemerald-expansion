@@ -117,7 +117,7 @@ Route110_TrickHouseEnd_EventScript_TrickMaster::
 # 59 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 Route110_TrickHouseEnd_EventScript_CompletedPuzzle1::
 # 60 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	msgbox Route110_TrickHouseEnd_Text_AllNightToPlantTrees, MSGBOX_DEFAULT
+	msgbox Route110_TrickHouseEnd_Text_AllNightPolishingFloors, MSGBOX_DEFAULT
 # 61 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	msgbox Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward, MSGBOX_DEFAULT
 # 62 "data//maps/Route110_TrickHouseEnd/scripts.pory"
@@ -147,566 +147,574 @@ Route110_TrickHouseEnd_EventScript_CompletedPuzzle2::
 # 74 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
 # 75 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	giveitem ITEM_TIMER_BALL
+	unlockoutfit OUTFIT_UNUSUAL_RED
 # 76 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	call_if_eq VAR_RESULT, FALSE, Route110_TrickHouseEnd_EventScript_BagFull
+	bufferoutfitname STR_VAR_1, OUTFIT_UNUSUAL_RED 
 # 77 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	msgbox Route110_TrickHouseEnd_Text_MakeNewTricksToStumpYou, MSGBOX_DEFAULT
+	call EventScript_ObtainedOutfit
 # 78 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	closemessage
+	msgbox Route110_TrickHouseEnd_Text_MakeNewTricksToStumpYou, MSGBOX_DEFAULT
 # 79 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	call Route110_TrickHouseEnd_EventScript_TrickMasterExit
+	closemessage
 # 80 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	release
+	call Route110_TrickHouseEnd_EventScript_TrickMasterExit
 # 81 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	end
+	release
 # 82 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-
+	end
 # 83 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_EventScript_CompletedPuzzle3::
+
 # 84 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	msgbox Route110_TrickHouseEnd_Text_AllNightToPreparePanels, MSGBOX_DEFAULT
+Route110_TrickHouseEnd_EventScript_CompletedPuzzle3::
 # 85 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	msgbox Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward, MSGBOX_DEFAULT
+	msgbox Route110_TrickHouseEnd_Text_AllNightToPreparePanels, MSGBOX_DEFAULT
 # 86 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
+	msgbox Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward, MSGBOX_DEFAULT
 # 87 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	giveitem ITEM_HARD_STONE
+	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
 # 88 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	call_if_eq VAR_RESULT, FALSE, Route110_TrickHouseEnd_EventScript_BagFull
-# 89 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	msgbox Route110_TrickHouseEnd_Text_MakeNewTricksToStumpYou, MSGBOX_DEFAULT
-# 90 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	closemessage
-# 91 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	call Route110_TrickHouseEnd_EventScript_TrickMasterExit
-# 92 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	release
-# 93 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	end
-# 94 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-
-# 95 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_EventScript_CompletedPuzzle4::
-# 96 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	msgbox Route110_TrickHouseEnd_Text_AllNightToShoveBoulders, MSGBOX_DEFAULT
-# 97 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	msgbox Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward, MSGBOX_DEFAULT
-# 98 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
-# 99 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	giveitem ITEM_SMOKE_BALL
-# 100 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	call_if_eq VAR_RESULT, FALSE, Route110_TrickHouseEnd_EventScript_BagFull
-# 101 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	msgbox Route110_TrickHouseEnd_Text_MakeNewTricksToStumpYou, MSGBOX_DEFAULT
-# 102 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	closemessage
-# 103 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	call Route110_TrickHouseEnd_EventScript_TrickMasterExit
-# 104 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	release
-# 105 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	end
-# 106 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-
-# 107 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_EventScript_CompletedPuzzle5::
-# 108 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	msgbox Route110_TrickHouseEnd_Text_AllNightToMakeMechadolls, MSGBOX_DEFAULT
-# 109 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	msgbox Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward, MSGBOX_DEFAULT
-# 110 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
-# 111 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	giveitem ITEM_TM_TAUNT, 2
-# 112 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+# 89 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	call_if_eq VAR_RESULT, FALSE, Route110_TrickHouseEnd_EventScript_BagFull
-# 113 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+# 90 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	msgbox Route110_TrickHouseEnd_Text_MakeNewTricksToStumpYou, MSGBOX_DEFAULT
-# 114 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+# 91 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	closemessage
-# 115 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+# 92 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	call Route110_TrickHouseEnd_EventScript_TrickMasterExit
-# 116 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+# 93 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	release
-# 117 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+# 94 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	end
-# 118 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+# 95 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 
-# 119 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_EventScript_CompletedPuzzle6::
-# 120 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	msgbox Route110_TrickHouseEnd_Text_AllNightToInstallDoors, MSGBOX_DEFAULT
-# 121 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+# 96 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+Route110_TrickHouseEnd_EventScript_CompletedPuzzle4::
+# 97 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	msgbox Route110_TrickHouseEnd_Text_AllNightToShoveBoulders, MSGBOX_DEFAULT
+# 98 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	msgbox Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward, MSGBOX_DEFAULT
-# 122 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+# 99 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
-# 123 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	giveitem ITEM_MAGNET
-# 124 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	call_if_eq VAR_RESULT, FALSE, Route110_TrickHouseEnd_EventScript_BagFull
-# 125 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	msgbox Route110_TrickHouseEnd_Text_MakeNewTricksToStumpYou, MSGBOX_DEFAULT
-# 126 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	closemessage
-# 127 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	call Route110_TrickHouseEnd_EventScript_TrickMasterExit
-# 128 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	release
-# 129 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	end
-# 130 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-
-# 131 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_EventScript_CompletedPuzzle7::
-# 132 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	msgbox Route110_TrickHouseEnd_Text_AllNightSettingUpArrows, MSGBOX_DEFAULT
-# 133 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	msgbox Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward, MSGBOX_DEFAULT
-# 134 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
-# 135 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+# 100 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	giveitem ITEM_PP_MAX
-# 136 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+# 101 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	call_if_eq VAR_RESULT, FALSE, Route110_TrickHouseEnd_EventScript_BagFull
-# 137 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+# 102 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	msgbox Route110_TrickHouseEnd_Text_MakeNewTricksToStumpYou, MSGBOX_DEFAULT
-# 138 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+# 103 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	closemessage
-# 139 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+# 104 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	call Route110_TrickHouseEnd_EventScript_TrickMasterExit
-# 140 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+# 105 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	release
-# 141 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+# 106 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	end
-# 142 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+# 107 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 
-# 143 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_EventScript_CompletedPuzzle8::
-# 144 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	msgbox Route110_TrickHouseEnd_Text_AllNightPolishingFloors, MSGBOX_DEFAULT
-# 145 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	closemessage
-# 146 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	call_if_eq VAR_FACING, DIR_SOUTH, Route110_TrickHouseEnd_EventScript_TrickMasterFaceAwaySouth
-# 147 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	call_if_eq VAR_FACING, DIR_NORTH, Route110_TrickHouseEnd_EventScript_TrickMasterFaceAwayNorth
-# 148 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	call_if_eq VAR_FACING, DIR_WEST, Route110_TrickHouseEnd_EventScript_TrickMasterFaceAwayWest
-# 149 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	call_if_eq VAR_FACING, DIR_EAST, Route110_TrickHouseEnd_EventScript_TrickMasterFaceAwayEast
-# 150 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	delay 30
-# 151 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	msgbox Route110_TrickHouseEnd_Text_FountainOfIdeasRunDry, MSGBOX_DEFAULT
-# 152 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	closemessage
-# 153 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	applymovement LOCALID_TRICK_MASTER_END, Common_Movement_FacePlayer
-# 154 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	waitmovement 0
-# 155 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	delay 30
-# 156 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	msgbox Route110_TrickHouseEnd_Text_DefeatedMePreferWhichTent, MSGBOX_DEFAULT
-# 157 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+# 108 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+Route110_TrickHouseEnd_EventScript_CompletedPuzzle5::
+# 109 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	msgbox Route110_TrickHouseEnd_Text_AllNightToMakeMechadolls, MSGBOX_DEFAULT
+# 110 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	msgbox Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward, MSGBOX_DEFAULT
+# 111 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
-# 158 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	call Route110_TrickHouseEnd_EventScript_ChooseTent
-# 159 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	call_if_eq VAR_RESULT, FALSE, Route110_TrickHouseEnd_EventScript_NoRoomForTent
-# 160 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	msgbox Route110_TrickHouseEnd_Text_LeavingOnJourney, MSGBOX_DEFAULT
-# 161 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+# 112 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	unlockoutfit OUTFIT_GENDER_SWAPPED_STANDARD
+# 113 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	bufferoutfitname STR_VAR_1, OUTFIT_GENDER_SWAPPED_STANDARD 
+# 114 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	call EventScript_ObtainedOutfit
+# 115 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	msgbox Route110_TrickHouseEnd_Text_MakeNewTricksToStumpYou, MSGBOX_DEFAULT
+# 116 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	closemessage
+# 117 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	call Route110_TrickHouseEnd_EventScript_TrickMasterExit
-# 162 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	special ResetTrickHouseNuggetFlag
-# 163 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+# 118 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	release
-# 164 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+# 119 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	end
+# 120 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+
+# 121 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+Route110_TrickHouseEnd_EventScript_CompletedPuzzle6::
+# 122 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	msgbox Route110_TrickHouseEnd_Text_AllNightToInstallDoors, MSGBOX_DEFAULT
+# 123 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	msgbox Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward, MSGBOX_DEFAULT
+# 124 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
+# 125 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	unlockoutfit OUTFIT_OLD_MAN
+# 126 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	bufferoutfitname STR_VAR_1, OUTFIT_OLD_MAN 
+# 127 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	call EventScript_ObtainedOutfit
+# 128 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	msgbox Route110_TrickHouseEnd_Text_MakeNewTricksToStumpYou, MSGBOX_DEFAULT
+# 129 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	closemessage
+# 130 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	call Route110_TrickHouseEnd_EventScript_TrickMasterExit
+# 131 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	release
+# 132 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	end
+# 133 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+
+# 134 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+Route110_TrickHouseEnd_EventScript_CompletedPuzzle7::
+# 135 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	msgbox Route110_TrickHouseEnd_Text_AllNightSettingUpArrows, MSGBOX_DEFAULT
+# 136 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	msgbox Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward, MSGBOX_DEFAULT
+# 137 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
+# 138 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	unlockoutfit OUTFIT_GENDER_SWAPPED_RED
+# 139 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	bufferoutfitname STR_VAR_1, OUTFIT_GENDER_SWAPPED_RED
+# 140 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	call EventScript_ObtainedOutfit
+# 141 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	msgbox Route110_TrickHouseEnd_Text_MakeNewTricksToStumpYou, MSGBOX_DEFAULT
+# 142 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	closemessage
+# 143 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	call Route110_TrickHouseEnd_EventScript_TrickMasterExit
+# 144 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	release
+# 145 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	end
+# 146 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+
+# 147 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+Route110_TrickHouseEnd_EventScript_CompletedPuzzle8::
+# 148 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	msgbox Route110_TrickHouseEnd_Text_AllNightToPlantTrees, MSGBOX_DEFAULT
+# 149 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	closemessage
+# 150 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	call_if_eq VAR_FACING, DIR_SOUTH, Route110_TrickHouseEnd_EventScript_TrickMasterFaceAwaySouth
+# 151 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	call_if_eq VAR_FACING, DIR_NORTH, Route110_TrickHouseEnd_EventScript_TrickMasterFaceAwayNorth
+# 152 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	call_if_eq VAR_FACING, DIR_WEST, Route110_TrickHouseEnd_EventScript_TrickMasterFaceAwayWest
+# 153 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	call_if_eq VAR_FACING, DIR_EAST, Route110_TrickHouseEnd_EventScript_TrickMasterFaceAwayEast
+# 154 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	delay 30
+# 155 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	msgbox Route110_TrickHouseEnd_Text_FountainOfIdeasRunDry, MSGBOX_DEFAULT
+# 156 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	closemessage
+# 157 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	applymovement LOCALID_TRICK_MASTER_END, Common_Movement_FacePlayer
+# 158 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	waitmovement 0
+# 159 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	delay 30
+# 160 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	msgbox Route110_TrickHouseEnd_Text_DefeatedMePreferWhichTent, MSGBOX_DEFAULT
+# 161 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
+# 162 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	call Route110_TrickHouseEnd_EventScript_ChooseTent
+# 163 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	call_if_eq VAR_RESULT, FALSE, Route110_TrickHouseEnd_EventScript_NoRoomForTent
+# 164 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	msgbox Route110_TrickHouseEnd_Text_LeavingOnJourney, MSGBOX_DEFAULT
 # 165 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-
+	call Route110_TrickHouseEnd_EventScript_TrickMasterExit
 # 166 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_EventScript_ChooseTent::
+	special ResetTrickHouseNuggetFlag
 # 167 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	multichoice 0, 0, MULTI_TENT, TRUE
+	release
 # 168 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	switch VAR_RESULT
+	end
 # 169 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	case 0, Route110_TrickHouseEnd_EventScript_GiveRedTent
-# 170 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	goto Route110_TrickHouseEnd_EventScript_GiveBlueTent
-# 171 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 
+# 170 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+Route110_TrickHouseEnd_EventScript_ChooseTent::
+# 171 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	multichoice 0, 0, MULTI_TENT, TRUE
 # 172 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_EventScript_GiveRedTent::
+	switch VAR_RESULT
 # 173 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	givedecoration DECOR_RED_TENT
+	case 0, Route110_TrickHouseEnd_EventScript_GiveRedTent
 # 174 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	return
+	goto Route110_TrickHouseEnd_EventScript_GiveBlueTent
 # 175 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 
 # 176 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_EventScript_GiveBlueTent::
+Route110_TrickHouseEnd_EventScript_GiveRedTent::
 # 177 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	givedecoration DECOR_BLUE_TENT
+	givedecoration DECOR_RED_TENT
 # 178 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	return
 # 179 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 
 # 180 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_EventScript_TrickMasterExit::
+Route110_TrickHouseEnd_EventScript_GiveBlueTent::
 # 181 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	applymovement LOCALID_TRICK_MASTER_END, Route110_TrickHouse_Movement_TrickMasterSpin
+	givedecoration DECOR_BLUE_TENT
 # 182 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	waitmovement 0
+	return
 # 183 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	playse SE_M_EXPLOSION
+
 # 184 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	applymovement LOCALID_TRICK_MASTER_END, Route110_TrickHouse_Movement_TrickMasterJumpAway
+Route110_TrickHouseEnd_EventScript_TrickMasterExit::
 # 185 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	waitmovement 0
+	applymovement LOCALID_TRICK_MASTER_END, Route110_TrickHouse_Movement_TrickMasterSpin
 # 186 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	removeobject LOCALID_TRICK_MASTER_END
+	waitmovement 0
 # 187 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	addvar VAR_TRICK_HOUSE_LEVEL, 1
-# 188 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	return
-# 189 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-
-# 190 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_EventScript_BagFull::
-# 191 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	call Common_EventScript_BagIsFull
-# 192 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	msgbox Route110_TrickHouseEnd_Text_NoRoomForThis, MSGBOX_DEFAULT
-# 193 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 1
-# 194 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	return
-# 195 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-
-# 196 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_EventScript_NoRoomForTent::
-# 197 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	call Common_EventScript_NoRoomForDecor
-# 198 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	msgbox Route110_TrickHouseEnd_Text_NoRoomInPC, MSGBOX_DEFAULT
-# 199 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 1
-# 200 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	return
-# 201 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-
-# 202 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_EventScript_TrickMasterFaceAwaySouth::
-# 203 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	applymovement LOCALID_TRICK_MASTER_END, Common_Movement_WalkInPlaceFasterDown
-# 204 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	waitmovement 0
-# 205 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	return
-# 206 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-
-# 207 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_EventScript_TrickMasterFaceAwayNorth::
-# 208 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	applymovement LOCALID_TRICK_MASTER_END, Common_Movement_WalkInPlaceFasterUp
-# 209 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	waitmovement 0
-# 210 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	return
-# 211 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-
-# 212 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_EventScript_TrickMasterFaceAwayWest::
-# 213 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	applymovement LOCALID_TRICK_MASTER_END, Common_Movement_WalkInPlaceFasterLeft
-# 214 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	waitmovement 0
-# 215 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	return
-# 216 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-
-# 217 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_EventScript_TrickMasterFaceAwayEast::
-# 218 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	applymovement LOCALID_TRICK_MASTER_END, Common_Movement_WalkInPlaceFasterRight
-# 219 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	waitmovement 0
-# 220 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	return
-# 221 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-
-# 222 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_EventScript_TrickMasterExitTrigger::
-# 223 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	lockall
-# 224 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	turnobject LOCALID_TRICK_MASTER_END, DIR_WEST
-# 225 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	playse SE_PIN
-# 226 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	applymovement LOCALID_TRICK_MASTER_END, Common_Movement_ExclamationMark
-# 227 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	waitmovement 0
-# 228 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	delay 20
-# 229 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	applymovement LOCALID_TRICK_MASTER_END, Route110_TrickHouseEnd_Movement_TrickMasterSurprise
-# 230 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	waitmovement 0
-# 231 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	playse SE_M_EXPLOSION
-# 232 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-# 233 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+# 188 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	applymovement LOCALID_TRICK_MASTER_END, Route110_TrickHouse_Movement_TrickMasterJumpAway
+# 189 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	waitmovement 0
+# 190 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	removeobject LOCALID_TRICK_MASTER_END
+# 191 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	addvar VAR_TRICK_HOUSE_LEVEL, 1
+# 192 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	return
+# 193 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+
+# 194 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+Route110_TrickHouseEnd_EventScript_BagFull::
+# 195 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	call Common_EventScript_BagIsFull
+# 196 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	msgbox Route110_TrickHouseEnd_Text_NoRoomForThis, MSGBOX_DEFAULT
+# 197 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 1
+# 198 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	return
+# 199 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+
+# 200 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+Route110_TrickHouseEnd_EventScript_NoRoomForTent::
+# 201 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	call Common_EventScript_NoRoomForDecor
+# 202 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	msgbox Route110_TrickHouseEnd_Text_NoRoomInPC, MSGBOX_DEFAULT
+# 203 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 1
+# 204 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	return
+# 205 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+
+# 206 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+Route110_TrickHouseEnd_EventScript_TrickMasterFaceAwaySouth::
+# 207 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	applymovement LOCALID_TRICK_MASTER_END, Common_Movement_WalkInPlaceFasterDown
+# 208 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	waitmovement 0
+# 209 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	return
+# 210 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+
+# 211 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+Route110_TrickHouseEnd_EventScript_TrickMasterFaceAwayNorth::
+# 212 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	applymovement LOCALID_TRICK_MASTER_END, Common_Movement_WalkInPlaceFasterUp
+# 213 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	waitmovement 0
+# 214 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	return
+# 215 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+
+# 216 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+Route110_TrickHouseEnd_EventScript_TrickMasterFaceAwayWest::
+# 217 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	applymovement LOCALID_TRICK_MASTER_END, Common_Movement_WalkInPlaceFasterLeft
+# 218 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	waitmovement 0
+# 219 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	return
+# 220 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+
+# 221 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+Route110_TrickHouseEnd_EventScript_TrickMasterFaceAwayEast::
+# 222 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	applymovement LOCALID_TRICK_MASTER_END, Common_Movement_WalkInPlaceFasterRight
+# 223 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	waitmovement 0
+# 224 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	return
+# 225 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+
+# 226 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+Route110_TrickHouseEnd_EventScript_TrickMasterExitTrigger::
+# 227 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	lockall
+# 228 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	turnobject LOCALID_TRICK_MASTER_END, DIR_WEST
+# 229 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	playse SE_PIN
+# 230 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	applymovement LOCALID_TRICK_MASTER_END, Common_Movement_ExclamationMark
+# 231 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	waitmovement 0
+# 232 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	delay 20
+# 233 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	applymovement LOCALID_TRICK_MASTER_END, Route110_TrickHouseEnd_Movement_TrickMasterSurprise
 # 234 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	msgbox Route110_TrickHouseEnd_Text_YoureIgnoringMe, MSGBOX_DEFAULT
+	waitmovement 0
 # 235 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	closemessage
+	playse SE_M_EXPLOSION
 # 236 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	applymovement LOCALID_PLAYER, Route110_TrickHouseEnd_Movement_KeepPlayerInRoom
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 # 237 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	waitmovement 0
 # 238 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	delay 4
+	msgbox Route110_TrickHouseEnd_Text_YoureIgnoringMe, MSGBOX_DEFAULT
 # 239 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	turnobject LOCALID_TRICK_MASTER_END, DIR_EAST
+	closemessage
 # 240 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	releaseall
+	applymovement LOCALID_PLAYER, Route110_TrickHouseEnd_Movement_KeepPlayerInRoom
 # 241 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	end
+	waitmovement 0
 # 242 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-
+	delay 4
 # 243 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_Movement_KeepPlayerInRoom:
+	turnobject LOCALID_TRICK_MASTER_END, DIR_EAST
 # 244 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	walk_down
+	releaseall
 # 245 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	step_end
+	end
 # 246 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 
 # 247 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_Movement_TrickMasterSurprise:
+Route110_TrickHouseEnd_Movement_KeepPlayerInRoom:
 # 248 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	jump_in_place_left
+	walk_down
 # 249 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	step_end
 # 250 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 
 # 251 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_Text_YouveMadeItToMe:
+Route110_TrickHouseEnd_Movement_TrickMasterSurprise:
 # 252 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "Aak!\n"
+	jump_in_place_left
 # 253 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "You've made it to me?\l"
+	step_end
 # 254 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "Hmmm… You're sharp!$"
+
 # 255 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-
+Route110_TrickHouseEnd_Text_YouveMadeItToMe:
 # 256 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_Text_AllNightToPlantTrees:
+	.string "Aak!\n"
 # 257 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "It took me all night to plant all those\n"
+	.string "You've made it to me?\l"
 # 258 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "trees…\p"
+	.string "Hmmm… You're sharp!$"
 # 259 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "You're almost my equal in greatness by\n"
+
 # 260 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "one, two, three, four, five, six places!$"
+Route110_TrickHouseEnd_Text_AllNightToPlantTrees:
 # 261 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-
+	.string "It took me all night to plant all those\n"
 # 262 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_Text_AllNightToMakeMaze:
+	.string "trees…\p"
 # 263 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "It took me all night to make the maze…\p"
+	.string "You're above me in greatness!\n"
 # 264 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "You're almost my equal in greatness by\n"
+	.string "Possibly…$"
 # 265 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "one, two, three, four, five places!$"
+
 # 266 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-
+Route110_TrickHouseEnd_Text_AllNightToMakeMaze:
 # 267 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_Text_AllNightToPreparePanels:
+	.string "It took me all night to make the maze…\p"
 # 268 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "It took me all night to prepare\n"
+	.string "You're almost my equal in greatness by\n"
 # 269 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "the wall panels…\p"
+	.string "one, two, three, four, five places!$"
 # 270 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "You're almost my equal in greatness by\n"
+
 # 271 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "one, two, three, four places!$"
+Route110_TrickHouseEnd_Text_AllNightToPreparePanels:
 # 272 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-
+	.string "It took me all night to prepare\n"
 # 273 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_Text_AllNightToShoveBoulders:
+	.string "the wall panels…\p"
 # 274 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "It took me all night to shove in those\n"
+	.string "You're almost my equal in greatness by\n"
 # 275 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "boulders…\p"
+	.string "one, two, three, four places!$"
 # 276 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "You're almost my equal in greatness by\n"
+
 # 277 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "one, two, three places!$"
+Route110_TrickHouseEnd_Text_AllNightToShoveBoulders:
 # 278 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-
+	.string "It took me all night to shove in those\n"
 # 279 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_Text_AllNightToMakeMechadolls:
+	.string "boulders…\p"
 # 280 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "It took me all night to make MECHADOLLS\n"
-# 281 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "and another to think up the quiz…\p"
-# 282 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	.string "You're almost my equal in greatness by\n"
+# 281 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	.string "one, two, three places!$"
+# 282 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+
 # 283 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "one, two places!$"
+Route110_TrickHouseEnd_Text_AllNightToMakeMechadolls:
 # 284 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-
+	.string "It took me all night to make MECHADOLLS\n"
 # 285 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_Text_AllNightToInstallDoors:
+	.string "and another to think up the quiz…\p"
 # 286 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "It took me all night to install\n"
+	.string "You're almost my equal in greatness by\n"
 # 287 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "the doors…\p"
+	.string "one, two places!$"
 # 288 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "You're almost my equal in greatness!$"
-# 289 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 
+# 289 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+Route110_TrickHouseEnd_Text_AllNightToInstallDoors:
 # 290 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_Text_AllNightSettingUpArrows:
+	.string "It took me all night to install\n"
 # 291 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "It took me all night setting up arrows…\p"
+	.string "the doors…\p"
 # 292 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "You're my equal in greatness!$"
+	.string "You're almost my equal in greatness!$"
 # 293 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 
 # 294 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_Text_AllNightPolishingFloors:
+Route110_TrickHouseEnd_Text_AllNightSettingUpArrows:
 # 295 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "It took me all night polishing floors…\p"
+	.string "It took me all night setting up arrows…\p"
 # 296 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "You're above me in greatness!\n"
+	.string "You're my equal in greatness!$"
 # 297 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "Possibly…$"
+
 # 298 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-
+Route110_TrickHouseEnd_Text_AllNightPolishingFloors:
 # 299 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_Text_FountainOfIdeasRunDry:
+	.string "It took me all night polishing floors…\p"
 # 300 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "Wh-what should I do?\n"
+	.string "You're almost my equal in greatness by\n"
 # 301 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "My fountain of ideas for tricks has\l"
+	.string "one, two, three, four, five, six places!$"
 # 302 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "run dry…\p"
+
 # 303 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "Perhaps it is time I toured the country\n"
+Route110_TrickHouseEnd_Text_FountainOfIdeasRunDry:
 # 304 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "on a quest to devise new tricks…$"
+	.string "Wh-what should I do?\n"
 # 305 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-
+	.string "My fountain of ideas for tricks has\l"
 # 306 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_Text_DefeatedMePreferWhichTent:
+	.string "run dry…\p"
 # 307 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "I hate to admit defeat, but you have\n"
+	.string "Perhaps it is time I toured the country\n"
 # 308 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "bested me!\p"
+	.string "on a quest to devise new tricks…$"
 # 309 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "Still, you must have been reeled in by\n"
+
 # 310 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "my charisma for you to visit me again\l"
+Route110_TrickHouseEnd_Text_DefeatedMePreferWhichTent:
 # 311 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "and again. Yes, you must have!\p"
+	.string "I hate to admit defeat, but you have\n"
 # 312 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "But that has nothing to do with my\n"
+	.string "bested me!\p"
 # 313 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "losing!\p"
+	.string "Still, you must have been reeled in by\n"
 # 314 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "In recognition of the friendship\n"
+	.string "my charisma for you to visit me again\l"
 # 315 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "between you, the driven, and the genius\l"
+	.string "and again. Yes, you must have!\p"
 # 316 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "that is myself, I demand that you take\l"
+	.string "But that has nothing to do with my\n"
 # 317 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "this keepsake!\p"
+	.string "losing!\p"
 # 318 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "Actually there are two--\n"
+	.string "In recognition of the friendship\n"
 # 319 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "a RED TENT and a BLUE TENT.\l"
+	.string "between you, the driven, and the genius\l"
 # 320 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "Which do you prefer?$"
+	.string "that is myself, I demand that you take\l"
 # 321 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-
+	.string "this keepsake!\p"
 # 322 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_Text_NoRoomInPC:
+	.string "Actually there are two--\n"
 # 323 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "What? No room in your PC?\n"
+	.string "a RED TENT and a BLUE TENT.\l"
 # 324 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "What am I to make of that?\p"
+	.string "Which do you prefer?$"
 # 325 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "I wish I could say that, but I am much\n"
+
 # 326 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "too kind and caring, so come back later!$"
+Route110_TrickHouseEnd_Text_NoRoomInPC:
 # 327 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-
+	.string "What? No room in your PC?\n"
 # 328 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_Text_LeavingOnJourney:
+	.string "What am I to make of that?\p"
 # 329 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "… … … … … …\p"
+	.string "I wish I could say that, but I am much\n"
 # 330 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "I am leaving on a journey of discovery.\n"
+	.string "too kind and caring, so come back later!$"
 # 331 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "A quest in search of new tricks.\p"
-# 332 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "I wish that you will one day visit and\n"
-# 333 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "entertain me again.\p"
-# 334 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "And now, farewell!$"
-# 335 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 
+# 332 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+Route110_TrickHouseEnd_Text_LeavingOnJourney:
+# 333 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	.string "… … … … … …\p"
+# 334 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	.string "I am leaving on a journey of discovery.\n"
+# 335 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	.string "A quest in search of new tricks.\p"
 # 336 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward:
+	.string "I wish that you will one day visit and\n"
 # 337 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "Fine!\n"
+	.string "entertain me again.\p"
 # 338 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "You have earned this reward!$"
+	.string "And now, farewell!$"
 # 339 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 
 # 340 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_Text_NoRoomForThis:
+Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward:
 # 341 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "What? Have you no room for this?\n"
+	.string "Fine!\n"
 # 342 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "What manner of items do you carry?\p"
+	.string "You have earned this reward!$"
 # 343 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "But fine, since you've reached me,\n"
+
 # 344 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "your reward will be with me till later.$"
+Route110_TrickHouseEnd_Text_NoRoomForThis:
 # 345 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-
+	.string "What? Have you no room for this?\n"
 # 346 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_Text_MakeNewTricksToStumpYou:
+	.string "What manner of items do you carry?\p"
 # 347 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "Scrub that smug smirk from your face!\n"
+	.string "But fine, since you've reached me,\n"
 # 348 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "It's much too early to think you've won!\p"
+	.string "your reward will be with me till later.$"
 # 349 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "I'll make new tricks to stump you, I will.\n"
-# 350 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "You may mock me only when you're done.\p"
-# 351 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "Come back for the next exciting\n"
-# 352 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "installment!$"
-# 353 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 
+# 350 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+Route110_TrickHouseEnd_Text_MakeNewTricksToStumpYou:
+# 351 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	.string "Scrub that smug smirk from your face!\n"
+# 352 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	.string "It's much too early to think you've won!\p"
+# 353 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	.string "I'll make new tricks to stump you, I will.\n"
 # 354 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-Route110_TrickHouseEnd_Text_YoureIgnoringMe:
+	.string "You may mock me only when you're done.\p"
 # 355 "data//maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "Now, now! You're ignoring me now?\n"
+	.string "Come back for the next exciting\n"
 # 356 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	.string "installment!$"
+# 357 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+
+# 358 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+Route110_TrickHouseEnd_Text_YoureIgnoringMe:
+# 359 "data//maps/Route110_TrickHouseEnd/scripts.pory"
+	.string "Now, now! You're ignoring me now?\n"
+# 360 "data//maps/Route110_TrickHouseEnd/scripts.pory"
 	.string "Now that, I consider heartbreaking!$"
