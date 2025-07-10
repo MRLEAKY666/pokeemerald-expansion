@@ -727,7 +727,7 @@ LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex:
 	.string "if you're travelling around Hoenn.\p"
 	.string "Like I mentioned before, strange\n"
 	.string "POKéMON have started appearing.\p"
-	.string "The less you know about a wild area,\n"
+	.string "The less you know about a wilderness,\n"
 	.string "the more dangerous it can be!\p"
 	.string "Use your POKéDEX to document the wild\n"
 	.string "POKéMON you see.$"
