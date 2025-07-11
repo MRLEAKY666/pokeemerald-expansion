@@ -1457,7 +1457,7 @@ LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex:
 # 729 "data//maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
 	.string "POKéMON have started appearing.\p"
 # 730 "data//maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
-	.string "The less you know about a wild area,\n"
+	.string "The less you know about a wilderness,\n"
 # 731 "data//maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
 	.string "the more dangerous it can be!\p"
 # 732 "data//maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"

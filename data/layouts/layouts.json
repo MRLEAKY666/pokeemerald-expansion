@@ -4620,6 +4620,176 @@
       "secondary_tileset": "gTileset_MossdeepGameCorner",
       "border_filepath": "data/layouts/MossdeepCity_GameCorner_Arcade/border.bin",
       "blockdata_filepath": "data/layouts/MossdeepCity_GameCorner_Arcade/map.bin"
+    },
+    {
+      "id": "LAYOUT_LILYCOVE_CITY_POKEMON_CENTER_2F_LAYOUT",
+      "name": "LilycoveCity_PokemonCenter_2F_Layout",
+      "width": 14,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/LilycoveCity_PokemonCenter_2F_Layout/border.bin",
+      "blockdata_filepath": "data/layouts/LilycoveCity_PokemonCenter_2F_Layout/map.bin"
+    },
+    {
+      "id": "LAYOUT_PETALBURG_CITY_POKEMON_CENTER_2F_LAYOUT",
+      "name": "PetalburgCity_PokemonCenter_2F_Layout",
+      "width": 14,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/PetalburgCity_PokemonCenter_2F_Layout/border.bin",
+      "blockdata_filepath": "data/layouts/PetalburgCity_PokemonCenter_2F_Layout/map.bin"
+    },
+    {
+      "id": "LAYOUT_RUSTBORO_CITY_POKEMON_CENTER_2F_LAYOUT",
+      "name": "RustboroCity_PokemonCenter_2F_Layout",
+      "width": 14,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/RustboroCity_PokemonCenter_2F_Layout/border.bin",
+      "blockdata_filepath": "data/layouts/RustboroCity_PokemonCenter_2F_Layout/map.bin"
+    },
+    {
+      "id": "LAYOUT_SOOTOPOLIS_CITY_POKEMON_CENTER_2F_LAYOUT",
+      "name": "SootopolisCity_PokemonCenter_2F_Layout",
+      "width": 14,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/SootopolisCity_PokemonCenter_2F_Layout/border.bin",
+      "blockdata_filepath": "data/layouts/SootopolisCity_PokemonCenter_2F_Layout/map.bin"
+    },
+    {
+      "id": "LAYOUT_FORTREE_CITY_POKEMON_CENTER_2F_LAYOUT",
+      "name": "FortreeCity_PokemonCenter_2F_Layout",
+      "width": 14,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/FortreeCity_PokemonCenter_2F_Layout/border.bin",
+      "blockdata_filepath": "data/layouts/FortreeCity_PokemonCenter_2F_Layout/map.bin"
+    },
+    {
+      "id": "LAYOUT_SLATEPORT_CITY_POKEMON_CENTER_2F_LAYOUT",
+      "name": "SlateportCity_PokemonCenter_2F_Layout",
+      "width": 14,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/SlateportCity_PokemonCenter_2F_Layout/border.bin",
+      "blockdata_filepath": "data/layouts/SlateportCity_PokemonCenter_2F_Layout/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEWFORD_TOWN_POKEMON_CENTER_2F_LAYOUT",
+      "name": "DewfordTown_PokemonCenter_2F_Layout",
+      "width": 14,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/DewfordTown_PokemonCenter_2F_Layout/border.bin",
+      "blockdata_filepath": "data/layouts/DewfordTown_PokemonCenter_2F_Layout/map.bin"
+    },
+    {
+      "id": "LAYOUT_EVER_GRANDE_CITY_POKEMON_CENTER_2F_LAYOUT",
+      "name": "EverGrandeCity_PokemonCenter_2F_Layout",
+      "width": 14,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/EverGrandeCity_PokemonCenter_2F_Layout/border.bin",
+      "blockdata_filepath": "data/layouts/EverGrandeCity_PokemonCenter_2F_Layout/map.bin"
+    },
+    {
+      "id": "LAYOUT_FALLARBOR_TOWN_POKEMON_CENTER_2F_LAYOUT",
+      "name": "FallarborTown_PokemonCenter_2F_Layout",
+      "width": 14,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/FallarborTown_PokemonCenter_2F_Layout/border.bin",
+      "blockdata_filepath": "data/layouts/FallarborTown_PokemonCenter_2F_Layout/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOSSDEEP_CITY_POKEMON_CENTER_2F_LAYOUT",
+      "name": "MossdeepCity_PokemonCenter_2F_Layout",
+      "width": 14,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/MossdeepCity_PokemonCenter_2F_Layout/border.bin",
+      "blockdata_filepath": "data/layouts/MossdeepCity_PokemonCenter_2F_Layout/map.bin"
+    },
+    {
+      "id": "LAYOUT_LAVARIDGE_TOWN_POKEMON_CENTER_2F_LAYOUT",
+      "name": "LavaridgeTown_PokemonCenter_2F_Layout",
+      "width": 14,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/LavaridgeTown_PokemonCenter_2F_Layout/border.bin",
+      "blockdata_filepath": "data/layouts/LavaridgeTown_PokemonCenter_2F_Layout/map.bin"
+    },
+    {
+      "id": "LAYOUT_VERDANTURF_TOWN_POKEMON_CENTER_2F_LAYOUT",
+      "name": "VerdanturfTown_PokemonCenter_2F_Layout",
+      "width": 14,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/VerdanturfTown_PokemonCenter_2F_Layout/border.bin",
+      "blockdata_filepath": "data/layouts/VerdanturfTown_PokemonCenter_2F_Layout/map.bin"
+    },
+    {
+      "id": "LAYOUT_MAUVILLE_CITY_POKEMON_CENTER_2F_LAYOUT",
+      "name": "MauvilleCity_PokemonCenter_2F_Layout",
+      "width": 14,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/MauvilleCity_PokemonCenter_2F_Layout/border.bin",
+      "blockdata_filepath": "data/layouts/MauvilleCity_PokemonCenter_2F_Layout/map.bin"
+    },
+    {
+      "id": "LAYOUT_OLDALE_TOWN_POKEMON_CENTER_2F_LAYOUT",
+      "name": "OldaleTown_PokemonCenter_2F_Layout",
+      "width": 14,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/OldaleTown_PokemonCenter_2F_Layout/border.bin",
+      "blockdata_filepath": "data/layouts/OldaleTown_PokemonCenter_2F_Layout/map.bin"
+    },
+    {
+      "id": "LAYOUT_PACIFIDLOG_TOWN_POKEMON_CENTER_2F_LAYOUT",
+      "name": "PacifidlogTown_PokemonCenter_2F_Layout",
+      "width": 14,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/PacifidlogTown_PokemonCenter_2F_Layout/border.bin",
+      "blockdata_filepath": "data/layouts/PacifidlogTown_PokemonCenter_2F_Layout/map.bin"
+    },
+    {
+      "id": "LAYOUT_BATTLE_FRONTIER_POKEMON_CENTER_2F_LAYOUT",
+      "name": "BattleFrontier_PokemonCenter_2F_Layout",
+      "width": 14,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/BattleFrontier_PokemonCenter_2F_Layout/border.bin",
+      "blockdata_filepath": "data/layouts/BattleFrontier_PokemonCenter_2F_Layout/map.bin"
+    },
+    {
+      "id": "LAYOUT_EVER_GRANDE_CITY_POKEMON_LEAGUE_2F_LAYOUT",
+      "name": "EverGrandeCity_PokemonLeague_2F_Layout",
+      "width": 14,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/EverGrandeCity_PokemonLeague_2F_Layout/border.bin",
+      "blockdata_filepath": "data/layouts/EverGrandeCity_PokemonLeague_2F_Layout/map.bin"
     }
   ]
 }
