@@ -561,8 +561,8 @@ Route119_EventScript_ScottWonAtFortreeGymCall::
 Route119_Text_Steven1:
 	.string "STEVEN: {PLAYER}!\n"
 	.string "I thought you might be around here!\p"
-	.string "I thought I saw RAYQUAZA fly this way\n"
-	.string "after the events in SOOTOPOLIS.\p"
+	.string "I saw RAYQUAZA fly this way after\n"
+	.string "the events in SOOTOPOLIS.\p"
 	.string "Oh! But I guess you must be on your way\n"
 	.string "to complete your BADGE collection.\p"
 	.string "WINONA can be hard to track down\n"

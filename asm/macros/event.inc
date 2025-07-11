@@ -2228,11 +2228,13 @@
 	settotemboost \battler, 2, 2, 2, 2, 2
 	setflag FLAG_TEMP_NO_CATCHING
 	setflag FLAG_TEMP_NO_RUNNING
+	setflag FLAG_TEMP_SMART_WILD_AI
 	.endm
 
 	.macro endwildbossmon
 	clearflag FLAG_TEMP_NO_CATCHING
 	clearflag FLAG_TEMP_NO_RUNNING
+	clearflag FLAG_TEMP_SMART_WILD_AI
 	.endm
 
 	@ Attempts to trigger a special evolution method in the overworld.
