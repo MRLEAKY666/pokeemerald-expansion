@@ -18600,7 +18600,8 @@ static const struct LevelUpMove sCoalossalLevelUpLearnset[] = {
 #if P_FAMILY_APPLIN
 static const struct LevelUpMove sApplinLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_WITHDRAW),
-    LEVEL_UP_MOVE( 1, MOVE_ASTONISH),
+    LEVEL_UP_MOVE( 1, MOVE_ROLLOUT),
+    LEVEL_UP_MOVE( 7, MOVE_ASTONISH),
     LEVEL_UP_END
 };
 
