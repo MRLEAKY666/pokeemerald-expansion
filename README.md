@@ -23,7 +23,6 @@ Big thank you to huderlem (Pokemon Pinball to Emerald), and Pokeabbie (Voltorb F
 Also thank you to Viperio, who made an initial Snake for Pokemon Emerald that I based my code on.
 
 ...
-# About `pokeemerald-expansion`
 # Outfits System
 
 ## What is this?
@@ -48,3 +47,43 @@ Note that this feature branch is still missing some of the features that's neces
 - Slawter666, for their original costumes system that inspires me for doing this. 
 - SDH for his commit that simplify the player states system and thus helps makes the process of creating this much easier.
 - RavePossum for helping me with my silly mistakes that causes bugs and bringing ideas.
+
+
+# About `pokeemerald-expansion`
+If you use **`pokeemerald-expansion`**, please credit **RHH (Rom Hacking Hideout)**. Optionally, include the version number for clarity.
+
+```
+Based off RHH's pokeemerald-expansion 1.12.2 https://github.com/rh-hideout/pokeemerald-expansion/
+```
+
+Please consider [crediting all contributors](CREDITS.md) involved in the project!
+
+# Choosing `pokeemerald` or **`pokeemerald-expansion`**
+
+- **`pokeemerald-expansion`** supports multiplayer functionality with other games built on **`pokeemerald-expansion`**. It is not compatible with official Pokémon games.
+- If compatibility with official games is important, use [`pokeemerald`](https://github.com/pret/pokeemerald). Otherwise, we recommend using **`pokeemerald-expansion`**.
+- **`pokeemerald-expansion`** incorporates regular updates from `pokeemerald`, including bug fixes and documentation improvements.
+
+# [Getting Started](INSTALL.md)
+
+❗❗ **Important**: Do not use GitHub's "Download Zip" option as it will not include commit history. This is necessary if you want to update or merge other feature branches. 
+
+If you're new to git and GitHub, [Team Aqua's Asset Repo](https://github.com/Pawkkie/Team-Aquas-Asset-Repo/) has a [guide on forking and cloning the repository](https://github.com/Pawkkie/Team-Aquas-Asset-Repo/wiki/The-Basics-of-GitHub). Then you can follow one of the following guides:
+
+## 📥 [Installing **`pokeemerald-expansion`**](INSTALL.md)
+## 🏗️ [Building **`pokeemerald-expansion`**](INSTALL.md#Building-pokeemerald-expansion)
+## 🚚 [Migrating from **`pokeemerald`**](INSTALL.md#Migrating-from-pokeemerald)
+## 🚀 [Updating **`pokeemerald-expansion`**](INSTALL.md#Updating-pokeemerald-expansion)
+
+# [Documentation](https://rh-hideout.github.io/pokeemerald-expansion/)
+
+For detailed documentation, visit the [pokeemerald-expansion documentation page](https://rh-hideout.github.io/pokeemerald-expansion/).
+
+# [Contributions](CONTRIBUTING.md)
+If you are looking to [report a bug](CONTRIBUTING.md#Bug-Report), [open a pull request](CONTRIBUTING.md#Pull-Requests), or [request a feature](CONTRIBUTING.md#Feature-Request), our [`CONTRIBUTING.md`](CONTRIBUTING.md) has guides for each.
+
+# [Community](https://discord.gg/6CzjAG6GZk)
+
+[![](https://dcbadge.limes.pink/api/server/6CzjAG6GZk)](https://discord.gg/6CzjAG6GZk)
+
+Our community uses the [Rom Hacking Hideout (RHH) Discord server](https://discord.gg/6CzjAG6GZk) to communicate and organize. Most of our discussions take place there, and we welcome anybody to join us!
