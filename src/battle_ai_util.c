@@ -5749,6 +5749,14 @@ bool32 IsNaturalEnemy(u32 speciesAttacker, u32 speciesTarget)
         return (speciesTarget == SPECIES_CARBINK);
     case SPECIES_MAREANIE:
         return (speciesTarget == SPECIES_CORSOLA);
+    case SPECIES_GROUDON:
+        return (speciesTarget == SPECIES_KYOGRE);
+    case SPECIES_KYOGRE:
+        return (speciesTarget == SPECIES_GROUDON);
+    case SPECIES_GROUDON_PRIMAL:
+        return (speciesTarget == SPECIES_KYOGRE_PRIMAL);
+    case SPECIES_KYOGRE_PRIMAL:
+        return (speciesTarget == SPECIES_GROUDON_PRIMAL);
     default:
         return FALSE;
     }
