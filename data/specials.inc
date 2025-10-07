@@ -578,3 +578,4 @@ gSpecials::
 	def_special StartSootopolisLegendaryBattle
 	def_special UseOutfitBoxFromScript
 	def_special SetHiddenNature
+	def_special SetAbility
