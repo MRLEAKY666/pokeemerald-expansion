@@ -66,7 +66,7 @@ bool32 IsPlayerSpinEntranceActive(void);
 bool32 IsPlayerSpinExitActive(void);
 void SetPlayerInvisibility(bool8 invisible);
 u8 player_get_pos_including_state_based_drift(s16 *x, s16 *y);
-//void SetPlayerAvatarFishing(u8 direction);
+//void SetPlayerAvatarFishing(u8 direction); // this was added with fishing.c but is not needed because of outfits (i think) 
 void SetPlayerAvatarAnimation(u32 playerAnimId, u32 animNum);
 bool8 ObjectMovingOnRockStairs(struct ObjectEvent *objectEvent, u8 direction);
 //sideways stairs
