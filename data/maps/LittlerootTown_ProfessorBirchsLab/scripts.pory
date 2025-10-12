@@ -654,6 +654,27 @@ LittlerootTown_ProfessorBirchsLab_EventScript_ScottAboardSSTidalCall::
 	clearflag FLAG_SCOTT_CALL_BATTLE_FRONTIER
 	releaseall
 	end
+`
+script LittlerootTown_ProfessorBirchsLab_EventScript_BlockBasementAccess {
+	lock
+	hidefollower
+	applymovement(LOCALID_PLAYER, Common_Movement_FaceDown)
+	waitmovement(0)
+	delay(5)
+	msgbox(format("You shouldn't go down there without permission…"), MSGBOX_DEFAULT)
+	closemessage
+	applymovement(LOCALID_PLAYER, LittlerootTown_ProfessorBirchsLab_Movement_BlockBasementAccess)
+    waitmovement(0)
+    release
+	end
+}
+
+raw `
+
+LittlerootTown_ProfessorBirchsLab_Movement_BlockBasementAccess:
+	delay_16
+	walk_down
+	step_end
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchAwayOnFieldwork:
 	.string "Hunh? PROF. BIRCH?\p"
@@ -684,9 +705,9 @@ LittlerootTown_ProfessorBirchsLab_Text_LikeYouToHavePokemon:
 	.string "PROF. BIRCH: So, {PLAYER}{KUN}.\p"
 	.string "I've heard so much about you from\n"
 	.string "your father.\p"
-	.string "The way you just battled out there . . .\p"
+	.string "The way you just battled out there…\p"
 	.string "You must have his blood in your\n"
-	.string "veins . . .\p$"
+	.string "veins…\p$"
 
 LittlerootTown_ProfessorBirchsLab_Text_WhyNotGiveNicknameToMon:
 	.string "PROF. BIRCH: While you're at it, why not\n"
@@ -695,13 +716,13 @@ LittlerootTown_ProfessorBirchsLab_Text_WhyNotGiveNicknameToMon:
 LittlerootTown_ProfessorBirchsLab_Text_MightBeGoodIdeaToGoSeeRival:
 	.string "PROF. BIRCH: If you work at POKéMON\n"
 	.string "and gain experience, I think you could\l"
-	.string "be useful . . .\p"
+	.string "be useful…\p"
 	.string "{PLAYER}{KUN}, see if you can beat my kid,\n"
 	.string "{RIVAL}, in a POKéMON battle.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_GetRivalToTeachYou:
 	.string "PROF. BIRCH: Great!\n"
-	.string "Let's see how you fare . . .$"
+	.string "Let's see how you fare…$"
 
 LittlerootTown_ProfessorBirchsLab_Text_DontBeThatWay:
 	.string "PROF. BIRCH: Oh, don't be that way.\n"
@@ -713,8 +734,8 @@ LittlerootTown_ProfessorBirchsLab_Text_BirchRivalGoneHome:
 	.string "Go fetch {RIVAL} and come back here.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex:
-	.string "PROF. BIRCH: {PLAYER}{KUN} . . .\p"
-	.string "I heard you beat {RIVAL} . . .\p"
+	.string "PROF. BIRCH: {PLAYER}{KUN}…\p"
+	.string "I heard you beat {RIVAL}…\p"
 	.string "Here, {PLAYER}{KUN}, I ordered this for my\n"
 	.string "research, but I think you should have\l"
 	.string "this POKéDEX.$"

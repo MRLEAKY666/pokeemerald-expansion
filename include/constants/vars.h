@@ -130,7 +130,7 @@
 #define VAR_DERBY_VAR_RACER_NAME_5                               0x4068 // 
 #define VAR_ROUTE110_STATE                               0x4069
 #define VAR_DERBY_VAR_RACER_NAME_6                               0x406A //  
-#define VAR_ROUTE112_STATE                               0x406B // Unused Var
+#define VAR_LAB_BASEMENT_ACCESS                               0x406B // PREVIOUSLY Unused Var
 #define VAR_ROUTE113_STATE                               0x406C // Unused Var
 #define VAR_ROUTE114_STATE                               0x406D // Unused Var
 #define VAR_ROUTE115_STATE                               0x406E // Unused Var
