@@ -34,7 +34,48 @@ OldaleTown_PokemonCenter_2F_EventScript_BugLass::
 OldaleTown_PokemonCenter_2F_EventScript_SucceededForBugKilling::
 	msgbox OldaleTown_PokemonCenter_2F_Text_SucceededBugKilling, MSGBOX_DEFAULT
 	closemessage
+	
+	getobjectfacingdirection LOCALID_OLDALE_PKMNCENTER_BUGLASS, VAR_RESULT
+
+	switch VAR_RESULT
+	case DIR_SOUTH, OldaleTown_PokemonCenter_2F_EventScript_CountMoneySouth
+	case DIR_WEST, OldaleTown_PokemonCenter_2F_EventScript_CountMoneyWest
+	case DIR_NORTH, OldaleTown_PokemonCenter_2F_EventScript_CountMoneyNorth
+	end
+
+
+OldaleTown_PokemonCenter_2F_EventScript_CountMoneySouth::
 	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_CountMoney
+	playse SE_FU_ZAKU
+	delay 20
+	playse SE_FU_ZAKU
+	delay 20
+	playse SE_FU_ZAKU
+	waitmovement
+	delay 5
+	showmoneybox 0, 0
+	calcbugmoney
+	goto_if_le VAR_OLDALE_BUG_KILLING, 1000, OldaleTown_PokemonCenter_2F_EventScript_PayBugKillingNormal
+	goto_if_gt VAR_OLDALE_BUG_KILLING, 1000, OldaleTown_PokemonCenter_2F_EventScript_PayBugKillingMax
+	end
+
+OldaleTown_PokemonCenter_2F_EventScript_CountMoneyWest::
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_CountMoneyWest
+	playse SE_FU_ZAKU
+	delay 20
+	playse SE_FU_ZAKU
+	delay 20
+	playse SE_FU_ZAKU
+	waitmovement
+	delay 5
+	showmoneybox 0, 0
+	calcbugmoney
+	goto_if_le VAR_OLDALE_BUG_KILLING, 1000, OldaleTown_PokemonCenter_2F_EventScript_PayBugKillingNormal
+	goto_if_gt VAR_OLDALE_BUG_KILLING, 1000, OldaleTown_PokemonCenter_2F_EventScript_PayBugKillingMax
+	end
+
+OldaleTown_PokemonCenter_2F_EventScript_CountMoneyNorth::
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_CountMoneyNorth
 	playse SE_FU_ZAKU
 	delay 20
 	playse SE_FU_ZAKU
@@ -52,7 +93,41 @@ OldaleTown_PokemonCenter_2F_EventScript_PayBugKillingNormal::
 	msgbox OldaleTown_PokemonCenter_2F_Text_PayBugKilling, MSGBOX_DEFAULT
 	playse SE_SHOP
 	updatemoneybox
-	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_GiveMoney
+	getobjectfacingdirection LOCALID_OLDALE_PKMNCENTER_BUGLASS, VAR_RESULT
+	switch VAR_RESULT
+	case DIR_SOUTH, OldaleTown_PokemonCenter_2F_EventScript_GiveMoneySouth
+	case DIR_WEST, OldaleTown_PokemonCenter_2F_EventScript_GiveMoneyWest
+	case DIR_NORTH, OldaleTown_PokemonCenter_2F_EventScript_GiveMoneyNorth
+	end
+
+OldaleTown_PokemonCenter_2F_EventScript_GiveMoneySouth::
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_GiveMoneySouth
+	waitmovement
+	delay 20
+	waitse
+	hidemoneybox
+	msgbox OldaleTown_PokemonCenter_2F_Text_KeepBugKilling, MSGBOX_DEFAULT
+	setvar VAR_OLDALE_BUG_KILLING, 1
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	end
+
+OldaleTown_PokemonCenter_2F_EventScript_GiveMoneyWest::
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_GiveMoneyWest
+	waitmovement
+	delay 20
+	waitse
+	hidemoneybox
+	msgbox OldaleTown_PokemonCenter_2F_Text_KeepBugKilling, MSGBOX_DEFAULT
+	setvar VAR_OLDALE_BUG_KILLING, 1
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	end
+
+OldaleTown_PokemonCenter_2F_EventScript_GiveMoneyNorth::
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_GiveMoneyNorth
 	waitmovement
 	delay 20
 	waitse
@@ -72,7 +147,42 @@ OldaleTown_PokemonCenter_2F_EventScript_PayBugKillingMax::
 	waitse
 	playse SE_SHOP
 	updatemoneybox
-	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_GiveMoney
+
+	getobjectfacingdirection LOCALID_OLDALE_PKMNCENTER_BUGLASS, VAR_RESULT
+	switch VAR_RESULT
+	case DIR_SOUTH, OldaleTown_PokemonCenter_2F_EventScript_GiveMaxMoneySouth
+	case DIR_WEST, OldaleTown_PokemonCenter_2F_EventScript_GiveMaxMoneyWest
+	case DIR_NORTH, OldaleTown_PokemonCenter_2F_EventScript_GiveMaxMoneyNorth
+	end
+
+OldaleTown_PokemonCenter_2F_EventScript_GiveMaxMoneySouth::
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_GiveMoneySouth
+	waitmovement
+	delay 20
+	waitse
+	hidemoneybox
+	msgbox OldaleTown_PokemonCenter_2F_Text_KeepBugKillingMax, MSGBOX_DEFAULT
+	setvar VAR_OLDALE_BUG_KILLING, 1
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	end
+
+OldaleTown_PokemonCenter_2F_EventScript_GiveMaxMoneyWest::
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_GiveMoneyWest
+	waitmovement
+	delay 20
+	waitse
+	hidemoneybox
+	msgbox OldaleTown_PokemonCenter_2F_Text_KeepBugKillingMax, MSGBOX_DEFAULT
+	setvar VAR_OLDALE_BUG_KILLING, 1
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	end
+
+OldaleTown_PokemonCenter_2F_EventScript_GiveMaxMoneyNorth::
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_GiveMoneyNorth
 	waitmovement
 	delay 20
 	waitse
@@ -97,8 +207,42 @@ OldaleTown_PokemonCenter_2F_Movement_CountMoney:
 	face_player
 	step_end
 
-OldaleTown_PokemonCenter_2F_Movement_GiveMoney:
+OldaleTown_PokemonCenter_2F_Movement_CountMoneyWest:
+	face_away_player
+	delay_16
+	walk_in_place_faster_right
+	delay_16
+	walk_in_place_faster_right
+	delay_16
+	walk_in_place_faster_right
+	walk_in_place_faster_right
+	delay_16
+	face_player
+	step_end
+
+OldaleTown_PokemonCenter_2F_Movement_CountMoneyNorth:
+	face_away_player
+	delay_16
+	walk_in_place_faster_down
+	delay_16
+	walk_in_place_faster_down
+	delay_16
+	walk_in_place_faster_down
+	walk_in_place_faster_down
+	delay_16
+	face_player
+	step_end
+
+OldaleTown_PokemonCenter_2F_Movement_GiveMoneySouth:
 	walk_in_place_down
+	step_end
+
+OldaleTown_PokemonCenter_2F_Movement_GiveMoneyWest:
+	walk_in_place_left
+	step_end
+
+OldaleTown_PokemonCenter_2F_Movement_GiveMoneyNorth:
+	walk_in_place_up
 	step_end
 
 OldaleTown_PokemonCenter_2F_EventScript_ContinueBugKilling::
