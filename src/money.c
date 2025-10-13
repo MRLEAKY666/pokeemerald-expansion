@@ -10,6 +10,7 @@
 #include "strings.h"
 #include "decompress.h"
 #include "tv.h"
+#include "constants/vars.h"
 
 EWRAM_DATA static u8 sMoneyBoxWindowId = 0;
 EWRAM_DATA static u8 sMoneyLabelSpriteId = 0;
@@ -220,4 +221,23 @@ void PrintBpAmount(u8 windowId, u8 x, u8 y, int amount, u8 speed)
 {
     StringCopy(ConvertIntToDecimalStringN(gStringVar4, amount, STR_CONV_MODE_RIGHT_ALIGN, 4), gText_BP);
     AddTextPrinterParameterized(windowId, FONT_NORMAL, gStringVar4, x, y, 0, NULL);
+}
+
+void ScriptCalcBugMoney(void)
+{
+    u32 BugsKilled = (VarGet(VAR_OLDALE_BUG_KILLING) - 1);
+    u32 BugReward = BugsKilled * 40;
+
+    if (BugsKilled <= 999)
+    {
+        ConvertIntToDecimalStringN(gStringVar1, BugsKilled, STR_CONV_MODE_LEFT_ALIGN, 3);
+        ConvertIntToDecimalStringN(gStringVar2, BugReward, STR_CONV_MODE_LEFT_ALIGN, 5);
+    }
+    else
+    {
+        BugReward = 75000;
+        ConvertIntToDecimalStringN(gStringVar2, BugReward, STR_CONV_MODE_LEFT_ALIGN, 5);
+    }
+
+    AddMoney(&gSaveBlock1Ptr->money, BugReward);
 }

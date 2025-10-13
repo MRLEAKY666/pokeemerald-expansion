@@ -4313,6 +4313,22 @@ static void Cmd_tryfaintmon(void)
                 if (gBattleResults.opponentFaintCounter < 255)
                     gBattleResults.opponentFaintCounter++;
                 gBattleResults.lastOpponentSpecies = GetMonData(GetBattlerMon(battler), MON_DATA_SPECIES, NULL);
+
+                // added for oldale bug killing quest
+                if (VarGet(VAR_OLDALE_BUG_KILLING) && !(gBattleTypeFlags & BATTLE_TYPE_TRAINER))
+                {
+                    if ((gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ROUTE101) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ROUTE101))
+                        || (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ROUTE102) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ROUTE102))
+                        || (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ROUTE103) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ROUTE103)))
+                    {
+                        if (GetSpeciesType(gBattleMons[battler].species, 0) == TYPE_BUG || GetSpeciesType(gBattleMons[battler].species, 1) == TYPE_BUG)
+                        {
+                            VarSet(VAR_OLDALE_BUG_KILLING, (VarGet(VAR_OLDALE_BUG_KILLING) + 1));
+                        }
+                    }
+                }
+                // above for oldale bug killing quest
+
                 gSideTimers[B_SIDE_OPPONENT].retaliateTimer = 2;
             }
             if ((gHitMarker & HITMARKER_DESTINYBOND) && IsBattlerAlive(gBattlerAttacker)

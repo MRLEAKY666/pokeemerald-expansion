@@ -2801,3 +2801,9 @@
 	callnative SetSpeaker
 	.4byte \name
 	.endm
+
+@ misc 
+
+	.macro calcbugmoney
+	callnative ScriptCalcBugMoney
+	.endm

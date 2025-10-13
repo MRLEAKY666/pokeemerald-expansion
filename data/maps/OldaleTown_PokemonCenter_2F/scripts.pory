@@ -19,4 +19,146 @@ OldaleTown_PokemonCenter_2F_EventScript_RecordCorner::
 	call CableClub_EventScript_RecordCorner
 	end
 
+OldaleTown_PokemonCenter_2F_EventScript_BugLass::
+	lock
+	faceplayer
+	waitmovement
+	call_if_ge VAR_OLDALE_BUG_KILLING, 2, OldaleTown_PokemonCenter_2F_EventScript_SucceededForBugKilling
+	call_if_eq VAR_OLDALE_BUG_KILLING, 1, OldaleTown_PokemonCenter_2F_EventScript_ContinueBugKilling
+	call_if_eq VAR_OLDALE_BUG_KILLING, 0, OldaleTown_PokemonCenter_2F_EventScript_StartBugKilling
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	end
+
+OldaleTown_PokemonCenter_2F_EventScript_SucceededForBugKilling::
+	msgbox OldaleTown_PokemonCenter_2F_Text_SucceededBugKilling, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_CountMoney
+	playse SE_FU_ZAKU
+	delay 20
+	playse SE_FU_ZAKU
+	delay 20
+	playse SE_FU_ZAKU
+	waitmovement
+	delay 5
+	showmoneybox 0, 0
+	calcbugmoney
+	goto_if_le VAR_OLDALE_BUG_KILLING, 1000, OldaleTown_PokemonCenter_2F_EventScript_PayBugKillingNormal
+	goto_if_gt VAR_OLDALE_BUG_KILLING, 1000, OldaleTown_PokemonCenter_2F_EventScript_PayBugKillingMax
+	end
+
+OldaleTown_PokemonCenter_2F_EventScript_PayBugKillingNormal::
+	msgbox OldaleTown_PokemonCenter_2F_Text_PayBugKilling, MSGBOX_DEFAULT
+	playse SE_SHOP
+	updatemoneybox
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_GiveMoney
+	waitmovement
+	delay 20
+	waitse
+	hidemoneybox
+	msgbox OldaleTown_PokemonCenter_2F_Text_KeepBugKilling, MSGBOX_DEFAULT
+	setvar VAR_OLDALE_BUG_KILLING, 1
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	end
+
+OldaleTown_PokemonCenter_2F_EventScript_PayBugKillingMax::
+	delay 5
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, Common_Movement_ExclamationMark
+	playse SE_PIN
+	msgbox OldaleTown_PokemonCenter_2F_Text_PayBugKillingMax, MSGBOX_DEFAULT
+	waitse
+	playse SE_SHOP
+	updatemoneybox
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_GiveMoney
+	waitmovement
+	delay 20
+	waitse
+	hidemoneybox
+	msgbox OldaleTown_PokemonCenter_2F_Text_KeepBugKillingMax, MSGBOX_DEFAULT
+	setvar VAR_OLDALE_BUG_KILLING, 1
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	end
+
+OldaleTown_PokemonCenter_2F_Movement_CountMoney:
+	face_away_player
+	delay_16
+	walk_in_place_faster_up
+	delay_16
+	walk_in_place_faster_up
+	delay_16
+	walk_in_place_faster_up
+	walk_in_place_faster_up
+	delay_16
+	face_player
+	step_end
+
+OldaleTown_PokemonCenter_2F_Movement_GiveMoney:
+	walk_in_place_down
+	step_end
+
+OldaleTown_PokemonCenter_2F_EventScript_ContinueBugKilling::
+	msgbox OldaleTown_PokemonCenter_2F_Text_ContinueBugKilling, MSGBOX_DEFAULT
+	closemessage
+	delay 5
+	return
+
+OldaleTown_PokemonCenter_2F_EventScript_StartBugKilling::
+	msgbox OldaleTown_PokemonCenter_2F_Text_StartBugKilling, MSGBOX_DEFAULT
+	closemessage
+	setvar VAR_OLDALE_BUG_KILLING, 1
+	delay 5
+	return
+
+OldaleTown_PokemonCenter_2F_Text_KeepBugKilling:
+	.string "If you kill more wild BUG POKéMON,\n"
+	.string "come back and let me know!$"
+
+OldaleTown_PokemonCenter_2F_Text_KeepBugKillingMax:
+	.string "It's hard to believe, but I bet\n"
+	.string "there are still lots of BUGS out there.\p"
+	.string "If you kill more wild BUG POKéMON,\n"
+	.string "come back and let me know!$"
+
+OldaleTown_PokemonCenter_2F_Text_PayBugKilling:
+	.string "You killed {STR_VAR_1} BUG POKéMON…\n"
+	.string "So that comes out to ¥{STR_VAR_2}, right?\p"
+	.string "Oh don't worry, I've got a lot!\n"
+	.string "Here you go!$"
+
+OldaleTown_PokemonCenter_2F_Text_PayBugKillingMax:
+	.string "WOW!!\p"
+	.string "You really killed a TON of\n" 
+	.string "BUG POKéMON!!\p"
+	.string "Look, I have a lot of money, and I'm\n"
+	.string "actually SO grateful…\p"
+	.string "But the most I can give you is\n"
+	.string "¥75,000.$"
+
+OldaleTown_PokemonCenter_2F_Text_SucceededBugKilling:
+	.string "Oh! You really killed some BUG\n"
+	.string "POKéMON for me?\p"
+	.string "Thank you so much!!\l"
+	.string "But I guess you were really just\n"
+	.string "after the reward I promised, right?$"
+
+OldaleTown_PokemonCenter_2F_Text_ContinueBugKilling:
+	.string "I'll pay you ¥40 for every wild BUG you\n"
+	.string "kill on ROUTE 101, 102, or 103!\p"
+	.string "Please help!$"
+
+OldaleTown_PokemonCenter_2F_Text_StartBugKilling:
+	.string "I can't stand all the BUG POKéMON\n"
+	.string "out here in the country!\p"
+	.string "Are you just starting out traveling?\l"
+	.string "Tell you what- I'll give you ¥40 for\n"
+	.string "each wild BUG you kill around here.\p"
+	.string "That way you'll have a little more\n"
+	.string "for supplies, and hopefully I'll see\l"
+	.string "less of these awful BUGS!$"
+
 `
