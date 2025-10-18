@@ -1391,13 +1391,11 @@ LittlerootTown_ProfessorBirchsLab_EventScript_BlockBasementAccess::
 # 693 "data//maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
 	hidefollower
 # 694 "data//maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
-	applymovement LOCALID_PLAYER, Common_Movement_FaceDown
-# 695 "data//maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
-	waitmovement 0
-# 696 "data//maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
-	delay 5
-# 697 "data//maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
 	msgbox LittlerootTown_ProfessorBirchsLab_EventScript_BlockBasementAccess_Text_0, MSGBOX_DEFAULT
+# 696 "data//maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
+	waitmovement 0
+# 697 "data//maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
+	delay 5
 # 698 "data//maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
 	closemessage
 # 699 "data//maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
@@ -2101,6 +2099,6 @@ LittlerootTown_ProfessorBirchsLab_EventScript_Aide2_Text_5:
 	.string "him to really pick up the pace!$"
 
 LittlerootTown_ProfessorBirchsLab_EventScript_BlockBasementAccess_Text_0:
-# 697 "data//maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
+# 694 "data//maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
 	.string "You shouldn't go down there without\n"
 	.string "permission…$"
