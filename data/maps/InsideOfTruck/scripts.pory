@@ -137,7 +137,7 @@ script InsideOfTruck_EventScript_Starterball{
 			copyvar(VAR_TEMP_6, VAR_RESULT)
 		}
 		randompercentage(25)
-		givemon(VAR_STARTER_MON, 5, item=ITEM_NONE, ball=ITEM_LUXURY_BALL, hpIv=VAR_TEMP_1, atkIv=VAR_TEMP_2, defIv=VAR_TEMP_3, speedIv=VAR_TEMP_4, spAtkIv=VAR_TEMP_5, spDefIv=VAR_TEMP_6, isShiny=VAR_RESULT)
+		givemon(VAR_STARTER_MON, 5, item=ITEM_NONE, ball=ITEM_LUXURY_BALL, hpIv=VAR_TEMP_1, atkIv=VAR_TEMP_2, defIv=VAR_TEMP_3, speedIv=VAR_TEMP_4, spAtkIv=VAR_TEMP_5, spDefIv=VAR_TEMP_6, shinyMode=VAR_RESULT)
 		if(var(VAR_RESULT) == MON_GIVEN_TO_PARTY){
 			playfanfare(MUS_OBTAIN_ITEM)
 			msgbox("Wouldn't want to leave it behind!")

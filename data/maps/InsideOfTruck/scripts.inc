@@ -242,7 +242,7 @@ InsideOfTruck_EventScript_Starterball_25:
 # 139 "data//maps/InsideOfTruck/scripts.pory"
 	randompercentage 25
 # 140 "data//maps/InsideOfTruck/scripts.pory"
-	givemon VAR_STARTER_MON, 5, item = ITEM_NONE, ball = ITEM_LUXURY_BALL, hpIv = VAR_TEMP_1, atkIv = VAR_TEMP_2, defIv = VAR_TEMP_3, speedIv = VAR_TEMP_4, spAtkIv = VAR_TEMP_5, spDefIv = VAR_TEMP_6, isShiny = VAR_RESULT
+	givemon VAR_STARTER_MON, 5, item = ITEM_NONE, ball = ITEM_LUXURY_BALL, hpIv = VAR_TEMP_1, atkIv = VAR_TEMP_2, defIv = VAR_TEMP_3, speedIv = VAR_TEMP_4, spAtkIv = VAR_TEMP_5, spDefIv = VAR_TEMP_6, shinyMode = VAR_RESULT
 # 141 "data//maps/InsideOfTruck/scripts.pory"
 	compare VAR_RESULT, MON_GIVEN_TO_PARTY
 	goto_if_eq InsideOfTruck_EventScript_Starterball_30

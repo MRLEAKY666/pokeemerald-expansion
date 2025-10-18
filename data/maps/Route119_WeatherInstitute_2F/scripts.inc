@@ -171,7 +171,7 @@ Route119_WeatherInstitute_2F_EventScript_ReceiveCastform::
 # 86 "data//maps/Route119_WeatherInstitute_2F/scripts.pory"
 	randompercentage 25
 # 87 "data//maps/Route119_WeatherInstitute_2F/scripts.pory"
-	givemon SPECIES_CASTFORM_NORMAL, 25, ITEM_MYSTIC_WATER, isShiny=VAR_RESULT
+	givemon SPECIES_CASTFORM_NORMAL, 25, ITEM_MYSTIC_WATER, shinyMode=VAR_RESULT
 # 88 "data//maps/Route119_WeatherInstitute_2F/scripts.pory"
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, Route119_WeatherInstitute_2F_EventScript_ReceiveCastformParty
 # 89 "data//maps/Route119_WeatherInstitute_2F/scripts.pory"

@@ -293,7 +293,7 @@ RustboroCity_DevonCorp_2F_EventScript_ReceiveLileep::
 # 147 "data//maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	randompercentage 25
 # 148 "data//maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	givemon SPECIES_LILEEP, 20, isShiny=VAR_RESULT
+	givemon SPECIES_LILEEP, 20, shinyMode=VAR_RESULT
 # 149 "data//maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, RustboroCity_DevonCorp_2F_EventScript_ReceiveLileepParty
 # 150 "data//maps/RustboroCity_DevonCorp_2F/scripts.pory"
@@ -385,7 +385,7 @@ RustboroCity_DevonCorp_2F_EventScript_ReceiveAnorith::
 # 193 "data//maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	randompercentage 25
 # 194 "data//maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	givemon SPECIES_ANORITH, 20, isShiny=VAR_RESULT
+	givemon SPECIES_ANORITH, 20, shinyMode=VAR_RESULT
 # 195 "data//maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, RustboroCity_DevonCorp_2F_EventScript_ReceiveAnorithParty
 # 196 "data//maps/RustboroCity_DevonCorp_2F/scripts.pory"

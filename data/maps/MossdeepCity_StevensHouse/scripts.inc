@@ -173,7 +173,7 @@ MossdeepCity_StevensHouse_EventScript_GiveBeldum::
 # 87 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
 	randompercentage 25
 # 88 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
-	givemon SPECIES_BELDUM, 5, item=ITEM_MEGA_RING, ball=ITEM_HEAVY_BALL, isShiny=VAR_RESULT 
+	givemon SPECIES_BELDUM, 5, item=ITEM_MEGA_RING, ball=ITEM_HEAVY_BALL, shinyMode=VAR_RESULT 
 # 89 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, MossdeepCity_StevensHouse_EventScript_SendBeldumParty
 # 90 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
