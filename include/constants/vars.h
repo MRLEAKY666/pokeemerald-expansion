@@ -148,7 +148,7 @@
 #define VAR_DERBY_VAR_RACER_6                               0x407A // 
 #define VAR_ROUTE128_STATE                               0x407B
 #define VAR_FLIP_VAR_LEVEL                               0x407C // 
-#define VAR_ROUTE130_STATE                               0x407D // Unused Var
+#define VAR_BIRCH_AIDE2_BALLS                               0x407D // previously Unused Var
 #define VAR_ROOT_CELLAR_SHELF_1                               0x407E // previously Unused Var
 #define VAR_ROOT_CELLAR_SHELF_2                               0x407F // previously Unused Var
 #define VAR_ROOT_CELLAR_SHELF_3                               0x4080 // previously Unused Var

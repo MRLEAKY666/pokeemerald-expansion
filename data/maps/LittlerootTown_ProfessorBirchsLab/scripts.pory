@@ -654,7 +654,40 @@ LittlerootTown_ProfessorBirchsLab_EventScript_ScottAboardSSTidalCall::
 	clearflag FLAG_SCOTT_CALL_BATTLE_FRONTIER
 	releaseall
 	end
+
 `
+
+script LittlerootTown_ProfessorBirchsLab_EventScript_Aide2 {
+	lock
+	faceplayer
+	if (var(VAR_BIRCH_LAB_STATE) >= 5 && !flag(FLAG_BADGE01_GET)){
+		if (var(VAR_BIRCH_AIDE2_BALLS) == 0){
+			msgbox(format("So the PROFESSOR gave you a POKéDEX?\pIt can be hard to get started collecting POKéDEX data when you're a new TRAINER.\pLet me do you a favor to help.\pFor every new POKéMON you catch,\nI'll give you a PREMIER BALL.\pThat should make it a bit easier to practice catching…\pand PREMIER BALLS will really impress the other TRAINERS you meet!"), MSGBOX_DEFAULT)
+			setvar(VAR_BIRCH_AIDE2_BALLS, 1)
+		}
+		elif (var(VAR_BIRCH_AIDE2_BALLS) == 1){
+			msgbox(format("What?\nYou haven't caught any new POKéMON?\pGet out there and learn something!\nThere's a PREMIER BALL with your name on it for each new catch!"), MSGBOX_DEFAULT)
+		}
+		else {
+			//put stuff here to count caught mons since previous reward and give PREMIER BALLS
+			addvar(VAR_BIRCH_AIDE2_BALLS, -1)
+			buffernumberstring(STR_VAR_1, VAR_BIRCH_AIDE2_BALLS)
+			msgbox(format("So you've caught {STR_VAR_1} since the last time we spoke?\pThen here's your reward!"), MSGBOX_DEFAULT)
+			giveitem(ITEM_PREMIER_BALL, VAR_BIRCH_AIDE2_BALLS)
+			msgbox(format("Now that your POKéBALLS pocket is topped off you should have no trouble getting back out there to catch more POKéMON!"), MSGBOX_DEFAULT)
+			setvar(VAR_BIRCH_AIDE2_BALLS, 1)
+		}
+	}
+	elif (var(VAR_BIRCH_LAB_STATE) >= 5 && flag(FLAG_BADGE01_GET) && !flag(FLAG_BADGE02_GET)){
+		msgbox(format("Let's see how you're doing…\p… … … …\pAh!\nYou've gotten your first GYM BADGE!\pThat means you're a real TRAINER now!\pAs such, I can't be giving you handouts anymore.\lA TRAINER knows how to fend for theirself!\pBut don't worry, the more competent you become at navigating the wilderness,\lthe better you will become at field research too!"), MSGBOX_DEFAULT)
+	}
+	else {
+		msgbox(format("The PROFESSOR has been collecting data on POKéMON his whole life,\pbut once our lab partnered with DEVON CORP, access to modern research tools and international data sharing allowed him to really pick up the pace!"), MSGBOX_DEFAULT)
+	}
+	release
+	end
+}
+
 script LittlerootTown_ProfessorBirchsLab_EventScript_BlockBasementAccess {
 	lock
 	hidefollower
