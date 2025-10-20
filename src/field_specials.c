@@ -2040,20 +2040,20 @@ void BufferVarsForIVRater(void)
 
     gSpecialVar_0x8005 = 0;
 
-    for (i = 0; i < NUM_STATS; i++)
+    for (i = 0; i < NUM_STATS; i++) // totals IVs
         gSpecialVar_0x8005 += ivStorage[i];
 
-    gSpecialVar_0x8006 = 0;
-    gSpecialVar_0x8007 = ivStorage[STAT_HP];
+    gSpecialVar_0x8006 = 0; // resets stat ID to HP
+    gSpecialVar_0x8007 = ivStorage[STAT_HP]; // resets IV value to HP's
 
     for (i = 1; i < NUM_STATS; i++)
     {
-        if (ivStorage[gSpecialVar_0x8006] < ivStorage[i])
+        if (ivStorage[gSpecialVar_0x8006] < ivStorage[i]) // if the value of the stat assigned t the variable is less than the currently evaluated stat
         {
             gSpecialVar_0x8006 = i;
             gSpecialVar_0x8007 = ivStorage[i];
         }
-        else if (ivStorage[gSpecialVar_0x8006] == ivStorage[i])
+        else if (ivStorage[gSpecialVar_0x8006] == ivStorage[i]) // if the stats being compared have equal IVs
         {
             u16 randomNumber = Random();
             if (randomNumber & 1)
@@ -2061,8 +2061,20 @@ void BufferVarsForIVRater(void)
                 gSpecialVar_0x8006 = i;
                 gSpecialVar_0x8007 = ivStorage[i];
             }
+
+            // ADD SOMETHING HERE TO ADD TIED MAX STATS TO A LIST
+
         }
     }
+
+    for (i = 1; i < NUM_STATS; i++)
+    {
+        if (ivStorage[i] == 0)
+        {
+            // ADD SOMETHING HERE TO ADD 0 IV STATS TO LIST
+        }
+    }
+
 }
 
 bool8 UsedPokemonCenterWarp(void)

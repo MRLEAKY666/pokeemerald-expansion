@@ -112,10 +112,10 @@
 #define VAR_COIN_CASE_QUEST                        0x4056 // 
 #define VAR_PETALBURG_CITY_STATE                         0x4057
 #define VAR_SLATEPORT_CITY_STATE                         0x4058
-#define VAR_MAUVILLE_CITY_STATE                          0x4059 // Unused Var
+#define VAR_BIKE_QUEST_STATE                          0x4059 // previouslu Unused Var
 #define VAR_RUSTBORO_CITY_STATE                          0x405A
-#define VAR_FORTREE_CITY_STATE                           0x405B // Unused Var
-#define VAR_LILYCOVE_CITY_STATE                          0x405C // Unused Var
+#define VAR_BIKE_DELIVERY_COUNTER                           0x405B // previously Unused Var
+#define VAR_RYDEL_DEBT                          0x405C // Unused Var
 #define VAR_MOSSDEEP_CITY_STATE                          0x405D
 #define VAR_SOOTOPOLIS_CITY_STATE                        0x405E
 #define VAR_EVER_GRANDE_CITY_STATE                       0x405F // Unused Var
@@ -270,7 +270,7 @@
 #define VAR_ROXANNE_CALL_STEP_COUNTER                    0x40F4
 #define VAR_SCOTT_BF_CALL_STEP_COUNTER                   0x40F5
 #define VAR_RIVAL_RAYQUAZA_CALL_STEP_COUNTER             0x40F6
-#define VAR_BIRCH_METEORITE_CALL_STEP_COUNTER                                0x40F7 // Unused Var
+#define VAR_BIRCH_METEORITE_CALL_STEP_COUNTER                                0x40F7 // previosuly Unused Var
 #define VAR_ARTICUNO_INDEX                                0x40F8 // PREVIOUSLY Unused Var
 #define VAR_MOLTRES_INDEX                               0x40F9 // PREVIOUSLY Unused Var
 #define VAR_BEAST_SPECIES                                0x40FA // PREVIOUSLY Unused Var

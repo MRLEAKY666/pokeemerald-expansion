@@ -97,7 +97,7 @@ BattleFrontier_Lounge1_EventScript_ShowEggToBreeder::
 # 49 "data//maps/BattleFrontier_Lounge1/scripts.pory"
 
 # 50 "data//maps/BattleFrontier_Lounge1/scripts.pory"
-@ Comment on the highest IV stat
+@ Comment on the highest IV stat, START HERE TO ADD TIED STAT LIST
 # 51 "data//maps/BattleFrontier_Lounge1/scripts.pory"
 BattleFrontier_Lounge1_EventScript_HighestIVStat::
 # 52 "data//maps/BattleFrontier_Lounge1/scripts.pory"

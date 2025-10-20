@@ -47,7 +47,7 @@ BattleFrontier_Lounge1_EventScript_ShowEggToBreeder::
 	goto BattleFrontier_Lounge1_EventScript_ChooseMonToShowBreeder
 	end
 
-@ Comment on the highest IV stat
+@ Comment on the highest IV stat, START HERE TO ADD TIED STAT LIST
 BattleFrontier_Lounge1_EventScript_HighestIVStat::
 	goto_if_eq VAR_0x8006, STAT_HP, BattleFrontier_Lounge1_EventScript_HighestIVHP
 	goto_if_eq VAR_0x8006, STAT_ATK, BattleFrontier_Lounge1_EventScript_HighestIVAtk

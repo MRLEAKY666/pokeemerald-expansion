@@ -641,6 +641,7 @@ EventScript_AfterWhiteOutMomHeal::
 
 EventScript_RanFromTrainer::
 	msgbox gText_BeCarefulChallenging
+	fadedefaultbgm
 	goto Common_EventScript_PkmnCenterNurseTrainerRan
 	end
 
