@@ -2376,6 +2376,17 @@ bool8 ScrCmd_checkmoney(struct ScriptContext *ctx)
     return FALSE;
 }
 
+void ScrCmd_payoffrydeldebt(void)
+{
+    u32 debt = VarGet(VAR_RYDEL_DEBT) * 1000;
+    gSpecialVar_Result = IsEnoughMoney(&gSaveBlock1Ptr->money, debt);
+    if (gSpecialVar_Result == TRUE)
+    {
+        RemoveMoney(&gSaveBlock1Ptr->money, debt);
+        VarSet(VAR_RYDEL_DEBT, 0);
+    }
+}
+
 bool8 ScrCmd_showmoneybox(struct ScriptContext *ctx)
 {
     u8 x = ScriptReadByte(ctx);

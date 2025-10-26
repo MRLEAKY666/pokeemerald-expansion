@@ -281,3 +281,11 @@ void RestockBerryMasterCellar(void)
         VarSet(VAR_ROOT_CELLAR_SHELF_4, (VarGet(VAR_ROOT_CELLAR_SHELF_4) - CoinFlip));
     }
 }
+
+void CountBikeDeliveryDays(void)
+{
+    if (VarGet(VAR_BIKE_QUEST_STATE) == 1)
+    {
+    VarSet(VAR_BIKE_DELIVERY_COUNTER, VarGet(VAR_BIKE_DELIVERY_COUNTER) + 1);
+    }
+}

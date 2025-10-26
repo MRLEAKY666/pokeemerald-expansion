@@ -58,6 +58,7 @@ static void UpdatePerDay(struct Time *localTime)
         ResetRandomItem();
         ResetWildOverworldMons();
         RestockBerryMasterCellar();
+        CountBikeDeliveryDays();
         *days = localTime->days;
     }
 }

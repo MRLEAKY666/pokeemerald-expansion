@@ -457,7 +457,7 @@ MauvilleCity_House1_Text_FlashGuy1:
 # 229 "data//maps/MauvilleCity_House1/scripts.pory"
 	.string "But the truth is, I've gotten tired\n"
 # 230 "data//maps/MauvilleCity_House1/scripts.pory"
-	.string "Of living here, near the bright lights.\p"
+	.string "of living here, near the bright lights.\p"
 # 231 "data//maps/MauvilleCity_House1/scripts.pory"
 	.string "At this point, I wouldn't mind moving\n"
 # 232 "data//maps/MauvilleCity_House1/scripts.pory"

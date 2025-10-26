@@ -227,7 +227,7 @@ MauvilleCity_House1_Text_FlashGuy1:
 	.string "The kind of guy who favors modern\n"
 	.string "comforts…\p"
 	.string "But the truth is, I've gotten tired\n"
-	.string "Of living here, near the bright lights.\p"
+	.string "of living here, near the bright lights.\p"
 	.string "At this point, I wouldn't mind moving\n"
 	.string "somewhere slower.\p"
 	.string "Somewhere quieter, where at night it\n"

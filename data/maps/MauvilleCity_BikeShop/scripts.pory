@@ -5,13 +5,310 @@ MauvilleCity_BikeShop_MapScripts::
 MauvilleCity_BikeShop_EventScript_Rydel::
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_BIKE, MauvilleCity_BikeShop_EventScript_AskSwitchBikes
+	goto_if_eq VAR_BIKE_QUEST_STATE, 1, MauvilleCity_BikeShop_EventScript_HurryAndDeliver
+	goto_if_eq VAR_BIKE_QUEST_STATE, 2, MauvilleCity_BikeShop_EventScript_FinishedDelivering
+	@ goto_if_set FLAG_RECEIVED_BIKE, MauvilleCity_BikeShop_EventScript_AskSwitchBikes
+	goto_if_eq VAR_BIKE_QUEST_STATE, 3, MauvilleCity_BikeShop_EventScript_BikeShopMenu
+	goto_if_eq VAR_BIKE_QUEST_STATE, 4, MauvilleCity_BikeShop_EventScript_BikeQuestComplete
 	goto_if_set FLAG_DECLINED_BIKE, MauvilleCity_BikeShop_EventScript_SkipGreeting
 	msgbox MauvilleCity_BikeShop_Text_RydelGreeting, MSGBOX_DEFAULT
 	msgbox MauvilleCity_BikeShop_Text_DidYouComeFromFarAway, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, MauvilleCity_BikeShop_EventScript_YesFar
 	goto_if_eq VAR_RESULT, NO, MauvilleCity_BikeShop_EventScript_NotFar
 	end
+
+MauvilleCity_BikeShop_EventScript_HurryAndDeliver::
+	msgbox MauvilleCity_BikeShop_Text_HurryAndDeliver, MSGBOX_DEFAULT
+	release
+	end
+
+`
+script MauvilleCity_BikeShop_EventScript_BikeQuestComplete{
+	msgbox(format("RYDEL: Ah, my number one customer is back!\pUnfortunately, you already own both the ACRO BIKE and the MACH BIKE…\pThat's everything I sell here!\pBut please keep spreading the word about RYDEL'S CYCLES wherever you go!"))
+	release
+	end
+}
+
+script MauvilleCity_BikeShop_EventScript_FinishedDelivering{
+	msgbox(MauvilleCity_BikeShop_Text_FinishedDelivering, MSGBOX_DEFAULT)
+	if (var(VAR_BIKE_DELIVERY_COUNTER) == 0){
+		msgbox(format("And you did it in less than a day!\nThat's fantastic!\pAs promised, I'll thank you with your very own BIKE."), MSGBOX_DEFAULT)
+		giveitem(ITEM_MACH_BIKE)
+		msgbox(format("Yes, they are usually very expensive, but don't worry!\pThis will be good for both of us! You'll have a slick and fast new way to travel,\pand once people everywhere see how useful a BIKE can be, they'll need to order one!"), MSGBOX_DEFAULT)
+		closemessage
+		delay(20)
+		applymovement(LOCALID_RYDEL, Common_Movement_FaceAwayPlayer)
+		delay(60)
+		applymovement(LOCALID_RYDEL, Common_Movement_FacePlayer)
+		delay(20)
+		msgbox(format("In fact, since you've proven to be dependable, I'll help you out some more!\pKeep the MACH BIKE for now, but if you want to swap it for an ACRO BIKE later, just let me know.\pOnce you realize you need them both, I'll sell you the one you're missing!"), MSGBOX_DEFAULT)
+	} 
+	elif (var(VAR_BIKE_DELIVERY_COUNTER) == 1){
+		msgbox(format("And it only took a day!\pAs promised, I'll thank you with your very own BIKE."), MSGBOX_DEFAULT)
+		giveitem(ITEM_MACH_BIKE)
+		msgbox(format("Yes, they are usually very expensive, but don't worry!\pThis will be good for both of us! You'll have a slick and fast new way to travel,\pand once people everywhere see how useful a MACH BIKE can be, they'll need to order one!"), MSGBOX_DEFAULT)
+		closemessage
+		delay(40)
+		msgbox(format("And by the way…\pIf you ever decide you can't live without an ACRO BIKE too, you know where to find me.\pHaving both models can be really convenient!"), MSGBOX_DEFAULT)
+	} 
+	elif (var(VAR_BIKE_DELIVERY_COUNTER) == 2){
+		msgbox(format("Well it did take a while…\nBut you took care of it.\pAs promised, I'll thank you with your very own BIKE."), MSGBOX_DEFAULT)
+		giveitem(ITEM_MACH_BIKE)
+		msgbox(format("Unfortunately, I have a pretty strict reputation to uphold, so I can't tolerate slow deliveries.\pI'm going to have to put a bit of money on your tab here, so make sure you're ready to pay it all off before you think about buying an ACRO BIKE."), MSGBOX_DEFAULT)
+		setvar(VAR_RYDEL_DEBT, 50)
+	} 
+	elif (var(VAR_BIKE_DELIVERY_COUNTER) == 3){
+		msgbox(format("But you really took your time.\pI gave you my word though,\nso I still owe you a BIKE."), MSGBOX_DEFAULT)
+		giveitem(ITEM_MACH_BIKE)
+		msgbox(format("I really can't tolerate slow deliveries, so I'm going to have to charge your tab for the losses.\pMake sure you're ready to pay it all off before you even think about buying an ACRO BIKE."), MSGBOX_DEFAULT)
+		setvar(VAR_RYDEL_DEBT, 100)
+	} 
+	elif (var(VAR_BIKE_DELIVERY_COUNTER) == 4){
+		msgbox(format("You took so long, I thought I'd never see you again.\pBut I gave you my word,\nso I'll thank you with a BIKE."), MSGBOX_DEFAULT)
+		giveitem(ITEM_MACH_BIKE)
+		msgbox(format("Outright bad service like this is extremely damaging to my reputation,\pso I'm going to have to charge your tab for the losses.\pMake sure you're ready to pay it all off before you even think about buying an ACRO BIKE."), MSGBOX_DEFAULT)
+		setvar(VAR_RYDEL_DEBT, 250)
+	} 
+	else {
+		msgbox(format("But you took forever!\pMy customer wrote me multiple times by MAIL to complain.\pHow did I receive multiple deliveries from the customer before you managed to make one short trip over there??\pYou're lucky I'm such a great guy,\nYou really don't deserve this."), MSGBOX_DEFAULT)
+		giveitem(ITEM_MACH_BIKE)
+		msgbox(format("I can't believe you even bothered showing up around here after pulling a stunt like that.\pI'm going to have to tack a pretty hefty bill onto your tab for the reputational damage.\pBy now I bet the whole western half of HOENN is gossipping about that sketchy bike shop, RYDEL'S CYCLES in\lMAUVILLE CITY.\pGood grief…"), MSGBOX_DEFAULT)
+		setvar(VAR_RYDEL_DEBT, 500)
+	}
+	setflag(FLAG_WHICH_BIKE)
+	setvar(VAR_BIKE_QUEST_STATE, 3)
+	release
+	end
+}
+
+script MauvilleCity_BikeShop_EventScript_BikeShopMenu{
+	bufferitemname(STR_VAR_3, ITEM_ACRO_BIKE)
+	if (var(VAR_BIKE_DELIVERY_COUNTER) == 0){
+		msgbox(format("Welcome back! Are you here to swap BIKES, or are you thinking of buying?"), MSGBOX_DEFAULT)
+		if (flag(FLAG_WHICH_BIKE)){
+			bufferitemname(STR_VAR_3, ITEM_ACRO_BIKE)
+		}
+		else{
+			bufferitemname(STR_VAR_3, ITEM_MACH_BIKE)
+		}
+		dynmultipush("Swap for {STR_VAR_3}", 0)
+		dynmultipush("Buy {STR_VAR_3}", 1)
+		dynmultipush("Exit", 3)
+	} 
+	elif (var(VAR_BIKE_DELIVERY_COUNTER) == 1 || var(VAR_RYDEL_DEBT) == 0){
+		msgbox(format("RYDEL: Welcome back! Are you thinking of buying an ACRO BIKE?"), MSGBOX_DEFAULT)
+		dynmultipush("Buy ACRO BIKE", 1)
+		dynmultipush("Exit", 3)
+	} 
+	elif (var(VAR_BIKE_DELIVERY_COUNTER) == 2 || var(VAR_RYDEL_DEBT) < 100){
+		msgbox(format("RYDEL: Ah, you're back! The MACH BIKE must be holding up well, and yet you can't stop thinking about my excellent ACRO BIKE…\pIs that it?"), MSGBOX_DEFAULT)
+		dynmultipush("Buy ACRO BIKE", 1)
+		dynmultipush("Pay debt", 2)
+		dynmultipush("Exit", 3)
+	} 
+	elif (var(VAR_BIKE_DELIVERY_COUNTER) == 3 || var(VAR_RYDEL_DEBT) < 250){
+		msgbox(format("RYDEL: You again!\lyou must not have been able to forget how impressive the ACRO BIKE was…\pIs that it?"), MSGBOX_DEFAULT)
+		dynmultipush("Buy ACRO BIKE", 1)
+		dynmultipush("Pay debt", 2)
+		dynmultipush("Exit", 3)
+	} 
+	elif (var(VAR_BIKE_DELIVERY_COUNTER) == 4 || var(VAR_RYDEL_DEBT) < 500){
+		msgbox(format("RYDEL: Wow, you came back?\pI guess the ACRO BIKE really made an impression on you…\pIs that it?"), MSGBOX_DEFAULT)
+		dynmultipush("Buy ACRO BIKE", 1)
+		dynmultipush("Pay debt", 2)
+		dynmultipush("Exit", 3)
+	} 
+	else {
+		msgbox(format("RYDEL: … … … … … …\pYou came back in here?\pI guess you're really curious about the ACRO BIKE…\pIs that it?\pWell don't forget, you've got a massive tab to pay down before I'll sell you an ACRO BIKE…"), MSGBOX_DEFAULT)
+		dynmultipush("Buy ACRO BIKE", 1)
+		dynmultipush("Pay debt", 2)
+		dynmultipush("Exit", 3)
+	}
+	msgbox(format("What brings you to RYDEL'S CYCLES today?"), MSGBOX_DEFAULT)
+	dynmultistack(15, 0, FALSE, 3, TRUE, 0, DYN_MULTICHOICE_CB_NONE)
+	switch (var(VAR_RESULT)){
+		case 0:
+			msgbox(MauvilleCity_BikeShop_Text_WantToSwitchBikes, MSGBOX_YESNO)
+			if (var(VAR_RESULT) == YES){
+				goto(MauvilleCity_BikeShop_EventScript_SwitchBikes)
+			} 
+			else{
+				goto(MauvilleCity_BikeShop_EventScript_KeepBike)
+			}
+		case 1:
+			msgbox(format("So you want to buy one of my renowned {STR_VAR_3}s?"))
+			if (var(VAR_BIKE_DELIVERY_COUNTER) <= 1 || var(VAR_RYDEL_DEBT) == 0){
+				showmoneybox(0, 0)
+				msgbox(format("Well I hope you can afford it!\nThe {STR_VAR_3} costs ¥1,000,000.\lSo… Are you in?"), MSGBOX_YESNO)
+				if (var(VAR_RESULT) == YES){
+					checkmoney(1000000)
+					if (var(VAR_RESULT) == TRUE){
+						removemoney(1000000)
+						if (flag(FLAG_WHICH_BIKE)){
+							setvar(VAR_TEMP_1, ITEM_ACRO_BIKE)
+						}
+						else{
+							setvar(VAR_TEMP_1, ITEM_MACH_BIKE)
+						}
+						updatemoneybox
+						playse(SE_SHOP)
+						waitse
+						msgbox(format("WOW!\pThank you very much!\pAnd here is your brand new {STR_VAR_3}!"))
+						giveitem(VAR_TEMP_1)
+						msgbox(format("To be such a successful TRAINER…\pYou must travel all over the place!\pWhen you're out on the road,\nmake sure to tell everyone all over HOENN about RYDEL'S CYCLES!!"))
+						setvar(VAR_BIKE_QUEST_STATE, 4)
+					}
+					else {
+						msgbox(format("Hey!\nThis isn't a joke!\pI know it seems like a lot, but these BIKES are really incredible!\pIf you really want one, just come back when you have the cash."))
+						hidemoneybox
+					}
+				}
+				else {
+					msgbox(format("I know it seems like a lot, but these BIKES are really incredible!\pIf you really want one, just come back when you have the cash."))
+					hidemoneybox
+				}
+			}
+			else {
+				msgbox(format("You haven't even paid off what you owe me for screwing up that delivery!\pPay off your balance here first, then we can talk about an ACRO BIKE."))
+			}
+		case 2:
+			msgbox(format("Ah, you've come to pay me back for that botched delivery!\pThat's great, I really respect that."), MSGBOX_DEFAULT)
+			goto(MauvilleCity_BikeShop_EventScript_PayDebtMenu)
+		case 3:
+
+	}
+	release
+	end
+}
+
+script MauvilleCity_BikeShop_EventScript_PayDebtMenu{
+	buffernumberstring(STR_VAR_2, VAR_RYDEL_DEBT)
+	if (!flag(FLAG_TEMP_1)){
+		showmoneybox(0, 0)
+		if (var(VAR_RYDEL_DEBT) <= 1){
+			msgbox(format("Let's see here, it looks like you still owe me ¥{STR_VAR_2},000…\pAre you finally ready to finish\npaying off this debt?"), MSGBOX_DEFAULT) 
+		}
+		else{
+			msgbox(format("Let's see here, it looks like you still owe me ¥{STR_VAR_2},000…\pSo do you want to pay the rest all at once,\por will it just be a partial payment today?"), MSGBOX_DEFAULT) 
+		}
+		setflag(FLAG_TEMP_1)
+	}
+	else{
+		msgbox(format("So how much did you want to pay off today?"), MSGBOX_DEFAULT)
+	}
+	dynmultipush("Pay completely", 5)
+	dynmultipush("Exit", 6)
+	if (var(VAR_RYDEL_DEBT) <= 1){
+		// don't add any options to the list if only ¥1,000 left to pay
+	}
+	elif (var(VAR_RYDEL_DEBT) <= 10){
+		dynmultipush("Pay ¥1,000", 0)
+		//dynmultipush("Pay completely", 5)
+	}
+	elif (var(VAR_RYDEL_DEBT) <= 100){
+		dynmultipush("Pay ¥1,000", 0)
+		dynmultipush("Pay ¥10,000", 1)
+		//dynmultipush("Pay completely", 5)
+	}
+	else {
+		dynmultipush("Pay ¥1,000", 0)
+		dynmultipush("Pay ¥10,000", 1)
+		dynmultipush("Pay ¥100,000", 2)
+		//dynmultipush("Pay completely", 5)
+	}
+	dynmultistack(15, 0, FALSE, 5, TRUE, 7, DYN_MULTICHOICE_CB_NONE)
+	switch (var(VAR_RESULT)){
+		case 0:
+			msgbox(format("You want to put ¥1,000 towards paying down your balance?"), MSGBOX_YESNO)
+			if (var(VAR_RESULT) == YES){
+				checkmoney(1000)
+				if (var(VAR_RESULT) == TRUE){
+					removemoney(1000)
+					addvar(VAR_RYDEL_DEBT, -1)
+					playse(SE_SHOP)
+					updatemoneybox
+					waitse
+					msgbox(format("Thanks!\nYou're not so bad after all!\pStop back by RYDEL'S CYCLES anytime!"), MSGBOX_DEFAULT)
+				}
+				else{
+					msgbox(format("You don't have enough money for that!"), MSGBOX_DEFAULT)
+					goto(MauvilleCity_BikeShop_EventScript_PayDebtMenu)
+				}
+			}
+			else{
+				goto(MauvilleCity_BikeShop_EventScript_PayDebtMenu)
+			}
+		case 1:
+			msgbox(format("You want to put ¥10,000 towards paying down your balance?"), MSGBOX_YESNO)
+			if (var(VAR_RESULT) == YES){
+				checkmoney(10000)
+				if (var(VAR_RESULT) == TRUE){
+					removemoney(10000)
+					addvar(VAR_RYDEL_DEBT, -10)
+					playse(SE_SHOP)
+					updatemoneybox
+					waitse
+					msgbox(format("Thanks!\nYou're not so bad after all!\pStop back by RYDEL'S CYCLES anytime!"), MSGBOX_DEFAULT)
+				}
+				else{
+					msgbox(format("You don't have enough money for that!"), MSGBOX_DEFAULT)
+					goto(MauvilleCity_BikeShop_EventScript_PayDebtMenu)
+				}
+			}
+			else{
+				goto(MauvilleCity_BikeShop_EventScript_PayDebtMenu)
+			}
+		case 2:
+			msgbox(format("You want to put ¥100,000 towards paying down your balance?"), MSGBOX_YESNO)
+			if (var(VAR_RESULT) == YES){
+				checkmoney(100000)
+				if (var(VAR_RESULT) == TRUE){
+					removemoney(100000)
+					addvar(VAR_RYDEL_DEBT, -100)
+					playse(SE_SHOP)
+					updatemoneybox
+					waitse
+					msgbox(format("Thanks!\nYou're not so bad after all!\pStop back by RYDEL'S CYCLES anytime!"), MSGBOX_DEFAULT)
+				}
+				else{
+					msgbox(format("You don't have enough money for that!"), MSGBOX_DEFAULT)
+					goto(MauvilleCity_BikeShop_EventScript_PayDebtMenu)
+				}
+			}
+			else{
+				goto(MauvilleCity_BikeShop_EventScript_PayDebtMenu)
+			}
+		case 5:
+			msgbox(format("You want to pay the rest of your balance all at once?"), MSGBOX_YESNO)
+			if (var(VAR_RESULT) == YES){
+				payoffrydeldebt // this one checks that you have enough money, and if so deducts remaining debt amount
+				if (var(VAR_RESULT) == TRUE){
+					playse(SE_SHOP)
+					updatemoneybox
+					waitse
+					setvar(VAR_RYDEL_DEBT, 0)
+					msgbox(format("Thanks!\nThat must feel like a weight off your back!\pStop back by RYDEL'S CYCLES anytime, I'd love to sell you an ACRO BIKE!"), MSGBOX_DEFAULT)
+				}
+				else{
+					msgbox(format("You don't have enough money for that!"), MSGBOX_DEFAULT)
+					goto(MauvilleCity_BikeShop_EventScript_PayDebtMenu)
+				}
+			}
+			else{
+				goto(MauvilleCity_BikeShop_EventScript_PayDebtMenu)
+			}
+		case 6:
+			msgbox(format("Come back when you're ready to pay off what you owe me!"), MSGBOX_DEFAULT)
+		case 127:
+			msgbox(format("Come back when you're ready to pay off what you owe me!"), MSGBOX_DEFAULT)
+	}
+	clearflag(FLAG_TEMP_1)
+	hidemoneybox
+	release
+	end
+}
+
+raw`
 
 MauvilleCity_BikeShop_EventScript_SkipGreeting::
 	msgbox MauvilleCity_BikeShop_Text_DidYouComeFromFarAway, MSGBOX_YESNO
@@ -28,6 +325,25 @@ MauvilleCity_BikeShop_EventScript_ChooseBike::
 	case 1, MauvilleCity_BikeShop_EventScript_GetAcroBike
 	end
 
+MauvilleCity_BikeShop_EventScript_ChooseBikeReplacement::
+	msgbox MauvilleCity_BikeShop_Text_BikeDelivery, MSGBOX_DEFAULT
+	msgbox MauvilleCity_BikeShop_Text_BikeDeliveryYesNo, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, MauvilleCity_BikeShop_EventScript_StartDeliveryQuest
+	msgbox MauvilleCity_BikeShop_Text_BikeDeliveryDeclined, MSGBOX_DEFAULT
+	giveitem ITEM_ACRO_BIKE
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	msgbox MauvilleCity_BikeShop_Text_DeliveryInstructions, MSGBOX_DEFAULT
+	release
+	end
+
+MauvilleCity_BikeShop_EventScript_StartDeliveryQuest::
+	msgbox MauvilleCity_BikeShop_Text_BikeDeliveryAccepted, MSGBOX_DEFAULT
+	giveitem ITEM_ACRO_BIKE
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	msgbox MauvilleCity_BikeShop_Text_DeliveryInstructions, MSGBOX_DEFAULT
+	release
+	end
+
 MauvilleCity_BikeShop_EventScript_NotFar::
 	setflag FLAG_DECLINED_BIKE
 	msgbox MauvilleCity_BikeShop_Text_GuessYouDontNeedBike, MSGBOX_DEFAULT
@@ -36,7 +352,8 @@ MauvilleCity_BikeShop_EventScript_NotFar::
 
 MauvilleCity_BikeShop_EventScript_YesFar::
 	setflag FLAG_RECEIVED_BIKE
-	goto MauvilleCity_BikeShop_EventScript_ChooseBike
+	setvar VAR_BIKE_QUEST_STATE, 1
+	goto MauvilleCity_BikeShop_EventScript_ChooseBikeReplacement
 	end
 
 MauvilleCity_BikeShop_EventScript_GetMachBike::
@@ -68,11 +385,8 @@ MauvilleCity_BikeShop_EventScript_AskSwitchBikes::
 @ If the player does not have a bike on them Rydel assumes its stored in the PC
 MauvilleCity_BikeShop_EventScript_SwitchBikes::
 	msgbox MauvilleCity_BikeShop_Text_IllSwitchBikes, MSGBOX_DEFAULT
-	checkitem ITEM_ACRO_BIKE
-	goto_if_eq VAR_RESULT, TRUE, MauvilleCity_BikeShop_EventScript_SwitchAcroForMach
-	checkitem ITEM_MACH_BIKE
-	goto_if_eq VAR_RESULT, TRUE, MauvilleCity_BikeShop_EventScript_SwitchMachForAcro
-	msgbox MauvilleCity_BikeShop_Text_OhYourBikeIsInPC, MSGBOX_DEFAULT
+	goto_if_unset FLAG_WHICH_BIKE, MauvilleCity_BikeShop_EventScript_SwitchAcroForMach
+	goto_if_set FLAG_WHICH_BIKE, MauvilleCity_BikeShop_EventScript_SwitchMachForAcro
 	release
 	end
 
@@ -83,17 +397,28 @@ MauvilleCity_BikeShop_EventScript_KeepBike::
 
 MauvilleCity_BikeShop_EventScript_SwitchAcroForMach::
 	incrementgamestat GAME_STAT_TRADED_BIKES
+	checkitem ITEM_ACRO_BIKE
+	goto_if_eq VAR_RESULT, FALSE, MauvilleCity_BikeShop_EventScript_OhYourBikeIsInPC
 	msgbox MauvilleCity_BikeShop_Text_ExchangedAcroForMach, MSGBOX_DEFAULT
 	removeitem ITEM_ACRO_BIKE
 	giveitem ITEM_MACH_BIKE
+	setflag FLAG_WHICH_BIKE 
 	goto MauvilleCity_BikeShop_EventScript_ComeBackToSwitchBikes
+	end
+
+MauvilleCity_BikeShop_EventScript_OhYourBikeIsInPC::
+	msgbox MauvilleCity_BikeShop_Text_OhYourBikeIsInPC, MSGBOX_DEFAULT
+	release
 	end
 
 MauvilleCity_BikeShop_EventScript_SwitchMachForAcro::
 	incrementgamestat GAME_STAT_TRADED_BIKES
+	checkitem ITEM_MACH_BIKE
+	goto_if_eq VAR_RESULT, FALSE, MauvilleCity_BikeShop_EventScript_OhYourBikeIsInPC
 	msgbox MauvilleCity_BikeShop_Text_ExchangedMachForAcro, MSGBOX_DEFAULT
 	removeitem ITEM_MACH_BIKE
 	giveitem ITEM_ACRO_BIKE
+	clearflag FLAG_WHICH_BIKE 
 	goto MauvilleCity_BikeShop_EventScript_ComeBackToSwitchBikes
 	end
 
@@ -177,6 +502,17 @@ MauvilleCity_BikeShop_EventScript_ExitAcroHandbook::
 	release
 	end
 
+MauvilleCity_BikeShop_Text_FinishedDelivering:
+	.string "RYDEL: So you delivered the BIKE!$"
+
+MauvilleCity_BikeShop_Text_HurryAndDeliver:
+	.string "RYDEL: Hurry up and deliver that\n"
+	.string "BIKE already!\p"
+	.string "My customer lives in VERDANTURF TOWN\n"
+	.string "in the easternmost house.\p"
+	.string "If I'd known you were going to take\n"
+	.string "THIS long, I wouldn't have asked!$"
+
 MauvilleCity_BikeShop_Text_RydelGreeting:
 	.string "Well, well, what have we here?\n"
 	.string "A most energetic customer!\p"
@@ -216,6 +552,39 @@ MauvilleCity_BikeShop_Text_ExplainBikesChooseWhichOne:
 	.string "I'm a real sweetheart, so you can\n"
 	.string "have whichever one you like!\p"
 	.string "Which one will you choose?$"
+
+MauvilleCity_BikeShop_Text_BikeDelivery:
+	.string "RYDEL: Hm, hm… … … … …\p"
+	.string "You're saying that you came all this\n"
+	.string "way from LITTLEROOT?\p"
+	.string "My goodness!\n"
+	.string "That's ridiculously far!\p"
+	.string "If you had one of my BIKES, you could\n"
+	.string "go anywhere easily while feeling the\l"
+	.string "gentle caress of the wind!\p"
+	.string "I'll tell you what!\l"
+	.string "If you deliver this ACRO BIKE to my\n"
+	.string "customer in VERDANTURF TOWN, I'll give\l"
+	.string "you a BIKE as well!$"
+
+MauvilleCity_BikeShop_Text_BikeDeliveryYesNo:
+	.string "How about it?$"
+
+MauvilleCity_BikeShop_Text_BikeDeliveryDeclined:
+	.string "Oh come on, my BIKES are so fast,\n"
+	.string "it will only take a second to ride\l"
+	.string "over to VERDANTURF!$"
+
+MauvilleCity_BikeShop_Text_BikeDeliveryAccepted:
+	.string "Great! My BIKES are so fast,\n"
+	.string "it will only take a second to ride over\l"
+	.string "to VERDANTURF!$"
+
+MauvilleCity_BikeShop_Text_DeliveryInstructions:
+	.string "The customer lives in VERDANTURF TOWN\n"
+	.string "in the easternmost house.\p"
+	.string "Let me know when it's been delivered,\n"
+	.string "I'll give you one for yourself!$"
 
 MauvilleCity_BikeShop_Text_ChoseMachBike:
 	.string "{PLAYER} chose the MACH BIKE.$"

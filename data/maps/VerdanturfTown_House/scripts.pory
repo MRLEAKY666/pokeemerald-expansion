@@ -3,11 +3,47 @@ VerdanturfTown_House_MapScripts::
 	.byte 0
 
 VerdanturfTown_House_EventScript_Woman1::
-	msgbox VerdanturfTown_House_Text_TrainersGatherAtPokemonLeague, MSGBOX_NPC
+	lock
+	faceplayer
+	goto_if_eq VAR_BIKE_QUEST_STATE, 1, VerdanturfTown_House_EventScript_Woman1BikeQuest
+	msgbox VerdanturfTown_House_Text_TrainersGatherAtPokemonLeague, MSGBOX_DEFAULT
+	waitmessage
+	applymovement LOCALID_VERDANTURF_HOUSE_WOMAN1, Common_Movement_FaceOriginalDirection
+	waitmovement
+	release
+	end
+
+VerdanturfTown_House_EventScript_Woman1BikeQuest::
+	msgbox VerdanturfTown_House_Text_BikeForMe, MSGBOX_DEFAULT
+	playfanfare MUS_OBTAIN_ITEM
+	message VerdanturfTown_House_Text_HandedOverBike
+	waitfanfare
+	removeitem ITEM_ACRO_BIKE
+	closemessage
+	delay 90
+	msgbox VerdanturfTown_House_Text_ThanksForBike, MSGBOX_DEFAULT
+	applymovement LOCALID_VERDANTURF_HOUSE_WOMAN1, Common_Movement_FaceOriginalDirection
+	waitmovement
+	setvar VAR_BIKE_QUEST_STATE, 2
+	release
 	end
 
 VerdanturfTown_House_EventScript_Woman2::
-	msgbox VerdanturfTown_House_Text_DefeatEliteFourInARow, MSGBOX_NPC
+	lock
+	faceplayer
+	goto_if_eq VAR_BIKE_QUEST_STATE, 1, VerdanturfTown_House_EventScript_Woman2BikeQuest
+	msgbox VerdanturfTown_House_Text_DefeatEliteFourInARow, MSGBOX_DEFAULT
+	waitmessage
+	applymovement LOCALID_VERDANTURF_HOUSE_WOMAN2, Common_Movement_FaceOriginalDirection
+	waitmovement
+	release
+	end
+
+VerdanturfTown_House_EventScript_Woman2BikeQuest::
+	msgbox VerdanturfTown_House_Text_Woman2BikeQuest, MSGBOX_DEFAULT
+	applymovement LOCALID_VERDANTURF_HOUSE_WOMAN2, Common_Movement_FaceOriginalDirection
+	waitmovement
+	release
 	end
 
 VerdanturfTown_House_Text_TrainersGatherAtPokemonLeague:
@@ -15,6 +51,23 @@ VerdanturfTown_House_Text_TrainersGatherAtPokemonLeague:
 	.string "is the POKéMON LEAGUE.\p"
 	.string "The TRAINERS who gather there are\n"
 	.string "all frighteningly well skilled.$"
+
+VerdanturfTown_House_Text_BikeForMe:
+	.string "Far away, deep in EVER GRA--\l"
+	.string "Huh? You're here to deliver my BIKE?\p"
+	.string "Thank you!$"
+
+VerdanturfTown_House_Text_HandedOverBike:
+	.string "{PLAYER} handed over the BIKE.$"
+
+VerdanturfTown_House_Text_ThanksForBike:
+	.string "…\p"
+	.string "Were you expecting a tip or something?$"
+
+VerdanturfTown_House_Text_Woman2BikeQuest:
+	.string "My sister ordered a BIKE from\n"
+	.string "MAUVILLE CITY…\p"
+	.string "I wonder when it will arrive…$"
 
 VerdanturfTown_House_Text_DefeatEliteFourInARow:
 	.string "In the POKéMON LEAGUE, I think the\n"

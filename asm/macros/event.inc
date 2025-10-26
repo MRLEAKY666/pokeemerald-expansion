@@ -1320,6 +1320,10 @@
 	.byte \disable
 	.endm
 
+	.macro payoffrydeldebt
+	callnative ScrCmd_payoffrydeldebt
+	.endm
+
 	@ Creates a window showing how much money the player has.
 	@ If 'disable' is set to anything but 0 then this command does nothing.
 	.macro showmoneybox x:req, y:req, disable=0
