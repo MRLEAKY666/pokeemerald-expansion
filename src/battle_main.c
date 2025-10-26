@@ -53,6 +53,7 @@
 #include "string_util.h"
 #include "strings.h"
 #include "task.h"
+#include "test/battle.h"
 #include "test_runner.h"
 #include "text.h"
 #include "trainer_pools.h"
@@ -77,6 +78,7 @@
 #include "cable_club.h"
 #include "field_weather.h" //added wiz1989
 #include "constants/weather.h" //added wiz1989
+#include "test/test_runner_battle.h"
 
 extern const struct BgTemplate gBattleBgTemplates[];
 extern const struct WindowTemplate *const gBattleWindowTemplates[];
@@ -571,10 +573,10 @@ static void CB2_InitBattleInternal(void)
     gReservedSpritePaletteCount = MAX_BATTLERS_COUNT;
     SetVBlankCallback(VBlankCB_Battle);
     SetUpBattleVarsAndBirchZigzagoon();
-
-    if (gBattleTypeFlags & BATTLE_TYPE_MULTI && gBattleTypeFlags & BATTLE_TYPE_BATTLE_TOWER)
-        SetMainCallback2(CB2_HandleStartMultiPartnerBattle);
-    else if (gBattleTypeFlags & BATTLE_TYPE_MULTI && gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
+    
+    if ((IsMultibattleTest() && gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
+    || (gBattleTypeFlags & BATTLE_TYPE_MULTI && gBattleTypeFlags & BATTLE_TYPE_BATTLE_TOWER)
+    || (gBattleTypeFlags & BATTLE_TYPE_MULTI && gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER))
         SetMainCallback2(CB2_HandleStartMultiPartnerBattle);
     else if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
         SetMainCallback2(CB2_HandleStartMultiBattle);
@@ -2018,7 +2020,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             }
             if (partyData[monIndex].isShiny)
             {
-                u32 data = TRUE;
+                bool32 data = TRUE;
                 SetMonData(&party[i], MON_DATA_IS_SHINY, &data);
             }
             if (partyData[monIndex].dynamaxLevel > 0)
@@ -3136,13 +3138,12 @@ static void BattleStartClearSetData(void)
     {
         gSideTimers[i].stickyWebBattlerId = 0xFF;
     }
-    gBattleStruct->appearedInBattle = 0;
     gBattleStruct->beatUpSlot = 0;
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
-        gBattleStruct->usedHeldItems[i][B_SIDE_PLAYER] = 0;
-        gBattleStruct->usedHeldItems[i][B_SIDE_OPPONENT] = 0;
+        gBattleStruct->partyState[B_SIDE_PLAYER][i].usedHeldItem = ITEM_NONE;
+        gBattleStruct->partyState[B_SIDE_OPPONENT][i].usedHeldItem = ITEM_NONE;
         gBattleStruct->itemLost[B_SIDE_PLAYER][i].originalItem = GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM);
         gBattleStruct->itemLost[B_SIDE_OPPONENT][i].originalItem = GetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM);
         gPartyCriticalHits[i] = 0;
@@ -3261,7 +3262,7 @@ void SwitchInClearSetData(u32 battler, struct Volatiles *volatilesCopy)
     gLastHitBy[battler] = 0xFF;
 
     gBattleStruct->lastTakenMove[battler] = 0;
-    gBattleStruct->sameMoveTurns[battler] = 0;
+    gBattleStruct->metronomeItemCounter[battler] = 0;
     gBattleStruct->lastTakenMoveFrom[battler][0] = 0;
     gBattleStruct->lastTakenMoveFrom[battler][1] = 0;
     gBattleStruct->lastTakenMoveFrom[battler][2] = 0;
@@ -3381,7 +3382,7 @@ const u8* FaintClearSetData(u32 battler)
     gLastHitBy[battler] = 0xFF;
 
     gBattleStruct->choicedMove[battler] = MOVE_NONE;
-    gBattleStruct->sameMoveTurns[battler] = 0;
+    gBattleStruct->metronomeItemCounter[battler] = 0;
     gBattleStruct->lastTakenMove[battler] = MOVE_NONE;
     gBattleStruct->lastTakenMoveFrom[battler][0] = 0;
     gBattleStruct->lastTakenMoveFrom[battler][1] = 0;
@@ -3985,14 +3986,6 @@ static void TryDoEventsBeforeFirstTurn(void)
         for (i = 0; i < BATTLE_COMMUNICATION_ENTRIES_COUNT; i++)
             gBattleCommunication[i] = 0;
 
-        for (i = 0; i < gBattlersCount; i++)
-        {
-            gBattleMons[i].volatiles.flinched = FALSE;
-            // Record party slots of player's mons that appeared in battle
-            if (!BattlerHasAi(i))
-                gBattleStruct->appearedInBattle |= 1u << gBattlerPartyIndexes[i];
-        }
-
         gBattleStruct->eventBlockCounter = 0;
         gBattleStruct->turnEffectsBattlerId = 0;
         gBattleScripting.moveendState = 0;
@@ -4058,7 +4051,6 @@ void BattleTurnPassed(void)
     gHitMarker &= ~HITMARKER_UNABLE_TO_USE_MOVE;
     gHitMarker &= ~HITMARKER_ATTACKSTRING_PRINTED;
     gHitMarker &= ~HITMARKER_PLAYER_FAINTED;
-    gHitMarker &= ~HITMARKER_PASSIVE_HP_UPDATE;
     gBattleScripting.animTurn = 0;
     gBattleScripting.animTargetsHit = 0;
     gBattleScripting.moveendState = 0;
@@ -4841,7 +4833,7 @@ u32 GetBattlerTotalSpeedStat(u32 battler, enum Ability ability, enum HoldEffect 
         && ShouldGetStatBadgeBoost(B_FLAG_BADGE_BOOST_SPEED, battler)
         && IsOnPlayerSide(battler))
     {
-        speed = (speed * 110) / 100;
+        speed = uq4_12_multiply_by_int_half_down(GetBadgeBoostModifier(), speed);
     }
 
     // item effects
@@ -5451,7 +5443,6 @@ static void RunTurnActionsFunctions(void)
 
     if (gCurrentTurnActionNumber >= gBattlersCount) // everyone did their actions, turn finished
     {
-        gHitMarker &= ~HITMARKER_PASSIVE_HP_UPDATE;
         gBattleMainFunc = sEndTurnFuncsTable[gBattleOutcome & 0x7F];
     }
     else
@@ -5649,7 +5640,7 @@ static void HandleEndTurn_FinishBattle(void)
                                   | BATTLE_TYPE_TRAINER_HILL
                                   | BATTLE_TYPE_FRONTIER)))
         {
-            for (u32 side = 0; side < NUM_BATTLE_SIDES; side++)
+            for (enum BattleSide side = 0; side < NUM_BATTLE_SIDES; side++)
             {
                 struct Pokemon *party = GetSideParty(side);
 
@@ -5697,7 +5688,7 @@ static void HandleEndTurn_FinishBattle(void)
             bool8 changedForm = FALSE;
 
             // Appeared in battle and didn't faint
-            if ((gBattleStruct->appearedInBattle & (1u << i)) && GetMonData(&gPlayerParty[i], MON_DATA_HP, NULL) != 0)
+            if (gBattleStruct->partyState[B_SIDE_PLAYER][i].sentOut && GetMonData(&gPlayerParty[i], MON_DATA_HP, NULL) != 0)
                 changedForm = TryFormChange(i, B_SIDE_PLAYER, FORM_CHANGE_END_BATTLE_ENVIRONMENT);
 
             if (!changedForm)

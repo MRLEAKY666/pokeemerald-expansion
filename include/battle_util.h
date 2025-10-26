@@ -40,7 +40,8 @@ enum MoveAbsorbed
     MOVE_ABSORBED_BY_BOOST_FLASH_FIRE,
 };
 
-enum {
+enum AbilityEffect
+{
     ABILITYEFFECT_ON_SWITCHIN,
     ABILITYEFFECT_ENDTURN,
     ABILITYEFFECT_MOVE_END_ATTACKER,
@@ -157,7 +158,8 @@ struct DamageContext
     u32 isCrit:1;
     u32 randomFactor:1;
     u32 updateFlags:1;
-    u32 padding1:2;
+    u32 isAnticipation:1;
+    u32 padding1:1;
     u32 weather:16;
     u32 fixedBasePower:8;
     u32 padding2:8;
@@ -250,10 +252,11 @@ bool32 HandleFaintedMonActions(void);
 void TryClearRageAndFuryCutter(void);
 enum MoveCanceller AtkCanceller_MoveSuccessOrder(struct BattleContext *ctx);
 bool32 HasNoMonsToSwitch(u32 battler, u8 partyIdBattlerOn1, u8 partyIdBattlerOn2);
-bool32 TryChangeBattleWeather(u32 battler, u32 battleWeatherId, bool32 viaAbility);
+bool32 TryChangeBattleWeather(u32 battler, u32 battleWeatherId, u32 ability);
+bool32 TryChangeBattleTerrain(u32 battler, u32 statusFlag);
 bool32 CanAbilityBlockMove(u32 battlerAtk, u32 battlerDef, enum Ability abilityAtk, enum Ability abilityDef, u32 move, enum FunctionCallOption option);
 bool32 CanAbilityAbsorbMove(u32 battlerAtk, u32 battlerDef, enum Ability abilityDef, u32 move, u32 moveType, enum FunctionCallOption option);
-u32 AbilityBattleEffects(u32 caseID, u32 battler, enum Ability ability, u32 special, u32 moveArg);
+u32 AbilityBattleEffects(enum AbilityEffect caseID, u32 battler, enum Ability ability, u32 special, u32 moveArg);
 bool32 TryPrimalReversion(u32 battler);
 bool32 IsNeutralizingGasOnField(void);
 bool32 IsMoldBreakerTypeAbility(u32 battler, enum Ability ability);
@@ -311,14 +314,15 @@ bool32 TryBattleFormChange(u32 battler, enum FormChanges method);
 bool32 DoBattlersShareType(u32 battler1, u32 battler2);
 bool32 CanBattlerGetOrLoseItem(u32 battler, u16 itemId);
 u32 GetBattlerVisualSpecies(u32 battler);
-bool32 TryClearIllusion(u32 battler, u32 caseID);
+bool32 TryClearIllusion(u32 battler, enum AbilityEffect caseID);
 u32 GetIllusionMonSpecies(u32 battler);
 struct Pokemon *GetIllusionMonPtr(u32 battler);
 void ClearIllusionMon(u32 battler);
 u32 GetIllusionMonPartyId(struct Pokemon *party, struct Pokemon *mon, struct Pokemon *partnerMon, u32 battler);
 bool32 SetIllusionMon(struct Pokemon *mon, u32 battler);
-u32 TryImmunityAbilityHealStatus(u32 battler, u32 caseID);
+u32 TryImmunityAbilityHealStatus(u32 battler, enum AbilityEffect caseID);
 bool32 ShouldGetStatBadgeBoost(u16 flagId, u32 battler);
+uq4_12_t GetBadgeBoostModifier(void);
 enum DamageCategory GetBattleMoveCategory(u32 move);
 void SetDynamicMoveCategory(u32 battlerAtk, u32 battlerDef, u32 move);
 bool32 CanFling(u32 battler);
@@ -337,9 +341,8 @@ void TrySaveExchangedItem(u32 battler, u16 stolenItem);
 bool32 IsPartnerMonFromSameTrainer(u32 battler);
 bool32 IsBattlerAffectedByHazards(u32 battler, bool32 toxicSpikes);
 void SortBattlersBySpeed(u8 *battlers, bool32 slowToFast);
-bool32 CompareStat(u32 battler, u8 statId, u8 cmpTo, u8 cmpKind);
+bool32 CompareStat(u32 battler, enum Stat statId, u8 cmpTo, u8 cmpKind);
 bool32 BlocksPrankster(u16 move, u32 battlerPrankster, u32 battlerDef, bool32 checkTarget);
-u16 GetUsedHeldItem(u32 battler);
 bool32 PickupHasValidTarget(u32 battler);
 bool32 CantPickupItem(u32 battler);
 bool32 IsBattlerWeatherAffected(u32 battler, u32 weatherFlags);
@@ -413,7 +416,7 @@ void RemoveAllHazardsFromField(u32 side);
 bool32 IsHazardOnSideAndClear(u32 side, enum Hazards hazardType);
 void RemoveHazardFromField(u32 side, enum Hazards hazardType);
 bool32 CanMoveSkipAccuracyCalc(u32 battlerAtk, u32 battlerDef, enum Ability abilityAtk, enum Ability abilityDef, u32 move, enum FunctionCallOption option);
-u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, enum Ability atkAbility, enum Ability defAbility, u32 atkHoldEffect, u32 defHoldEffect);
+u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, enum Ability atkAbility, enum Ability defAbility, enum HoldEffect atkHoldEffect, enum HoldEffect defHoldEffect);
 bool32 IsSemiInvulnerable(u32 battler, enum SemiInvulnerableExclusion excludeCommander);
 bool32 BreaksThroughSemiInvulnerablity(u32 battler, u32 move);
 u32 GetNaturePowerMove(u32 battler);
@@ -422,5 +425,6 @@ void RemoveAbilityFlags(u32 battler);
 bool32 IsDazzlingAbility(enum Ability ability);
 bool32 IsAllowedToUseBag(void);
 bool32 IsAnyTargetTurnDamaged(u32 battlerAtk);
+bool32 IsMimikyuDisguised(u32 battler);
 
 #endif // GUARD_BATTLE_UTIL_H

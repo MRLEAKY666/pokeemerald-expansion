@@ -1261,6 +1261,8 @@ Common_Text_OpenOutfitBox:
 	.include "data/scripts/follower.inc"
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
+	.include "data/scripts/dexnav.inc"
+	.include "data/scripts/battle_frontier.inc"
 
 	.include "data/maps/DragonsRoost/scripts.inc"
 
@@ -1273,7 +1275,6 @@ Common_Text_OpenOutfitBox:
 	.include "data/maps/DragonsRoost_House1/scripts.inc"
 
 	.include "data/maps/FortreeCliffs/scripts.inc"
-	.include "data/scripts/dexnav.inc"
 
 	.include "data/maps/VerdantPlateau/scripts.inc"
 
@@ -1304,3 +1305,4 @@ Common_Text_OpenOutfitBox:
 	.include "data/maps/MauvilleCity_GameCorner_OG/scripts.inc"
 
 	.include "data/maps/MossdeepCity_GameCorner_Arcade/scripts.inc"
+

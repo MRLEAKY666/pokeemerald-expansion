@@ -1552,7 +1552,7 @@ MauvilleCity_BikeShop_EventScript_BikeShopMenu_Text_7:
 
 MauvilleCity_BikeShop_EventScript_BikeShopMenu_Text_8:
 # 110 "data//maps/MauvilleCity_BikeShop/scripts.pory"
-	.string "RYDEL: You again!\n"
+	.string "RYDEL: You again!\l"
 	.string "you must not have been able to forget\l"
 	.string "how impressive the ACRO BIKE was…\p"
 	.string "Is that it?$"
