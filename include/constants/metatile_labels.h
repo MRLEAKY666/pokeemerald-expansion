@@ -75,7 +75,8 @@
 #define METATILE_BattlePyramid_Floor  0x88D
 
 // gTileset_BattleTent
-#define METATILE_BattleTent_Door  0x86B
+#define METATILE_BattleTent_Door    0x86B
+#define METATILE_BattleTent_PC_Off  0x81E
 
 // gTileset_BikeShop
 #define METATILE_BikeShop_Barrier_Blue_Bottom      0x8CF

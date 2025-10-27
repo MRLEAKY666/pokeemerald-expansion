@@ -137,6 +137,7 @@ SlateportCity_BattleTentLobby_EventScript_EnterChallenge::
 	end
 
 SlateportCity_BattleTentLobby_EventScript_WalkToDoor::
+	hidefollower
 	applymovement LOCALID_SLATEPORT_TENT_ATTENDANT, SlateportCity_BattleTentLobby_Movement_AttendantWalkToDoor
 	applymovement LOCALID_PLAYER, SlateportCity_BattleTentLobby_Movement_PlayerWalkToDoor
 	waitmovement 0

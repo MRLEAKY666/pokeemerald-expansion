@@ -337,9 +337,9 @@ DewfordTown_Gym_EventScript_BrawlyDefeated::
 # 169 "data//maps/DewfordTown_Gym/scripts.pory"
 	setflag FLAG_ENABLE_BRAWLY_MATCH_CALL
 # 170 "data//maps/DewfordTown_Gym/scripts.pory"
-	setvar VAR_ROXANNE_CALL_STEP_COUNTER, 0
+	@ setvar VAR_ROXANNE_CALL_STEP_COUNTER, 0
 # 171 "data//maps/DewfordTown_Gym/scripts.pory"
-	setflag FLAG_ENABLE_ROXANNE_FIRST_CALL
+	@ setflag FLAG_ENABLE_ROXANNE_FIRST_CALL
 # 172 "data//maps/DewfordTown_Gym/scripts.pory"
 	release
 # 173 "data//maps/DewfordTown_Gym/scripts.pory"
