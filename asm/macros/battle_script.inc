@@ -189,8 +189,13 @@
 	.4byte \jumpInstr
 	.endm
 
-	.macro unused_0x21
+	.macro jumpifstatignorecontrary battler:req, comparison:req, stat:req, value:req, jumpInstr:req
 	.byte 0x21
+	.byte \battler
+	.byte \comparison
+	.byte \stat
+	.byte \value
+	.4byte \jumpInstr
 	.endm
 
 	.macro jumpbasedontype battler:req, type:req, jumpIfType:req, jumpInstr:req
@@ -936,7 +941,7 @@
 	.4byte \failInstr
 	.endm
 
-	.macro trysetdestinybondtohappen
+	.macro unused_0xab
 	.byte 0xab
 	.endm
 
@@ -1340,7 +1345,7 @@
 	.byte \trigger
 	.endm
 
-	.macro tryworryseed failInstr:req
+	.macro tryoverwriteability failInstr:req
 	.byte 0xfe
 	.4byte \failInstr
 	.endm
@@ -1615,14 +1620,6 @@
 	.macro tryupperhand failInstr:req
 	callnative BS_TryUpperHand
 	.4byte \failInstr
-	.endm
-
-	.macro tryupdaterecoiltracker
-	callnative BS_TryUpdateRecoilTracker
-	.endm
-
-	.macro tryupdateleaderscresttracker
-	callnative BS_TryUpdateLeadersCrestTracker
 	.endm
 
 	.macro trytidyup clear:req, jumpInstr:req
@@ -2158,11 +2155,6 @@
 
 	.macro setluckychant failInstr:req
 	callnative BS_SetLuckyChant
-	.4byte \failInstr
-	.endm
-
-	.macro setsimplebeam failInstr:req
-	callnative BS_SetSimpleBeam
 	.4byte \failInstr
 	.endm
 

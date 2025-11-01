@@ -547,6 +547,8 @@ static void CB2_InitBattleInternal(void)
     }
     if (gBattleTypeFlags & BATTLE_TYPE_RECORDED)
         gBattleEnvironment = BATTLE_ENVIRONMENT_BUILDING;
+    if (TestRunner_Battle_GetForcedEnvironment())
+        gBattleEnvironment = TestRunner_Battle_GetForcedEnvironment() - 1;
 
     if (gBattleTypeFlags & BATTLE_TYPE_TRAINER && !(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER
                                                                         | BATTLE_TYPE_EREADER_TRAINER
@@ -573,7 +575,7 @@ static void CB2_InitBattleInternal(void)
     gReservedSpritePaletteCount = MAX_BATTLERS_COUNT;
     SetVBlankCallback(VBlankCB_Battle);
     SetUpBattleVarsAndBirchZigzagoon();
-    
+
     if ((IsMultibattleTest() && gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
     || (gBattleTypeFlags & BATTLE_TYPE_MULTI && gBattleTypeFlags & BATTLE_TYPE_BATTLE_TOWER)
     || (gBattleTypeFlags & BATTLE_TYPE_MULTI && gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER))
@@ -2038,7 +2040,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             if (partyData[monIndex].teraType > 0)
             {
                 gBattleStruct->opponentMonCanTera |= 1 << i;
-                u32 data = partyData[monIndex].teraType;
+                enum Type data = partyData[monIndex].teraType;
                 SetMonData(&party[i], MON_DATA_TERA_TYPE, &data);
             }
             CalculateMonStats(&party[i]);
@@ -3270,6 +3272,10 @@ void SwitchInClearSetData(u32 battler, struct Volatiles *volatilesCopy)
     gBattleStruct->battlerState[battler].stompingTantrumTimer = 0;
     gBattleStruct->palaceFlags &= ~(1u << battler);
     gBattleStruct->battlerState[battler].canPickupItem = FALSE;
+    gBattleStruct->battlerState[battler].wasAboveHalfHp = gBattleMons[battler].hp > gBattleMons[battler].maxHP / 2;
+    gBattleStruct->hazardsCounter = 0;
+    gDisableStructs[battler].hazardsDone = FALSE;
+    gSpecialStatuses[battler].switchInItemDone = FALSE;
 
     ClearPursuitValuesIfSet(battler);
 
@@ -5174,6 +5180,7 @@ static void TurnValuesCleanUp(bool8 var0)
                     gBattleMons[i].volatiles.recharge = FALSE;
             }
             gBattleStruct->battlerState[i].canPickupItem = FALSE;
+            gBattleStruct->battlerState[i].wasAboveHalfHp = FALSE;
         }
 
         if (gDisableStructs[i].substituteHP == 0)
@@ -5192,6 +5199,8 @@ static void TurnValuesCleanUp(bool8 var0)
     gSideTimers[B_SIDE_OPPONENT].followmeTimer = 0;
 
     gBattleStruct->pledgeMove = FALSE; // combined pledge move may not have been used due to a canceller
+    gBattleStruct->tryDestinyBond = FALSE;
+    gBattleStruct->tryGrudge = FALSE;
     ClearPursuitValues();
     ClearDamageCalcResults();
 }
@@ -5671,19 +5680,8 @@ static void HandleEndTurn_FinishBattle(void)
 
         for (i = 0; i < PARTY_SIZE; i++)
         {
-            bool8 changedForm = FALSE;
-
-            // Appeared in battle and didn't faint
-            if (gBattleStruct->partyState[B_SIDE_PLAYER][i].sentOut && GetMonData(&gPlayerParty[i], MON_DATA_HP, NULL) != 0)
-                changedForm = TryFormChange(i, B_SIDE_PLAYER, FORM_CHANGE_END_BATTLE_ENVIRONMENT);
-
-            if (!changedForm)
-                changedForm = TryFormChange(i, B_SIDE_PLAYER, FORM_CHANGE_END_BATTLE);
-
-            // Clear original species field
-            gBattleStruct->partyState[B_SIDE_PLAYER][i].changedSpecies = SPECIES_NONE;
-            gBattleStruct->partyState[B_SIDE_OPPONENT][i].changedSpecies = SPECIES_NONE;
-
+            bool32 changedForm = TryRevertPartyMonFormChange(i);
+            
             // Recalculate the stats of every party member before the end
             if (!changedForm && B_RECALCULATE_STATS >= GEN_5)
                 CalculateMonStats(&gPlayerParty[i]);
@@ -5869,9 +5867,9 @@ void RunBattleScriptCommands(void)
         gBattleScriptingCommandsTable[gBattlescriptCurrInstr[0]]();
 }
 
-u32 TrySetAteType(u32 move, u32 battlerAtk, enum Ability attackerAbility)
+enum Type TrySetAteType(u32 move, u32 battlerAtk, enum Ability attackerAbility)
 {
-    u32 ateType = TYPE_NONE;
+    enum Type ateType = TYPE_NONE;
 
     switch (GetMoveEffect(move))
     {
@@ -5917,11 +5915,12 @@ u32 TrySetAteType(u32 move, u32 battlerAtk, enum Ability attackerAbility)
 }
 
 // Returns TYPE_NONE if type doesn't change.
-u32 GetDynamicMoveType(struct Pokemon *mon, u32 move, u32 battler, enum MonState state)
+enum Type GetDynamicMoveType(struct Pokemon *mon, u32 move, u32 battler, enum MonState state)
 {
-    u32 moveType = GetMoveType(move);
+    enum Type moveType = GetMoveType(move);
     enum BattleMoveEffects moveEffect = GetMoveEffect(move);
-    u32 species, heldItem, type1, type2, type3;
+    u32 species, heldItem;
+    enum Type type1, type2, type3;
     enum Ability ability;
     enum HoldEffect holdEffect;
     enum Gimmick gimmick = GetActiveGimmick(battler);
@@ -6031,7 +6030,7 @@ u32 GetDynamicMoveType(struct Pokemon *mon, u32 move, u32 battler, enum MonState
     case EFFECT_REVELATION_DANCE:
         if (gimmick != GIMMICK_Z_MOVE)
         {
-            u32 teraType;
+            enum Type teraType;
             if (gimmick == GIMMICK_TERA && ((teraType = GetMonData(mon, MON_DATA_TERA_TYPE)) != TYPE_STELLAR))
                 return teraType;
             else if (type1 != TYPE_MYSTERY && !(gDisableStructs[battler].roostActive && type1 == TYPE_FLYING))
@@ -6156,7 +6155,7 @@ u32 GetDynamicMoveType(struct Pokemon *mon, u32 move, u32 battler, enum MonState
 
 void SetTypeBeforeUsingMove(u32 move, u32 battler)
 {
-    u32 moveType;
+    enum Type moveType;
     u32 heldItem = gBattleMons[battler].item;
     enum HoldEffect holdEffect = GetBattlerHoldEffect(battler);
 
