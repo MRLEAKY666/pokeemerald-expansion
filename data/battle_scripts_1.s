@@ -4413,31 +4413,37 @@ BattleScript_FaintBattler::
 
 
 BattleScript_FaintGroudon::
-	tryillusionoff BS_TARGET
+	tryillusionoff BS_SCRIPTING
 	tryactivategulpmissile
-	tryupdateleaderscresttracker
-	playfaintcry BS_TARGET
+	playfaintcry BS_SCRIPTING
 	pause B_WAIT_TIME_LONG
-	dofaintanimation BS_TARGET
+	dofaintanimation BS_SCRIPTING
 	printstring STRINGID_GROUDONFAINTED
-	cleareffectsonfaint BS_TARGET
+	cleareffectsonfaint BS_SCRIPTING
+	trytoclearprimalweather
+	tryrevertweatherform
+	flushtextbox
+	waitanimation
 	tryactivatesoulheart
-	tryactivatereceiver BS_TARGET
-	trytrainerslidemsgfirstoff BS_TARGET
+	tryactivatereceiver BS_SCRIPTING
+	trytrainerslidemsgfirstoff BS_SCRIPTING
 	return
 
 BattleScript_FaintKyogre::
-	tryillusionoff BS_TARGET
+	tryillusionoff BS_SCRIPTING
 	tryactivategulpmissile
-	tryupdateleaderscresttracker
-	playfaintcry BS_TARGET
+	playfaintcry BS_SCRIPTING
 	pause B_WAIT_TIME_LONG
-	dofaintanimation BS_TARGET
+	dofaintanimation BS_SCRIPTING
 	printstring STRINGID_KYOGREFAINTED
-	cleareffectsonfaint BS_TARGET
+	cleareffectsonfaint BS_SCRIPTING
+	trytoclearprimalweather
+	tryrevertweatherform
+	flushtextbox
+	waitanimation
 	tryactivatesoulheart
-	tryactivatereceiver BS_TARGET
-	trytrainerslidemsgfirstoff BS_TARGET
+	tryactivatereceiver BS_SCRIPTING
+	trytrainerslidemsgfirstoff BS_SCRIPTING
 	return
 
 BattleScript_GiveExp::
