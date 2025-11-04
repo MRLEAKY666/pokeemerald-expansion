@@ -3,17 +3,149 @@ raw `
 @  These are labeled in DewfordTown/scripts.inc
 
 Route109_MapScripts::
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Route109_OnWarp
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route109_OnFrame
 	map_script MAP_SCRIPT_ON_TRANSITION, Route109_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, Route109_OnResume
 	.byte 0
 
 Route109_OnTransition:
+	call_if_eq VAR_BRINEY_LOCATION, 4, Route109_EventScript_SetupPlayerClone
 	end
+
+Route109_OnWarp:
+	map_script_2 VAR_BRINEY_LOCATION, 4, Route109_EventScript_SetupBrineyReturnScene
+	map_script_2 VAR_BRINEY_LOCATION, 5, Route109_EventScript_FinishBrineyReturnScene
+	.2byte 0
+
+Route109_OnFrame:
+	map_script_2 VAR_TEMP_0, 1, Route109_EventScript_MrBrineyArrivesA
+	map_script_2 VAR_BRINEY_LOCATION, 4, Route109_EventScript_MrBrineyArrivesB
+	.2byte 0
+
+Route109_OnResume:
+	call_if_set FLAG_TEMP_9, Route109_EventScript_SummonMrBriney
+	end
+
+Route109_EventScript_SummonMrBriney::
+	setvar VAR_TEMP_0, 1
+	setvar VAR_BRINEY_LOCATION, 3
+	call EventScript_ResetMrBriney
+	clearflag FLAG_TEMP_9
+	return
+
+Route109_EventScript_SetupBrineyReturnScene::
+	hideobjectat LOCALID_PLAYER, MAP_ROUTE109
+	hideobjectat LOCALID_ROUTE109_BRINEY, MAP_ROUTE109
+	setobjectxy LOCALID_ROUTE109_BOAT, 21, 31
+	setobjectxyperm LOCALID_ROUTE109_BOAT, 21, 31
+	return
+
+`
+
+script Route109_EventScript_FinishBrineyReturnScene{
+	setvar(VAR_BRINEY_LOCATION, 3)
+	switch (var(VAR_0x8006)){
+		case DIR_NORTH:
+			turnobject(LOCALID_PLAYER, DIR_NORTH)
+		case DIR_SOUTH:
+			turnobject(LOCALID_PLAYER, DIR_SOUTH)
+		case DIR_EAST:
+			turnobject(LOCALID_PLAYER, DIR_EAST)
+		case DIR_WEST:
+			turnobject(LOCALID_PLAYER, DIR_WEST)
+	}
+	return
+}
+
+raw`
+
+Route109_EventScript_MrBrineyArrivesA::
+	hidefollower
+	getplayerxy VAR_0x8004, VAR_0x8005
+	getobjectfacingdirection LOCALID_PLAYER, VAR_0x8006
+	setvar VAR_BRINEY_LOCATION, 4                                       @ arriving alone 
+	delay 30
+	warpsilent MAP_ROUTE109, 20, 24
+
+`
+script Route109_EventScript_SetupPlayerClone{
+	setobjectxyperm(LOCALID_ROUTE109_DUMMY_GUY, VAR_0x8004, VAR_0x8005)
+	setobjectxy(LOCALID_ROUTE109_DUMMY_GUY, VAR_0x8004, VAR_0x8005)
+	checkplayergender
+	if(var(VAR_RESULT) == MALE){
+		setvar(VAR_OBJ_GFX_ID_9, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL)
+	}
+	else{
+		setvar(VAR_OBJ_GFX_ID_9, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL)
+	}
+	switch (var(VAR_0x8006)){
+		case DIR_NORTH:
+			setobjectmovementtype(LOCALID_ROUTE109_DUMMY_GUY, MOVEMENT_TYPE_FACE_UP)
+		case DIR_SOUTH:
+			setobjectmovementtype(LOCALID_ROUTE109_DUMMY_GUY, MOVEMENT_TYPE_FACE_DOWN)
+		case DIR_EAST:
+			setobjectmovementtype(LOCALID_ROUTE109_DUMMY_GUY, MOVEMENT_TYPE_FACE_RIGHT)
+		case DIR_WEST:
+			setobjectmovementtype(LOCALID_ROUTE109_DUMMY_GUY, MOVEMENT_TYPE_FACE_LEFT)
+	}
+	addobject(LOCALID_ROUTE109_DUMMY_GUY)
+	return
+}
+
+script Route109_EventScript_MrBrineyArrivesB{
+	delay(30)
+	setvar(VAR_BRINEY_LOCATION, 3)
+	applymovement(LOCALID_ROUTE109_BOAT, Route109_Movement_MrBrineyArrives)
+	waitmovement
+	delay(15)
+	getobjectxy(LOCALID_ROUTE109_DUMMY_GUY, CURRENT_POSITION, VAR_TEMP_E, VAR_TEMP_F)
+	if (var(VAR_TEMP_E) == 21 && var(VAR_TEMP_F) == 24){
+		applymovement(LOCALID_ROUTE109_DUMMY_GUY, ROUTE109_Movement_AvoidPlayerCollision)
+		waitmovement
+		getobjectxy(LOCALID_ROUTE109_DUMMY_GUY, CURRENT_POSITION, VAR_0x8004, VAR_0x8005)
+		getobjectfacingdirection(LOCALID_ROUTE109_DUMMY_GUY, VAR_0x8006)
+	}
+	setobjectxyperm(LOCALID_ROUTE109_BRINEY, 21, 25)
+	setobjectxy(LOCALID_ROUTE109_BRINEY, 21, 25)
+	delay(15)                                                                         
+	addobject(LOCALID_ROUTE109_BRINEY)
+	setobjectsubpriority(LOCALID_ROUTE109_BRINEY, MAP_ROUTE109, 0)
+	applymovement(LOCALID_ROUTE109_BRINEY, ROUTE109_Movement_MrBrineyDisembark)
+	waitmovement
+	delay(60)
+	setvar(VAR_BRINEY_LOCATION, 5) // finished arriving alone
+	warpsilent(MAP_ROUTE109, VAR_0x8004, VAR_0x8005)
+	end
+}
+
+movement ROUTE109_Movement_AvoidPlayerCollision{
+	walk_left
+	walk_in_place_faster_right
+	step_end
+}
+
+raw`
+
+Route109_Movement_MrBrineyArrives:
+	@ walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	step_end
+
+ROUTE109_Movement_MrBrineyDisembark:
+	set_visible
+	walk_up
+	step_end
 
 Route109_EventScript_StartDepartForDewford::
 	checkfollowernpc
 	call_if_eq VAR_RESULT, TRUE, Route109_EventScript_HideFollowerNPC
 	waitmovement 0
-	call EventScript_BackupMrBrineyLocation
+	@ call EventScript_BackupMrBrineyLocation
 	setobjectsubpriority LOCALID_ROUTE109_BRINEY, MAP_ROUTE109, 0
 	setobjectsubpriority LOCALID_PLAYER, MAP_ROUTE109, 0
 	applymovement LOCALID_ROUTE109_BRINEY, Route109_Movement_BrineyEnterBoat
@@ -70,7 +202,9 @@ Route109_EventScript_DoSailToDewford::
 	hideobjectat LOCALID_ROUTE109_BOAT, MAP_ROUTE109
 	msgbox DewfordTown_Text_BrineyLandedInDewford, MSGBOX_DEFAULT
 	closemessage
-	copyvar VAR_BRINEY_LOCATION, VAR_0x8008
+	@ copyvar VAR_BRINEY_LOCATION, VAR_0x8008
+	setvar VAR_BRINEY_LOCATION, 2
+	setrespawn HEAL_LOCATION_DEWFORD_TOWN
 	resetobjectsubpriority LOCALID_PLAYER, MAP_ROUTE109
 	resetobjectsubpriority LOCALID_ROUTE109_BRINEY, MAP_DEWFORD_TOWN
 	copyobjectxytoperm LOCALID_ROUTE109_BRINEY

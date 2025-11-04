@@ -21,7 +21,8 @@ enum
     MC_TYPE_WALLY,
     MC_TYPE_BIRCH,
     MC_TYPE_RIVAL,
-    MC_TYPE_LEADER
+    MC_TYPE_LEADER,
+    MC_TYPE_BRINEY
 };
 
 // Static type declarations
@@ -38,6 +39,7 @@ struct MatchCallStructCommon {
     u16 flag;
 };
 
+// shared by MC_TYPE_NPC and MC_TYPE_BRINEY
 struct MatchCallStructNPC {
     u8 type;
     u8 mapSec;
@@ -89,7 +91,16 @@ struct MatchCallRival {
     const u8 *name;
     const match_call_text_data_t *textData;
 };
-
+/* 
+struct MatchCallBriney {
+    u8 type;
+    u8 mapSec;
+    u16 flag;
+    const u8 *desc;
+    const u8 *name;
+    const match_call_text_data_t *textData;
+};
+ */
 typedef union {
     const struct MatchCallStructCommon *common;
     const struct MatchCallStructNPC *npc;
@@ -98,6 +109,7 @@ typedef union {
     const struct MatchCallBirch *birch;
     const struct MatchCallRival *rival;
     const struct MatchCallStructTrainer *leader;
+    const struct MatchCallBriney *briney;
 } match_call_t;
 
 struct MatchCallCheckPageOverride {
@@ -122,6 +134,7 @@ static u8 MatchCall_GetMapSec_Trainer(match_call_t);
 static u8 MatchCall_GetMapSec_Wally(match_call_t);
 static u8 MatchCall_GetMapSec_Birch(match_call_t);
 static u8 MatchCall_GetMapSec_Rival(match_call_t);
+static u8 MatchCall_GetMapSec_Briney(match_call_t);
 
 static bool32 MatchCall_IsRematchable_NPC(match_call_t);
 static bool32 MatchCall_IsRematchable_Trainer(match_call_t);
@@ -366,6 +379,23 @@ static const struct MatchCallStructNPC sScottMatchCallHeader =
     .textData = sScottTextScripts
 };
 
+static const match_call_text_data_t sBrineyTextScripts[] = {
+    { MatchCall_Text_Briney1A, 0xFFFF,                      0xFFFF },
+    { MatchCall_Text_Briney2, FLAG_DEFEATED_PETALBURG_GYM, 0xFFFF },
+    { MatchCall_Text_Briney3A, FLAG_SYS_GAME_CLEAR,         0xFFFF },
+    { NULL,                0xFFFF,                      0xFFFF }
+};
+
+static const struct MatchCallStructNPC sBrineyMatchCallHeader =
+{
+    .type = MC_TYPE_BRINEY,
+    .mapSec = MAPSEC_NONE,
+    .flag = FLAG_REGISTERED_BRINEY,
+    .desc = COMPOUND_STRING("OLD MAN"),
+    .name = COMPOUND_STRING("MR. BRINEY"),
+    .textData = sBrineyTextScripts
+};
+
 static const match_call_text_data_t sRoxanneTextScripts[] = {
     { MatchCall_Text_Roxanne1, 0xFFFE,              0xFFFF },
     { MatchCall_Text_Roxanne2, 0xFFFF,              0xFFFF },
@@ -591,6 +621,7 @@ static const match_call_t sMatchCallHeaders[] = {
     [MC_HEADER_MOM]        = {.npc    = &sMomMatchCallHeader},
     [MC_HEADER_STEVEN]     = {.npc    = &sStevenMatchCallHeader},
     [MC_HEADER_SCOTT]      = {.npc    = &sScottMatchCallHeader},
+    [MC_HEADER_BRINEY]     = {.npc    = &sBrineyMatchCallHeader},
     [MC_HEADER_ROXANNE]    = {.leader = &sRoxanneMatchCallHeader},
     [MC_HEADER_BRAWLY]     = {.leader = &sBrawlyMatchCallHeader},
     [MC_HEADER_WATTSON]    = {.leader = &sWattsonMatchCallHeader},
@@ -618,7 +649,8 @@ static u8 (*const sMatchCallGetMapSecFuncs[])(match_call_t) = {
     MatchCall_GetMapSec_Trainer,
     MatchCall_GetMapSec_Wally,
     MatchCall_GetMapSec_Rival,
-    MatchCall_GetMapSec_Birch
+    MatchCall_GetMapSec_Birch,
+    MatchCall_GetMapSec_Briney
 };
 
 static bool32 (*const sMatchCall_IsRematchableFunctions[])(match_call_t) = {
@@ -719,6 +751,7 @@ static u32 MatchCallGetFunctionIndex(match_call_t matchCall)
     {
         default:
         case MC_TYPE_NPC:
+        case MC_TYPE_BRINEY:
             return 0;
         case MC_TYPE_TRAINER:
         case MC_TYPE_LEADER:
@@ -805,6 +838,10 @@ u8 MatchCall_GetMapSec(u32 idx)
         return 0;
     matchCall = sMatchCallHeaders[idx];
     i = MatchCallGetFunctionIndex(matchCall);
+    if (matchCall.common->type == MC_TYPE_BRINEY)
+    {
+        return sMatchCallGetMapSecFuncs[5](matchCall); 
+    }
     return sMatchCallGetMapSecFuncs[i](matchCall);
 }
 
@@ -833,6 +870,23 @@ static u8 MatchCall_GetMapSec_Wally(match_call_t matchCall)
 static u8 MatchCall_GetMapSec_Rival(match_call_t matchCall)
 {
     return MAPSEC_NONE;
+}
+
+static u8 MatchCall_GetMapSec_Briney(match_call_t matchCall)
+{
+    switch (VarGet(VAR_BRINEY_LOCATION))
+    {
+    case 1:
+        return MAPSEC_ROUTE_104;
+    case 2:
+        return MAPSEC_DEWFORD_TOWN;
+    case 3:
+        return MAPSEC_ROUTE_109;
+    case 7:
+        return MAPSEC_SLATEPORT_CITY;
+    default:
+        return MAPSEC_NONE;
+    }
 }
 
 static u8 MatchCall_GetMapSec_Birch(match_call_t matchCall)
@@ -982,7 +1036,79 @@ void MatchCall_GetMessage(u32 idx, u8 *dest)
 
 static void MatchCall_GetMessage_NPC(match_call_t matchCall, u8 *dest)
 {
-    MatchCall_BufferCallMessageText(matchCall.npc->textData, dest);
+    if (matchCall.common->type == MC_TYPE_BRINEY)
+    {
+        if (!FlagGet(FLAG_DEFEATED_PETALBURG_GYM))
+        {
+            switch (VarGet(VAR_BRINEY_LOCATION))
+            {
+                case 1: // house
+                    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ROUTE104) &&
+                    gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ROUTE104))
+                    {
+                        StringExpandPlaceholders(dest, MatchCall_Text_Briney1A);
+                        break;
+                    }
+                    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ROUTE109) &&
+                    gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ROUTE109))
+                    {
+                        StringExpandPlaceholders(dest, MatchCall_Text_Briney1B);
+                        //VarSet(VAR_BRINEY_LOCATION, 3);
+                        //ScriptContext_SetupScript(EventScript_ResetMrBriney);
+                        FlagSet(FLAG_TEMP_9);
+                        break;
+                    }
+                    else 
+                    {
+                        StringExpandPlaceholders(dest, MatchCall_Text_Briney1C);
+                        break;
+                    }
+                case 2: // dewford
+                    StringExpandPlaceholders(dest, MatchCall_Text_Briney2);
+                    break;
+                case 3: // south of slateport
+                    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ROUTE104) &&
+                    gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ROUTE104))
+                    {
+                        StringExpandPlaceholders(dest, MatchCall_Text_Briney3A);
+                        //VarSet(VAR_BRINEY_LOCATION, 1);
+                        //ScriptContext_SetupScript(EventScript_ResetMrBriney);
+                        FlagSet(FLAG_TEMP_9);
+                        break;
+                    }
+                    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ROUTE109) &&
+                    gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ROUTE109))
+                    {
+                        StringExpandPlaceholders(dest, MatchCall_Text_Briney3B);
+                        break;
+                    }
+                    else 
+                    {
+                        StringExpandPlaceholders(dest, MatchCall_Text_Briney3C);
+                        break;
+                    }
+            }
+        }
+        else 
+        {
+            if (VarGet(VAR_BRINEY_LOCATION) < 7 && FlagGet(FLAG_HIDE_SLATEPORT_CITY_STERNS_SHIPYARD_MR_BRINEY))
+            {
+                StringExpandPlaceholders(dest, MatchCall_Text_Briney0);
+            }
+            else if (!FlagGet(FLAG_HIDE_SLATEPORT_CITY_STERNS_SHIPYARD_MR_BRINEY))
+            {
+                StringExpandPlaceholders(dest, MatchCall_Text_Briney4);
+            }
+            else //if (VarGet(VAR_BRINEY_LOCATION) >= 7 && FlagGet(FLAG_HIDE_SLATEPORT_CITY_STERNS_SHIPYARD_MR_BRINEY))
+            {
+                StringExpandPlaceholders(dest, MatchCall_Text_Briney5);
+            }
+        }
+    }
+    else
+    {
+        MatchCall_BufferCallMessageText(matchCall.npc->textData, dest);
+    }
 }
 
 // This is the one functional difference between MC_TYPE_TRAINER and MC_TYPE_LEADER

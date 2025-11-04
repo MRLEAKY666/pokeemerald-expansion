@@ -8,6 +8,7 @@ EverGrandeCity_HallOfFame_EventScript_SetGameClearFlags::
 	clearflag FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE_HOUSE
 	call EverGrandeCity_HallOfFame_EventScript_ResetEliteFour
 	setflag FLAG_HIDE_SLATEPORT_CITY_STERNS_SHIPYARD_MR_BRINEY
+	setvar VAR_BRINEY_LOCATION, 8                                        @ set briney location as ss tidal captain
 	clearflag FLAG_HIDE_SS_TIDAL_CORRIDOR_MR_BRINEY
 	clearflag FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_INVISIBLE_NINJA_BOY
 	setvar VAR_STEVENS_HOUSE_STATE, 2

@@ -1507,15 +1507,15 @@
 
 #define FLAG_RECEIVED_POKEDEX_FROM_BIRCH            (SYSTEM_FLAGS + 0x84)
 
-#define FLAG_DEWFORD_GYM_SIGN                           (SYSTEM_FLAGS + 0x85) // previously Unused Flag
-#define FLAG_HIDE_PLATEAU_LEADER                           (SYSTEM_FLAGS + 0x86) // previously Unused Flag
-#define FLAG_PLATEAU_LEADER_EVENT                           (SYSTEM_FLAGS + 0x87) // previously Unused Flag
-#define FLAG_ROUTE111_ROCK_A                           (SYSTEM_FLAGS + 0x88) // Unused Flag
-#define FLAG_ROUTE111_ROCK_B                           (SYSTEM_FLAGS + 0x89) // Unused Flag
-#define FLAG_WHICH_BIKE                           (SYSTEM_FLAGS + 0x8A) // Unused Flag
-#define FLAG_UNUSED_0x8EB                           (SYSTEM_FLAGS + 0x8B) // Unused Flag
-#define FLAG_UNUSED_0x8EC                           (SYSTEM_FLAGS + 0x8C) // Unused Flag
-#define FLAG_UNUSED_0x8ED                           (SYSTEM_FLAGS + 0x8D) // Unused Flag
+#define FLAG_DEWFORD_GYM_SIGN                           (SYSTEM_FLAGS + 0x85) // 
+#define FLAG_HIDE_PLATEAU_LEADER                           (SYSTEM_FLAGS + 0x86) // 
+#define FLAG_PLATEAU_LEADER_EVENT                           (SYSTEM_FLAGS + 0x87) // 
+#define FLAG_ROUTE111_ROCK_A                           (SYSTEM_FLAGS + 0x88) // 
+#define FLAG_ROUTE111_ROCK_B                           (SYSTEM_FLAGS + 0x89) // 
+#define FLAG_WHICH_BIKE                           (SYSTEM_FLAGS + 0x8A) // 
+#define FLAG_REGISTERED_BRINEY                           (SYSTEM_FLAGS + 0x8B) // 
+#define FLAG_ROUTE104_DUMMY_GUY                           (SYSTEM_FLAGS + 0x8C) //  
+#define FLAG_HIDE_ROUTE_104_PEEKO                           (SYSTEM_FLAGS + 0x8D) // 
 #define FLAG_UNUSED_0x8EE                           (SYSTEM_FLAGS + 0x8E) // Unused Flag
 #define FLAG_UNUSED_0x8EF                           (SYSTEM_FLAGS + 0x8F) // Unused Flag
 #define FLAG_UNUSED_0x8F0                           (SYSTEM_FLAGS + 0x90) // Unused Flag

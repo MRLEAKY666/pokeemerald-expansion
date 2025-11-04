@@ -1924,6 +1924,18 @@ extern const u8 MatchCall_Text_Scott4[];
 extern const u8 MatchCall_Text_Scott5[];
 extern const u8 MatchCall_Text_Scott6[];
 extern const u8 MatchCall_Text_Scott7[];
+
+extern const u8 MatchCall_Text_Briney0[];
+extern const u8 MatchCall_Text_Briney1A[];
+extern const u8 MatchCall_Text_Briney1B[];
+extern const u8 MatchCall_Text_Briney1C[];
+extern const u8 MatchCall_Text_Briney2[];
+extern const u8 MatchCall_Text_Briney3A[];
+extern const u8 MatchCall_Text_Briney3B[];
+extern const u8 MatchCall_Text_Briney3C[];
+extern const u8 MatchCall_Text_Briney4[];
+extern const u8 MatchCall_Text_Briney5[];
+
 extern const u8 MatchCall_Text_Roxanne1[];
 extern const u8 MatchCall_Text_Roxanne2[];
 extern const u8 MatchCall_Text_Roxanne3[];

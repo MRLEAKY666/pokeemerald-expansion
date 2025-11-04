@@ -136,7 +136,7 @@ DewfordTown_EventScript_SailToPetalburg::
 	checkfollowernpc
 	call_if_eq VAR_RESULT, TRUE, DewfordTown_EventScript_HideFollowerNPC
 	waitmovement 0
-	call EventScript_BackupMrBrineyLocation
+	@ call EventScript_BackupMrBrineyLocation
 	setobjectsubpriority LOCALID_DEWFORD_BRINEY, MAP_DEWFORD_TOWN, 0
 	setobjectsubpriority LOCALID_PLAYER, MAP_DEWFORD_TOWN, 0
 	applymovement LOCALID_DEWFORD_BRINEY, DewfordTown_Movement_BrineyBoardBoat
@@ -162,7 +162,9 @@ DewfordTown_EventScript_SailToPetalburg::
 	setvar VAR_BOARD_BRINEY_BOAT_STATE, 2
 	resetobjectsubpriority LOCALID_PLAYER, MAP_DEWFORD_TOWN
 	warp MAP_ROUTE104_MR_BRINEYS_HOUSE, 5, 4
-	copyvar VAR_BRINEY_LOCATION, VAR_0x8008
+	setvar VAR_BRINEY_LOCATION, 1
+	setrespawn HEAL_LOCATION_PETALBURG_CITY
+	@ copyvar VAR_BRINEY_LOCATION, VAR_0x8008
 	waitstate
 	release
 	end
@@ -171,7 +173,7 @@ DewfordTown_EventScript_SailToSlateport::
 	checkfollowernpc
 	call_if_eq VAR_RESULT, TRUE, DewfordTown_EventScript_HideFollowerNPC
 	waitmovement 0
-	call EventScript_BackupMrBrineyLocation
+	@ call EventScript_BackupMrBrineyLocation
 	setobjectsubpriority LOCALID_DEWFORD_BRINEY, MAP_DEWFORD_TOWN, 0
 	setobjectsubpriority LOCALID_PLAYER, MAP_DEWFORD_TOWN, 1
 	applymovement LOCALID_DEWFORD_BRINEY, DewfordTown_Movement_BrineyBoardBoat
@@ -201,15 +203,45 @@ DewfordTown_EventScript_SailToSlateport::
 	call_if_unset FLAG_DELIVERED_DEVON_GOODS, DewfordTown_EventScript_LandedSlateportDeliverGoods
 	call_if_set FLAG_DELIVERED_DEVON_GOODS, DewfordTown_EventScript_LandedSlateport
 	closemessage
-	copyvar VAR_BRINEY_LOCATION, VAR_0x8008
+	setvar VAR_BRINEY_LOCATION, 3
+	setrespawn HEAL_LOCATION_SLATEPORT_CITY
+	@ copyvar VAR_BRINEY_LOCATION, VAR_0x8008
 	resetobjectsubpriority LOCALID_PLAYER, MAP_DEWFORD_TOWN
 	resetobjectsubpriority LOCALID_ROUTE109_BRINEY, MAP_ROUTE109
 	copyobjectxytoperm LOCALID_ROUTE109_BRINEY
 	release
 	end
 
+DewfordTown_EventScript_RegisterBriney::
+	msgbox DewfordTown_Text_RegisterBriney1, MSGBOX_DEFAULT
+	waitmessage
+	delay 30
+	playfanfare MUS_REGISTER_MATCH_CALL
+	msgbox DewfordTown_Text_RegisteredBrineyInPokenav, MSGBOX_DEFAULT
+	waitfanfare
+	msgbox DewfordTown_Text_RegisterBriney2, MSGBOX_DEFAULT
+	closemessage
+	setflag FLAG_REGISTERED_BRINEY
+	return
+
+DewfordTown_Text_RegisterBriney1:
+	.string "One more thing first!\p"
+	.string "That bigshot in town insisted I should\n"
+	.string "have one of these contraptions too.\p"
+	.string "Why don't you write down my addess,\n"
+	.string "that way you can call me later if you\l"
+	.string "want to set sail from somewhere else!$"
+
+DewfordTown_Text_RegisteredBrineyInPokenav:
+	.string "Registered OLD MAN BRINEY\n"
+	.string "in the POKéNAV.$"
+
+DewfordTown_Text_RegisterBriney2:
+	.string "Take care out there!$"
+
 DewfordTown_EventScript_LandedSlateportDeliverGoods::
 	msgbox DewfordTown_Text_BrineyLandedInSlateportDeliverGoods, MSGBOX_DEFAULT
+	call_if_unset FLAG_REGISTERED_BRINEY, DewfordTown_EventScript_RegisterBriney
 	return
 
 DewfordTown_EventScript_LandedSlateport::

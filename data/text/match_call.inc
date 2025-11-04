@@ -2961,3 +2961,87 @@ MatchCall_Text_MrStone11::
 	.string "I didn't recognize you right off!\p"
 	.string "Hm! You must come visit us at DEVON\n"
 	.string "sometime!$"
+
+MatchCall_Text_Briney0::
+	.string "MR. BRINEY: Hello, {PLAYER}!\n"
+	.string "It's great to hear from you!\p"
+	.string "Thanks to you, PEEKO and I have met\n"
+	.string "so many incredible young seafarers.\p"
+	.string "CAPT. STERN and I have been talking,\n"
+	.string "and it seems like he may need\l"
+	.string "someone with my experience…\p"
+	.string "Let's talk again soon, I may have\n"
+	.string "some exciting news!$"
+
+MatchCall_Text_Briney1A::
+	.string "MR. BRINEY: … … … … … …\n"
+	.string "Hello? {PLAYER}?\p"
+	.string "You say you're near my cottage?\n"
+	.string "Feel free to stop by anytime!$"
+
+MatchCall_Text_Briney1B::
+	.string "MR. BRINEY: Ah, {PLAYER}{KUN}!\l"
+	.string "… … … … … … … … …\p"
+	.string "You say need a lift from ROUTE 109\n"
+	.string "down to DEWFORD TOWN?\p"
+	.string "Say no more, youngster!\l"
+	.string "Peeko and I will be there\n"
+	.string "lickety-split!$"
+
+MatchCall_Text_Briney1C::
+	.string "MR. BRINEY: Ah, {PLAYER}{KUN}!\l"
+	.string "… … … … … … … … …\p"
+	.string "You're out traveling right now?\p"
+	.string "Well you know after eveything you've\n"
+	.string "done for me and PEEKO, you can\l"
+	.string "always count on us to ferry you\l"
+	.string "across the ocean!$"
+
+MatchCall_Text_Briney2::
+	.string "MR. BRINEY: {PLAYER}? Is that you?\p"
+	.string "I'm here at DEWFORD TOWN right now.\p"
+	.string "Let me know next time you\n"
+	.string "want to set sail!$"
+
+MatchCall_Text_Briney3A::
+	.string "MR. BRINEY: … … … … … …\n"
+	.string "What's that, youngster?\p"
+	.string "You're on ROUTE 104 and need a lift\n"
+	.string "over to DEWFORD TOWN?\p"
+	.string "Hold still! Peeko and I will be there\n"
+	.string "in a jiffy!$"
+
+MatchCall_Text_Briney3B::
+	.string "MR. BRINEY: … … … … … … … … …\n"
+	.string "{PLAYER}?\p"
+	.string "I think I can see you over there\n"
+	.string "across the beach!\p"
+	.string "Come see me if you want to set sail!$"
+
+MatchCall_Text_Briney3C::
+	.string "MR. BRINEY: Ah, {PLAYER}{KUN}!\l"
+	.string "… … … … … … … … …\p"
+	.string "You're out traveling right now?\p"
+	.string "Well you know after eveything you've\n"
+	.string "done for me and PEEKO, you can\l"
+	.string "always count on us to ferry you\l"
+	.string "across the ocean!$"
+
+MatchCall_Text_Briney4::
+	.string "MR. BRINEY: … … … … … … … … …\p"
+	.string "…{PLAYER}… … …\l"
+	.string "…'m worki… … …ard at the shipya… …\n"
+	.string "rig… … now!\p"
+	.string "… …an't qui… … he… …ou over th…\n"
+	.string "sound… of th… … workma… …\p"
+	.string "but w… …an cha… …f yo… … stop b…!\p"
+	.string "… … … … … …\n"
+	.string "… … … … … Click!$"
+
+MatchCall_Text_Briney5::
+	.string "MR. BRINEY: Ah, {PLAYER}{KUN}!\p"
+	.string "I've returned to the life of a\n"
+	.string "big-time ship captain, so I can't\l"
+	.string "speak for long!\p"
+	.string "Come visit the S.S. TIDAL sometime!\n"
+	.string "Farewell!$"

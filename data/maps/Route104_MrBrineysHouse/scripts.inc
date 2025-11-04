@@ -145,7 +145,7 @@ Route104_MrBrineysHouse_EventScript_SailToDewford::
 # 73 "data//maps/Route104_MrBrineysHouse/scripts.pory"
 	msgbox Route104_MrBrineysHouse_Text_SetSailForDewford, MSGBOX_DEFAULT
 # 74 "data//maps/Route104_MrBrineysHouse/scripts.pory"
-	call EventScript_BackupMrBrineyLocation
+	@ call EventScript_BackupMrBrineyLocation
 # 75 "data//maps/Route104_MrBrineysHouse/scripts.pory"
 	setvar VAR_BOARD_BRINEY_BOAT_STATE, 1
 # 76 "data//maps/Route104_MrBrineysHouse/scripts.pory"

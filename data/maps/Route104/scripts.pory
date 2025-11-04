@@ -4,12 +4,16 @@ raw `
 .set LOCALID_RIVAL, 34
 
 Route104_MapScripts::
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Route104_OnWarp
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route104_OnFrame
 	map_script MAP_SCRIPT_ON_TRANSITION, Route104_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, Route104_OnResume
 	.byte 0
 
 Route104_OnFrame:
 	map_script_2 VAR_BOARD_BRINEY_BOAT_STATE, 1, Route104_EventScript_StartSailToDewford
+	map_script_2 VAR_TEMP_0, 1, Route104_EventScript_MrBrineyArrivesA
+	map_script_2 VAR_BRINEY_LOCATION, 4, Route104_EventScript_MrBrineyArrivesB
 	.2byte 0
 
 Route104_EventScript_StartSailToDewford::
@@ -21,7 +25,226 @@ Route104_OnTransition:
 	call Common_EventScript_SetupRivalGfxId
 	call Route104_EventScript_TrySetRivalPos
 	call Route104_EventScript_ShowOrHideWhiteHerbFlorist
+	call_if_eq VAR_BRINEY_LOCATION, 4, Route104_EventScript_SetupPlayerClone
 	end
+
+Route104_OnWarp:
+	map_script_2 VAR_BRINEY_LOCATION, 4, Route104_EventScript_SetupBrineyReturnScene
+	map_script_2 VAR_BRINEY_LOCATION, 5, Route104_EventScript_FinishBrineyReturnScene
+	.2byte 0
+
+Route104_OnResume:
+	call_if_set FLAG_TEMP_9, Route104_EventScript_SummonMrBriney
+	end 
+	
+Route104_EventScript_SummonMrBriney::
+	setvar VAR_TEMP_0, 1
+	setvar VAR_BRINEY_LOCATION, 1
+	call EventScript_ResetMrBriney
+	clearflag FLAG_TEMP_9
+	return
+
+Route104_EventScript_SetupBrineyReturnScene::
+	hideobjectat LOCALID_PLAYER, MAP_ROUTE104
+	setobjectxy LOCALID_ROUTE104_BOAT, 12, 60
+	setobjectxyperm LOCALID_ROUTE104_BOAT, 12, 60
+	return
+
+`
+script Route104_EventScript_SetupPlayerClone{
+	setobjectxyperm(LOCALID_ROUTE104_DUMMY_GUY, VAR_0x8004, VAR_0x8005)
+	setobjectxy(LOCALID_ROUTE104_DUMMY_GUY, VAR_0x8004, VAR_0x8005)
+	checkplayergender
+	if(var(VAR_RESULT) == MALE){
+		setvar(VAR_OBJ_GFX_ID_9, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL)
+	}
+	else{
+		setvar(VAR_OBJ_GFX_ID_9, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL)
+	}
+	switch (var(VAR_0x8006)){
+		case DIR_NORTH:
+			setobjectmovementtype(LOCALID_ROUTE104_DUMMY_GUY, MOVEMENT_TYPE_FACE_UP)
+		case DIR_SOUTH:
+			setobjectmovementtype(LOCALID_ROUTE104_DUMMY_GUY, MOVEMENT_TYPE_FACE_DOWN)
+		case DIR_EAST:
+			setobjectmovementtype(LOCALID_ROUTE104_DUMMY_GUY, MOVEMENT_TYPE_FACE_RIGHT)
+		case DIR_WEST:
+			setobjectmovementtype(LOCALID_ROUTE104_DUMMY_GUY, MOVEMENT_TYPE_FACE_LEFT)
+	}
+	addobject(LOCALID_ROUTE104_DUMMY_GUY)
+	return
+}
+
+script Route104_EventScript_FinishBrineyReturnScene{
+	setvar(VAR_BRINEY_LOCATION, 1)
+	switch (var(VAR_0x8006)){
+		case DIR_NORTH:
+			turnobject(LOCALID_PLAYER, DIR_NORTH)
+		case DIR_SOUTH:
+			turnobject(LOCALID_PLAYER, DIR_SOUTH)
+		case DIR_EAST:
+			turnobject(LOCALID_PLAYER, DIR_EAST)
+		case DIR_WEST:
+			turnobject(LOCALID_PLAYER, DIR_WEST)
+	}
+	return
+}
+
+raw`
+
+Route104_EventScript_MrBrineyArrivesA::
+	hidefollower
+	getplayerxy VAR_0x8004, VAR_0x8005
+	getobjectfacingdirection LOCALID_PLAYER, VAR_0x8006
+	setvar VAR_BRINEY_LOCATION, 4                                       @ arriving alone to house
+	delay 30
+	warpsilent MAP_ROUTE104, 16, 52
+
+`
+
+script Route104_EventScript_MrBrineyArrivesB{
+	delay(30)
+	setvar(VAR_BRINEY_LOCATION, 1)
+	applymovement(LOCALID_ROUTE104_BOAT, Route104_Movement_MrBrineyArrives)
+	waitmovement
+	getobjectxy(LOCALID_ROUTE104_DUMMY_GUY, CURRENT_POSITION, VAR_TEMP_E, VAR_TEMP_F)
+	if (var(VAR_TEMP_E) == 12 && var(VAR_TEMP_F) == 52){
+		applymovement(LOCALID_ROUTE104_DUMMY_GUY, Route104_Movement_AvoidPlayerCollisionA)
+		waitmovement
+		getobjectxy(LOCALID_ROUTE104_DUMMY_GUY, CURRENT_POSITION, VAR_0x8004, VAR_0x8005)
+		getobjectfacingdirection(LOCALID_ROUTE104_DUMMY_GUY, VAR_0x8006)
+	}
+	elif (var(VAR_TEMP_E) == 12 && var(VAR_TEMP_F) == 51){
+		applymovement(LOCALID_ROUTE104_DUMMY_GUY, Route104_Movement_AvoidPlayerCollisionB)
+		waitmovement
+		getobjectxy(LOCALID_ROUTE104_DUMMY_GUY, CURRENT_POSITION, VAR_0x8004, VAR_0x8005)
+		getobjectfacingdirection(LOCALID_ROUTE104_DUMMY_GUY, VAR_0x8006)
+	}
+	elif (var(VAR_TEMP_E) == 13 && var(VAR_TEMP_F) == 51){
+		applymovement(LOCALID_ROUTE104_DUMMY_GUY, Route104_Movement_AvoidPlayerCollisionC)
+		waitmovement
+		getobjectxy(LOCALID_ROUTE104_DUMMY_GUY, CURRENT_POSITION, VAR_0x8004, VAR_0x8005)
+		getobjectfacingdirection(LOCALID_ROUTE104_DUMMY_GUY, VAR_0x8006)
+	}
+	elif (var(VAR_TEMP_E) == 14 && var(VAR_TEMP_F) == 51){
+		applymovement(LOCALID_ROUTE104_DUMMY_GUY, Route104_Movement_AvoidPlayerCollisionC)
+		waitmovement
+		getobjectxy(LOCALID_ROUTE104_DUMMY_GUY, CURRENT_POSITION, VAR_0x8004, VAR_0x8005)
+		getobjectfacingdirection(LOCALID_ROUTE104_DUMMY_GUY, VAR_0x8006)
+	}
+	elif (var(VAR_TEMP_E) == 15 && var(VAR_TEMP_F) == 51){
+		applymovement(LOCALID_ROUTE104_DUMMY_GUY, Route104_Movement_AvoidPlayerCollisionC)
+		waitmovement
+		getobjectxy(LOCALID_ROUTE104_DUMMY_GUY, CURRENT_POSITION, VAR_0x8004, VAR_0x8005)
+		getobjectfacingdirection(LOCALID_ROUTE104_DUMMY_GUY, VAR_0x8006)
+	}
+	elif (var(VAR_TEMP_E) == 16 && var(VAR_TEMP_F) == 51){
+		applymovement(LOCALID_ROUTE104_DUMMY_GUY, Route104_Movement_AvoidPlayerCollisionC)
+		waitmovement
+		getobjectxy(LOCALID_ROUTE104_DUMMY_GUY, CURRENT_POSITION, VAR_0x8004, VAR_0x8005)
+		getobjectfacingdirection(LOCALID_ROUTE104_DUMMY_GUY, VAR_0x8006)
+	}
+	elif (var(VAR_TEMP_E) == 17 && var(VAR_TEMP_F) == 51){
+		applymovement(LOCALID_ROUTE104_DUMMY_GUY, Route104_Movement_AvoidPlayerCollisionC)
+		waitmovement
+		getobjectxy(LOCALID_ROUTE104_DUMMY_GUY, CURRENT_POSITION, VAR_0x8004, VAR_0x8005)
+		getobjectfacingdirection(LOCALID_ROUTE104_DUMMY_GUY, VAR_0x8006)
+	}
+	setobjectxyperm(LOCALID_ROUTE104_BRINEY, 12, 53)
+	delay(15)                                                                         
+	addobject(LOCALID_ROUTE104_BRINEY)
+	setobjectsubpriority(LOCALID_ROUTE104_BRINEY, MAP_ROUTE104, 0)
+	applymovement(LOCALID_ROUTE104_BRINEY, Route104_Movement_MrBrineyDisembark)
+	waitmovement
+	addobject(LOCALID_ROUTE104_PEEKO)
+	setobjectxy(LOCALID_ROUTE104_PEEKO, 12, 53)
+	setobjectxyperm(LOCALID_ROUTE104_PEEKO, 12, 53)
+	setobjectsubpriority(LOCALID_ROUTE104_PEEKO, MAP_ROUTE104, 0)
+	applymovement(LOCALID_ROUTE104_PEEKO, Route104_Movement_PeekoDisembark)
+	waitmovement
+	applymovement(LOCALID_ROUTE104_BRINEY, Route104_Movement_MrBrineyWalkHome)
+	applymovement(LOCALID_ROUTE104_PEEKO, Route104_Movement_PeekoWalkHome)
+	waitmovement(LOCALID_ROUTE104_BRINEY)
+	applymovement(LOCALID_ROUTE104_BRINEY, Route104_Movement_MrBrineyGoInside)
+	playse(SE_EXIT)
+	waitmovement
+	applymovement(LOCALID_ROUTE104_PEEKO, Route104_Movement_PeekoGoInside)
+	playse(SE_EXIT)
+	waitmovement
+	delay(60)
+	setvar(VAR_BRINEY_LOCATION, 5)
+	warpsilent(MAP_ROUTE104, VAR_0x8004, VAR_0x8005)
+	end
+}
+
+movement Route104_Movement_AvoidPlayerCollisionA{
+	walk_right
+	walk_in_place_faster_left
+	step_end
+}
+
+movement Route104_Movement_AvoidPlayerCollisionB{
+	walk_right
+	walk_down
+	walk_in_place_faster_left
+	step_end
+}
+
+movement Route104_Movement_AvoidPlayerCollisionC{
+	walk_down
+	walk_in_place_faster_left
+	step_end
+}
+
+raw`
+	
+Route104_Movement_MrBrineyArrives:
+	walk_fast_up
+	walk_fast_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+Route104_Movement_MrBrineyDisembark:
+	walk_up
+	walk_up
+	walk_in_place_faster_down
+	step_end
+
+Route104_Movement_PeekoDisembark:
+	set_visible
+	walk_up
+	step_end	
+
+Route104_Movement_MrBrineyWalkHome:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_in_place_faster_up
+	step_end
+
+Route104_Movement_PeekoWalkHome:
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+Route104_Movement_MrBrineyGoInside:
+	walk_up
+	set_invisible
+	step_end
+	
+Route104_Movement_PeekoGoInside:
+	walk_right
+	walk_up
+	set_invisible
+	step_end
 
 Route104_EventScript_ShowOrHideWhiteHerbFlorist::
 	goto_if_unset FLAG_MET_PRETTY_PETAL_SHOP_OWNER, Route104_EventScript_HideWhiteHerbFlorist
@@ -377,7 +600,9 @@ Route104_EventScript_ArriveInDewford::
 	call Common_EventScript_StopBrineysBoatMusic
 	setflag FLAG_HIDE_ROUTE_104_MR_BRINEY_BOAT
 	hideobjectat LOCALID_ROUTE104_BOAT, MAP_ROUTE104
-	copyvar VAR_BRINEY_LOCATION, VAR_0x8008
+	@ copyvar VAR_BRINEY_LOCATION, VAR_0x8008
+	setvar VAR_BRINEY_LOCATION, 2
+	setrespawn HEAL_LOCATION_DEWFORD_TOWN
 	resetobjectsubpriority OBJ_EVENT_ID_PLAYER, MAP_ROUTE104
 	resetobjectsubpriority LOCALID_DEWFORD_BRINEY, MAP_DEWFORD_TOWN
 	copyobjectxytoperm LOCALID_DEWFORD_BRINEY

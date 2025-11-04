@@ -196,6 +196,7 @@ enum
     MC_HEADER_MOM,
     MC_HEADER_STEVEN,
     MC_HEADER_SCOTT,
+    MC_HEADER_BRINEY,
     MC_HEADER_ROXANNE,
     MC_HEADER_BRAWLY,
     MC_HEADER_WATTSON,
@@ -426,6 +427,7 @@ u8 GetMatchTableMapSectionId(int rematchIndex);
 int GetIndexDeltaOfNextCheckPageDown(int index);
 int GetIndexDeltaOfNextCheckPageUp(int index);
 bool32 IsRematchEntryRegistered(int rematchIndex);
+extern const u8 EventScript_ResetMrBriney[];
 
 // pokenav_match_call_gfx.c
 bool32 OpenMatchCall(void);
