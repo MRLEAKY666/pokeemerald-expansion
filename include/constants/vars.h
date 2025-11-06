@@ -27,7 +27,7 @@
 
 // ALIASES I MADE
 
-#define VAR_TEMP_NO_BAG_USE          VAR_TEMP_D
+#define VAR_TEMP_NO_BAG_USE          VAR_TEMP_6
 
 
 
