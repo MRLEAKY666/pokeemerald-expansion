@@ -635,8 +635,15 @@ void BattleLoadMonSpriteGfx(struct Pokemon *mon, u32 battler)
         if (GetActiveGimmick(battler) == GIMMICK_DYNAMAX && GetMonData(mon, MON_DATA_GIGANTAMAX_FACTOR))
             gBattleSpritesDataPtr->battlerData[battler].transformSpecies = species = GetGMaxTargetSpecies(species);
 
-        personalityValue = gTransformedPersonalities[battler];
-        isShiny = gTransformedShininess[battler];
+        if (B_TRANSFORM_SHINY >= GEN_4)
+        {
+            personalityValue = gTransformedPersonalities[battler];
+            isShiny = gTransformedShininess[battler];
+        }
+        else
+        {
+            personalityValue = GetMonData(mon, MON_DATA_PERSONALITY);
+        }
     }
 
     position = GetBattlerPosition(battler);
@@ -951,15 +958,14 @@ void HandleSpeciesGfxDataChange(u8 battlerAtk, u8 battlerDef, bool32 megaEvo, bo
                 targetSpecies = GetIllusionMonSpecies(battlerDef);
             else
                 targetSpecies = GetMonData(monDef, MON_DATA_SPECIES);
-            /* personalityValue = GetMonData(monAtk, MON_DATA_PERSONALITY); // commented below to resolve merge conflicts from # 8146 to fix transform
+            personalityValue = GetMonData(monAtk, MON_DATA_PERSONALITY);
             isShiny = GetMonData(monAtk, MON_DATA_IS_SHINY);
-            otId = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_ID); */ 
-            gBattleSpritesDataPtr->battlerData[battlerAtk].transformSpecies = targetSpecies;
+            otId = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_ID);
         }
         else
         {
             targetSpecies = gBattleSpritesDataPtr->battlerData[battlerAtk].transformSpecies;
-            /* if (B_TRANSFORM_SHINY >= GEN_4 && trackEnemyPersonality && !megaEvo) // commented below to resolve merge conflicts from # 8146 to fix transform
+            if (B_TRANSFORM_SHINY >= GEN_4 && trackEnemyPersonality && !megaEvo)
             {
                 personalityValue = GetMonData(monDef, MON_DATA_PERSONALITY);
                 isShiny = GetMonData(monDef, MON_DATA_IS_SHINY);
@@ -970,21 +976,9 @@ void HandleSpeciesGfxDataChange(u8 battlerAtk, u8 battlerDef, bool32 megaEvo, bo
                 personalityValue = GetMonData(monAtk, MON_DATA_PERSONALITY);
                 isShiny = GetMonData(monAtk, MON_DATA_IS_SHINY);
                 otId = GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_ID);
-            } */
+            }
         }
 
-        if (trackEnemyPersonality)
-        {
-            personalityValue = gDisableStructs[battlerAtk].transformedMonPersonality;
-            isShiny = gDisableStructs[battlerAtk].transformedMonShininess;
-            otId = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_ID);
-        }
-        else
-        {
-            personalityValue = GetMonData(monAtk, MON_DATA_PERSONALITY);
-            isShiny = GetMonData(monAtk, MON_DATA_IS_SHINY);
-            otId = GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_ID);
-        }
         HandleLoadSpecialPokePic(!IsOnPlayerSide(battlerAtk),
                                  gMonSpritesGfxPtr->spritesGfx[position],
                                  targetSpecies,
@@ -1034,6 +1028,10 @@ void HandleSpeciesGfxDataChange(u8 battlerAtk, u8 battlerDef, bool32 megaEvo, bo
     {
         BlendPalette(paletteOffset, 16, 6, RGB_WHITE);
         CpuCopy32(&gPlttBufferFaded[paletteOffset], &gPlttBufferUnfaded[paletteOffset], PLTT_SIZEOF(16));
+        if (!IsContest())
+        {
+            gBattleSpritesDataPtr->battlerData[battlerAtk].transformSpecies = targetSpecies;
+        }
     }
 
     // dynamax tint
