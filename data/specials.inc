@@ -579,3 +579,5 @@ gSpecials::
 	def_special UseOutfitBoxFromScript
 	def_special SetHiddenNature
 	def_special SetAbility
+	def_special ObjectEventInteractionGetApricornTreeData
+	def_special ObjectEventInteractionPickApricornTree

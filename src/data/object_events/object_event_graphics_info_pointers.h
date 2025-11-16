@@ -283,6 +283,8 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisgu
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisguiseWatering;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManDisguiseDecorating;
 
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ApricornTree;
+
 const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM_OBJ_EVENT_GFX] = {
     [OBJ_EVENT_GFX_BRENDAN_NORMAL] =           &gObjectEventGraphicsInfo_BrendanNormal,
     [OBJ_EVENT_GFX_BRENDAN_MACH_BIKE] =        &gObjectEventGraphicsInfo_BrendanMachBike,
@@ -557,6 +559,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_OLD_MAN_DISGUISE_FISHING] =           &gObjectEventGraphicsInfo_OldManDisguiseFishing,
     [OBJ_EVENT_GFX_OLD_MAN_DISGUISE_WATERING] =          &gObjectEventGraphicsInfo_OldManDisguiseWatering,
     [OBJ_EVENT_GFX_OLD_MAN_DISGUISE_DECORATING] =        &gObjectEventGraphicsInfo_OldManDisguiseDecorating,
+    [OBJ_EVENT_GFX_APRICORN_TREE] =            &gObjectEventGraphicsInfo_ApricornTree,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

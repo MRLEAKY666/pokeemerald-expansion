@@ -2484,7 +2484,6 @@ void AnimTask_HideSwapSprite(u8 taskId)
     case 0:
         gTasks[taskId].data[11] = gSprites[spriteId].x; // Save battler position
         gSprites[spriteId].x = -64; // hide it from screen to avoid the blip/glitch effect when swapping the sprite.
-        gTasks[taskId].data[10] = gBattleAnimArgs[0];
         gTasks[taskId].data[0]++;
         break;
     case 1:

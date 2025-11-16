@@ -1497,3 +1497,7 @@ static const struct SpriteFrameImage sPicTable_OldManDisguiseWatering[] = {
 static const struct SpriteFrameImage sPicTable_OldManDisguiseDecorating[] = {
     obj_frame_tiles(gObjectEventPic_OldManDisguiseDecorating),
 };
+
+static const struct SpriteFrameImage sPicTable_ApricornTree[] = {
+    overworld_frame(gObjectEventPic_ApricornTree, 2, 2, 0),
+};

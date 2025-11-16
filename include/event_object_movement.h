@@ -516,4 +516,6 @@ u16 GetObjectEventTrainerSightFlagByObjectEventId(u8 objEventId);
 
 const struct SpritePalette *GetObjectEventPaletteFromTag(u16 tag);
 
+u8 GetObjectEventApricornTreeId(u8 objectEventId);
+
 #endif //GUARD_EVENT_OBJECT_MOVEMENT_H
