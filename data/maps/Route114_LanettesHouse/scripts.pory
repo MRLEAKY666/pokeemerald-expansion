@@ -10,19 +10,191 @@ Route114_LanettesHouse_OnTransition:
 Route114_LanettesHouse_EventScript_Lanette::
 	lock
 	faceplayer
+	goto_if_set FLAG_BLANK_DISC_DELIVERED, Route114_LanettesHouse_EventScript_LanetteAlreadyDeliveredDisc
+	goto_if_set FLAG_ACCEPTED_BLANK_DISC_QUEST, Route114_LanettesHouse_EventScript_BlankDiscQuest
 	goto_if_set FLAG_RECEIVED_DOLL_LANETTE, Route114_LanettesHouse_EventScript_OfferAdvice
 	setflag FLAG_SYS_PC_LANETTE
 	msgbox Route114_LanettesHouse_Text_EverythingClutteredKeepThis, MSGBOX_DEFAULT
 	givedecoration DECOR_LOTAD_DOLL
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowNoRoomForDecor
 	setflag FLAG_RECEIVED_DOLL_LANETTE
+	msgbox Route114_LanettesHouse_Text_DevelopingBlankDisc, MSGBOX_DEFAULT
+	msgbox Route114_LanettesHouse_Text_AskRunErrand, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Route114_LanettesHouse_EventScript_YouMustBeBusy
+	msgbox Route114_LanettesHouse_Text_ErrandStart, MSGBOX_DEFAULT
+	setflag FLAG_ACCEPTED_BLANK_DISC_QUEST
 	release
 	end
 
 Route114_LanettesHouse_EventScript_OfferAdvice::
-	msgbox Route114_LanettesHouse_Text_OrganizeYourBoxes, MSGBOX_DEFAULT
+	msgbox Route114_LanettesHouse_Text_DevelopingBlankDisc, MSGBOX_DEFAULT
+	msgbox Route114_LanettesHouse_Text_AskRunErrand, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Route114_LanettesHouse_EventScript_YouMustBeBusy
+	msgbox Route114_LanettesHouse_Text_ErrandStart, MSGBOX_DEFAULT
+	setflag FLAG_ACCEPTED_BLANK_DISC_QUEST
 	release
 	end
+
+Route114_LanettesHouse_EventScript_YouMustBeBusy::
+	msgbox Route114_LanettesHouse_Text_YouMustBeBusy, MSGBOX_DEFAULT
+	release
+	end
+
+`
+
+script Route114_LanettesHouse_EventScript_BlankDiscQuest{
+	checkitem(ITEM_BLANK_DISC)
+	if (flag(FLAG_BLANK_DISC_GIVEN) && var(VAR_RESULT) == TRUE){
+		msgbox(format("Oh!\lYou brought the BLANK DISC\nfrom DEVON CORP!\pLet's give it a try…"))
+		msgbox(format("Which of your TMs should we copy?"))
+		//waitmessage
+		fadescreen(FADE_TO_BLACK)
+		closemessage
+		special(Bag_ChooseTM)
+		waitstate
+		lock
+		faceplayer
+		if(var(VAR_ITEM_ID) == 0){
+			msgbox(format("Oh, you don't want to risk losing one of your TMs?\pEven though I'm quite sure the system is safe to use, I understand.\pIf you come across a TM you aren't worried about losing please let me try to copy it!"))
+			release
+			end
+		}
+		elif(var(VAR_ITEM_ID) == ITEM_HM01 || var(VAR_ITEM_ID) == ITEM_HM02 
+			 || var(VAR_ITEM_ID) == ITEM_HM03 || var(VAR_ITEM_ID) == ITEM_HM04 
+			 || var(VAR_ITEM_ID) == ITEM_HM05 || var(VAR_ITEM_ID) == ITEM_HM06 
+			 || var(VAR_ITEM_ID) == ITEM_HM07 || var(VAR_ITEM_ID) == ITEM_HM08){
+			msgbox(format("Ah, this is an HM…\pUnfortunately, my system is only capable of copying TMs…\pCome back with a TM so we can test the BLANK DISC!"))
+			release
+			end
+		}
+		else{
+			removeitem(VAR_ITEM_ID)
+			removeitem(ITEM_BLANK_DISC)
+			bufferitemname(STR_VAR_2, VAR_ITEM_ID)
+			msgbox(format("Ah, {STR_VAR_2}.\nThis will work perfectly.\pWait right here while I attempt to run the program."))
+			playbgm(MUS_EVOLUTION, FALSE)
+		}
+		closemessage
+		delay(20)
+		getobjectfacingdirection(LOCALID_LANETTESHOUSE_LANETTE, VAR_RESULT)
+		if (var(VAR_RESULT) == DIR_NORTH){
+			applymovement(LOCALID_LANETTESHOUSE_LANETTE, Route114_LanettesHouse_Movement_LanetteToComputerNorth)
+		}
+		else {
+			applymovement(LOCALID_LANETTESHOUSE_LANETTE, Route114_LanettesHouse_Movement_LanetteToComputerSouth)
+		}
+		waitmovement(LOCALID_LANETTESHOUSE_LANETTE)
+		delay(30)
+		playse(SE_DEX_SEARCH)
+		applymovement(LOCALID_LANETTESHOUSE_LANETTE, Route114_LanettesHouse_Movement_LanetteUseComputer)
+		waitmovement(LOCALID_LANETTESHOUSE_LANETTE)
+		applymovement(LOCALID_LANETTESHOUSE_LANETTE, Common_Movement_ExclamationMark)
+		playse(SE_PIN)
+		fadedefaultbgm
+		waitse
+		delay(30)
+		if (var(VAR_RESULT) == DIR_NORTH){
+			applymovement(LOCALID_LANETTESHOUSE_LANETTE, Route114_LanettesHouse_Movement_LanetteFromComputerNorth)
+		}
+		else {
+			applymovement(LOCALID_LANETTESHOUSE_LANETTE, Route114_LanettesHouse_Movement_LanetteFromComputerSouth)
+		}
+		waitmovement(LOCALID_LANETTESHOUSE_LANETTE)
+		delay(30)
+		msgbox(format("The BLANK DISC worked perfectly!\pI was able to copy the POKéMON move data from your TM onto the BLANK DISC.\pSee for yourself!"))
+		if (var(VAR_RESULT) == DIR_NORTH){
+			applymovement(LOCALID_LANETTESHOUSE_LANETTE, Common_Movement_WalkInPlaceUp)
+		}
+		else {
+			applymovement(LOCALID_LANETTESHOUSE_LANETTE, Common_Movement_WalkInPlaceDown)
+		}
+		giveitem(VAR_ITEM_ID, 2)
+		msgbox(format("Excellent.\pIf you find another BLANK DISC, come see me.\pI'll copy TMs for you anytime!"))
+		setflag(FLAG_BLANK_DISC_DELIVERED)
+	}
+	else{
+		msgbox(format("Hi, {PLAYER}!\nHow has your adventure been going?\pLet me know when you've retrieved the BLANK DISC from DEVON CORP.\pWe can duplicate one of your TMs as the test run!"))
+	}
+	release
+	end
+}
+
+script Route114_LanettesHouse_EventScript_LanetteAlreadyDeliveredDisc{
+	checkitem(ITEM_BLANK_DISC)
+	if (var(VAR_RESULT) == TRUE){
+		msgbox(format("LANETTE: Hello, {PLAYER}.\pAre you here to copy another TM using my new system?"), MSGBOX_YESNO)
+		if (var(VAR_RESULT) == YES){
+			msgbox(format("Which of your TMs should we copy?"))
+			//waitmessage
+			fadescreen(FADE_TO_BLACK)
+			closemessage
+			special(Bag_ChooseTM)
+			waitstate
+			lock
+			faceplayer
+			if(var(VAR_ITEM_ID) == 0){
+				msgbox(format("Oh, you changed your mind?\pWell if you want to copy a TM onto a BLANK DISC, come back and see me."))
+				release
+				end
+			}
+			elif(var(VAR_ITEM_ID) == ITEM_HM01 || var(VAR_ITEM_ID) == ITEM_HM02 
+				 || var(VAR_ITEM_ID) == ITEM_HM03 || var(VAR_ITEM_ID) == ITEM_HM04 
+				 || var(VAR_ITEM_ID) == ITEM_HM05 || var(VAR_ITEM_ID) == ITEM_HM06 
+				 || var(VAR_ITEM_ID) == ITEM_HM07 || var(VAR_ITEM_ID) == ITEM_HM08){
+				msgbox(format("Ah, this is an HM…\pUnfortunately, my system is only capable of copying TMs…\pSo if you want to copy a TM onto a BLANK DISC, come back and see me."))
+				release
+				end
+			}
+			else{
+				removeitem(VAR_ITEM_ID)
+				removeitem(ITEM_BLANK_DISC)
+				bufferitemname(STR_VAR_2, VAR_ITEM_ID)
+				msgbox(format("Ah, {STR_VAR_2}.\nPerfect.\pWait right here while I run the program."))
+			}
+			closemessage
+			delay(20)
+			getobjectfacingdirection(LOCALID_LANETTESHOUSE_LANETTE, VAR_RESULT)
+			if (var(VAR_RESULT) == DIR_NORTH){
+				applymovement(LOCALID_LANETTESHOUSE_LANETTE, Route114_LanettesHouse_Movement_LanetteToComputerNorth)
+			}
+			else {
+				applymovement(LOCALID_LANETTESHOUSE_LANETTE, Route114_LanettesHouse_Movement_LanetteToComputerSouth)
+			}
+			waitmovement(LOCALID_LANETTESHOUSE_LANETTE)
+			playse(SE_DEX_SEARCH)
+			applymovement(LOCALID_LANETTESHOUSE_LANETTE, Route114_LanettesHouse_Movement_LanetteUseComputer)
+			waitmovement(LOCALID_LANETTESHOUSE_LANETTE)
+			delay(30)
+			if (var(VAR_RESULT) == DIR_NORTH){
+				applymovement(LOCALID_LANETTESHOUSE_LANETTE, Route114_LanettesHouse_Movement_LanetteFromComputerNorth)
+			}
+			else {
+				applymovement(LOCALID_LANETTESHOUSE_LANETTE, Route114_LanettesHouse_Movement_LanetteFromComputerSouth)
+			}
+			waitmovement(LOCALID_LANETTESHOUSE_LANETTE)
+			delay(30)
+			msgbox(format("I was able to copy the POKéMON move data from your TM onto the BLANK DISC.\pHere is your original, and the copy!"))
+			if (var(VAR_RESULT) == DIR_NORTH){
+				applymovement(LOCALID_LANETTESHOUSE_LANETTE, Common_Movement_WalkInPlaceUp)
+			}
+			else {
+				applymovement(LOCALID_LANETTESHOUSE_LANETTE, Common_Movement_WalkInPlaceDown)
+			}
+			giveitem(VAR_ITEM_ID, 2)
+			msgbox(format("If you find another BLANK DISC, come see me.\pI'll copy TMs for you anytime!"))
+		}
+		else {
+			msgbox(format("Then may I offer advice about my POKéMON Storage System?\pYou should organize your BOXES so you\ncan tell which POKéMON are in them."), MSGBOX_DEFAULT)
+		}
+	}
+	else {
+		msgbox(format("LANETTE: If you have a BLANK DISC, I'd be happy to copy another TM for you.\pAnd may I offer advice about my POKéMON Storage System?\pYou should organize your BOXES so you\ncan tell which POKéMON are in them."), MSGBOX_DEFAULT)
+	}
+	release
+	end
+}
+
+raw`
 
 Route114_LanettesHouse_EventScript_Notebook::
 	lockall
@@ -54,11 +226,35 @@ Route114_LanettesHouse_Text_EverythingClutteredKeepThis:
 	.string "This is embarrassing… Please keep\n"
 	.string "this a secret in exchange for this.$"
 
-Route114_LanettesHouse_Text_OrganizeYourBoxes:
-	.string "May I offer advice about my POKéMON\n"
-	.string "Storage System?\p"
-	.string "You should organize your BOXES so you\n"
-	.string "can tell which POKéMON are in them.$"
+Route114_LanettesHouse_Text_DevelopingBlankDisc:
+	.string "Thanks for keeping my secret…\p"
+	.string "The truth is that I've been working\n"
+	.string "with DEVON CORP on a new system.\p"
+	.string "We have devised a way to duplicate TMs\n"
+	.string "using the PC.\p"
+	.string "We've ironed out most of the bugs,\n"
+	.string "but to test it I need an item that\l"
+	.string "DEVON has been developing…$"
+
+Route114_LanettesHouse_Text_AskRunErrand:
+	.string "Would you pick up an item called\n"
+	.string "BLANK DISC from DEVON CORP and\l"
+	.string "deliver it to me here?$"
+
+Route114_LanettesHouse_Text_YouMustBeBusy:
+	.string "I get it, you're a busy trainer on a\n"
+	.string "long adventure!\p"
+	.string "Well, when you have a break, let me\n"
+	.string "know if you can help.$"
+
+Route114_LanettesHouse_Text_ErrandStart:
+	.string "Oh, thank you!\p"
+	.string "We can test the system by copying\n"
+	.string "one of your TMs!\p"
+	.string "You can keep them both when we're\n"
+	.string "done.\p"
+	.string "I'm no trainer, so they're not of much\n"
+	.string "use to me anyway…$"
 
 Route114_LanettesHouse_Text_ResearchNotesPage1:
 	.string "It's LANETTE's research notes.\n"
@@ -102,5 +298,61 @@ Route114_LanettesHouse_Text_EmailFromBill:
 	.string "research in Storage Systems.\p"
 	.string "“From BILL\n"
 	.string "… … … … … … … …”$"
+
+Route114_LanettesHouse_Movement_LanetteToComputerNorth:
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_left
+	walk_in_place_up
+	step_end
+
+Route114_LanettesHouse_Movement_LanetteToComputerSouth:
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	walk_in_place_up
+	step_end
+
+Route114_LanettesHouse_Movement_LanetteUseComputer:
+	walk_in_place_up
+	delay_16
+	walk_in_place_up
+	walk_in_place_up
+	delay_16
+	walk_in_place_up
+	delay_16
+	step_end
+
+Route114_LanettesHouse_Movement_LanetteFromComputerNorth:
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	delay_4
+	walk_in_place_up
+	step_end
+
+Route114_LanettesHouse_Movement_LanetteFromComputerSouth:
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	delay_4
+	walk_in_place_down
+	step_end
 
 `

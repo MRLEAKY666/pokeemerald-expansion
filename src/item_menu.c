@@ -625,6 +625,16 @@ void CB2_ChooseMulch(void)
     GoToBagMenu(ITEMMENULOCATION_BERRY_TREE_MULCH, POCKET_ITEMS, CB2_ReturnToFieldContinueScript);
 }
 
+void CB2_ChooseTM(void)
+{
+    GoToBagMenu(ITEMMENULOCATION_BERRY_TREE, POCKET_TM_HM, CB2_ReturnToFieldContinueScript);
+}
+
+void Bag_ChooseTM(void)
+{
+    SetMainCallback2(CB2_ChooseTM);
+}
+
 // Choosing berry for Berry Blender or Berry Crush
 void ChooseBerryForMachine(MainCallback exitCallback)
 {
@@ -1025,6 +1035,13 @@ static void BagMenu_ItemPrintCallback(u8 windowId, u32 itemIndex, u8 y)
             offset = GetStringRightAlignXOffset(FONT_NARROW, gStringVar4, 119);
             BagMenu_Print(windowId, FONT_NARROW, gStringVar4, offset, y, 0, 0, TEXT_SKIP_DRAW, COLORID_NORMAL);
         }
+        else if (itemSlot.itemId == ITEM_BLANK_DISC){
+            // Print item quantity
+            ConvertIntToDecimalStringN(gStringVar1, itemSlot.quantity, STR_CONV_MODE_RIGHT_ALIGN, MAX_ITEM_DIGITS);
+            StringExpandPlaceholders(gStringVar4, gText_xVar1);
+            offset = GetStringRightAlignXOffset(FONT_NARROW, gStringVar4, 119);
+            BagMenu_Print(windowId, FONT_NARROW, gStringVar4, offset, y, 0, 0, TEXT_SKIP_DRAW, COLORID_NORMAL);
+        } //dumb way to show quantity but disallow holding blank disc
         else
         {
             // Print registered icon

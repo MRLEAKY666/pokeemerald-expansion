@@ -15352,8 +15352,26 @@ const struct Item gItemsInfo[] =
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_OutfitBox,
-	.iconPic = gItemIcon_OutfitBox,
-	.iconPalette = gItemIconPalette_OutfitBox,
+	    .iconPic = gItemIcon_OutfitBox,
+	    .iconPalette = gItemIconPalette_OutfitBox,
+    },
+
+    [ITEM_BLANK_DISC] =
+    {
+        .name = ITEM_NAME("Blank Disc"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING(
+             "A new type of disc\n"
+             "that can hold data\n"
+             "from any TM."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_DRIVE,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 10,
+	    .iconPic = gItemIcon_TM,
+	    .iconPalette = gItemIconPalette_NormalTMHM,
     },
 };
 

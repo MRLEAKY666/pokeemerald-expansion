@@ -18,6 +18,69 @@ RustboroCity_DevonCorp_2F_EventScript_TalkToPokemonScientist::
 	msgbox RustboroCity_DevonCorp_2F_Text_DeviceForTalkingToPokemon, MSGBOX_DEFAULT
 	release
 	end
+`
+
+script RustboroCity_DevonCorp_2F_EventScript_TalkToDiscScientist{
+	lock
+	faceplayer
+	call_if_eq(VAR_FOSSIL_RESURRECTION_STATE, 1, RustboroCity_DevonCorp_2F_EventScript_SetFossilReady)
+	msgbox(RustboroCity_DevonCorp_2F_Text_TechnologyForTMs, MSGBOX_DEFAULT)
+	if (flag(FLAG_ACCEPTED_BLANK_DISC_QUEST) && !flag(FLAG_BLANK_DISC_GIVEN)){
+		delay(30)
+		msgbox(format("What?\lLANETTE sent you here?\pShe says the system is ready, and she just needs a BLANK DISC??\pWell say no more!"), MSGBOX_DEFAULT)
+		getobjectfacingdirection(LOCALID_DISC_SCIENTIST, VAR_RESULT)
+		if(var(VAR_RESULT) == DIR_EAST){
+			applymovement(LOCALID_DISC_SCIENTIST, Common_Movement_WalkInPlaceRight)
+		}
+		else{
+			applymovement(LOCALID_DISC_SCIENTIST, Common_Movement_WalkInPlaceLeft)
+		}
+		giveitem(ITEM_BLANK_DISC)
+		msgbox(format("Sure, LANETTE is unusual,\lbut her systems are revolutionary!\pI'm sure that her TM duplication system will work flawlessly!\pBut don't lose that disc, because it's extremely valuable!"), MSGBOX_DEFAULT)
+		setflag(FLAG_BLANK_DISC_GIVEN)
+	}
+	elif(flag(FLAG_BLANK_DISC_GIVEN) && !flag(FLAG_BLANK_DISC_DELIVERED)){
+		checkitem(ITEM_BLANK_DISC)
+		if (var(VAR_RESULT) == TRUE){
+			delay(30)
+			msgbox(format("Wait…\lYou were the one who I sent to deliver\nthe BLANK DISC!\pI gave you the disc, but you haven't delivered it??\pWell I hope you haven't lost it…\pIt's very valuable!"), MSGBOX_DEFAULT)
+		}
+		else{
+			checkpcitem(ITEM_BLANK_DISC)
+			if (var(VAR_RESULT) == TRUE){
+				delay(30)
+				msgbox(format("Wait…\lYou were the one who I sent to deliver\nthe BLANK DISC!\pI gave you the disc, but you haven't delivered it??\pWell I hope you haven't lost it…\pIt's very valuable!"), MSGBOX_DEFAULT)
+			}
+			else{
+				delay(30)
+				msgbox(format("Wait…\lYou were the one who I sent to deliver\nthe BLANK DISC…\pI gave you the disc, but you don't have it anymore??"), MSGBOX_DEFAULT)
+				closemessage
+				delay(60)
+				applymovement(LOCALID_DISC_SCIENTIST, Common_Movement_ExclamationMark)
+				playse(SE_PIN)
+				msgbox(format("WHAT?!"))
+				waitse
+				msgbox(format("Lucky for you, I'm so confident in LANETTE'S design specifications that we already put these into limited production…"), MSGBOX_DEFAULT)
+				getobjectfacingdirection(LOCALID_DISC_SCIENTIST, VAR_RESULT)
+				if(var(VAR_RESULT) == DIR_EAST){
+					applymovement(LOCALID_DISC_SCIENTIST, Common_Movement_WalkInPlaceRight)
+				}
+				else{
+					applymovement(LOCALID_DISC_SCIENTIST, Common_Movement_WalkInPlaceLeft)
+				}
+				giveitem(ITEM_BLANK_DISC)
+				msgbox(format("Now DON'T lose that one!\pIt's essential for LANETTE to test her system!"), MSGBOX_DEFAULT)
+			}
+		}
+	}
+	elif (flag(FLAG_BLANK_DISC_GIVEN) && flag(FLAG_BLANK_DISC_DELIVERED)){
+		msgbox(format("What?\lLANETTE received the BLANK DISC?\pThe system works, and you saw it in action??\pThat's fantastic!!"), MSGBOX_DEFAULT)
+	}
+	release
+	end
+}
+
+raw`
 
 RustboroCity_DevonCorp_2F_EventScript_BallScientist::
 	lock
@@ -270,6 +333,12 @@ RustboroCity_DevonCorp_2F_EventScript_WorkOnNext::
 	msgbox RustboroCity_DevonCorp_2F_Text_WhatToWorkOnNext, MSGBOX_DEFAULT
 	release
 	end
+
+RustboroCity_DevonCorp_2F_Text_TechnologyForTMs:
+	.string "I'm developing a way for TRAINERS to\n"
+	.string "copy their own TMs.\p"
+	.string "But my research partner lives near\n"
+	.string "MT. CHIMNEY with poor reception…$"
 
 RustboroCity_DevonCorp_2F_Text_DeviceForTalkingToPokemon:
 	.string "We're developing a device for talking\n"
