@@ -74,12 +74,14 @@ RusturfTunnel_EventScript_ClearTunnelScene::
 	end
 
 RusturfTunnel_EventScript_BoyfriendApproachWanda1::
+	hidefollower
 	applymovement LOCALID_PLAYER, RusturfTunnel_Movement_PlayerWatchBoyfriend1
 	applymovement LOCALID_RUSTURF_TUNNEL_WANDAS_BF, RusturfTunnel_Movement_BoyfriendApproachWanda1
 	waitmovement 0
 	return
 
 RusturfTunnel_EventScript_BoyfriendApproachWanda2::
+	hidefollower
 	applymovement LOCALID_PLAYER, RusturfTunnel_Movement_PlayerWatchBoyfriend
 	applymovement LOCALID_RUSTURF_TUNNEL_WANDAS_BF, RusturfTunnel_Movement_BoyfriendApproachWanda
 	waitmovement 0
@@ -88,6 +90,7 @@ RusturfTunnel_EventScript_BoyfriendApproachWanda2::
 	return
 
 RusturfTunnel_EventScript_BoyfriendApproachWanda3::
+	hidefollower
 	applymovement LOCALID_PLAYER, RusturfTunnel_Movement_PlayerWatchBoyfriend
 	applymovement LOCALID_RUSTURF_TUNNEL_WANDAS_BF, RusturfTunnel_Movement_BoyfriendApproachWanda
 	waitmovement 0

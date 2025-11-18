@@ -768,8 +768,8 @@ Route114_LanettesHouse_EventScript_BlankDiscQuest_Text_7:
 	.string "How has your adventure been going?\p"
 	.string "Let me know when you've retrieved the\n"
 	.string "BLANK DISC from DEVON CORP.\p"
-	.string "I can test it by copying one of your\n"
-	.string "TMs!$"
+	.string "We can duplicate one of your TMs as the\n"
+	.string "test run!$"
 
 Route114_LanettesHouse_EventScript_LanetteAlreadyDeliveredDisc_Text_0:
 # 125 "data//maps/Route114_LanettesHouse/scripts.pory"
