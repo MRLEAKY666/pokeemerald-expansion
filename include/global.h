@@ -224,9 +224,9 @@ struct NPCFollower
 {
     u8 inProgress:1;
     u8 warpEnd:1;
-    u8 createSurfBlob:3;
+    u8 createSurfBlob:2;
     u8 comeOutDoorStairs:2;
-    u8 forcedMovement:1;
+    u8 forcedMovement:2;
     u8 objId;
     u8 currentSprite;
     u8 delayedState;
@@ -1197,6 +1197,8 @@ struct MapPosition
 
 #if T_SHOULD_RUN_MOVE_ANIM
 extern bool32 gLoadFail;
+extern bool32 gCountAllocs;
+extern s32 gSpriteAllocs;
 #endif // T_SHOULD_RUN_MOVE_ANIM
 
 #endif // GUARD_GLOBAL_H

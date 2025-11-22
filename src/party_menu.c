@@ -6382,6 +6382,7 @@ static void DeleteInvalidFusionMoves(struct Pokemon *mon, u32 species)
     }
 }
 
+#if P_FUSION_FORMS
 static void SwapFusionMonMoves(struct Pokemon *mon, const u16 moveTable[][2], u32 mode)
 {
     u32 oldMoveIndex, newMoveIndex;
@@ -6402,13 +6403,16 @@ static void SwapFusionMonMoves(struct Pokemon *mon, const u16 moveTable[][2], u3
         {
             if (move == moveTable[j][oldMoveIndex])
             {
+                u32 pp = GetMovePP(moveTable[j][newMoveIndex]);
                 SetMonData(mon, MON_DATA_MOVE1 + i, &moveTable[j][newMoveIndex]);
-                SetMonData(mon, MON_DATA_PP1 + i, &gMovesInfo[moveTable[j][newMoveIndex]].pp);
+                SetMonData(mon, MON_DATA_PP1 + i, &pp);
             }
         }
     }
 
 }
+#endif //P_FUSION_FORMS
+
 static void Task_TryItemUseFusionChange(u8 taskId)
 {
     struct Pokemon *mon = &gPlayerParty[gTasks[taskId].firstFusionSlot];
@@ -6502,6 +6506,7 @@ static void Task_TryItemUseFusionChange(u8 taskId)
         {
             if (gTasks[taskId].fusionType == FUSE_MON)
             {
+#if P_FUSION_FORMS
 #if P_FAMILY_KYUREM
 #if P_FAMILY_RESHIRAM
                 if (gTasks[taskId].tExtraMoveHandling == SWAP_EXTRA_MOVES_KYUREM_WHITE)
@@ -6512,11 +6517,13 @@ static void Task_TryItemUseFusionChange(u8 taskId)
                     SwapFusionMonMoves(mon, gKyuremBlackSwapMoveTable, FUSE_MON);
 #endif //P_FAMILY_ZEKROM
 #endif //P_FAMILY_KYUREM
+#endif //P_FUSION_FORMS
                 if (gTasks[taskId].moveToLearn != 0)
                     FormChangeTeachMove(taskId, gTasks[taskId].moveToLearn, gTasks[taskId].firstFusionSlot);
             }
             else //(gTasks[taskId].fusionType == UNFUSE_MON)
             {
+#if P_FUSION_FORMS
 #if P_FAMILY_KYUREM
 #if P_FAMILY_RESHIRAM
                 if (gTasks[taskId].tExtraMoveHandling == SWAP_EXTRA_MOVES_KYUREM_WHITE)
@@ -6527,6 +6534,7 @@ static void Task_TryItemUseFusionChange(u8 taskId)
                     SwapFusionMonMoves(mon, gKyuremBlackSwapMoveTable, UNFUSE_MON);
 #endif //P_FAMILY_ZEKROM
 #endif //P_FAMILY_KYUREM
+#endif //P_FUSION_FORMS
                 if ( gTasks[taskId].tExtraMoveHandling == FORGET_EXTRA_MOVES)
                 {
                     DeleteInvalidFusionMoves(mon, gTasks[taskId].fusionResult);
