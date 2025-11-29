@@ -9,6 +9,8 @@
 #include "script.h"
 #include "task.h"
 
+#include "battle_setup.h"
+
 static u32 GetMirageRnd(void)
 {
     u32 hi = VarGet(VAR_MIRAGE_RND_H);
@@ -647,10 +649,19 @@ void RestockBerryMasterCellar(void)
     }
 }
 
-void CountBikeDeliveryDays(void)
+void CountBikeDeliveryDays(u16 days)
 {
     if (VarGet(VAR_BIKE_QUEST_STATE) == 1)
     {
-    VarSet(VAR_BIKE_DELIVERY_COUNTER, VarGet(VAR_BIKE_DELIVERY_COUNTER) + 1);
+        VarSet(VAR_BIKE_DELIVERY_COUNTER, VarGet(VAR_BIKE_DELIVERY_COUNTER) + days);
+    }
+}
+
+void ResetDailyTrainers(void)
+{
+    if (!FlagGet(FLAG_BADGE07_GET)){
+        if (HasTrainerBeenFought(TRAINER_BRAXTON)){
+            ClearTrainerFlag(TRAINER_BRAXTON);
+        }
     }
 }
