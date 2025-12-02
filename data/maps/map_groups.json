@@ -447,7 +447,8 @@
     "FortreeCliffsDenB",
     "FortreeCliffsZapdosCave",
     "FortreeCliffsZapdosCave_Flooded",
-    "FloodedCavern"
+    "FloodedCavern",
+    "LavaridgeSauna"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",

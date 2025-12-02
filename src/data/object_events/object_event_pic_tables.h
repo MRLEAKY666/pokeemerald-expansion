@@ -1501,3 +1501,7 @@ static const struct SpriteFrameImage sPicTable_OldManDisguiseDecorating[] = {
 static const struct SpriteFrameImage sPicTable_ApricornTree[] = {
     overworld_frame(gObjectEventPic_ApricornTree, 2, 2, 0),
 };
+
+static const struct SpriteFrameImage sPicTable_ShirtlessOldMan[] = {
+    overworld_ascending_frames(gObjectEventPic_ShirtlessOldMan, 2, 4),
+};

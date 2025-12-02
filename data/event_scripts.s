@@ -1308,3 +1308,5 @@ Common_Text_OpenOutfitBox:
 	.include "data/maps/MossdeepCity_GameCorner_Arcade/scripts.inc"
 
 	.include "data/scripts/apricorn_tree.inc"
+
+	.include "data/maps/LavaridgeSauna/scripts.inc"

@@ -438,6 +438,9 @@ const u32 gObjectEventPic_OldManDisguiseDecorating[] = INCBIN_U32("graphics/obje
 
 const u16 gObjectEventPal_OldManDisguise[] = INCBIN_U16("graphics/object_events/palettes/old_man_disguise.gbapal");
 
+const u32 gObjectEventPic_ShirtlessOldMan[] = INCBIN_U32("graphics/object_events/pics/people/shirtless_old_man.4bpp");
+const u16 gObjectEventPal_ShirtlessOldMan[] = INCBIN_U16("graphics/object_events/palettes/shirtless_old_man.gbapal");
+
 
 #if OW_FOLLOWERS_POKEBALLS
 const u32 gObjectEventPic_MasterBall[] = INCBIN_U32("graphics/object_events/pics/misc/ball_master.4bpp");

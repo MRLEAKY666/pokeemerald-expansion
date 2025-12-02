@@ -124,8 +124,8 @@
     {
       "id": "LAYOUT_LAVARIDGE_TOWN",
       "name": "LavaridgeTown_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 32,
+      "height": 32,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Lavaridge",
       "border_filepath": "data/layouts/LavaridgeTown/border.bin",
@@ -4790,6 +4790,16 @@
       "secondary_tileset": "gTileset_PokemonCenter",
       "border_filepath": "data/layouts/EverGrandeCity_PokemonLeague_2F_Layout/border.bin",
       "blockdata_filepath": "data/layouts/EverGrandeCity_PokemonLeague_2F_Layout/map.bin"
+    },
+    {
+      "id": "LAYOUT_LAVARIDGE_SAUNA",
+      "name": "LavaridgeSauna_Layout",
+      "width": 20,
+      "height": 33,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Lavaridge",
+      "border_filepath": "data/layouts/LavaridgeSauna/border.bin",
+      "blockdata_filepath": "data/layouts/LavaridgeSauna/map.bin"
     }
   ]
 }

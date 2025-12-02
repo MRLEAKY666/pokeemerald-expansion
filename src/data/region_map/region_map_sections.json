@@ -1294,6 +1294,10 @@
       "y": 2,
       "width": 1,
       "height": 3
+    },
+    {
+      "id": "MAPSEC_LAVARIDGE_SAUNA",
+      "name": "LAVARIDGE SAUNA"
     }
   ]
 }
