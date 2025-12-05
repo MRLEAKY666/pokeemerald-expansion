@@ -579,6 +579,8 @@ gSpecials::
 	def_special UseOutfitBoxFromScript
 	def_special SetHiddenNature
 	def_special SetAbility
+	def_special ChooseBoxMon
+	def_special CanTeachMoveBoxMon
 	def_special ObjectEventInteractionGetApricornTreeData
 	def_special ObjectEventInteractionPickApricornTree
 	def_special Bag_ChooseTM
