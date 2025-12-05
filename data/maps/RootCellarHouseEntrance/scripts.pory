@@ -21,11 +21,13 @@ RootCellarHouseEntrance_EventScript_BerryMaster::
     delay 15
     playse SE_PIN
     waitse
+    applymovement LOCALID_PLAYER, Common_Movement_FaceDown
+    delay 16
     msgbox RootCellarHouseEntrance_Text_BerryMaster1, MSGBOX_DEFAULT
     closemessage
     delay 20
     applymovement LOCALID_ROOT_CELLAR_HOUSE_ENTRANCE_BERRY_MASTER, Common_Movement_FaceUp
-    setobjectxy LOCALID_ROOT_CELLAR_HOUSE_ENTRANCE_BERRY_MASTER, 2, 3
+    setobjectxy LOCALID_ROOT_CELLAR_HOUSE_ENTRANCE_BERRY_MASTER, 2, 4
     showobjectat LOCALID_ROOT_CELLAR_HOUSE_ENTRANCE_BERRY_MASTER, MAP_ROOT_CELLAR_HOUSE_ENTRANCE
     playse SE_EXIT
     waitse

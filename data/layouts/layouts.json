@@ -4794,8 +4794,8 @@
     {
       "id": "LAYOUT_LAVARIDGE_SAUNA",
       "name": "LavaridgeSauna_Layout",
-      "width": 20,
-      "height": 33,
+      "width": 24,
+      "height": 38,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Lavaridge",
       "border_filepath": "data/layouts/LavaridgeSauna/border.bin",

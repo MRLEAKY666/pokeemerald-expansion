@@ -244,9 +244,9 @@ MistcladCove_Text_Rival_B:
 	.string "turned around in this thick mist.$"
 
 MistcladCove_Text_Rival_C:
-	.string "I thought this would make it easier\n"
-	.string "get around out here, but I got\l"
-	.string "lost anyway…\p"
+	.string "I thought with the DEVON SCOPE I could\n"
+	.string "find my way around out here,\l"
+	.string "but I got lost anyway…\p"
 	.string "You should use it instead.$"
 
 MistcladCove_Text_Rival_D:

@@ -404,7 +404,7 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "BERRY_TREE_FORTREE_CLIFFS_POMEG_5",
+      "trainer_sight_or_berry_tree_id": "BERRY_TREE_FORTREE_CLIFFS_POMEG_6",
       "script": "BerryTreeScript",
       "flag": "0"
     },
@@ -417,7 +417,7 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "BERRY_TREE_FORTREE_CLIFFS_POMEG_5",
+      "trainer_sight_or_berry_tree_id": "BERRY_TREE_FORTREE_CLIFFS_POMEG_7",
       "script": "BerryTreeScript",
       "flag": "0"
     },
@@ -430,7 +430,7 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "BERRY_TREE_FORTREE_CLIFFS_POMEG_5",
+      "trainer_sight_or_berry_tree_id": "BERRY_TREE_FORTREE_CLIFFS_POMEG_8",
       "script": "BerryTreeScript",
       "flag": "0"
     },
@@ -443,7 +443,7 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "BERRY_TREE_FORTREE_CLIFFS_POMEG_5",
+      "trainer_sight_or_berry_tree_id": "BERRY_TREE_FORTREE_CLIFFS_POMEG_9",
       "script": "BerryTreeScript",
       "flag": "0"
     },

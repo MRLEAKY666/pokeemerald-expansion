@@ -95,6 +95,12 @@ Route123_BerryMastersHouse_Text_YoureDeservingOfBerry:
 	.string "and hand them out to everyone.\p"
 	.string "You're deserving of one!$"
 
+Route123_BerryMastersHouse_Text_YoureDeservingOfBerry2:
+	.string "BERRY MASTER: I dream of filling the\n"
+	.string "world with beautiful flowers, so I raise\l"
+	.string "BERRIES and hand them out to everyone.\p"
+	.string "You're deserving of one!$"
+
 Route123_BerryMastersHouse_Text_WhyBeStingyTakeAnother:
 	.string "Why be stingy?\n"
 	.string "Take another!$"

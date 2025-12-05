@@ -197,7 +197,9 @@ SkyPillar_Top_Movement_CameraPanDown:
 	step_end
 
 SkyPillar_Top_Text_RayquazaFlewOff:
-	.string "The awakened RAYQUAZA flew off…$"
+	.string "The awakened RAYQUAZA flew off…\p"
+	.string "And the METEORITE is missing from\n"
+	.string "the BAG!$"
 
 SkyPillar_Top_Text_RayquazaSlept::
 	.string "RAYQUAZA is sleeping . . .$"

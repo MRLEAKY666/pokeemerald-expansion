@@ -397,18 +397,22 @@ SkyPillar_Top_Movement_CameraPanDown:
 # 199 "data//maps/SkyPillar_Top/scripts.pory"
 SkyPillar_Top_Text_RayquazaFlewOff:
 # 200 "data//maps/SkyPillar_Top/scripts.pory"
-	.string "The awakened RAYQUAZA flew off…$"
+	.string "The awakened RAYQUAZA flew off…\p"
 # 201 "data//maps/SkyPillar_Top/scripts.pory"
-
+	.string "And the METEORITE is missing from\n"
 # 202 "data//maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_RayquazaSlept::
+	.string "the BAG!$"
 # 203 "data//maps/SkyPillar_Top/scripts.pory"
-	.string "RAYQUAZA is sleeping . . .$"
-# 204 "data//maps/SkyPillar_Top/scripts.pory"
 
+# 204 "data//maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_Text_RayquazaSlept::
 # 205 "data//maps/SkyPillar_Top/scripts.pory"
-SkyPillar_Top_Text_RayquazaWokeUp::
+	.string "RAYQUAZA is sleeping . . .$"
 # 206 "data//maps/SkyPillar_Top/scripts.pory"
-	.string "The METEORITE seemed to\n"
+
 # 207 "data//maps/SkyPillar_Top/scripts.pory"
+SkyPillar_Top_Text_RayquazaWokeUp::
+# 208 "data//maps/SkyPillar_Top/scripts.pory"
+	.string "The METEORITE seemed to\n"
+# 209 "data//maps/SkyPillar_Top/scripts.pory"
 	.string "disturb the sleeping RAYQUAZA!$"

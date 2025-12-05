@@ -141,15 +141,15 @@
 #define B_SHADOW_TAG_ESCAPE         GEN_LATEST // In Gen4+, if both sides have a Pokémon with Shadow Tag, all battlers can escape. Before, neither side could escape this situation.
 #define B_MOODY_ACC_EVASION         GEN_LATEST // In Gen8, Moody CANNOT raise Accuracy and Evasion anymore.
 #define B_FLASH_FIRE_FROZEN         GEN_LATEST // In Gen5+, Flash Fire can trigger even when frozen, when it couldn't before.
-#define B_SYNCHRONIZE_TOXIC         GEN_3 // In Gen5+, if a Pokémon with Synchronize is badly poisoned, the opponent will also become badly poisoned. Previously, the opponent would become regular poisoned.
+#define B_SYNCHRONIZE_TOXIC         GEN_5 // In Gen5+, if a Pokémon with Synchronize is badly poisoned, the opponent will also become badly poisoned. Previously, the opponent would become regular poisoned.
 #define B_UPDATED_INTIMIDATE        GEN_LATEST // In Gen8, Intimidate doesn't work on opponents with the Inner Focus, Scrappy, Own Tempo or Oblivious abilities. It also activates Rattled.
 #define B_OBLIVIOUS_TAUNT           GEN_LATEST // In Gen6+, Pokémon with Oblivious can't be taunted.
-#define B_STURDY                    GEN_3 // In Gen5+, Sturdy causes the Pokémon to have 1 HP remaining if another Pokémon's attack or confusion damage would have brought it from full health to 0 HP.
+#define B_STURDY                    GEN_5 // In Gen5+, Sturdy causes the Pokémon to have 1 HP remaining if another Pokémon's attack or confusion damage would have brought it from full health to 0 HP.
 #define B_PLUS_MINUS_INTERACTION    GEN_3 // In Gen5+, Plus and Minus can be activated with themselves and the opposite ability. Before, only the opposing ability could activate it.
-#define B_WEATHER_FORMS             GEN_LATEST // In Gen5+, Castform and Cherrim revert to their base form upon losing their respective ability. Cherrim needs Flower Gift to swap forms.
+#define B_WEATHER_FORMS             GEN_5 // In Gen5+, Castform and Cherrim revert to their base form upon losing their respective ability. Cherrim needs Flower Gift to swap forms.
 #define B_SYMBIOSIS_GEMS            GEN_LATEST // In Gen7+, Symbiosis passes an item after a gem-boosted attack. Previously, items are passed before the gem-boosted attack hits, making the item effect apply.
 #define B_ABSORBING_ABILITY_STRING  GEN_3 // In Gen5+, the abilities that absorb moves of a certain type use a generic string for stat increases and decreases.
-#define B_REDIRECT_ABILITY_IMMUNITY GEN_3 // In Gen5+, Pokémon with Lightning Rod/Storm Drain become immune to Electric/Water-type moves and increase their Sp. Attack by 1 stage on top of the redirecting effect.
+#define B_REDIRECT_ABILITY_IMMUNITY GEN_5 // In Gen5+, Pokémon with Lightning Rod/Storm Drain become immune to Electric/Water-type moves and increase their Sp. Attack by 1 stage on top of the redirecting effect.
 #define B_REDIRECT_ABILITY_ALLIES   GEN_4 // In Gen4+, Lightning Rod/Storm Drain redirect ally's moves as well.
 #define B_LEAF_GUARD_PREVENTS_REST  GEN_3 // In Gen5+, Leaf Guard prevents the use of Rest in harsh sunlight.
 #define B_TRANSISTOR_BOOST          GEN_LATEST // In Gen9+, Transistor will only boost Electric-type moves by 1.3x as opposed to 1.5x.
@@ -171,21 +171,21 @@
 
 // Item settings
 #define B_CONFUSE_BERRIES_HEAL      GEN_3 // Before Gen7, Figy and similar berries restore 1/8th of HP and trigger at half HP. In Gen7 they restore half HP, triggering at 25% HP. In Gen8 they heal 1/3rd of HP.
-#define B_X_ITEMS_BUFF              GEN_LATEST // In Gen7+, the X Items raise a stat by 2 stages instead of 1.
+#define B_X_ITEMS_BUFF              GEN_3 // In Gen7+, the X Items raise a stat by 2 stages instead of 1.
 #define B_MENTAL_HERB               GEN_3 // In Gen5+, the Mental Herb cures Taunt, Encore, Torment, Heal Block, and Disable in addition to Infatuation from before.
 #define B_TRAINERS_KNOCK_OFF_ITEMS  TRUE       // If TRUE, trainers can steal/swap your items (non-berries are restored after battle). In vanilla games trainers cannot steal items.
 #define B_RETURN_STOLEN_NPC_ITEMS   GEN_3 // In Gen5+, Thief and Covet no longer steal items from NPCs.
-#define B_STEAL_WILD_ITEMS          GEN_3 // In Gen9, Thief and Covet steal a wild pokemon's item and send it to the bag. Before Gen9, the stolen item would be held by the Thief/Covet user.
+#define B_STEAL_WILD_ITEMS          GEN_LATEST // In Gen9, Thief and Covet steal a wild pokemon's item and send it to the bag. Before Gen9, the stolen item would be held by the Thief/Covet user.
 #define B_RESTORE_HELD_BATTLE_ITEMS GEN_LATEST // In Gen9, all non-berry items are restored after battle.
 #define B_SOUL_DEW_BOOST            GEN_3 // In Gens3-6, Soul Dew boosts Latis' Sp. Atk and Sp. Def. In Gen7+ it boosts the power of their Psychic and Dragon type moves instead.
 #define B_NET_BALL_MODIFIER         GEN_LATEST // In Gen7+, Net Ball's catch multiplier is x5 instead of x3.
 #define B_DIVE_BALL_MODIFIER        GEN_LATEST // In Gen4+, Dive Ball's effectiveness increases by x3.5 when Surfing or Fishing.
 #define B_NEST_BALL_MODIFIER        GEN_LATEST // Nest Ball's formula varies depending on the Gen. See Cmd_handleballthrow.
-#define B_REPEAT_BALL_MODIFIER      GEN_LATEST // In Gen7+, Repeat Ball's catch multiplier is x3.5 instead of x3.
-#define B_TIMER_BALL_MODIFIER       GEN_LATEST // In Gen5+, Timer Ball's effectiveness increases by x0.3 per turn instead of x0.1
+#define B_REPEAT_BALL_MODIFIER      GEN_3 // In Gen7+, Repeat Ball's catch multiplier is x3.5 instead of x3.
+#define B_TIMER_BALL_MODIFIER       GEN_3 // In Gen5+, Timer Ball's effectiveness increases by x0.3 per turn instead of x0.1
 #define B_DUSK_BALL_MODIFIER        GEN_LATEST // In Gen7+, Dusk Ball's catch multiplier is x3 instead of x3.5.
-#define B_QUICK_BALL_MODIFIER       GEN_LATEST // In Gen5+, Quick Ball's catch multiplier is x5 instead of x4.
-#define B_LURE_BALL_MODIFIER        GEN_LATEST // In Gen8+, Lure Ball's catch multiplier is x4. In Gen7, it's x5. In Gen6 and earlier, it's x3.
+#define B_QUICK_BALL_MODIFIER       GEN_3 // In Gen5+, Quick Ball's catch multiplier is x5 instead of x4.
+#define B_LURE_BALL_MODIFIER        GEN_3 // In Gen8+, Lure Ball's catch multiplier is x4. In Gen7, it's x5. In Gen6 and earlier, it's x3.
 #define B_HEAVY_BALL_MODIFIER       GEN_LATEST // In Gen7+, Heavy Ball's ranges change. See Cmd_handleballthrow.
 #define B_DREAM_BALL_MODIFIER       GEN_LATEST // In Gen8+, Dream Ball's catch multiplier is x4 when the target is asleep or has the ability Comatose.
 #define B_SPORT_BALL_MODIFIER       GEN_3 // In Gen8+, Sport Ball's catch multiplier was reduced from x1.5 to x1.
