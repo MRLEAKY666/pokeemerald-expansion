@@ -1203,7 +1203,7 @@ SootopolisCity_EventScript_SetupRayquazaVsLegendsBattle::
 # 602 "data//maps/SootopolisCity/scripts.pory"
 	setwilddoubleflag
 # 603 "data//maps/SootopolisCity/scripts.pory"
-	givemon SPECIES_RAYQUAZA, 70, item=ITEM_CHESTO_BERRY, move1=MOVE_FLY, move2=MOVE_REST, move3=MOVE_DRAGON_DANCE, move4=MOVE_EXTREMESPEED, speedIv=0
+	givemon SPECIES_RAYQUAZA, 70, item=ITEM_METEORITE, move1=MOVE_FLY, move2=MOVE_REST, move3=MOVE_DRAGON_DANCE, move4=MOVE_EXTREMESPEED, speedIv=0
 # 604 "data//maps/SootopolisCity/scripts.pory"
 	setflag FLAG_TEMP_NO_CATCHING
 # 605 "data//maps/SootopolisCity/scripts.pory"

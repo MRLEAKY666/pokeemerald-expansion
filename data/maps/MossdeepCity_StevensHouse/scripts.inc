@@ -147,11 +147,11 @@ MossdeepCity_StevensHouse_EventScript_BeldumPokeball::
 # 74 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
 	lockall
 # 75 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
-	msgbox MossdeepCity_StevensHouse_Text_TakeBallContainingMegaRing, MSGBOX_YESNO
+	msgbox MossdeepCity_StevensHouse_Text_TakeBallContainingBeldum, MSGBOX_YESNO
 # 76 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
 	goto_if_eq VAR_RESULT, NO, MossdeepCity_StevensHouse_EventScript_LeaveBeldum
 # 77 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
-	goto MossdeepCity_StevensHouse_EventScript_GiveMegaRing
+	goto MossdeepCity_StevensHouse_EventScript_GiveBeldum
 # 78 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
 	end
 # 79 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
@@ -173,7 +173,7 @@ MossdeepCity_StevensHouse_EventScript_GiveBeldum::
 # 87 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
 	randompercentage 25
 # 88 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
-	givemon SPECIES_BELDUM, 5, item=ITEM_MEGA_RING, ball=ITEM_HEAVY_BALL, shinyMode=VAR_RESULT 
+	givemon SPECIES_BELDUM, 5, item=ITEM_METAGROSSITE, ball=ITEM_HEAVY_BALL, shinyMode=VAR_RESULT 
 # 89 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, MossdeepCity_StevensHouse_EventScript_SendBeldumParty
 # 90 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
@@ -379,7 +379,7 @@ MossdeepCity_StevensHouse_Text_TakeBallContainingBeldum:
 # 190 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
 
 # 191 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
-MossdeepCity_StevensHouse_Text_TakeBallContainingMegaRing:
+MossdeepCity_StevensHouse_Text_TakeBallContainingBeldum2:
 # 192 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
 	.string "{PLAYER} checked the POKé BALL.\p"
 # 193 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
@@ -467,40 +467,42 @@ MossdeepCity_StevensHouse_Text_LetterFromSteven2:
 # 234 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
 	.string "the desk.\p"
 # 235 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
-	.string "Inside it is a MEGA RING . . .\p"
+	.string "Inside it is a BELDUM, my favorite\n"
 # 236 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
-	.string "When I discovered the MEGA RING's\n"
+	.string "POKéMON.\p"
 # 237 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
-	.string "power, I thought I had achieved\l"
+	.string "When I discovered the power of\n"
 # 238 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
-	.string "the peak of strength.\p"
+	.string "MEGA EVOLUTION, I thought I had\l"
 # 239 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
-	.string "But even this power wasn't enough\n"
+	.string "achieved the pinnacle of strength.\p"
 # 240 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
-	.string "to cement my reign as HOENN's\l"
+	.string "But even this power wasn't enough\n"
 # 241 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
-	.string "permanent champion . . .\p"
+	.string "to cement my reign as HOENN's\l"
 # 242 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
-	.string "I'd like you to investigate\n"
+	.string "strongest TRAINER.\p"
 # 243 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
-	.string "MEGA EVOLUTION.\p"
+	.string "I'd like you to investigate\n"
 # 244 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
-	.string "Yes, I'd like to see how this\n"
+	.string "MEGA EVOLUTION, too.\p"
 # 245 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
-	.string "power will be wielded by someone\l"
+	.string "Yes, I'd like to see how this\n"
 # 246 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
-	.string "like yourself.\p"
+	.string "power will be wielded by someone\l"
 # 247 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
-	.string "{PLAYER} . . .\p"
+	.string "like yourself.\p"
 # 248 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
-	.string "May our paths cross again someday.\p"
+	.string "{PLAYER}…\p"
 # 249 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
-	.string "STEVEN STONE$"
+	.string "May our paths cross again someday.\p"
 # 250 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
-
+	.string "-STEVEN STONE$"
 # 251 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
-MossdeepCity_StevensHouse_Text_CollectionOfRareRocks:
+
 # 252 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
-	.string "It's a collection of rare rocks and\n"
+MossdeepCity_StevensHouse_Text_CollectionOfRareRocks:
 # 253 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
+	.string "It's a collection of rare rocks and\n"
+# 254 "data//maps/MossdeepCity_StevensHouse/scripts.pory"
 	.string "stones assembled by STEVEN.$"

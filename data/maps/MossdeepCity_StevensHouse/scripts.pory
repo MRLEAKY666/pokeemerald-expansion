@@ -72,9 +72,9 @@ MossdeepCity_StevensHouse_Movement_StevenReturn:
 
 MossdeepCity_StevensHouse_EventScript_BeldumPokeball::
 	lockall
-	msgbox MossdeepCity_StevensHouse_Text_TakeBallContainingMegaRing, MSGBOX_YESNO
+	msgbox MossdeepCity_StevensHouse_Text_TakeBallContainingBeldum, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, MossdeepCity_StevensHouse_EventScript_LeaveBeldum
-	goto MossdeepCity_StevensHouse_EventScript_GiveMegaRing
+	goto MossdeepCity_StevensHouse_EventScript_GiveBeldum
 	end
 
 MossdeepCity_StevensHouse_EventScript_LeaveBeldum::
@@ -85,7 +85,7 @@ MossdeepCity_StevensHouse_EventScript_LeaveBeldum::
 MossdeepCity_StevensHouse_EventScript_GiveBeldum::
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_BELDUM
 	randompercentage 25
-	givemon SPECIES_BELDUM, 5, item=ITEM_MEGA_RING, ball=ITEM_HEAVY_BALL, shinyMode=VAR_RESULT 
+	givemon SPECIES_BELDUM, 5, item=ITEM_METAGROSSITE, ball=ITEM_HEAVY_BALL, shinyMode=VAR_RESULT 
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, MossdeepCity_StevensHouse_EventScript_SendBeldumParty
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, MossdeepCity_StevensHouse_EventScript_SendBeldumPC
 	goto Common_EventScript_NoMoreRoomForPokemon
@@ -188,7 +188,7 @@ MossdeepCity_StevensHouse_Text_TakeBallContainingBeldum:
 	.string "BELDUM.\p"
 	.string "Take the POKé BALL?$"
 
-MossdeepCity_StevensHouse_Text_TakeBallContainingMegaRing:
+MossdeepCity_StevensHouse_Text_TakeBallContainingBeldum2:
 	.string "{PLAYER} checked the POKé BALL.\p"
 	.string "It contained a MEGA RING.\p"
 	.string "Take the MEGA RING?$"
@@ -232,21 +232,22 @@ MossdeepCity_StevensHouse_Text_LetterFromSteven2:
 	.string "I have a favor to ask of you.\p"
 	.string "I want you to take the POKé BALL on\n"
 	.string "the desk.\p"
-	.string "Inside it is a MEGA RING . . .\p"
-	.string "When I discovered the MEGA RING's\n"
-	.string "power, I thought I had achieved\l"
-	.string "the peak of strength.\p"
+	.string "Inside it is a BELDUM, my favorite\n"
+	.string "POKéMON.\p"
+	.string "When I discovered the power of\n"
+	.string "MEGA EVOLUTION, I thought I had\l"
+	.string "achieved the pinnacle of strength.\p"
 	.string "But even this power wasn't enough\n"
 	.string "to cement my reign as HOENN's\l"
-	.string "permanent champion . . .\p"
+	.string "strongest TRAINER.\p"
 	.string "I'd like you to investigate\n"
-	.string "MEGA EVOLUTION.\p"
+	.string "MEGA EVOLUTION, too.\p"
 	.string "Yes, I'd like to see how this\n"
 	.string "power will be wielded by someone\l"
 	.string "like yourself.\p"
-	.string "{PLAYER} . . .\p"
+	.string "{PLAYER}…\p"
 	.string "May our paths cross again someday.\p"
-	.string "STEVEN STONE$"
+	.string "-STEVEN STONE$"
 
 MossdeepCity_StevensHouse_Text_CollectionOfRareRocks:
 	.string "It's a collection of rare rocks and\n"

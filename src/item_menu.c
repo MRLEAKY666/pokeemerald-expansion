@@ -1737,6 +1737,16 @@ static void OpenContextMenu(u8 taskId)
                     if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_BIKE))
                         gBagMenu->contextMenuItemsBuffer[0] = ACTION_WALK;
                 }
+                // add give command for orbs in key items pocket (overwrites "use" space)
+                if (gSpecialVar_ItemId == ITEM_RED_ORB || gSpecialVar_ItemId == ITEM_BLUE_ORB)
+                {
+                    gBagMenu->contextMenuItemsBuffer[0] = ACTION_GIVE;
+                }
+                // add give command for meteorite in addition to "use"
+                if (gSpecialVar_ItemId == ITEM_METEORITE)
+                {
+                    gBagMenu->contextMenuItemsBuffer[2] = ACTION_GIVE;
+                }
 
                 //tx_registered_items_menu
                 if (TxRegItemsMenu_CheckRegisteredHasItem(gSpecialVar_ItemId))
@@ -2055,7 +2065,10 @@ static void ItemMenu_Give(u8 taskId)
     {
         DisplayItemMessage(taskId, FONT_NORMAL, gText_CantWriteMail, HandleErrorMessage);
     }
-    else if (!GetItemImportance(gSpecialVar_ItemId))
+    else if (!GetItemImportance(gSpecialVar_ItemId) 
+     || gSpecialVar_ItemId == ITEM_RED_ORB 
+     || gSpecialVar_ItemId == ITEM_BLUE_ORB 
+     || gSpecialVar_ItemId == ITEM_METEORITE)
     {
         if (CalculatePlayerPartyCount() == 0)
         {

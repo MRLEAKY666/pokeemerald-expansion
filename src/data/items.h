@@ -5557,10 +5557,11 @@ const struct Item gItemsInfo[] =
             "A red, glowing orb\n"
             "said to contain an\n"
             "ancient power."),
-        .pocket = POCKET_ITEMS,
-        .sortType = ITEM_TYPE_SPECIAL_HELD_ITEM,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        //.sortType = ITEM_TYPE_SPECIAL_HELD_ITEM,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_FormChange,
         .iconPic = gItemIcon_RedOrb,
         .iconPalette = gItemIconPalette_RedOrb,
     },
@@ -5574,10 +5575,11 @@ const struct Item gItemsInfo[] =
             "A blue, glowing orb\n"
             "said to contain an\n"
             "ancient power."),
-        .pocket = POCKET_ITEMS,
-        .sortType = ITEM_TYPE_SPECIAL_HELD_ITEM,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        //.sortType = ITEM_TYPE_SPECIAL_HELD_ITEM,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_FormChange,
         .iconPic = gItemIcon_BlueOrb,
         .iconPalette = gItemIconPalette_BlueOrb,
     },
@@ -13930,6 +13932,7 @@ const struct Item gItemsInfo[] =
     {
         .name = ITEM_NAME("Meteorite"),
         .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "A meteorite found\n"
             "at Meteor Falls."),
