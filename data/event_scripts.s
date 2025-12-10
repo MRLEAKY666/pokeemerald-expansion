@@ -1311,3 +1311,5 @@ Common_Text_OpenOutfitBox:
 	.include "data/scripts/apricorn_tree.inc"
 
 	.include "data/maps/LavaridgeSauna/scripts.inc"
+
+	.include "data/maps/LavarborTunnelEntrance/scripts.inc"

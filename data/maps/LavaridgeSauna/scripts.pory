@@ -1,1 +1,595 @@
-mapscripts LavaridgeSauna_MapScripts {}
+mapscripts LavaridgeSauna_MapScripts {
+    //MAP_SCRIPT_ON_RESUME: LavaridgeSauna_OnResume
+    MAP_SCRIPT_ON_TRANSITION {
+        if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) < 17){ // if the tunnel maniac should still be in the sauna
+            random(11) // choose random old man to be tunnel maniac
+            copyvar(VAR_TEMP_2, VAR_RESULT) // copy tunnel maniac's number to temp var 2
+        }
+        else{
+            setvar(VAR_TEMP_2, 11)
+        }
+    }
+}
+
+const VAR_TUNNEL_MANIAC_NUMBER = VAR_TEMP_2
+
+const VAR_CURRENT_OLD_MAN = VAR_TEMP_3
+
+const FLAG_FOUND_TUNNEL_MANIAC = FLAG_TEMP_2
+
+const VAR_NUM_OLD_MEN_BOTHERED = VAR_TEMP_4
+
+const FLAG_GAVE_TUNNEL_MANIAC_A_MON = FLAG_TEMP_3
+
+script LavaridgeSauna_OnResume{
+    if (var(VAR_NUM_OLD_MEN_BOTHERED) == 5){
+        //hidefollower
+        msgbox(format("Excuse me, but I've gotten several reports that you're disturbing other guests.\p"
+                        "I'm going to have to ask you to leave now."), MSGBOX_DEFAULT)
+        closemessage
+        warpcontinuescript(MAP_LAVARIDGE_TOWN, 9, 7, LavaridgeTown_EventScript_KickedOutOfSauna)
+    }
+}
+
+script LavaridgeSauna_EventScript_OldMan1{
+    lock
+    faceplayer
+    setvar(VAR_CURRENT_OLD_MAN, 0) 
+    goto(LavaridgeSauna_EventScript_FindTunnelManiac)
+}
+
+script LavaridgeSauna_EventScript_OldMan2{
+    lock
+    faceplayer
+    setvar(VAR_CURRENT_OLD_MAN, 1) 
+    goto(LavaridgeSauna_EventScript_FindTunnelManiac)
+}
+
+script LavaridgeSauna_EventScript_OldMan3{
+    lock
+    faceplayer
+    setvar(VAR_CURRENT_OLD_MAN, 2) 
+    goto(LavaridgeSauna_EventScript_FindTunnelManiac)
+}
+
+script LavaridgeSauna_EventScript_OldMan4{
+    lock
+    faceplayer
+    setvar(VAR_CURRENT_OLD_MAN, 3) 
+    goto(LavaridgeSauna_EventScript_FindTunnelManiac)
+}
+
+script LavaridgeSauna_EventScript_OldMan5{
+    lock
+    faceplayer
+    setvar(VAR_CURRENT_OLD_MAN, 4) 
+    goto(LavaridgeSauna_EventScript_FindTunnelManiac)
+}
+
+script LavaridgeSauna_EventScript_OldMan6{
+    lock
+    faceplayer
+    setvar(VAR_CURRENT_OLD_MAN, 5) 
+    goto(LavaridgeSauna_EventScript_FindTunnelManiac)
+}
+
+script LavaridgeSauna_EventScript_OldMan7{
+    lock
+    faceplayer
+    setvar(VAR_CURRENT_OLD_MAN, 6) 
+    goto(LavaridgeSauna_EventScript_FindTunnelManiac)
+}
+
+script LavaridgeSauna_EventScript_OldMan8{
+    lock
+    faceplayer
+    setvar(VAR_CURRENT_OLD_MAN, 7) 
+    goto(LavaridgeSauna_EventScript_FindTunnelManiac)
+}
+
+script LavaridgeSauna_EventScript_OldMan9{
+    lock
+    faceplayer
+    setvar(VAR_CURRENT_OLD_MAN, 8) 
+    goto(LavaridgeSauna_EventScript_FindTunnelManiac)
+}
+
+script LavaridgeSauna_EventScript_OldMan10{
+    lock
+    faceplayer
+    setvar(VAR_CURRENT_OLD_MAN, 9) 
+    goto(LavaridgeSauna_EventScript_FindTunnelManiac)
+}
+
+script LavaridgeSauna_EventScript_OldMan11{
+    setvar(VAR_CURRENT_OLD_MAN, 10) 
+    goto(LavaridgeSauna_EventScript_FindTunnelManiac)
+}
+
+script LavaridgeSauna_EventScript_FindTunnelManiac{
+    if (flag(FLAG_FOUND_TUNNEL_MANIAC)){ //if you already talked to tunnel maniac this time in the sauna
+        if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) > 1 && var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) <= 16){ // after you saw the incomplete tunnel, but before giving all 15 digging pokemon 
+            if (flag(FLAG_GAVE_TUNNEL_MANIAC_A_MON)){
+                msgbox(format("TUNNEL MANIAC: Ah, you're back.\p"
+                                "Did you bring any digging POKéMON to help dig the tunnel?"), MSGBOX_YESNO)
+            }
+            else {
+                msgbox(format("TUNNEL MANIAC: I think I can complete the LAVARBOR TUNNEL if I have a reliable crew.\p"
+                                "Did you bring any digging POKéMON to help dig the tunnel?"), MSGBOX_YESNO)
+            }
+            if (var(VAR_RESULT) == YES){ // you said you'd hand over a pokemon
+                if (flag(FLAG_GAVE_TUNNEL_MANIAC_A_MON)){
+                    goto(LavaridgeSauna_EventScript_GiveAnotherDiggingMon)
+                }
+                specialvar (VAR_RESULT, CountPartyAliveNonEggMons)
+                if (var(VAR_RESULT) <=1){ // if you don't have enough pokemon to give one away
+                    delay(30)
+                    applymovement(VAR_LAST_TALKED, Common_Movement_ExclamationMark)
+                    playse(SE_PIN)
+                    waitse
+                    msgbox(format("That's your last POKéMON…\pIf this POKéMON joins the tunnel crew right now, you'll be defenseless!\p"
+                                    "But I won't be able to work on the tunnel without POKéMON…\p"
+                                    "Well, it's fine with me!\nI'll just keep enjoying the sauna!"), MSGBOX_DEFAULT)
+                    applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+                    waitmovement
+                    release
+                    end
+                }
+                hidefollower
+                special(ChoosePartyMon) // sets selection to VAR_0x8004
+                waitstate
+                specialvar(VAR_RESULT, ScriptGetPartyMonSpecies)
+                if (var(VAR_RESULT) == SPECIES_DIGLETT || var(VAR_RESULT) == SPECIES_DUGTRIO // if chosen mon is a digging pokemon
+                        || var(VAR_RESULT) == SPECIES_BUNNELBY || var(VAR_RESULT) == SPECIES_DIGGERSBY
+                        || var(VAR_RESULT) == SPECIES_DRILBUR || var(VAR_RESULT) == SPECIES_EXCADRILL){
+                    special(BufferMonNickname)
+                    msgbox(format("Hmm…\lThis is a digging POKéMON!\p"
+                                    "But it will be hard work…\p"
+                                    "I doubt your {STR_VAR_1} will survive.\p"
+                                    "Even if it does, the grueling labor will change it for good…\p"
+                                    "It won't ever want to come back.\p"
+                                    "Are you sure you want {STR_VAR_1} to work on the LAVARBOR TUNNEL?"), MSGBOX_YESNO)
+                    if (var(VAR_RESULT) == YES){ // if you decide to hand over the pokemon
+                        delay(10)
+                        getobjectfacingdirection(LOCALID_PLAYER, VAR_RESULT)
+                        if (var(VAR_RESULT) == DIR_NORTH){
+                            applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceUp)
+                        }
+                        if (var(VAR_RESULT) == DIR_SOUTH){
+                            applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceDown)
+                        }
+                        if (var(VAR_RESULT) == DIR_EAST){
+                            applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceRight)
+                        }
+                        if (var(VAR_RESULT) == DIR_WEST){
+                            applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
+                        }
+                        waitmovement
+                        message("{PLAYER} handed over {STR_VAR_1}\nto the TUNNEL MANIAC.")
+                        //delay(60)
+                        playfanfare(MUS_TOO_BAD)
+                        waitfanfare
+                        setflag(FLAG_GAVE_TUNNEL_MANIAC_A_MON)
+                        callnative(DeleteMonFromParty)
+                        updatefollowingmon
+                        if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) <= 16){ // if you have given between 0-14 digging mons previous to this time
+                            addvar(VAR_LAVARBOR_TUNNEL_QUEST_STATE, 1) // increment the quest var by one more for this time
+                            switch (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE)){ // buffer the number of pokmeon given so far and number remaining to give
+                                case 0: 
+                                    bufferstring(STR_VAR_2, "no")
+                                case 1: 
+                                    bufferstring(STR_VAR_2, "no")
+                                case 2: 
+                                    bufferstring(STR_VAR_2, "no")
+                                case 3: 
+                                    bufferstring(STR_VAR_2, "one")
+                                    bufferstring(STR_VAR_3, "14")
+                                case 4: 
+                                    bufferstring(STR_VAR_2, "two")
+                                    bufferstring(STR_VAR_3, "13")
+                                case 5: 
+                                    bufferstring(STR_VAR_2, "three")
+                                    bufferstring(STR_VAR_3, "12")
+                                case 6: 
+                                    bufferstring(STR_VAR_2, "four")
+                                    bufferstring(STR_VAR_3, "11")
+                                case 7: 
+                                    bufferstring(STR_VAR_2, "five")
+                                    bufferstring(STR_VAR_3, "10")
+                                case 8: 
+                                    bufferstring(STR_VAR_2, "six")
+                                    bufferstring(STR_VAR_3, "nine")
+                                case 9: 
+                                    bufferstring(STR_VAR_2, "seven")
+                                    bufferstring(STR_VAR_3, "eight")
+                                case 10: 
+                                    bufferstring(STR_VAR_2, "eight")
+                                    bufferstring(STR_VAR_3, "seven")
+                                case 11: 
+                                    bufferstring(STR_VAR_2, "nine")
+                                    bufferstring(STR_VAR_3, "six")
+                                case 12: 
+                                    bufferstring(STR_VAR_2, "10")
+                                    bufferstring(STR_VAR_3, "five")
+                                case 13: 
+                                    bufferstring(STR_VAR_2, "11")
+                                    bufferstring(STR_VAR_3, "four")
+                                case 14: 
+                                    bufferstring(STR_VAR_2, "12")
+                                    bufferstring(STR_VAR_3, "three")
+                                case 15: 
+                                    bufferstring(STR_VAR_2, "13")
+                                    bufferstring(STR_VAR_3, "two")
+                                case 16: 
+                                    bufferstring(STR_VAR_2, "14")
+                                    bufferstring(STR_VAR_3, "one")
+                                case 17: 
+                                    bufferstring(STR_VAR_2, "15")
+                            }
+                        }
+                        if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 17){ // once you've given all 15 mons 
+                            applymovement(VAR_LAST_TALKED, Common_Movement_ExclamationMark)
+                            playse(SE_PIN)
+                            waitse
+                            msgbox(format("Ah!\lThis is excellent!\p"
+                                            "To be completely honest, I didn't really expect to have to go back to work.\p"
+                                            "But you've brought me 15 digging POKéMON!\p"
+                                            "That means we can start work on finishing the LAVARBOR TUNNEL."), MSGBOX_DEFAULT)
+                            closemessage
+                            delay(60)
+                            message("… … … … … … … … … … …")
+                            waitmessage
+                            delay(45)
+                            closemessage
+                            delay(60)
+                            msgbox(format("What?\pI can't start immediately,\lI have to finish my sauna session!"), MSGBOX_DEFAULT)
+                        }
+                        else{ // if you haven't given all 15 digging mons yet
+                            //delay(30)
+                            msgbox(format("Ah yes, it will be difficult, but {STR_VAR_1}'s help will surely speed things up.\p"
+                                            "In total, you've volunteered {STR_VAR_2} digging POKéMON for the tunnel crew.\p"
+                                            "That means we still need {STR_VAR_3} more to join the team before we can start working.\p"
+                                            "But you seem reliable and motivated!\lUnlike my boys…\pSo I'm sure you'll be back with more POKéMON soon enough."), MSGBOX_DEFAULT)
+                            msgbox(format("Do you have any more POKéMON to volunteer for the crew right now?"), MSGBOX_YESNO)
+                            if (var(VAR_RESULT) == YES){
+                                goto(LavaridgeSauna_EventScript_GiveAnotherDiggingMon)
+                            }
+                            else{
+                                msgbox(format("Well when you do, you know where to find me!"), MSGBOX_DEFAULT)
+                            }
+                        }
+                    }
+                    else{ // if you don't give him the pokemon when asked if you're sure
+                        msgbox(format("Right, then.\nI don't blame you.\p"
+                                        "Digging that tunnel will be very grueling work."), MSGBOX_DEFAULT)
+                    }
+                }
+                elif (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN){
+                    msgbox(format("Oh, you don't want to volunteer any POKéMON for the tunnel crew right now?\p"
+                                    "Well, I won't be able to work on the tunnel without POKéMON…\p"
+                                    "So I'll just keep enjoying the sauna!"))
+                }
+                else{ // chosen mon isn't digging pokemon
+                    msgbox(format("Hmm…\lThis is not a digging POKéMON…\p"
+                                    "Digging POKéMON are the only POKéMON\nI use, because they're so hardy!\p"
+                                    "Completing the LAVARBOR TUNNEL will be brutal work…\p"
+                                    "To dig this tunnel, we'll need none but the best digging POKéMON."), MSGBOX_DEFAULT)
+                }
+                
+            }
+            else{ // you said you don't have a digging pokemon to give
+                msgbox(format("Well, I won't be able to work on the tunnel without POKéMON…\p"
+                                "It's fine with me!\nI'll just keep enjoying the sauna!"), MSGBOX_DEFAULT)
+            }
+        }
+        elif (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 17){ // if you talk to him again after fivign him the 15th mon
+            msgbox(format("What?\pI can't start immediately,\lI have to finish my sauna session!"), MSGBOX_DEFAULT)
+        }
+        else{ // if you already found the tunnel maniac this trip to the sauna, but haven't seen the incomplete tunnel
+            msgbox(format("They used to call me the\nTUNNEL MANIAC.\pBut these days I've left the tunneling to my two boys in FALLARBOR."), MSGBOX_DEFAULT)
+        }
+        applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+        waitmovement
+        release
+        end
+    }
+    msgbox(format("… … … … … … … …"), MSGBOX_DEFAULT)
+    delay(10)
+    applymovement(VAR_LAST_TALKED, Common_Movement_ExclamationMark)
+    playse(SE_PIN)
+    waitmovement
+    random(3)
+    switch (var(VAR_RESULT)){ // which dialogue
+        case 0:
+            msgbox(format("Hey! You're blocking the warm air!\pIt's creating a cold pocket!"), MSGBOX_DEFAULT)
+        case 1:
+            msgbox(format("Huh?\nSome kid?\pYou're blocking the warm air!"), MSGBOX_DEFAULT)
+        case 2:
+            msgbox(format("Get outta my way!\pYou're bringing in a draft!"), MSGBOX_DEFAULT)
+    }
+    if (var(VAR_TUNNEL_MANIAC_NUMBER) == VAR_CURRENT_OLD_MAN) { // if its the tunnel maniac
+        if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 0){ // if you don't know anything about tunnel maniac
+            trainerbattle_no_intro(TRAINER_TUNNEL_MANIAC, LavaridgeSauna_Text_TunnelManiacDefeated)
+        }
+        elif (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 1){ // if you've heard about the lavarbor tunnel
+            trainerbattle_no_intro(TRAINER_TUNNEL_MANIAC, LavaridgeSauna_Text_TunnelManiacTunnelDefeated)
+        }
+        else{ // if you're working on bringing pokemon for the tunnel maniac
+            trainerbattle_no_intro(TRAINER_TUNNEL_MANIAC, LavaridgeSauna_Text_TunnelManiacMetDefeated)
+            setflag(FLAG_FOUND_TUNNEL_MANIAC)
+            goto(LavaridgeSauna_EventScript_FindTunnelManiac)
+        }
+        if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 1){ // if you heard about the tunnel, he should ask you to start bringing pokemon
+            msgbox(format("You say you're here looking for someone who can complete the LAVARBOR TUNNEL?\p"
+                            "Well, they used to call me the TUNNEL MANIAC.\p"
+                            "I was originally supposed to lead the project, but our funding fell through.\p"
+                            "Then it came time for me to retire, so\nI left the digging to my two sons in FALLARBOR…\p"
+                            "Though they seem more interested in digging for fossils…\p"
+                            "… … … … … … … …\p"
+                            "If I could visit them more often, maybe I could inspire them to use their talents for something more productive…\p"
+                            "But since we can't rely on outside funding to complete the tunnel,\lI'll need quite a bit of help.\p"
+                            "If you bring me 15 digging POKéMON, and give us enough time, I think I may be able to make some progress."), MSGBOX_DEFAULT)
+            setvar(VAR_LAVARBOR_TUNNEL_QUEST_STATE, 2)
+        }
+        else{
+            msgbox(format("They used to call me the\nTUNNEL MANIAC.\pBut these days I've left the tunneling to my two boys in FALLARBOR."), MSGBOX_DEFAULT)
+        }
+        setflag(FLAG_FOUND_TUNNEL_MANIAC)
+    }
+    else { // if it's a random old man
+        random(3)
+        switch (var(VAR_RESULT)){
+            case 0:
+                trainerbattle_no_intro(TRAINER_RANDOM_SAUNA_OLD_MAN, LavaridgeSauna_Text_RandomSaunaOldManDefeated1)
+            case 1:
+                trainerbattle_no_intro(TRAINER_RANDOM_SAUNA_OLD_MAN, LavaridgeSauna_Text_RandomSaunaOldManDefeated2)
+            case 2:
+                trainerbattle_no_intro(TRAINER_RANDOM_SAUNA_OLD_MAN, LavaridgeSauna_Text_RandomSaunaOldManDefeated3)
+        }
+        addvar(VAR_NUM_OLD_MEN_BOTHERED, 1)
+        delay(10)
+        fadescreen(FADE_TO_BLACK)
+        removeobject(VAR_LAST_TALKED)
+        if (var(VAR_NUM_OLD_MEN_BOTHERED) == 5){ //spawn sauna attendant next to player
+            hidefollower
+            getplayerxy(VAR_TEMP_E, VAR_TEMP_F)
+            getobjectfacingdirection(LOCALID_PLAYER, VAR_RESULT)
+            addobject(LOCALID_SAUNA_SAUNAATTENDANT)
+            showobjectat(LOCALID_SAUNA_SAUNAATTENDANT, MAP_LAVARIDGE_SAUNA)
+            if (var(VAR_RESULT) == DIR_NORTH && var(VAR_TEMP_E) < 12){
+                addvar(VAR_TEMP_E, 1)
+                //setobjectxyperm(LOCALID_SAUNA_SAUNAATTENDANT, VAR_TEMP_E, VAR_TEMP_F)
+                setobjectxy(LOCALID_SAUNA_SAUNAATTENDANT, VAR_TEMP_E, VAR_TEMP_F)
+                applymovement(LOCALID_SAUNA_SAUNAATTENDANT, Common_Movement_WalkInPlaceLeft)
+                waitmovement
+                applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceRight)
+            }
+            elif (var(VAR_RESULT) == DIR_NORTH && var(VAR_TEMP_E) > 12){
+                addvar(VAR_TEMP_E, -1)
+                //setobjectxyperm(LOCALID_SAUNA_SAUNAATTENDANT, VAR_TEMP_E, VAR_TEMP_F)
+                setobjectxy(LOCALID_SAUNA_SAUNAATTENDANT, VAR_TEMP_E, VAR_TEMP_F)
+                applymovement(LOCALID_SAUNA_SAUNAATTENDANT, Common_Movement_WalkInPlaceRight)
+                waitmovement
+                applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
+            }
+            elif (var(VAR_RESULT) == DIR_WEST || var(VAR_RESULT) == DIR_EAST){
+                addvar(VAR_TEMP_F, 1)
+                //setobjectxyperm(LOCALID_SAUNA_SAUNAATTENDANT, VAR_TEMP_E, VAR_TEMP_F)
+                setobjectxy(LOCALID_SAUNA_SAUNAATTENDANT, VAR_TEMP_E, VAR_TEMP_F)
+                applymovement(LOCALID_SAUNA_SAUNAATTENDANT, Common_Movement_WalkInPlaceUp)
+                waitmovement
+                applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceDown)
+            }
+            elif (var(VAR_RESULT) == DIR_SOUTH){
+                addvar(VAR_TEMP_E, 1)
+                //setobjectxyperm(LOCALID_SAUNA_SAUNAATTENDANT, VAR_TEMP_E, VAR_TEMP_F)
+                setobjectxy(LOCALID_SAUNA_SAUNAATTENDANT, VAR_TEMP_E, VAR_TEMP_F)
+                applymovement(LOCALID_SAUNA_SAUNAATTENDANT, Common_Movement_WalkInPlaceLeft)
+                waitmovement
+                applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceRight)
+            }
+        }
+        playse(SE_EXIT)
+        waitse
+        fadescreen(FADE_FROM_BLACK)
+        if (var(VAR_NUM_OLD_MEN_BOTHERED) == 5){ // get kicked out
+            delay(40)
+            msgbox(format("Excuse me…\p"
+                            "I've gotten several reports that you're disturbing other guests.\p"
+                            "I'm going to have to ask you to leave the sauna now."), MSGBOX_DEFAULT)
+            closemessage
+            delay(15)
+            fadescreen(FADE_TO_BLACK)
+            delay(15)
+            playse(SE_EXIT)
+            warp(MAP_LAVARIDGE_TOWN, 9, 7)
+        }
+    }
+    applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+    waitmovement
+    release
+    end
+}
+
+script LavaridgeSauna_EventScript_GiveAnotherDiggingMon{
+    specialvar (VAR_RESULT, CountPartyAliveNonEggMons)
+    if (var(VAR_RESULT) <=1){ // if you don't have enough pokemon to give one away
+        delay(30)
+        applymovement(VAR_LAST_TALKED, Common_Movement_ExclamationMark)
+        playse(SE_PIN)
+        waitse
+        msgbox(format("That's your last POKéMON…\pIf this POKéMON joins the tunnel crew right now, you'll be defenseless!\p"
+                        "But I won't be able to work on the tunnel without POKéMON…\p"
+                        "Well, it's fine with me!\nI'll just keep enjoying the sauna!"), MSGBOX_DEFAULT)
+        applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+        waitmovement
+        release
+        end
+    }
+    hidefollower
+    special(ChoosePartyMon) // sets selection to VAR_0x8004
+    waitstate
+    specialvar(VAR_RESULT, ScriptGetPartyMonSpecies)
+    if (var(VAR_RESULT) == SPECIES_DIGLETT || var(VAR_RESULT) == SPECIES_DUGTRIO
+            || var(VAR_RESULT) == SPECIES_BUNNELBY || var(VAR_RESULT) == SPECIES_DIGGERSBY
+            || var(VAR_RESULT) == SPECIES_DRILBUR || var(VAR_RESULT) == SPECIES_EXCADRILL){
+        special(BufferMonNickname)
+        msgbox(format("Hmm…\lThis is a digging POKéMON!\p"
+                        "But once it's immersed in the tunnel lifestyle, it won't ever come back.\p"
+                        "Are you sure you want {STR_VAR_1} to work on the LAVARBOR TUNNEL?"), MSGBOX_YESNO)
+        if (var(VAR_RESULT) == YES){ // if you decide to hand over the pokemon
+            delay(10)
+            getobjectfacingdirection(LOCALID_PLAYER, VAR_RESULT)
+            if (var(VAR_RESULT) == DIR_NORTH){
+                applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceUp)
+            }
+            if (var(VAR_RESULT) == DIR_SOUTH){
+                applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceDown)
+            }
+            if (var(VAR_RESULT) == DIR_EAST){
+                applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceRight)
+            }
+            if (var(VAR_RESULT) == DIR_WEST){
+                applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
+            }
+            waitmovement
+            message("{PLAYER} handed over {STR_VAR_1}\nto the TUNNEL MANIAC.")
+            //delay(60)
+            playfanfare(MUS_TOO_BAD)
+            waitfanfare
+            callnative(DeleteMonFromParty)
+            updatefollowingmon
+            if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) <= 16){ // if you have given between 0-14 digging mons previous to this time
+                addvar(VAR_LAVARBOR_TUNNEL_QUEST_STATE, 1) // increment the quest var by one more for this time
+                switch (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE)){ // buffer the number of pokmeon given so far and number remaining to give
+                    case 0: 
+                        bufferstring(STR_VAR_2, "no")
+                    case 1: 
+                        bufferstring(STR_VAR_2, "no")
+                    case 2: 
+                        bufferstring(STR_VAR_2, "no")
+                    case 3: 
+                        bufferstring(STR_VAR_2, "one")
+                        bufferstring(STR_VAR_3, "14")
+                    case 4: 
+                        bufferstring(STR_VAR_2, "two")
+                        bufferstring(STR_VAR_3, "13")
+                    case 5: 
+                        bufferstring(STR_VAR_2, "three")
+                        bufferstring(STR_VAR_3, "12")
+                    case 6: 
+                        bufferstring(STR_VAR_2, "four")
+                        bufferstring(STR_VAR_3, "11")
+                    case 7: 
+                        bufferstring(STR_VAR_2, "five")
+                        bufferstring(STR_VAR_3, "10")
+                    case 8: 
+                        bufferstring(STR_VAR_2, "six")
+                        bufferstring(STR_VAR_3, "nine")
+                    case 9: 
+                        bufferstring(STR_VAR_2, "seven")
+                        bufferstring(STR_VAR_3, "eight")
+                    case 10: 
+                        bufferstring(STR_VAR_2, "eight")
+                        bufferstring(STR_VAR_3, "seven")
+                    case 11: 
+                        bufferstring(STR_VAR_2, "nine")
+                        bufferstring(STR_VAR_3, "six")
+                    case 12: 
+                        bufferstring(STR_VAR_2, "10")
+                        bufferstring(STR_VAR_3, "five")
+                    case 13: 
+                        bufferstring(STR_VAR_2, "11")
+                        bufferstring(STR_VAR_3, "four")
+                    case 14: 
+                        bufferstring(STR_VAR_2, "12")
+                        bufferstring(STR_VAR_3, "three")
+                    case 15: 
+                        bufferstring(STR_VAR_2, "13")
+                        bufferstring(STR_VAR_3, "two")
+                    case 16: 
+                        bufferstring(STR_VAR_2, "14")
+                        bufferstring(STR_VAR_3, "one")
+                    case 17: 
+                        bufferstring(STR_VAR_2, "15")
+                }
+            }
+            if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 17){ // once you've given all 15 mons 
+                applymovement(VAR_LAST_TALKED, Common_Movement_ExclamationMark)
+                playse(SE_PIN)
+                waitse
+                msgbox(format("Ah!\lThis is excellent!\p"
+                                "To be completely honest, I didn't really expect to have to go back to work.\p"
+                                "But you've brought me 15 digging POKéMON!\p"
+                                "That means we can start work on finishing the LAVARBOR TUNNEL."), MSGBOX_DEFAULT)
+                closemessage
+                delay(60)
+                message("… … … … … … … … … … …")
+                waitmessage
+                delay(45)
+                closemessage
+                delay(60)
+                msgbox(format("What?\pI can't start immediately,\lI have to finish my sauna session!"), MSGBOX_DEFAULT)
+            }
+            else{ // if you haven't given all 15 digging mons yet
+                //delay(30)
+                msgbox(format("Ah yes, it will be tough, but {STR_VAR_1}'s help will surely speed things up.\p"
+                                "In total, you've volunteered {STR_VAR_2} digging POKéMON for the tunnel crew.\p"
+                                "That means we still need {STR_VAR_3} more to join the team before we can start working."), MSGBOX_DEFAULT)
+                msgbox(format("Do you have any more POKéMON to volunteer for the crew right now?"), MSGBOX_YESNO)
+                if (var(VAR_RESULT) == YES){
+                    goto(LavaridgeSauna_EventScript_GiveAnotherDiggingMon)
+                }
+                else{
+                    msgbox(format("Well when you do, you know where to find me!"), MSGBOX_DEFAULT)
+                }
+            }
+        }
+        else{ // if you don't give him the pokemon when asked if you're sure
+            msgbox(format("Right, then.\nI don't blame you.\p"
+                            "Digging that tunnel will be very grueling work."), MSGBOX_DEFAULT)
+        }
+    }
+    elif (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN){
+        msgbox(format("Oh, you don't want to volunteer any POKéMON for the tunnel crew right now?\p"
+                        "Well, I won't be able to work on the tunnel without POKéMON…\p"
+                        "So I'll just keep enjoying the sauna!"))
+    }
+    else{ // chosen mon isn't digging pokemon
+        msgbox(format("Hmm…\lThis is not a digging POKéMON…\p"
+                        "Digging POKéMON are the only POKéMON\nI use, because they're so hardy!\p"
+                        "Completing the LAVARBOR TUNNEL will be brutal work…\p"
+                        "To dig this tunnel, we'll need none but the best digging POKéMON."), MSGBOX_DEFAULT)
+    }
+    applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+    waitmovement
+    release
+    end
+}
+
+raw`
+
+LavaridgeSauna_Text_RandomSaunaOldManDefeated1:
+    .string "Look what you've done!\p"
+    .string "All that commotion from your POKéMON\n"
+    .string "made the steam disperse!$"
+
+LavaridgeSauna_Text_RandomSaunaOldManDefeated2:
+    .string "Grrr…\p"
+    .string "Let me relax in peace!$"
+
+LavaridgeSauna_Text_RandomSaunaOldManDefeated3:
+    .string "Why are you in here causing a ruckus?!$"
+
+LavaridgeSauna_Text_TunnelManiacDefeated:
+    .string "Just let me retire in peace!$"
+
+LavaridgeSauna_Text_TunnelManiacTunnelDefeated:
+    .string "Wait a second…\l"
+    .string "Did you say something about a tunnel?$"
+
+LavaridgeSauna_Text_TunnelManiacMetDefeated:
+    .string "Oh,\l"
+    .string "It's you again.$"
+
+`

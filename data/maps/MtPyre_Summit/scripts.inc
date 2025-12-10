@@ -973,7 +973,7 @@ MtPyre_Summit_Text_Grunt4PostBattle:
 # 487 "data//maps/MtPyre_Summit/scripts.pory"
 MtPyre_Summit_Text_ArchieAttack:
 # 488 "data//maps/MtPyre_Summit/scripts.pory"
-	.string "Huh . . . ?\p"
+	.string "Huh…?\p"
 # 489 "data//maps/MtPyre_Summit/scripts.pory"
 	.string "You're following me around?\p"
 # 490 "data//maps/MtPyre_Summit/scripts.pory"
@@ -995,7 +995,7 @@ MtPyre_Summit_Text_ArchieDefeat:
 # 498 "data//maps/MtPyre_Summit/scripts.pory"
 MtPyre_Summit_Text_ArchieWeGotTheOrbLetsGo:
 # 499 "data//maps/MtPyre_Summit/scripts.pory"
-	.string "ARCHIE: You defeated me . . .\n"
+	.string "ARCHIE: You defeated me…\l"
 # 500 "data//maps/MtPyre_Summit/scripts.pory"
 	.string "but this battle was inconsequential!\p"
 # 501 "data//maps/MtPyre_Summit/scripts.pory"

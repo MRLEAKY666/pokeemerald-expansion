@@ -485,7 +485,7 @@ MtPyre_Summit_Text_Grunt4PostBattle:
 	.string "with us members and our leader.$"
 
 MtPyre_Summit_Text_ArchieAttack:
-	.string "Huh . . . ?\p"
+	.string "Huh…?\p"
 	.string "You're following me around?\p"
 	.string "Who do you think you are?\n"
 	.string "Some kind of baby genius cop?\p"
@@ -496,7 +496,7 @@ MtPyre_Summit_Text_ArchieDefeat:
 	.string "You are so annoying!$"
 
 MtPyre_Summit_Text_ArchieWeGotTheOrbLetsGo:
-	.string "ARCHIE: You defeated me . . .\n"
+	.string "ARCHIE: You defeated me…\l"
 	.string "but this battle was inconsequential!\p"
 	.string "I already have the RED ORB\n"
 	.string "in my possession!\p"

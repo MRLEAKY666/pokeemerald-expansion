@@ -4800,6 +4800,16 @@
       "secondary_tileset": "gTileset_Lavaridge",
       "border_filepath": "data/layouts/LavaridgeSauna/border.bin",
       "blockdata_filepath": "data/layouts/LavaridgeSauna/map.bin"
+    },
+    {
+      "id": "LAYOUT_LAVARBOR_TUNNEL_ENTRANCE",
+      "name": "LavarborTunnelEntrance_Layout",
+      "width": 11,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Lavaridge",
+      "border_filepath": "data/layouts/LavarborTunnelEntrance/border.bin",
+      "blockdata_filepath": "data/layouts/LavarborTunnelEntrance/map.bin"
     }
   ]
 }

@@ -3,8 +3,38 @@ LavaridgeTown_PokemonCenter_2F_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, CableClub_OnFrame
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, CableClub_OnWarp
 	map_script MAP_SCRIPT_ON_LOAD, CableClub_OnLoad
-	map_script MAP_SCRIPT_ON_TRANSITION, CableClub_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, LavaridgeTown_PokemonCenter_2F_OnTransition
 	.byte 0
+
+`
+
+script LavaridgeTown_PokemonCenter_2F_OnTransition{
+	if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 0){
+		setflag(FLAG_LAVARIDGE_BREAK_NURSE)
+	}
+}
+
+script LavaridgeTown_PokemonCenter_2F_EventScript_NurseOnBreak{
+	lock
+	faceplayer
+	msgbox(format("Oh, hey.\pDid you want to hear about the LAVARBOR TUNNEL again?"), MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES){
+		msgbox(format("Well, there were plans for a tunnel from here to FALLARBOR TOWN,\lbut the project was cancelled…\p"
+						"They never made much progress…\pApparently the project leader spent too much time at the sauna instead of directing the dig.\p"
+						"He's still there almost all the time!\nAfter they cancelled the project,\lhe retired here to LAVARIDGE."), MSGBOX_DEFAULT)
+	}
+	else{
+		msgbox(format("Yeah, you're right, it's pretty boring…"), MSGBOX_DEFAULT)
+	}
+	closemessage
+	delay(15)
+	applymovement(LOCALID_LAVARIDGE_PKMNCNTR_NURSE_ON_BREAK, Common_Movement_FaceOriginalDirection)
+	waitmovement(LOCALID_LAVARIDGE_PKMNCNTR_NURSE_ON_BREAK)
+	release
+	end
+}
+
+raw`
 
 @ The below 3 are unused and leftover from RS
 LavaridgeTown_PokemonCenter_2F_EventScript_Colosseum::

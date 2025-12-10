@@ -8378,3 +8378,11 @@ static void FieldCallback_RockClimb(void)
     gFieldEffectArguments[0] = GetCursorSelectionMonId();
     FieldEffectStart(FLDEFF_USE_ROCK_CLIMB);
 }
+
+void DeleteMonFromParty(void)
+{
+    u8 position = VarGet(VAR_0x8004);
+    ZeroMonData(&gPlayerParty[position]);
+    CompactPartySlots();
+    CalculatePlayerPartyCount();
+}

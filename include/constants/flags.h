@@ -1520,7 +1520,7 @@
 #define FLAG_BLANK_DISC_DELIVERED                           (SYSTEM_FLAGS + 0x8F) // 
 #define FLAG_BLANK_DISC_GIVEN                           (SYSTEM_FLAGS + 0x90) // 
 #define FLAG_MET_BERRY_MASTER                           (SYSTEM_FLAGS + 0x91) // 
-#define FLAG_UNUSED_0x8F2                           (SYSTEM_FLAGS + 0x92) // Unused Flag
+#define FLAG_LAVARIDGE_BREAK_NURSE                           (SYSTEM_FLAGS + 0x92) // 
 #define FLAG_UNUSED_0x8F3                           (SYSTEM_FLAGS + 0x93) // Unused Flag
 #define FLAG_UNUSED_0x8F4                           (SYSTEM_FLAGS + 0x94) // Unused Flag
 #define FLAG_UNUSED_0x8F5                           (SYSTEM_FLAGS + 0x95) // Unused Flag

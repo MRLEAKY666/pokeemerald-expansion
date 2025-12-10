@@ -115,7 +115,7 @@
 #define VAR_BIKE_QUEST_STATE                          0x4059 // previouslu Unused Var
 #define VAR_RUSTBORO_CITY_STATE                          0x405A
 #define VAR_BIKE_DELIVERY_COUNTER                           0x405B // previously Unused Var
-#define VAR_RYDEL_DEBT                          0x405C // Unused Var
+#define VAR_RYDEL_DEBT                          0x405C // 
 #define VAR_MOSSDEEP_CITY_STATE                          0x405D
 #define VAR_SOOTOPOLIS_CITY_STATE                        0x405E
 #define VAR_EVER_GRANDE_CITY_STATE                       0x405F // Unused Var
@@ -131,7 +131,7 @@
 #define VAR_ROUTE110_STATE                               0x4069
 #define VAR_DERBY_VAR_RACER_NAME_6                               0x406A //  
 #define VAR_LAB_BASEMENT_ACCESS                               0x406B // PREVIOUSLY Unused Var
-#define VAR_ROUTE113_STATE                               0x406C // Unused Var
+#define VAR_LAVARBOR_TUNNEL_QUEST_STATE                               0x406C // 
 #define VAR_ROUTE114_STATE                               0x406D // Unused Var
 #define VAR_ROUTE115_STATE                               0x406E // Unused Var
 #define VAR_ROUTE116_STATE                               0x406F

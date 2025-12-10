@@ -1,0 +1,69 @@
+const VAR_TRIGGER_NURSE_CUTSCENE = VAR_TEMP_2 
+
+mapscripts LavarborTunnelEntrance_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 0){
+            setobjectxyperm(LOCALID_LAVARIDGE_NURSE_ON_BREAK, 4, 4)
+            setobjectxy(LOCALID_LAVARIDGE_NURSE_ON_BREAK, 4, 4)
+            setobjectmovementtype(LOCALID_LAVARIDGE_NURSE_ON_BREAK, MOVEMENT_TYPE_FACE_UP)
+            setvar(VAR_TEMP_2, 1)
+        }
+    }
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_TRIGGER_NURSE_CUTSCENE, 1 {
+            lock
+            delay(15)
+            applymovement(LOCALID_LAVARIDGE_NURSE_ON_BREAK, Common_Movement_ExclamationMark)
+            playse(SE_PIN)
+            waitse
+            delay(20)
+            applymovement(LOCALID_LAVARIDGE_NURSE_ON_BREAK, Common_Movement_WalkInPlaceFasterDown)
+            waitmovement
+            msgbox(format("Oh!\l"
+            "You startled me!\p"
+            "This is where I take breaks, because nobody knows where to find me.\p"
+            "They started to dig a tunnel from here to FALLARBOR TOWN, but the project was cancelled…\p"
+            "They burnt through all their funding without making much progress.\p"
+            "Apparently the project leader was spending a lot of time at the sauna instead of directing the dig.\p"
+            "He's still there almost all the time!\nHe basically retired early and never looked back.\p"
+            "Anyway, I should get back to work.\nNURSE JOY is probably waiting for me."), MSGBOX_DEFAULT)
+            closemessage
+            delay(15)
+            applymovement(LOCALID_LAVARIDGE_NURSE_ON_BREAK, LavarborTunnelEntrance_Movement_NurseLeaves1)
+            waitmovement(LOCALID_LAVARIDGE_NURSE_ON_BREAK)
+            applymovement(LOCALID_PLAYER, LavarborTunnelEntrance_Movement_PlayerMovesForNurse)
+            applymovement(LOCALID_LAVARIDGE_NURSE_ON_BREAK, LavarborTunnelEntrance_Movement_NurseLeaves2)
+            delay(16)
+            playse(SE_EXIT)
+            waitse
+            setvar(VAR_TRIGGER_NURSE_CUTSCENE, 0)
+            setvar(VAR_LAVARBOR_TUNNEL_QUEST_STATE, 1)
+            release
+            end
+        }
+    ]
+}
+
+raw`
+
+LavarborTunnelEntrance_Movement_NurseLeaves1:
+    walk_right
+    walk_down
+    walk_down
+    delay_8
+    nurse_joy_bow
+    delay_4
+    step_end
+
+LavarborTunnelEntrance_Movement_NurseLeaves2:
+    walk_down
+    delay_8
+    set_invisible
+    walk_fast_down
+    step_end
+
+LavarborTunnelEntrance_Movement_PlayerMovesForNurse:
+    walk_right
+    walk_in_place_left
+    step_end
+`

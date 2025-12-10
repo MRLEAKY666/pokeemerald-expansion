@@ -1,6 +1,7 @@
 raw `
 LavaridgeTown_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, LavaridgeTown_OnTransition
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, LavaridgeTown_OnWarp
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, LavaridgeTown_OnFrame
 	.byte 0
 
@@ -14,7 +15,22 @@ LavaridgeTown_OnTransition:
 	call Common_EventScript_SetupRivalOnBikeGfxId
 	call_if_eq VAR_LAVARIDGE_TOWN_STATE, 1, LavaridgeTown_EventScript_CheckSetRivalPos
 	call_if_eq VAR_LAVARIDGE_TOWN_STATE, 1, LavaridgeTown_EventScript_HideMapNamePopup
+	call_if_eq VAR_LAVARBOR_TUNNEL_QUEST_STATE, 1, LavaridgeTown_EventScript_TryClearBreakNurseFlag
+	getplayerxy VAR_TEMP_E, VAR_TEMP_F
+	call_if_eq VAR_TEMP_F, 7, LavaridgeTown_EventScript_HideMapNamePopup
+	call_if_eq VAR_TEMP_F, 7, LavaridgeTown_EventScript_SetupKickedOutOfSaunaLecture
 	end
+
+`
+
+script LavaridgeTown_EventScript_TryClearBreakNurseFlag{
+	if (flag(FLAG_LAVARIDGE_BREAK_NURSE)){
+		clearflag(FLAG_LAVARIDGE_BREAK_NURSE)
+	}
+	return
+}
+
+raw`
 
 LavaridgeTown_EventScript_ClearLavaridgeWhiteOut::
 	clearflag FLAG_WHITEOUT_TO_LAVARIDGE
@@ -40,8 +56,21 @@ LavaridgeTown_EventScript_HideMapNamePopup::
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	return
 
+LavaridgeTown_EventScript_SetupKickedOutOfSaunaLecture:
+	setvar VAR_TEMP_4, 1
+	return
+
+LavaridgeTown_OnWarp:
+	map_script_2 VAR_TEMP_4, 1, LavaridgeTown_EventScript_SetupSaunaLecture2
+	.2byte 0
+
+LavaridgeTown_EventScript_SetupSaunaLecture2::
+	turnobject LOCALID_PLAYER, DIR_NORTH
+	end
+
 LavaridgeTown_OnFrame:
 	map_script_2 VAR_LAVARIDGE_TOWN_STATE, 1, LavaridgeTown_EventScript_RivalGiveGoGoggles
+	map_script_2 VAR_TEMP_4, 1, LavaridgeTown_EventScript_KickedOutOfSauna
 	.2byte 0
 
 LavaridgeTown_EventScript_RivalGiveGoGoggles::
@@ -162,8 +191,8 @@ LavaridgeTown_EventScript_SaunaAttendant::
 LavaridgeTown_Text_SaunaAttendant:
 	.string "Through here is the SAUNA.\p"
 	.string "Feel free to spend some time in there,\n"
-	.string "but our other patrons strongly prefer\l"
-	.string "to be left alone.$"
+	.string "but remember to respect the peace\l"
+	.string "and relaxation of our other patrons.$"
 
 LavaridgeTown_Movement_RivalExit2:
 	walk_fast_right
@@ -244,6 +273,14 @@ LavaridgeTown_EventScript_HotSpringsOldWoman2::
 	msgbox LavaridgeTown_Text_HotSpringsClaims, MSGBOX_NPC
 	end
 
+LavaridgeTown_EventScript_HotSpringsOldWoman3::
+	msgbox LavaridgeTown_Text_EveryoneAlwaysTraipsing, MSGBOX_NPC
+	end
+
+LavaridgeTown_EventScript_HotSpringsOldWoman4::
+	msgbox LavaridgeTown_Text_SaunaMenRetired, MSGBOX_NPC
+	end
+
 LavaridgeTown_EventScript_ExpertF::
 	msgbox LavaridgeTown_Text_OhYouLikeHotSprings, MSGBOX_NPC
 	end
@@ -291,6 +328,34 @@ LavaridgeTown_EventScript_GymSign::
 LavaridgeTown_EventScript_HerbShopSign::
 	msgbox LavaridgeTown_Text_HerbShopSign, MSGBOX_SIGN
 	end
+
+LavaridgeTown_EventScript_KickedOutOfSauna::
+	@ lock
+	@ applymovement LOCALID_PLAYER, Common_Movement_FaceUp
+	@ fadescreen FADE_FROM_WHITE
+	delay 30
+	applymovement LOCALID_LAVARIDGE_SAUNA_ATTENDANT, Common_Movement_WalkInPlaceDown
+	msgbox LavaridgeTown_Text_KickedOutOfSauna, MSGBOX_NPC
+	setvar VAR_TEMP_4, 0
+	release
+	end
+
+LavaridgeTown_Text_KickedOutOfSauna:
+	.string "The sauna is open to anyone, but\n"
+	.string "relaxation is very important to\l"
+	.string "our guests.\p"
+	.string "That means you aren't allowed to waltz\n"
+	.string "in and bother everybody like that.\p"
+	.string "If you want to use the sauna, you need\n"
+	.string "to be respectful;\p"
+	.string "give other guests their personal space,\n"
+	.string "and don't make too much noise!\p"
+	.string "Think of it like a sweaty library…\l"
+	.string "With no books.\p"
+	.string "This should all be common sense, but\n"
+	.string "today's youth just have no respect\l"
+	.string "for authority,\p"
+	.string "or their elders!$"
 
 LavaridgeTown_Text_MayNiceBadgesTakeThis:
 	.string "MAY: {PLAYER}{KUN}! Long time no see!\p"
@@ -408,6 +473,17 @@ LavaridgeTown_Text_HotSpringsClaims:
 	.string "relieving aching muscles, solving\l"
 	.string "romantic problems, and attracting\l"
 	.string "money…$"
+
+LavaridgeTown_Text_EveryoneAlwaysTraipsing:
+	.string "People are always traipsing through\n"
+	.string "this pool on their way to the sauna…\p"
+	.string "You and everyone else are diluting my\n"
+	.string "hot water!$"
+
+LavaridgeTown_Text_SaunaMenRetired:
+	.string "The sauna is full of grumpy old men.\p"
+	.string "They spend all their time in there,\n"
+	.string "so you'd think they'd be more relaxed…$"
 
 LavaridgeTown_Text_TownSign:
 	.string "LAVARIDGE TOWN\p"
