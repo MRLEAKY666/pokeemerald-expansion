@@ -99,4 +99,14 @@ const struct PoolRules gPoolRulesetsList[] = {
         .tagRequired[POOL_TAG_TAG7] = TRUE,
         .tagMaxMembers[POOL_TAG_TAG7] = 1,
     },
+    [POOL_RULESET_SPECIES_CLAUSE] = {
+        .speciesClause = TRUE,
+        .excludeForms = B_POOL_RULE_EXCLUDE_FORMS,
+        .itemClause = B_POOL_RULE_ITEM_CLAUSE,
+        .itemClauseExclusions = B_POOL_RULES_USE_ITEM_EXCLUSIONS,
+        .megaStoneClause = B_POOL_RULE_MEGA_STONE_CLAUSE,
+        .zCrystalClause = B_POOL_RULE_Z_CRYSTAL_CLAUSE,
+        .tagMaxMembers[POOL_TAG_LEAD] = 1,
+        .tagMaxMembers[POOL_TAG_ACE] = 1,
+    },
 };

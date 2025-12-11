@@ -986,8 +986,8 @@ static void TakeGabbyAndTyOffTheAir(void)
 // See gabby_and_ty.inc for details
 u8 GabbyAndTyGetBattleNum(void)
 {
-    if (gSaveBlock1Ptr->gabbyAndTyData.battleNum > 5)
-        return (gSaveBlock1Ptr->gabbyAndTyData.battleNum % 3) + 6;
+    if (gSaveBlock1Ptr->gabbyAndTyData.battleNum > 6)
+        return ((gSaveBlock1Ptr->gabbyAndTyData.battleNum - 1) % 3) + 7;
 
     return gSaveBlock1Ptr->gabbyAndTyData.battleNum;
 }
@@ -1055,12 +1055,16 @@ void GetGabbyAndTyLocalIds(void)
         gSpecialVar_0x8005 = LOCALID_ROUTE120_TY_2;
         break;
     case 7:
-        gSpecialVar_0x8004 = LOCALID_ROUTE111_GABBY_3;
-        gSpecialVar_0x8005 = LOCALID_ROUTE111_TY_3;
+        gSpecialVar_0x8004 = LOCALID_ROUTE111_GABBY_4;
+        gSpecialVar_0x8005 = LOCALID_ROUTE111_TY_4;
         break;
     case 8:
-        gSpecialVar_0x8004 = LOCALID_ROUTE118_GABBY_3;
-        gSpecialVar_0x8005 = LOCALID_ROUTE118_TY_3;
+        gSpecialVar_0x8004 = LOCALID_ROUTE118_GABBY_4;
+        gSpecialVar_0x8005 = LOCALID_ROUTE118_TY_4;
+        break;
+    case 9:
+        gSpecialVar_0x8004 = LOCALID_ROUTE120_GABBY_3;
+        gSpecialVar_0x8005 = LOCALID_ROUTE120_TY_3;
         break;
     }
 }

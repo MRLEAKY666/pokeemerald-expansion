@@ -9,7 +9,7 @@
 @ Route 111 and Route 118 have 3 object events each (parties 1,4,6 and 2,5,6 respectively)
 @ and Route 120 has 2 object events each (parties 3 and 6).
 GabbyAndTy_EventScript_UpdateLocation::
-	cleartrainerflag TRAINER_GABBY_AND_TY_6  @ Clear flag for their final party to allow infinite rematches.
+	cleartrainerflag TRAINER_GABBY_AND_TY_7  @ Clear flag for their final party to allow infinite rematches.
 	specialvar VAR_RESULT, GabbyAndTyGetBattleNum
 	switch VAR_RESULT
 	case 0, GabbyAndTy_EventScript_MoveForBattle1
@@ -21,50 +21,56 @@ GabbyAndTy_EventScript_UpdateLocation::
 	case 6, GabbyAndTy_EventScript_MoveForBattle7
 	case 7, GabbyAndTy_EventScript_MoveForBattle8
 	case 8, GabbyAndTy_EventScript_MoveForBattle9
+	case 9, GabbyAndTy_EventScript_MoveForBattle10
 	end
 
 GabbyAndTy_EventScript_MoveForBattle1::
-	call GabbyAndTy_EventScript_ShowAtRoute111_1
+	call GabbyAndTy_EventScript_ShowAtRoute111_1 @ show team 1, location 1
 	return
 
 GabbyAndTy_EventScript_MoveForBattle2::
-	call GabbyAndTy_EventScript_ShowAtRoute118_1
-	call GabbyAndTy_EventScript_HideAtRoute111_1
+	call GabbyAndTy_EventScript_ShowAtRoute118_1 @ show team 2, location 2
+	call GabbyAndTy_EventScript_HideAtRoute111_1 @ hide team 1, location 1
 	return
 
 GabbyAndTy_EventScript_MoveForBattle3::
-	call GabbyAndTy_EventScript_ShowAtRoute120_1
-	call GabbyAndTy_EventScript_HideAtRoute118_1
+	call GabbyAndTy_EventScript_ShowAtRoute120_1 @ show team 3, location 3
+	call GabbyAndTy_EventScript_HideAtRoute118_1 @ hide team 2, location 2
 	return
 
 GabbyAndTy_EventScript_MoveForBattle4::
-	call GabbyAndTy_EventScript_ShowAtRoute111_2
-	call GabbyAndTy_EventScript_HideAtRoute120_1
+	call GabbyAndTy_EventScript_ShowAtRoute111_2 @ show team 4, location 1
+	call GabbyAndTy_EventScript_HideAtRoute120_1 @ hide team 3, location 3
 	return
 
 GabbyAndTy_EventScript_MoveForBattle5::
-	call GabbyAndTy_EventScript_ShowAtRoute118_2
-	call GabbyAndTy_EventScript_HideAtRoute111_2
+	call GabbyAndTy_EventScript_ShowAtRoute118_2 @ show team 5, location 2
+	call GabbyAndTy_EventScript_HideAtRoute111_2 @ hide team 4, location 1
 	return
 
 GabbyAndTy_EventScript_MoveForBattle6::
-	call GabbyAndTy_EventScript_ShowAtRoute120_2
-	call GabbyAndTy_EventScript_HideAtRoute118_2
+	call GabbyAndTy_EventScript_ShowAtRoute120_2 @ show team 6, location 3
+	call GabbyAndTy_EventScript_HideAtRoute118_2 @ hide team 5, location 2
 	return
 
 GabbyAndTy_EventScript_MoveForBattle7::
-	call GabbyAndTy_EventScript_ShowAtRoute111_3
-	call GabbyAndTy_EventScript_HideAtRoute120_2
+	call GabbyAndTy_EventScript_ShowAtRoute111_3 @ show team 7, location 1
+	call GabbyAndTy_EventScript_HideAtRoute120_2 @ hide team 6, location 3
 	return
 
 GabbyAndTy_EventScript_MoveForBattle8::
-	call GabbyAndTy_EventScript_ShowAtRoute118_3
-	call GabbyAndTy_EventScript_HideAtRoute111_3
+	call GabbyAndTy_EventScript_ShowAtRoute118_3 @ show team 7, location 2
+	call GabbyAndTy_EventScript_HideAtRoute111_3 @ hide team 7, location 1
 	return
 
 GabbyAndTy_EventScript_MoveForBattle9::
-	call GabbyAndTy_EventScript_ShowAtRoute120_2
-	call GabbyAndTy_EventScript_HideAtRoute118_3
+	call GabbyAndTy_EventScript_ShowAtRoute120_3 @ show team 7, location 3
+	call GabbyAndTy_EventScript_HideAtRoute118_3 @ hide team 7, location 2
+	return
+
+GabbyAndTy_EventScript_MoveForBattle10::
+	call GabbyAndTy_EventScript_ShowAtRoute111_3 @ show team 7, location 1
+	call GabbyAndTy_EventScript_HideAtRoute120_3 @ hide team 7, location 3
 	return
 
 GabbyAndTy_EventScript_HideAtRoute111_1::
@@ -116,19 +122,27 @@ GabbyAndTy_EventScript_ShowAtRoute120_2::
 	return
 
 GabbyAndTy_EventScript_HideAtRoute111_3::
-	setflag FLAG_HIDE_ROUTE_111_GABBY_AND_TY_3
+	setflag FLAG_HIDE_ROUTE_111_GABBY_AND_TY_4
 	return
 
 GabbyAndTy_EventScript_ShowAtRoute111_3::
-	clearflag FLAG_HIDE_ROUTE_111_GABBY_AND_TY_3
+	clearflag FLAG_HIDE_ROUTE_111_GABBY_AND_TY_4
 	return
 
 GabbyAndTy_EventScript_HideAtRoute118_3::
-	setflag FLAG_HIDE_ROUTE_118_GABBY_AND_TY_3
+	setflag FLAG_HIDE_ROUTE_118_GABBY_AND_TY_4
 	return
 
 GabbyAndTy_EventScript_ShowAtRoute118_3::
-	clearflag FLAG_HIDE_ROUTE_118_GABBY_AND_TY_3
+	clearflag FLAG_HIDE_ROUTE_118_GABBY_AND_TY_4
+	return
+
+GabbyAndTy_EventScript_ShowAtRoute120_3::
+	clearflag FLAG_HIDE_ROUTE_120_GABBY_AND_TY_3
+	return
+
+GabbyAndTy_EventScript_HideAtRoute120_3::
+	setflag FLAG_HIDE_ROUTE_120_GABBY_AND_TY_3
 	return
 
 GabbyAndTy_EventScript_GabbyBattle1::
@@ -199,6 +213,18 @@ GabbyAndTy_EventScript_GabbyBattle6::
 
 GabbyAndTy_EventScript_TyBattle6::
 	trainerbattle_double TRAINER_GABBY_AND_TY_6, GabbyAndTy_Text_TyIntro, GabbyAndTy_Text_TyDefeat, GabbyAndTy_Text_TyNotEnoughMons, GabbyAndTy_EventScript_RequestInterview
+	msgbox GabbyAndTy_Text_TyPostBattle, MSGBOX_DEFAULT
+	release
+	end
+
+GabbyAndTy_EventScript_GabbyBattle7::
+	trainerbattle_double TRAINER_GABBY_AND_TY_7, GabbyAndTy_Text_GabbyIntro, GabbyAndTy_Text_GabbyDefeat, GabbyAndTy_Text_GabbyNotEnoughMons, GabbyAndTy_EventScript_RequestInterview
+	msgbox GabbyAndTy_Text_KeepingAnEyeOutForYou, MSGBOX_DEFAULT
+	release
+	end
+
+GabbyAndTy_EventScript_TyBattle7::
+	trainerbattle_double TRAINER_GABBY_AND_TY_7, GabbyAndTy_Text_TyIntro, GabbyAndTy_Text_TyDefeat, GabbyAndTy_Text_TyNotEnoughMons, GabbyAndTy_EventScript_RequestInterview
 	msgbox GabbyAndTy_Text_TyPostBattle, MSGBOX_DEFAULT
 	release
 	end

@@ -232,8 +232,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 22,
-      "y": 63,
+      "x": 39,
+      "y": 61,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -562,7 +562,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_KECLEON",
       "x": 36,
-      "y": 62,
+      "y": 61,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_INVISIBLE",
       "movement_range_x": 1,
@@ -584,6 +584,34 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route120_EventScript_Kecleon3",
       "flag": "FLAG_HIDE_ROUTE_120_KECLEON_3"
+    },
+    {
+      "local_id": "LOCALID_ROUTE120_GABBY_3",
+      "graphics_id": "OBJ_EVENT_GFX_REPORTER_F",
+      "x": 36,
+      "y": 5,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "GabbyAndTy_EventScript_GabbyBattle7",
+      "flag": "FLAG_HIDE_ROUTE_120_GABBY_AND_TY_3"
+    },
+    {
+      "local_id": "LOCALID_ROUTE120_TY_3",
+      "graphics_id": "OBJ_EVENT_GFX_CAMERAMAN",
+      "x": 37,
+      "y": 5,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "GabbyAndTy_EventScript_TyBattle7",
+      "flag": "FLAG_HIDE_ROUTE_120_GABBY_AND_TY_3"
     }
   ],
   "warp_events": [

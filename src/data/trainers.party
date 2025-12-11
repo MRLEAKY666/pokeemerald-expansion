@@ -1044,6 +1044,116 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Supersonic
 - Hyper Voice
 
+=== TRAINER_GABBY_AND_TY_7 ===
+Name: GABBY & TY
+Class: Interviewer
+Pic: Interviewer
+Gender: Male
+Music: Interviewer
+Double Battle: Yes
+AI: Check Bad Move
+Party Size: 2
+Pool Rules: Species Clause
+Pool Pick Functions: Default
+
+Magnezone
+Level: 40
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Tags: Lead
+- Sonic Boom
+- Thunder Wave
+- Metal Sound
+- Thunderbolt
+
+Magnezone @ Air Balloon
+Level: 40
+Ability: Magnet Pull
+EVs: 252 SpA / 4 SpD / 252 Spe
+IVs: 31 HP / 30 Atk / 31 Def / 30 SpA / 31 SpD / 30 Spe
+Modest Nature
+Tags: Lead
+- Thunderbolt
+- Hidden Power 
+- Thunder Wave
+- Magnet Rise
+
+Magnezone @ Choice Scarf
+Level: 40
+Ability: Magnet Pull
+EVs: 252 SpA / 4 SpD / 252 Spe
+IVs: 31 HP / 30 Atk / 31 Def / 30 SpA / 31 SpD / 30 Spe
+Timid Nature
+Tags: Lead
+- Thunder
+- Rain Dance
+- Hidden Power 
+- Flash Cannon
+
+Magnezone @ Leftovers
+Level: 40
+Ability: Magnet Pull
+EVs: 252 SpA / 4 SpD / 252 Spe
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 30 Spe
+Modest Nature
+Tags: Lead
+- Substitute
+- Charge Beam
+- Hidden Power 
+- Protect
+
+Magnezone @ Sitrus Berry
+Level: 40
+Ability: Sturdy
+EVs: 252 HP / 4 Def / 252 SpA
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 30 Spe
+Modest Nature
+Tags: Lead
+- Thunderbolt
+- Hidden Power
+- Signal Beam
+- Protect
+
+Exploud
+Level: 40
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Astonish
+- Stomp
+- Supersonic
+- Hyper Voice
+
+Exploud @ Life Orb
+Level: 40
+Ability: Scrappy
+EVs: 68 Atk / 252 SpA / 188 Spe
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Naive Nature
+- Hyper Voice
+- Surf
+- Fire Blast
+- Low Kick
+
+Exploud @ Choice Band
+Level: 40
+Ability: Scrappy
+EVs: 252 HP / 252 Atk / 4 SpD
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Adamant Nature
+- Outrage
+- Uproar
+- Dynamic Punch
+- Earthquake
+
+Exploud @ Choice Specs
+Level: 40
+Ability: Scrappy
+EVs: 252 SpA / 4 SpD / 252 Spe
+IVs: 30 HP / 0 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Modest Nature
+- Crunch
+- Surf
+- Fire Blast
+- Ice Beam
+
 === TRAINER_LOLA_1 ===
 Name: LOLA
 Class: Tuber F

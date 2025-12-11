@@ -56,6 +56,11 @@ static const u8* const sTrainerSlides[DIFFICULTY_COUNT][TRAINERS_COUNT][TRAINER_
 {
     [DIFFICULTY_NORMAL] =
     {
+        [TRAINER_CHAMPION_STEVEN] = // use the Trainer's Id from include/constants/opponents.h
+        {
+            [TRAINER_SLIDE_MEGA_EVOLUTION] = COMPOUND_STRING("You continue to impress me, {PLAYER}…\pBut how will you confront power\nlike this?{PAUSE_UNTIL_PRESS}"), // find the id for the slide to be used.
+            //[TRAINER_SLIDE_MEGA_EVOLUTION] = gText_ThatsTheWay, // You can use globals or COMPOUND_STRING to define text here.
+        }
     },
 };
 

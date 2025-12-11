@@ -1943,7 +1943,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             u32 otIdType = OT_ID_RANDOM_NO_SHINY;
             u32 fixedOtId = 0;
             u32 abilityNum = 0;
-            u8 levelscale = partyData[monIndex].lvl; // defined here for levelscaling, moved from corresponding argument in CreateMon below
+            u8 levelscale = partyData[monIndex].lvl; // the value assigned here to levelscale was taken from corresponding arg in createmon below
 
             if (trainer->battleType != TRAINER_BATTLE_TYPE_SINGLES)
                 personalityValue = 0x80;
@@ -1965,13 +1965,22 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
                 otIdType = OT_ID_PRESET;
                 fixedOtId = HIHALF(personalityValue) ^ LOHALF(personalityValue);
             }
-            if (trainer->trainerClass == TRAINER_CLASS_CHAMPION || trainer->trainerClass == TRAINER_CLASS_ELITE_FOUR || trainer->trainerClass == TRAINER_CLASS_PROFESSOR || trainer->trainerClass == TRAINER_CLASS_RIVAL) // level scaling for elite four and champion
+            if (trainer->trainerClass == TRAINER_CLASS_CHAMPION || trainer->trainerClass == TRAINER_CLASS_ELITE_FOUR/*  || trainer->trainerClass == TRAINER_CLASS_PROFESSOR || trainer->trainerClass == TRAINER_CLASS_RIVAL */) // level scaling for elite four and champion
             {
                 levelscale = (partyData[monIndex].lvl+VarGet(VAR_HOF_COUNTER)*2);
                 if (levelscale > 100)
                 {
                     levelscale = 100;
                 }
+            }
+            else if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_GABBY_AND_TY_7 && gSaveBlock1Ptr->gabbyAndTyData.battleNum >= 6)
+            {
+                u8 finalrematches = gSaveBlock1Ptr->gabbyAndTyData.battleNum - 6;
+                levelscale = partyData[monIndex].lvl + finalrematches;
+                if (levelscale > 85)
+                {
+                    levelscale = 85;
+                } 
             }
             CreateMon(&party[i], partyData[monIndex].species, levelscale, 0, TRUE, personalityValue, otIdType, fixedOtId);
             SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[monIndex].heldItem);

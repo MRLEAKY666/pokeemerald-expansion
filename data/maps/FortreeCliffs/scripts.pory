@@ -449,52 +449,93 @@ FortreeCliffs_EventScript_DidntGiveBerry::
 
 FortreeCliffs_EventScript_Ninja1::
 	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_1, FortreeCliffs_Text_Ninja1Intro, FortreeCliffs_Text_Ninja1Defeat
-	msgbox FortreeCliffs_Text_Ninja1PostBattle, MSGBOX_AUTOCLOSE
+	msgbox FortreeCliffs_Text_Ninja1Defeat, MSGBOX_AUTOCLOSE
 	end
 
 FortreeCliffs_EventScript_Ninja2::
 	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_2, FortreeCliffs_Text_Ninja2Intro, FortreeCliffs_Text_Ninja2Defeat
-	msgbox FortreeCliffs_Text_Ninja2PostBattle, MSGBOX_AUTOCLOSE
+	msgbox FortreeCliffs_Text_Ninja2Defeat, MSGBOX_AUTOCLOSE
 	end
 
 FortreeCliffs_EventScript_Ninja3::
 	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_3, FortreeCliffs_Text_Ninja3Intro, FortreeCliffs_Text_Ninja3Defeat
-	msgbox FortreeCliffs_Text_Ninja3PostBattle, MSGBOX_AUTOCLOSE
+	msgbox FortreeCliffs_Text_Ninja3Defeat, MSGBOX_AUTOCLOSE
 	end
 
 FortreeCliffs_EventScript_Expert1::
 	trainerbattle_single TRAINER_FORTREE_CLIFFS_EXPERT_1, FortreeCliffs_Text_Expert1Intro, FortreeCliffs_Text_Expert1Defeat
-	msgbox FortreeCliffs_Text_Expert1PostBattle, MSGBOX_AUTOCLOSE
+	msgbox FortreeCliffs_Text_Expert1Defeat, MSGBOX_AUTOCLOSE
 	end
 
 FortreeCliffs_EventScript_Ninja4::
-	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_4, FortreeCliffs_Text_Ninja4Intro, FortreeCliffs_Text_Ninja4Defeat
-	msgbox FortreeCliffs_Text_Ninja4PostBattle, MSGBOX_AUTOCLOSE
+	cant_see_if_trainerflag_set TRAINER_FORTREE_CLIFFS_NINJA_4
+	lock
+	call_if_defeated TRAINER_FORTREE_CLIFFS_NINJA_4, FortreeCliffs_EventScript_DefeatedNinja4
+	applymovement LOCALID_FORTREE_CLIFFS_NINJA_4, FortreeCliffs_Movement_NinjaAppears
+	waitmovement
+	delay 30
+	msgbox FortreeCliffs_Text_Ninja4Intro, MSGBOX_DEFAULT
+	call_if_not_defeated TRAINER_FORTREE_CLIFFS_NINJA_4, FortreeCliffs_EventScript_BattleNinja4
+	@ msgbox FortreeCliffs_Text_Ninja4Defeat, MSGBOX_AUTOCLOSE
+	release
 	end
+
+FortreeCliffs_EventScript_DefeatedNinja4::
+	msgbox FortreeCliffs_Text_Ninja4Defeat, MSGBOX_AUTOCLOSE
+	release
+	end
+
+FortreeCliffs_EventScript_BattleNinja4::
+	trainerbattle_no_intro TRAINER_FORTREE_CLIFFS_NINJA_4, FortreeCliffs_Text_Ninja4Defeat
+	return
+
+FortreeCliffs_Movement_NinjaAppears:
+	set_visible
+	delay_4
+	set_invisible
+	delay_4
+	set_visible
+	delay_4
+	set_invisible
+	delay_4
+	set_visible
+	delay_8
+	set_invisible
+	delay_8
+	set_visible
+	delay_8
+	set_invisible
+	delay_8
+	set_visible
+	delay_16
+	set_invisible
+	delay_16
+	set_visible
+	step_end
 
 FortreeCliffs_EventScript_Ninja5::
 	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_5, FortreeCliffs_Text_Ninja5Intro, FortreeCliffs_Text_Ninja5Defeat
-	msgbox FortreeCliffs_Text_Ninja5PostBattle, MSGBOX_AUTOCLOSE
+	msgbox FortreeCliffs_Text_Ninja5Defeat, MSGBOX_AUTOCLOSE
 	end
 
 FortreeCliffs_EventScript_Ninja6::
 	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_6, FortreeCliffs_Text_Ninja6Intro, FortreeCliffs_Text_Ninja6Defeat
-	msgbox FortreeCliffs_Text_Ninja6PostBattle, MSGBOX_AUTOCLOSE
+	msgbox FortreeCliffs_Text_Ninja6Defeat, MSGBOX_AUTOCLOSE
 	end
 
 FortreeCliffs_EventScript_BirdKeeper1::
 	trainerbattle_single TRAINER_FORTREE_CLIFFS_BIRDKEEPER_1, FortreeCliffs_Text_BirdKeeper1Intro, FortreeCliffs_Text_BirdKeeper1Defeat
-	msgbox FortreeCliffs_Text_BirdKeeper1PostBattle, MSGBOX_AUTOCLOSE
+	msgbox FortreeCliffs_Text_BirdKeeper1Defeat, MSGBOX_AUTOCLOSE
 	end
 
 FortreeCliffs_EventScript_Ranger1::
 	trainerbattle_single TRAINER_FORTREE_CLIFFS_RANGER_1, FortreeCliffs_Text_Ranger1Intro, FortreeCliffs_Text_Ranger1Defeat
-	msgbox FortreeCliffs_Text_Ranger1PostBattle, MSGBOX_AUTOCLOSE
+	msgbox FortreeCliffs_Text_Ranger1Defeat, MSGBOX_AUTOCLOSE
 	end
 
 FortreeCliffs_EventScript_Ranger2::
 	trainerbattle_single TRAINER_FORTREE_CLIFFS_RANGER_2, FortreeCliffs_Text_Ranger2Intro, FortreeCliffs_Text_Ranger2Defeat
-	msgbox FortreeCliffs_Text_Ranger2PostBattle, MSGBOX_AUTOCLOSE
+	msgbox FortreeCliffs_Text_Ranger2Defeat, MSGBOX_AUTOCLOSE
 	end
 
 FortreeCliffs_Movement_CameraPanUp:
@@ -629,13 +670,14 @@ FortreeCliffs_Text_Ninja3Defeat:
 	.string "You're annoying too!$"
 
 FortreeCliffs_Text_Ninja4Intro:
-	.string "Surprise! I've been studying KECLEON!$"
+	.string "Surprise!\l"
+	.string "I've been studying KECLEON!$"
 
 FortreeCliffs_Text_Ninja4PostBattle:
 	.string "My camouflage is perfect!$"
 
 FortreeCliffs_Text_Ninja4Defeat:
-	.string "$"
+	.string "My perfect disguise…$"
 
 FortreeCliffs_Text_Ninja5Intro:
 	.string "I'm the star pupil!$"
