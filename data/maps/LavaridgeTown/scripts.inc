@@ -72,7 +72,7 @@ LavaridgeTown_EventScript_CheckSetRivalPos::
 # 40 "data//maps/LavaridgeTown/scripts.pory"
 	getplayerxy VAR_0x8004, VAR_0x8005
 # 41 "data//maps/LavaridgeTown/scripts.pory"
-	goto_if_eq VAR_0x8004, 21, LavaridgeTown_EventScript_SetRivalPos
+	goto_if_eq VAR_0x8004, 22, LavaridgeTown_EventScript_SetRivalPos
 # 42 "data//maps/LavaridgeTown/scripts.pory"
 	return
 # 43 "data//maps/LavaridgeTown/scripts.pory"
@@ -80,9 +80,9 @@ LavaridgeTown_EventScript_CheckSetRivalPos::
 # 44 "data//maps/LavaridgeTown/scripts.pory"
 LavaridgeTown_EventScript_SetRivalPos::
 # 45 "data//maps/LavaridgeTown/scripts.pory"
-	setobjectxyperm LOCALID_LAVARIDGE_RIVAL, 23, 21
+	setobjectxyperm LOCALID_LAVARIDGE_RIVAL, 24, 21
 # 46 "data//maps/LavaridgeTown/scripts.pory"
-	setobjectxyperm LOCALID_LAVARIDGE_RIVAL_ON_BIKE, 21, 20
+	setobjectxyperm LOCALID_LAVARIDGE_RIVAL_ON_BIKE, 22, 20
 # 47 "data//maps/LavaridgeTown/scripts.pory"
 	setobjectmovementtype LOCALID_LAVARIDGE_RIVAL_ON_BIKE, MOVEMENT_TYPE_FACE_UP
 # 48 "data//maps/LavaridgeTown/scripts.pory"
@@ -148,9 +148,9 @@ LavaridgeTown_EventScript_RivalGiveGoGoggles::
 # 78 "data//maps/LavaridgeTown/scripts.pory"
 	getplayerxy VAR_0x8008, VAR_0x8009
 # 79 "data//maps/LavaridgeTown/scripts.pory"
-	call_if_eq VAR_0x8008, 21, LavaridgeTown_EventScript_RivalNoticePlayer
+	call_if_eq VAR_0x8008, 22, LavaridgeTown_EventScript_RivalNoticePlayer
 # 80 "data//maps/LavaridgeTown/scripts.pory"
-	call_if_ne VAR_0x8008, 21, LavaridgeTown_EventScript_RivalExitHerbShop
+	call_if_ne VAR_0x8008, 22, LavaridgeTown_EventScript_RivalExitHerbShop
 # 81 "data//maps/LavaridgeTown/scripts.pory"
 	delay 20
 # 82 "data//maps/LavaridgeTown/scripts.pory"
@@ -160,9 +160,9 @@ LavaridgeTown_EventScript_RivalGiveGoGoggles::
 # 84 "data//maps/LavaridgeTown/scripts.pory"
 	call_if_eq VAR_RESULT, FEMALE, LavaridgeTown_EventScript_PlayBrendanMusic
 # 85 "data//maps/LavaridgeTown/scripts.pory"
-	call_if_eq VAR_0x8008, 21, LavaridgeTown_EventScript_RivalApproachPlayer1
+	call_if_eq VAR_0x8008, 22, LavaridgeTown_EventScript_RivalApproachPlayer1
 # 86 "data//maps/LavaridgeTown/scripts.pory"
-	call_if_ne VAR_0x8008, 21, LavaridgeTown_EventScript_RivalApproachPlayer2
+	call_if_ne VAR_0x8008, 22, LavaridgeTown_EventScript_RivalApproachPlayer2
 # 87 "data//maps/LavaridgeTown/scripts.pory"
 	checkplayergender
 # 88 "data//maps/LavaridgeTown/scripts.pory"
@@ -216,9 +216,9 @@ LavaridgeTown_EventScript_RivalExit::
 # 112 "data//maps/LavaridgeTown/scripts.pory"
 	delay 30
 # 113 "data//maps/LavaridgeTown/scripts.pory"
-	call_if_eq VAR_0x8008, 21, LavaridgeTown_EventScript_RivalExit1
+	call_if_eq VAR_0x8008, 22, LavaridgeTown_EventScript_RivalExit1
 # 114 "data//maps/LavaridgeTown/scripts.pory"
-	call_if_ne VAR_0x8008, 21, LavaridgeTown_EventScript_RivalExit2
+	call_if_ne VAR_0x8008, 22, LavaridgeTown_EventScript_RivalExit2
 # 115 "data//maps/LavaridgeTown/scripts.pory"
 	removeobject LOCALID_LAVARIDGE_RIVAL_ON_BIKE
 # 116 "data//maps/LavaridgeTown/scripts.pory"

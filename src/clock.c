@@ -61,6 +61,7 @@ static void UpdatePerDay(struct Time *localTime)
         RestockBerryMasterCellar();
         CountBikeDeliveryDays(daysSince);
         ResetDailyTrainers();
+        ProgressLavarborTunnelState();
         DailyResetApricornTrees();
         *days = localTime->days;
     }

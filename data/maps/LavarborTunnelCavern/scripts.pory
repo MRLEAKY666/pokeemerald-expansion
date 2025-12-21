@@ -1,0 +1,343 @@
+const FLAG_HIDE_LAVARBOR_GARCHOMP = FLAG_TEMP_5
+const FLAG_HIDE_CAVERN_FOSSIL_MANIAC = FLAG_TEMP_6
+const FLAG_HIDE_CAVERN_TUNNEL_MANIAC = FLAG_TEMP_7
+const VAR_ARM_GARCHOMP_ATTACK = VAR_TEMP_5
+const VAR_ARM_GARCHOMP_RUMBLE = VAR_TEMP_6
+
+mapscripts LavarborTunnelCavern_MapScripts {
+    MAP_SCRIPT_ON_LOAD {
+        if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) < 23 
+         || !flag(FLAG_DEFEATED_LAVARBOR_GARCHOMP)
+         || var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 23 && flag(FLAG_DEFEATED_LAVARBOR_GARCHOMP) && !flag(FLAG_LAVARBOR_FALLARBOR_OPENED)){ // before quest state 23 or at 23 after defeating garchomp and seeing fossil maniac cutscene, show rock wall without door  
+            setmetatile(22, 12, METATILE_Cave_Regular_Dark_Cave_Wall, TRUE)
+            setmetatile(23, 12, METATILE_Cave_Regular_Dark_Cave_Wall, TRUE)
+            setmetatile(23, 13, METATILE_Cave_Sandbottom_Dark_Cave_Wall, TRUE)
+        }
+    }
+    MAP_SCRIPT_ON_TRANSITION {
+        if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) < 24 
+         && !flag(FLAG_DEFEATED_LAVARBOR_GARCHOMP)){ // arm garchomp attack if tunnel incomplete and garchomp not defeated yet
+            setvar(VAR_ARM_GARCHOMP_ATTACK, 1)
+            setvar(VAR_ARM_GARCHOMP_RUMBLE, 1)
+            setflag(FLAG_HIDE_LAVARBOR_GARCHOMP)
+            setflag(FLAG_HIDE_CAVERN_FOSSIL_MANIAC)
+            setflag(FLAG_HIDE_CAVERN_TUNNEL_MANIAC)
+        }
+        elif (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) < 24 
+         && flag(FLAG_DEFEATED_LAVARBOR_GARCHOMP) 
+         && !flag(FLAG_LAVARBOR_FALLARBOR_OPENED)){ // if you got the tunnel maniac cutscene after defeating garchomp instead of the fossil maniac one
+            setflag(FLAG_HIDE_LAVARBOR_GARCHOMP)
+            setflag(FLAG_HIDE_CAVERN_FOSSIL_MANIAC)
+            setobjectxyperm(LOCALID_CAVERN_TUNNEL_MANIAC, 24, 15)
+        }
+        else{
+            setflag(FLAG_HIDE_LAVARBOR_GARCHOMP)
+            setflag(FLAG_HIDE_CAVERN_FOSSIL_MANIAC)
+            setflag(FLAG_HIDE_CAVERN_TUNNEL_MANIAC)
+        }
+    }
+}
+
+script LavarborTunnelCavern_EventScript_GarchompRumble{
+    lock
+    setvar(VAR_0x8004, 1)  // vertical pan
+	setvar(VAR_0x8005, 1)  // horizontal pan
+	setvar(VAR_0x8006, 8)  // num shakes
+	setvar(VAR_0x8007, 3)  // shake delay
+	special(ShakeCamera)
+    playse(SE_BANG)
+    delay(15)
+    playse(SE_BANG)
+    delay(30)
+    msgbox(format("Something powerful is lurking below…"), MSGBOX_DEFAULT)
+    setvar(VAR_ARM_GARCHOMP_RUMBLE, 0)
+    release
+}
+
+script LavarborTunnelCavern_EventScript_GarchompAttacks{
+    lock
+    fadeoutbgm(0)
+    turnobject(LOCALID_PLAYER, DIR_SOUTH)
+    addobject(LOCALID_LAVARBOR_CAVERN_GARCHOMP, MAP_LAVARBOR_TUNNEL_CAVERN)
+    clearflag(FLAG_HIDE_LAVARBOR_GARCHOMP)
+	setvar(VAR_0x8004, 1)  // vertical pan
+	setvar(VAR_0x8005, 1)  // horizontal pan
+	setvar(VAR_0x8006, 8)  // num shakes
+	setvar(VAR_0x8007, 3)  // shake delay
+	special(ShakeCamera)
+    playse(SE_BANG)
+    delay(15)
+    playse(SE_BANG)
+    delay(30)
+	special(ShakeCamera)
+    playse(SE_BANG)
+    delay(15)
+    playse(SE_BANG)
+    delay(30)
+    getplayerxy(VAR_TEMP_E, VAR_TEMP_F)
+    if (var(VAR_TEMP_E) == 19){
+        setobjectxy(LOCALID_LAVARBOR_CAVERN_GARCHOMP, 19, 16)
+    }
+    else{
+        setobjectxy(LOCALID_LAVARBOR_CAVERN_GARCHOMP, 20, 16)
+    }
+    applymovement(LOCALID_LAVARBOR_CAVERN_GARCHOMP, LavarborTunnelCavern_Movement_GarchompUnearthed)
+    playse(SE_BIKE_HOP)
+    waitmovement
+    delay(30)
+    playmoncry(SPECIES_GARCHOMP, CRY_MODE_ENCOUNTER)
+    message(format("G{PAUSE 2}A{PAUSE 2}A{PAUSE 2}A{PAUSE 2}A{PAUSE 2}A{PAUSE 2}R!"))
+    waitmessage
+    delay(60)
+    closemessage
+    delay(20)
+    setwildbossmon(1)
+    clearflag(FLAG_TEMP_NO_RUNNING)
+    createmon(1, 3, SPECIES_GARCHOMP, 40, nature=NATURE_ADAMANT, abilityNum=2, atkEv=252, defEv=4, speedEv=252, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31, move1=MOVE_DIG, move2=MOVE_SANDSTORM, move3=MOVE_ROCK_SLIDE, move4=MOVE_POISON_JAB)
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    special(StartRegiBattle)
+	waitstate
+	clearflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    setflag(FLAG_TEMP_NO_RUNNING)
+    endwildbossmon
+    setvar(VAR_ARM_GARCHOMP_ATTACK, 0)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+	goto_if_eq(VAR_RESULT, B_OUTCOME_WON, LavarborTunnelCavern_EventScript_DefeatedGarchomp)
+    goto_if_eq(VAR_RESULT, B_OUTCOME_RAN, LavarborTunnelCavern_EventScript_RanFromGarchomp)
+    goto_if_eq(VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, LavarborTunnelCavern_EventScript_RanFromGarchomp)
+    release
+}
+
+script LavarborTunnelCavern_EventScript_DefeatedGarchomp{
+	fadescreenswapbuffers(FADE_TO_BLACK)
+	removeobject(LOCALID_LAVARBOR_CAVERN_GARCHOMP)
+	fadescreenswapbuffers(FADE_FROM_BLACK)
+    msgbox(format("The defeated corpse of the powerful GARCHOMP sank back into the sand…"), MSGBOX_DEFAULT)
+    setflag(FLAG_DEFEATED_LAVARBOR_GARCHOMP)
+    closemessage
+    delay(30)
+    if (flag(FLAG_LAVARBOR_FALLARBOR_OPENED)){ // fossil maniac opens the tunnel if you've done his side-sidequest
+        special(ShakeCamera)
+        playse(SE_BANG)
+        delay(15)
+        playse(SE_BANG)
+        delay(30)
+        special(ShakeCamera)
+        playse(SE_BANG)
+        delay(15)
+        playse(SE_BANG)
+        waitse
+        turnobject(LOCALID_PLAYER, DIR_EAST)
+        applymovement(LOCALID_PLAYER, Common_Movement_ExclamationMark)
+        playse(SE_PIN)
+        waitse
+        msgbox(format("Something else is coming!"), MSGBOX_DEFAULT)
+        closemessage
+        special(ShakeCamera)
+        playse(SE_BANG)
+        delay(15)
+        playse(SE_BANG)
+        delay(30)
+        special(ShakeCamera)
+        playse(SE_BANG)
+        delay(15)
+        playse(SE_BANG)
+        waitse
+        setmetatile(22, 12, METATILE_Cave_Dark_Door_Edge, TRUE)
+        setmetatile(23, 12, METATILE_Cave_Dark_Door_Top, TRUE)
+        setmetatile(23, 13, METATILE_Cave_Dark_Door_Bottom, FALSE)
+        special(DrawWholeMapView)
+        playse(SE_BREAKABLE_DOOR)
+        waitse
+        delay(15)
+        addobject(LOCALID_CAVERN_FOSSIL_MANIAC, MAP_LAVARBOR_TUNNEL_CAVERN)
+        clearflag(FLAG_HIDE_CAVERN_FOSSIL_MANIAC)
+        playse(SE_EXIT)
+        applymovement(LOCALID_CAVERN_FOSSIL_MANIAC, LavarborTunnelCavern_Movement_FossilManiacWalksIn)
+        waitmovement
+        applymovement(LOCALID_CAVERN_FOSSIL_MANIAC, Common_Movement_ExclamationMark)
+        playse(SE_PIN)
+        waitse
+        getplayerxy(VAR_TEMP_E, VAR_TEMP_F)
+        if (var(VAR_TEMP_E) == 19){
+            applymovement(LOCALID_CAVERN_FOSSIL_MANIAC, LavarborTunnelCavern_Movement_FossilManiacApproachA)
+        }
+        else{
+            applymovement(LOCALID_CAVERN_FOSSIL_MANIAC, LavarborTunnelCavern_Movement_FossilManiacApproachB)
+        }
+        waitmovement
+        turnobject(LOCALID_PLAYER, DIR_SOUTH)
+        delay(10)
+        msgbox(format("FOSSIL MANIAC: Wow, did I really connect the tunnels?\p"
+                        "The rumbling I heard seemed to calm down, so I punched through the wall\land found this cavern!\p"
+                        "But you were already here!\pSo that means those rare fossils are nearby too, right?"), MSGBOX_DEFAULT)
+        closemessage
+        delay(45)
+        msgbox(format("No time to waste!\l"
+                        "I've gotta see those fossils!"), MSGBOX_DEFAULT)
+        closemessage
+        if (var(VAR_TEMP_E) == 19){
+            applymovement(LOCALID_CAVERN_FOSSIL_MANIAC, LavarborTunnelCavern_Movement_FossilManiacLeavesA)
+        }
+        else{
+            applymovement(LOCALID_CAVERN_FOSSIL_MANIAC, LavarborTunnelCavern_Movement_FossilManiacLeavesB)
+        }
+        waitmovement
+        removeobject(LOCALID_CAVERN_FOSSIL_MANIAC)
+        //setvar(VAR_LAVARBOR_TUNNEL_QUEST_STATE, 24)
+    }
+    else{
+        message("{PLAYER}!")
+        waitmessage
+        delay(10)
+        applymovement(LOCALID_PLAYER, Common_Movement_ExclamationMark)
+        playse(SE_PIN)
+        waitmovement
+        delay(20)
+        applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft)
+        waitmovement
+        delay(20)
+        applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
+        waitmovement
+        delay(20)
+        applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown)
+        delay(30)
+        msgbox(format("{PLAYER}?\lAre you all right?"), MSGBOX_DEFAULT)
+        closemessage
+        addobject(LOCALID_CAVERN_TUNNEL_MANIAC, MAP_LAVARBOR_TUNNEL_CAVERN)
+        clearflag(FLAG_HIDE_CAVERN_TUNNEL_MANIAC)
+        applymovement(LOCALID_CAVERN_TUNNEL_MANIAC, LavarborTunnelCavern_Movement_TunnelManiacEnters)
+        delay(45)
+        applymovement(LOCALID_PLAYER, Common_Movement_FaceLeft)
+        waitmovement(LOCALID_CAVERN_TUNNEL_MANIAC)
+        delay(20)
+        setobjectxyperm(LOCALID_CAVERN_TUNNEL_MANIAC, 15, 14)
+        applymovement(LOCALID_CAVERN_TUNNEL_MANIAC, Common_Movement_WalkInPlaceRight)
+        msgbox(format("TUNNEL MANIAC: Ah!\p"
+                     "That ominous rumbling calmed down, so I thought it would be safe enough to take a look.\p"
+                     "It's great to see you in one piece!"), MSGBOX_DEFAULT)
+        closemessage
+		delay(20)
+		message("… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}…")
+		waitmessage
+		delay(20)
+		closemessage
+		delay(40)
+        msgbox(format("Wow!\pYou defeated a powerful POKéMON that was hiding in the sand down there?\p"
+                     "You may have saved our lives, {PLAYER}.\p And now we can continue digging!\p"
+                     "You're a hero!"), MSGBOX_DEFAULT)
+        //setobjectmovementtype(LOCALID_CAVERN_TUNNEL_MANIAC, MOVEMENT_TYPE_LOOK_AROUND)
+    }
+    release
+}
+
+script LavarborTunnelCavern_EventScript_TunnelManiac{
+    lock
+    faceplayer
+    release
+}
+
+movement LavarborTunnelCavern_Movement_TunnelManiacEnters{
+    walk_right
+    walk_right
+    walk_right
+    walk_right
+    walk_down
+    walk_down
+    walk_down
+    walk_down
+    walk_right
+    step_end
+}
+
+movement LavarborTunnelCavern_Movement_FossilManiacLeavesA{
+    walk_right
+    walk_up
+    walk_up
+    walk_up
+    walk_up
+    walk_right
+    walk_right
+    walk_right
+    walk_right
+    walk_right
+    walk_right
+    walk_right
+    walk_right
+    step_end
+}
+
+movement LavarborTunnelCavern_Movement_FossilManiacLeavesB{
+    walk_left
+    walk_up
+    walk_up
+    walk_up
+    walk_up
+    walk_right
+    walk_right
+    walk_right
+    walk_right
+    walk_right
+    walk_right
+    walk_right
+    walk_right
+    walk_right
+    step_end
+}
+
+movement LavarborTunnelCavern_Movement_FossilManiacApproachA{
+    walk_down
+    walk_left
+    walk_left
+    walk_left
+    walk_left
+    face_up
+    step_end
+}
+
+movement LavarborTunnelCavern_Movement_FossilManiacApproachB{
+    walk_down
+    walk_left
+    walk_left
+    walk_left
+    face_up
+    step_end
+}
+
+movement LavarborTunnelCavern_Movement_FossilManiacWalksIn{
+    walk_down
+    delay_16
+    delay_16
+    walk_in_place_left
+    delay_16
+    delay_16
+    walk_in_place_down
+    delay_16
+    walk_in_place_left
+    delay_16
+    walk_in_place_down
+    delay_8
+    walk_in_place_left
+    delay_4
+    step_end
+}
+
+script LavarborTunnelCavern_EventScript_RanFromGarchomp{
+	fadescreen(FADE_TO_BLACK)
+	msgbox(format("The GARCHOMP was too powerful to overcome!\p"
+                    "You fled the cavern to escape harm!"), MSGBOX_DEFAULT)
+    warp(MAP_LAVARBOR_TUNNEL_UNFINISHED, WARP_ID_LAVARBOR_EXIT)
+	release
+}
+
+movement LavarborTunnelCavern_Movement_GarchompUnearthed{
+    set_visible
+    jump_in_place_up
+    delay_16
+    step_end
+}
+
+movement LavarborTunnelCavern_Movement_GarchompAttacks{
+    walk_fast_up
+    step_end
+}

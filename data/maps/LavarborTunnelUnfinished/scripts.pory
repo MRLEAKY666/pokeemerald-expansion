@@ -1,0 +1,661 @@
+const VAR_ARM_ORTHWORM_ATTACK = VAR_TEMP_A
+const VAR_LAVARBOR_FOSSIL = VAR_TEMP_3
+const FLAG_ROLLED_FOSSIL = FLAG_TEMP_3
+
+mapscripts LavarborTunnelUnfinished_MapScripts {
+    MAP_SCRIPT_ON_RESUME {
+        if (flag(FLAG_SYS_CTRL_OBJ_DELETE)){
+            specialvar(VAR_RESULT, GetBattleOutcome)
+            if (var(VAR_RESULT) == B_OUTCOME_CAUGHT){
+                removeobject(VAR_LAST_TALKED)
+            } 
+        }
+    }
+    MAP_SCRIPT_ON_LOAD {
+        if (!flag(FLAG_OPENED_SIDEROOM_1) && var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) >= 20
+             || var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 20 && flag(FLAG_OPENED_SIDEROOM_1) && flag(FLAG_LAVARBOR_DIGGING_SIDEROOM)) { // opened sideroom 1 and tunnel has progressed to its location OR currently digging it
+            setmetatile(24, 19, METATILE_Cave_Regular_Dark_Cave_Wall, TRUE)
+            setmetatile(25, 19, METATILE_Cave_Regular_Dark_Cave_Wall, TRUE)
+            setmetatile(25, 20, METATILE_Cave_Regular_Dark_Cave_Wall, TRUE)
+        }
+        if (!flag(FLAG_OPENED_SIDEROOM_2) && var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) >= 21
+             || var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 21 && flag(FLAG_OPENED_SIDEROOM_2) && flag(FLAG_LAVARBOR_DIGGING_SIDEROOM)) { // opened sideroom 2 and tunnel has progressed to its location OR currently digging it
+            setmetatile(23, 10, METATILE_Cave_Regular_Dark_Cave_Wall, TRUE)
+            setmetatile(24, 10, METATILE_Cave_Regular_Dark_Cave_Wall, TRUE)
+            setmetatile(23, 11, METATILE_Cave_Regular_Dark_Cave_Wall, TRUE)
+            setmetatile(24, 11, METATILE_Cave_Regular_Dark_Cave_Wall, TRUE)
+        }
+        if (!flag(FLAG_OPENED_SIDEROOM_3) && var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) >= 22 
+             || var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 22 && flag(FLAG_OPENED_SIDEROOM_3) && flag(FLAG_LAVARBOR_DIGGING_SIDEROOM)) { // opened sideroom 3 and tunnel has progressed to its location OR currently digging it
+            setmetatile(12, 21, METATILE_Cave_Regular_Dark_Top_Cliff_Edge, TRUE)
+            setmetatile(13, 21, METATILE_Cave_Regular_Dark_Top_Cliff_Edge, TRUE)
+            setmetatile(14, 21, METATILE_Cave_Regular_Dark_Top_Cliff_Edge, TRUE)
+            setmetatile(13, 20, METATILE_Cave_Regular_Dark_Floor, FALSE)
+        }
+    }
+    MAP_SCRIPT_ON_TRANSITION {
+        if (!flag(FLAG_LAVARBOR_TUNNEL_ORTHWORM)){
+            setvar(VAR_ARM_ORTHWORM_ATTACK, 1)
+        }
+        if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 18){ // one increment past giving all 15 tunnel crew mons
+            setmaplayoutindex(LAYOUT_LAVARBOR_TUNNEL_PHASE1)
+            setobjectxyperm(LOCALID_LAVARBOR_TUNNEL_MANIAC, 53, 32)
+            setobjectxyperm(LOCALID_LAVARBOR_DUGTRIO_1, 52, 30)
+            setobjectmovementtype(LOCALID_LAVARBOR_DUGTRIO_1, MOVEMENT_TYPE_JOG_IN_PLACE_LEFT)
+            setobjectxyperm(LOCALID_LAVARBOR_DIGGERSBY_1, 54, 27)
+            setobjectmovementtype(LOCALID_LAVARBOR_DIGGERSBY_1, MOVEMENT_TYPE_WANDER_AROUND)
+            setobjectxyperm(LOCALID_LAVARBOR_EXCADRILL_1, 58, 30)
+            setobjectmovementtype(LOCALID_LAVARBOR_EXCADRILL_1, MOVEMENT_TYPE_JOG_IN_PLACE_RIGHT)
+        }
+        if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 19){ // 
+            setmaplayoutindex(LAYOUT_LAVARBOR_TUNNEL_PHASE2)
+            setobjectxyperm(LOCALID_LAVARBOR_TUNNEL_MANIAC, 45, 23)
+            setobjectxyperm(LOCALID_LAVARBOR_DUGTRIO_1, 43, 22)
+            setobjectmovementtype(LOCALID_LAVARBOR_DUGTRIO_1, MOVEMENT_TYPE_JOG_IN_PLACE_LEFT)
+            setobjectxyperm(LOCALID_LAVARBOR_EXCADRILL_1, 45, 21)
+            setobjectmovementtype(LOCALID_LAVARBOR_EXCADRILL_1, MOVEMENT_TYPE_JOG_IN_PLACE_UP)
+            setobjectxyperm(LOCALID_LAVARBOR_DIGGERSBY_1, 46, 34)
+            setobjectmovementtype(LOCALID_LAVARBOR_DIGGERSBY_1, MOVEMENT_TYPE_WANDER_AROUND)
+            setobjectxyperm(LOCALID_LAVARBOR_DUGTRIO_2, 47, 26)
+            setobjectmovementtype(LOCALID_LAVARBOR_DUGTRIO_2, MOVEMENT_TYPE_WANDER_UP_AND_DOWN)
+            setobjectxyperm(LOCALID_LAVARBOR_EXCADRILL_2, 54, 29)
+            setobjectmovementtype(LOCALID_LAVARBOR_EXCADRILL_2, MOVEMENT_TYPE_WANDER_AROUND)
+        }
+        if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 20){ // 
+            setmaplayoutindex(LAYOUT_LAVARBOR_TUNNEL_PHASE3)
+            setobjectxyperm(LOCALID_LAVARBOR_TUNNEL_MANIAC, 29, 21)
+            setobjectmovementtype(LOCALID_LAVARBOR_TUNNEL_MANIAC, MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT)
+            setobjectxyperm(LOCALID_LAVARBOR_DIGGERSBY_1, 28, 29)
+            setobjectmovementtype(LOCALID_LAVARBOR_DIGGERSBY_1, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
+            setobjectxyperm(LOCALID_LAVARBOR_EXCADRILL_1, 31, 25)
+            setobjectmovementtype(LOCALID_LAVARBOR_EXCADRILL_1, MOVEMENT_TYPE_JOG_IN_PLACE_UP)
+            setobjectxyperm(LOCALID_LAVARBOR_DUGTRIO_1, 47, 25)
+            setobjectmovementtype(LOCALID_LAVARBOR_DUGTRIO_1, MOVEMENT_TYPE_WANDER_UP_AND_DOWN)
+            setobjectxyperm(LOCALID_LAVARBOR_EXCADRILL_2, 54, 29)
+            setobjectmovementtype(LOCALID_LAVARBOR_EXCADRILL_2, MOVEMENT_TYPE_WANDER_AROUND)
+            setobjectxyperm(LOCALID_LAVARBOR_DIGGERSBY_2, 46, 34)
+            setobjectmovementtype(LOCALID_LAVARBOR_DIGGERSBY_2, MOVEMENT_TYPE_WANDER_AROUND)
+            setobjectxyperm(LOCALID_LAVARBOR_EXCADRILL_3, 41, 20)
+            setobjectmovementtype(LOCALID_LAVARBOR_EXCADRILL_3, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
+            if (flag(FLAG_LAVARBOR_DIGGING_SIDEROOM) && flag(FLAG_OPENED_SIDEROOM_1)){ // show mon currently digging sideroom
+                setobjectxyperm(LOCALID_LAVARBOR_DIGGERSBY_5, 25, 21)
+                setobjectxy(LOCALID_LAVARBOR_DIGGERSBY_5, 25, 21)
+                setobjectmovementtype(LOCALID_LAVARBOR_DIGGERSBY_5, MOVEMENT_TYPE_JOG_IN_PLACE_UP)
+            }
+            elif(flag(FLAG_LAVARBOR_DIGGING_SIDEROOM) && !flag(FLAG_OPENED_SIDEROOM_1) 
+                 || !flag(FLAG_LAVARBOR_DIGGING_SIDEROOM) && flag(FLAG_OPENED_SIDEROOM_1)){
+                setobjectxyperm(LOCALID_LAVARBOR_DIGGERSBY_5, 32, 19)
+                setobjectxy(LOCALID_LAVARBOR_DIGGERSBY_5, 32, 19)
+                setobjectmovementtype(LOCALID_LAVARBOR_DIGGERSBY_5, MOVEMENT_TYPE_JOG_IN_PLACE_UP)
+            }
+        }
+        if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 21){ // 
+            setmaplayoutindex(LAYOUT_LAVARBOR_TUNNEL_PHASE4)
+            setobjectxyperm(LOCALID_LAVARBOR_TUNNEL_MANIAC, 26, 12)
+            setobjectmovementtype(LOCALID_LAVARBOR_TUNNEL_MANIAC, MOVEMENT_TYPE_FACE_DOWN)
+            setobjectxyperm(LOCALID_LAVARBOR_EXCADRILL_3, 28, 29)
+            setobjectmovementtype(LOCALID_LAVARBOR_EXCADRILL_3, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
+            setobjectxyperm(LOCALID_LAVARBOR_EXCADRILL_1, 32, 13)
+            setobjectmovementtype(LOCALID_LAVARBOR_EXCADRILL_1, MOVEMENT_TYPE_WANDER_AROUND)
+            setobjectxyperm(LOCALID_LAVARBOR_DIGGERSBY_1, 32, 19)
+            setobjectmovementtype(LOCALID_LAVARBOR_DIGGERSBY_1, MOVEMENT_TYPE_WANDER_UP_AND_DOWN)
+            setobjectxyperm(LOCALID_LAVARBOR_EXCADRILL_2, 54, 29)
+            setobjectmovementtype(LOCALID_LAVARBOR_EXCADRILL_2, MOVEMENT_TYPE_WANDER_AROUND)
+            setobjectxyperm(LOCALID_LAVARBOR_DIGGERSBY_2, 46, 34)
+            setobjectmovementtype(LOCALID_LAVARBOR_DIGGERSBY_2, MOVEMENT_TYPE_WANDER_AROUND)
+            setobjectxyperm(LOCALID_LAVARBOR_DUGTRIO_3, 41, 20)
+            setobjectmovementtype(LOCALID_LAVARBOR_DUGTRIO_3, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
+            if (!flag(FLAG_OPENED_SIDEROOM_1)){
+                setobjectxyperm(LOCALID_LAVARBOR_DUGTRIO_2, 25, 23)
+                setobjectmovementtype(LOCALID_LAVARBOR_DUGTRIO_2, MOVEMENT_TYPE_WANDER_UP_AND_DOWN)
+            }
+            if (flag(FLAG_LAVARBOR_DIGGING_SIDEROOM) && flag(FLAG_OPENED_SIDEROOM_2)){ // show mon currently digging sideroom
+                setobjectxyperm(LOCALID_LAVARBOR_DUGTRIO_5, 24, 12)
+                setobjectxy(LOCALID_LAVARBOR_DUGTRIO_5, 24, 12)
+                setobjectmovementtype(LOCALID_LAVARBOR_DUGTRIO_5, MOVEMENT_TYPE_JOG_IN_PLACE_UP)
+            }
+            elif(flag(FLAG_LAVARBOR_DIGGING_SIDEROOM) && !flag(FLAG_OPENED_SIDEROOM_2)
+                 || !flag(FLAG_LAVARBOR_DIGGING_SIDEROOM) && flag(FLAG_OPENED_SIDEROOM_2)){
+                setobjectxyperm(LOCALID_LAVARBOR_DUGTRIO_5, 23, 12)
+                setobjectxy(LOCALID_LAVARBOR_DUGTRIO_5, 23, 12)
+                setobjectmovementtype(LOCALID_LAVARBOR_DUGTRIO_5, MOVEMENT_TYPE_JOG_IN_PLACE_LEFT)
+            }
+        }
+        if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 22){ // 
+            setmaplayoutindex(LAYOUT_LAVARBOR_TUNNEL_PHASE5)
+            setobjectxyperm(LOCALID_LAVARBOR_TUNNEL_MANIAC, 15, 18)
+            setobjectmovementtype(LOCALID_LAVARBOR_TUNNEL_MANIAC, MOVEMENT_TYPE_FACE_DOWN_UP_AND_LEFT)
+            setobjectxyperm(LOCALID_LAVARBOR_DUGTRIO_1, 11, 10)
+            setobjectmovementtype(LOCALID_LAVARBOR_DUGTRIO_1, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
+            setobjectxyperm(LOCALID_LAVARBOR_DIGGERSBY_1, 32, 19)
+            setobjectmovementtype(LOCALID_LAVARBOR_DIGGERSBY_1, MOVEMENT_TYPE_WANDER_UP_AND_DOWN)
+            setobjectxyperm(LOCALID_LAVARBOR_EXCADRILL_2, 54, 29)
+            setobjectmovementtype(LOCALID_LAVARBOR_EXCADRILL_2, MOVEMENT_TYPE_WANDER_AROUND)
+            setobjectxyperm(LOCALID_LAVARBOR_DIGGERSBY_2, 46, 34)
+            setobjectmovementtype(LOCALID_LAVARBOR_DIGGERSBY_2, MOVEMENT_TYPE_WANDER_AROUND)
+            setobjectxyperm(LOCALID_LAVARBOR_DUGTRIO_3, 41, 20)
+            setobjectmovementtype(LOCALID_LAVARBOR_DUGTRIO_3, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
+            setobjectxyperm(LOCALID_LAVARBOR_EXCADRILL_3, 28, 29)
+            setobjectmovementtype(LOCALID_LAVARBOR_EXCADRILL_3, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
+            setobjectxyperm(LOCALID_LAVARBOR_DIGGERSBY_4, 5, 12)
+            setobjectmovementtype(LOCALID_LAVARBOR_DIGGERSBY_4, MOVEMENT_TYPE_WANDER_AROUND)
+            if (!flag(FLAG_OPENED_SIDEROOM_1)){
+                setobjectxyperm(LOCALID_LAVARBOR_DUGTRIO_2, 25, 23)
+                setobjectmovementtype(LOCALID_LAVARBOR_DUGTRIO_2, MOVEMENT_TYPE_WANDER_UP_AND_DOWN)
+            }
+            if (!flag(FLAG_OPENED_SIDEROOM_2)){
+            setobjectxyperm(LOCALID_LAVARBOR_EXCADRILL_1, 24, 12)
+            setobjectmovementtype(LOCALID_LAVARBOR_EXCADRILL_1, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
+            }
+            if (flag(FLAG_LAVARBOR_DIGGING_SIDEROOM) && flag(FLAG_OPENED_SIDEROOM_3)){ // show mon currently digging sideroom
+                setobjectxyperm(LOCALID_LAVARBOR_EXCADRILL_5, 13, 20)
+                setobjectxy(LOCALID_LAVARBOR_EXCADRILL_5, 13, 20)
+                setobjectmovementtype(LOCALID_LAVARBOR_EXCADRILL_5, MOVEMENT_TYPE_JOG_IN_PLACE_DOWN)
+            }
+            elif(flag(FLAG_LAVARBOR_DIGGING_SIDEROOM) && !flag(FLAG_OPENED_SIDEROOM_3)
+                 || !flag(FLAG_LAVARBOR_DIGGING_SIDEROOM) && flag(FLAG_OPENED_SIDEROOM_3)){
+                setobjectxyperm(LOCALID_LAVARBOR_EXCADRILL_5, 13, 17)
+                setobjectxy(LOCALID_LAVARBOR_EXCADRILL_5, 13, 17)
+                setobjectmovementtype(LOCALID_LAVARBOR_EXCADRILL_5, MOVEMENT_TYPE_JOG_IN_PLACE_UP)
+            }
+        }
+        if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 23){
+            if (flag(FLAG_DEFEATED_LAVARBOR_GARCHOMP) && !flag(FLAG_LAVARBOR_FALLARBOR_OPENED)){ // move him if you got his cutscene after beating garchomp
+                setobjectxyperm(LOCALID_LAVARBOR_TUNNEL_MANIAC, 33, 0)
+            }
+        }
+        if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 24){ // 
+            setobjectxyperm(LOCALID_LAVARBOR_TUNNEL_MANIAC, 33, 0)
+        }
+        if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) >= 23){ // set final mon locations
+            setobjectxyperm(LOCALID_LAVARBOR_DUGTRIO_1, 11, 10)
+            setobjectmovementtype(LOCALID_LAVARBOR_DUGTRIO_1, MOVEMENT_TYPE_WANDER_UP_AND_DOWN)
+            setobjectxyperm(LOCALID_LAVARBOR_DIGGERSBY_1, 32, 19)
+            setobjectmovementtype(LOCALID_LAVARBOR_DIGGERSBY_1, MOVEMENT_TYPE_WANDER_UP_AND_DOWN)
+            setobjectxyperm(LOCALID_LAVARBOR_EXCADRILL_2, 54, 29)
+            setobjectmovementtype(LOCALID_LAVARBOR_EXCADRILL_2, MOVEMENT_TYPE_WANDER_AROUND)
+            setobjectxyperm(LOCALID_LAVARBOR_DIGGERSBY_2, 46, 34)
+            setobjectmovementtype(LOCALID_LAVARBOR_DIGGERSBY_2, MOVEMENT_TYPE_WANDER_AROUND)
+            setobjectxyperm(LOCALID_LAVARBOR_DUGTRIO_3, 41, 20)
+            setobjectmovementtype(LOCALID_LAVARBOR_DUGTRIO_3, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
+            setobjectxyperm(LOCALID_LAVARBOR_EXCADRILL_3, 28, 29)
+            setobjectmovementtype(LOCALID_LAVARBOR_EXCADRILL_3, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
+            setobjectxyperm(LOCALID_LAVARBOR_DIGGERSBY_4, 5, 12)
+            setobjectmovementtype(LOCALID_LAVARBOR_DIGGERSBY_4, MOVEMENT_TYPE_WANDER_AROUND)
+            if (!flag(FLAG_OPENED_SIDEROOM_1)){
+                setobjectxyperm(LOCALID_LAVARBOR_DUGTRIO_2, 25, 23)
+                setobjectmovementtype(LOCALID_LAVARBOR_DUGTRIO_2, MOVEMENT_TYPE_WANDER_UP_AND_DOWN)
+            }
+            if (!flag(FLAG_OPENED_SIDEROOM_2)){
+            setobjectxyperm(LOCALID_LAVARBOR_EXCADRILL_1, 24, 12)
+            setobjectmovementtype(LOCALID_LAVARBOR_EXCADRILL_1, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
+            }
+            if (!flag(FLAG_OPENED_SIDEROOM_3)){
+            setobjectxyperm(LOCALID_LAVARBOR_EXCADRILL_4, 14, 20)
+            setobjectmovementtype(LOCALID_LAVARBOR_EXCADRILL_4, MOVEMENT_TYPE_WANDER_AROUND)
+            }
+        }
+    }
+}
+
+script LavarborTunnelUnfinished_EventScript_Fossil{
+	lock
+    if (!flag(FLAG_ROLLED_FOSSIL)){
+        random(4)
+        switch (var(VAR_RESULT)){
+            case 0: 
+                setvar(VAR_LAVARBOR_FOSSIL, ITEM_ARMOR_FOSSIL)
+            case 1:
+                setvar(VAR_LAVARBOR_FOSSIL, ITEM_SKULL_FOSSIL)
+            case 2:
+                setvar(VAR_LAVARBOR_FOSSIL, ITEM_JAW_FOSSIL)
+            case 3:
+                setvar(VAR_LAVARBOR_FOSSIL, ITEM_SAIL_FOSSIL)
+        }
+        setflag(FLAG_ROLLED_FOSSIL)
+    }
+    bufferitemname(STR_VAR_1, VAR_LAVARBOR_FOSSIL)
+	msgbox(format("You found the {STR_VAR_1}.\p"
+                 "Take the {STR_VAR_1}?"), MSGBOX_YESNO)
+	if (var(VAR_RESULT) == NO) {
+        msgbox(format("{PLAYER} left the {STR_VAR_1} alone."), MSGBOX_DEFAULT)
+        release
+        end
+    }
+	giveitem(VAR_LAVARBOR_FOSSIL)
+	goto_if_eq(VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull)
+	closemessage
+	removeobject(LOCALID_LAVARBOR_FOSSIL)
+	delay(30)
+    release
+}
+
+script LavarborTunnelUnfinished_EventScript_TunnelManiac{
+    //lock
+    faceplayer
+    switch (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE)){
+        case 18:
+            msgbox(format("TUNNEL MANIAC: Ah, {PLAYER}.\pLook at this!\pThe humble beginnings of our tunnel to FALLARBOR.\p"
+                         "Remember how this meagar tunnel looks today…\p"
+                         "Because once it's complete, this tunnel will be one of the most impressive constructions in HOENN!"), MSGBOX_DEFAULT)
+        case 19:
+            msgbox(format("TUNNEL MANIAC: Hello again, {PLAYER}.\nCome back to see the progress?\p"
+                         "Well as you can see, we've started descending deeper underground.\p"
+                         "FALLARBOR is at a lower elevation than LAVARIDGE, so we need to tunnel down quite far."), MSGBOX_DEFAULT)
+        case 20:
+            if (!flag(FLAG_LAVARBOR_DIGGING_SIDEROOM) && !flag(FLAG_OPENED_SIDEROOM_1)){
+                msgbox(format("TUNNEL MANIAC: {PLAYER}, I'm glad you came!\p"
+                            "We'll be tunneling to the north from here, but I want your opinion whether we should work on the left or right side of this wall here."), MSGBOX_DEFAULT)
+                closemessage
+                delay(10)
+                applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_WalkInPlaceUp)
+                waitmovement
+                delay(30)
+                applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_FacePlayer)
+                waitmovement
+                delay(30)
+                message(format("What do you think?"))
+                waitmessage
+                dynmultichoice(22, 8, TRUE, 2, 0, DYN_MULTICHOICE_CB_NONE, "Left", "Right")
+                copyvar(VAR_TEMP_B, VAR_RESULT)
+                msgbox(format("Great idea!\p"
+                            "We'll get started on that right away,\nbut if we can't get through over there it will delay the project a bit."), MSGBOX_DEFAULT)
+                closemessage
+                delay(30)
+                hidefollower
+                applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_WalkInPlaceFasterDown)
+                waitmovement
+                delay(30)
+                msgbox(format("Hey you!\lDIGGERSBY!"), MSGBOX_DEFAULT)
+                closemessage
+                delay(30)
+                if (var(VAR_TEMP_B) == 0){
+                    applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_WalkInPlaceFasterLeft)
+                }
+                else{
+                    applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_WalkInPlaceFasterRight)
+                }
+                delay(20)
+                msgbox(format("Get to work on that wall!"), MSGBOX_DEFAULT)
+                closemessage
+                delay(20)
+                applymovement(LOCALID_LAVARBOR_DIGGERSBY_5, Common_Movement_SetInvisible)
+                waitmovement
+                if (var(VAR_TEMP_B) == 0){ // left
+                    setobjectxyperm(LOCALID_LAVARBOR_DIGGERSBY_5, 25, 21)
+                    setobjectxy(LOCALID_LAVARBOR_DIGGERSBY_5, 25, 21)
+                    setflag(FLAG_OPENED_SIDEROOM_1)
+                }
+                else{
+                    setobjectxyperm(LOCALID_LAVARBOR_DIGGERSBY_5, 32, 19)
+                    setobjectxy(LOCALID_LAVARBOR_DIGGERSBY_5, 32, 19)
+                }
+                setobjectmovementtype(LOCALID_LAVARBOR_DIGGERSBY_5, MOVEMENT_TYPE_JOG_IN_PLACE_UP)
+                addobject(LOCALID_LAVARBOR_DIGGERSBY_5)
+                applymovement(LOCALID_LAVARBOR_DIGGERSBY_5, LavarborTunnelCavern_Movement_MonUnearthedUp)
+                playse(SE_BIKE_HOP)
+                waitmovement
+                playmoncry(SPECIES_DIGGERSBY, CRY_MODE_ENCOUNTER)
+                waitmoncry
+                setflag(FLAG_LAVARBOR_DIGGING_SIDEROOM)
+            }
+            elif (!flag(FLAG_LAVARBOR_DIGGING_SIDEROOM) && flag(FLAG_OPENED_SIDEROOM_1)){ // when the sideroom has been opened but the tunnel hasn't progressed (maniac still standing by sideroom)
+                msgbox(format("TUNNEL MANIAC: Well, we opened up that wall like you asked…"), MSGBOX_DEFAULT)
+                closemessage
+                delay(10)
+                applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_WalkInPlaceLeft)
+                waitmovement
+                delay(30)
+                applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_FacePlayer)
+                waitmovement
+                delay(20)
+                msgbox(format("Turns out there was a small cavern back there!\p"
+                             "Unfortunately, that means we'll have to reroute and dig a little deeper before we can proceed."), MSGBOX_DEFAULT)
+            }
+            else{
+                msgbox(format("TUNNEL MANIAC: We're still working on this wall here."))
+                closemessage
+                delay(10)
+                applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_WalkInPlaceUp)
+                waitmovement
+                delay(30)
+                applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_FacePlayer)
+                waitmovement
+                delay(20)
+                msgbox(format("Check back soon, I'm sure we'll break through any day now!"))
+            }
+        case 21:
+            if (!flag(FLAG_LAVARBOR_DIGGING_SIDEROOM) && !flag(FLAG_OPENED_SIDEROOM_2)){
+                msgbox(format("TUNNEL MANIAC: {PLAYER}, I'm glad you came!\p"
+                            "We're having trouble deciding whether to dig North or West from here."), MSGBOX_DEFAULT)
+                closemessage
+                delay(10)
+                applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_WalkInPlaceUp)
+                waitmovement
+                delay(30)
+                applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_WalkInPlaceLeft)
+                waitmovement
+                delay(30)
+                applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_FacePlayer)
+                waitmovement
+                delay(30)
+                message(format("What do you think?"))
+                waitmessage
+                dynmultichoice(22, 8, TRUE, 2, 0, DYN_MULTICHOICE_CB_NONE, "North", "West")
+                copyvar(VAR_TEMP_B, VAR_RESULT)
+                msgbox(format("Great idea!\p"
+                            "We'll get started on that right away,\nbut if we can't get through over there it will delay the project a bit."), MSGBOX_DEFAULT)
+                closemessage
+                delay(30)
+                hidefollower
+                applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_WalkInPlaceFasterRight)
+                waitmovement
+                delay(30)
+                bufferspeciesname(STR_VAR_2, SPECIES_DUGTRIO)
+                msgbox(format("Hey you!\lDUGTRIO!"), MSGBOX_DEFAULT)
+                closemessage
+                delay(30)
+                applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_WalkInPlaceFasterLeft)
+                delay(20)
+                msgbox(format("Get to work on that wall!"), MSGBOX_DEFAULT)
+                closemessage
+                delay(20)
+                applymovement(LOCALID_LAVARBOR_DUGTRIO_5, Common_Movement_SetInvisible)
+                waitmovement
+                if (var(VAR_TEMP_B) == 0){ // north
+                    setobjectxyperm(LOCALID_LAVARBOR_DUGTRIO_5, 24, 12)
+                    setobjectxy(LOCALID_LAVARBOR_DUGTRIO_5, 24, 12)
+                    setflag(FLAG_OPENED_SIDEROOM_2)
+                    setobjectmovementtype(LOCALID_LAVARBOR_DUGTRIO_5, MOVEMENT_TYPE_JOG_IN_PLACE_UP)
+                    addobject(LOCALID_LAVARBOR_DUGTRIO_5)
+                    applymovement(LOCALID_LAVARBOR_DUGTRIO_5, LavarborTunnelCavern_Movement_MonUnearthedUp)
+                }
+                else{
+                    setobjectxyperm(LOCALID_LAVARBOR_DUGTRIO_5, 23, 12)
+                    setobjectxy(LOCALID_LAVARBOR_DUGTRIO_5, 23, 12)
+                    setobjectmovementtype(LOCALID_LAVARBOR_DUGTRIO_5, MOVEMENT_TYPE_JOG_IN_PLACE_LEFT)
+                    addobject(LOCALID_LAVARBOR_DUGTRIO_5)
+                    applymovement(LOCALID_LAVARBOR_DUGTRIO_5, LavarborTunnelCavern_Movement_MonUnearthedLeft)
+                }
+                playse(SE_BIKE_HOP)
+                waitmovement
+                playmoncry(SPECIES_DUGTRIO, CRY_MODE_ENCOUNTER)
+                waitmoncry
+                setflag(FLAG_LAVARBOR_DIGGING_SIDEROOM)
+            }
+            elif (!flag(FLAG_LAVARBOR_DIGGING_SIDEROOM) && flag(FLAG_OPENED_SIDEROOM_2)){ // when the sideroom has been opened but the tunnel hasn't progressed (maniac still standing by sideroom)
+                msgbox(format("TUNNEL MANIAC: Well, we tunneled in the direction you asked…"), MSGBOX_DEFAULT)
+                closemessage
+                delay(10)
+                applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_WalkInPlaceLeft)
+                waitmovement
+                delay(30)
+                applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_FacePlayer)
+                waitmovement
+                delay(20)
+                msgbox(format("Turns out there was a small cavern up there!\p"
+                             "Unfortunately, that means we wasted time digging in the wrong direction."), MSGBOX_DEFAULT)
+            }
+            else{
+                msgbox(format("TUNNEL MANIAC: We're still digging back here."))
+                closemessage
+                delay(10)
+                applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_WalkInPlaceUp)
+                waitmovement
+                delay(30)
+                applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_WalkInPlaceLeft)
+                waitmovement
+                delay(30)
+                applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_FacePlayer)
+                waitmovement
+                delay(20)
+                msgbox(format("Check back soon, I'm sure we'll break through any day now!"))
+            }
+            delay(15)
+            applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_FaceOriginalDirection)
+            waitmovement
+        case 22:
+            if (!flag(FLAG_LAVARBOR_DIGGING_SIDEROOM) && !flag(FLAG_OPENED_SIDEROOM_3)){
+                msgbox(format("TUNNEL MANIAC: {PLAYER}, I'm glad you came!\p"
+                            "We're having trouble deciding whether to dig North or South from here."), MSGBOX_DEFAULT)
+                closemessage
+                delay(10)
+                applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_WalkInPlaceUp)
+                waitmovement
+                delay(30)
+                applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_WalkInPlaceDown)
+                waitmovement
+                delay(30)
+                applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_FacePlayer)
+                waitmovement
+                delay(30)
+                message(format("What do you think?"))
+                waitmessage
+                dynmultichoice(22, 8, TRUE, 2, 0, DYN_MULTICHOICE_CB_NONE, "North", "South")
+                copyvar(VAR_TEMP_B, VAR_RESULT)
+                msgbox(format("Great idea!\p"
+                            "We'll get started on that right away,\nbut if we can't get through over there it will delay the project a bit."), MSGBOX_DEFAULT)
+                closemessage
+                delay(30)
+                hidefollower
+                applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_WalkInPlaceFasterLeft)
+                waitmovement
+                delay(30)
+                msgbox(format("Hey you!\lEXCADRILL!"), MSGBOX_DEFAULT)
+                closemessage
+                delay(30)
+                if (var(VAR_TEMP_B) == 1){ // south
+                    applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_WalkInPlaceFasterDown)
+                }
+                else{
+                    applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_WalkInPlaceFasterUp)
+                }
+                applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_WalkInPlaceFasterDown)
+                delay(20)
+                msgbox(format("Get to work on that wall!"), MSGBOX_DEFAULT)
+                closemessage
+                delay(20)
+                applymovement(LOCALID_LAVARBOR_EXCADRILL_5, Common_Movement_SetInvisible)
+                waitmovement
+                if (var(VAR_TEMP_B) == 1){ // south
+                    setobjectxyperm(LOCALID_LAVARBOR_EXCADRILL_5, 13, 20)
+                    setobjectxy(LOCALID_LAVARBOR_EXCADRILL_5, 13, 20)
+                    setflag(FLAG_OPENED_SIDEROOM_3)
+                    setobjectmovementtype(LOCALID_LAVARBOR_EXCADRILL_5, MOVEMENT_TYPE_JOG_IN_PLACE_DOWN)
+                    addobject(LOCALID_LAVARBOR_EXCADRILL_5)
+                    applymovement(LOCALID_LAVARBOR_EXCADRILL_5, LavarborTunnelCavern_Movement_MonUnearthedDown)
+                }
+                else{
+                    setobjectxyperm(LOCALID_LAVARBOR_EXCADRILL_5, 13, 17)
+                    setobjectxy(LOCALID_LAVARBOR_EXCADRILL_5, 13, 17)
+                    setobjectmovementtype(LOCALID_LAVARBOR_EXCADRILL_5, MOVEMENT_TYPE_JOG_IN_PLACE_UP)
+                    addobject(LOCALID_LAVARBOR_EXCADRILL_5)
+                    applymovement(LOCALID_LAVARBOR_EXCADRILL_5, LavarborTunnelCavern_Movement_MonUnearthedUp)
+                }
+                playse(SE_BIKE_HOP)
+                waitmovement
+                playmoncry(SPECIES_EXCADRILL, CRY_MODE_ENCOUNTER)
+                waitmoncry
+                setflag(FLAG_LAVARBOR_DIGGING_SIDEROOM)
+            }
+            elif (!flag(FLAG_LAVARBOR_DIGGING_SIDEROOM) && flag(FLAG_OPENED_SIDEROOM_3)){ // when the sideroom has been opened but the tunnel hasn't progressed (maniac still standing by sideroom)
+                msgbox(format("TUNNEL MANIAC: Well, we tunneled in the direction you asked…"), MSGBOX_DEFAULT)
+                closemessage
+                delay(10)
+                applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_WalkInPlaceDown)
+                waitmovement
+                delay(30)
+                applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_FacePlayer)
+                waitmovement
+                delay(20)
+                msgbox(format("Turns out there was a small cavern down there!\p"
+                             "Unfortunately, that means we wasted time digging in the wrong direction."), MSGBOX_DEFAULT)
+            }
+            else{
+                msgbox(format("TUNNEL MANIAC: We're still digging down here."))
+                closemessage
+                delay(10)
+                applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_WalkInPlaceUp)
+                waitmovement
+                delay(30)
+                applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_WalkInPlaceDown)
+                waitmovement
+                delay(30)
+                applymovement(LOCALID_LAVARBOR_TUNNEL_MANIAC, Common_Movement_FacePlayer)
+                waitmovement
+                delay(20)
+                msgbox(format("Check back soon, I'm sure we'll break through any day now!"))
+            }
+        case 23:
+            msgbox(format("TUNNEL MASTER: {PLAYER}!\l"
+                         "Just the person I wanted to see!\p"
+                         "We were tunneling up through this wall when suddenly all the POKéMON became very wary.\p"
+                         "It's a shame;\pI'm quite certain there's a large natural cavern through here,\pand we are definitely getting close to FALLARBOR…\p"
+                         "But there's something dangerous in there, that's for sure!\p"
+                         "Since you're a talented up-and-coming TRAINER, I thought you might be willing to take a look?\p"
+                         "But exercise extreme caution!\pWe wouldn't want to lose any more crew members!"), MSGBOX_DEFAULT)
+        case 25:
+            delay(1)
+    }
+    release
+}
+
+script LavarborTunnelUnfinished_EventScript_OrthwormAttacks{
+    lock
+    fadeoutbgm(0)
+    setvar(VAR_ARM_ORTHWORM_ATTACK, 0)
+    addobject(LOCALID_LAVARBOR_TUNNEL_ORTHWORM)
+    clearflag(FLAG_LAVARBOR_TUNNEL_ORTHWORM)
+    applymovement(LOCALID_LAVARBOR_TUNNEL_ORTHWORM, LavarborTunnelCavern_Movement_GarchompUnearthed)
+    playse(SE_BIKE_HOP)
+    waitmovement
+    delay(30)
+    //applymovement(LOCALID_LAVARBOR_TUNNEL_ORTHWORM, LavarborTunnelCavern_Movement_OrthwormRoars)
+    playmoncry(SPECIES_ORTHWORM, CRY_MODE_ENCOUNTER)
+    message(format("W{PAUSE 5}O{PAUSE 5}O{PAUSE 5}O{PAUSE 5}O{PAUSE 5}O{PAUSE 5}O{PAUSE 5}R{PAUSE 5}M!"))
+    waitmessage
+    delay(90)
+    closemessage
+    delay(20)
+    setwildbattle(SPECIES_ORTHWORM, 35)
+    setvar(VAR_LAST_TALKED, LOCALID_LAVARBOR_TUNNEL_ORTHWORM)
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+	dowildbattle
+	clearflag(FLAG_SYS_CTRL_OBJ_DELETE)
+	setvar(VAR_0x8004, SPECIES_ORTHWORM)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_WON){
+        goto(Common_EventScript_RemoveStaticPokemon)
+        release
+    }
+    elif (var(VAR_RESULT) == B_OUTCOME_RAN || var(VAR_RESULT) == B_OUTCOME_PLAYER_TELEPORTED){
+        goto(Common_EventScript_WildMonFled)
+	    release
+    }
+	release
+}
+
+movement LavarborTunnelCavern_Movement_MonUnearthedUp{
+    set_visible
+    jump_in_place_up
+    delay_16
+    step_end
+}
+
+movement LavarborTunnelCavern_Movement_MonUnearthedLeft{
+    set_visible
+    jump_in_place_left
+    delay_16
+    step_end
+}
+
+movement LavarborTunnelCavern_Movement_MonUnearthedDown{
+    set_visible
+    jump_in_place_down
+    delay_16
+    step_end
+}
+
+script LavarborTunnelUnfinished_EventScript_Diggersby{
+    //lock
+    applymovement(VAR_LAST_TALKED, Common_Movement_FacePlayer)
+    delay(10)
+    playmoncry(SPECIES_DIGGERSBY, CRY_MODE_ENCOUNTER)
+    message(format("D{PAUSE 5}I{PAUSE 5}I{PAUSE 5}I{PAUSE 5}I{PAUSE 5}I{PAUSE 5}I{PAUSE 5}G{PAUSE 5}G{PAUSE 5}!"))
+    //waitmoncry
+    waitmessage
+    delay(30)
+    closemessage
+    delay(10)
+    applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+    waitmovement
+    release
+}
+
+script LavarborTunnelUnfinished_EventScript_Excadrill{
+    //lock
+    applymovement(VAR_LAST_TALKED, Common_Movement_FacePlayer)
+    delay(10)
+    playmoncry(SPECIES_EXCADRILL, CRY_MODE_ENCOUNTER)
+    message(format("D{PAUSE 2}R{PAUSE 2}I{PAUSE 2}I{PAUSE 2}I{PAUSE 2}I{PAUSE 2}I{PAUSE 2}L{PAUSE 2}L{PAUSE 2}!"))
+    //waitmoncry
+    waitmessage
+    delay(30)
+    closemessage
+    delay(10)
+    applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+    waitmovement
+    release
+}
+
+script LavarborTunnelUnfinished_EventScript_Dugtrio{
+    //lock
+    applymovement(VAR_LAST_TALKED, Common_Movement_FacePlayer)
+    delay(10)
+    playmoncry(SPECIES_DUGTRIO, CRY_MODE_ENCOUNTER)
+    message(format("D{PAUSE 2}U{PAUSE 2}U{PAUSE 2}U{PAUSE 2}U{PAUSE 2}U{PAUSE 2}U{PAUSE 2}G{PAUSE 2}!"))
+    //waitmoncry
+    waitmessage
+    delay(30)
+    closemessage
+    delay(10)
+    applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+    waitmovement
+    release
+}
+
+script LavarborTunnelUnfinished_EventScript_FossilManiac{
+    //lock
+    faceplayer
+    delay(1)
+    applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+    waitmovement
+    release
+}
+
+script LavarborTunnelUnfinished_EventScript_Tunneler1{
+    //lock
+    faceplayer
+    delay(1)
+    applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+    waitmovement
+    release
+}
+
+script LavarborTunnelUnfinished_EventScript_Tunneler2{
+    //lock
+    faceplayer
+    delay(1)
+    applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+    waitmovement
+    release
+}
+
+script LavarborTunnelUnfinished_EventScript_Tunneler3{
+    //lock
+    faceplayer
+    delay(1)
+    applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+    waitmovement
+    release
+}

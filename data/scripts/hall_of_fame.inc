@@ -41,7 +41,7 @@ EverGrandeCity_HallOfFame_EventScript_UpdateHoFCounter::
 	return 
 
 EverGrandeCity_HallOfFame_EventScript_SetDesertUnderpassCommentReady::
-	setvar VAR_FOSSIL_MANIAC_STATE, 1
+	setvar VAR_FOSSIL_MANIAC_STATE, 1 @ setup mentioning cave in 
 	return
 
 EverGrandeCity_HallOfFame_EventScript_ShowStevensHouseBeldum::

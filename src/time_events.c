@@ -622,6 +622,13 @@ void ResetWildOverworldMons(void)
             }
         }
     }
+    if (FlagGet(FLAG_LAVARBOR_TUNNEL_ORTHWORM))
+    {
+        if (Random() % 2)
+        {
+            FlagClear(FLAG_LAVARBOR_TUNNEL_ORTHWORM);
+        }
+    }
 }
 
 void RestockBerryMasterCellar(void)
@@ -663,6 +670,60 @@ void ResetDailyTrainers(void)
     if (!FlagGet(FLAG_BADGE07_GET)){
         if (HasTrainerBeenFought(TRAINER_BRAXTON)){
             ClearTrainerFlag(TRAINER_BRAXTON);
+        }
+    }
+}
+
+void ProgressLavarborTunnelState(void)
+{
+    if (VarGet(VAR_LAVARBOR_TUNNEL_QUEST_STATE) >= 17) // if tunnel crew is assembled
+    {
+        // setting the frequency with which digRate will return 0's
+        u32 digRate = (VarGet(VAR_LAVARBOR_TUNNEL_WORK_DAYS) + 3) % 3; // normal dig rate produces a 0 every three days after the first day
+        if (FlagGet(FLAG_LAVARBOR_RUSTURF_CREW_RECRUITED)) 
+        {
+            digRate = (VarGet(VAR_LAVARBOR_TUNNEL_WORK_DAYS) + 2) % 2; // if rusturf crew is recruited, produce a 0 every other day
+        }
+
+        // open fossil maniac's section if you recruited him
+        if (FlagGet(FLAG_LAVARBOR_FOSSIL_MANIAC_RECRUITED) && !FlagGet(FLAG_LAVARBOR_FALLARBOR_OPENED) && !FlagGet(FLAG_DEFEATED_LAVARBOR_GARCHOMP)) // if you recruited fossil maniac and the garchomp hasn't been defeated, set the fallarbor side of the tunnel to open
+        {
+            FlagSet(FLAG_LAVARBOR_FALLARBOR_OPENED); // flag should never be set unless FM is recruited befroe defeating garchmp
+        }
+
+        // either increment days worked, or open a side room and RETURN EARLY (therefore losing/falling behind one "work day")
+        if (FlagGet(FLAG_LAVARBOR_DIGGING_SIDEROOM))
+        {
+            if ((FlagGet(FLAG_OPENED_SIDEROOM_1) && VarGet(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 20) 
+                 || (FlagGet(FLAG_OPENED_SIDEROOM_2) && VarGet(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 21) 
+                 || (FlagGet(FLAG_OPENED_SIDEROOM_3) && VarGet(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 22)) // if we're rolling over days after a day where sideroom digging began, clear the flag and end early
+            { 
+                FlagClear(FLAG_LAVARBOR_DIGGING_SIDEROOM);
+                return;
+            }
+        }
+        VarSet(VAR_LAVARBOR_TUNNEL_WORK_DAYS, VarGet(VAR_LAVARBOR_TUNNEL_WORK_DAYS) + 1); // increment days worked
+
+
+        // incrementing quest state when appropriate
+        if (digRate == 0 && VarGet(VAR_LAVARBOR_TUNNEL_QUEST_STATE) < 23) // increment quest state on day one, then every three days, while tunnel is still incomplete
+        {
+            VarSet(VAR_LAVARBOR_TUNNEL_QUEST_STATE, VarGet(VAR_LAVARBOR_TUNNEL_QUEST_STATE) + 1); // open next tunnel section
+            if (FlagGet(FLAG_LAVARBOR_DIGGING_SIDEROOM)) // if this flag is still set, since it is used to route dialogue scripts, clear it now while expanding tunnel
+            {
+                FlagClear(FLAG_LAVARBOR_DIGGING_SIDEROOM);
+            }
+        }
+        else if (FlagGet(FLAG_DEFEATED_LAVARBOR_GARCHOMP) // if you defeated boss garchomp
+                 && VarGet(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 23 // and penultiamte phase of tunnel dig
+                 //&& !FlagGet(FLAG_LAVARBOR_FALLARBOR_OPENED) // and fossil maniac didn't dig the next section yet
+                 && digRate == 0) // and it's the day when an expansion would happen
+        { 
+            VarSet(VAR_LAVARBOR_TUNNEL_QUEST_STATE, 24); // set to quest state 24
+        }
+        else if (VarGet(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 24 && digRate == 0)
+        {
+            VarSet(VAR_LAVARBOR_TUNNEL_QUEST_STATE, 25); // set to quest state 25
         }
     }
 }

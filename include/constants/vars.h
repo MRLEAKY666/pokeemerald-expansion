@@ -132,7 +132,7 @@
 #define VAR_DERBY_VAR_RACER_NAME_6                               0x406A //  
 #define VAR_LAB_BASEMENT_ACCESS                               0x406B // PREVIOUSLY Unused Var
 #define VAR_LAVARBOR_TUNNEL_QUEST_STATE                               0x406C // 
-#define VAR_ROUTE114_STATE                               0x406D // Unused Var
+#define VAR_LAVARBOR_TUNNEL_WORK_DAYS                               0x406D // 
 #define VAR_ROUTE115_STATE                               0x406E // Unused Var
 #define VAR_ROUTE116_STATE                               0x406F
 #define VAR_ROUTE117_STATE                               0x4070 // Unused Var

@@ -1313,3 +1313,19 @@ Common_Text_OpenOutfitBox:
 	.include "data/maps/LavaridgeSauna/scripts.inc"
 
 	.include "data/maps/LavarborTunnelEntrance/scripts.inc"
+
+	.include "data/maps/LavarborTunnelUnfinished/scripts.inc"
+
+	.include "data/maps/LavarborTunnelCavern/scripts.inc"
+
+	.include "data/maps/LavarborTunnelExit/scripts.inc"
+
+	.include "data/maps/LavarborTunnelPhase1/scripts.inc"
+
+	.include "data/maps/LavarborTunnelPhase2/scripts.inc"
+
+	.include "data/maps/LavarborTunnelPhase3/scripts.inc"
+
+	.include "data/maps/LavarborTunnelPhase4/scripts.inc"
+
+	.include "data/maps/LavarborTunnelPhase5/scripts.inc"

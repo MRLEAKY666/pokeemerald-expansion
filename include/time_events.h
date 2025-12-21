@@ -9,5 +9,6 @@ void ResetWildOverworldMons(void);
 void RestockBerryMasterCellar(void);
 void CountBikeDeliveryDays(u16 days);
 void ResetDailyTrainers(void);
+void ProgressLavarborTunnelState(void);
 
 #endif // GUARD_TIME_EVENTS_H

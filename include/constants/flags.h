@@ -1341,11 +1341,11 @@
 // See constants/opponents.h. The values there + FLAG_TRAINER_FLAG_START are the flag IDs
 
 #define TRAINER_FLAGS_START                                         0x500
-#define TRAINER_FLAGS_END                                           (TRAINER_FLAGS_START + MAX_TRAINERS_COUNT - 1) // 0x85F
+#define TRAINER_FLAGS_END                                           (TRAINER_FLAGS_START + MAX_TRAINERS_COUNT - 1) // 
 
 // System Flags
 
-#define SYSTEM_FLAGS                                   (TRAINER_FLAGS_END + 1) // 0x860
+#define SYSTEM_FLAGS                                   (TRAINER_FLAGS_END + 1) // 0x888
 
 #define FLAG_SYS_POKEMON_GET                         (SYSTEM_FLAGS + 0x0) // FLAG_0x860
 #define FLAG_SYS_POKEDEX_GET                         (SYSTEM_FLAGS + 0x1)
@@ -1524,16 +1524,16 @@
 #define FLAG_HIDE_ROUTE_120_GABBY_AND_TY_3                           (SYSTEM_FLAGS + 0x93) // 
 #define FLAG_HIDE_ROUTE_111_GABBY_AND_TY_4                           (SYSTEM_FLAGS + 0x94) // 
 #define FLAG_HIDE_ROUTE_118_GABBY_AND_TY_4                           (SYSTEM_FLAGS + 0x95) // 
-#define FLAG_UNUSED_0x8F6                           (SYSTEM_FLAGS + 0x96) // Unused Flag
-#define FLAG_UNUSED_0x8F7                           (SYSTEM_FLAGS + 0x97) // Unused Flag
-#define FLAG_UNUSED_0x8F8                           (SYSTEM_FLAGS + 0x98) // Unused Flag
-#define FLAG_UNUSED_0x8F9                           (SYSTEM_FLAGS + 0x99) // Unused Flag
-#define FLAG_UNUSED_0x8FA                           (SYSTEM_FLAGS + 0x9A) // Unused Flag
-#define FLAG_UNUSED_0x8FB                           (SYSTEM_FLAGS + 0x9B) // Unused Flag
-#define FLAG_UNUSED_0x8FC                           (SYSTEM_FLAGS + 0x9C) // Unused Flag
-#define FLAG_UNUSED_0x8FD                           (SYSTEM_FLAGS + 0x9D) // Unused Flag
-#define FLAG_UNUSED_0x8FE                           (SYSTEM_FLAGS + 0x9E) // Unused Flag
-#define FLAG_UNUSED_0x8FF                           (SYSTEM_FLAGS + 0x9F) // Unused Flag
+#define FLAG_OPENED_SIDEROOM_1                           (SYSTEM_FLAGS + 0x96) // 
+#define FLAG_OPENED_SIDEROOM_2                           (SYSTEM_FLAGS + 0x97) // 
+#define FLAG_OPENED_SIDEROOM_3                           (SYSTEM_FLAGS + 0x98) // 
+#define FLAG_LAVARBOR_RUSTURF_CREW_RECRUITED                           (SYSTEM_FLAGS + 0x99) // 
+#define FLAG_LAVARBOR_FOSSIL_MANIAC_RECRUITED                           (SYSTEM_FLAGS + 0x9A) // 
+#define FLAG_LAVARBOR_FALLARBOR_OPENED                           (SYSTEM_FLAGS + 0x9B) // 
+#define FLAG_DEFEATED_LAVARBOR_GARCHOMP                           (SYSTEM_FLAGS + 0x9C) // 
+#define FLAG_LAVARBOR_TUNNEL_FOSSIL                           (SYSTEM_FLAGS + 0x9D) // 
+#define FLAG_LAVARBOR_DIGGING_SIDEROOM                           (SYSTEM_FLAGS + 0x9E) // 
+#define FLAG_LAVARBOR_TUNNEL_ORTHWORM                           (SYSTEM_FLAGS + 0x9F) // 
 #define FLAG_UNUSED_0x900                           (SYSTEM_FLAGS + 0xA0) // Unused Flag
 #define FLAG_UNUSED_0x901                           (SYSTEM_FLAGS + 0xA1) // Unused Flag
 #define FLAG_UNUSED_0x902                           (SYSTEM_FLAGS + 0xA2) // Unused Flag

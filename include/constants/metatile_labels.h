@@ -123,12 +123,19 @@
 #define METATILE_Cave_BoulderHole_Filled                 0x9AE
 #define METATILE_Cave_CrackedFloor                       0x82F
 #define METATILE_Cave_CrackedFloor_Hole                  0x806
+#define METATILE_Cave_Dark_Door_Bottom                   0x906
+#define METATILE_Cave_Dark_Door_Edge                     0x90E
+#define METATILE_Cave_Dark_Door_Top                      0x8FE
 #define METATILE_Cave_EntranceCover                      0x829
+#define METATILE_Cave_Regular_Dark_Cave_Wall             0x8FF
+#define METATILE_Cave_Regular_Dark_Floor                 0x8F5
+#define METATILE_Cave_Regular_Dark_Top_Cliff_Edge        0x8E9
 #define METATILE_Cave_RootCellar_Shelf_A_Full            0x99E
 #define METATILE_Cave_RootCellar_Shelf_A_Half            0x9A1
 #define METATILE_Cave_RootCellar_Shelf_B_Full            0x9A0
 #define METATILE_Cave_RootCellar_Shelf_B_Half            0x9A2
 #define METATILE_Cave_RootCellar_Shelf_Empty             0x9A3
+#define METATILE_Cave_Sandbottom_Dark_Cave_Wall          0x9D8
 #define METATILE_Cave_SealedChamberBraille_Mid           0x835
 #define METATILE_Cave_SealedChamberEntrance_BottomLeft   0x832
 #define METATILE_Cave_SealedChamberEntrance_BottomMid    0x833
@@ -192,9 +199,12 @@
 #define METATILE_Fallarbor_Door_DarkRoof             0x8F7
 #define METATILE_Fallarbor_Door_LightRoof            0x8A5
 #define METATILE_Fallarbor_NormalGrass               0x812
+#define METATILE_Fallarbor_Purple_Dirt_Floor         0x879
 #define METATILE_Fallarbor_RedCaveEntrance_Bottom    0x94F
 #define METATILE_Fallarbor_RedCaveEntrance_Top       0x947
 #define METATILE_Fallarbor_RedRockWall               0x869
+#define METATILE_Fallarbor_Rock1_Purple_Dirt_Floor   0x823
+#define METATILE_Fallarbor_Rock2_Purple_Dirt_Floor   0x82B
 
 // gTileset_Fortree
 #define METATILE_Fortree_BridgeOverGrass_Lowered           0x84F
@@ -250,6 +260,7 @@
 #define METATILE_General_SecretBase_TreeRight  0x027
 #define METATILE_General_SecretBase_VineLeft   0x036
 #define METATILE_General_SecretBase_VineRight  0x037
+#define METATILE_General_Small_Cave_Door       0x207
 #define METATILE_General_TallGrass             0x00D
 #define METATILE_General_TallGrass_TreeLeft    0x1C6
 #define METATILE_General_TallGrass_TreeRight   0x1C7
@@ -281,6 +292,7 @@
 #define METATILE_Lavaridge_AshGrass                                    0x807
 #define METATILE_Lavaridge_CaveEntrance_Bottom                         0x85E
 #define METATILE_Lavaridge_CaveEntrance_Top                            0x856
+#define METATILE_Lavaridge_Ladder_Down                                 0x9E4
 #define METATILE_Lavaridge_LavaField                                   0x871
 #define METATILE_Lavaridge_MtChimney_BridgeOverLava_Lowered            0x99F
 #define METATILE_Lavaridge_MtChimney_BridgeOverLava_Raised             0x99E
@@ -295,6 +307,7 @@
 #define METATILE_Lavaridge_MtChimney_BridgeOverRightRidge_Lowered      0x9A7
 #define METATILE_Lavaridge_MtChimney_BridgeOverRightRidge_Raised       0x9A6
 #define METATILE_Lavaridge_NormalGrass                                 0x806
+#define METATILE_Lavaridge_Regular_Cave_Floor                          0x908
 #define METATILE_Lavaridge_RockWall                                    0x874
 
 // gTileset_Lilycove
@@ -429,6 +442,10 @@
 #define METATILE_PetalburgGym_SlidingDoor_Frame4  0x81C
 
 // gTileset_PokemonCenter
+#define METATILE_PokemonCenter_Bookshelf_Bottom_L        0x8F0
+#define METATILE_PokemonCenter_Bookshelf_Bottom_R        0x87A
+#define METATILE_PokemonCenter_Bookshelf_Top_L           0x871
+#define METATILE_PokemonCenter_Bookshelf_Top_R           0x872
 #define METATILE_PokemonCenter_CounterBarrier            0x85D
 #define METATILE_PokemonCenter_Door_CableClub            0x864
 #define METATILE_PokemonCenter_Escalator1F_Tile0_Frame0  0x880
@@ -455,6 +472,8 @@
 #define METATILE_PokemonCenter_Floor_Plain_Alt           0x8E4
 #define METATILE_PokemonCenter_Floor_ShadowTop           0x81E
 #define METATILE_PokemonCenter_Floor_ShadowTop_Alt       0x8DC
+#define METATILE_PokemonCenter_Normal_Wall_Mid           0x813
+#define METATILE_PokemonCenter_Normal_Wall_Top           0x86A
 
 // gTileset_Rustboro
 #define METATILE_Rustboro_Door_Gray  0x81F

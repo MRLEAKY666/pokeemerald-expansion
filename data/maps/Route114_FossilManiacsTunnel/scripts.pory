@@ -6,6 +6,7 @@ Route114_FossilManiacsTunnel_MapScripts::
 
 Route114_FossilManiacsTunnel_OnTransition:
 	call_if_set FLAG_SYS_GAME_CLEAR, Route114_FossilManiacsTunnel_EventScript_MoveFossilManiac
+	call Route114_FossilManiacsTunnel_EventScript_TryHideFossilManiac
 	end
 
 Route114_FossilManiacsTunnel_EventScript_MoveFossilManiac::
@@ -28,13 +29,14 @@ Route114_FossilManiacsTunnel_EventScript_ManiacMentionCaveIn::
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	msgbox Route114_FossilManiacsTunnel_Text_NotSafeThatWay, MSGBOX_DEFAULT
-	setvar VAR_FOSSIL_MANIAC_STATE, 2
+	setvar VAR_FOSSIL_MANIAC_STATE, 2 @ already mentioned cave in 
 	releaseall
 	end
 
 Route114_FossilManiacsTunnel_EventScript_FossilManiac::
 	lock
 	faceplayer
+	call_if_set FLAG_OPENED_SIDEROOM_1, Route114_FossilManiacsTunnel_EventScript_RecruitFossilManiac
 	goto_if_set FLAG_RECEIVED_REVIVED_FOSSIL_MON, Route114_FossilManiacsTunnel_EventScript_PlayerRevivedFossil
 	checkitem ITEM_ROOT_FOSSIL
 	goto_if_eq VAR_RESULT, TRUE, Route114_FossilManiacsTunnel_EventScript_PlayerHasFossil
@@ -43,6 +45,142 @@ Route114_FossilManiacsTunnel_EventScript_FossilManiac::
 	msgbox Route114_FossilManiacsTunnel_Text_LookInDesertForFossils, MSGBOX_DEFAULT
 	release
 	end
+
+`
+
+const FLAG_HIDE_FOSSIL_MANIAC = FLAG_TEMP_5
+
+script Route114_FossilManiacsTunnel_EventScript_RecruitFossilManiac{
+	if (flag(FLAG_LAVARBOR_FALLARBOR_OPENED)){
+		return
+	}
+	message(format("… {PAUSE 20}… {PAUSE 20}… {PAUSE 20}… {PAUSE 20}… {PAUSE 20}… {PAUSE 20}… {PAUSE 20}… {PAUSE 20}"))
+	waitmessage
+	delay(20)
+	closemessage
+	delay(60)
+	msgbox(format("FOSSIL MANIAC: That smell…\lI know that delicious fragrance…\p"
+					"You've been digging around some exquisitely rare fossils, haven't you?"), MSGBOX_DEFAULT)
+	message(format("… {PAUSE 20}… {PAUSE 20}… {PAUSE 20}… {PAUSE 10}… {PAUSE 10}… {PAUSE 10}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}"))
+	waitmessage
+	delay(5)
+	closemessage
+	applymovement(LOCALID_FOSSIL_MANIAC, Common_Movement_ExclamationMark)
+	playse(SE_PIN)
+	waitse
+	msgbox(format("You said a guy called TUNNEL MANIAC is tunneling from LAVARIDGE to FALLARBOR?\p"
+					"TUNNEL MANIAC is my old man!\p"
+					"I can't believe you got him to leave the sauna!\p"
+					"I've gotta see what kinds of fresh fossils they're digging up down there!"), MSGBOX_DEFAULT)
+	closemessage
+	delay(20)
+	applymovement(LOCALID_FOSSIL_MANIAC, Common_Movement_FaceAwayPlayer)
+	waitmovement
+	delay(60)
+	applymovement(LOCALID_FOSSIL_MANIAC, Common_Movement_FacePlayer)
+	waitmovement
+	delay(15)
+	applymovement(LOCALID_FOSSIL_MANIAC, Common_Movement_ExclamationMark)
+	playse(SE_PIN)
+	waitse
+	msgbox(format("I know!\p"
+					"I'll start digging on the FALLARBOR side until I meet Dad's crew!\p"
+					"Then I can finally earn his respect by contributing to his dig,\lbut I'll also get to see those fossils!"), MSGBOX_DEFAULT)
+	closemessage
+	delay(45)
+	msgbox(format("No time to waste!"), MSGBOX_DEFAULT)
+	closemessage
+	delay(20)
+	setflag(FLAG_LAVARBOR_FOSSIL_MANIAC_RECRUITED)
+	setflag(FLAG_HIDE_FOSSIL_MANIAC)
+	getobjectxy(LOCALID_FOSSIL_MANIAC, CURRENT_POSITION, VAR_TEMP_E, VAR_TEMP_F)
+	getobjectfacingdirection(LOCALID_FOSSIL_MANIAC, VAR_RESULT)
+	if (var(VAR_TEMP_E) == 6){ // if fossil maniac is in postgame position
+		switch (var(VAR_RESULT)){
+			case DIR_SOUTH:
+				applymovement(LOCALID_FOSSIL_MANIAC, Route114_FossilManiacsTunnel_Movement_FossilManiacLeavesSouth)
+			case DIR_NORTH:
+				applymovement(LOCALID_FOSSIL_MANIAC, Route114_FossilManiacsTunnel_Movement_FossilManiacLeavesNorthWest)
+			case DIR_WEST:
+				applymovement(LOCALID_FOSSIL_MANIAC, Route114_FossilManiacsTunnel_Movement_FossilManiacLeavesNorthWest)
+		}
+	}
+	else {
+		switch (var(VAR_RESULT)){
+			case DIR_EAST:
+				applymovement(LOCALID_FOSSIL_MANIAC, Route114_FossilManiacsTunnel_Movement_FossilManiacLeavesEast)
+			case DIR_SOUTH:
+				applymovement(LOCALID_FOSSIL_MANIAC, Route114_FossilManiacsTunnel_Movement_FossilManiacLeavesSouth2)
+		}
+	}
+	waitmovement
+	removeobject(LOCALID_FOSSIL_MANIAC)
+	setvar(VAR_FOSSIL_MANIAC_STATE, 2) // set this so the triggers don't work after he leaves
+	release
+	end
+}
+
+script Route114_FossilManiacsTunnel_EventScript_TryHideFossilManiac{
+	if (flag(FLAG_LAVARBOR_FOSSIL_MANIAC_RECRUITED) && !flag(FLAG_LAVARBOR_FALLARBOR_OPENED)){ // if you have recruited him, but the fallarbor side of the tunnel isn't open yet, hide him here
+		setflag(FLAG_HIDE_FOSSIL_MANIAC)
+	}
+	elif (flag(FLAG_LAVARBOR_FALLARBOR_OPENED) && var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) < 24){ // or if the fallarbor side is opened, but the tunnel hasn't been connected yet hide him too
+		setflag(FLAG_HIDE_FOSSIL_MANIAC)
+	}
+	elif (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 24){ // or if the tunnel has been completed recently
+		setflag(FLAG_HIDE_FOSSIL_MANIAC)
+	}
+}
+
+raw`
+
+Route114_FossilManiacsTunnel_Movement_FossilManiacLeavesNorthWest:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+Route114_FossilManiacsTunnel_Movement_FossilManiacLeavesSouth:
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+Route114_FossilManiacsTunnel_Movement_FossilManiacLeavesEast:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+Route114_FossilManiacsTunnel_Movement_FossilManiacLeavesSouth2:
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
 
 Route114_FossilManiacsTunnel_EventScript_PlayerHasFossil::
 	msgbox Route114_FossilManiacsTunnel_Text_DevonCorpRevivingFossils, MSGBOX_DEFAULT

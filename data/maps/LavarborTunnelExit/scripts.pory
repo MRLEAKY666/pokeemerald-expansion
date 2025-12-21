@@ -1,0 +1,76 @@
+const FLAG_HIDE_FOSSIL_MANIAC = FLAG_TEMP_5
+const FLAG_HIDE_TUNNEL_MANIAC = FLAG_TEMP_7
+
+const VAR_ARM_FOSSIL_MANIAC_WARNING = VAR_TEMP_5
+
+mapscripts LavarborTunnelExit_MapScripts {
+    MAP_SCRIPT_ON_LOAD {
+        if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) < 24 && !flag(FLAG_DEFEATED_LAVARBOR_GARCHOMP)){
+            setmetatile(39, 20, METATILE_Fallarbor_Rock1_Purple_Dirt_Floor, TRUE)
+            setmetatile(38, 20, METATILE_Fallarbor_Rock2_Purple_Dirt_Floor, TRUE)
+            setmetatile(40, 20, METATILE_Fallarbor_Purple_Dirt_Floor, FALSE)
+            setmetatile(41, 19, METATILE_Fallarbor_Rock2_Purple_Dirt_Floor, TRUE)
+        }
+    }
+    MAP_SCRIPT_ON_TRANSITION {
+        //below control fossil maniac
+        if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) > 24){
+            setflag(FLAG_HIDE_FOSSIL_MANIAC)
+            setflag(FLAG_HIDE_TUNNEL_MANIAC)
+        }
+        elif (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 24 && flag(FLAG_LAVARBOR_FALLARBOR_OPENED) 
+         || var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) < 24 && flag(FLAG_DEFEATED_LAVARBOR_GARCHOMP)){ // don't show him if you saw his scene after beating garchomp
+            setflag(FLAG_HIDE_FOSSIL_MANIAC)
+        }
+        elif (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 24 && !flag(FLAG_LAVARBOR_FALLARBOR_OPENED)){ // he hangs out here if you didn't recruit him before beating garchomp
+            setobjectxyperm(LOCAL_ID_LAVARVOR_EXIT_FOSSIL_MANIAC, 41, 17)
+            setobjectmovementtype(LOCAL_ID_LAVARVOR_EXIT_FOSSIL_MANIAC, MOVEMENT_TYPE_FACE_LEFT)
+        }
+        elif(var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) < 24 && !flag(FLAG_DEFEATED_LAVARBOR_GARCHOMP)){
+            setvar(VAR_ARM_FOSSIL_MANIAC_WARNING, 1)
+        }
+        // below control tunnel maniac
+        if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) != 24){
+            setflag(FLAG_HIDE_TUNNEL_MANIAC)
+        }
+    }
+}
+
+script LavarborTunnelExit_EventScript_FossilManiacTrigger{
+    applymovement(LOCAL_ID_LAVARVOR_EXIT_FOSSIL_MANIAC, Common_Movement_WalkInPlaceRight)
+    waitmovement
+    turnobject(LOCALID_PLAYER, DIR_WEST)
+    waitmovement
+    goto(LavarborTunnelExit_EventScript_FossilManiac)
+}
+
+script LavarborTunnelExit_EventScript_FossilManiac{
+    lock
+    faceplayer
+    if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 24 && !flag(FLAG_LAVARBOR_FOSSIL_MANIAC_RECRUITED)){ // alt dialogue if he wasn't recruited and tunnel is complete
+         //|| flag(FLAG_LAVARBOR_FOSSIL_MANIAC_RECRUITED) && !flag(FLAG_LAVARBOR_FALLARBOR_OPENED)){ // or if he was recruited, but the tunnel was connected by the crew
+        msgbox(format("FOSSIL MANIAC: I heard about the tunnel project, so I decided to help!\p"
+                        "A tunnel this deep has gotta have some rare fossils!"), MSGBOX_DEFAULT)
+        release
+        end
+    }
+    elif (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 24 && flag(FLAG_LAVARBOR_FOSSIL_MANIAC_RECRUITED) && !flag(FLAG_LAVARBOR_FALLARBOR_OPENED)){
+        msgbox(format("FOSSIL MANIAC: I'm glad you told me about the project when you did,\p"
+                        "Pops' crew had almost finished breaking through this wall when I got here!"), MSGBOX_DEFAULT)
+        release
+        end
+    }
+    msgbox(format("FOSSIL MANIAC: I wouldn't go down there if I were you…\p"
+                    "When I dug that way, I heard something terrible on the other side of that wall.\p"
+                    "I hope the Tunnel Crew is doing okay…"), MSGBOX_DEFAULT)
+    setvar(VAR_ARM_FOSSIL_MANIAC_WARNING, 0)
+    release
+}
+
+script LavarborTunnelExit_EventScript_TunnelManiac{
+    lock
+    faceplayer
+    msgbox(format("TUNNEL MANIAC: Would you look at that!\p"
+                 "My eldest son!\pHe heard about the tunnel we were digging and decided to help out!"))
+    release
+}

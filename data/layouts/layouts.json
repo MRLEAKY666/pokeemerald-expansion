@@ -124,7 +124,7 @@
     {
       "id": "LAYOUT_LAVARIDGE_TOWN",
       "name": "LavaridgeTown_Layout",
-      "width": 32,
+      "width": 33,
       "height": 32,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Lavaridge",
@@ -4810,6 +4810,86 @@
       "secondary_tileset": "gTileset_Lavaridge",
       "border_filepath": "data/layouts/LavarborTunnelEntrance/border.bin",
       "blockdata_filepath": "data/layouts/LavarborTunnelEntrance/map.bin"
+    },
+    {
+      "id": "LAYOUT_LAVARBOR_TUNNEL_UNFINISHED",
+      "name": "LavarborTunnelUnfinished_Layout",
+      "width": 66,
+      "height": 46,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/LavarborTunnelUnfinished/border.bin",
+      "blockdata_filepath": "data/layouts/LavarborTunnelUnfinished/map.bin"
+    },
+    {
+      "id": "LAYOUT_LAVARBOR_TUNNEL_CAVERN",
+      "name": "LavarborTunnelCavern_Layout",
+      "width": 45,
+      "height": 38,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/LavarborTunnelCavern/border.bin",
+      "blockdata_filepath": "data/layouts/LavarborTunnelCavern/map.bin"
+    },
+    {
+      "id": "LAYOUT_LAVARBOR_TUNNEL_EXIT",
+      "name": "LavarborTunnelExit_Layout",
+      "width": 51,
+      "height": 27,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Fallarbor",
+      "border_filepath": "data/layouts/LavarborTunnelExit/border.bin",
+      "blockdata_filepath": "data/layouts/LavarborTunnelExit/map.bin"
+    },
+    {
+      "id": "LAYOUT_LAVARBOR_TUNNEL_PHASE1",
+      "name": "LavarborTunnelPhase1_Layout",
+      "width": 66,
+      "height": 46,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/LavarborTunnelPhase1/border.bin",
+      "blockdata_filepath": "data/layouts/LavarborTunnelPhase1/map.bin"
+    },
+    {
+      "id": "LAYOUT_LAVARBOR_TUNNEL_PHASE2",
+      "name": "LavarborTunnelPhase2_Layout",
+      "width": 66,
+      "height": 46,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/LavarborTunnelPhase2/border.bin",
+      "blockdata_filepath": "data/layouts/LavarborTunnelPhase2/map.bin"
+    },
+    {
+      "id": "LAYOUT_LAVARBOR_TUNNEL_PHASE3",
+      "name": "LavarborTunnelPhase3_Layout",
+      "width": 66,
+      "height": 46,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/LavarborTunnelPhase3/border.bin",
+      "blockdata_filepath": "data/layouts/LavarborTunnelPhase3/map.bin"
+    },
+    {
+      "id": "LAYOUT_LAVARBOR_TUNNEL_PHASE4",
+      "name": "LavarborTunnelPhase4_Layout",
+      "width": 66,
+      "height": 46,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/LavarborTunnelPhase4/border.bin",
+      "blockdata_filepath": "data/layouts/LavarborTunnelPhase4/map.bin"
+    },
+    {
+      "id": "LAYOUT_LAVARBOR_TUNNEL_PHASE5",
+      "name": "LavarborTunnelPhase5_Layout",
+      "width": 66,
+      "height": 46,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/LavarborTunnelPhase5/border.bin",
+      "blockdata_filepath": "data/layouts/LavarborTunnelPhase5/map.bin"
     }
   ]
 }

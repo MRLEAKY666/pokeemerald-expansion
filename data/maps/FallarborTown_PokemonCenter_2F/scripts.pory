@@ -2,9 +2,61 @@ raw `
 FallarborTown_PokemonCenter_2F_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, CableClub_OnFrame
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, CableClub_OnWarp
-	map_script MAP_SCRIPT_ON_LOAD, CableClub_OnLoad
-	map_script MAP_SCRIPT_ON_TRANSITION, CableClub_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, FallarborTown_PokemonCenter_2F_OnLoad
+	map_script MAP_SCRIPT_ON_TRANSITION, FallarborTown_PokemonCenter_2F_OnTransition
 	.byte 0
+
+`
+
+const FLAG_HIDE_FOSSIL_MANIAC = FLAG_TEMP_5
+
+script FallarborTown_PokemonCenter_2F_OnLoad{
+	if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) < 24 && !flag(FLAG_LAVARBOR_FALLARBOR_OPENED)){ // show bookshelf instead of door unless quest is at state 24 or fossil maniac opened it
+		setmetatile(2, 0, METATILE_PokemonCenter_Normal_Wall_Top, TRUE)
+		setmetatile(3, 0, METATILE_PokemonCenter_Normal_Wall_Top, TRUE)
+		setmetatile(4, 0, METATILE_PokemonCenter_Normal_Wall_Top, TRUE)
+		setmetatile(2, 1, METATILE_PokemonCenter_Bookshelf_Top_L, TRUE)
+		setmetatile(3, 1, METATILE_PokemonCenter_Bookshelf_Top_R, TRUE)
+		setmetatile(4, 1, METATILE_PokemonCenter_Normal_Wall_Mid, TRUE)
+		setmetatile(2, 2, METATILE_PokemonCenter_Bookshelf_Bottom_L, FALSE)
+		setmetatile(3, 2, METATILE_PokemonCenter_Bookshelf_Bottom_R, FALSE)
+	}
+}
+
+script FallarborTown_PokemonCenter_2F_OnTransition{
+	call(FallarborTown_PokemonCenter_2F_EventScript_ShowHideFossilManiac)
+}
+
+script FallarborTown_PokemonCenter_2F_EventScript_ShowHideFossilManiac{
+	if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) >= 24){ // hide him if the tunnel was connected by the regular crew
+			setflag(FLAG_HIDE_FOSSIL_MANIAC)
+		}
+	elif (flag(FLAG_LAVARBOR_FOSSIL_MANIAC_RECRUITED) && !flag(FLAG_LAVARBOR_FALLARBOR_OPENED)){ // let him be shown after he's left his tunnel and before he's opened the lavarbor exit
+		return
+	}
+	else{ // otherwise (usually) hide him
+		setflag(FLAG_HIDE_FOSSIL_MANIAC)
+		return
+	}
+}
+
+script FallarborTown_PokemonCenter_2F_EventScript_FossilManiac{
+	lock
+	faceplayer
+	msgbox(format("FOSSIL MANIAC: I'm going to be opening up a hole in the wall here."), MSGBOX_DEFAULT)
+	closemessage
+	delay(45)
+	message(format("What?"))
+	waitmessage
+	delay(30)
+	msgbox(format("Yeah, yeah,\lI cleared it with the staff…"), MSGBOX_DEFAULT)
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+	waitmovement
+	release
+	end
+}
+
+raw`
 
 @ The below 3 are unused and leftover from RS
 FallarborTown_PokemonCenter_2F_EventScript_Colosseum::

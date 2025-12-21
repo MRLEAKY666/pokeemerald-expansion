@@ -3,25 +3,242 @@ Route116_TunnelersRestHouse_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route116_TunnelersRestHouse_OnTransition
 	.byte 0
 
-Route116_TunnelersRestHouse_OnTransition:
-	setflag FLAG_LANDMARK_TUNNELERS_REST_HOUSE
-	end
+`
+const FLAG_HIDE_RUSTURF_TUNNELER1 = FLAG_TEMP_5
+const FLAG_HIDE_RUSTURF_TUNNELER2 = FLAG_TEMP_6
+const FLAG_HIDE_RUSTURF_TUNNELER3 = FLAG_TEMP_7
 
-Route116_TunnelersRestHouse_EventScript_Tunneler1::
-	msgbox Route116_TunnelersRestHouse_Text_WeHadToStopBoring, MSGBOX_NPC
-	end
+script Route116_TunnelersRestHouse_OnTransition{
+	setflag(FLAG_LANDMARK_TUNNELERS_REST_HOUSE)
+	if (flag(FLAG_LAVARBOR_RUSTURF_CREW_RECRUITED) && var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) <= 24){
+		setflag(FLAG_HIDE_RUSTURF_TUNNELER1)
+		setflag(FLAG_HIDE_RUSTURF_TUNNELER2)
+		setflag(FLAG_HIDE_RUSTURF_TUNNELER3)
+	}
+}
 
-Route116_TunnelersRestHouse_EventScript_Tunneler2::
-	msgbox Route116_TunnelersRestHouse_Text_ManDiggingHisWayToVerdanturf, MSGBOX_NPC
-	end
-
-Route116_TunnelersRestHouse_EventScript_Tunneler3::
+script Route116_TunnelersRestHouse_EventScript_Tunneler1{
 	lock
 	faceplayer
-	goto_if_set FLAG_RUSTURF_TUNNEL_OPENED, Route116_TunnelersRestHouse_EventScript_TunnelOpened
-	msgbox Route116_TunnelersRestHouse_Text_GetToVerdanturfWithoutTunnel, MSGBOX_DEFAULT
+	if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) >= 18 // branch if tunnel is under construction and rusturf tunnel is complete
+		 && var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) < 24 
+		 && flag(FLAG_RUSTURF_TUNNEL_OPENED)){
+		msgbox(format("I heard the LAVARBOR TUNNEL construction has resumed!\p"
+					 "Our region is becoming more and more interconnected everyday."), MSGBOX_DEFAULT)
+		closemessage
+		delay(20)
+		message("… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}…")
+		waitmessage
+		delay(20)
+		closemessage
+		delay(40)
+		msgbox(format("You're working on the LAVARBOR TUNNEL?\p"
+					 "And you say the tunnel master is looking for more help?"), MSGBOX_DEFAULT)
+		closemessage
+		getobjectfacingdirection(LOCALID_TUNNELER1, VAR_RESULT)
+		switch (var(VAR_RESULT)){
+			case DIR_SOUTH:
+				applymovement(LOCALID_TUNNELER1, Route116_TunnelersRestHouse_Movement_Tunneler1LookAround)
+			case DIR_NORTH:
+				applymovement(LOCALID_TUNNELER1, Route116_TunnelersRestHouse_Movement_Tunneler1LookAround)
+			case DIR_WEST: 
+				applymovement(LOCALID_TUNNELER1, Route116_TunnelersRestHouse_Movement_Tunneler1LookAround3)
+		}
+		waitmovement
+		applymovement(LOCALID_TUNNELER2, Common_Movement_WalkInPlaceDown)
+		applymovement(LOCALID_TUNNELER3, Common_Movement_WalkInPlaceRight)
+		applymovement(LOCALID_TUNNELER1, Common_Movement_FacePlayer)
+		delay(30)
+		msgbox(format("I think all the guys are up for another project!\p"
+					 "Living the tunneler's lifestyle, we're always looking for the next job.\p"
+					 "It's important to stay on the move, and keep busy!"), MSGBOX_DEFAULT)
+		closemessage
+		delay(30)
+		switch (var(VAR_RESULT)){
+			case DIR_SOUTH:
+				applymovement(LOCALID_TUNNELER1, Common_Movement_WalkInPlaceUp)
+				waitmovement
+				msgbox(format("Come on boys! Let's hit the next dig site!"), MSGBOX_DEFAULT)
+				closemessage
+				applymovement(LOCALID_TUNNELER1, Common_Movement_WalkInPlaceLeft)
+				delay(30)
+				hidefollower
+				applymovement(LOCALID_TUNNELER1, Route116_TunnelersRestHouse_Movement_Tunneler1Leave1)
+				applymovement(LOCALID_TUNNELER2, Route116_TunnelersRestHouse_Movement_Tunneler2Leave)
+				applymovement(LOCALID_TUNNELER3, Route116_TunnelersRestHouse_Movement_Tunneler3Leave)
+				delay(40)
+				playse(SE_EXIT)
+				delay(20)
+				playse(SE_EXIT)
+				delay(60)
+				playse(SE_EXIT)
+				waitmovement(LOCALID_TUNNELER2)
+			case DIR_NORTH:
+				applymovement(LOCALID_TUNNELER1, Common_Movement_WalkInPlaceLeft)
+				waitmovement
+				msgbox(format("Come on boys! Let's hit the next dig site!"), MSGBOX_DEFAULT)
+				closemessage
+				applymovement(LOCALID_TUNNELER1, Common_Movement_WalkInPlaceDown)
+				delay(30)
+				hidefollower
+				applymovement(LOCALID_TUNNELER1, Route116_TunnelersRestHouse_Movement_Tunneler1Leave2)
+				applymovement(LOCALID_TUNNELER2, Route116_TunnelersRestHouse_Movement_Tunneler2Leave)
+				applymovement(LOCALID_TUNNELER3, Route116_TunnelersRestHouse_Movement_Tunneler3Leave)
+				delay(40)
+				playse(SE_EXIT)
+				delay(20)
+				playse(SE_EXIT)
+				delay(60)
+				playse(SE_EXIT)
+				waitmovement(LOCALID_TUNNELER2)
+			case DIR_WEST: 
+				applymovement(LOCALID_TUNNELER1, Common_Movement_WalkInPlaceUp)
+				waitmovement
+				msgbox(format("Come on boys! Let's hit the next dig site!"), MSGBOX_DEFAULT)
+				closemessage
+				applymovement(LOCALID_TUNNELER1, Common_Movement_WalkInPlaceLeft)
+				delay(30)
+				hidefollower
+				applymovement(LOCALID_TUNNELER1, Route116_TunnelersRestHouse_Movement_Tunneler1Leave2)
+				applymovement(LOCALID_TUNNELER2, Route116_TunnelersRestHouse_Movement_Tunneler2Leave2)
+				applymovement(LOCALID_TUNNELER3, Route116_TunnelersRestHouse_Movement_Tunneler3Leave)
+				delay(40)
+				playse(SE_EXIT)
+				delay(20)
+				playse(SE_EXIT)
+				delay(80)
+				playse(SE_EXIT)
+				waitmovement(LOCALID_TUNNELER2)
+		}
+		removeobject(LOCALID_TUNNELER1, MAP_ROUTE116_TUNNELERS_REST_HOUSE)
+		removeobject(LOCALID_TUNNELER2, MAP_ROUTE116_TUNNELERS_REST_HOUSE)
+		removeobject(LOCALID_TUNNELER3, MAP_ROUTE116_TUNNELERS_REST_HOUSE)
+		setflag(FLAG_LAVARBOR_RUSTURF_CREW_RECRUITED)
+	}
+	elif (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) >= 24 // or if the tunnel is done with construction and rusturf is complete, but these tunnelers weren't recruited
+		 && flag(FLAG_RUSTURF_TUNNEL_OPENED)
+		 && !flag(FLAG_LAVARBOR_RUSTURF_CREW_RECRUITED)){
+		msgbox(format("I heard that the TUNNEL MANIAC finally completed LAVAROR TUNNEL…\p"
+					 "He succeeded where we couldn't!\p"
+					 "I think he gets around regulations by using POKéMON to dig his tunnels…\p"
+					 "POKéMON dig tunnels in the wild, \nso building artificial tunnels that way is friendlier for the environment.\p"
+					 "Plus, POKéMON are cheaper to employ!"), MSGBOX_DEFAULT)
+	}
+	elif (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) > 24 // or if the tunnel is done with construction and rusturf is complete, but these tunnelers WERE recruited
+		 && flag(FLAG_RUSTURF_TUNNEL_OPENED)
+		 && flag(FLAG_LAVARBOR_RUSTURF_CREW_RECRUITED)){
+		msgbox(format("We're back from working on the newly-dug LAVARBOR TUNNEL.\p"
+					 "It was strenuous work!\nBut through the collective effort of TUNNEL MANIAC's crew and ourselves, we successfully connected the towns of LAVARIDGE and FALLARBOR!"), MSGBOX_DEFAULT)
+	}
+	else{
+		msgbox(Route116_TunnelersRestHouse_Text_WeHadToStopBoring, MSGBOX_DEFAULT)
+	}
+	release
+}
+
+raw`
+
+Route116_TunnelersRestHouse_Movement_Tunneler1Leave1:
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	set_invisible
+	step_end
+
+Route116_TunnelersRestHouse_Movement_Tunneler1Leave2:
+	walk_down
+	walk_down
+	walk_left
+	walk_down
+	set_invisible
+	step_end
+
+Route116_TunnelersRestHouse_Movement_Tunneler2Leave:
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	set_invisible
+	step_end
+
+Route116_TunnelersRestHouse_Movement_Tunneler2Leave2:
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	set_invisible
+	step_end
+
+Route116_TunnelersRestHouse_Movement_Tunneler3Leave:
+	walk_right
+	walk_down
+	walk_down
+	set_invisible
+	step_end
+
+Route116_TunnelersRestHouse_Movement_Tunneler1LookAround:
+	walk_in_place_up
+	delay_16
+	walk_in_place_left
+	delay_16
+	walk_in_place_up
+	step_end
+
+Route116_TunnelersRestHouse_Movement_Tunneler1LookAround3:
+	walk_in_place_up
+	delay_16
+	walk_in_place_down
+	delay_16
+	walk_in_place_left
+	step_end
+
+`
+
+script Route116_TunnelersRestHouse_EventScript_Tunneler2{
+	lock
+	faceplayer
+	msgbox(Route116_TunnelersRestHouse_Text_ManDiggingHisWayToVerdanturf, MSGBOX_DEFAULT)
+	release
+}
+
+script Route116_TunnelersRestHouse_EventScript_Tunneler3{
+	lock
+	faceplayer
+	if (flag(FLAG_RUSTURF_TUNNEL_OPENED) && var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) < 24){
+		msgbox(Route116_TunnelersRestHouse_Text_TunnelHasGoneThrough, MSGBOX_DEFAULT)
+	}
+	elif(flag(FLAG_RUSTURF_TUNNEL_OPENED) && var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) >= 24){
+		if (flag(FLAG_LAVARBOR_RUSTURF_CREW_RECRUITED)){
+			msgbox(format("We are so proud to have been able to contribute to both the RUSTURF TUNNEL and the LAVARBOR TUNNEL!\p"
+						 "Sometimes, if you hope strongly enough, dreams do come true."), MSGBOX_DEFAULT)
+		}
+		else{
+			msgbox(format("Did you hear? The TUNNEL to VERDANTURF\n"
+						 "has gone through!\p"
+						 "And the tunnel from LAVARIDGE\n" 
+						 "to FALLARBOR too!\p"
+						 "Sometimes, if you hope strongly enough,\n"
+						 "dreams do come true."), MSGBOX_DEFAULT)
+		}
+	}
+	else{
+		msgbox(Route116_TunnelersRestHouse_Text_GetToVerdanturfWithoutTunnel, MSGBOX_DEFAULT)
+	}
 	release
 	end
+}
+
+raw`
 
 Route116_TunnelersRestHouse_EventScript_TunnelOpened::
 	msgbox Route116_TunnelersRestHouse_Text_TunnelHasGoneThrough, MSGBOX_DEFAULT

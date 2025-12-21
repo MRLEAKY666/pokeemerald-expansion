@@ -490,7 +490,7 @@
     },
     {
       "id": "MAPSEC_ABANDONED_SHIP",
-      "name": "LAVARBOR_TUNNEL",
+      "name": "ABANDONED_SHIP",
       "x": 6,
       "y": 14,
       "width": 1,
@@ -1298,6 +1298,10 @@
     {
       "id": "MAPSEC_LAVARIDGE_SAUNA",
       "name": "LAVARIDGE SAUNA"
+    },
+    {
+      "id": "MAPSEC_LAVARBOR_TUNNEL",
+      "name": "LAVARBOR TUNNEL"
     }
   ]
 }

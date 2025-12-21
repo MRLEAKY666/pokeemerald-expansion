@@ -561,7 +561,7 @@
 #define P_FAMILY_FINIZEN                 FALSE
 #define P_FAMILY_VAROOM                  FALSE
 #define P_FAMILY_CYCLIZAR                FALSE
-#define P_FAMILY_ORTHWORM                FALSE
+#define P_FAMILY_ORTHWORM                P_GEN_9_POKEMON
 #define P_FAMILY_GLIMMET                 P_GEN_9_POKEMON
 #define P_FAMILY_GREAVARD                FALSE
 #define P_FAMILY_FLAMIGO                 FALSE

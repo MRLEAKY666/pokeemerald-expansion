@@ -449,7 +449,15 @@
     "FortreeCliffsZapdosCave",
     "FortreeCliffsZapdosCave_Flooded",
     "FloodedCavern",
-    "LavarborTunnelEntrance"
+    "LavarborTunnelEntrance",
+    "LavarborTunnelUnfinished",
+    "LavarborTunnelCavern",
+    "LavarborTunnelExit",
+    "LavarborTunnelPhase1",
+    "LavarborTunnelPhase2",
+    "LavarborTunnelPhase3",
+    "LavarborTunnelPhase4",
+    "LavarborTunnelPhase5"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",

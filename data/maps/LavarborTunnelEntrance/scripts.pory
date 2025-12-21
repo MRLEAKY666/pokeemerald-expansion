@@ -1,6 +1,13 @@
 const VAR_TRIGGER_NURSE_CUTSCENE = VAR_TEMP_2 
 
 mapscripts LavarborTunnelEntrance_MapScripts {
+    MAP_SCRIPT_ON_LOAD {
+        if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) >= 18){ // show ladder one quest increment past completing tunnel crew
+            setmetatile(5, 5, METATILE_Lavaridge_Ladder_Down, FALSE)
+            setmetatile(4, 6, METATILE_Lavaridge_Regular_Cave_Floor, FALSE)
+            setmetatile(6, 4, METATILE_Lavaridge_Regular_Cave_Floor, FALSE)
+        }
+    }
     MAP_SCRIPT_ON_TRANSITION {
         if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 0){
             setobjectxyperm(LOCALID_LAVARIDGE_NURSE_ON_BREAK, 4, 4)
