@@ -234,6 +234,7 @@ script LavarborTunnelCavern_EventScript_DefeatedGarchomp{
 script LavarborTunnelCavern_EventScript_TunnelManiac{
     lock
     faceplayer
+    delay(1)
     release
 }
 
