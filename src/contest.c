@@ -5339,15 +5339,21 @@ static void Task_WaitForSliderHeartAnim(u8 taskId)
 
 static u16 SanitizeMove(u16 move)
 {
-    if (move >= MOVES_COUNT)
-        move = MOVE_POUND;
+    assertf(move < MOVES_COUNT, "invalid move: %d", move)
+    {
+        return MOVE_POUND;
+    }
+
     return move;
 }
 
 static u16 SanitizeSpecies(u16 species)
 {
-    if (species >= NUM_SPECIES)
-        species = SPECIES_NONE;
+    assertf(species < NUM_SPECIES, "invalid species: %d", species)
+    {
+        return SPECIES_NONE;
+    }
+
     return species;
 }
 
@@ -5436,14 +5442,14 @@ static void SetMoveTargetPosition(u16 move)
 {
     switch (GetBattlerMoveTargetType(gBattlerAttacker, move))
     {
-    case MOVE_TARGET_USER:
+    case TARGET_USER:
         gBattlerTarget = B_POSITION_PLAYER_RIGHT;
         break;
-    case MOVE_TARGET_OPPONENT:
-    case MOVE_TARGET_SELECTED:
-    case MOVE_TARGET_RANDOM:
-    case MOVE_TARGET_BOTH:
-    case MOVE_TARGET_FOES_AND_ALLY:
+    case TARGET_OPPONENT:
+    case TARGET_SELECTED:
+    case TARGET_RANDOM:
+    case TARGET_BOTH:
+    case TARGET_FOES_AND_ALLY:
     default:
         gBattlerTarget = B_POSITION_OPPONENT_RIGHT;
         break;
@@ -5463,10 +5469,10 @@ static void Contest_PrintTextToBg0WindowStd(u32 windowId, const u8 *b)
     printerTemplate.currentY = 1;
     printerTemplate.letterSpacing = 0;
     printerTemplate.lineSpacing = 0;
-    printerTemplate.unk = 0;
-    printerTemplate.fgColor = 15;
-    printerTemplate.bgColor = 0;
-    printerTemplate.shadowColor = 8;
+    printerTemplate.color.accent = TEXT_COLOR_TRANSPARENT;
+    printerTemplate.color.foreground = 15;
+    printerTemplate.color.background = TEXT_COLOR_TRANSPARENT;
+    printerTemplate.color.shadow = 8;
 
     AddTextPrinter(&printerTemplate, 0, 0);
     PutWindowTilemap(windowId);
@@ -5486,10 +5492,10 @@ void Contest_PrintTextToBg0WindowAt(u32 windowId, u8 *currChar, s32 x, s32 y, s3
     printerTemplate.currentY = y;
     printerTemplate.letterSpacing = 0;
     printerTemplate.lineSpacing = 0;
-    printerTemplate.unk = 0;
-    printerTemplate.fgColor = 15;
-    printerTemplate.bgColor = 0;
-    printerTemplate.shadowColor = 8;
+    printerTemplate.color.accent = TEXT_COLOR_TRANSPARENT;
+    printerTemplate.color.foreground = 15;
+    printerTemplate.color.background = TEXT_COLOR_TRANSPARENT;
+    printerTemplate.color.shadow = 8;
 
     AddTextPrinter(&printerTemplate, 0, 0);
     PutWindowTilemap(windowId);
@@ -5510,10 +5516,10 @@ static void Contest_StartTextPrinter(const u8 *currChar, bool32 b)
     printerTemplate.currentY = 1;
     printerTemplate.letterSpacing = 0;
     printerTemplate.lineSpacing = 0;
-    printerTemplate.unk = 0;
-    printerTemplate.fgColor = 1;
-    printerTemplate.bgColor = 0;
-    printerTemplate.shadowColor = 8;
+    printerTemplate.color.accent = TEXT_COLOR_TRANSPARENT;
+    printerTemplate.color.foreground = 1;
+    printerTemplate.color.background = TEXT_COLOR_TRANSPARENT;
+    printerTemplate.color.shadow = 8;
 
     if (!b)
     {

@@ -891,14 +891,12 @@
 	.byte 0xa0
 	.endm
 
-	.macro counterdamagecalculator failInstr:req
+	.macro unused_0xA1
 	.byte 0xa1
-	.4byte \failInstr
 	.endm
 
-	.macro mirrorcoatdamagecalculator failInstr:req
+	.macro unused_0xA2
 	.byte 0xa2
-	.4byte \failInstr
 	.endm
 
 	.macro disablelastusedattack failInstr:req
@@ -1105,7 +1103,7 @@
 	.byte \battler
 	.endm
 
-	.macro callenvironmentattack
+	.macro unused_0xCC
 	.byte 0xcc
 	.endm
 
@@ -1373,11 +1371,6 @@
 	callnative BS_JumpIfIntimidateAbilityPrevented
 	.endm
 
-	.macro metalburstdamagecalculator failInstr:req
-	callnative BS_CalcMetalBurstDmg
-	.4byte \failInstr
-	.endm
-
 	.macro allyswitchswapbattlers
 	callnative BS_AllySwitchSwapBattler
 	.endm
@@ -1461,9 +1454,8 @@
 	.4byte \ptr
 	.endm
 
-	.macro jumpifcantloseitem battler:req, ptr:req
+	.macro jumpifcantloseitem ptr:req
 	callnative BS_JumpIfCantLoseItem
-	.byte \battler
 	.4byte \ptr
 	.endm
 
