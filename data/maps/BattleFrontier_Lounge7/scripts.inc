@@ -6,7 +6,7 @@ BattleFrontier_Lounge7_MapScripts::
 	.byte 0
 # 4 "data//maps/BattleFrontier_Lounge7/scripts.pory"
 
-# 5 "data//maps/BattleFrontier_Lounge7/scripts.pory"
+@special ChooseMonForMoveTutor
 BattleFrontier_Lounge7_EventScript_LeftMoveTutor::
 # 6 "data//maps/BattleFrontier_Lounge7/scripts.pory"
 	lock
