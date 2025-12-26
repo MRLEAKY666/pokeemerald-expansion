@@ -298,7 +298,7 @@
 #define P_FAMILY_REGIGIGAS               TRUE
 #define P_FAMILY_GIRATINA                P_GEN_4_POKEMON
 #define P_FAMILY_CRESSELIA               TRUE
-#define P_FAMILY_MANAPHY                 TRUE
+#define P_FAMILY_MANAPHY                 P_GEN_4_POKEMON
 #define P_FAMILY_DARKRAI                 TRUE
 #define P_FAMILY_SHAYMIN                 TRUE
 #define P_FAMILY_ARCEUS                  P_GEN_4_POKEMON
