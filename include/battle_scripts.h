@@ -504,6 +504,7 @@ extern const u8 BattleScript_AlreadyBurned[];
 extern const u8 BattleScript_PrintAbilityMadeIneffective[];
 extern const u8 BattleScript_ItDoesntAffectFoe[];
 extern const u8 BattleScript_FirstTurnSwitchInEvents[];
+extern const u8 BattleScript_Explosion[];
 
 extern const u8 BattleScript_RayquazaBattleLost[];                 // rayquaza battle
 
@@ -553,7 +554,6 @@ extern const u8 BattleScript_MoveBlockedByDynamax[];
 // Battle move scripts
 extern const u8 BattleScript_EffectAbsorb[];
 extern const u8 BattleScript_EffectAbsorbLiquidOoze[];
-extern const u8 BattleScript_EffectExplosion[];
 extern const u8 BattleScript_EffectDreamEater[];
 extern const u8 BattleScript_EffectAttackUp[];
 extern const u8 BattleScript_EffectDefenseUp[];
@@ -677,7 +677,6 @@ extern const u8 BattleScript_EffectMagicCoat[];
 extern const u8 BattleScript_EffectRecycle[];
 extern const u8 BattleScript_EffectBrickBreak[];
 extern const u8 BattleScript_EffectYawn[];
-extern const u8 BattleScript_EffectEndeavor[];
 extern const u8 BattleScript_EffectSkillSwap[];
 extern const u8 BattleScript_EffectImprison[];
 extern const u8 BattleScript_EffectRefresh[];

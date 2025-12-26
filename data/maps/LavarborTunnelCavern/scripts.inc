@@ -453,14 +453,14 @@ LavarborTunnelCavern_EventScript_TunnelManiac::
 # 236 "data//maps/LavarborTunnelCavern/scripts.pory"
 	faceplayer
 # 237 "data//maps/LavarborTunnelCavern/scripts.pory"
+	delay 1
+# 238 "data//maps/LavarborTunnelCavern/scripts.pory"
 	release
 	return
 
 
-# 240 "data//maps/LavarborTunnelCavern/scripts.pory"
-LavarborTunnelCavern_Movement_TunnelManiacEnters:
 # 241 "data//maps/LavarborTunnelCavern/scripts.pory"
-	walk_right
+LavarborTunnelCavern_Movement_TunnelManiacEnters:
 # 242 "data//maps/LavarborTunnelCavern/scripts.pory"
 	walk_right
 # 243 "data//maps/LavarborTunnelCavern/scripts.pory"
@@ -468,7 +468,7 @@ LavarborTunnelCavern_Movement_TunnelManiacEnters:
 # 244 "data//maps/LavarborTunnelCavern/scripts.pory"
 	walk_right
 # 245 "data//maps/LavarborTunnelCavern/scripts.pory"
-	walk_down
+	walk_right
 # 246 "data//maps/LavarborTunnelCavern/scripts.pory"
 	walk_down
 # 247 "data//maps/LavarborTunnelCavern/scripts.pory"
@@ -476,16 +476,16 @@ LavarborTunnelCavern_Movement_TunnelManiacEnters:
 # 248 "data//maps/LavarborTunnelCavern/scripts.pory"
 	walk_down
 # 249 "data//maps/LavarborTunnelCavern/scripts.pory"
-	walk_right
+	walk_down
 # 250 "data//maps/LavarborTunnelCavern/scripts.pory"
+	walk_right
+# 251 "data//maps/LavarborTunnelCavern/scripts.pory"
 	step_end
 
-# 253 "data//maps/LavarborTunnelCavern/scripts.pory"
-LavarborTunnelCavern_Movement_FossilManiacLeavesA:
 # 254 "data//maps/LavarborTunnelCavern/scripts.pory"
-	walk_right
+LavarborTunnelCavern_Movement_FossilManiacLeavesA:
 # 255 "data//maps/LavarborTunnelCavern/scripts.pory"
-	walk_up
+	walk_right
 # 256 "data//maps/LavarborTunnelCavern/scripts.pory"
 	walk_up
 # 257 "data//maps/LavarborTunnelCavern/scripts.pory"
@@ -493,7 +493,7 @@ LavarborTunnelCavern_Movement_FossilManiacLeavesA:
 # 258 "data//maps/LavarborTunnelCavern/scripts.pory"
 	walk_up
 # 259 "data//maps/LavarborTunnelCavern/scripts.pory"
-	walk_right
+	walk_up
 # 260 "data//maps/LavarborTunnelCavern/scripts.pory"
 	walk_right
 # 261 "data//maps/LavarborTunnelCavern/scripts.pory"
@@ -509,14 +509,14 @@ LavarborTunnelCavern_Movement_FossilManiacLeavesA:
 # 266 "data//maps/LavarborTunnelCavern/scripts.pory"
 	walk_right
 # 267 "data//maps/LavarborTunnelCavern/scripts.pory"
+	walk_right
+# 268 "data//maps/LavarborTunnelCavern/scripts.pory"
 	step_end
 
-# 270 "data//maps/LavarborTunnelCavern/scripts.pory"
-LavarborTunnelCavern_Movement_FossilManiacLeavesB:
 # 271 "data//maps/LavarborTunnelCavern/scripts.pory"
-	walk_left
+LavarborTunnelCavern_Movement_FossilManiacLeavesB:
 # 272 "data//maps/LavarborTunnelCavern/scripts.pory"
-	walk_up
+	walk_left
 # 273 "data//maps/LavarborTunnelCavern/scripts.pory"
 	walk_up
 # 274 "data//maps/LavarborTunnelCavern/scripts.pory"
@@ -524,7 +524,7 @@ LavarborTunnelCavern_Movement_FossilManiacLeavesB:
 # 275 "data//maps/LavarborTunnelCavern/scripts.pory"
 	walk_up
 # 276 "data//maps/LavarborTunnelCavern/scripts.pory"
-	walk_right
+	walk_up
 # 277 "data//maps/LavarborTunnelCavern/scripts.pory"
 	walk_right
 # 278 "data//maps/LavarborTunnelCavern/scripts.pory"
@@ -542,14 +542,14 @@ LavarborTunnelCavern_Movement_FossilManiacLeavesB:
 # 284 "data//maps/LavarborTunnelCavern/scripts.pory"
 	walk_right
 # 285 "data//maps/LavarborTunnelCavern/scripts.pory"
+	walk_right
+# 286 "data//maps/LavarborTunnelCavern/scripts.pory"
 	step_end
 
-# 288 "data//maps/LavarborTunnelCavern/scripts.pory"
-LavarborTunnelCavern_Movement_FossilManiacApproachA:
 # 289 "data//maps/LavarborTunnelCavern/scripts.pory"
-	walk_down
+LavarborTunnelCavern_Movement_FossilManiacApproachA:
 # 290 "data//maps/LavarborTunnelCavern/scripts.pory"
-	walk_left
+	walk_down
 # 291 "data//maps/LavarborTunnelCavern/scripts.pory"
 	walk_left
 # 292 "data//maps/LavarborTunnelCavern/scripts.pory"
@@ -557,86 +557,88 @@ LavarborTunnelCavern_Movement_FossilManiacApproachA:
 # 293 "data//maps/LavarborTunnelCavern/scripts.pory"
 	walk_left
 # 294 "data//maps/LavarborTunnelCavern/scripts.pory"
-	face_up
+	walk_left
 # 295 "data//maps/LavarborTunnelCavern/scripts.pory"
+	face_up
+# 296 "data//maps/LavarborTunnelCavern/scripts.pory"
 	step_end
 
-# 298 "data//maps/LavarborTunnelCavern/scripts.pory"
-LavarborTunnelCavern_Movement_FossilManiacApproachB:
 # 299 "data//maps/LavarborTunnelCavern/scripts.pory"
-	walk_down
+LavarborTunnelCavern_Movement_FossilManiacApproachB:
 # 300 "data//maps/LavarborTunnelCavern/scripts.pory"
-	walk_left
+	walk_down
 # 301 "data//maps/LavarborTunnelCavern/scripts.pory"
 	walk_left
 # 302 "data//maps/LavarborTunnelCavern/scripts.pory"
 	walk_left
 # 303 "data//maps/LavarborTunnelCavern/scripts.pory"
-	face_up
+	walk_left
 # 304 "data//maps/LavarborTunnelCavern/scripts.pory"
+	face_up
+# 305 "data//maps/LavarborTunnelCavern/scripts.pory"
 	step_end
 
-# 307 "data//maps/LavarborTunnelCavern/scripts.pory"
-LavarborTunnelCavern_Movement_FossilManiacWalksIn:
 # 308 "data//maps/LavarborTunnelCavern/scripts.pory"
-	walk_down
+LavarborTunnelCavern_Movement_FossilManiacWalksIn:
 # 309 "data//maps/LavarborTunnelCavern/scripts.pory"
-	delay_16
+	walk_down
 # 310 "data//maps/LavarborTunnelCavern/scripts.pory"
 	delay_16
 # 311 "data//maps/LavarborTunnelCavern/scripts.pory"
-	walk_in_place_left
-# 312 "data//maps/LavarborTunnelCavern/scripts.pory"
 	delay_16
+# 312 "data//maps/LavarborTunnelCavern/scripts.pory"
+	walk_in_place_left
 # 313 "data//maps/LavarborTunnelCavern/scripts.pory"
 	delay_16
 # 314 "data//maps/LavarborTunnelCavern/scripts.pory"
-	walk_in_place_down
+	delay_16
 # 315 "data//maps/LavarborTunnelCavern/scripts.pory"
-	delay_16
-# 316 "data//maps/LavarborTunnelCavern/scripts.pory"
-	walk_in_place_left
-# 317 "data//maps/LavarborTunnelCavern/scripts.pory"
-	delay_16
-# 318 "data//maps/LavarborTunnelCavern/scripts.pory"
 	walk_in_place_down
-# 319 "data//maps/LavarborTunnelCavern/scripts.pory"
-	delay_8
-# 320 "data//maps/LavarborTunnelCavern/scripts.pory"
+# 316 "data//maps/LavarborTunnelCavern/scripts.pory"
+	delay_16
+# 317 "data//maps/LavarborTunnelCavern/scripts.pory"
 	walk_in_place_left
+# 318 "data//maps/LavarborTunnelCavern/scripts.pory"
+	delay_16
+# 319 "data//maps/LavarborTunnelCavern/scripts.pory"
+	walk_in_place_down
+# 320 "data//maps/LavarborTunnelCavern/scripts.pory"
+	delay_8
 # 321 "data//maps/LavarborTunnelCavern/scripts.pory"
-	delay_4
+	walk_in_place_left
 # 322 "data//maps/LavarborTunnelCavern/scripts.pory"
+	delay_4
+# 323 "data//maps/LavarborTunnelCavern/scripts.pory"
 	step_end
 
 LavarborTunnelCavern_EventScript_RanFromGarchomp::
-# 326 "data//maps/LavarborTunnelCavern/scripts.pory"
-	fadescreen FADE_TO_BLACK
 # 327 "data//maps/LavarborTunnelCavern/scripts.pory"
+	fadescreen FADE_TO_BLACK
+# 328 "data//maps/LavarborTunnelCavern/scripts.pory"
 	msgbox LavarborTunnelCavern_EventScript_RanFromGarchomp_Text_0, MSGBOX_DEFAULT
-# 329 "data//maps/LavarborTunnelCavern/scripts.pory"
-	warp MAP_LAVARBOR_TUNNEL_UNFINISHED, WARP_ID_LAVARBOR_EXIT
 # 330 "data//maps/LavarborTunnelCavern/scripts.pory"
+	warp MAP_LAVARBOR_TUNNEL_UNFINISHED, WARP_ID_LAVARBOR_EXIT
+# 331 "data//maps/LavarborTunnelCavern/scripts.pory"
 	release
 	return
 
 
-# 333 "data//maps/LavarborTunnelCavern/scripts.pory"
-LavarborTunnelCavern_Movement_GarchompUnearthed:
 # 334 "data//maps/LavarborTunnelCavern/scripts.pory"
-	set_visible
+LavarborTunnelCavern_Movement_GarchompUnearthed:
 # 335 "data//maps/LavarborTunnelCavern/scripts.pory"
-	jump_in_place_up
+	set_visible
 # 336 "data//maps/LavarborTunnelCavern/scripts.pory"
-	delay_16
+	jump_in_place_up
 # 337 "data//maps/LavarborTunnelCavern/scripts.pory"
+	delay_16
+# 338 "data//maps/LavarborTunnelCavern/scripts.pory"
 	step_end
 
-# 340 "data//maps/LavarborTunnelCavern/scripts.pory"
-LavarborTunnelCavern_Movement_GarchompAttacks:
 # 341 "data//maps/LavarborTunnelCavern/scripts.pory"
-	walk_fast_up
+LavarborTunnelCavern_Movement_GarchompAttacks:
 # 342 "data//maps/LavarborTunnelCavern/scripts.pory"
+	walk_fast_up
+# 343 "data//maps/LavarborTunnelCavern/scripts.pory"
 	step_end
 
 LavarborTunnelCavern_EventScript_GarchompRumble_Text_0:
@@ -704,7 +706,7 @@ LavarborTunnelCavern_EventScript_DefeatedGarchomp_Text_8:
 	.string "You're a hero!$"
 
 LavarborTunnelCavern_EventScript_RanFromGarchomp_Text_0:
-# 327 "data//maps/LavarborTunnelCavern/scripts.pory"
+# 328 "data//maps/LavarborTunnelCavern/scripts.pory"
 	.string "The GARCHOMP was too powerful to\n"
 	.string "overcome!\p"
 	.string "You fled the cavern to escape harm!$"
