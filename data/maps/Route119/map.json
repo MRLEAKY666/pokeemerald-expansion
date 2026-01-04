@@ -27,11 +27,6 @@
       "map": "MAP_FORTREE_CLIFFS",
       "offset": 20,
       "direction": "right"
-    },
-    {
-      "map": "MAP_DRAGONS_ROOST",
-      "offset": -80,
-      "direction": "up"
     }
   ],
   "object_events": [
