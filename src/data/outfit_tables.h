@@ -89,8 +89,8 @@ const struct Outfit gOutfits[OUTFIT_COUNT] =
         //! DESC: trainer front & back pic index
         //! (see include/constants/trainers.h)
         .trainerPics = {
-            [MALE] =   { TRAINER_PIC_BRENDAN, TRAINER_BACK_PIC_BRENDAN, },
-            [FEMALE] = { TRAINER_PIC_MAY, TRAINER_BACK_PIC_MAY, },
+            [MALE] =   { TRAINER_PIC_FRONT_BRENDAN, TRAINER_PIC_BACK_BRENDAN, },
+            [FEMALE] = { TRAINER_PIC_FRONT_MAY, TRAINER_PIC_BACK_MAY, },
         },
 
         //! DESC: overworld avatars, consisting of: walking, cycling,
@@ -148,8 +148,8 @@ const struct Outfit gOutfits[OUTFIT_COUNT] =
         .desc = sText_OutfitDesc_UnusualRed,
         #endif
         .trainerPics = {
-            [MALE]   = {TRAINER_PIC_RS_BRENDAN, TRAINER_BACK_PIC_RUBY_SAPPHIRE_BRENDAN},
-            [FEMALE] = {TRAINER_PIC_RS_MAY, TRAINER_BACK_PIC_RUBY_SAPPHIRE_MAY}
+            [MALE]   = {TRAINER_PIC_FRONT_RS_BRENDAN, TRAINER_PIC_BACK_RUBY_SAPPHIRE_BRENDAN},
+            [FEMALE] = {TRAINER_PIC_FRONT_RS_MAY, TRAINER_PIC_BACK_RUBY_SAPPHIRE_MAY}
         },
         .avatarGfxIds = {
            [MALE] = {
@@ -209,8 +209,8 @@ const struct Outfit gOutfits[OUTFIT_COUNT] =
         //! DESC: trainer front & back pic index
         //! (see include/constants/trainers.h)
         .trainerPics = {
-            [MALE] =   { TRAINER_PIC_MAY, TRAINER_BACK_PIC_MAY, },
-            [FEMALE] = { TRAINER_PIC_BRENDAN, TRAINER_BACK_PIC_BRENDAN, },
+            [MALE] =   { TRAINER_PIC_FRONT_MAY, TRAINER_PIC_BACK_MAY, },
+            [FEMALE] = { TRAINER_PIC_FRONT_BRENDAN, TRAINER_PIC_BACK_BRENDAN, },
         },
 
         //! DESC: overworld avatars, consisting of: walking, cycling,
@@ -268,8 +268,8 @@ const struct Outfit gOutfits[OUTFIT_COUNT] =
         .desc = sText_OutfitDesc_UnusualRed,
         #endif
         .trainerPics = {
-            [MALE]   = {TRAINER_PIC_RS_MAY, TRAINER_BACK_PIC_RUBY_SAPPHIRE_MAY},
-            [FEMALE] = {TRAINER_PIC_RS_BRENDAN, TRAINER_BACK_PIC_RUBY_SAPPHIRE_BRENDAN}
+            [MALE]   = {TRAINER_PIC_FRONT_MAY, TRAINER_PIC_BACK_RUBY_SAPPHIRE_MAY},
+            [FEMALE] = {TRAINER_PIC_FRONT_BRENDAN, TRAINER_PIC_BACK_RUBY_SAPPHIRE_BRENDAN}
         },
         .avatarGfxIds = {
            [MALE] = {
@@ -315,8 +315,8 @@ const struct Outfit gOutfits[OUTFIT_COUNT] =
         .desc = sText_OutfitDesc_UnusualRed,
         #endif
         .trainerPics = {
-            [MALE]   = {TRAINER_PIC_OLD_MAN_DISGUISE, TRAINER_BACK_PIC_OLD_MAN_DISGUISE},
-            [FEMALE] = {TRAINER_PIC_OLD_MAN_DISGUISE, TRAINER_BACK_PIC_OLD_MAN_DISGUISE}
+            [MALE]   = {TRAINER_PIC_FRONT_OLD_MAN_DISGUISE, TRAINER_PIC_BACK_OLD_MAN_DISGUISE},
+            [FEMALE] = {TRAINER_PIC_FRONT_OLD_MAN_DISGUISE, TRAINER_PIC_BACK_OLD_MAN_DISGUISE}
         },
         .avatarGfxIds = {
            [MALE] = {

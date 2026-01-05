@@ -1252,7 +1252,6 @@ Common_Text_OpenOutfitBox:
 	.include "data/text/match_call.inc"
 	.include "data/scripts/apprentice.inc"
 	.include "data/text/apprentice.inc"
-	.include "data/text/battle_dome.inc"
 	.include "data/scripts/battle_pike.inc"
 	.include "data/text/blend_master.inc"
 	.include "data/text/battle_tent.inc"

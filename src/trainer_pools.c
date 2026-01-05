@@ -6,6 +6,7 @@
 #include "random.h"
 #include "trainer_pools.h"
 #include "constants/battle.h"
+#include "constants/battle_ai.h"
 #include "constants/items.h"
 #include "event_data.h"
 
@@ -1044,6 +1045,14 @@ void DoTrainerPartyPool(const struct Trainer *trainer, u32 *monIndices, u8 monsC
 {
         bool32 usingPool = FALSE;
         struct PoolRules rules = defaultPoolRules;
+        struct Trainer tempTrainer;
+        if (trainer->poolSize == 0 && (trainer->aiFlags & AI_FLAG_RANDOMIZE_PARTY_INDICES))
+        {
+            tempTrainer = *trainer;
+            tempTrainer.poolSize = tempTrainer.partySize;
+            trainer = &tempTrainer;
+        }
+
         if (trainer->poolSize != 0)
         {
             usingPool = TRUE;
