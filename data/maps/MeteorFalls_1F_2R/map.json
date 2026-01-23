@@ -17,7 +17,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_3",
       "x": 13,
-      "y": 2,
+      "y": 6,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -30,7 +30,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
       "x": 6,
-      "y": 12,
+      "y": 16,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 1,
@@ -43,7 +43,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_EXPERT_F",
       "x": 7,
-      "y": 12,
+      "y": 16,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 1,
@@ -57,31 +57,39 @@
   "warp_events": [
     {
       "x": 10,
-      "y": 29,
+      "y": 33,
       "elevation": 3,
       "dest_map": "MAP_METEOR_FALLS_1F_1R",
       "dest_warp_id": "2"
     },
     {
       "x": 4,
-      "y": 14,
+      "y": 18,
       "elevation": 3,
       "dest_map": "MAP_METEOR_FALLS_B1F_1R",
       "dest_warp_id": "0"
     },
     {
       "x": 7,
-      "y": 20,
+      "y": 24,
       "elevation": 3,
       "dest_map": "MAP_METEOR_FALLS_B1F_1R",
       "dest_warp_id": "1"
     },
     {
       "x": 21,
-      "y": 23,
+      "y": 27,
       "elevation": 3,
       "dest_map": "MAP_METEOR_FALLS_B1F_1R",
       "dest_warp_id": "2"
+    },
+    {
+      "warp_id": "WARP_ID_TO_CRATER",
+      "x": 17,
+      "y": 4,
+      "elevation": 0,
+      "dest_map": "MAP_CRATERED_CREST",
+      "dest_warp_id": "WARP_ID_FROM_CRATER"
     }
   ],
   "coord_events": [],
@@ -89,7 +97,7 @@
     {
       "type": "sign",
       "x": 9,
-      "y": 58,
+      "y": 62,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "0x0"

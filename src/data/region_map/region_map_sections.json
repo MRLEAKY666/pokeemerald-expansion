@@ -1302,6 +1302,14 @@
     {
       "id": "MAPSEC_LAVARBOR_TUNNEL",
       "name": "LAVARBOR TUNNEL"
+    },
+    {
+      "id": "MAPSEC_CRATERED_CREST",
+      "name": "CRATERED CREST",
+      "x": 0,
+      "y": 1,
+      "width": 1,
+      "height": 1
     }
   ]
 }

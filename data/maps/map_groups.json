@@ -25,6 +25,7 @@
     "gMapGroup_IndoorRoute117",
     "gMapGroup_IndoorRoute121",
     "gMapGroup_Dungeons",
+    "gMapGroup_Dungeons2",
     "gMapGroup_IndoorDynamic",
     "gMapGroup_SpecialArea",
     "gMapGroup_IndoorRoute104Prototype",
@@ -458,6 +459,10 @@
     "LavarborTunnelPhase3",
     "LavarborTunnelPhase4",
     "LavarborTunnelPhase5"
+  ],
+  "gMapGroup_Dungeons2": [
+    "CrateredCrest",
+    "CrateredCrest_Cave"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",

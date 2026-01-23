@@ -1255,7 +1255,7 @@
       "id": "LAYOUT_METEOR_FALLS_1F_2R",
       "name": "MeteorFalls_1F_2R_Layout",
       "width": 30,
-      "height": 32,
+      "height": 36,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_MeteorFalls",
       "border_filepath": "data/layouts/MeteorFalls_1F_2R/border.bin",
@@ -4455,7 +4455,7 @@
       "id": "LAYOUT_DRAGONS_ROOST_HOUSE1",
       "name": "DragonsRoost_House1_Layout",
       "width": 8,
-      "height": 6,
+      "height": 7,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/DragonsRoost_House1/border.bin",
@@ -4890,6 +4890,26 @@
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/LavarborTunnelPhase5/border.bin",
       "blockdata_filepath": "data/layouts/LavarborTunnelPhase5/map.bin"
+    },
+    {
+      "id": "LAYOUT_CRATERED_CREST",
+      "name": "CrateredCrest_Layout",
+      "width": 85,
+      "height": 85,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Fallarbor",
+      "border_filepath": "data/layouts/CrateredCrest/border.bin",
+      "blockdata_filepath": "data/layouts/CrateredCrest/map.bin"
+    },
+    {
+      "id": "LAYOUT_CRATERED_CREST_CAVE",
+      "name": "CrateredCrest_Cave_Layout",
+      "width": 27,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Fallarbor",
+      "border_filepath": "data/layouts/CrateredCrest_Cave/border.bin",
+      "blockdata_filepath": "data/layouts/CrateredCrest_Cave/map.bin"
     }
   ]
 }

@@ -29,7 +29,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(DRAMPA)",
-      "x": 6,
+      "x": 5,
       "y": 3,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_DOWN",
@@ -43,18 +43,20 @@
   ],
   "warp_events": [
     {
-      "x": 4,
-      "y": 5,
+      "warp_id": "WARP_ID_FROM_CRATER_HOUSE",
+      "x": 3,
+      "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_DRAGONS_ROOST",
-      "dest_warp_id": "8"
+      "dest_map": "MAP_CRATERED_CREST",
+      "dest_warp_id": "WARP_ID_TO_CRATER_HOUSE"
     },
     {
-      "x": 3,
-      "y": 5,
+      "warp_id": "WARP_ID_FROM_CRATER_HOUSE_2",
+      "x": 4,
+      "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_DRAGONS_ROOST",
-      "dest_warp_id": "8"
+      "dest_map": "MAP_CRATERED_CREST",
+      "dest_warp_id": "WARP_ID_TO_CRATER_HOUSE"
     }
   ],
   "coord_events": [],

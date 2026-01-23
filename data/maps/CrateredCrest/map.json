@@ -1,0 +1,45 @@
+{
+  "id": "MAP_CRATERED_CREST",
+  "name": "CrateredCrest",
+  "layout": "LAYOUT_CRATERED_CREST",
+  "music": "MUS_NONE",
+  "region_map_section": "MAPSEC_CRATERED_CREST",
+  "requires_flash": false,
+  "weather": "WEATHER_RAIN_THUNDERSTORM",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [],
+  "warp_events": [
+    {
+      "warp_id": "WARP_ID_FROM_CRATER",
+      "x": 41,
+      "y": 79,
+      "elevation": 0,
+      "dest_map": "MAP_METEOR_FALLS_1F_2R",
+      "dest_warp_id": "WARP_ID_TO_CRATER"
+    },
+    {
+      "warp_id": "WARP_ID_TO_CRATER_HOUSE",
+      "x": 11,
+      "y": 36,
+      "elevation": 0,
+      "dest_map": "MAP_DRAGONS_ROOST_HOUSE1",
+      "dest_warp_id": "WARP_ID_FROM_CRATER_HOUSE"
+    },
+    {
+      "warp_id": "WARP_ID_TO_CRATER_CAVE",
+      "x": 23,
+      "y": 14,
+      "elevation": 0,
+      "dest_map": "MAP_CRATERED_CREST_CAVE",
+      "dest_warp_id": "WARP_ID_FROM_CRATER_CAVE"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}
