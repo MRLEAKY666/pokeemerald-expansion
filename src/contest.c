@@ -186,7 +186,7 @@ static void SetConestLiveUpdateTVData(void);
 static void SetContestLiveUpdateFlags(u8);
 static void ContestDebugPrintBitStrings(void);
 static void StripPlayerNameForLinkContest(u8 *);
-static void StripMonNameForLinkContest(u8 *, s32);
+static void StripMonNameForLinkContest(u8 *, enum Language);
 static void SwapMoveDescAndContestTilemaps(void);
 
 // An index into a palette where the text color for each contestant is stored.
@@ -347,7 +347,7 @@ EWRAM_DATA u8 gLinkContestFlags = 0;
 // Bit 0: Is a link contest
 // Bit 1: Link contest uses wireless adapter
 EWRAM_DATA u8 gContestLinkLeaderIndex = 0;
-EWRAM_DATA u16 gSpecialVar_ContestCategory = 0;
+EWRAM_DATA enum ContestCategories gSpecialVar_ContestCategory = 0;
 EWRAM_DATA u16 gSpecialVar_ContestRank = 0;
 EWRAM_DATA u8 gNumLinkContestPlayers = 0;
 EWRAM_DATA u8 gHighestRibbonRank = 0;
@@ -360,11 +360,9 @@ EWRAM_DATA u8 gCurContestWinnerSaveIdx = 0;
 // IWRAM common vars.
 COMMON_DATA rng_value_t gContestRngValue = {0};
 
-const u8 gText_LinkStandby4[] = COMPOUND_STRING("Link standby!");
-extern const u8 gText_BDot[];
-extern const u8 gText_CDot[];
-
 //Text
+const u8 gText_LinkStandby4[] = COMPOUND_STRING("Link standby!");
+
 const u8 gText_AppealNumWhichMoveWillBePlayed[] = COMPOUND_STRING("Appeal no. {STR_VAR_1}!\nWhich move will be played?");
 const u8 gText_AppealNumButItCantParticipate[] = COMPOUND_STRING("Appeal no. {STR_VAR_1}!\nBut it can't participate!");
 const u8 gText_MonAppealedWithMove[] = COMPOUND_STRING("{STR_VAR_1} appealed with\n{STR_VAR_2}!");
@@ -684,6 +682,7 @@ const struct ContestCategory gContestCategoryInfo[CONTEST_CATEGORIES_COUNT + 1] 
         .generic = COMPOUND_STRING("COOL Move"),
         .negativeTrait = COMPOUND_STRING("shyness"),
         .palette = 13,
+        .tile = 0x4040,
     },
 
     [CONTEST_CATEGORY_BEAUTY] =
@@ -693,6 +692,7 @@ const struct ContestCategory gContestCategoryInfo[CONTEST_CATEGORIES_COUNT + 1] 
         .generic = COMPOUND_STRING("BEAUTY Move"),
         .negativeTrait = COMPOUND_STRING("anxiety"),
         .palette = 14,
+        .tile = 0x4045,
     },
 
     [CONTEST_CATEGORY_CUTE] =
@@ -702,6 +702,7 @@ const struct ContestCategory gContestCategoryInfo[CONTEST_CATEGORIES_COUNT + 1] 
         .generic = COMPOUND_STRING("CUTE Move"),
         .negativeTrait = COMPOUND_STRING("laziness"),
         .palette = 14,
+        .tile = 0x404A,
     },
 
     [CONTEST_CATEGORY_SMART] =
@@ -711,6 +712,7 @@ const struct ContestCategory gContestCategoryInfo[CONTEST_CATEGORIES_COUNT + 1] 
         .generic = COMPOUND_STRING("SMART Move"),
         .negativeTrait = COMPOUND_STRING("hesitancy"),
         .palette = 15,
+        .tile = 0x406A,
     },
 
     [CONTEST_CATEGORY_TOUGH] =
@@ -720,6 +722,7 @@ const struct ContestCategory gContestCategoryInfo[CONTEST_CATEGORIES_COUNT + 1] 
         .generic = COMPOUND_STRING("TOUGH Move"),
         .negativeTrait = COMPOUND_STRING("fear"),
         .palette = 13,
+        .tile = 0x408A,
     },
 
     [CONTEST_CATEGORIES_COUNT] =
@@ -1583,14 +1586,14 @@ static void Task_ShowMoveSelectScreen(u8 taskId)
             && eContestantStatus[gContestPlayerMonIndex].hasJudgesAttention)
         {
             // Highlight the text because it's a combo move
-            moveNameBuffer = StringCopy(moveName, gText_ColorLightShadowDarkGray);
+            moveNameBuffer = StringCopy(moveName, COMPOUND_STRING("{COLOR LIGHT_GRAY}{SHADOW DARK_GRAY}"));
         }
         else if (move != MOVE_NONE
                  && eContestantStatus[gContestPlayerMonIndex].prevMove == move
                  && GetMoveContestEffect(move) != CONTEST_EFFECT_REPETITION_NOT_BORING)
         {
             // Gray the text because it's a repeated move
-            moveNameBuffer = StringCopy(moveName, gText_ColorBlue);
+            moveNameBuffer = StringCopy(moveName, COMPOUND_STRING("{COLOR BLUE}"));
         }
         moveNameBuffer = StringCopy(moveNameBuffer, GetMoveName(move));
 
@@ -2899,7 +2902,7 @@ void CreateContestMonFromParty(u8 partyIndex)
     gContestMons[gContestPlayerMonIndex].tough = tough;
 }
 
-void SetContestants(u8 contestType, u8 rank)
+void SetContestants(enum ContestCategories contestType, u8 rank)
 {
     s32 i;
     u8 opponentsCount = 0;
@@ -2955,7 +2958,7 @@ void SetContestants(u8 contestType, u8 rank)
     CreateContestMonFromParty(gContestMonPartyIndex);
 }
 
-void SetLinkAIContestants(u8 contestType, u8 rank, bool32 isPostgame)
+void SetLinkAIContestants(enum ContestCategories contestType, u8 rank, bool32 isPostgame)
 {
     s32 i, j;
     u8 opponentsCount = 0;
@@ -3012,26 +3015,8 @@ u8 GetContestEntryEligibility(struct Pokemon *pkmn)
         return CANT_ENTER_CONTEST_EGG;
     if (GetMonData(pkmn, MON_DATA_HP) == 0)
         return CANT_ENTER_CONTEST_FAINTED;
-    switch (gSpecialVar_ContestCategory)
-    {
-    case CONTEST_CATEGORY_COOL:
-        ribbon = GetMonData(pkmn, MON_DATA_COOL_RIBBON);
-        break;
-    case CONTEST_CATEGORY_BEAUTY:
-        ribbon = GetMonData(pkmn, MON_DATA_BEAUTY_RIBBON);
-        break;
-    case CONTEST_CATEGORY_CUTE:
-        ribbon = GetMonData(pkmn, MON_DATA_CUTE_RIBBON);
-        break;
-    case CONTEST_CATEGORY_SMART:
-        ribbon = GetMonData(pkmn, MON_DATA_SMART_RIBBON);
-        break;
-    case CONTEST_CATEGORY_TOUGH:
-        ribbon = GetMonData(pkmn, MON_DATA_TOUGH_RIBBON);
-        break;
-    default:
-        return CANT_ENTER_CONTEST;
-    }
+
+    ribbon = GetMonData(pkmn, MON_DATA_COOL_RIBBON + gSpecialVar_ContestCategory);
 
     // Couldn't get this to match any other way.
     // Returns 2, 1, or 0 respectively if ribbon's rank is above, equal, or below
@@ -3059,7 +3044,7 @@ static void DrawContestantWindowText(void)
 
 static u8 *Contest_CopyStringWithColor(const u8 *string, u8 color)
 {
-    u8 *ptr = StringCopy(gDisplayedStringBattle, gText_ColorTransparent);
+    u8 *ptr = StringCopy(gDisplayedStringBattle, COMPOUND_STRING("{BACKGROUND TRANSPARENT}{ACCENT TRANSPARENT}{COLOR TRANSPARENT}"));
     ptr[-1] = color; // Overwrites the "{COLOR TRANSPARENT}" part of the string.
     ptr = StringCopy(ptr, string);
 
@@ -3096,7 +3081,7 @@ static void PrintContestantMonNameWithColor(u8 contestant, u8 color)
     Contest_PrintTextToBg0WindowAt(gContestantTurnOrder[contestant], gDisplayedStringBattle, 5, 1, GetFontIdToFit(gContestMons[contestant].nickname, FONT_NARROW, 0, 50));
 }
 
-static u16 CalculateContestantRound1Points(u8 who, u8 contestCategory)
+static u16 CalculateContestantRound1Points(u8 who, enum ContestCategories contestCategory)
 {
     u8 statMain;
     u8 statSub1;
@@ -3134,7 +3119,7 @@ static u16 CalculateContestantRound1Points(u8 who, u8 contestCategory)
     return statMain + (statSub1 + statSub2 + gContestMons[who].sheen) / 2;
 }
 
-void CalculateRound1Points(u8 contestCategory)
+void CalculateRound1Points(enum ContestCategories contestCategory)
 {
     s32 i;
 
@@ -3179,7 +3164,7 @@ static u8 CreateContestantSprite(u16 species, bool8 isShiny, u32 personality, u3
 
     // If you are going to use SOURCE_IVS, you'll need to load those stats somewhere during Contests
     // For SOURCE_NICKNAME_OT, OT Name should be loaded somewhere during Contests
-    CreateBoxMon(&boxMon, species, 5, USE_RANDOM_IVS, TRUE, personality, OT_ID_PRESET, otId);
+    CreateBoxMonLegacy(&boxMon, species, 5, USE_RANDOM_IVS, TRUE, personality, OT_ID_PRESET, otId);
     SetBoxMonData(&boxMon, MON_DATA_NICKNAME, gContestMons[eContest.currentContestant].nickname);
     SetBoxMonData(&boxMon, MON_DATA_OT_NAME, gContestMons[eContest.currentContestant].trainerName);
     UniquePalette(OBJ_PLTT_ID(2), &boxMon);
@@ -3249,48 +3234,38 @@ static u16 GetMoveEffectSymbolTileOffset(enum Move move, u8 contestant)
 
 static void PrintContestMoveDescription(enum Move move)
 {
-    u8 category;
     u16 categoryTile;
     u8 numHearts;
+    struct ContestEffect contestEffect = gContestEffects[GetMoveContestEffect(move)];
 
     // The contest category icon is implemented as a 5x2 group of tiles.
-    category = GetMoveContestCategory(move);
-    if      (category == CONTEST_CATEGORY_COOL)
-        categoryTile = 0x4040;
-    else if (category == CONTEST_CATEGORY_BEAUTY)
-        categoryTile = 0x4045;
-    else if (category == CONTEST_CATEGORY_CUTE)
-        categoryTile = 0x404A;
-    else if (category == CONTEST_CATEGORY_SMART)
-        categoryTile = 0x406A;
-    else
-        categoryTile = 0x408A;
+    categoryTile = gContestCategoryInfo[GetMoveContestCategory(move)].tile;
 
     ContestBG_FillBoxWithIncrementingTile(0, categoryTile,        0x0b, 0x1f, 0x05, 0x01, 0x11, 0x01);
     ContestBG_FillBoxWithIncrementingTile(0, categoryTile + 0x10, 0x0b, 0x20, 0x05, 0x01, 0x11, 0x01);
 
     // Appeal hearts
-    if (gContestEffects[GetMoveContestEffect(move)].appeal == 0xFF)
+    if (contestEffect.appeal == 0xFF)
         numHearts = 0;
     else
-        numHearts = gContestEffects[GetMoveContestEffect(move)].appeal / 10;
+        numHearts = contestEffect.appeal / 10;
     if (numHearts > MAX_CONTEST_MOVE_HEARTS)
         numHearts = MAX_CONTEST_MOVE_HEARTS;
     ContestBG_FillBoxWithTile(0, TILE_EMPTY_APPEAL_HEART, 0x15, 0x1f, MAX_CONTEST_MOVE_HEARTS, 0x01, 0x11);
     ContestBG_FillBoxWithTile(0, TILE_FILLED_APPEAL_HEART, 0x15, 0x1f, numHearts, 0x01, 0x11);
 
     // Jam hearts
-    if (gContestEffects[GetMoveContestEffect(move)].jam == 0xFF)
+    if (contestEffect.jam == 0xFF)
         numHearts = 0;
     else
-        numHearts = gContestEffects[GetMoveContestEffect(move)].jam / 10;
+        numHearts = contestEffect.jam / 10;
     if (numHearts > MAX_CONTEST_MOVE_HEARTS)
         numHearts = MAX_CONTEST_MOVE_HEARTS;
     ContestBG_FillBoxWithTile(0, TILE_EMPTY_JAM_HEART, 0x15, 0x20, MAX_CONTEST_MOVE_HEARTS, 0x01, 0x11);
     ContestBG_FillBoxWithTile(0, TILE_FILLED_JAM_HEART, 0x15, 0x20, numHearts, 0x01, 0x11);
 
     FillWindowPixelBuffer(WIN_MOVE_DESCRIPTION, PIXEL_FILL(0));
-    Contest_PrintTextToBg0WindowStd(WIN_MOVE_DESCRIPTION, gContestEffects[GetMoveContestEffect(move)].description);
+    Contest_PrintTextToBg0WindowStd(WIN_MOVE_DESCRIPTION, contestEffect.description);
     Contest_PrintTextToBg0WindowStd(WIN_SLASH, gText_Slash);
 }
 
@@ -5453,6 +5428,7 @@ static void SetMoveTargetPosition(enum Move move)
     case TARGET_RANDOM:
     case TARGET_BOTH:
     case TARGET_FOES_AND_ALLY:
+    case TARGET_USER_AND_ALLY:
     default:
         gBattlerTarget = B_POSITION_OPPONENT_RIGHT;
         break;
@@ -5464,6 +5440,7 @@ static void Contest_PrintTextToBg0WindowStd(u32 windowId, const u8 *b)
     struct TextPrinterTemplate printerTemplate;
 
     printerTemplate.currentChar = b;
+    printerTemplate.type = WINDOW_TEXT_PRINTER;
     printerTemplate.windowId = windowId;
     printerTemplate.fontId = FONT_NORMAL;
     printerTemplate.x = 0;
@@ -5487,6 +5464,7 @@ void Contest_PrintTextToBg0WindowAt(u32 windowId, u8 *currChar, s32 x, s32 y, s3
     struct TextPrinterTemplate printerTemplate;
 
     printerTemplate.currentChar = currChar;
+    printerTemplate.type = WINDOW_TEXT_PRINTER;
     printerTemplate.windowId = windowId;
     printerTemplate.fontId = fontId;
     printerTemplate.x = x;
@@ -5511,6 +5489,7 @@ static void Contest_StartTextPrinter(const u8 *currChar, bool32 b)
     u8 speed;
 
     printerTemplate.currentChar = currChar;
+    printerTemplate.type = WINDOW_TEXT_PRINTER;
     printerTemplate.windowId = WIN_GENERAL_TEXT;
     printerTemplate.fontId = FONT_NORMAL;
     printerTemplate.x = 0;
@@ -5555,7 +5534,7 @@ static void ContestBG_FillBoxWithTile(u8 bg, u16 firstTileNum, u8 x, u8 y, u8 wi
 static bool32 Contest_RunTextPrinters(void)
 {
     RunTextPrinters();
-    return IsTextPrinterActive(WIN_GENERAL_TEXT);
+    return IsTextPrinterActiveOnWindow(WIN_GENERAL_TEXT);
 }
 
 static void Contest_SetBgCopyFlags(u32 flagIndex)
@@ -5588,24 +5567,7 @@ bool8 SaveContestWinner(u8 rank)
         return FALSE;
 
     // Adjust the random painting caption depending on the category
-    switch (gSpecialVar_ContestCategory)
-    {
-    case CONTEST_CATEGORY_COOL:
-        captionId += NUM_PAINTING_CAPTIONS * CONTEST_CATEGORY_COOL;
-        break;
-    case CONTEST_CATEGORY_BEAUTY:
-        captionId += NUM_PAINTING_CAPTIONS * CONTEST_CATEGORY_BEAUTY;
-        break;
-    case CONTEST_CATEGORY_CUTE:
-        captionId += NUM_PAINTING_CAPTIONS * CONTEST_CATEGORY_CUTE;
-        break;
-    case CONTEST_CATEGORY_SMART:
-        captionId += NUM_PAINTING_CAPTIONS * CONTEST_CATEGORY_SMART;
-        break;
-    case CONTEST_CATEGORY_TOUGH:
-        captionId += NUM_PAINTING_CAPTIONS * CONTEST_CATEGORY_TOUGH;
-        break;
-    }
+    captionId += NUM_PAINTING_CAPTIONS * gSpecialVar_ContestCategory;
 
     if (rank != CONTEST_SAVE_FOR_ARTIST)
     {
@@ -5665,20 +5627,7 @@ u8 GetContestWinnerSaveIdx(u8 rank, bool8 shift)
     default:
 //  case CONTEST_SAVE_FOR_MUSEUM:
 //  case CONTEST_SAVE_FOR_ARTIST:
-        switch (gSpecialVar_ContestCategory)
-        {
-        case CONTEST_CATEGORY_COOL:
-            return CONTEST_WINNER_MUSEUM_COOL - 1;
-        case CONTEST_CATEGORY_BEAUTY:
-            return CONTEST_WINNER_MUSEUM_BEAUTY - 1;
-        case CONTEST_CATEGORY_CUTE:
-            return CONTEST_WINNER_MUSEUM_CUTE - 1;
-        case CONTEST_CATEGORY_SMART:
-            return CONTEST_WINNER_MUSEUM_SMART - 1;
-        case CONTEST_CATEGORY_TOUGH:
-        default:
-            return CONTEST_WINNER_MUSEUM_TOUGH - 1;
-        }
+        return MUSEUM_CONTEST_WINNERS_START + gSpecialVar_ContestCategory;
     }
 }
 
@@ -6025,7 +5974,7 @@ static void ContestDebugPrintBitStrings(void)
     {
         for (i = 0; i < CONTESTANT_COUNT; i++)
         {
-            txtPtr = StringCopy(text1, gText_CDot);
+            txtPtr = StringCopy(text1, COMPOUND_STRING("C."));
             Contest_PrintTextToBg0WindowAt(gContestantTurnOrder[i], text1, 5, 1, FONT_NARROW);
             bits = gContestResources->tv[i].winnerFlags;
             for (j = 7; j > -1; j--) // Weird loop.
@@ -6046,7 +5995,7 @@ static void ContestDebugPrintBitStrings(void)
     {
         for (i = 0; i < CONTESTANT_COUNT; i++)
         {
-            StringCopy(text1, gText_BDot);
+            StringCopy(text1, COMPOUND_STRING("B."));
             bits = gContestResources->tv[i].loserFlags;
             txtPtr = &text1[2];
             for (j = 7; j > -1; j--) // Weird loop.
@@ -6066,9 +6015,9 @@ static void ContestDebugPrintBitStrings(void)
     SwapMoveDescAndContestTilemaps();
 }
 
-static u8 GetMonNicknameLanguage(u8 *nickname)
+static enum Language GetMonNicknameLanguage(u8 *nickname)
 {
-    u8 ret = GAME_LANGUAGE;
+    enum Language ret = GAME_LANGUAGE;
 
     if (nickname[0] == EXT_CTRL_CODE_BEGIN && nickname[1] == EXT_CTRL_CODE_JPN)
         return GAME_LANGUAGE;
@@ -6123,7 +6072,7 @@ static void StripPlayerNameForLinkContest(u8 *playerName)
     playerName[PLAYER_NAME_LENGTH] = chr;
 }
 
-static void StripMonNameForLinkContest(u8 *monName, s32 language)
+static void StripMonNameForLinkContest(u8 *monName, enum Language language)
 {
     u8 chr;
 
@@ -6141,7 +6090,7 @@ static void StripMonNameForLinkContest(u8 *monName, s32 language)
     }
 }
 
-void StripPlayerAndMonNamesForLinkContest(struct ContestPokemon *mon, s32 language)
+void StripPlayerAndMonNamesForLinkContest(struct ContestPokemon *mon, enum Language language)
 {
     u8 *name = mon->nickname;
 

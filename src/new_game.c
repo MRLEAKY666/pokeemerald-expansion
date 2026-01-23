@@ -228,7 +228,7 @@ void NewGameInitData(void)
     SetCurrentDifficultyLevel(DIFFICULTY_NORMAL);
     ResetItemFlags();
     ResetOutfitData();
-    gSpecialVar_MonBoxId = 0xFF;
+    //gSpecialVar_MonBoxId = 0xFF; // commented because it seemed to be removed in an upcoming merge
     ResetDexNav();
     ClearFollowerNPCData();
 }

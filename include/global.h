@@ -152,6 +152,8 @@
 
 #define FEATURE_FLAG_ASSERT(flag, id) STATIC_ASSERT(flag > TEMP_FLAGS_END || flag == 0, id)
 
+#define READ_OTID_FROM_SAVE T1_READ_32(gSaveBlock2Ptr->playerTrainerId)
+
 // NOTE: This uses hardware timers 2 and 3; this will not work during active link connections or with the eReader
 static inline void CycleCountStart()
 {
@@ -312,7 +314,7 @@ struct BerryPickingResults
 
 struct PyramidBag
 {
-    u16 itemId[FRONTIER_LVL_MODE_COUNT][PYRAMID_BAG_ITEMS_COUNT];
+    enum Item itemId[FRONTIER_LVL_MODE_COUNT][PYRAMID_BAG_ITEMS_COUNT];
 #if MAX_PYRAMID_BAG_ITEM_CAPACITY > 255
     u16 quantity[FRONTIER_LVL_MODE_COUNT][PYRAMID_BAG_ITEMS_COUNT];
 #else
@@ -331,7 +333,7 @@ struct ApprenticeMon
 {
     u16 species;
     enum Move moves[MAX_MON_MOVES];
-    u16 item;
+    enum Item item;
 };
 
 // This is for past players Apprentices or Apprentices received via Record Mix.
@@ -671,7 +673,7 @@ struct WarpData
 
 struct ItemSlot
 {
-    u16 itemId;
+    enum Item itemId;
     u16 quantity;
 };
 
@@ -828,7 +830,7 @@ struct RecordMixingGiftData
 {
     u8 unk0;
     u8 quantity;
-    u16 itemId;
+    enum Item itemId;
     u8 filler4[8];
 };
 
@@ -857,7 +859,7 @@ struct Mail
     /*0x12*/ u8 playerName[PLAYER_NAME_LENGTH + 1];
     /*0x1A*/ u8 trainerId[TRAINER_ID_LENGTH];
     /*0x1E*/ u16 species;
-    /*0x20*/ u16 itemId;
+    /*0x20*/ enum Item itemId;
 };
 
 struct DaycareMail
@@ -908,7 +910,7 @@ struct LilycoveLadyFavor
     /*0x004*/ u8 playerName[PLAYER_NAME_LENGTH + 1];
     /*0x00C*/ u8 favorId;
     /*0x00D*/ //u8 padding1;
-    /*0x00E*/ u16 itemId;
+    /*0x00E*/ enum Item itemId;
     /*0x010*/ u16 bestItem;
     /*0x012*/ u8 language;
     /*0x013*/ //u8 padding2;

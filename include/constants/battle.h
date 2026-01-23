@@ -32,6 +32,7 @@ enum BattlerPosition
     B_POSITION_PLAYER_RIGHT,
     B_POSITION_OPPONENT_RIGHT,
     MAX_POSITION_COUNT,
+    B_POSITION_ABSENT = 0xFF,
 };
 
 enum BattlerId
@@ -41,6 +42,15 @@ enum BattlerId
     B_BATTLER_2,
     B_BATTLER_3,
     MAX_BATTLERS_COUNT,
+};
+
+enum __attribute__((packed)) BattleTrainer
+{
+    B_TRAINER_0,
+    B_TRAINER_1,
+    B_TRAINER_2,
+    B_TRAINER_3,
+    MAX_BATTLE_TRAINERS,
 };
 
 // These macros can be used with either battler ID or positions to get the partner or the opposite mon
@@ -187,7 +197,7 @@ enum VolatileFlags
     F(VOLATILE_DRAGON_CHEER,                dragonCheer,                   (u32, 1), V_BATON_PASSABLE) \
     F(VOLATILE_FOCUS_ENERGY,                focusEnergy,                   (u32, 1), V_BATON_PASSABLE) \
     F(VOLATILE_BONUS_CRIT_STAGES,           bonusCritStages,               (u32, 4)) \
-    F(VOLATILE_SEMI_INVULNERABLE,           semiInvulnerable,              (enum SemiInvulnerableState, SEMI_INVULNERABLE_COUNT - 1)) \
+    F(VOLATILE_SEMI_INVULNERABLE,           semiInvulnerable,              (enum SemiInvulnerableState, SEMI_INVULNERABLE_COUNT)) \
     F(VOLATILE_ELECTRIFIED,                 electrified,                   (u32, 1)) \
     F(VOLATILE_MUD_SPORT,                   mudSport,                      (u32, 1), V_BATON_PASSABLE) \
     F(VOLATILE_WATER_SPORT,                 waterSport,                    (u32, 1), V_BATON_PASSABLE) \
@@ -222,14 +232,14 @@ enum VolatileFlags
     F(VOLATILE_BEADS_OF_RUIN,               beadsOfRuin,                   (u32, 1)) \
     F(VOLATILE_IS_TRANSFORMED_MON_SHINY,    isTransformedMonShiny,         (u32, 1)) \
     F(VOLATILE_TRANSFORMED_MON_PID,         transformedMonPID,             (u32, UINT32_MAX)) \
-    F(VOLATILE_DISABLED_MOVE,               disabledMove,                  (u32, MOVES_COUNT_ALL - 1)) \
-    F(VOLATILE_ENCORED_MOVE,                encoredMove,                   (u32, MOVES_COUNT_ALL - 1)) \
-    F(VOLATILE_PROTECT_USES,                protectUses,                   (u32, UINT8_MAX)) \
-    F(VOLATILE_STOCKPILE_COUNTER,           stockpileCounter,              (u32, MAX_STAT_STAGE - 1)) \
-    F(VOLATILE_STOCKPILE_DEF,               stockpileDef,                  (u32, MAX_STAT_STAGE - 1)) \
-    F(VOLATILE_STOCKPILE_SP_DEF,            stockpileSpDef,                (u32, MAX_STAT_STAGE - 1)) \
-    F(VOLATILE_STOCKPILE_BEFORE_DEF,        stockpileBeforeDef,            (u32, MAX_STAT_STAGE - 1)) \
-    F(VOLATILE_STOCKPILE_BEFORE_SP_DEF,     stockpileBeforeSpDef,          (u32, MAX_STAT_STAGE - 1)) \
+    F(VOLATILE_DISABLED_MOVE,               disabledMove,                  (u32, MOVES_COUNT_ALL)) \
+    F(VOLATILE_ENCORED_MOVE,                encoredMove,                   (u32, MOVES_COUNT_ALL)) \
+    F(VOLATILE_PROTECT_USES,                consecutiveMoveUses,           (u32, UINT8_MAX)) \
+    F(VOLATILE_STOCKPILE_COUNTER,           stockpileCounter,              (u32, MAX_STAT_STAGE)) \
+    F(VOLATILE_STOCKPILE_DEF,               stockpileDef,                  (u32, MAX_STAT_STAGE)) \
+    F(VOLATILE_STOCKPILE_SP_DEF,            stockpileSpDef,                (u32, MAX_STAT_STAGE)) \
+    F(VOLATILE_STOCKPILE_BEFORE_DEF,        stockpileBeforeDef,            (u32, MAX_STAT_STAGE)) \
+    F(VOLATILE_STOCKPILE_BEFORE_SP_DEF,     stockpileBeforeSpDef,          (u32, MAX_STAT_STAGE)) \
     F(VOLATILE_SUBSTITUTE_HP,               substituteHP,                  (u32, UINT8_MAX)) \
     F(VOLATILE_ENCORED_MOVE_POS,            encoredMovePos,                (u32, MAX_BITS(MAX_MON_MOVES))) \
     F(VOLATILE_DISABLE_TIMER,               disableTimer,                  (u32, B_DISABLE_TIMER)) \
@@ -266,7 +276,7 @@ enum VolatileFlags
     F(VOLATILE_USED_PROTEAN_LIBERO,         usedProteanLibero,             (u32, 1)) \
     F(VOLATILE_FLASH_FIRE_BOOSTED,          flashFireBoosted,              (u32, 1)) \
     F(VOLATILE_BOOSTER_ENERGY_ACTIVATED,    boosterEnergyActivated,        (u32, 1)) \
-    F(VOLATILE_OVERWRITTEN_ABILITY,         overwrittenAbility,            (enum Ability, ABILITIES_COUNT - 1)) \
+    F(VOLATILE_OVERWRITTEN_ABILITY,         overwrittenAbility,            (enum Ability, ABILITIES_COUNT)) \
     F(VOLATILE_ROOST_ACTIVE,                roostActive,                   (u32, 1)) \
     F(VOLATILE_UNBURDEN_ACTIVE,             unburdenActive,                (u32, 1)) \
     F(VOLATILE_NEUTRALIZING_GAS,            neutralizingGas,               (u32, 1)) \
@@ -396,13 +406,15 @@ enum TypeSideHazard
 #define MOVE_RESULT_NOT_VERY_EFFECTIVE    (1 << 2)
 #define MOVE_RESULT_DOESNT_AFFECT_FOE     (1 << 3)
 #define MOVE_RESULT_ONE_HIT_KO            (1 << 4)
-#define MOVE_RESULT_FAILED                (1 << 5)
-#define MOVE_RESULT_FOE_ENDURED           (1 << 6)
-#define MOVE_RESULT_FOE_HUNG_ON           (1 << 7)
-#define MOVE_RESULT_STURDIED              (1 << 8)
-#define MOVE_RESULT_FOE_ENDURED_AFFECTION (1 << 9)
-#define MOVE_RESULT_SYNCHRONOISE_AFFECTED (1 << 10)
-#define MOVE_RESULT_NO_EFFECT             (MOVE_RESULT_MISSED | MOVE_RESULT_DOESNT_AFFECT_FOE | MOVE_RESULT_FAILED)
+#define MOVE_RESULT_ONE_HIT_KO_NO_AFFECT  (1 << 5)
+#define MOVE_RESULT_ONE_HIT_KO_STURDY     (1 << 6)
+#define MOVE_RESULT_FAILED                (1 << 7)
+#define MOVE_RESULT_FOE_ENDURED           (1 << 8)
+#define MOVE_RESULT_FOE_HUNG_ON           (1 << 9)
+#define MOVE_RESULT_STURDIED              (1 << 10)
+#define MOVE_RESULT_FOE_ENDURED_AFFECTION (1 << 11)
+#define MOVE_RESULT_AVOIDED_ATTACK        (MOVE_RESULT_MISSED | MOVE_RESULT_FAILED)
+#define MOVE_RESULT_NO_EFFECT             (MOVE_RESULT_MISSED | MOVE_RESULT_FAILED | MOVE_RESULT_DOESNT_AFFECT_FOE)
 
 enum BattleWeather
 {
@@ -577,6 +589,10 @@ enum __attribute__((packed)) MoveEffect
     MOVE_EFFECT_FIXED_POWER,
     // Max move effects end. They can be used for (custom) normal moves.
 
+    // Move effects that happen before the move hits. Set in SetPreAttackMoveEffect
+    MOVE_EFFECT_BREAK_SCREEN,
+    MOVE_EFFECT_STEAL_STATS,
+
     NUM_MOVE_EFFECTS
 };
 
@@ -585,8 +601,6 @@ enum __attribute__((packed)) MoveEffect
 #else
 #define MOVE_EFFECT_FREEZE_OR_FROSTBITE MOVE_EFFECT_FREEZE
 #endif
-
-#define MOVE_EFFECT_CONTINUE            0x8000
 
 // Battle environment defines for gBattleEnvironment.
 enum BattleEnvironments
@@ -614,7 +628,7 @@ enum BattleEnvironments
     BATTLE_ENVIRONMENT_GROUDON,
     BATTLE_ENVIRONMENT_KYOGRE,
     BATTLE_ENVIRONMENT_RAYQUAZA,
-    // New battle environments are used for Secret Power but not fully implemented.
+    // New battle environments are used for Secret Power and Nature Power but not fully implemented.
     BATTLE_ENVIRONMENT_SOARING,
     BATTLE_ENVIRONMENT_SKY_PILLAR,
     BATTLE_ENVIRONMENT_BURIAL_GROUND,
@@ -689,9 +703,6 @@ enum BattleEnvironments
 // Indicator for the party summary bar to display an empty slot.
 #define HP_EMPTY_SLOT 0xFFFF
 
- // (TARGET_USER | TARGET_ALLY)
-
-
 enum MoveTarget
 {
     TARGET_NONE,
@@ -703,7 +714,7 @@ enum MoveTarget
     TARGET_BOTH,
     TARGET_USER,
     TARGET_ALLY,
-    TARGET_USER_AND_ALLY, // TODO: No functionality yet but would be used for howl in the future
+    TARGET_USER_AND_ALLY,
     TARGET_USER_OR_ALLY, // Acupressure
     TARGET_FOES_AND_ALLY,
     TARGET_FIELD, // Moves that target the field, e.g. Rain Dance

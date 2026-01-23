@@ -20,20 +20,21 @@
 #include "overworld.h"
 #include "palette.h"
 #include "party_menu.h"
+#include "pokemon_animation.h"
 #include "recorded_battle.h"
 #include "string_util.h"
 #include "sound.h"
 #include "task.h"
 #include "test_runner.h"
-#include "util.h"
 #include "text.h"
+#include "util.h"
+#include "wild_encounter.h"
 #include "constants/abilities.h"
 #include "constants/item_effects.h"
 #include "constants/songs.h"
 #include "test/battle.h"
 #include "test/test.h"
 #include "test/test_runner_battle.h"
-#include "pokemon_animation.h"
 
 #include "event_data.h" // included for rayquaza battle
 
@@ -142,7 +143,7 @@ void SetUpBattleVarsAndBirchZigzagoon(void)
     for (i = 0; i < MAX_BATTLERS_COUNT; i++)
     {
         gBattlerControllerFuncs[i] = BattleControllerDummy;
-        gBattlerPositions[i] = 0xFF;
+        gBattlerPositions[i] = B_POSITION_ABSENT;
         gActionSelectionCursor[i] = 0;
         gMoveSelectionCursor[i] = 0;
     }
@@ -154,12 +155,7 @@ void SetUpBattleVarsAndBirchZigzagoon(void)
     BattleAI_SetupFlags();
 
     if (gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE)
-    {
-        ZeroEnemyPartyMons();
-        CreateMon(&gEnemyParty[0], SPECIES_ZIGZAGOON_GALAR, 2, USE_RANDOM_IVS, 0, 0, OT_ID_PLAYER_ID, 0);
-        i = 0;
-        SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, &i);
-    }
+        CreateWildMon(SPECIES_ZIGZAGOON_GALAR, 2);
 }
 
 void InitBattleControllers(void)
@@ -346,7 +342,7 @@ static void InitBtlControllersInternal(void)
 
         for (i = 0; i < MAX_LINK_PLAYERS; i++)
         {
-            u32 linkPositionLeft, linkPositionRight;
+            enum BattlerPosition linkPositionLeft, linkPositionRight;
             BattleControllerFunc linkBtlControllerFunc;
 
             if (i == multiplayerId)
@@ -1056,7 +1052,7 @@ void BtlController_EmitPrintSelectionString(u32 battler, u32 bufferId, enum Stri
 }
 
 // itemId only relevant for B_ACTION_USE_ITEM
-void BtlController_EmitChooseAction(u32 battler, u32 bufferId, u8 action, u16 itemId)
+void BtlController_EmitChooseAction(u32 battler, u32 bufferId, u8 action, enum Item itemId)
 {
     gBattleResources->transferBuffer[0] = CONTROLLER_CHOOSEACTION;
     gBattleResources->transferBuffer[1] = action;
@@ -1488,10 +1484,10 @@ static u32 GetBattlerMonData(u32 battler, struct Pokemon *party, u32 monId, u8 *
         #if TESTING
         if (gTestRunnerEnabled)
         {
-            u32 array = (!IsPartnerMonFromSameTrainer(battler)) ? battler : GetBattlerSide(battler);
+            enum BattleTrainer trainer = GetBattlerTrainer(battler);
             u32 partyIndex = gBattlerPartyIndexes[battler];
-            if (TestRunner_Battle_GetForcedAbility(array, partyIndex))
-                gBattleMons[battler].ability = TestRunner_Battle_GetForcedAbility(array, partyIndex);
+            if (TestRunner_Battle_GetForcedAbility(trainer, partyIndex))
+                gBattleMons[battler].ability = TestRunner_Battle_GetForcedAbility(trainer, partyIndex);
         }
         #endif
         break;
@@ -2217,7 +2213,7 @@ static void Controller_WaitForTrainerPic(u32 battler)
 
 void Controller_WaitForString(u32 battler)
 {
-    if (!IsTextPrinterActive(B_WIN_MSG))
+    if (!IsTextPrinterActiveOnWindow(B_WIN_MSG))
         BtlController_Complete(battler);
 }
 
@@ -2688,20 +2684,25 @@ void BtlController_HandleHealthBarUpdate(u32 battler)
     gBattlerControllerFuncs[battler] = Controller_WaitForHealthBar;
 }
 
-void DoStatusIconUpdate(u32 battler)
-{
-    struct Pokemon *mon = GetBattlerMon(battler);
-
-    UpdateHealthboxAttribute(gHealthboxSpriteIds[battler], mon, HEALTHBOX_STATUS_ICON);
-    gBattleSpritesDataPtr->healthBoxesData[battler].statusAnimActive = 0;
-    gBattlerControllerFuncs[battler] = Controller_WaitForStatusAnimation;
-}
-
 void BtlController_HandleStatusIconUpdate(u32 battler)
 {
     if (!IsBattleSEPlaying(battler))
     {
-        DoStatusIconUpdate(battler);
+        struct Pokemon *mon = GetBattlerMon(battler);
+
+        if (IsControllerSafari(battler))
+        {
+            UpdateHealthboxAttribute(gHealthboxSpriteIds[battler], mon, HEALTHBOX_SAFARI_BALLS_TEXT);
+            BtlController_Complete(battler);
+        }
+        else
+        {
+            UpdateHealthboxAttribute(gHealthboxSpriteIds[battler], mon, HEALTHBOX_STATUS_ICON);
+            gBattleSpritesDataPtr->healthBoxesData[battler].statusAnimActive = 0;
+            gBattlerControllerFuncs[battler] = Controller_WaitForStatusAnimation;
+            if (gTestRunnerEnabled && BattlerIsRecorded(battler))
+                TestRunner_Battle_RecordStatus1(battler, GetMonData(GetBattlerMon(battler), MON_DATA_STATUS));
+        }
     }
 }
 
@@ -3262,4 +3263,27 @@ void FreeShinyStars(void)
     }
     FreeSpriteTilesByTag(ANIM_TAG_GOLD_STARS);
     FreeSpritePaletteByTag(ANIM_TAG_GOLD_STARS);
+}
+
+enum BattleTrainer GetBattlerTrainer(enum BattlerId battler)
+{
+    switch (battler)
+    {
+    case B_BATTLER_0:
+        return B_TRAINER_0;
+    case B_BATTLER_1:
+        return B_TRAINER_1;
+    case B_BATTLER_2:
+        if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
+            return B_TRAINER_2;
+        else
+            return B_TRAINER_0;
+    case B_BATTLER_3:
+        if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+            return B_TRAINER_3;
+        else
+            return B_TRAINER_1;
+    default:
+        return B_TRAINER_1;
+    }
 }

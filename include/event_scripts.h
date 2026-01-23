@@ -693,5 +693,8 @@ extern const u8 EventScript_MovedTooFast[];
 
 //trainer sight script
 extern const u8 EventScript_ObjectApproachPlayer[];
+//
+
+extern const u8 MoveTutor_AfterChooseBoxMon[];
 
 #endif // GUARD_EVENT_SCRIPTS_H

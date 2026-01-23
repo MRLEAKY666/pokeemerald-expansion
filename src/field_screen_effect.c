@@ -1381,7 +1381,7 @@ static bool32 PrintWhiteOutRecoveryMessage(u8 taskId, const u8 *text, u32 x, u32
         break;
     case 1:
         RunTextPrinters();
-        if (!IsTextPrinterActive(windowId))
+        if (!IsTextPrinterActiveOnWindow(windowId))
         {
             gTasks[taskId].tPrintState = 0;
             return TRUE;
@@ -1698,7 +1698,7 @@ void DoStairWarp(u16 metatileBehavior, u16 delay)
 #undef tTimer
 #undef tDelay
 
-bool32 IsDirectionalStairWarpMetatileBehavior(u16 metatileBehavior, u8 playerDirection)
+bool32 IsDirectionalStairWarpMetatileBehavior(u16 metatileBehavior, enum Direction playerDirection)
 {
     if (playerDirection == DIR_WEST)
     {
