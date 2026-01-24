@@ -442,7 +442,6 @@
     "GraniteCave_LowTide",
     "Underwater_GraniteCove",
     "GraniteCave_ArticunosRoom",
-    "DragonsRoost_House1",
     "VerdantPlateau",
     "FortreeCliffs",
     "FortreeCliffsDenA",
@@ -462,7 +461,8 @@
   ],
   "gMapGroup_Dungeons2": [
     "CrateredCrest",
-    "CrateredCrest_Cave"
+    "CrateredCrest_Cave",
+    "DragonsRoost_House1"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",
