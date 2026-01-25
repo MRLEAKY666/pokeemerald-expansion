@@ -12,8 +12,8 @@ CrateredCrest_OnLoad:
     end
 
 CrateredCrest_CloseRegiEntrance::
-	setmetatile 41, 65, METATILE_Fallarbor_BrownRockWall, TRUE
-	setmetatile 41, 66, METATILE_Fallarbor_BrownRockWall_GrassBase, TRUE
+	setmetatile 41, 63, METATILE_Fallarbor_BrownRockWall, TRUE
+	setmetatile 41, 64, METATILE_Fallarbor_BrownRockWall_GrassBase, TRUE
 	return
 
 CrateredCrest_OnFrame:

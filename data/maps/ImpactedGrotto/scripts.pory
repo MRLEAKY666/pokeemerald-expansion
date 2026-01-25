@@ -1,0 +1,122 @@
+raw `
+
+ImpactedGrotto_MapScripts::
+	map_script MAP_SCRIPT_ON_RESUME, ImpactedGrotto_OnResume
+	map_script MAP_SCRIPT_ON_LOAD, ImpactedGrotto_OnLoad
+	map_script MAP_SCRIPT_ON_TRANSITION, ImpactedGrotto_OnTransition
+	.byte 0
+
+ImpactedGrotto_OnResume:
+	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, ImpactedGrotto_EventScript_TryRemoveRegidrago
+	end
+
+ImpactedGrotto_EventScript_TryRemoveRegidrago::
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
+	removeobject VAR_LAST_TALKED
+	return
+
+ImpactedGrotto_OnLoad:
+	@ call_if_unset FLAG_SYS_BRAILLE_REGIDRAGO_COMPLETED, ImpactedGrotto_EventScript_HideRegiEntrance
+	end
+
+ImpactedGrotto_EventScript_HideRegiEntrance::
+	setmetatile 7, 19, METATILE_Cave_EntranceCover, TRUE
+	setmetatile 8, 19, METATILE_Cave_EntranceCover, TRUE
+	setmetatile 9, 19, METATILE_Cave_EntranceCover, TRUE
+	setmetatile 7, 20, METATILE_Cave_SealedChamberBraille_Mid, TRUE
+	setmetatile 8, 20, METATILE_Cave_SealedChamberBraille_Mid, TRUE
+	setmetatile 9, 20, METATILE_Cave_SealedChamberBraille_Mid, TRUE
+	return
+
+ImpactedGrotto_OnTransition:
+	setflag FLAG_LANDMARK_IMPACTED_GROTTO
+	call ImpactedGrotto_EventScript_ClearSteps
+	call_if_unset FLAG_DEFEATED_REGIDRAGO, ImpactedGrotto_EventScript_ShowRegidrago
+	end
+
+ImpactedGrotto_EventScript_ShowRegidrago::
+	clearflag FLAG_HIDE_REGIDRAGO
+	return
+
+ImpactedGrotto_EventScript_OpenRegiEntrance::
+	setmetatile 7, 19, METATILE_Cave_SealedChamberEntrance_TopLeft, TRUE
+	setmetatile 8, 19, METATILE_Cave_SealedChamberEntrance_TopMid, TRUE
+	setmetatile 9, 19, METATILE_Cave_SealedChamberEntrance_TopRight, TRUE
+	setmetatile 7, 20, METATILE_Cave_SealedChamberEntrance_BottomLeft, TRUE
+	setmetatile 8, 20, METATILE_Cave_SealedChamberEntrance_BottomMid, FALSE
+	setmetatile 9, 20, METATILE_Cave_SealedChamberEntrance_BottomRight, TRUE
+	special DrawWholeMapView
+	playse SE_BANG
+	@ setflag FLAG_SYS_BRAILLE_REGIDRAGO_COMPLETED
+	end
+
+ImpactedGrotto_EventScript_CaveEntranceMiddle::
+	lockall
+	@ call_if_set FLAG_TEMP_REGIDRAGO_PUZZLE_FAILED, ImpactedGrotto_EventScript_ClearSteps
+	@ goto_if_set FLAG_SYS_BRAILLE_REGIDRAGO_COMPLETED, ImpactedGrotto_EventScript_BigHoleInWall
+	@ braillemessage ImpactedGrotto_Braille_RunLapAroundWall
+	@ setflag FLAG_TEMP_REGIDRAGO_PUZZLE_STARTED
+	@ special ShouldDoBrailleRegidragoPuzzle
+	@ goto ImpactedGrotto_EventScript_CloseBrailleMsg
+	end
+
+ImpactedGrotto_EventScript_BigHoleInWall::
+	msgbox gText_BigHoleInTheWall, MSGBOX_DEFAULT
+	releaseall
+	end
+
+ImpactedGrotto_EventScript_CaveEntranceSide::
+	lockall
+	@ call_if_set FLAG_TEMP_REGIDRAGO_PUZZLE_FAILED, ImpactedGrotto_EventScript_ClearSteps
+	@ braillemessage ImpactedGrotto_Braille_RunLapAroundWall
+	@ goto_if_set FLAG_SYS_BRAILLE_REGIDRAGO_COMPLETED, ImpactedGrotto_EventScript_CloseBrailleMsg
+	@ setflag FLAG_TEMP_REGIDRAGO_PUZZLE_STARTED
+	@ special ShouldDoBrailleRegidragoPuzzle
+	@ goto ImpactedGrotto_EventScript_CloseBrailleMsg
+	end
+
+ImpactedGrotto_EventScript_CloseBrailleMsg::
+	waitbuttonpress
+	closebraillemessage
+	releaseall
+	end
+
+ImpactedGrotto_EventScript_ClearSteps::
+	@ setvar VAR_REGIDRAGO_STEPS_1, 0
+	@ setvar VAR_REGIDRAGO_STEPS_2, 0
+	@ setvar VAR_REGIDRAGO_STEPS_3, 0
+	@ clearflag FLAG_TEMP_REGIDRAGO_PUZZLE_FAILED
+	return
+
+ImpactedGrotto_EventScript_Regidrago::
+	lock
+	faceplayer
+	waitse
+	playmoncry SPECIES_REGIDRAGO, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setwildbattle SPECIES_REGIDRAGO, 40
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	special StartRegiBattle
+	waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, ImpactedGrotto_EventScript_DefeatedRegidrago
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, ImpactedGrotto_EventScript_RanFromRegidrago
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, ImpactedGrotto_EventScript_RanFromRegidrago
+	setflag FLAG_DEFEATED_REGIDRAGO
+	release
+	end
+
+ImpactedGrotto_EventScript_DefeatedRegidrago::
+	setflag FLAG_DEFEATED_REGIDRAGO
+	goto Common_EventScript_RemoveStaticPokemon
+	end
+
+ImpactedGrotto_EventScript_RanFromRegidrago::
+	setvar VAR_0x8004, SPECIES_REGIDRAGO
+	goto Common_EventScript_LegendaryFlewAway
+	end
+
+`

@@ -4910,6 +4910,16 @@
       "secondary_tileset": "gTileset_Fallarbor",
       "border_filepath": "data/layouts/CrateredCrest_Cave/border.bin",
       "blockdata_filepath": "data/layouts/CrateredCrest_Cave/map.bin"
+    },
+    {
+      "id": "LAYOUT_IMPACTED_GROTTO",
+      "name": "ImpactedGrotto_Layout",
+      "width": 17,
+      "height": 33,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/ImpactedGrotto/border.bin",
+      "blockdata_filepath": "data/layouts/ImpactedGrotto/map.bin"
     }
   ]
 }

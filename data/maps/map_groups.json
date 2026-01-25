@@ -462,7 +462,8 @@
   "gMapGroup_Dungeons2": [
     "CrateredCrest",
     "CrateredCrest_Cave",
-    "DragonsRoost_House1"
+    "DragonsRoost_House1",
+    "ImpactedGrotto"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",

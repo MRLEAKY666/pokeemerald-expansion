@@ -730,8 +730,8 @@
 #define FLAG_UNUSED_0x2AB  0x2AB // Unused Flag
 #define FLAG_UNUSED_0x2AC  0x2AC // Unused Flag
 #define FLAG_CRATERED_CREST_CARNIVINE2  0x2AD // 
-#define FLAG_UNUSED_0x2AE  0x2AE // Unused Flag
-#define FLAG_UNUSED_0x2AF  0x2AF // Unused Flag
+#define FLAG_HIDE_REGIDRAGO  0x2AE // 
+#define FLAG_DEFEATED_REGIDRAGO  0x2AF // 
 #define FLAG_CRATERED_CREST_CARNIVINE1  0x2B0 // 
 #define FLAG_CRATERED_CREST_GYARADOS  0x2B1 // 
 #define FLAG_CRATERED_CREST_DRAGONAIR  0x2B2 // 
@@ -1403,7 +1403,7 @@
 #define FLAG_SYS_SAFARI_MODE                        (SYSTEM_FLAGS + 0x2C)
 #define FLAG_SYS_CRUISE_MODE                        (SYSTEM_FLAGS + 0x2D)
 
-#define FLAG_UNUSED_0x88E                           (SYSTEM_FLAGS + 0x2E) // Unused Flag
+#define FLAG_LANDMARK_IMPACTED_GROTTO                           (SYSTEM_FLAGS + 0x2E) // Unused Flag
 #define FLAG_UNUSED_0x88F                           (SYSTEM_FLAGS + 0x2F) // Unused Flag
 
 #define FLAG_SYS_TV_HOME                            (SYSTEM_FLAGS + 0x30)

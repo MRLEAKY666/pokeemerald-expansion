@@ -27,9 +27,9 @@ CrateredCrest_OnLoad:
 # 14 "data//maps/CrateredCrest/scripts.pory"
 CrateredCrest_CloseRegiEntrance::
 # 15 "data//maps/CrateredCrest/scripts.pory"
-	setmetatile 41, 65, METATILE_Fallarbor_BrownRockWall, TRUE
+	setmetatile 41, 63, METATILE_Fallarbor_BrownRockWall, TRUE
 # 16 "data//maps/CrateredCrest/scripts.pory"
-	setmetatile 41, 66, METATILE_Fallarbor_BrownRockWall_GrassBase, TRUE
+	setmetatile 41, 64, METATILE_Fallarbor_BrownRockWall_GrassBase, TRUE
 # 17 "data//maps/CrateredCrest/scripts.pory"
 	return
 # 18 "data//maps/CrateredCrest/scripts.pory"

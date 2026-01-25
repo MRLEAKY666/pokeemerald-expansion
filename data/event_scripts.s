@@ -1333,3 +1333,5 @@ Common_Text_OpenOutfitBox:
 	.include "data/maps/CrateredCrest/scripts.inc"
 
 	.include "data/maps/CrateredCrest_Cave/scripts.inc"
+
+	.include "data/maps/ImpactedGrotto/scripts.inc"
