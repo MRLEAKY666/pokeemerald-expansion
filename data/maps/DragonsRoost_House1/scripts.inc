@@ -4,36 +4,56 @@ DragonsRoost_House1_MapScripts::
 DragonsRoost_House1_EventScript_OldLady::
 	@ lock
 	faceplayer
-	goto_if_unset FLAG_MET_DRAGONS_ROOST_LADY, DragonsRoost_House1_EventScript_MeetOldLady
-	goto_if_unset FLAG_DEFEATED_ZAPDOS, DragonsRoost_House1_EventScript_ZapdosRoosting
-	msgbox DragonsRoost_House1_Text_DangerousWoods, MSGBOX_YESNO
+	call_if_unset FLAG_MET_CRATERED_CREST_LADY, DragonsRoost_House1_EventScript_MeetOldLady
+	msgbox DragonsRoost_House1_Text_DangerousCrater, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, DragonsRoost_House1_EventScript_Rest
 	goto_if_eq VAR_RESULT, NO, DragonsRoost_House1_EventScript_DeclineRest
 	end
 
 DragonsRoost_House1_EventScript_MeetOldLady::
-	msgbox DragonsRoost_House1_Text_MeetOldLady, MSGBOX_DEFAULT
-	giveitem ITEM_METEORITE
-	setflag FLAG_MET_DRAGONS_ROOST_LADY
+	msgbox DragonsRoost_House1_Text_CraterStory1, MSGBOX_DEFAULT
 	return
-
-DragonsRoost_House1_EventScript_ZapdosRoosting::
-	msgbox DragonsRoost_House1_Text_ZapdosRoosting, MSGBOX_DEFAULT
-	msgbox DragonsRoost_House1_Text_DangerousWoods, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, DragonsRoost_House1_EventScript_Rest
-	goto_if_eq VAR_RESULT, NO, DragonsRoost_House1_EventScript_DeclineRest
-	end
 
 DragonsRoost_House1_EventScript_Rest::
 	msgbox DragonsRoost_House1_Text_Rest, MSGBOX_DEFAULT
 	closemessage
 	call Common_EventScript_OutOfCenterPartyHeal
 	msgbox DragonsRoost_House1_Text_PostRest, MSGBOX_DEFAULT
+	goto_if_set FLAG_MET_CRATERED_CREST_LADY, DragonsRoost_House1_EventScript_AskHearAboutCrater
+	goto_if_unset FLAG_MET_CRATERED_CREST_LADY, DragonsRoost_House1_EventScript_TryMeetOldLadyFlag
 	release
 	end
 
 DragonsRoost_House1_EventScript_DeclineRest::
 	msgbox DragonsRoost_House1_Text_DeclineRest, MSGBOX_DEFAULT
+	goto_if_set FLAG_MET_CRATERED_CREST_LADY, DragonsRoost_House1_EventScript_AskHearAboutCrater
+	goto_if_unset FLAG_MET_CRATERED_CREST_LADY, DragonsRoost_House1_EventScript_TryMeetOldLadyFlag
+	release
+	end
+
+DragonsRoost_House1_EventScript_TryMeetOldLadyFlag::
+	setflag FLAG_MET_CRATERED_CREST_LADY
+	release
+	end
+
+DragonsRoost_House1_EventScript_AskHearAboutCrater::
+	msgbox DragonsRoost_House1_Text_HearAboutCraterAgain, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, DragonsRoost_House1_EventScript_RepeatCraterInfo
+	msgbox DragonsRoost_House1_Text_BeCareful, MSGBOX_DEFAULT
+	release
+	end
+
+DragonsRoost_House1_Text_HearAboutCraterAgain:
+	.string "Do you want to hear about the history\n"
+	.string "of the crater again?$"
+
+DragonsRoost_House1_Text_BeCareful:
+	.string "Be very careful if you're planning\n"
+	.string "to explore the crater!$"
+
+DragonsRoost_House1_EventScript_RepeatCraterInfo::
+	msgbox DragonsRoost_House1_Text_CraterStory2, MSGBOX_DEFAULT
+	msgbox DragonsRoost_House1_Text_BeCareful, MSGBOX_DEFAULT
 	release
 	end
 
@@ -47,32 +67,35 @@ DragonsRoost_House1_EventScript_Drampa::
 	release
 	end
 
-DragonsRoost_House1_Text_MeetOldLady:
-	.string "Hello there! It's not often I see\n"
-	.string "visitors all the way out here.\p"
-	.string ". . .\n"
-	.string ". . .\p"
-	.string "You're looking for RAYQUAZA?\p"
-	.string "It came here to regain its strength\n"
-	.string "after an exhausting battle, but it has\l"
-	.string "since moved on.\p"
-	.string "I did find this interesting object\n"
-	.string "that RAYQUAZA seemingly left behind.\p"
-	.string "Please take it.\n"
-	.string "It may help in your search.$"
+DragonsRoost_House1_Text_CraterStory1:
+	.string "Hello there.\p" 
+	.string "It's not often I get visitors\n"
+	.string "all the way out here.\p"
+	.string "CRATERED CREST is commonly considered\n"
+	.string "to be the site of an ancient eruption.\p"
+	.string "But the legends of the tribe who settled\n"
+	.string "here in the past tell a different story.\p"
+	.string "They say this crater was formed when\n"
+	.string "a meteor fell from the stars.\p"
+	.string "According to their myth, rugged people\n"
+	.string "and POKéMON are drawn here, seeing the\l"
+	.string "crater as a place of power.$"
 
-DragonsRoost_House1_Text_DangerousWoods:
-	.string "If you're planning to\n"
-	.string "explore these woods, you should\l"
-	.string "consider having a rest first.\p"
+DragonsRoost_House1_Text_CraterStory2:
+	.string "CRATERED CREST is commonly considered\n"
+	.string "to be the site of an ancient eruption.\p"
+	.string "But the legends of the tribe who settled\n"
+	.string "here in the past tell a different story.\p"
+	.string "They say this crater was formed when\n"
+	.string "a meteor fell from the stars.\p"
+	.string "According to their myth, rugged people\n"
+	.string "and POKéMON are drawn here, seeing the\l"
+	.string "crater as a place of power.$"
+
+DragonsRoost_House1_Text_DangerousCrater:
+	.string "If you'll be exploring the crater, why\n"
+	.string "not have a rest before continuing?\p"
 	.string "Do you want to take a rest?$"
-
-DragonsRoost_House1_Text_ZapdosRoosting:
-	.string "A wild ZAPDOS has been roosting\n"
-	.string "here lately.\p"
-	.string "Could that be why RAYQUAZA moved on?\p"
-	.string "Powerful POKéMON like that\n"
-	.string "rarely share territory.$"
 
 DragonsRoost_House1_Text_Rest:
 	.string "That's right.\n"

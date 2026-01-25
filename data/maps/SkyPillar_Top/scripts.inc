@@ -37,7 +37,7 @@ SkyPillar_Top_OnTransition:
 # 19 "data//maps/SkyPillar_Top/scripts.pory"
 	call_if_lt VAR_SKY_PILLAR_STATE, 2, SkyPillar_Top_EventScript_SetCleanLayout
 # 20 "data//maps/SkyPillar_Top/scripts.pory"
-	call_if_ge VAR_DRAGONS_ROOST_RAYQUAZA_SCENE_STATE, 3, SkyPillar_Top_EventScript_TryShowRayquaza
+	call_if_ge VAR_CRATERED_CREST_RAYQUAZA_SCENE_STATE, 3, SkyPillar_Top_EventScript_TryShowRayquaza
 # 21 "data//maps/SkyPillar_Top/scripts.pory"
 	end
 # 22 "data//maps/SkyPillar_Top/scripts.pory"

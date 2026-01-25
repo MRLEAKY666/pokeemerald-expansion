@@ -195,6 +195,7 @@
 #define METATILE_Fallarbor_BrownCaveIndent           0x808
 #define METATILE_Fallarbor_BrownCaveOpen             0x810
 #define METATILE_Fallarbor_BrownRockWall             0x865
+#define METATILE_Fallarbor_BrownRockWall_GrassBase   0x849
 #define METATILE_Fallarbor_Door_BattleTent           0x96C
 #define METATILE_Fallarbor_Door_DarkRoof             0x8F7
 #define METATILE_Fallarbor_Door_LightRoof            0x8A5

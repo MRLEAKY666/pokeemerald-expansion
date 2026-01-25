@@ -291,31 +291,31 @@ static const u16 sRespawnableItemFlags[] = {
     FLAG_ITEM_MAGMA_HIDEOUT_4F_MAX_REVIVE,
     FLAG_ITEM_SAFARI_ZONE_NORTH_EAST_NUGGET,
     FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL,
-    FLAG_ITEM_DRAGONS_ROOST_I,                     
-    FLAG_ITEM_DRAGONS_ROOST_II,                     
-    FLAG_ITEM_DRAGONS_ROOST_III,                     
-    FLAG_ITEM_DRAGONS_ROOST_IV,                   
-    FLAG_ITEM_DRAGONS_ROOST_V,                 
-    FLAG_ITEM_DRAGONS_ROOST_VI,                
-    FLAG_ITEM_DRAGONS_ROOST_VII,                 
-    FLAG_ITEM_DRAGONS_ROOST_VIII,               
-    FLAG_ITEM_DRAGONS_ROOST_IX,            
-    FLAG_ITEM_DRAGONS_ROOST_X,           
-    FLAG_ITEM_DRAGONS_ROOST_XI,            
-    FLAG_ITEM_DRAGONS_ROOST_XII,         
-    FLAG_ITEM_DRAGONS_ROOST_XIII,         
-    FLAG_ITEM_DRAGONS_ROOST_XIV,          
-    FLAG_ITEM_DRAGONS_ROOST_XV,        
-    FLAG_ITEM_DRAGONS_ROOST_XVI,        
-    FLAG_ITEM_DRAGONS_ROOST_XVII,       
-    FLAG_ITEM_DRAGONS_ROOST_XVIII,        
-    FLAG_ITEM_DRAGONS_ROOST_XIX,     
-    FLAG_ITEM_DRAGONS_ROOST_XX,   
-    FLAG_ITEM_DRAGONS_ROOST_XXI,   
-    FLAG_ITEM_DRAGONS_ROOST_XXII,   
-    FLAG_ITEM_DRAGONS_ROOST_XXIII,  
-    FLAG_ITEM_DRAGONS_ROOST_XXIV, 
-    FLAG_ITEM_DRAGONS_ROOST_XXV,
+    FLAG_ITEM_CRATERED_CREST_I,                     
+    FLAG_ITEM_CRATERED_CREST_II,                     
+    FLAG_ITEM_CRATERED_CREST_III,                     
+    FLAG_ITEM_CRATERED_CREST_IV,                   
+    FLAG_ITEM_CRATERED_CREST_V,                 
+    FLAG_ITEM_CRATERED_CREST_VI,                
+    FLAG_ITEM_CRATERED_CREST_VII,                 
+    FLAG_ITEM_CRATERED_CREST_VIII,               
+    FLAG_ITEM_CRATERED_CREST_IX,            
+    FLAG_ITEM_CRATERED_CREST_X,           
+    FLAG_ITEM_CRATERED_CREST_XI,            
+    FLAG_ITEM_CRATERED_CREST_XII,         
+    FLAG_ITEM_CRATERED_CREST_XIII,         
+    FLAG_ITEM_CRATERED_CREST_XIV,          
+    FLAG_ITEM_CRATERED_CREST_XV,        
+    FLAG_ITEM_CRATERED_CREST_XVI,        
+    FLAG_ITEM_CRATERED_CREST_XVII,       
+    FLAG_ITEM_CRATERED_CREST_XVIII,        
+    FLAG_ITEM_CRATERED_CREST_XIX,     
+    FLAG_ITEM_CRATERED_CREST_XX,   
+    FLAG_ITEM_CRATERED_CREST_XXI,   
+    FLAG_ITEM_CRATERED_CREST_XXII,   
+    FLAG_ITEM_CRATERED_CREST_XXIII,  
+    FLAG_ITEM_CRATERED_CREST_XXIV, 
+    FLAG_ITEM_CRATERED_CREST_XXV,
     FLAG_ITEM_FORTREE_CLIFFS_1,
     FLAG_UNUSED_0x4AE,
     FLAG_UNUSED_0x4AF,
@@ -544,60 +544,39 @@ void ResetWildOverworldMons(void)
             FlagClear(FLAG_ROOT_CELLAR_SPINARAK_2);
         }
     }
-    if (FlagGet(FLAG_DRAGONS_ROOST_CROCONAW))
+    if (FlagGet(FLAG_CRATERED_CREST_DRAGONAIR))
     {
         if (Random() % 2)
         {
-            FlagClear(FLAG_DRAGONS_ROOST_CROCONAW);
+            FlagClear(FLAG_CRATERED_CREST_DRAGONAIR);
         }
     }
-    if (FlagGet(FLAG_DRAGONS_ROOST_DRAGONAIR))
+    if (FlagGet(FLAG_CRATERED_CREST_GYARADOS))
     {
         if (Random() % 2)
         {
-            FlagClear(FLAG_DRAGONS_ROOST_DRAGONAIR);
+            FlagClear(FLAG_CRATERED_CREST_GYARADOS);
         }
     }
-    if (FlagGet(FLAG_DRAGONS_ROOST_GYARADOS))
+    if (FlagGet(FLAG_CRATERED_CREST_CARNIVINE1))
     {
         if (Random() % 2)
         {
-            FlagClear(FLAG_DRAGONS_ROOST_GYARADOS);
+            FlagClear(FLAG_CRATERED_CREST_CARNIVINE1);
         }
     }
-    if (FlagGet(FLAG_DRAGONS_ROOST_CARNIVINE1))
+    if (FlagGet(FLAG_CRATERED_CREST_CARNIVINE2))
     {
         if (Random() % 2)
         {
-            FlagClear(FLAG_DRAGONS_ROOST_CARNIVINE1);
+            FlagClear(FLAG_CRATERED_CREST_CARNIVINE2);
         }
     }
-    if (FlagGet(FLAG_DRAGONS_ROOST_CARNIVINE2))
+    if (FlagGet(FLAG_CRATERED_CREST_TYRANTRUM))
     {
         if (Random() % 2)
         {
-            FlagClear(FLAG_DRAGONS_ROOST_CARNIVINE2);
-        }
-    }
-    if (FlagGet(FLAG_DRAGONS_ROOST_AURORUS))
-    {
-        if (Random() % 2)
-        {
-            FlagClear(FLAG_DRAGONS_ROOST_AURORUS);
-        }
-    }
-    if (FlagGet(FLAG_DRAGONS_ROOST_AURORUS))
-    {
-        if (Random() % 2)
-        {
-            FlagClear(FLAG_DRAGONS_ROOST_AURORUS);
-        }
-    }
-    if (FlagGet(FLAG_DRAGONS_ROOST_TYRANTRUM))
-    {
-        if (Random() % 2)
-        {
-            FlagClear(FLAG_DRAGONS_ROOST_TYRANTRUM);
+            FlagClear(FLAG_CRATERED_CREST_TYRANTRUM);
         }
     }
     if (FlagGet(FLAG_FORTREE_CLIFFS_DEN_A_MON))

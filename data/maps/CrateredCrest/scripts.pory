@@ -1,1 +1,604 @@
-mapscripts CrateredCrest_MapScripts {}
+raw `
+
+CrateredCrest_MapScripts::
+    map_script MAP_SCRIPT_ON_LOAD, CrateredCrest_OnLoad
+	map_script MAP_SCRIPT_ON_RESUME, CrateredCrest_OnResume
+	map_script MAP_SCRIPT_ON_TRANSITION, CrateredCrest_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, CrateredCrest_OnFrame
+	.byte 0
+
+CrateredCrest_OnLoad:
+	call_if_unset FLAG_REGI_DOORS_OPENED, CrateredCrest_CloseRegiEntrance
+    end
+
+CrateredCrest_CloseRegiEntrance::
+	setmetatile 41, 65, METATILE_Fallarbor_BrownRockWall, TRUE
+	setmetatile 41, 66, METATILE_Fallarbor_BrownRockWall_GrassBase, TRUE
+	return
+
+CrateredCrest_OnFrame:
+	@ map_script_2 VAR_CRATERED_CREST_RAYQUAZA_SCENE_STATE, 0, CrateredCrest_EventScript_DoRayquazaCry
+	@ map_script_2 VAR_TEMP_1, 1, CrateredCrest_EventScript_DoRayquazaCry
+	map_script_2 VAR_CRATERED_CREST_RAYQUAZA_SCENE_STATE, 2, CrateredCrest_EventScript_ContinueRayquazaScene
+	map_script_2 VAR_CRATERED_CREST_RAYQUAZA_SCENE_STATE, 3, CrateredCrest_EventScript_DoMeteoriteSparkle
+	.2byte 0
+
+CrateredCrest_OnResume:
+	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, CrateredCrest_EventScript_TryRemoveWildMon
+	end
+
+CrateredCrest_EventScript_TryRemoveWildMon::
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
+	removeobject VAR_LAST_TALKED
+	return
+
+CrateredCrest_OnTransition:
+	call_if_unset FLAG_CRATERED_CREST_METEORITE, CrateredCrest_EventScript_PrepRepeatSparkle
+	call_if_le VAR_CRATERED_CREST_RAYQUAZA_SCENE_STATE, 1, CrateredCrest_EventScript_PrepRayquazaCry
+	call_if_unset FLAG_CRATERED_CREST_CLONE, CrateredCrest_EventScript_HideClone
+	call CrateredCrest_EventScript_SetupPlayerCloneGfxId
+	end
+
+`
+script CrateredCrest_EventScript_PrepRayquazaCry{
+	setvar(VAR_TEMP_1, 1)
+	return
+}
+
+raw`
+
+CrateredCrest_EventScript_PrepRepeatSparkle::
+	setvar VAR_TEMP_2, 1
+	return
+
+CrateredCrest_EventScript_HideClone::
+	removeobject LOCALID_CRATERED_CREST_PLAYER_CLONE
+	return
+
+CrateredCrest_EventScript_SetupPlayerCloneGfxId::
+	checkplayergender
+	goto_if_eq VAR_RESULT, MALE, CrateredCrest_EventScript_PlayerCloneMale
+	goto_if_eq VAR_RESULT, FEMALE, CrateredCrest_EventScript_PlayerCloneFemale
+	end
+
+CrateredCrest_EventScript_PlayerCloneMale::
+	setvar VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
+	return
+
+CrateredCrest_EventScript_PlayerCloneFemale::
+	setvar VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
+	return
+
+CrateredCrest_EventScript_Rayquaza::
+	lock
+    delay 20
+	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
+	setvar VAR_0x8004, 1  @ vertical pan
+	setvar VAR_0x8005, 1  @ horizontal pan
+	setvar VAR_0x8006, 8  @ num shakes
+	setvar VAR_0x8007, 3  @ shake delay
+	special ShakeCamera
+	waitstate
+	delay 10
+	applymovement LOCALID_PLAYER, Common_Movement_ExclamationMark
+	playse SE_PIN
+    waitmovement LOCALID_PLAYER
+	delay 20
+	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
+	waitmovement LOCALID_PLAYER
+	@ setweather WEATHER_SUNNY
+	@ doweather
+	delay 10
+	fadeoutbgm 1
+	getobjectxy LOCALID_PLAYER, CURRENT_POSITION, VAR_TEMP_E, VAR_TEMP_F
+	setobjectxyperm LOCALID_CRATERED_CREST_PLAYER_CLONE, VAR_TEMP_E, VAR_TEMP_F
+	setobjectxy LOCALID_CRATERED_CREST_PLAYER_CLONE, VAR_TEMP_E, VAR_TEMP_F
+	clearflag FLAG_CRATERED_CREST_CLONE
+	addobject LOCALID_CRATERED_CREST_PLAYER_CLONE, MAP_CRATERED_CREST
+	applymovement LOCALID_CRATERED_CREST_PLAYER_CLONE, Common_Movement_FaceUp
+	waitmovement LOCALID_CRATERED_CREST_PLAYER_CLONE
+	hideobjectat LOCALID_PLAYER, MAP_CRATERED_CREST
+	showobjectat LOCALID_CRATERED_CREST_PLAYER_CLONE, MAP_CRATERED_CREST
+	applymovement LOCALID_CRATERED_CREST_RAYQUAZA, CrateredCrest_Movement_RayquazaFlyDown
+	applymovement LOCALID_PLAYER, CrateredCrest_Movement_CameraPanUpI
+	hidefollower
+	waitmovement LOCALID_CRATERED_CREST_RAYQUAZA
+	setvar VAR_CRATERED_CREST_RAYQUAZA_SCENE_STATE, 2
+	release 
+	end 
+
+CrateredCrest_EventScript_ContinueRayquazaScene::
+
+	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
+	setvar VAR_0x8004, 1  @ vertical pan
+	setvar VAR_0x8005, 1  @ horizontal pan
+	setvar VAR_0x8006, 8  @ num shakes
+	setvar VAR_0x8007, 3  @ shake delay
+	special ShakeCamera
+	waitstate
+	waitse
+	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
+	setvar VAR_0x8004, 1  @ vertical pan
+	setvar VAR_0x8005, 2  @ horizontal pan
+	setvar VAR_0x8006, 8  @ num shakes
+	setvar VAR_0x8007, 5  @ shake delay
+	special ShakeCamera
+	waitstate
+	waitmoncry
+
+	msgbox CrateredCrest_Text_RayquazaAppeared, MSGBOX_DEFAULT
+	closemessage
+
+	playmoncry SPECIES_RAYQUAZA, CRY_MODE_FAINT
+	setvar VAR_0x8004, 1  @ vertical pan
+	setvar VAR_0x8005, 1  @ horizontal pan
+	setvar VAR_0x8006, 8  @ num shakes
+	setvar VAR_0x8007, 3  @ shake delay
+	special ShakeCamera
+	waitstate
+
+	delay 45
+	applymovement LOCALID_CRATERED_CREST_RAYQUAZA, CrateredCrest_Movement_RayquazaFlyOff
+	waitmovement LOCALID_CRATERED_CREST_RAYQUAZA
+	removeobject LOCALID_CRATERED_CREST_RAYQUAZA
+	msgbox CrateredCrest_Text_RayquazaFlewOff, MSGBOX_DEFAULT
+	closemessage
+	delay 20
+	fadeinbgm 2
+
+	applymovement LOCALID_PLAYER, CrateredCrest_Movement_CameraPanDownII
+	waitmovement LOCALID_PLAYER
+	removeobject LOCALID_CRATERED_CREST_PLAYER_CLONE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	showobjectat LOCALID_PLAYER, MAP_CRATERED_CREST
+	waitmovement LOCALID_PLAYER
+
+	resetweather
+	doweather
+	setvar VAR_CRATERED_CREST_RAYQUAZA_SCENE_STATE, 3
+	release
+	end
+
+CrateredCrest_EventScript_DoRayquazaCry::
+	lock
+    delay 20
+	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
+	setvar VAR_0x8004, 1  @ vertical pan
+	setvar VAR_0x8005, 1  @ horizontal pan
+	setvar VAR_0x8006, 8  @ num shakes
+	setvar VAR_0x8007, 3  @ shake delay
+	special ShakeCamera
+	@ waitmovement 0
+	waitstate
+	waitse
+	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
+	setvar VAR_0x8004, 1  @ vertical pan
+	setvar VAR_0x8005, 1  @ horizontal pan
+	setvar VAR_0x8006, 8  @ num shakes
+	setvar VAR_0x8007, 3  @ shake delay
+	special ShakeCamera
+	@ waitmovement 0
+	waitmoncry
+	delay 20
+	msgbox CrateredCrest_Text_RayquazaIsHere, MSGBOX_DEFAULT
+	closemessage
+	setvar VAR_CRATERED_CREST_RAYQUAZA_SCENE_STATE, 1
+	setvar VAR_TEMP_1, 0
+	release
+	end
+
+CrateredCrest_EventScript_DoMeteoriteSparkle::
+	lock
+	playse SE_PIN
+	dofieldeffectsparkle 52, 11, 0
+	delay 45
+	playse SE_PIN
+	dofieldeffectsparkle 52, 11, 0
+	waitfieldeffect FLDEFF_SPARKLE
+	delay 10
+	clearflag FLAG_CRATERED_CREST_METEORITE
+	setvar VAR_CRATERED_CREST_RAYQUAZA_SCENE_STATE, 4
+	setvar VAR_TEMP_2, 0
+	release
+	end
+
+CrateredCrest_EventScript_Clone::
+	lock
+	msgbox CrateredCrest_Text_Clone, MSGBOX_DEFAULT 
+	release
+	end
+
+CrateredCrest_EventScript_Croconaw::
+	lockall
+	faceplayer
+	waitse
+	playmoncry SPECIES_CROCONAW, CRY_MODE_ENCOUNTER
+	waitmoncry
+	delay 10
+	setwildbattle SPECIES_CROCONAW, 50
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	dowildbattle
+	@ waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setvar VAR_0x8004, SPECIES_CROCONAW
+    specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, CrateredCrest_EventScript_DefeatedWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, CrateredCrest_EventScript_RanWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, CrateredCrest_EventScript_RanWildMon
+	release
+	end
+
+CrateredCrest_EventScript_Aurorus::
+	lockall
+	faceplayer
+	waitse
+	playmoncry SPECIES_AURORUS, CRY_MODE_ENCOUNTER
+	waitmoncry
+	delay 10
+	setwildbattle SPECIES_AURORUS, 50
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	dowildbattle
+	@ waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setvar VAR_0x8004, SPECIES_AURORUS
+    specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, CrateredCrest_EventScript_DefeatedWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, CrateredCrest_EventScript_RanWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, CrateredCrest_EventScript_RanWildMon
+	release
+	end
+
+CrateredCrest_EventScript_Dragonair::
+	lockall
+	faceplayer
+	waitse
+	playmoncry SPECIES_DRAGONAIR, CRY_MODE_ENCOUNTER
+	waitmoncry
+	delay 10
+	setwildbattle SPECIES_DRAGONAIR, 50
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	dowildbattle
+	@ waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setvar VAR_0x8004, SPECIES_DRAGONAIR
+    specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, CrateredCrest_EventScript_DefeatedWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, CrateredCrest_EventScript_RanWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, CrateredCrest_EventScript_RanWildMon
+	release
+	end
+
+CrateredCrest_EventScript_Carnivine1::
+	lockall
+	faceplayer
+	waitse
+	playmoncry SPECIES_CARNIVINE, CRY_MODE_ENCOUNTER
+	waitmoncry
+	delay 10
+	setwildbattle SPECIES_CARNIVINE, 50
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	dowildbattle
+	@ waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setvar VAR_0x8004, SPECIES_CARNIVINE
+    specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, CrateredCrest_EventScript_DefeatedWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, CrateredCrest_EventScript_RanWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, CrateredCrest_EventScript_RanWildMon
+	release
+	end
+
+CrateredCrest_EventScript_Carnivine2::
+	lockall
+	faceplayer
+	waitse
+	playmoncry SPECIES_CARNIVINE, CRY_MODE_ENCOUNTER
+	waitmoncry
+	delay 10
+	setwildbattle SPECIES_CARNIVINE, 50
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	dowildbattle
+	@ waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setvar VAR_0x8004, SPECIES_CARNIVINE
+    specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, CrateredCrest_EventScript_DefeatedWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, CrateredCrest_EventScript_RanWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, CrateredCrest_EventScript_RanWildMon
+	release
+	end
+
+CrateredCrest_EventScript_Gyarados::
+	lockall
+	faceplayer
+	waitse
+	playmoncry SPECIES_GYARADOS, CRY_MODE_ENCOUNTER
+	waitmoncry
+	delay 10
+	setwildbattle SPECIES_GYARADOS, 50
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	dowildbattle
+	@ waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setvar VAR_0x8004, SPECIES_GYARADOS
+    specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, CrateredCrest_EventScript_DefeatedWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, CrateredCrest_EventScript_RanWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, CrateredCrest_EventScript_RanWildMon
+	release
+	end
+
+CrateredCrest_EventScript_HaxorusNothing::
+	release
+	end
+
+CrateredCrest_EventScript_HaxorusA::
+	goto_if_set FLAG_DEFEATED_CRATERED_CREST_HAXORUS, CrateredCrest_EventScript_HaxorusNothing
+	lock
+	applymovement LOCALID_CRATERED_CREST_HAXORUS, Common_Movement_FaceDown
+	waitmovement
+	playse SE_PIN
+	applymovement LOCALID_CRATERED_CREST_HAXORUS, Common_Movement_ExclamationMark
+	waitmovement
+	delay 20
+	applymovement LOCALID_CRATERED_CREST_HAXORUS, CrateredCrest_Movement_HaxorusApproach
+	@ delay 35
+	applymovement LOCALID_PLAYER, CrateredCrest_Movement_ApproachHaxorusA
+	waitmovement LOCALID_PLAYER
+	delay 15
+	msgbox CrateredCrest_Text_HaxorusAttacked, MSGBOX_DEFAULT
+	closemessage
+	goto CrateredCrest_EventScript_Haxorus
+	end
+
+CrateredCrest_EventScript_HaxorusB::
+	goto_if_set FLAG_DEFEATED_CRATERED_CREST_HAXORUS, CrateredCrest_EventScript_HaxorusNothing
+	lock
+	applymovement LOCALID_CRATERED_CREST_HAXORUS, Common_Movement_FaceDown
+	waitmovement
+	playse SE_PIN
+	applymovement LOCALID_CRATERED_CREST_HAXORUS, Common_Movement_ExclamationMark
+	waitmovement
+	delay 20
+	applymovement LOCALID_CRATERED_CREST_HAXORUS, CrateredCrest_Movement_HaxorusApproach
+	@ delay 35
+	applymovement LOCALID_PLAYER, CrateredCrest_Movement_ApproachHaxorusB
+	waitmovement LOCALID_PLAYER
+	delay 15
+	msgbox CrateredCrest_Text_HaxorusAttacked, MSGBOX_DEFAULT
+	closemessage
+	goto CrateredCrest_EventScript_Haxorus
+	end
+
+CrateredCrest_EventScript_HaxorusC::
+	goto_if_set FLAG_DEFEATED_CRATERED_CREST_HAXORUS, CrateredCrest_EventScript_HaxorusNothing
+	lock
+	applymovement LOCALID_CRATERED_CREST_HAXORUS, Common_Movement_FaceDown
+	waitmovement
+	playse SE_PIN
+	applymovement LOCALID_CRATERED_CREST_HAXORUS, Common_Movement_ExclamationMark
+	waitmovement
+	delay 20
+	applymovement LOCALID_CRATERED_CREST_HAXORUS, CrateredCrest_Movement_HaxorusApproach
+	@ delay 35
+	applymovement LOCALID_PLAYER, CrateredCrest_Movement_ApproachHaxorusC
+	waitmovement LOCALID_PLAYER
+	delay 15
+	msgbox CrateredCrest_Text_HaxorusAttacked, MSGBOX_DEFAULT
+	closemessage
+	goto CrateredCrest_EventScript_Haxorus
+	end
+
+`
+
+script CrateredCrest_EventScript_Haxorus{
+	delay(10)
+	playmoncry(SPECIES_HAXORUS, CRY_MODE_ENCOUNTER)
+	delay(10)
+	waitmoncry
+	setvar(VAR_LAST_TALKED, LOCALID_CRATERED_CREST_HAXORUS)
+	setwildbossmon(1)
+	setwildbattle(SPECIES_HAXORUS, 60)
+	setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+	special(StartRegiBattle)
+	waitstate
+	clearflag(FLAG_SYS_CTRL_OBJ_DELETE)
+	endwildbossmon
+    setflag(FLAG_DEFEATED_CRATERED_CREST_HAXORUS)
+	setvar(VAR_0x8004, SPECIES_HAXORUS) 
+    specialvar(VAR_RESULT, GetBattleOutcome)
+    if (var(VAR_RESULT) == B_OUTCOME_WON){
+        fadescreenswapbuffers(FADE_TO_BLACK)
+        removeobject(VAR_LAST_TALKED)
+        fadescreenswapbuffers(FADE_FROM_BLACK)
+    }
+    elif (var(VAR_RESULT) == B_OUTCOME_PLAYER_TELEPORTED){
+        fadescreenswapbuffers(FADE_TO_BLACK)
+        removeobject(VAR_LAST_TALKED)
+        fadescreenswapbuffers(FADE_FROM_BLACK)
+        bufferspeciesname(STR_VAR_1, VAR_0x8004)
+        msgbox(gText_WildMonFled, MSGBOX_DEFAULT)
+    }
+    msgbox(CrateredCrest_Text_HaxorusDefeated, MSGBOX_DEFAULT)
+	release
+}
+
+raw `
+
+CrateredCrest_Text_HaxorusDefeated:
+    .string "The corpse of the wild HAXORUS\n"
+    .string "collapsed into the marshy soil.$"
+
+CrateredCrest_EventScript_Tyrantrum::
+	lock
+	faceplayer
+	waitse
+	playmoncry SPECIES_TYRANTRUM, CRY_MODE_ENCOUNTER
+	delay 10
+	waitmoncry
+	setwildbattle SPECIES_TYRANTRUM, 50
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	dowildbattle
+	@ waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setvar VAR_0x8004, SPECIES_TYRANTRUM
+    specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, CrateredCrest_EventScript_DefeatedWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, CrateredCrest_EventScript_RanWildMon
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, CrateredCrest_EventScript_RanWildMon
+	release
+	end
+
+CrateredCrest_EventScript_DefeatedWildMon::
+    goto Common_EventScript_RemoveStaticPokemon
+	release
+	end
+
+CrateredCrest_EventScript_RanWildMon::
+	goto Common_EventScript_WildMonFled
+	release
+	end
+
+CrateredCrest_Movement_RayquazaFlyOff:
+	delay_16
+	fly_up
+	step_end
+
+CrateredCrest_Movement_CameraPanUpI:
+	walk_slow_up
+	walk_up
+	walk_up
+	walk_fast_up
+	walk_fast_up
+	walk_up
+	walk_slow_up
+	step_end
+
+CrateredCrest_Movement_CameraPanUpII:
+	walk_slow_up
+	walk_slow_up
+	walk_slow_up
+	walk_slow_up
+	walk_slow_up
+	walk_slow_up
+	walk_slow_up
+	step_end
+
+CrateredCrest_Movement_CameraPanDownI:
+	walk_slow_down
+	walk_slow_down
+	walk_slow_down
+	walk_slow_down
+	walk_slow_down
+	walk_slow_down
+	walk_slow_down
+	step_end
+
+CrateredCrest_Movement_CameraPanDownII:
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_down
+	walk_slow_down
+	step_end
+
+CrateredCrest_Movement_RayquazaFlyDown:
+	walk_slow_up
+	walk_slow_up
+	walk_fast_up
+	walk_fast_up
+	walk_down
+	walk_down
+	walk_faster_down
+	walk_down
+	step_end
+
+CrateredCrest_Movement_HaxorusApproach:
+    walk_down
+	step_end
+
+CrateredCrest_Movement_ApproachHaxorusA:
+    walk_right
+    walk_in_place_up
+	step_end
+
+CrateredCrest_Movement_ApproachHaxorusB:
+    walk_in_place_up
+	step_end
+
+CrateredCrest_Movement_ApproachHaxorusC:
+    walk_left
+    walk_in_place_up
+	step_end
+
+CrateredCrest_Movement_SetInvisible:
+	set_invisible
+	step_end
+
+CrateredCrest_Movement_SetVisible:
+	set_visible
+	step_end
+
+CrateredCrest_Text_RayquazaFlewOff:
+	.string "But it flew off…\p"
+	.string "It seemed like it was headed back\n"
+	.string "towards SKY PILLAR!$"
+
+CrateredCrest_Text_RayquazaAppeared:
+	.string "RAYQUAZA appeared from beyond the\n" 
+	.string "cliff's edge!$"
+
+CrateredCrest_Text_RayquazaIsHere:
+	.string "It sounds like RAYQUAZA is nearby!$"
+
+CrateredCrest_Text_HaxorusAttacked:
+	.string "HAXORUS approached aggresively!$"
+
+CrateredCrest_Text_Clone:
+	.string "Where am I?$"
+
+`
+
+script CrateredCrest_EventScript_RandomiseOvrWrldMonPos{
+	if (var(VAR_CRATERED_CREST_RAYQUAZA_SCENE_STATE) >= 3){
+		random(3)
+		switch (var(VAR_RESULT)){
+		case 0: 
+			goto(CrateredCrest_EventScript_OvrWrldMonPosA)
+		case 1: 
+			goto(CrateredCrest_EventScript_OvrWrldMonPosB)
+		case 2: 
+			goto(CrateredCrest_EventScript_OvrWrldMonPosC)
+		}
+	}
+	else{
+		goto(CrateredCrest_EventScript_OvrWrldMonPosA)
+	}
+}
+
+script CrateredCrest_EventScript_OvrWrldMonPosA{
+	//setobjectxyperm(LOCALID_CRATERED_CREST_AURORUS, 20, 41)
+	//setobjectxyperm(LOCALID_CRATERED_CREST_CROCONAW, 59, 24)
+	//setobjectxyperm(LOCALID_CRATERED_CREST_GYARADOS, 73, 39)
+	//setobjectxyperm(LOCALID_CRATERED_CREST_DRAGONAIR, 115, 42)
+	return
+}
+
+script CrateredCrest_EventScript_OvrWrldMonPosB{
+	//setobjectxyperm(LOCALID_CRATERED_CREST_AURORUS, 59, 24)
+	//setobjectxyperm(LOCALID_CRATERED_CREST_CROCONAW, 20, 41)
+	//setobjectxyperm(LOCALID_CRATERED_CREST_GYARADOS, 90, 45)
+	//setobjectxyperm(LOCALID_CRATERED_CREST_DRAGONAIR, 74, 28)
+	return
+}
+
+script CrateredCrest_EventScript_OvrWrldMonPosC{
+	//setobjectxyperm(LOCALID_CRATERED_CREST_AURORUS, 20, 41)
+	//setobjectxyperm(LOCALID_CRATERED_CREST_CROCONAW, 47, 25)
+	//setobjectxyperm(LOCALID_CRATERED_CREST_GYARADOS, 83, 34)
+	//setobjectxyperm(LOCALID_CRATERED_CREST_DRAGONAIR, 73, 39)
+	return
+}

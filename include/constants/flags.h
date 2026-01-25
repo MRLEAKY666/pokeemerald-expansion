@@ -68,8 +68,8 @@
 #define FLAG_ROOT_CELLAR_SPINARAK_1    0x36 // previously Unused Flag
 #define FLAG_ROOT_CELLAR_SPINARAK_2    0x37 // previously Unused Flag
 #define FLAG_UNUSED_0x038    0x38 // Unused Flag
-#define FLAG_DEFEATED_DRAGONS_ROOST_HAXORUS    0x39 // previously Unused Flag
-#define FLAG_DRAGONS_ROOST_CLONE    0x3A // previously Unused Flag
+#define FLAG_DEFEATED_CRATERED_CREST_HAXORUS    0x39 // previously Unused Flag
+#define FLAG_CRATERED_CREST_CLONE    0x3A // previously Unused Flag
 #define FLAG_FORTREE_CLIFFS_DEN_B_MON    0x3B //  Flag
 #define FLAG_FORTREE_CLIFFS_DEN_A_MON    0x3C //  Flag
 #define FLAG_SOOTOPLIS_BATTLE_ACTIVE    0x3D //  Flag
@@ -90,7 +90,7 @@
 #define FLAG_UNUSED_0x04C    0x4C // Unused Flag
 #define FLAG_UNUSED_0x04D    0x4D // Unused Flag
 #define FLAG_UNUSED_0x04E    0x4E // Unused Flag
-#define FLAG_MET_DRAGONS_ROOST_LADY    0x4F // PREVIOUSLY Unused Flag
+#define FLAG_MET_CRATERED_CREST_LADY    0x4F // PREVIOUSLY Unused Flag
 
 // Scripts
 #define FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL  0x50
@@ -657,7 +657,7 @@
 #define FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL                 (FLAG_HIDDEN_ITEMS_START + 0x6F)
 
 #define FLAG_HIDDEN_ITEM_LAVARIDGE_TOWN_ITEM_1  0x264 // 
-#define FLAG_DRAGONS_ROOST_METEORITE  0x265 // 
+#define FLAG_CRATERED_CREST_METEORITE  0x265 // 
 #define FLAG_UNUSED_0x266  0x266 // Unused Flag
 #define FLAG_UNUSED_0x267  0x267 // Unused Flag
 #define FLAG_UNUSED_0x268  0x268 // Unused Flag
@@ -729,19 +729,19 @@
 #define FLAG_UNUSED_0x2AA  0x2AA // Unused Flag
 #define FLAG_UNUSED_0x2AB  0x2AB // Unused Flag
 #define FLAG_UNUSED_0x2AC  0x2AC // Unused Flag
-#define FLAG_DRAGONS_ROOST_CARNIVINE2  0x2AD // Unused Flag
-#define FLAG_DRAGONS_ROOST_CROCONAW  0x2AE // Unused Flag
-#define FLAG_DRAGONS_ROOST_AURORUS  0x2AF // Unused Flag
-#define FLAG_DRAGONS_ROOST_CARNIVINE1  0x2B0 // Unused Flag
-#define FLAG_DRAGONS_ROOST_GYARADOS  0x2B1 // Unused Flag
-#define FLAG_DRAGONS_ROOST_DRAGONAIR  0x2B2 // Unused Flag
-#define FLAG_DRAGONS_ROOST_TYRANTRUM  0x2B3 // Unused Flag
+#define FLAG_CRATERED_CREST_CARNIVINE2  0x2AD // 
+#define FLAG_UNUSED_0x2AE  0x2AE // Unused Flag
+#define FLAG_UNUSED_0x2AF  0x2AF // Unused Flag
+#define FLAG_CRATERED_CREST_CARNIVINE1  0x2B0 // 
+#define FLAG_CRATERED_CREST_GYARADOS  0x2B1 // 
+#define FLAG_CRATERED_CREST_DRAGONAIR  0x2B2 // 
+#define FLAG_CRATERED_CREST_TYRANTRUM  0x2B3 // 
 #define FLAG_FORTREE_CLIFFS_NEST_1  0x2B4 // previously Unused Flag
 #define FLAG_FORTREE_CLIFFS_WINONA  0x2B5 // previously Unused Flag
 #define FLAG_MISTCLAD_COVE_KECLEON_1  0x2B6 // previously Unused Flag
 #define FLAG_MISTCLAD_COVE_KECLEON_2  0x2B7 // previously Unused Flag
 #define FLAG_MISTCLAD_COVE_RIVAL  0x2B8 // previously Unused Flag
-#define FLAG_HIDE_DRAGONS_ROOST_RAYQUAZA  0x2B9 // PREVIOUSLY Unused Flag
+#define FLAG_HIDE_CRATERED_CREST_RAYQUAZA  0x2B9 // PREVIOUSLY Unused Flag
 #define FLAG_HIDE_ZAPDOS  0x2BA // PREVIOUSLY Unused Flag
 #define FLAG_HIDE_MOLTRES  0x2BB // PREVIOUSLY Unused Flag
 
@@ -1223,31 +1223,31 @@
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL                  0x492
 
 #define FLAG_UNUSED_0x493                                           0x493 // Truck scene pokeball
-#define FLAG_ITEM_DRAGONS_ROOST_I                                           0x494 // Unused Flag
-#define FLAG_ITEM_DRAGONS_ROOST_II                                           0x495 // Unused Flag
-#define FLAG_ITEM_DRAGONS_ROOST_III                                           0x496 // Unused Flag
-#define FLAG_ITEM_DRAGONS_ROOST_IV                                           0x497 // Unused Flag
-#define FLAG_ITEM_DRAGONS_ROOST_V                                           0x498 // Unused Flag
-#define FLAG_ITEM_DRAGONS_ROOST_VI                                          0x499 // Unused Flag
-#define FLAG_ITEM_DRAGONS_ROOST_VII                                           0x49A // Unused Flag
-#define FLAG_ITEM_DRAGONS_ROOST_VIII                                         0x49B // Unused Flag
-#define FLAG_ITEM_DRAGONS_ROOST_IX                                         0x49C // Unused Flag
-#define FLAG_ITEM_DRAGONS_ROOST_X                                          0x49D // Unused Flag
-#define FLAG_ITEM_DRAGONS_ROOST_XI                                           0x49E // Unused Flag
-#define FLAG_ITEM_DRAGONS_ROOST_XII                                        0x49F // Unused Flag
-#define FLAG_ITEM_DRAGONS_ROOST_XIII                                        0x4A0 // Unused Flag
-#define FLAG_ITEM_DRAGONS_ROOST_XIV                                           0x4A1 // Unused Flag
-#define FLAG_ITEM_DRAGONS_ROOST_XV                                           0x4A2 // Unused Flag
-#define FLAG_ITEM_DRAGONS_ROOST_XVI                                           0x4A3 // Unused Flag
-#define FLAG_ITEM_DRAGONS_ROOST_XVII                                          0x4A4 // Unused Flag
-#define FLAG_ITEM_DRAGONS_ROOST_XVIII                                           0x4A5 // Unused Flag
-#define FLAG_ITEM_DRAGONS_ROOST_XIX                                           0x4A6 // Unused Flag
-#define FLAG_ITEM_DRAGONS_ROOST_XX                                           0x4A7 // Unused Flag
-#define FLAG_ITEM_DRAGONS_ROOST_XXI                                           0x4A8 // Unused Flag
-#define FLAG_ITEM_DRAGONS_ROOST_XXII                                           0x4A9 // Unused Flag
-#define FLAG_ITEM_DRAGONS_ROOST_XXIII                                          0x4AA // Unused Flag
-#define FLAG_ITEM_DRAGONS_ROOST_XXIV                                           0x4AB // Unused Flag
-#define FLAG_ITEM_DRAGONS_ROOST_XXV                                           0x4AC // Unused Flag
+#define FLAG_ITEM_CRATERED_CREST_I                                           0x494 // Unused Flag
+#define FLAG_ITEM_CRATERED_CREST_II                                           0x495 // Unused Flag
+#define FLAG_ITEM_CRATERED_CREST_III                                           0x496 // Unused Flag
+#define FLAG_ITEM_CRATERED_CREST_IV                                           0x497 // Unused Flag
+#define FLAG_ITEM_CRATERED_CREST_V                                           0x498 // Unused Flag
+#define FLAG_ITEM_CRATERED_CREST_VI                                          0x499 // Unused Flag
+#define FLAG_ITEM_CRATERED_CREST_VII                                           0x49A // Unused Flag
+#define FLAG_ITEM_CRATERED_CREST_VIII                                         0x49B // Unused Flag
+#define FLAG_ITEM_CRATERED_CREST_IX                                         0x49C // Unused Flag
+#define FLAG_ITEM_CRATERED_CREST_X                                          0x49D // Unused Flag
+#define FLAG_ITEM_CRATERED_CREST_XI                                           0x49E // Unused Flag
+#define FLAG_ITEM_CRATERED_CREST_XII                                        0x49F // Unused Flag
+#define FLAG_ITEM_CRATERED_CREST_XIII                                        0x4A0 // Unused Flag
+#define FLAG_ITEM_CRATERED_CREST_XIV                                           0x4A1 // Unused Flag
+#define FLAG_ITEM_CRATERED_CREST_XV                                           0x4A2 // Unused Flag
+#define FLAG_ITEM_CRATERED_CREST_XVI                                           0x4A3 // Unused Flag
+#define FLAG_ITEM_CRATERED_CREST_XVII                                          0x4A4 // Unused Flag
+#define FLAG_ITEM_CRATERED_CREST_XVIII                                           0x4A5 // Unused Flag
+#define FLAG_ITEM_CRATERED_CREST_XIX                                           0x4A6 // Unused Flag
+#define FLAG_ITEM_CRATERED_CREST_XX                                           0x4A7 // Unused Flag
+#define FLAG_ITEM_CRATERED_CREST_XXI                                           0x4A8 // Unused Flag
+#define FLAG_ITEM_CRATERED_CREST_XXII                                           0x4A9 // Unused Flag
+#define FLAG_ITEM_CRATERED_CREST_XXIII                                          0x4AA // Unused Flag
+#define FLAG_ITEM_CRATERED_CREST_XXIV                                           0x4AB // Unused Flag
+#define FLAG_ITEM_CRATERED_CREST_XXV                                           0x4AC // Unused Flag
 #define FLAG_ITEM_FORTREE_CLIFFS_1                                           0x4AD // Unused Flag
 #define FLAG_UNUSED_0x4AE                                           0x4AE // Unused Flag
 #define FLAG_UNUSED_0x4AF                                           0x4AF // Unused Flag
