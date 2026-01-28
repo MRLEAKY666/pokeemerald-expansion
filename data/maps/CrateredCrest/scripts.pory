@@ -179,6 +179,7 @@ CrateredCrest_EventScript_DoRayquazaCry::
 	setvar VAR_0x8007, 3  @ shake delay
 	special ShakeCamera
 	@ waitmovement 0
+    applymovement LOCALID_CRATERED_CREST_PHIL, CrateredCrest_Movement_SurprisedPhil
 	waitmoncry
 	delay 20
 	msgbox CrateredCrest_Text_RayquazaIsHere, MSGBOX_DEFAULT
@@ -187,6 +188,17 @@ CrateredCrest_EventScript_DoRayquazaCry::
 	setvar VAR_TEMP_1, 0
 	release
 	end
+
+CrateredCrest_Movement_SurprisedPhil:
+    emote_exclamation_mark
+    delay_16
+    walk_in_place_fast_left
+    delay_16
+    walk_in_place_fast_right
+    delay_16
+    walk_in_place_fast_up
+    delay_16
+    step_end
 
 CrateredCrest_EventScript_DoMeteoriteSparkle::
 	lock
@@ -459,6 +471,45 @@ CrateredCrest_EventScript_RanWildMon::
 	goto Common_EventScript_WildMonFled
 	release
 	end
+
+`
+
+script CrateredCrest_EventScript_RuinManiacPhil{
+    faceplayer
+    if (!defeated(TRAINER_PHIL_CRATERED_CREST)){
+        playbgm(MUS_ENCOUNTER_HIKER, FALSE)
+        message(CrateredCrest_Text_PhilWait)
+        waitmessage
+        delay(30)
+        closemessage
+        delay(60)
+        msgbox(CrateredCrest_Text_PhilIntro, MSGBOX_DEFAULT)
+        trainerbattle_no_intro(TRAINER_PHIL_CRATERED_CREST, CrateredCrest_Text_PhilDefeat)
+    }
+	msgbox(CrateredCrest_Text_PhilPostBattle, MSGBOX_DEFAULT)
+    applymovement(LOCALID_CRATERED_CREST_PHIL, Common_Movement_FaceOriginalDirection)
+    waitmovement
+    release
+}
+
+raw`
+
+CrateredCrest_Text_PhilWait:
+    .string "… … … … … … … …\n"
+	.string "… … … … … … … …$"
+
+CrateredCrest_Text_PhilIntro:
+    .string "I don't know how to swim…$"
+
+CrateredCrest_Text_PhilDefeat:
+    .string "Oh!\l"
+    .string "You know how to swim?$"
+
+CrateredCrest_Text_PhilPostBattle:
+    .string "I came to investigate the ruins\n"
+    .string "at the center of this crater.\p"
+    .string "But they're in the middle of\n"
+    .string "the lake…$"
 
 CrateredCrest_Movement_RayquazaFlyOff:
 	delay_16

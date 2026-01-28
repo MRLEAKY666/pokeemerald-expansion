@@ -75,7 +75,7 @@ ProfBirch_EventScript_RatePokedex::
 	buffernumberstring STR_VAR_1, VAR_0x8008  @ Num National seen
 	buffernumberstring STR_VAR_2, VAR_0x8009  @ Num National caught
 	msgbox gBirchDexRatingText_OnANationwideBasis, MSGBOX_DEFAULT
-	goto_if_set FLAG_LATIOS_OR_LATIAS_ROAMING ProfBirch_EventScript_LatiSpeech
+	@ goto_if_set FLAG_LATIOS_OR_LATIAS_ROAMING ProfBirch_EventScript_LatiSpeech
 	waitmessage
 	return
 
@@ -116,7 +116,7 @@ ProfBirch_EventScript_GiveEonTicketLatios::
 	giveitem ITEM_EON_TICKET
 	setflag FLAG_RECEIVED_EON_TICKET
 	setflag FLAG_ENABLE_SHIP_SOUTHERN_ISLAND
-	setvar VAR_DISTRIBUTE_EON_TICKET, 0
+	@ setvar VAR_DISTRIBUTE_EON_TICKET, 0
 	msgbox gBirchDexRatingText_AllowSouthernIsland, MSGBOX_DEFAULT
 	release
 	end
@@ -130,7 +130,7 @@ ProfBirch_EventScript_GiveEonTicketLatias::
 	giveitem ITEM_EON_TICKET
 	setflag FLAG_RECEIVED_EON_TICKET
 	setflag FLAG_ENABLE_SHIP_SOUTHERN_ISLAND
-	setvar VAR_DISTRIBUTE_EON_TICKET, 0
+	@ setvar VAR_DISTRIBUTE_EON_TICKET, 0
 	msgbox gBirchDexRatingText_AllowSouthernIsland, MSGBOX_DEFAULT
 	release
 	end

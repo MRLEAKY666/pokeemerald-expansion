@@ -19383,6 +19383,141 @@ Drilbur
 Level: 25
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
+=== TRAINER_PHIL_CRATERED_CREST ===
+Name: PHIL
+Class: Ruin Maniac
+Pic: Ruin Maniac
+Gender: Male
+Music: Hiker
+Items: Energy Root / Energy Root / Energy Root
+Double Battle: No
+AI: Basic Trainer
+
+Archeops @ Flying Gem
+Level: 48
+Ability: Defeatist
+IVs: 31 HP / 12 Atk / 31 Def / 12 SpA / 31 SpD / 12 Spe
+Jolly Nature
+- Acrobatics
+- Stone Edge
+- Earthquake
+- U-turn
+
+Aerodactyl @ Choice Band
+Level: 46
+Ability: Rock Head
+IVs: 12 HP / 31 Atk / 12 Def / 12 SpA / 12 SpD / 31 Spe
+Jolly Nature
+- Stone Edge
+- Earthquake
+- Fly
+- Double-Edge
+
+=== TRAINER_DRAKE_CRATERED_CREST ===
+Name: DRAKE
+Class: Rival
+Pic: Elite Four Drake
+Gender: Male
+Music: Elite Four
+Double Battle: No
+AI: Basic Trainer / Smart Switching / Ace Pokemon
+Party Size: 6
+Pool Rules: Boss Species Clause
+Pool Pick Functions: Default
+Pool Prune: Lati
+
+Dragalge @ Black Sludge
+Level: 58
+Ability: Adaptability
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+EVs: 228 HP / 252 SpD / 28 Def
+Modest Nature
+Tags: Lead
+- Protect
+- Venoshock
+- Toxic
+- Toxic Spikes
+
+Kingdra @ Chesto Berry
+Level: 56
+Ability: Swift Swim
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+EVs: 252 HP / 252 SpD / 4 Spe
+Calm Nature
+- Substitute
+- Surf
+- Rain Dance
+- Rest
+
+Haxorus @ Life Orb
+Level: 57
+Ability: Mold Breaker
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Dragon Dance
+- Dual Chop
+- Outrage
+- Superpower
+
+Hydreigon @ Choice Specs
+Level: 57
+Ability: Levitate
+EVs: 252 SpA / 4 SpD / 252 Spe
+Modest Nature
+Tags: Tag6
+- Draco Meteor
+- Fire Blast
+- Dark Pulse
+- Focus Blast
+
+Flygon @ Choice Band
+Level: 59
+Ability: Levitate
+EVs: 252 Atk / 4 SpA / 252 Spe
+Jolly Nature
+Tags: Tag6
+- Earthquake
+- Rock Slide
+- Body Slam
+- U-Turn
+
+Latios @ Soul Dew
+Level: 60
+Ability: Levitate
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+EVs: 252 SpA / 4 SpD / 252 Spe
+Timid Nature
+Tags: Tag7
+- Calm Mind
+- Dragon Pulse
+- Surf
+- Psyshock
+
+Latias @ Soul Dew
+Level: 60
+Ability: Levitate
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+EVs: 252 HP / 4 SpA / 252 SpD
+Bold Nature
+Tags: Tag7
+- Draco Meteor
+- Calm Mind
+- Refresh
+- Roost
+
+Salamence @ Lum Berry
+Level: 62
+Ability: Moxie
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+EVs: 72 HP / 252 Atk / 184 Spe
+Jolly Nature
+Tags: Ace
+- Dragon Dance
+- Draco Meteor
+- Roost
+- Outrage
+
 === TRAINER_RED ===
 Name: RED
 Class: Rival

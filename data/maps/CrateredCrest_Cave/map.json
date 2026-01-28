@@ -2,7 +2,7 @@
   "id": "MAP_CRATERED_CREST_CAVE",
   "name": "CrateredCrest_Cave",
   "layout": "LAYOUT_CRATERED_CREST_CAVE",
-  "music": "MUS_DUMMY",
+  "music": "MUS_CAVE_OF_ORIGIN",
   "region_map_section": "MAPSEC_CRATERED_CREST",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -13,7 +13,22 @@
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
-  "object_events": [],
+  "object_events": [
+    {
+      "local_id": "LOCALID_CRATER_CAVE_DRAKE",
+      "graphics_id": "OBJ_EVENT_GFX_DRAKE",
+      "x": 26,
+      "y": 25,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CrateredCrest_Cave_EventScript_ChallengeDrake",
+      "flag": "0"
+    }
+  ],
   "warp_events": [
     {
       "warp_id": "WARP_ID_FROM_CRATER_CAVE",
@@ -25,5 +40,14 @@
     }
   ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 13,
+      "y": 14,
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "CrateredCrest_Cave_EventScript_InteractLatiStone"
+    }
+  ]
 }

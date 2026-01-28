@@ -354,797 +354,895 @@ CrateredCrest_EventScript_DoRayquazaCry::
 # 181 "data//maps/CrateredCrest/scripts.pory"
 	@ waitmovement 0
 # 182 "data//maps/CrateredCrest/scripts.pory"
-	waitmoncry
+    applymovement LOCALID_CRATERED_CREST_PHIL, CrateredCrest_Movement_SurprisedPhil
 # 183 "data//maps/CrateredCrest/scripts.pory"
-	delay 20
+	waitmoncry
 # 184 "data//maps/CrateredCrest/scripts.pory"
-	msgbox CrateredCrest_Text_RayquazaIsHere, MSGBOX_DEFAULT
+	delay 20
 # 185 "data//maps/CrateredCrest/scripts.pory"
-	closemessage
+	msgbox CrateredCrest_Text_RayquazaIsHere, MSGBOX_DEFAULT
 # 186 "data//maps/CrateredCrest/scripts.pory"
-	setvar VAR_CRATERED_CREST_RAYQUAZA_SCENE_STATE, 1
+	closemessage
 # 187 "data//maps/CrateredCrest/scripts.pory"
-	setvar VAR_TEMP_1, 0
+	setvar VAR_CRATERED_CREST_RAYQUAZA_SCENE_STATE, 1
 # 188 "data//maps/CrateredCrest/scripts.pory"
-	release
+	setvar VAR_TEMP_1, 0
 # 189 "data//maps/CrateredCrest/scripts.pory"
-	end
+	release
 # 190 "data//maps/CrateredCrest/scripts.pory"
-
+	end
 # 191 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_EventScript_DoMeteoriteSparkle::
+
 # 192 "data//maps/CrateredCrest/scripts.pory"
-	lock
+CrateredCrest_Movement_SurprisedPhil:
 # 193 "data//maps/CrateredCrest/scripts.pory"
-	playse SE_PIN
+    emote_exclamation_mark
 # 194 "data//maps/CrateredCrest/scripts.pory"
-	dofieldeffectsparkle 52, 11, 0
+    delay_16
 # 195 "data//maps/CrateredCrest/scripts.pory"
-	delay 45
+    walk_in_place_fast_left
 # 196 "data//maps/CrateredCrest/scripts.pory"
-	playse SE_PIN
+    delay_16
 # 197 "data//maps/CrateredCrest/scripts.pory"
-	dofieldeffectsparkle 52, 11, 0
+    walk_in_place_fast_right
 # 198 "data//maps/CrateredCrest/scripts.pory"
-	waitfieldeffect FLDEFF_SPARKLE
+    delay_16
 # 199 "data//maps/CrateredCrest/scripts.pory"
-	delay 10
+    walk_in_place_fast_up
 # 200 "data//maps/CrateredCrest/scripts.pory"
-	clearflag FLAG_CRATERED_CREST_METEORITE
+    delay_16
 # 201 "data//maps/CrateredCrest/scripts.pory"
-	setvar VAR_CRATERED_CREST_RAYQUAZA_SCENE_STATE, 4
+    step_end
 # 202 "data//maps/CrateredCrest/scripts.pory"
-	setvar VAR_TEMP_2, 0
+
 # 203 "data//maps/CrateredCrest/scripts.pory"
-	release
+CrateredCrest_EventScript_DoMeteoriteSparkle::
 # 204 "data//maps/CrateredCrest/scripts.pory"
-	end
+	lock
 # 205 "data//maps/CrateredCrest/scripts.pory"
-
+	playse SE_PIN
 # 206 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_EventScript_Clone::
+	dofieldeffectsparkle 52, 11, 0
 # 207 "data//maps/CrateredCrest/scripts.pory"
-	lock
+	delay 45
 # 208 "data//maps/CrateredCrest/scripts.pory"
-	msgbox CrateredCrest_Text_Clone, MSGBOX_DEFAULT 
+	playse SE_PIN
 # 209 "data//maps/CrateredCrest/scripts.pory"
-	release
+	dofieldeffectsparkle 52, 11, 0
 # 210 "data//maps/CrateredCrest/scripts.pory"
-	end
+	waitfieldeffect FLDEFF_SPARKLE
 # 211 "data//maps/CrateredCrest/scripts.pory"
-
+	delay 10
 # 212 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_EventScript_Croconaw::
+	clearflag FLAG_CRATERED_CREST_METEORITE
 # 213 "data//maps/CrateredCrest/scripts.pory"
-	lockall
+	setvar VAR_CRATERED_CREST_RAYQUAZA_SCENE_STATE, 4
 # 214 "data//maps/CrateredCrest/scripts.pory"
-	faceplayer
+	setvar VAR_TEMP_2, 0
 # 215 "data//maps/CrateredCrest/scripts.pory"
-	waitse
+	release
 # 216 "data//maps/CrateredCrest/scripts.pory"
-	playmoncry SPECIES_CROCONAW, CRY_MODE_ENCOUNTER
+	end
 # 217 "data//maps/CrateredCrest/scripts.pory"
-	waitmoncry
+
 # 218 "data//maps/CrateredCrest/scripts.pory"
-	delay 10
+CrateredCrest_EventScript_Clone::
 # 219 "data//maps/CrateredCrest/scripts.pory"
-	setwildbattle SPECIES_CROCONAW, 50
+	lock
 # 220 "data//maps/CrateredCrest/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	msgbox CrateredCrest_Text_Clone, MSGBOX_DEFAULT 
 # 221 "data//maps/CrateredCrest/scripts.pory"
-	dowildbattle
+	release
 # 222 "data//maps/CrateredCrest/scripts.pory"
-	@ waitstate
+	end
 # 223 "data//maps/CrateredCrest/scripts.pory"
-	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+
 # 224 "data//maps/CrateredCrest/scripts.pory"
-	setvar VAR_0x8004, SPECIES_CROCONAW
+CrateredCrest_EventScript_Croconaw::
 # 225 "data//maps/CrateredCrest/scripts.pory"
-    specialvar VAR_RESULT, GetBattleOutcome
+	lockall
 # 226 "data//maps/CrateredCrest/scripts.pory"
-	goto_if_eq VAR_RESULT, B_OUTCOME_WON, CrateredCrest_EventScript_DefeatedWildMon
+	faceplayer
 # 227 "data//maps/CrateredCrest/scripts.pory"
-    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, CrateredCrest_EventScript_RanWildMon
+	waitse
 # 228 "data//maps/CrateredCrest/scripts.pory"
-    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, CrateredCrest_EventScript_RanWildMon
+	playmoncry SPECIES_CROCONAW, CRY_MODE_ENCOUNTER
 # 229 "data//maps/CrateredCrest/scripts.pory"
-	release
+	waitmoncry
 # 230 "data//maps/CrateredCrest/scripts.pory"
-	end
+	delay 10
 # 231 "data//maps/CrateredCrest/scripts.pory"
-
+	setwildbattle SPECIES_CROCONAW, 50
 # 232 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_EventScript_Aurorus::
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
 # 233 "data//maps/CrateredCrest/scripts.pory"
-	lockall
+	dowildbattle
 # 234 "data//maps/CrateredCrest/scripts.pory"
-	faceplayer
+	@ waitstate
 # 235 "data//maps/CrateredCrest/scripts.pory"
-	waitse
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 # 236 "data//maps/CrateredCrest/scripts.pory"
-	playmoncry SPECIES_AURORUS, CRY_MODE_ENCOUNTER
+	setvar VAR_0x8004, SPECIES_CROCONAW
 # 237 "data//maps/CrateredCrest/scripts.pory"
-	waitmoncry
+    specialvar VAR_RESULT, GetBattleOutcome
 # 238 "data//maps/CrateredCrest/scripts.pory"
-	delay 10
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, CrateredCrest_EventScript_DefeatedWildMon
 # 239 "data//maps/CrateredCrest/scripts.pory"
-	setwildbattle SPECIES_AURORUS, 50
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, CrateredCrest_EventScript_RanWildMon
 # 240 "data//maps/CrateredCrest/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, CrateredCrest_EventScript_RanWildMon
 # 241 "data//maps/CrateredCrest/scripts.pory"
-	dowildbattle
+	release
 # 242 "data//maps/CrateredCrest/scripts.pory"
-	@ waitstate
+	end
 # 243 "data//maps/CrateredCrest/scripts.pory"
-	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+
 # 244 "data//maps/CrateredCrest/scripts.pory"
-	setvar VAR_0x8004, SPECIES_AURORUS
+CrateredCrest_EventScript_Aurorus::
 # 245 "data//maps/CrateredCrest/scripts.pory"
-    specialvar VAR_RESULT, GetBattleOutcome
+	lockall
 # 246 "data//maps/CrateredCrest/scripts.pory"
-	goto_if_eq VAR_RESULT, B_OUTCOME_WON, CrateredCrest_EventScript_DefeatedWildMon
+	faceplayer
 # 247 "data//maps/CrateredCrest/scripts.pory"
-    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, CrateredCrest_EventScript_RanWildMon
+	waitse
 # 248 "data//maps/CrateredCrest/scripts.pory"
-    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, CrateredCrest_EventScript_RanWildMon
+	playmoncry SPECIES_AURORUS, CRY_MODE_ENCOUNTER
 # 249 "data//maps/CrateredCrest/scripts.pory"
-	release
+	waitmoncry
 # 250 "data//maps/CrateredCrest/scripts.pory"
-	end
+	delay 10
 # 251 "data//maps/CrateredCrest/scripts.pory"
-
+	setwildbattle SPECIES_AURORUS, 50
 # 252 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_EventScript_Dragonair::
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
 # 253 "data//maps/CrateredCrest/scripts.pory"
-	lockall
+	dowildbattle
 # 254 "data//maps/CrateredCrest/scripts.pory"
-	faceplayer
+	@ waitstate
 # 255 "data//maps/CrateredCrest/scripts.pory"
-	waitse
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 # 256 "data//maps/CrateredCrest/scripts.pory"
-	playmoncry SPECIES_DRAGONAIR, CRY_MODE_ENCOUNTER
+	setvar VAR_0x8004, SPECIES_AURORUS
 # 257 "data//maps/CrateredCrest/scripts.pory"
-	waitmoncry
+    specialvar VAR_RESULT, GetBattleOutcome
 # 258 "data//maps/CrateredCrest/scripts.pory"
-	delay 10
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, CrateredCrest_EventScript_DefeatedWildMon
 # 259 "data//maps/CrateredCrest/scripts.pory"
-	setwildbattle SPECIES_DRAGONAIR, 50
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, CrateredCrest_EventScript_RanWildMon
 # 260 "data//maps/CrateredCrest/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, CrateredCrest_EventScript_RanWildMon
 # 261 "data//maps/CrateredCrest/scripts.pory"
-	dowildbattle
+	release
 # 262 "data//maps/CrateredCrest/scripts.pory"
-	@ waitstate
+	end
 # 263 "data//maps/CrateredCrest/scripts.pory"
-	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+
 # 264 "data//maps/CrateredCrest/scripts.pory"
-	setvar VAR_0x8004, SPECIES_DRAGONAIR
+CrateredCrest_EventScript_Dragonair::
 # 265 "data//maps/CrateredCrest/scripts.pory"
-    specialvar VAR_RESULT, GetBattleOutcome
+	lockall
 # 266 "data//maps/CrateredCrest/scripts.pory"
-	goto_if_eq VAR_RESULT, B_OUTCOME_WON, CrateredCrest_EventScript_DefeatedWildMon
+	faceplayer
 # 267 "data//maps/CrateredCrest/scripts.pory"
-    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, CrateredCrest_EventScript_RanWildMon
+	waitse
 # 268 "data//maps/CrateredCrest/scripts.pory"
-    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, CrateredCrest_EventScript_RanWildMon
+	playmoncry SPECIES_DRAGONAIR, CRY_MODE_ENCOUNTER
 # 269 "data//maps/CrateredCrest/scripts.pory"
-	release
+	waitmoncry
 # 270 "data//maps/CrateredCrest/scripts.pory"
-	end
+	delay 10
 # 271 "data//maps/CrateredCrest/scripts.pory"
-
+	setwildbattle SPECIES_DRAGONAIR, 50
 # 272 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_EventScript_Carnivine1::
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
 # 273 "data//maps/CrateredCrest/scripts.pory"
-	lockall
+	dowildbattle
 # 274 "data//maps/CrateredCrest/scripts.pory"
-	faceplayer
+	@ waitstate
 # 275 "data//maps/CrateredCrest/scripts.pory"
-	waitse
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 # 276 "data//maps/CrateredCrest/scripts.pory"
-	playmoncry SPECIES_CARNIVINE, CRY_MODE_ENCOUNTER
+	setvar VAR_0x8004, SPECIES_DRAGONAIR
 # 277 "data//maps/CrateredCrest/scripts.pory"
-	waitmoncry
+    specialvar VAR_RESULT, GetBattleOutcome
 # 278 "data//maps/CrateredCrest/scripts.pory"
-	delay 10
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, CrateredCrest_EventScript_DefeatedWildMon
 # 279 "data//maps/CrateredCrest/scripts.pory"
-	setwildbattle SPECIES_CARNIVINE, 50
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, CrateredCrest_EventScript_RanWildMon
 # 280 "data//maps/CrateredCrest/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, CrateredCrest_EventScript_RanWildMon
 # 281 "data//maps/CrateredCrest/scripts.pory"
-	dowildbattle
+	release
 # 282 "data//maps/CrateredCrest/scripts.pory"
-	@ waitstate
+	end
 # 283 "data//maps/CrateredCrest/scripts.pory"
-	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+
 # 284 "data//maps/CrateredCrest/scripts.pory"
-	setvar VAR_0x8004, SPECIES_CARNIVINE
+CrateredCrest_EventScript_Carnivine1::
 # 285 "data//maps/CrateredCrest/scripts.pory"
-    specialvar VAR_RESULT, GetBattleOutcome
+	lockall
 # 286 "data//maps/CrateredCrest/scripts.pory"
-	goto_if_eq VAR_RESULT, B_OUTCOME_WON, CrateredCrest_EventScript_DefeatedWildMon
+	faceplayer
 # 287 "data//maps/CrateredCrest/scripts.pory"
-    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, CrateredCrest_EventScript_RanWildMon
+	waitse
 # 288 "data//maps/CrateredCrest/scripts.pory"
-    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, CrateredCrest_EventScript_RanWildMon
-# 289 "data//maps/CrateredCrest/scripts.pory"
-	release
-# 290 "data//maps/CrateredCrest/scripts.pory"
-	end
-# 291 "data//maps/CrateredCrest/scripts.pory"
-
-# 292 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_EventScript_Carnivine2::
-# 293 "data//maps/CrateredCrest/scripts.pory"
-	lockall
-# 294 "data//maps/CrateredCrest/scripts.pory"
-	faceplayer
-# 295 "data//maps/CrateredCrest/scripts.pory"
-	waitse
-# 296 "data//maps/CrateredCrest/scripts.pory"
 	playmoncry SPECIES_CARNIVINE, CRY_MODE_ENCOUNTER
-# 297 "data//maps/CrateredCrest/scripts.pory"
+# 289 "data//maps/CrateredCrest/scripts.pory"
 	waitmoncry
-# 298 "data//maps/CrateredCrest/scripts.pory"
+# 290 "data//maps/CrateredCrest/scripts.pory"
 	delay 10
-# 299 "data//maps/CrateredCrest/scripts.pory"
+# 291 "data//maps/CrateredCrest/scripts.pory"
 	setwildbattle SPECIES_CARNIVINE, 50
-# 300 "data//maps/CrateredCrest/scripts.pory"
+# 292 "data//maps/CrateredCrest/scripts.pory"
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
-# 301 "data//maps/CrateredCrest/scripts.pory"
+# 293 "data//maps/CrateredCrest/scripts.pory"
 	dowildbattle
-# 302 "data//maps/CrateredCrest/scripts.pory"
+# 294 "data//maps/CrateredCrest/scripts.pory"
 	@ waitstate
-# 303 "data//maps/CrateredCrest/scripts.pory"
+# 295 "data//maps/CrateredCrest/scripts.pory"
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
-# 304 "data//maps/CrateredCrest/scripts.pory"
+# 296 "data//maps/CrateredCrest/scripts.pory"
 	setvar VAR_0x8004, SPECIES_CARNIVINE
+# 297 "data//maps/CrateredCrest/scripts.pory"
+    specialvar VAR_RESULT, GetBattleOutcome
+# 298 "data//maps/CrateredCrest/scripts.pory"
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, CrateredCrest_EventScript_DefeatedWildMon
+# 299 "data//maps/CrateredCrest/scripts.pory"
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, CrateredCrest_EventScript_RanWildMon
+# 300 "data//maps/CrateredCrest/scripts.pory"
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, CrateredCrest_EventScript_RanWildMon
+# 301 "data//maps/CrateredCrest/scripts.pory"
+	release
+# 302 "data//maps/CrateredCrest/scripts.pory"
+	end
+# 303 "data//maps/CrateredCrest/scripts.pory"
+
+# 304 "data//maps/CrateredCrest/scripts.pory"
+CrateredCrest_EventScript_Carnivine2::
 # 305 "data//maps/CrateredCrest/scripts.pory"
-    specialvar VAR_RESULT, GetBattleOutcome
-# 306 "data//maps/CrateredCrest/scripts.pory"
-	goto_if_eq VAR_RESULT, B_OUTCOME_WON, CrateredCrest_EventScript_DefeatedWildMon
-# 307 "data//maps/CrateredCrest/scripts.pory"
-    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, CrateredCrest_EventScript_RanWildMon
-# 308 "data//maps/CrateredCrest/scripts.pory"
-    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, CrateredCrest_EventScript_RanWildMon
-# 309 "data//maps/CrateredCrest/scripts.pory"
-	release
-# 310 "data//maps/CrateredCrest/scripts.pory"
-	end
-# 311 "data//maps/CrateredCrest/scripts.pory"
-
-# 312 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_EventScript_Gyarados::
-# 313 "data//maps/CrateredCrest/scripts.pory"
 	lockall
-# 314 "data//maps/CrateredCrest/scripts.pory"
+# 306 "data//maps/CrateredCrest/scripts.pory"
 	faceplayer
-# 315 "data//maps/CrateredCrest/scripts.pory"
+# 307 "data//maps/CrateredCrest/scripts.pory"
 	waitse
-# 316 "data//maps/CrateredCrest/scripts.pory"
-	playmoncry SPECIES_GYARADOS, CRY_MODE_ENCOUNTER
-# 317 "data//maps/CrateredCrest/scripts.pory"
+# 308 "data//maps/CrateredCrest/scripts.pory"
+	playmoncry SPECIES_CARNIVINE, CRY_MODE_ENCOUNTER
+# 309 "data//maps/CrateredCrest/scripts.pory"
 	waitmoncry
-# 318 "data//maps/CrateredCrest/scripts.pory"
+# 310 "data//maps/CrateredCrest/scripts.pory"
 	delay 10
-# 319 "data//maps/CrateredCrest/scripts.pory"
-	setwildbattle SPECIES_GYARADOS, 50
-# 320 "data//maps/CrateredCrest/scripts.pory"
+# 311 "data//maps/CrateredCrest/scripts.pory"
+	setwildbattle SPECIES_CARNIVINE, 50
+# 312 "data//maps/CrateredCrest/scripts.pory"
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
-# 321 "data//maps/CrateredCrest/scripts.pory"
+# 313 "data//maps/CrateredCrest/scripts.pory"
 	dowildbattle
-# 322 "data//maps/CrateredCrest/scripts.pory"
+# 314 "data//maps/CrateredCrest/scripts.pory"
 	@ waitstate
-# 323 "data//maps/CrateredCrest/scripts.pory"
+# 315 "data//maps/CrateredCrest/scripts.pory"
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
-# 324 "data//maps/CrateredCrest/scripts.pory"
-	setvar VAR_0x8004, SPECIES_GYARADOS
-# 325 "data//maps/CrateredCrest/scripts.pory"
+# 316 "data//maps/CrateredCrest/scripts.pory"
+	setvar VAR_0x8004, SPECIES_CARNIVINE
+# 317 "data//maps/CrateredCrest/scripts.pory"
     specialvar VAR_RESULT, GetBattleOutcome
-# 326 "data//maps/CrateredCrest/scripts.pory"
+# 318 "data//maps/CrateredCrest/scripts.pory"
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, CrateredCrest_EventScript_DefeatedWildMon
-# 327 "data//maps/CrateredCrest/scripts.pory"
+# 319 "data//maps/CrateredCrest/scripts.pory"
     goto_if_eq VAR_RESULT, B_OUTCOME_RAN, CrateredCrest_EventScript_RanWildMon
-# 328 "data//maps/CrateredCrest/scripts.pory"
+# 320 "data//maps/CrateredCrest/scripts.pory"
     goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, CrateredCrest_EventScript_RanWildMon
+# 321 "data//maps/CrateredCrest/scripts.pory"
+	release
+# 322 "data//maps/CrateredCrest/scripts.pory"
+	end
+# 323 "data//maps/CrateredCrest/scripts.pory"
+
+# 324 "data//maps/CrateredCrest/scripts.pory"
+CrateredCrest_EventScript_Gyarados::
+# 325 "data//maps/CrateredCrest/scripts.pory"
+	lockall
+# 326 "data//maps/CrateredCrest/scripts.pory"
+	faceplayer
+# 327 "data//maps/CrateredCrest/scripts.pory"
+	waitse
+# 328 "data//maps/CrateredCrest/scripts.pory"
+	playmoncry SPECIES_GYARADOS, CRY_MODE_ENCOUNTER
 # 329 "data//maps/CrateredCrest/scripts.pory"
-	release
+	waitmoncry
 # 330 "data//maps/CrateredCrest/scripts.pory"
-	end
+	delay 10
 # 331 "data//maps/CrateredCrest/scripts.pory"
-
+	setwildbattle SPECIES_GYARADOS, 50
 # 332 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_EventScript_HaxorusNothing::
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
 # 333 "data//maps/CrateredCrest/scripts.pory"
-	release
+	dowildbattle
 # 334 "data//maps/CrateredCrest/scripts.pory"
-	end
+	@ waitstate
 # 335 "data//maps/CrateredCrest/scripts.pory"
-
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 # 336 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_EventScript_HaxorusA::
+	setvar VAR_0x8004, SPECIES_GYARADOS
 # 337 "data//maps/CrateredCrest/scripts.pory"
-	goto_if_set FLAG_DEFEATED_CRATERED_CREST_HAXORUS, CrateredCrest_EventScript_HaxorusNothing
+    specialvar VAR_RESULT, GetBattleOutcome
 # 338 "data//maps/CrateredCrest/scripts.pory"
-	lock
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, CrateredCrest_EventScript_DefeatedWildMon
 # 339 "data//maps/CrateredCrest/scripts.pory"
-	applymovement LOCALID_CRATERED_CREST_HAXORUS, Common_Movement_FaceDown
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, CrateredCrest_EventScript_RanWildMon
 # 340 "data//maps/CrateredCrest/scripts.pory"
-	waitmovement
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, CrateredCrest_EventScript_RanWildMon
 # 341 "data//maps/CrateredCrest/scripts.pory"
-	playse SE_PIN
+	release
 # 342 "data//maps/CrateredCrest/scripts.pory"
-	applymovement LOCALID_CRATERED_CREST_HAXORUS, Common_Movement_ExclamationMark
+	end
 # 343 "data//maps/CrateredCrest/scripts.pory"
-	waitmovement
+
 # 344 "data//maps/CrateredCrest/scripts.pory"
-	delay 20
+CrateredCrest_EventScript_HaxorusNothing::
 # 345 "data//maps/CrateredCrest/scripts.pory"
-	applymovement LOCALID_CRATERED_CREST_HAXORUS, CrateredCrest_Movement_HaxorusApproach
+	release
 # 346 "data//maps/CrateredCrest/scripts.pory"
-	@ delay 35
+	end
 # 347 "data//maps/CrateredCrest/scripts.pory"
-	applymovement LOCALID_PLAYER, CrateredCrest_Movement_ApproachHaxorusA
+
 # 348 "data//maps/CrateredCrest/scripts.pory"
-	waitmovement LOCALID_PLAYER
+CrateredCrest_EventScript_HaxorusA::
 # 349 "data//maps/CrateredCrest/scripts.pory"
-	delay 15
+	goto_if_set FLAG_DEFEATED_CRATERED_CREST_HAXORUS, CrateredCrest_EventScript_HaxorusNothing
 # 350 "data//maps/CrateredCrest/scripts.pory"
-	msgbox CrateredCrest_Text_HaxorusAttacked, MSGBOX_DEFAULT
+	lock
 # 351 "data//maps/CrateredCrest/scripts.pory"
-	closemessage
+	applymovement LOCALID_CRATERED_CREST_HAXORUS, Common_Movement_FaceDown
 # 352 "data//maps/CrateredCrest/scripts.pory"
-	goto CrateredCrest_EventScript_Haxorus
+	waitmovement
 # 353 "data//maps/CrateredCrest/scripts.pory"
-	end
+	playse SE_PIN
 # 354 "data//maps/CrateredCrest/scripts.pory"
-
+	applymovement LOCALID_CRATERED_CREST_HAXORUS, Common_Movement_ExclamationMark
 # 355 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_EventScript_HaxorusB::
+	waitmovement
 # 356 "data//maps/CrateredCrest/scripts.pory"
-	goto_if_set FLAG_DEFEATED_CRATERED_CREST_HAXORUS, CrateredCrest_EventScript_HaxorusNothing
+	delay 20
 # 357 "data//maps/CrateredCrest/scripts.pory"
-	lock
+	applymovement LOCALID_CRATERED_CREST_HAXORUS, CrateredCrest_Movement_HaxorusApproach
 # 358 "data//maps/CrateredCrest/scripts.pory"
-	applymovement LOCALID_CRATERED_CREST_HAXORUS, Common_Movement_FaceDown
+	@ delay 35
 # 359 "data//maps/CrateredCrest/scripts.pory"
-	waitmovement
+	applymovement LOCALID_PLAYER, CrateredCrest_Movement_ApproachHaxorusA
 # 360 "data//maps/CrateredCrest/scripts.pory"
-	playse SE_PIN
+	waitmovement LOCALID_PLAYER
 # 361 "data//maps/CrateredCrest/scripts.pory"
-	applymovement LOCALID_CRATERED_CREST_HAXORUS, Common_Movement_ExclamationMark
+	delay 15
 # 362 "data//maps/CrateredCrest/scripts.pory"
-	waitmovement
+	msgbox CrateredCrest_Text_HaxorusAttacked, MSGBOX_DEFAULT
 # 363 "data//maps/CrateredCrest/scripts.pory"
-	delay 20
+	closemessage
 # 364 "data//maps/CrateredCrest/scripts.pory"
-	applymovement LOCALID_CRATERED_CREST_HAXORUS, CrateredCrest_Movement_HaxorusApproach
+	goto CrateredCrest_EventScript_Haxorus
 # 365 "data//maps/CrateredCrest/scripts.pory"
-	@ delay 35
-# 366 "data//maps/CrateredCrest/scripts.pory"
-	applymovement LOCALID_PLAYER, CrateredCrest_Movement_ApproachHaxorusB
-# 367 "data//maps/CrateredCrest/scripts.pory"
-	waitmovement LOCALID_PLAYER
-# 368 "data//maps/CrateredCrest/scripts.pory"
-	delay 15
-# 369 "data//maps/CrateredCrest/scripts.pory"
-	msgbox CrateredCrest_Text_HaxorusAttacked, MSGBOX_DEFAULT
-# 370 "data//maps/CrateredCrest/scripts.pory"
-	closemessage
-# 371 "data//maps/CrateredCrest/scripts.pory"
-	goto CrateredCrest_EventScript_Haxorus
-# 372 "data//maps/CrateredCrest/scripts.pory"
 	end
-# 373 "data//maps/CrateredCrest/scripts.pory"
+# 366 "data//maps/CrateredCrest/scripts.pory"
 
-# 374 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_EventScript_HaxorusC::
-# 375 "data//maps/CrateredCrest/scripts.pory"
+# 367 "data//maps/CrateredCrest/scripts.pory"
+CrateredCrest_EventScript_HaxorusB::
+# 368 "data//maps/CrateredCrest/scripts.pory"
 	goto_if_set FLAG_DEFEATED_CRATERED_CREST_HAXORUS, CrateredCrest_EventScript_HaxorusNothing
-# 376 "data//maps/CrateredCrest/scripts.pory"
+# 369 "data//maps/CrateredCrest/scripts.pory"
 	lock
-# 377 "data//maps/CrateredCrest/scripts.pory"
+# 370 "data//maps/CrateredCrest/scripts.pory"
 	applymovement LOCALID_CRATERED_CREST_HAXORUS, Common_Movement_FaceDown
-# 378 "data//maps/CrateredCrest/scripts.pory"
+# 371 "data//maps/CrateredCrest/scripts.pory"
 	waitmovement
-# 379 "data//maps/CrateredCrest/scripts.pory"
+# 372 "data//maps/CrateredCrest/scripts.pory"
 	playse SE_PIN
-# 380 "data//maps/CrateredCrest/scripts.pory"
+# 373 "data//maps/CrateredCrest/scripts.pory"
 	applymovement LOCALID_CRATERED_CREST_HAXORUS, Common_Movement_ExclamationMark
-# 381 "data//maps/CrateredCrest/scripts.pory"
+# 374 "data//maps/CrateredCrest/scripts.pory"
 	waitmovement
-# 382 "data//maps/CrateredCrest/scripts.pory"
+# 375 "data//maps/CrateredCrest/scripts.pory"
 	delay 20
-# 383 "data//maps/CrateredCrest/scripts.pory"
+# 376 "data//maps/CrateredCrest/scripts.pory"
 	applymovement LOCALID_CRATERED_CREST_HAXORUS, CrateredCrest_Movement_HaxorusApproach
-# 384 "data//maps/CrateredCrest/scripts.pory"
+# 377 "data//maps/CrateredCrest/scripts.pory"
 	@ delay 35
-# 385 "data//maps/CrateredCrest/scripts.pory"
-	applymovement LOCALID_PLAYER, CrateredCrest_Movement_ApproachHaxorusC
-# 386 "data//maps/CrateredCrest/scripts.pory"
+# 378 "data//maps/CrateredCrest/scripts.pory"
+	applymovement LOCALID_PLAYER, CrateredCrest_Movement_ApproachHaxorusB
+# 379 "data//maps/CrateredCrest/scripts.pory"
 	waitmovement LOCALID_PLAYER
-# 387 "data//maps/CrateredCrest/scripts.pory"
+# 380 "data//maps/CrateredCrest/scripts.pory"
 	delay 15
-# 388 "data//maps/CrateredCrest/scripts.pory"
+# 381 "data//maps/CrateredCrest/scripts.pory"
 	msgbox CrateredCrest_Text_HaxorusAttacked, MSGBOX_DEFAULT
-# 389 "data//maps/CrateredCrest/scripts.pory"
+# 382 "data//maps/CrateredCrest/scripts.pory"
 	closemessage
-# 390 "data//maps/CrateredCrest/scripts.pory"
+# 383 "data//maps/CrateredCrest/scripts.pory"
 	goto CrateredCrest_EventScript_Haxorus
+# 384 "data//maps/CrateredCrest/scripts.pory"
+	end
+# 385 "data//maps/CrateredCrest/scripts.pory"
+
+# 386 "data//maps/CrateredCrest/scripts.pory"
+CrateredCrest_EventScript_HaxorusC::
+# 387 "data//maps/CrateredCrest/scripts.pory"
+	goto_if_set FLAG_DEFEATED_CRATERED_CREST_HAXORUS, CrateredCrest_EventScript_HaxorusNothing
+# 388 "data//maps/CrateredCrest/scripts.pory"
+	lock
+# 389 "data//maps/CrateredCrest/scripts.pory"
+	applymovement LOCALID_CRATERED_CREST_HAXORUS, Common_Movement_FaceDown
+# 390 "data//maps/CrateredCrest/scripts.pory"
+	waitmovement
 # 391 "data//maps/CrateredCrest/scripts.pory"
+	playse SE_PIN
+# 392 "data//maps/CrateredCrest/scripts.pory"
+	applymovement LOCALID_CRATERED_CREST_HAXORUS, Common_Movement_ExclamationMark
+# 393 "data//maps/CrateredCrest/scripts.pory"
+	waitmovement
+# 394 "data//maps/CrateredCrest/scripts.pory"
+	delay 20
+# 395 "data//maps/CrateredCrest/scripts.pory"
+	applymovement LOCALID_CRATERED_CREST_HAXORUS, CrateredCrest_Movement_HaxorusApproach
+# 396 "data//maps/CrateredCrest/scripts.pory"
+	@ delay 35
+# 397 "data//maps/CrateredCrest/scripts.pory"
+	applymovement LOCALID_PLAYER, CrateredCrest_Movement_ApproachHaxorusC
+# 398 "data//maps/CrateredCrest/scripts.pory"
+	waitmovement LOCALID_PLAYER
+# 399 "data//maps/CrateredCrest/scripts.pory"
+	delay 15
+# 400 "data//maps/CrateredCrest/scripts.pory"
+	msgbox CrateredCrest_Text_HaxorusAttacked, MSGBOX_DEFAULT
+# 401 "data//maps/CrateredCrest/scripts.pory"
+	closemessage
+# 402 "data//maps/CrateredCrest/scripts.pory"
+	goto CrateredCrest_EventScript_Haxorus
+# 403 "data//maps/CrateredCrest/scripts.pory"
 	end
 
 CrateredCrest_EventScript_Haxorus::
-# 396 "data//maps/CrateredCrest/scripts.pory"
-	delay 10
-# 397 "data//maps/CrateredCrest/scripts.pory"
-	playmoncry SPECIES_HAXORUS, CRY_MODE_ENCOUNTER
-# 398 "data//maps/CrateredCrest/scripts.pory"
-	delay 10
-# 399 "data//maps/CrateredCrest/scripts.pory"
-	waitmoncry
-# 400 "data//maps/CrateredCrest/scripts.pory"
-	setvar VAR_LAST_TALKED, LOCALID_CRATERED_CREST_HAXORUS
-# 401 "data//maps/CrateredCrest/scripts.pory"
-	setwildbossmon 1
-# 402 "data//maps/CrateredCrest/scripts.pory"
-	setwildbattle SPECIES_HAXORUS, 60
-# 403 "data//maps/CrateredCrest/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
-# 404 "data//maps/CrateredCrest/scripts.pory"
-	special StartRegiBattle
-# 405 "data//maps/CrateredCrest/scripts.pory"
-	waitstate
-# 406 "data//maps/CrateredCrest/scripts.pory"
-	clearflag FLAG_SYS_CTRL_OBJ_DELETE
-# 407 "data//maps/CrateredCrest/scripts.pory"
-	endwildbossmon
 # 408 "data//maps/CrateredCrest/scripts.pory"
-	setflag FLAG_DEFEATED_CRATERED_CREST_HAXORUS
+	delay 10
 # 409 "data//maps/CrateredCrest/scripts.pory"
-	setvar VAR_0x8004, SPECIES_HAXORUS
+	playmoncry SPECIES_HAXORUS, CRY_MODE_ENCOUNTER
 # 410 "data//maps/CrateredCrest/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
+	delay 10
 # 411 "data//maps/CrateredCrest/scripts.pory"
+	waitmoncry
+# 412 "data//maps/CrateredCrest/scripts.pory"
+	setvar VAR_LAST_TALKED, LOCALID_CRATERED_CREST_HAXORUS
+# 413 "data//maps/CrateredCrest/scripts.pory"
+	setwildbossmon 1
+# 414 "data//maps/CrateredCrest/scripts.pory"
+	setwildbattle SPECIES_HAXORUS, 60
+# 415 "data//maps/CrateredCrest/scripts.pory"
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+# 416 "data//maps/CrateredCrest/scripts.pory"
+	special StartRegiBattle
+# 417 "data//maps/CrateredCrest/scripts.pory"
+	waitstate
+# 418 "data//maps/CrateredCrest/scripts.pory"
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+# 419 "data//maps/CrateredCrest/scripts.pory"
+	endwildbossmon
+# 420 "data//maps/CrateredCrest/scripts.pory"
+	setflag FLAG_DEFEATED_CRATERED_CREST_HAXORUS
+# 421 "data//maps/CrateredCrest/scripts.pory"
+	setvar VAR_0x8004, SPECIES_HAXORUS
+# 422 "data//maps/CrateredCrest/scripts.pory"
+	specialvar VAR_RESULT, GetBattleOutcome
+# 423 "data//maps/CrateredCrest/scripts.pory"
 	compare VAR_RESULT, B_OUTCOME_WON
 	goto_if_eq CrateredCrest_EventScript_Haxorus_2
-# 416 "data//maps/CrateredCrest/scripts.pory"
+# 428 "data//maps/CrateredCrest/scripts.pory"
 	compare VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED
 	goto_if_eq CrateredCrest_EventScript_Haxorus_3
 CrateredCrest_EventScript_Haxorus_1:
-# 423 "data//maps/CrateredCrest/scripts.pory"
+# 435 "data//maps/CrateredCrest/scripts.pory"
 	msgbox CrateredCrest_Text_HaxorusDefeated, MSGBOX_DEFAULT
-# 424 "data//maps/CrateredCrest/scripts.pory"
+# 436 "data//maps/CrateredCrest/scripts.pory"
 	release
 	return
 
 CrateredCrest_EventScript_Haxorus_2:
-# 412 "data//maps/CrateredCrest/scripts.pory"
+# 424 "data//maps/CrateredCrest/scripts.pory"
 	fadescreenswapbuffers FADE_TO_BLACK
-# 413 "data//maps/CrateredCrest/scripts.pory"
+# 425 "data//maps/CrateredCrest/scripts.pory"
 	removeobject VAR_LAST_TALKED
-# 414 "data//maps/CrateredCrest/scripts.pory"
+# 426 "data//maps/CrateredCrest/scripts.pory"
 	fadescreenswapbuffers FADE_FROM_BLACK
 	goto CrateredCrest_EventScript_Haxorus_1
 
 CrateredCrest_EventScript_Haxorus_3:
-# 417 "data//maps/CrateredCrest/scripts.pory"
+# 429 "data//maps/CrateredCrest/scripts.pory"
 	fadescreenswapbuffers FADE_TO_BLACK
-# 418 "data//maps/CrateredCrest/scripts.pory"
+# 430 "data//maps/CrateredCrest/scripts.pory"
 	removeobject VAR_LAST_TALKED
-# 419 "data//maps/CrateredCrest/scripts.pory"
+# 431 "data//maps/CrateredCrest/scripts.pory"
 	fadescreenswapbuffers FADE_FROM_BLACK
-# 420 "data//maps/CrateredCrest/scripts.pory"
+# 432 "data//maps/CrateredCrest/scripts.pory"
 	bufferspeciesname STR_VAR_1, VAR_0x8004
-# 421 "data//maps/CrateredCrest/scripts.pory"
+# 433 "data//maps/CrateredCrest/scripts.pory"
 	msgbox gText_WildMonFled, MSGBOX_DEFAULT
 	goto CrateredCrest_EventScript_Haxorus_1
 
 
-# 427 "data//maps/CrateredCrest/scripts.pory"
-
-# 428 "data//maps/CrateredCrest/scripts.pory"
-
-# 429 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_Text_HaxorusDefeated:
-# 430 "data//maps/CrateredCrest/scripts.pory"
-    .string "The corpse of the wild HAXORUS\n"
-# 431 "data//maps/CrateredCrest/scripts.pory"
-    .string "collapsed into the marshy soil.$"
-# 432 "data//maps/CrateredCrest/scripts.pory"
-
-# 433 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_EventScript_Tyrantrum::
-# 434 "data//maps/CrateredCrest/scripts.pory"
-	lock
-# 435 "data//maps/CrateredCrest/scripts.pory"
-	faceplayer
-# 436 "data//maps/CrateredCrest/scripts.pory"
-	waitse
-# 437 "data//maps/CrateredCrest/scripts.pory"
-	playmoncry SPECIES_TYRANTRUM, CRY_MODE_ENCOUNTER
-# 438 "data//maps/CrateredCrest/scripts.pory"
-	delay 10
 # 439 "data//maps/CrateredCrest/scripts.pory"
-	waitmoncry
+
 # 440 "data//maps/CrateredCrest/scripts.pory"
-	setwildbattle SPECIES_TYRANTRUM, 50
+
 # 441 "data//maps/CrateredCrest/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
+CrateredCrest_Text_HaxorusDefeated:
 # 442 "data//maps/CrateredCrest/scripts.pory"
-	dowildbattle
+    .string "The corpse of the wild HAXORUS\n"
 # 443 "data//maps/CrateredCrest/scripts.pory"
-	@ waitstate
+    .string "collapsed into the marshy soil.$"
 # 444 "data//maps/CrateredCrest/scripts.pory"
-	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+
 # 445 "data//maps/CrateredCrest/scripts.pory"
-	setvar VAR_0x8004, SPECIES_TYRANTRUM
+CrateredCrest_EventScript_Tyrantrum::
 # 446 "data//maps/CrateredCrest/scripts.pory"
-    specialvar VAR_RESULT, GetBattleOutcome
+	lock
 # 447 "data//maps/CrateredCrest/scripts.pory"
-	goto_if_eq VAR_RESULT, B_OUTCOME_WON, CrateredCrest_EventScript_DefeatedWildMon
+	faceplayer
 # 448 "data//maps/CrateredCrest/scripts.pory"
-    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, CrateredCrest_EventScript_RanWildMon
+	waitse
 # 449 "data//maps/CrateredCrest/scripts.pory"
-    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, CrateredCrest_EventScript_RanWildMon
+	playmoncry SPECIES_TYRANTRUM, CRY_MODE_ENCOUNTER
 # 450 "data//maps/CrateredCrest/scripts.pory"
-	release
+	delay 10
 # 451 "data//maps/CrateredCrest/scripts.pory"
-	end
+	waitmoncry
 # 452 "data//maps/CrateredCrest/scripts.pory"
-
+	setwildbattle SPECIES_TYRANTRUM, 50
 # 453 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_EventScript_DefeatedWildMon::
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
 # 454 "data//maps/CrateredCrest/scripts.pory"
-    goto Common_EventScript_RemoveStaticPokemon
+	dowildbattle
 # 455 "data//maps/CrateredCrest/scripts.pory"
-	release
+	@ waitstate
 # 456 "data//maps/CrateredCrest/scripts.pory"
-	end
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 # 457 "data//maps/CrateredCrest/scripts.pory"
-
+	setvar VAR_0x8004, SPECIES_TYRANTRUM
 # 458 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_EventScript_RanWildMon::
+    specialvar VAR_RESULT, GetBattleOutcome
 # 459 "data//maps/CrateredCrest/scripts.pory"
-	goto Common_EventScript_WildMonFled
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, CrateredCrest_EventScript_DefeatedWildMon
 # 460 "data//maps/CrateredCrest/scripts.pory"
-	release
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, CrateredCrest_EventScript_RanWildMon
 # 461 "data//maps/CrateredCrest/scripts.pory"
-	end
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, CrateredCrest_EventScript_RanWildMon
 # 462 "data//maps/CrateredCrest/scripts.pory"
-
+	release
 # 463 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_Movement_RayquazaFlyOff:
+	end
 # 464 "data//maps/CrateredCrest/scripts.pory"
-	delay_16
+
 # 465 "data//maps/CrateredCrest/scripts.pory"
-	fly_up
+CrateredCrest_EventScript_DefeatedWildMon::
 # 466 "data//maps/CrateredCrest/scripts.pory"
-	step_end
+    goto Common_EventScript_RemoveStaticPokemon
 # 467 "data//maps/CrateredCrest/scripts.pory"
-
+	release
 # 468 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_Movement_CameraPanUpI:
+	end
 # 469 "data//maps/CrateredCrest/scripts.pory"
-	walk_slow_up
+
 # 470 "data//maps/CrateredCrest/scripts.pory"
-	walk_up
+CrateredCrest_EventScript_RanWildMon::
 # 471 "data//maps/CrateredCrest/scripts.pory"
-	walk_up
+	goto Common_EventScript_WildMonFled
 # 472 "data//maps/CrateredCrest/scripts.pory"
-	walk_fast_up
+	release
 # 473 "data//maps/CrateredCrest/scripts.pory"
-	walk_fast_up
-# 474 "data//maps/CrateredCrest/scripts.pory"
-	walk_up
-# 475 "data//maps/CrateredCrest/scripts.pory"
-	walk_slow_up
-# 476 "data//maps/CrateredCrest/scripts.pory"
-	step_end
-# 477 "data//maps/CrateredCrest/scripts.pory"
+	end
 
+CrateredCrest_EventScript_RuinManiacPhil::
 # 478 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_Movement_CameraPanUpII:
+	faceplayer
 # 479 "data//maps/CrateredCrest/scripts.pory"
-	walk_slow_up
-# 480 "data//maps/CrateredCrest/scripts.pory"
-	walk_slow_up
-# 481 "data//maps/CrateredCrest/scripts.pory"
-	walk_slow_up
-# 482 "data//maps/CrateredCrest/scripts.pory"
-	walk_slow_up
-# 483 "data//maps/CrateredCrest/scripts.pory"
-	walk_slow_up
-# 484 "data//maps/CrateredCrest/scripts.pory"
-	walk_slow_up
-# 485 "data//maps/CrateredCrest/scripts.pory"
-	walk_slow_up
-# 486 "data//maps/CrateredCrest/scripts.pory"
-	step_end
-# 487 "data//maps/CrateredCrest/scripts.pory"
-
-# 488 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_Movement_CameraPanDownI:
+	checktrainerflag TRAINER_PHIL_CRATERED_CREST
+	goto_if 0, CrateredCrest_EventScript_RuinManiacPhil_2
+CrateredCrest_EventScript_RuinManiacPhil_1:
 # 489 "data//maps/CrateredCrest/scripts.pory"
-	walk_slow_down
+	msgbox CrateredCrest_Text_PhilPostBattle, MSGBOX_DEFAULT
 # 490 "data//maps/CrateredCrest/scripts.pory"
-	walk_slow_down
+	applymovement LOCALID_CRATERED_CREST_PHIL, Common_Movement_FaceOriginalDirection
 # 491 "data//maps/CrateredCrest/scripts.pory"
-	walk_slow_down
+	waitmovement
 # 492 "data//maps/CrateredCrest/scripts.pory"
-	walk_slow_down
-# 493 "data//maps/CrateredCrest/scripts.pory"
-	walk_slow_down
-# 494 "data//maps/CrateredCrest/scripts.pory"
-	walk_slow_down
-# 495 "data//maps/CrateredCrest/scripts.pory"
-	walk_slow_down
-# 496 "data//maps/CrateredCrest/scripts.pory"
-	step_end
-# 497 "data//maps/CrateredCrest/scripts.pory"
+	release
+	return
 
+CrateredCrest_EventScript_RuinManiacPhil_2:
+# 480 "data//maps/CrateredCrest/scripts.pory"
+	playbgm MUS_ENCOUNTER_HIKER, FALSE
+# 481 "data//maps/CrateredCrest/scripts.pory"
+	message CrateredCrest_Text_PhilWait
+# 482 "data//maps/CrateredCrest/scripts.pory"
+	waitmessage
+# 483 "data//maps/CrateredCrest/scripts.pory"
+	delay 30
+# 484 "data//maps/CrateredCrest/scripts.pory"
+	closemessage
+# 485 "data//maps/CrateredCrest/scripts.pory"
+	delay 60
+# 486 "data//maps/CrateredCrest/scripts.pory"
+	msgbox CrateredCrest_Text_PhilIntro, MSGBOX_DEFAULT
+# 487 "data//maps/CrateredCrest/scripts.pory"
+	trainerbattle_no_intro TRAINER_PHIL_CRATERED_CREST, CrateredCrest_Text_PhilDefeat
+	goto CrateredCrest_EventScript_RuinManiacPhil_1
+
+
+# 495 "data//maps/CrateredCrest/scripts.pory"
+
+# 496 "data//maps/CrateredCrest/scripts.pory"
+
+# 497 "data//maps/CrateredCrest/scripts.pory"
+CrateredCrest_Text_PhilWait:
 # 498 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_Movement_CameraPanDownII:
+    .string "… … … … … … … …\n"
 # 499 "data//maps/CrateredCrest/scripts.pory"
-	walk_fast_down
+	.string "… … … … … … … …$"
 # 500 "data//maps/CrateredCrest/scripts.pory"
-	walk_fast_down
+
 # 501 "data//maps/CrateredCrest/scripts.pory"
-	walk_fast_down
+CrateredCrest_Text_PhilIntro:
 # 502 "data//maps/CrateredCrest/scripts.pory"
-	walk_fast_down
+    .string "I don't know how to swim…$"
 # 503 "data//maps/CrateredCrest/scripts.pory"
-	walk_fast_down
+
 # 504 "data//maps/CrateredCrest/scripts.pory"
-	walk_down
+CrateredCrest_Text_PhilDefeat:
 # 505 "data//maps/CrateredCrest/scripts.pory"
-	walk_slow_down
+    .string "Oh!\l"
 # 506 "data//maps/CrateredCrest/scripts.pory"
-	step_end
+    .string "You know how to swim?$"
 # 507 "data//maps/CrateredCrest/scripts.pory"
 
 # 508 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_Movement_RayquazaFlyDown:
+CrateredCrest_Text_PhilPostBattle:
 # 509 "data//maps/CrateredCrest/scripts.pory"
-	walk_slow_up
+    .string "I came to investigate the ruins\n"
 # 510 "data//maps/CrateredCrest/scripts.pory"
-	walk_slow_up
+    .string "at the center of this crater.\p"
 # 511 "data//maps/CrateredCrest/scripts.pory"
-	walk_fast_up
+    .string "But they're in the middle of\n"
 # 512 "data//maps/CrateredCrest/scripts.pory"
-	walk_fast_up
+    .string "the lake…$"
 # 513 "data//maps/CrateredCrest/scripts.pory"
-	walk_down
+
 # 514 "data//maps/CrateredCrest/scripts.pory"
-	walk_down
+CrateredCrest_Movement_RayquazaFlyOff:
 # 515 "data//maps/CrateredCrest/scripts.pory"
-	walk_faster_down
+	delay_16
 # 516 "data//maps/CrateredCrest/scripts.pory"
-	walk_down
+	fly_up
 # 517 "data//maps/CrateredCrest/scripts.pory"
 	step_end
 # 518 "data//maps/CrateredCrest/scripts.pory"
 
 # 519 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_Movement_HaxorusApproach:
+CrateredCrest_Movement_CameraPanUpI:
 # 520 "data//maps/CrateredCrest/scripts.pory"
-    walk_down
+	walk_slow_up
 # 521 "data//maps/CrateredCrest/scripts.pory"
-	step_end
+	walk_up
 # 522 "data//maps/CrateredCrest/scripts.pory"
-
+	walk_up
 # 523 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_Movement_ApproachHaxorusA:
+	walk_fast_up
 # 524 "data//maps/CrateredCrest/scripts.pory"
-    walk_right
+	walk_fast_up
 # 525 "data//maps/CrateredCrest/scripts.pory"
-    walk_in_place_up
+	walk_up
 # 526 "data//maps/CrateredCrest/scripts.pory"
-	step_end
+	walk_slow_up
 # 527 "data//maps/CrateredCrest/scripts.pory"
-
+	step_end
 # 528 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_Movement_ApproachHaxorusB:
+
 # 529 "data//maps/CrateredCrest/scripts.pory"
-    walk_in_place_up
+CrateredCrest_Movement_CameraPanUpII:
 # 530 "data//maps/CrateredCrest/scripts.pory"
-	step_end
+	walk_slow_up
 # 531 "data//maps/CrateredCrest/scripts.pory"
-
+	walk_slow_up
 # 532 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_Movement_ApproachHaxorusC:
+	walk_slow_up
 # 533 "data//maps/CrateredCrest/scripts.pory"
-    walk_left
+	walk_slow_up
 # 534 "data//maps/CrateredCrest/scripts.pory"
-    walk_in_place_up
+	walk_slow_up
 # 535 "data//maps/CrateredCrest/scripts.pory"
-	step_end
+	walk_slow_up
 # 536 "data//maps/CrateredCrest/scripts.pory"
-
+	walk_slow_up
 # 537 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_Movement_SetInvisible:
+	step_end
 # 538 "data//maps/CrateredCrest/scripts.pory"
-	set_invisible
+
 # 539 "data//maps/CrateredCrest/scripts.pory"
-	step_end
+CrateredCrest_Movement_CameraPanDownI:
 # 540 "data//maps/CrateredCrest/scripts.pory"
-
+	walk_slow_down
 # 541 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_Movement_SetVisible:
+	walk_slow_down
 # 542 "data//maps/CrateredCrest/scripts.pory"
-	set_visible
+	walk_slow_down
 # 543 "data//maps/CrateredCrest/scripts.pory"
-	step_end
+	walk_slow_down
 # 544 "data//maps/CrateredCrest/scripts.pory"
-
+	walk_slow_down
 # 545 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_Text_RayquazaFlewOff:
+	walk_slow_down
 # 546 "data//maps/CrateredCrest/scripts.pory"
-	.string "But it flew off…\p"
+	walk_slow_down
 # 547 "data//maps/CrateredCrest/scripts.pory"
-	.string "It seemed like it was headed back\n"
+	step_end
 # 548 "data//maps/CrateredCrest/scripts.pory"
-	.string "towards SKY PILLAR!$"
+
 # 549 "data//maps/CrateredCrest/scripts.pory"
-
+CrateredCrest_Movement_CameraPanDownII:
 # 550 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_Text_RayquazaAppeared:
+	walk_fast_down
 # 551 "data//maps/CrateredCrest/scripts.pory"
-	.string "RAYQUAZA appeared from beyond the\n" 
+	walk_fast_down
 # 552 "data//maps/CrateredCrest/scripts.pory"
-	.string "cliff's edge!$"
+	walk_fast_down
 # 553 "data//maps/CrateredCrest/scripts.pory"
-
+	walk_fast_down
 # 554 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_Text_RayquazaIsHere:
+	walk_fast_down
 # 555 "data//maps/CrateredCrest/scripts.pory"
-	.string "It sounds like RAYQUAZA is nearby!$"
+	walk_down
 # 556 "data//maps/CrateredCrest/scripts.pory"
-
+	walk_slow_down
 # 557 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_Text_HaxorusAttacked:
+	step_end
 # 558 "data//maps/CrateredCrest/scripts.pory"
-	.string "HAXORUS approached aggresively!$"
-# 559 "data//maps/CrateredCrest/scripts.pory"
 
+# 559 "data//maps/CrateredCrest/scripts.pory"
+CrateredCrest_Movement_RayquazaFlyDown:
 # 560 "data//maps/CrateredCrest/scripts.pory"
-CrateredCrest_Text_Clone:
+	walk_slow_up
 # 561 "data//maps/CrateredCrest/scripts.pory"
+	walk_slow_up
+# 562 "data//maps/CrateredCrest/scripts.pory"
+	walk_fast_up
+# 563 "data//maps/CrateredCrest/scripts.pory"
+	walk_fast_up
+# 564 "data//maps/CrateredCrest/scripts.pory"
+	walk_down
+# 565 "data//maps/CrateredCrest/scripts.pory"
+	walk_down
+# 566 "data//maps/CrateredCrest/scripts.pory"
+	walk_faster_down
+# 567 "data//maps/CrateredCrest/scripts.pory"
+	walk_down
+# 568 "data//maps/CrateredCrest/scripts.pory"
+	step_end
+# 569 "data//maps/CrateredCrest/scripts.pory"
+
+# 570 "data//maps/CrateredCrest/scripts.pory"
+CrateredCrest_Movement_HaxorusApproach:
+# 571 "data//maps/CrateredCrest/scripts.pory"
+    walk_down
+# 572 "data//maps/CrateredCrest/scripts.pory"
+	step_end
+# 573 "data//maps/CrateredCrest/scripts.pory"
+
+# 574 "data//maps/CrateredCrest/scripts.pory"
+CrateredCrest_Movement_ApproachHaxorusA:
+# 575 "data//maps/CrateredCrest/scripts.pory"
+    walk_right
+# 576 "data//maps/CrateredCrest/scripts.pory"
+    walk_in_place_up
+# 577 "data//maps/CrateredCrest/scripts.pory"
+	step_end
+# 578 "data//maps/CrateredCrest/scripts.pory"
+
+# 579 "data//maps/CrateredCrest/scripts.pory"
+CrateredCrest_Movement_ApproachHaxorusB:
+# 580 "data//maps/CrateredCrest/scripts.pory"
+    walk_in_place_up
+# 581 "data//maps/CrateredCrest/scripts.pory"
+	step_end
+# 582 "data//maps/CrateredCrest/scripts.pory"
+
+# 583 "data//maps/CrateredCrest/scripts.pory"
+CrateredCrest_Movement_ApproachHaxorusC:
+# 584 "data//maps/CrateredCrest/scripts.pory"
+    walk_left
+# 585 "data//maps/CrateredCrest/scripts.pory"
+    walk_in_place_up
+# 586 "data//maps/CrateredCrest/scripts.pory"
+	step_end
+# 587 "data//maps/CrateredCrest/scripts.pory"
+
+# 588 "data//maps/CrateredCrest/scripts.pory"
+CrateredCrest_Movement_SetInvisible:
+# 589 "data//maps/CrateredCrest/scripts.pory"
+	set_invisible
+# 590 "data//maps/CrateredCrest/scripts.pory"
+	step_end
+# 591 "data//maps/CrateredCrest/scripts.pory"
+
+# 592 "data//maps/CrateredCrest/scripts.pory"
+CrateredCrest_Movement_SetVisible:
+# 593 "data//maps/CrateredCrest/scripts.pory"
+	set_visible
+# 594 "data//maps/CrateredCrest/scripts.pory"
+	step_end
+# 595 "data//maps/CrateredCrest/scripts.pory"
+
+# 596 "data//maps/CrateredCrest/scripts.pory"
+CrateredCrest_Text_RayquazaFlewOff:
+# 597 "data//maps/CrateredCrest/scripts.pory"
+	.string "But it flew off…\p"
+# 598 "data//maps/CrateredCrest/scripts.pory"
+	.string "It seemed like it was headed back\n"
+# 599 "data//maps/CrateredCrest/scripts.pory"
+	.string "towards SKY PILLAR!$"
+# 600 "data//maps/CrateredCrest/scripts.pory"
+
+# 601 "data//maps/CrateredCrest/scripts.pory"
+CrateredCrest_Text_RayquazaAppeared:
+# 602 "data//maps/CrateredCrest/scripts.pory"
+	.string "RAYQUAZA appeared from beyond the\n" 
+# 603 "data//maps/CrateredCrest/scripts.pory"
+	.string "cliff's edge!$"
+# 604 "data//maps/CrateredCrest/scripts.pory"
+
+# 605 "data//maps/CrateredCrest/scripts.pory"
+CrateredCrest_Text_RayquazaIsHere:
+# 606 "data//maps/CrateredCrest/scripts.pory"
+	.string "It sounds like RAYQUAZA is nearby!$"
+# 607 "data//maps/CrateredCrest/scripts.pory"
+
+# 608 "data//maps/CrateredCrest/scripts.pory"
+CrateredCrest_Text_HaxorusAttacked:
+# 609 "data//maps/CrateredCrest/scripts.pory"
+	.string "HAXORUS approached aggresively!$"
+# 610 "data//maps/CrateredCrest/scripts.pory"
+
+# 611 "data//maps/CrateredCrest/scripts.pory"
+CrateredCrest_Text_Clone:
+# 612 "data//maps/CrateredCrest/scripts.pory"
 	.string "Where am I?$"
 
 CrateredCrest_EventScript_RandomiseOvrWrldMonPos::
-# 566 "data//maps/CrateredCrest/scripts.pory"
+# 617 "data//maps/CrateredCrest/scripts.pory"
 	compare VAR_CRATERED_CREST_RAYQUAZA_SCENE_STATE, 3
 	goto_if_ge CrateredCrest_EventScript_RandomiseOvrWrldMonPos_1
-# 578 "data//maps/CrateredCrest/scripts.pory"
+# 629 "data//maps/CrateredCrest/scripts.pory"
 	goto CrateredCrest_EventScript_OvrWrldMonPosA
 	return
 
 CrateredCrest_EventScript_RandomiseOvrWrldMonPos_1:
-# 567 "data//maps/CrateredCrest/scripts.pory"
+# 618 "data//maps/CrateredCrest/scripts.pory"
 	random 3
-# 568 "data//maps/CrateredCrest/scripts.pory"
+# 619 "data//maps/CrateredCrest/scripts.pory"
 	switch VAR_RESULT
-# 569 "data//maps/CrateredCrest/scripts.pory"
+# 620 "data//maps/CrateredCrest/scripts.pory"
 	case 0, CrateredCrest_EventScript_RandomiseOvrWrldMonPos_5
-# 571 "data//maps/CrateredCrest/scripts.pory"
+# 622 "data//maps/CrateredCrest/scripts.pory"
 	case 1, CrateredCrest_EventScript_RandomiseOvrWrldMonPos_6
-# 573 "data//maps/CrateredCrest/scripts.pory"
+# 624 "data//maps/CrateredCrest/scripts.pory"
 	case 2, CrateredCrest_EventScript_RandomiseOvrWrldMonPos_7
 	return
 
 CrateredCrest_EventScript_RandomiseOvrWrldMonPos_5:
-# 570 "data//maps/CrateredCrest/scripts.pory"
+# 621 "data//maps/CrateredCrest/scripts.pory"
 	goto CrateredCrest_EventScript_OvrWrldMonPosA
 	return
 
 CrateredCrest_EventScript_RandomiseOvrWrldMonPos_6:
-# 572 "data//maps/CrateredCrest/scripts.pory"
+# 623 "data//maps/CrateredCrest/scripts.pory"
 	goto CrateredCrest_EventScript_OvrWrldMonPosB
 	return
 
 CrateredCrest_EventScript_RandomiseOvrWrldMonPos_7:
-# 574 "data//maps/CrateredCrest/scripts.pory"
+# 625 "data//maps/CrateredCrest/scripts.pory"
 	goto CrateredCrest_EventScript_OvrWrldMonPosC
 	return
 

@@ -1,1 +1,201 @@
-mapscripts CrateredCrest_Cave_MapScripts {}
+mapscripts CrateredCrest_Cave_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        if (flag(FLAG_TRIGGERED_DRAKE_LATI_SCENE) && !flag(FLAG_RECEIVED_EON_TICKET)){
+            setobjectxyperm(LOCALID_CRATER_CAVE_DRAKE, 13, 15)
+            setobjectmovementtype(LOCALID_CRATER_CAVE_DRAKE, MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT)
+        }
+    }
+}
+
+const VAR_SEEN_ROAMING_LATI = VAR_TEMP_5
+const VAR_WHICH_ROAMING_LATI = VAR_TEMP_6
+
+script CrateredCrest_Cave_EventScript_InteractLatiStone{
+    msgbox(format("Weird rock flavour text."), MSGBOX_DEFAULT)
+    if (flag(FLAG_LATIOS_OR_LATIAS_ROAMING) && !flag(FLAG_RECEIVED_EON_TICKET)){
+        if (var(VAR_ROAMER_POKEMON) == 0){
+            bufferstring(STR_VAR_1, "red")
+            setvar(VAR_WHICH_ROAMING_LATI, SPECIES_LATIAS)
+        }
+        elif (var(VAR_ROAMER_POKEMON) == 1){
+            bufferstring(STR_VAR_1, "blue")
+            setvar(VAR_WHICH_ROAMING_LATI, SPECIES_LATIOS)
+        }
+        getseenmon(VAR_WHICH_ROAMING_LATI)
+        copyvar(VAR_SEEN_ROAMING_LATI, VAR_RESULT)
+        if (var(VAR_SEEN_ROAMING_LATI) == TRUE){
+            bufferspeciesname(STR_VAR_2, VAR_WHICH_ROAMING_LATI)
+            if (var(VAR_ROAMING_LATI_STATE) == 1){
+                delay(30)
+                message("…{PAUSE 20} …{PAUSE 20} …{PAUSE 20} …{PAUSE 20} …{PAUSE 20} …")
+                waitmessage
+                delay(30)
+                closemessage
+                delay(60)
+                msgbox("White and {STR_VAR_1} feathers are strewn\naround near this strange stone.", MSGBOX_DEFAULT)
+                setflag(FLAG_TRIGGERED_DRAKE_LATI_SCENE)
+                closemessage
+                delay(40)
+                msgbox(format("{PLAYER}?"), MSGBOX_DEFAULT)
+                closemessage
+                hidefollower
+                playse(SE_PIN)
+                applymovement(LOCALID_PLAYER, Common_Movement_ExclamationMark)
+                waitmovement
+                applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceDown)
+                waitmovement
+                delay(30)
+                setobjectxyperm(LOCALID_CRATER_CAVE_DRAKE, 13, 21)
+                setobjectmovementtype(LOCALID_CRATER_CAVE_DRAKE, MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT)
+                addobject(LOCALID_CRATER_CAVE_DRAKE, MAP_CRATERED_CREST_CAVE)
+                setobjectxyperm(LOCALID_CRATER_CAVE_DRAKE, 13, 15)
+                applymovement(LOCALID_CRATER_CAVE_DRAKE, CrateredCrest_Cave_Movement_ApproachPlayer)
+                waitmovement
+                delay(20)
+                msgbox("DRAKE: Yes, a rare and powerful POKéMON\nroosts here.\p"
+                                "The POKéMON {STR_VAR_2} was in a deep sleep\nuntil it was disturbed by recent events.", MSGBOX_DEFAULT)
+                message("…{PAUSE 5} …{PAUSE 5} …{PAUSE 5} …{PAUSE 5} …{PAUSE 5} …")
+                waitmessage
+                delay(30)
+                closemessage
+                delay(60)
+                msgbox(format("And it appears you've managed to tame that {STR_VAR_2}!"), MSGBOX_DEFAULT)
+                closemessage
+                delay(20)
+                applymovement(LOCALID_CRATER_CAVE_DRAKE, CrateredCrest_Cave_Movement_DrakeThinks)
+                delay(120)
+                applymovement(LOCALID_PLAYER, CrateredCrest_Cave_Movement_PlayerMoveForDrake)
+                waitmovement(LOCALID_CRATER_CAVE_DRAKE)
+                delay(20)
+                msgbox(format("When I was younger, I too sought to tame one of these rare DRAGONS.\p"
+                                "Sailing distant seas, I discovered an island far to the south with a stone not unlike this one."), MSGBOX_DEFAULT)
+                closemessage
+                applymovement(LOCALID_CRATER_CAVE_DRAKE, Common_Movement_WalkInPlaceUp)
+                delay(60)
+                applymovement(LOCALID_CRATER_CAVE_DRAKE, Common_Movement_WalkInPlaceRight)
+                msgbox(format("{PLAYER}.\pIf you can prove you are truly worthy of wielding that POKéMON in battle,\p"
+                                "you will have also proven yourself worthy enough to tame the POKéMON\lof that SOUTHERN ISLAND as well…\p"
+                                "But be prepared; I will test you with the full furiocity of my most vicious POKéMON!"), MSGBOX_DEFAULT)
+                goto(CrateredCrest_Cave_EventScript_ChallengeDrake)
+            }
+            else{ // if you have seen but not caught
+                delay(30)
+                message("…{PAUSE 20} …{PAUSE 20} …{PAUSE 20} …{PAUSE 20} …{PAUSE 20} …")
+                waitmessage
+                delay(30)
+                closemessage
+                delay(60)
+                msgbox("White and {STR_VAR_1} feathers are strewn\naround near this strange stone.\pWas {STR_VAR_2} roosting here?", MSGBOX_DEFAULT)
+                if (var(VAR_ROAMING_LATI_STATE) == 2){
+                    setvar(VAR_UNUSED_0x8014, 2)
+                    copyvar(VAR_0x8004, VAR_ROAMER_POKEMON)
+                    special(InitRoamer)
+                    setvar(VAR_ROAMING_LATI_STATE, 0)
+                    playmoncry(VAR_WHICH_ROAMING_LATI, CRY_MODE_ENCOUNTER)
+                    waitmoncry
+                    delay(30)
+                    playmoncry(VAR_WHICH_ROAMING_LATI, CRY_MODE_ENCOUNTER)
+                    waitmoncry
+                    delay(45)
+                    msgbox("That was {STR_VAR_2}' cry!\pIt must have been able to recover\nits strength here.\p"
+                            "{STR_VAR_2} seems to be roaming\nHOENN again!", MSGBOX_DEFAULT)
+                }
+            }
+        }
+    }
+    release
+}
+
+script CrateredCrest_Cave_EventScript_ChallengeDrake{
+    applymovement(LOCALID_CRATER_CAVE_DRAKE, Common_Movement_FacePlayer)
+    waitmovement
+    if (var(VAR_ROAMER_POKEMON) == 0){
+        checkspecies(SPECIES_LATIAS)
+        bufferstring(STR_VAR_1, "red")
+        bufferspeciesname(STR_VAR_2, SPECIES_LATIAS)
+    }
+    elif (var(VAR_ROAMER_POKEMON) == 1){
+        checkspecies(SPECIES_LATIOS)
+        bufferstring(STR_VAR_1, "blue")
+        bufferspeciesname(STR_VAR_2, SPECIES_LATIOS)
+    }
+    if (var(VAR_RESULT) == TRUE){
+        msgbox(format("Are you ready to prove yourself?"), MSGBOX_YESNO)
+        if (var(VAR_RESULT) == YES){
+            msgbox("This won't be like our battles at the\nPOKéMON LEAGUE, {PLAYER}.\p"
+                    "This is a real battle!", MSGBOX_DEFAULT)
+            trainerbattle_no_intro(TRAINER_DRAKE_CRATERED_CREST, "So, you really do have what it takes to\nlet your vicious side loose.")
+            hidefollower
+            msgbox("You and {STR_VAR_2} had the fortitude\nto withstand our intensity, and the\lsheer strength to defeat us.\p"
+                    "You've shown me you're worthy.\pTake this ticket to travel to\nSOUTHERN ISLAND.", MSGBOX_DEFAULT)
+            giveitem(ITEM_EON_TICKET)
+            setflag(FLAG_RECEIVED_EON_TICKET)
+	        setflag(FLAG_ENABLE_SHIP_SOUTHERN_ISLAND)
+            delay(20)
+            msgbox("There you may just find the nest of\nanother rare DRAGON.\p"
+                    "Good luck, {PLAYER}", MSGBOX_DEFAULT)
+            closemessage
+            getplayerxy(VAR_TEMP_E, VAR_TEMP_F)
+            if (var(VAR_TEMP_E) == 13){
+                applymovement(LOCALID_PLAYER, CrateredCrest_Cave_Movement_PlayerMoveForDrake)
+                delay(10)
+            }
+            applymovement(LOCALID_CRATER_CAVE_DRAKE, CrateredCrest_Cave_Movement_DrakeLeaves)
+            delay(60)
+            applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceDown)
+            waitmovement(LOCALID_CRATER_CAVE_DRAKE)
+            setobjectxyperm(LOCALID_CRATER_CAVE_DRAKE, 26, 25)
+            setobjectmovementtype(LOCALID_CRATER_CAVE_DRAKE, MOVEMENT_TYPE_INVISIBLE)
+            addobject(LOCALID_CRATER_CAVE_DRAKE, MAP_CRATERED_CREST_CAVE)
+            release
+            end
+        }
+    }
+    msgbox("When you're ready to prove yourself,\ncome back here with {STR_VAR_2} and\l challenge me.", MSGBOX_DEFAULT)
+    release
+}
+
+movement CrateredCrest_Cave_Movement_DrakeLeaves{
+    walk_down
+    walk_down
+    walk_down
+    walk_down
+    walk_down
+    walk_down
+    walk_down
+    walk_down
+    walk_down
+    walk_down
+    set_invisible
+    step_end
+}
+
+movement CrateredCrest_Cave_Movement_ApproachPlayer{
+    set_visible
+    walk_up
+    walk_up
+    walk_up
+    walk_up
+    walk_up
+    step_end
+}
+
+movement CrateredCrest_Cave_Movement_DrakeThinks{
+    walk_down
+    walk_down
+    delay_16
+    delay_16
+    delay_16
+    delay_16
+    walk_up
+    walk_up
+    walk_up
+    walk_in_place_right
+    step_end
+}
+
+movement CrateredCrest_Cave_Movement_PlayerMoveForDrake{
+    walk_right
+    walk_in_place_left
+    step_end
+}

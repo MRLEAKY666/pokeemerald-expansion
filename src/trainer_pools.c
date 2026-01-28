@@ -1012,6 +1012,18 @@ static void RivalPrune(const struct Trainer *trainer, u8 *poolIndexArray, const 
     }
 }
 
+static void LatiPrune(const struct Trainer *trainer, u8 *poolIndexArray, const struct PoolRules *rules)
+{
+    //  Test function to demonstrate pruning
+    for (u32 i = 0; i < trainer->poolSize; i++)
+        if (trainer->party[poolIndexArray[i]].species == SPECIES_LATIAS && VarGet(VAR_ROAMER_POKEMON) == 0){
+            poolIndexArray[i] = POOL_SLOT_DISABLED;
+        }
+        else if (trainer->party[poolIndexArray[i]].species == SPECIES_LATIOS && VarGet(VAR_ROAMER_POKEMON) == 1){
+            poolIndexArray[i] = POOL_SLOT_DISABLED;
+        }
+}
+
 static void RandomTagPrune(const struct Trainer *trainer, u8 *poolIndexArray, const struct PoolRules *rules)
 {
     u32 tagToUse = trainer->party[poolIndexArray[0]].tags;
@@ -1032,6 +1044,9 @@ static void PrunePool(const struct Trainer *trainer, u8 *poolIndexArray, const s
             break;
         case POOL_PRUNE_RIVAL:
             RivalPrune(trainer, poolIndexArray, rules);
+            break;
+        case POOL_PRUNE_LATI:
+            LatiPrune(trainer, poolIndexArray, rules);
             break;
         case POOL_PRUNE_RANDOM_TAG:
             RandomTagPrune(trainer, poolIndexArray, rules);
