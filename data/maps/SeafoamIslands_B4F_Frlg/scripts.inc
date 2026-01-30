@@ -1,6 +1,6 @@
 .equ NUM_BOULDERS_PRESENT, VAR_TEMP_2
 
-SeafoamIslands_B4F_MapScripts::
+SeafoamIslands_B4F_Frlg_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, SeafoamIslands_B4F_OnTransition
 	map_script MAP_SCRIPT_ON_RESUME, SeafoamIslands_B4F_OnResume
 	map_script MAP_SCRIPT_ON_LOAD, SeafoamIslands_B4F_OnLoad
@@ -40,7 +40,7 @@ SeafoamIslands_B4F_EventScript_SetNoCurrentLayout::
 	return
 
 SeafoamIslands_B4F_EventScript_ShowArticuno::
-	clearflag FLAG_HIDE_ARTICUNO
+	clearflag FLAG_HIDE_ARTICUNO_FRLG
 	return
 
 SeafoamIslands_B4F_OnLoad::

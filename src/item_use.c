@@ -225,11 +225,11 @@ static void Task_CloseCantUseKeyItemMessage(u8 taskId)
 u8 CheckIfItemIsTMHMOrEvolutionStone(enum Item itemId)
 {
     if (GetItemFieldFunc(itemId) == ItemUseOutOfBattle_TMHM)
-        return 1;
+        return ITEM_IS_TM_HM;
     else if (GetItemFieldFunc(itemId) == ItemUseOutOfBattle_EvolutionStone)
-        return 2;
+        return ITEM_IS_EVOLUTION_STONE;
     else
-        return 0;
+        return ITEM_IS_OTHER;
 }
 
 // Mail in the bag menu can't have a message but it can be checked (view the mail background, no message)
@@ -301,21 +301,16 @@ void ItemUseOutOfBattle_Bike(u8 taskId)
 
 static void ItemUseOnFieldCB_Bike(u8 taskId)
 {
-    gUnusedBikeCameraAheadPanback = FALSE;
-
-    gSaveBlock2Ptr->playerBike = MACH_BIKE;
-    if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_BIKE)
-    {
-        SetPlayerAvatarTransitionFlags(PLAYER_AVATAR_FLAG_ON_FOOT);
-        Overworld_ClearSavedMusic();
-        Overworld_PlaySpecialMapMusic();
+    if (GetItemSecondaryId(gSpecialVar_ItemId) == STANDARD_BIKE){
+        GetOnOffBike(PLAYER_AVATAR_FLAG_BIKE | PLAYER_AVATAR_FLAG_BIKE);
     }
-    else
-    {
+    else if (GetItemSecondaryId(gSpecialVar_ItemId) == MACH_BIKE){
         gSaveBlock2Ptr->playerBike = GetItemSecondaryId(gSpecialVar_ItemId);
-        SetPlayerAvatarTransitionFlags(PLAYER_AVATAR_FLAG_BIKE);
-        Overworld_SetSavedMusic(MUS_CYCLING);
-        Overworld_ChangeMusicTo(MUS_CYCLING);
+        GetOnOffBike(PLAYER_AVATAR_FLAG_BIKE);
+    }
+    else { // ACRO_BIKE
+        gSaveBlock2Ptr->playerBike = GetItemSecondaryId(gSpecialVar_ItemId);
+        GetOnOffBike(PLAYER_AVATAR_FLAG_BIKE);
     }
 
     FollowerNPC_HandleBike();
@@ -1242,7 +1237,7 @@ void ItemUseInBattle_PartyMenuChooseMove(u8 taskId)
     ItemUseInBattle_ShowPartyMenu(taskId);
 }
 
-static bool32 IteamHealsMonVolatile(u32 battler, enum Item itemId)
+static bool32 IteamHealsMonVolatile(enum BattlerId battler, enum Item itemId)
 {
     const u8 *effect = GetItemEffect(itemId);
     if (effect[3] & ITEM3_STATUS_ALL)

@@ -345,6 +345,8 @@ extern const u8 BattleScript_DancerActivates[];
 extern const u8 BattleScript_AftermathDmg[];
 extern const u8 BattleScript_BattlerFormChange[];
 extern const u8 BattleScript_BattlerFormChangeEnd2[];
+extern const u8 BattleScript_BattlerFormChangeNoPopup[];
+extern const u8 BattleScript_BattlerFormChangeDisguise[];
 extern const u8 BattleScript_AttackerFormChangeWithString[];
 extern const u8 BattleScript_TargetFormChange[];
 extern const u8 BattleScript_AnticipationActivates[];
@@ -397,7 +399,7 @@ extern const u8 BattleScript_DoesntAffectTargetAtkString[];
 extern const u8 BattleScript_DoesntAffectScripting[];
 extern const u8 BattleScript_GulpMissileGorging[];
 extern const u8 BattleScript_GulpMissileGulping[];
-extern const u8 BattleScript_GulpMissileFormChange[];
+extern const u8 BattleScript_TwoTurnMovesSecondTurnFormChange[];
 extern const u8 BattleScript_BattleBondActivatesOnMoveEndAttacker[];
 extern const u8 BattleScript_EffectBattleBondStatIncrease[];
 extern const u8 BattleScript_PrimalWeatherBlocksMove[];
@@ -518,6 +520,10 @@ extern const u8 BattleScript_Explosion[];
 extern const u8 BattleScript_ActivateSwitchInAbility[];
 extern const u8 BattleScript_BreakScreens[];
 extern const u8 BattleScript_StealStats[];
+extern const u8 BattleScript_BeatUpAttackMessage[];
+extern const u8 BattleScript_MagnitudeMessage[];
+extern const u8 BattleScript_FickleBeamMessage[];
+extern const u8 BattleScript_BeforeSnoreMessage[];
 
 extern const u8 BattleScript_RayquazaBattleLost[];                 // rayquaza battle
 
@@ -624,7 +630,6 @@ extern const u8 BattleScript_EffectHappyHour[];
 extern const u8 BattleScript_EffectDisable[];
 extern const u8 BattleScript_EffectEncore[];
 extern const u8 BattleScript_EffectPainSplit[];
-extern const u8 BattleScript_EffectSnore[];
 extern const u8 BattleScript_EffectConversion2[];
 extern const u8 BattleScript_EffectLockOn[];
 extern const u8 BattleScript_EffectSketch[];
@@ -646,7 +651,6 @@ extern const u8 BattleScript_EffectSwagger[];
 extern const u8 BattleScript_EffectAttract[];
 extern const u8 BattleScript_EffectPresent[];
 extern const u8 BattleScript_EffectSafeguard[];
-extern const u8 BattleScript_EffectMagnitude[];
 extern const u8 BattleScript_EffectBatonPass[];
 extern const u8 BattleScript_EffectCaptivate[];
 extern const u8 BattleScript_EffectMorningSun[];
@@ -665,7 +669,6 @@ extern const u8 BattleScript_EffectSemiInvulnerable[];
 extern const u8 BattleScript_EffectDefenseCurl[];
 extern const u8 BattleScript_EffectSoftboiled[];
 extern const u8 BattleScript_EffectStockpile[];
-extern const u8 BattleScript_EffectSpitUp[];
 extern const u8 BattleScript_EffectSwallow[];
 extern const u8 BattleScript_EffectOverwriteAbility[];
 extern const u8 BattleScript_EffectTorment[];
@@ -701,7 +704,6 @@ extern const u8 BattleScript_EffectDragonDance[];
 extern const u8 BattleScript_EffectCamouflage[];
 extern const u8 BattleScript_EffectPledge[];
 extern const u8 BattleScript_EffectFling[];
-extern const u8 BattleScript_EffectNaturalGift[];
 extern const u8 BattleScript_EffectRoost[];
 extern const u8 BattleScript_EffectGravity[];
 extern const u8 BattleScript_EffectMiracleEye[];
@@ -814,10 +816,13 @@ extern const u8 BattleScript_EffectFilletAway[];
 extern const u8 BattleScript_EffectShedTail[];
 extern const u8 BattleScript_EffectTidyUp[];
 extern const u8 BattleScript_EffectSpicyExtract[];
-extern const u8 BattleScript_EffectFickleBeam[];
-//added below for rayquaza battle
-extern const u8 BattleScript_FaintGroudon[];
-extern const u8 BattleScript_FaintKyogre[];
-//added above for rayquaza battle
+extern const u8 BattleScript_GhostBallDodge[];
+extern const u8 BattleScript_GhostGetOutGetOut[];
+extern const u8 BattleScript_TooScaredToMove[];
+extern const u8 BattleScript_SilphScopeUnveiled[];
+
+extern const u8 BattleScript_FaintGroudon[]; //added for rayquaza battle
+extern const u8 BattleScript_FaintKyogre[]; //added above for rayquaza battle
+
 
 #endif // GUARD_BATTLE_SCRIPTS_H
