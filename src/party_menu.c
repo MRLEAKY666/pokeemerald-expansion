@@ -6964,6 +6964,20 @@ static void TryTutorSelectedMon(u8 taskId)
         gPartyMenu.data1 = gSpecialVar_0x8005;
         StringCopy(gStringVar2, GetMoveName(gPartyMenu.data1));
         move[1] = 2;
+
+        if (FlagGet(FLAG_DRAKE_DRACO_METEOR_TUTORING) && GetMonData(mon, MON_DATA_FRIENDSHIP) != MAX_FRIENDSHIP)
+        {
+            if (GetSpeciesType(GetMonData(mon, MON_DATA_SPECIES), 0) != TYPE_DRAGON
+                && GetSpeciesType(GetMonData(mon, MON_DATA_SPECIES), 1) != TYPE_DRAGON){
+                VarSet(VAR_RESULT, GetMonData(mon, MON_DATA_SPECIES));
+            }
+            else{
+                VarSet(VAR_RESULT, TYPE_DRAGON);
+            }
+            Task_ClosePartyMenu(taskId);
+            return;
+        }
+
         switch (CanTeachMove(mon, gPartyMenu.data1))
         {
         case CANNOT_LEARN_MOVE:

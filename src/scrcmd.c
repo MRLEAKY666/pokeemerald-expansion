@@ -3245,6 +3245,17 @@ bool8 Scrcmd_checkspecies(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 Scrcmd_checktype(struct ScriptContext *ctx)
+{
+    u32 givenType = VarGet(ScriptReadHalfword(ctx));
+
+    Script_RequestEffects(SCREFF_V1);
+
+    gSpecialVar_Result = CheckPartyHasType(givenType);
+
+    return FALSE;
+}
+
 bool8 Scrcmd_checkspecies_choose(struct ScriptContext *ctx)
 {
     u32 givenSpecies = VarGet(ScriptReadHalfword(ctx));

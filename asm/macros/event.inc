@@ -2658,6 +2658,12 @@
 	checkspecies \speciesId, OPEN_PARTY_SCREEN
 	.endm
 
+	@ Check if the Player has a type in their party. 
+	.macro checktype speciesId:req
+	callnative Scrcmd_checktype, requests_effects=1
+	.2byte \speciesId
+	.endm
+
 	@ Gets the facing direction of a given event object and stores it in the variable dest.
 	.macro getobjectfacingdirection localId:req, dest:req
 	callnative Scrcmd_getobjectfacingdirection, requests_effects=1

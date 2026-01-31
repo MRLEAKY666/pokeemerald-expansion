@@ -38,15 +38,22 @@ EverGrandeCity_DrakesRoom_EventScript_CloseDoor::
 	call PokemonLeague_EliteFour_EventScript_CloseDoor
 	return
 
-EverGrandeCity_DrakesRoom_EventScript_Drake::
+`
+
+script EverGrandeCity_DrakesRoom_EventScript_Drake{
 	lock
 	faceplayer
-	goto_if_set FLAG_DEFEATED_ELITE_4_DRAKE, EverGrandeCity_DrakesRoom_EventScript_PostBattleSpeech
-	playbgm MUS_ENCOUNTER_ELITE_FOUR, FALSE
-	msgbox EverGrandeCity_DrakesRoom_Text_IntroSpeech, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_DRAKE, EverGrandeCity_DrakesRoom_Text_Defeat
-	goto EverGrandeCity_DrakesRoom_EventScript_Defeated
-	end
+	if (!flag(FLAG_MET_ELITE_FOUR_DRAKE)){
+		setflag(FLAG_MET_ELITE_FOUR_DRAKE)
+	}
+	goto_if_set(FLAG_DEFEATED_ELITE_4_DRAKE, EverGrandeCity_DrakesRoom_EventScript_PostBattleSpeech)
+	playbgm(MUS_ENCOUNTER_ELITE_FOUR, FALSE)
+	msgbox(EverGrandeCity_DrakesRoom_Text_IntroSpeech, MSGBOX_DEFAULT)
+	trainerbattle_no_intro(TRAINER_DRAKE, EverGrandeCity_DrakesRoom_Text_Defeat)
+	goto(EverGrandeCity_DrakesRoom_EventScript_Defeated)
+}
+
+raw `
 
 EverGrandeCity_DrakesRoom_EventScript_PostBattleSpeech::
 	msgbox EverGrandeCity_DrakesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT

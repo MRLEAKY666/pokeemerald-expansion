@@ -1,0 +1,187 @@
+raw`
+
+CrateredCrest_House1_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, CrateredCrest_House1_OnTransition
+	.byte 0
+
+`
+const FLAG_HIDE_CRATER_COTTAGE_DRAKE = FLAG_TEMP_3
+
+script CrateredCrest_House1_OnTransition{
+	if (flag(FLAG_TRIGGERED_DRAKE_LATI_SCENE) && !flag(FLAG_RECEIVED_EON_TICKET)){
+		setflag(FLAG_HIDE_CRATER_COTTAGE_DRAKE)
+	}
+}
+
+raw`
+
+CrateredCrest_House1_EventScript_OldLady::
+	@ lock
+	faceplayer
+	call_if_unset FLAG_MET_CRATERED_CREST_LADY, CrateredCrest_House1_EventScript_MeetOldLady
+	msgbox CrateredCrest_House1_Text_DangerousCrater, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, CrateredCrest_House1_EventScript_Rest
+	goto_if_eq VAR_RESULT, NO, CrateredCrest_House1_EventScript_DeclineRest
+	end
+
+CrateredCrest_House1_EventScript_MeetOldLady::
+	msgbox CrateredCrest_House1_Text_CraterStory1, MSGBOX_DEFAULT
+	return
+
+CrateredCrest_House1_EventScript_Rest::
+	msgbox CrateredCrest_House1_Text_Rest, MSGBOX_DEFAULT
+	closemessage
+	call Common_EventScript_OutOfCenterPartyHeal
+	msgbox CrateredCrest_House1_Text_PostRest, MSGBOX_DEFAULT
+	goto_if_set FLAG_MET_CRATERED_CREST_LADY, CrateredCrest_House1_EventScript_AskHearAboutCrater
+	goto_if_unset FLAG_MET_CRATERED_CREST_LADY, CrateredCrest_House1_EventScript_TryMeetOldLadyFlag
+	release
+	end
+
+CrateredCrest_House1_EventScript_DeclineRest::
+	msgbox CrateredCrest_House1_Text_DeclineRest, MSGBOX_DEFAULT
+	goto_if_set FLAG_MET_CRATERED_CREST_LADY, CrateredCrest_House1_EventScript_AskHearAboutCrater
+	goto_if_unset FLAG_MET_CRATERED_CREST_LADY, CrateredCrest_House1_EventScript_TryMeetOldLadyFlag
+	release
+	end
+
+CrateredCrest_House1_EventScript_TryMeetOldLadyFlag::
+	setflag FLAG_MET_CRATERED_CREST_LADY
+	release
+	end
+
+CrateredCrest_House1_EventScript_AskHearAboutCrater::
+	msgbox CrateredCrest_House1_Text_HearAboutCraterAgain, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, CrateredCrest_House1_EventScript_RepeatCraterInfo
+	msgbox CrateredCrest_House1_Text_BeCareful, MSGBOX_DEFAULT
+	release
+	end
+
+CrateredCrest_House1_Text_HearAboutCraterAgain:
+	.string "Do you want to hear about the history\n"
+	.string "of the crater again?$"
+
+CrateredCrest_House1_Text_BeCareful:
+	.string "Be very careful if you're planning\n"
+	.string "to explore the crater!$"
+
+CrateredCrest_House1_EventScript_RepeatCraterInfo::
+	msgbox CrateredCrest_House1_Text_CraterStory2, MSGBOX_DEFAULT
+	msgbox CrateredCrest_House1_Text_BeCareful, MSGBOX_DEFAULT
+	release
+	end
+
+CrateredCrest_House1_Text_CraterStory1:
+	.string "Hello there.\p" 
+	.string "It's not often we get visitors\n"
+	.string "all the way out here.\p"
+	.string "CRATERED CREST is commonly considered\n"
+	.string "to be the site of an ancient eruption.\p"
+	.string "But the legends of the tribe who settled\n"
+	.string "here in the past tell a different story.\p"
+	.string "They say this crater was formed when\n"
+	.string "a meteor fell from the stars.\p"
+	.string "According to their myth, rugged people\n"
+	.string "and POKéMON are drawn here, seeing the\l"
+	.string "crater as a place of power.$"
+
+CrateredCrest_House1_Text_CraterStory2:
+	.string "CRATERED CREST is commonly considered\n"
+	.string "to be the site of an ancient eruption.\p"
+	.string "But the legends of the tribe who settled\n"
+	.string "here in the past tell a different story.\p"
+	.string "They say this crater was formed when\n"
+	.string "a meteor fell from the stars.\p"
+	.string "According to their myth, rugged people\n"
+	.string "and POKéMON are drawn here, seeing the\l"
+	.string "crater as a place of power.$"
+
+CrateredCrest_House1_Text_DangerousCrater:
+	.string "If you'll be exploring the crater, why\n"
+	.string "not have a rest before continuing?\p"
+	.string "Do you want to take a rest?$"
+
+CrateredCrest_House1_Text_Rest:
+	.string "That's right.\n"
+	.string "Take your time and rest up!$"
+
+CrateredCrest_House1_Text_PostRest:
+	.string "There, isn't that better?\p"
+	.string "You can take a rest here anytime.$"
+
+CrateredCrest_House1_Text_DeclineRest:
+	.string "Not right now? That's alright.\p"
+	.string "You can take a rest here anytime.$"
+
+CrateredCrest_House1_Text_Drampa:
+	.string "Drooompapa!$"
+
+`
+
+script CrateredCrest_House1_EventScript_Drake{
+	// lock
+	faceplayer
+	if (!flag(FLAG_MET_CRATERED_CREST_DRAKE)){
+		if (!flag(FLAG_MET_ELITE_FOUR_DRAKE)){
+			msgbox(format("Greetings.\pMy name is DRAKE, and I am considered to be an expert DRAGON type TRAINER.\p"
+							"Since prehistory, the toughest people in HOENN…\p"
+							"The most skilled DRAGON TRAINERS have settled in this high-altitude crater."), MSGBOX_DEFAULT)
+		}
+		else{
+		msgbox(format("This is my home outside of EVERGRANDE CITY.\p"
+						"Since prehistory, the toughest people in HOENN…\p"
+						"The most skilled DRAGON TRAINERS have settled in this high-altitude crater."), MSGBOX_DEFAULT)
+		}
+		setflag(FLAG_MET_CRATERED_CREST_DRAKE)
+	}
+	msgbox(format("DRAKE: Have you come here to learn the ultimate DRAGON type move?"), MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES){
+		checktype(TYPE_DRAGON)
+		if (var(VAR_RESULT) == TRUE){
+			setflag(FLAG_DRAKE_DRACO_METEOR_TUTORING)
+			setvar(VAR_0x8005, MOVE_DRACO_METEOR)
+			fadescreen(FADE_TO_BLACK)
+			special(ChooseMonForMoveTutor)
+			waitstate
+			if (var(VAR_RESULT) == TYPE_DRAGON){ // friendship too low or cancelled menu
+				msgbox(format("This POKéMON…\pIt may be capable of performing this move, but not until it trusts you more."), MSGBOX_DEFAULT)
+			}
+			elif (var(VAR_RESULT) == TRUE){
+				msgbox(format("There.\pWith that move, your POKéMON can finally reach it's full terrifying potential in battle."), MSGBOX_DEFAULT)
+			}
+			elif (var(VAR_RESULT) == FALSE){
+				msgbox(format("When one of your DRAGON POKéMON is ready to ascend to the peak of strength, come back to see me."), MSGBOX_DEFAULT)
+			}
+			else{ // species like mew that can learn but aren't dragon type
+				msgbox(format("This POKéMON…\pThough it may be capable of performing this move, it is not a DRAGON…\pI cannot teach this POKéMON."), MSGBOX_DEFAULT)
+			}
+		}
+		else{ // if no dragons in team
+			msgbox(format("None of your POKéMON can handle this move.\p"
+						"Come back with a DRAGON POKéMON strong enough to endure my tutelage,\p"
+						"then I'll teach your POKéMON."), MSGBOX_DEFAULT)
+		}
+	} 
+	else{ // said no
+		msgbox(format("When one of your DRAGON POKéMON is ready to ascend to the peak of strength, come back to see me."), MSGBOX_DEFAULT)
+	}
+	if (flag(FLAG_DRAKE_DRACO_METEOR_TUTORING)){
+		clearflag(FLAG_DRAKE_DRACO_METEOR_TUTORING)
+	}
+	applymovement(LOCALID_CRATER_COTTAGE_DRAKE, Common_Movement_FaceOriginalDirection)
+	waitmovement
+	release
+	end
+}
+
+script CrateredCrest_House1_EventScript_Drampa{
+	// lock
+	faceplayer
+	waitse
+	playmoncry(SPECIES_DRAMPA, CRY_MODE_NORMAL)
+	message(CrateredCrest_House1_Text_Drampa)
+	waitmessage
+	delay(90)
+	closemessage
+	release
+}

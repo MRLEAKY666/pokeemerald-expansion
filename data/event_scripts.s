@@ -1852,7 +1852,7 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 
 	.include "data/maps/GraniteCave_ArticunosRoom/scripts.inc"
 
-	.include "data/maps/DragonsRoost_House1/scripts.inc"
+	.include "data/maps/CrateredCrest_House1/scripts.inc"
 
 	.include "data/maps/FortreeCliffs/scripts.inc"
 

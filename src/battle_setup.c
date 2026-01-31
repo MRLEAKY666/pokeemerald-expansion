@@ -896,6 +896,9 @@ enum BattleTransition GetTrainerBattleTransition(void)
         || trainerClass == TRAINER_CLASS_AQUA_ADMIN)
         return B_TRANSITION_AQUA;
 
+    if (!StringCompare(GetTrainerNameFromId(TRAINER_BATTLE_PARAM.opponentA), GetTrainerNameFromId(TRAINER_DRAKE_CRATERED_CREST)))
+        return B_TRANSITION_ANGLED_WIPES;
+
     switch (GetTrainerBattleType(trainerId))
     {
     case TRAINER_BATTLE_TYPE_SINGLES:

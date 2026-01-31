@@ -4898,13 +4898,13 @@
     },
     {
       "id": "LAYOUT_DRAGONS_ROOST_HOUSE1",
-      "name": "DragonsRoost_House1_Layout",
-      "width": 8,
-      "height": 7,
+      "name": "CrateredCrest_House1_Layout",
+      "width": 11,
+      "height": 8,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_GenericBuilding",
-      "border_filepath": "data/layouts/DragonsRoost_House1/border.bin",
-      "blockdata_filepath": "data/layouts/DragonsRoost_House1/map.bin",
+      "border_filepath": "data/layouts/CrateredCrest_House1/border.bin",
+      "blockdata_filepath": "data/layouts/CrateredCrest_House1/map.bin",
       "layout_version": "emerald"
     },
     {

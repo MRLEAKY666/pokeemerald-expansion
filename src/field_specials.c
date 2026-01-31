@@ -4515,6 +4515,18 @@ bool32 CheckPartyHasSpecies(u32 givenSpecies)
     return FALSE;
 }
 
+bool32 CheckPartyHasType(u32 givenType)
+{
+    u32 partyIndex;
+
+    for (partyIndex = 0; partyIndex < CalculatePlayerPartyCount(); partyIndex++)
+        if (GetSpeciesType(GetMonData(&gPlayerParty[partyIndex], MON_DATA_SPECIES), 0) == givenType 
+         || GetSpeciesType(GetMonData(&gPlayerParty[partyIndex], MON_DATA_SPECIES), 1) == givenType)
+            return TRUE;
+
+    return FALSE;
+}
+
 void UseBlankMessageToCancelPokemonPic(void)
 {
     DeactivateSingleTextPrinter(0, WINDOW_TEXT_PRINTER);
