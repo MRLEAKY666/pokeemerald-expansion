@@ -1673,7 +1673,7 @@ static u8 GetPlayerAvatarStateTransitionByGraphicsId(u16 graphicsId)
 
     for (i = 0; i < ARRAY_COUNT(sPlayerAvatarGfxToStateFlag); i++)
     {
-        if (sPlayerAvatarGfxToStateFlag[i].graphicsId == graphicsId)
+        if (GetPlayerAvatarGraphicsIdByStateId(i) == graphicsId)
             return sPlayerAvatarGfxToStateFlag[i].playerFlag;
     }
     return PLAYER_AVATAR_FLAG_ON_FOOT;
@@ -1687,7 +1687,7 @@ u16 GetPlayerAvatarGraphicsIdByCurrentState(void)
     for (i = 0; i < ARRAY_COUNT(sPlayerAvatarGfxToStateFlag); i++)
     {
         if (sPlayerAvatarGfxToStateFlag[i].playerFlag & flags)
-            return sPlayerAvatarGfxToStateFlag[i].graphicsId;
+            return GetPlayerAvatarGraphicsIdByStateId(i);
     }
     return 0;
 }
