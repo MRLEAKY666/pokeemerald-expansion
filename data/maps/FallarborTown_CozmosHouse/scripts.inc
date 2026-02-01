@@ -17,7 +17,7 @@ FallarborTown_CozmosHouse_EventScript_ProfCozmo::
 # 9 "data//maps/FallarborTown_CozmosHouse/scripts.pory"
 	checkitem ITEM_METEORITE
 # 10 "data//maps/FallarborTown_CozmosHouse/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, FallarborTown_CozmosHouse_EventScript_PlayerHasMeteorite
+	@ goto_if_eq VAR_RESULT, TRUE, FallarborTown_CozmosHouse_EventScript_PlayerHasMeteorite
 # 11 "data//maps/FallarborTown_CozmosHouse/scripts.pory"
 	msgbox FallarborTown_CozmosHouse_Text_MeteoriteWillNeverBeMineNow, MSGBOX_DEFAULT
 # 12 "data//maps/FallarborTown_CozmosHouse/scripts.pory"

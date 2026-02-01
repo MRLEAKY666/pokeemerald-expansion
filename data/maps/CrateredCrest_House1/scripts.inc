@@ -146,7 +146,7 @@ CrateredCrest_House1_Text_CraterStory1:
 # 75 "data//maps/CrateredCrest_House1/scripts.pory"
 	.string "Hello there.\p" 
 # 76 "data//maps/CrateredCrest_House1/scripts.pory"
-	.string "It's not often I get visitors\n"
+	.string "It's not often we get visitors\n"
 # 77 "data//maps/CrateredCrest_House1/scripts.pory"
 	.string "all the way out here.\p"
 # 78 "data//maps/CrateredCrest_House1/scripts.pory"
