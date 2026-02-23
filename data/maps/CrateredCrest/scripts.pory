@@ -33,14 +33,18 @@ CrateredCrest_EventScript_TryRemoveWildMon::
 	removeobject VAR_LAST_TALKED
 	return
 
-CrateredCrest_OnTransition:
-	call_if_unset FLAG_CRATERED_CREST_METEORITE, CrateredCrest_EventScript_PrepRepeatSparkle
-	call_if_le VAR_CRATERED_CREST_RAYQUAZA_SCENE_STATE, 1, CrateredCrest_EventScript_PrepRayquazaCry
-	call_if_unset FLAG_CRATERED_CREST_CLONE, CrateredCrest_EventScript_HideClone
-	call CrateredCrest_EventScript_SetupPlayerCloneGfxId
-	end
-
 `
+
+script CrateredCrest_OnTransition{
+	call_if_unset(FLAG_CRATERED_CREST_METEORITE, CrateredCrest_EventScript_PrepRepeatSparkle)
+	getplayerxy(VAR_TEMP_E, VAR_TEMP_F)
+	if (var(VAR_TEMP_F) == 77){
+		call_if_le(VAR_CRATERED_CREST_RAYQUAZA_SCENE_STATE, 1, CrateredCrest_EventScript_PrepRayquazaCry)
+	}
+	call_if_unset(FLAG_CRATERED_CREST_CLONE, CrateredCrest_EventScript_HideClone)
+	call(CrateredCrest_EventScript_SetupPlayerCloneGfxId)
+}
+
 script CrateredCrest_EventScript_PrepRayquazaCry{
 	setvar(VAR_TEMP_1, 1)
 	return
