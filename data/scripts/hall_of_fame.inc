@@ -5,7 +5,7 @@ EverGrandeCity_HallOfFame_EventScript_SetGameClearFlags::
 	call EverGrandeCity_HallOfFame_EventScript_UpdateHoFCounter
 	call_if_eq VAR_FOSSIL_MANIAC_STATE, 0, EverGrandeCity_HallOfFame_EventScript_SetDesertUnderpassCommentReady
 	clearflag FLAG_HIDE_LILYCOVE_MOTEL_GAME_DESIGNERS
-	clearflag FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE_HOUSE
+	@ clearflag FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE_HOUSE
 	call EverGrandeCity_HallOfFame_EventScript_ResetEliteFour
 	setflag FLAG_HIDE_SLATEPORT_CITY_STERNS_SHIPYARD_MR_BRINEY
 	setvar VAR_BRINEY_LOCATION, 8                                        @ set briney location as ss tidal captain

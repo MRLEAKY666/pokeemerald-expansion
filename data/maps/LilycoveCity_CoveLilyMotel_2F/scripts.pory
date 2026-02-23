@@ -1,6 +1,11 @@
 raw `
 LilycoveCity_CoveLilyMotel_2F_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, LilycoveCity_CoveLilyMotel_OnTransition
 	.byte 0
+
+LilycoveCity_CoveLilyMotel_OnTransition:
+	setflag FLAG_TEMP_3
+	end
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_GameDesigner::
 	lock
