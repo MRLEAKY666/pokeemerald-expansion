@@ -443,26 +443,26 @@ static struct PickFunctions GetPickFunctions(const struct Trainer *trainer)
     switch (trainer->poolPickIndex)
     {
         //  Repeats, but better to have the safety
-        case POOL_PICK_DEFAULT:
-            pickFunctions.LeadFunction = &DefaultLeadPickFunction;
-            pickFunctions.AceFunction = &DefaultAcePickFunction;
-            pickFunctions.OtherFunction = &DefaultOtherPickFunction;
-            break;
-        case POOL_PICK_LOWEST:
-            pickFunctions.LeadFunction = &PickLowest;
-            pickFunctions.AceFunction = &PickLowest;
-            pickFunctions.OtherFunction = &PickLowest;
-            break;
-        case POOL_PICK_RIVAL:
-            pickFunctions.LeadFunction = &DefaultLeadPickFunction;
-            pickFunctions.AceFunction = &RivalAcePickFunction;
-            pickFunctions.OtherFunction = &DefaultOtherPickFunction;
-            break;
-        default:
-            pickFunctions.LeadFunction = &DefaultLeadPickFunction;
-            pickFunctions.AceFunction = &DefaultAcePickFunction;
-            pickFunctions.OtherFunction = &DefaultOtherPickFunction;
-            break;
+    case POOL_PICK_DEFAULT:
+        pickFunctions.LeadFunction = &DefaultLeadPickFunction;
+        pickFunctions.AceFunction = &DefaultAcePickFunction;
+        pickFunctions.OtherFunction = &DefaultOtherPickFunction;
+        break;
+    case POOL_PICK_LOWEST:
+        pickFunctions.LeadFunction = &PickLowest;
+        pickFunctions.AceFunction = &PickLowest;
+        pickFunctions.OtherFunction = &PickLowest;
+        break;
+    case POOL_PICK_RIVAL:
+        pickFunctions.LeadFunction = &DefaultLeadPickFunction;
+        pickFunctions.AceFunction = &RivalAcePickFunction;
+        pickFunctions.OtherFunction = &DefaultOtherPickFunction;
+        break;
+    default:
+        pickFunctions.LeadFunction = &DefaultLeadPickFunction;
+        pickFunctions.AceFunction = &DefaultAcePickFunction;
+        pickFunctions.OtherFunction = &DefaultOtherPickFunction;
+        break;
     }
     return pickFunctions;
 }
@@ -1037,22 +1037,22 @@ static void PrunePool(const struct Trainer *trainer, u8 *poolIndexArray, const s
     //  Use defined pruning functions go here
     switch (trainer->poolPruneIndex)
     {
-        case POOL_PRUNE_NONE:
-            break;
-        case POOL_PRUNE_TEST:
-            TestPrune(trainer, poolIndexArray, rules);
-            break;
-        case POOL_PRUNE_RIVAL:
-            RivalPrune(trainer, poolIndexArray, rules);
-            break;
-        case POOL_PRUNE_LATI:
-            LatiPrune(trainer, poolIndexArray, rules);
-            break;
-        case POOL_PRUNE_RANDOM_TAG:
-            RandomTagPrune(trainer, poolIndexArray, rules);
-            break;
-        default:
-            break;
+    case POOL_PRUNE_NONE:
+        break;
+    case POOL_PRUNE_TEST:
+        TestPrune(trainer, poolIndexArray, rules);
+        break;
+    case POOL_PRUNE_RIVAL:
+        RivalPrune(trainer, poolIndexArray, rules);
+        break;
+    case POOL_PRUNE_LATI:
+        LatiPrune(trainer, poolIndexArray, rules);
+        break;
+    case POOL_PRUNE_RANDOM_TAG:
+        RandomTagPrune(trainer, poolIndexArray, rules);
+        break;
+    default:
+        break;
     }
 }
 

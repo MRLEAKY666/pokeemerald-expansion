@@ -4,7 +4,7 @@
 #include "battle_setup.h"
 #include "battle_util.h"
 #include "battle_controllers.h"
-#include "battle_ai_util.h"
+#include "battle_ai_record.h"
 #include "battle_gimmick.h"
 #include "battle_scripts.h"
 #include "constants/battle.h"
@@ -1324,12 +1324,26 @@ static bool32 HandleEndTurnFormChange(enum BattlerId battler)
     {
         gBattleScripting.battler = battler;
         gBattleScripting.abilityPopupOverwrite = ability; // To prevent the new form's ability from pop up
-        if (ability == ABILITY_POWER_CONSTRUCT) // Special animation
+        switch (ability)
+        {
+        case ABILITY_POWER_CONSTRUCT:
             BattleScriptExecute(BattleScript_PowerConstruct);
-        else if (ability == ABILITY_HUNGER_SWITCH)
+            break;
+        case ABILITY_HUNGER_SWITCH:
             BattleScriptExecute(BattleScript_BattlerFormChangeEnd3NoPopup);
-        else
+            break;
+        case ABILITY_ZEN_MODE:
+            if (gBattleMons[battler].species == SPECIES_DARMANITAN_ZEN
+            || gBattleMons[battler].species == SPECIES_DARMANITAN_GALAR_ZEN)
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ZEN_MODE_TRIGGERED;
+            else
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ZEN_MODE_ENDED;
+            BattleScriptExecute(BattleScript_ZenMode);
+            break;
+        default:
             BattleScriptExecute(BattleScript_BattlerFormChangeEnd2); // Generic animation
+            break;
+        }
         effect = TRUE;
     }
 

@@ -2012,7 +2012,7 @@ static void SpriteCB_GroudonRocks(struct Sprite *sprite)
     if (sprite->sTimer % 2 == 0)
         sprite->y2 ^= 3;
 
-    switch(sprite->sState)
+    switch (sprite->sState)
     {
     case 0:
         // Rock floats up
@@ -2277,7 +2277,7 @@ static void CreateKyogreBubbleSprites_Fins(void)
 
 static void SpriteCB_KyogreBubbles(struct Sprite *sprite)
 {
-    switch(sprite->sState)
+    switch (sprite->sState)
     {
     case 0:
         if (sprite->sDelay == 0)
@@ -2495,7 +2495,7 @@ static void SpriteCB_Lightning(struct Sprite *sprite)
     if (sprite->animEnded)
         sprite->invisible = TRUE;
 
-    switch(sprite->sState)
+    switch (sprite->sState)
     {
     case 0:
         sprite->sPalIdx = 0x1C2;
@@ -2558,7 +2558,7 @@ static void Task_Scene3_Rayquaza(u8 taskId)
 
     tTimer++;
 
-    switch(tState)
+    switch (tState)
     {
     case 0:
         if ((tTimer & 1) != 0)
@@ -2610,7 +2610,7 @@ static void Task_RayquazaAttack(u8 taskId)
     s16 *data = gTasks[taskId].data;
     data[2]++;
 
-    switch(tState)
+    switch (tState)
     {
     case 0:
         if ((data[2] & 1) != 0)
@@ -3273,7 +3273,7 @@ static void SpriteCB_LogoLetter(struct Sprite *sprite)
 
 static void SpriteCB_GameFreakLogo(struct Sprite *sprite)
 {
-    switch(sprite->sState)
+    switch (sprite->sState)
     {
     case 0:
         if (gIntroFrameCounter == TIMER_LOGO_APPEAR)
