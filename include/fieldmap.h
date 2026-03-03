@@ -14,7 +14,7 @@
 #define NUM_PALS_TOTAL 13
 #define MAX_MAP_DATA_SIZE 10240
 
-#define MAX_ELEVATION_LEVEL 7 // Old Was 15
+// #define MAX_ELEVATION_LEVEL 7 // Old Was 15, moved to ELEVATION_MULTI_LEVEL on 26.3.2
 
 #define NUM_TILES_PER_METATILE 12
 
