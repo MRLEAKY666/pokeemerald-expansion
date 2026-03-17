@@ -226,8 +226,7 @@ const union AnimCmd *const gAnims_Trainer[] ={
     sAnim_GeneralFrame0,
 };
 
-#include "data/trainer_parties.h"
-
+#if !TESTING
 const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] =
 {
 #if IS_FRLG
@@ -236,6 +235,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] =
 #include "data/trainers.h"
 #endif
 };
+#endif
 
 #include "data/text/follower_messages.h"
 #include "data/outfit_tables.h"
