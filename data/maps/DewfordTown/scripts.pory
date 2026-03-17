@@ -217,8 +217,10 @@ DewfordTown_EventScript_RegisterBriney::
 	waitmessage
 	delay 30
 	playfanfare MUS_REGISTER_MATCH_CALL
-	msgbox DewfordTown_Text_RegisteredBrineyInPokenav, MSGBOX_DEFAULT
+	message DewfordTown_Text_RegisteredBrineyInPokenav
+	waitmessage
 	waitfanfare
+	delay 30
 	msgbox DewfordTown_Text_RegisterBriney2, MSGBOX_DEFAULT
 	closemessage
 	setflag FLAG_REGISTERED_BRINEY
