@@ -133,11 +133,11 @@
 #define METATILE_Cave_EntranceCover                      0x829
 #define METATILE_Cave_Floor_Ledge_Bottom                 0x8E1
 #define METATILE_Cave_Floor_Ledge_Top                    0x8D1
-#define METATILE_Cave_RockBarrier_Bottom                 0x917
-#define METATILE_Cave_RockBarrier_Top                    0x907
 #define METATILE_Cave_Regular_Dark_Cave_Wall             0x8FF
 #define METATILE_Cave_Regular_Dark_Floor                 0x8F5
 #define METATILE_Cave_Regular_Dark_Top_Cliff_Edge        0x8E9
+#define METATILE_Cave_RockBarrier_Bottom                 0x917
+#define METATILE_Cave_RockBarrier_Top                    0x907
 #define METATILE_Cave_RootCellar_Shelf_A_Full            0x99E
 #define METATILE_Cave_RootCellar_Shelf_A_Half            0x9A1
 #define METATILE_Cave_RootCellar_Shelf_B_Full            0x9A0
