@@ -534,7 +534,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_BLAZE, ABILITY_NONE, ABILITY_RECKLESS },
+        .abilities = { ABILITY_MOLD_BREAKER, ABILITY_MOLD_BREAKER, ABILITY_MOLD_BREAKER },
         .bodyColor = BODY_COLOR_RED,
         .noFlip = TRUE,
         .speciesName = _("Emboar"),
@@ -718,8 +718,11 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         )
         .levelUpLearnset = sDewottLevelUpLearnset,
         .teachableLearnset = sDewottTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_SAMUROTT, CONDITIONS({IF_NOT_TIME, TIME_NIGHT})},
-                                {EVO_LEVEL, 36, SPECIES_SAMUROTT_HISUI, CONDITIONS({IF_TIME, TIME_NIGHT})}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_SAMUROTT, CONDITIONS({IF_NOT_TIME, TIME_NIGHT})}
+                            #if P_HISUIAN_FORMS
+                                ,{EVO_LEVEL, 36, SPECIES_SAMUROTT_HISUI, CONDITIONS({IF_TIME, TIME_NIGHT})}
+                            #endif
+                            ),
     },
 
     [SPECIES_SAMUROTT] =
@@ -2851,7 +2854,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_SAND_RUSH, ABILITY_SAND_FORCE, ABILITY_MOLD_BREAKER },
+        .abilities = { ABILITY_PIERCING_DRILL, ABILITY_PIERCING_DRILL, ABILITY_PIERCING_DRILL },
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = TRUE,
         .speciesName = _("Excadrill"),
@@ -4344,8 +4347,11 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .levelUpLearnset = sPetililLevelUpLearnset,
         .teachableLearnset = sPetililTeachableLearnset,
         .eggMoveLearnset = sPetililEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_ITEM, ITEM_LEAF_STONE, SPECIES_LILLIGANT},
-                                {EVO_ITEM, ITEM_SUN_STONE, SPECIES_LILLIGANT_HISUI}),
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_LEAF_STONE, SPECIES_LILLIGANT}
+                            #if P_HISUIAN_FORMS
+                                ,{EVO_ITEM, ITEM_SUN_STONE, SPECIES_LILLIGANT_HISUI}
+                            #endif
+                            ),
     },
 
     [SPECIES_LILLIGANT] =
@@ -10244,7 +10250,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_AMORPHOUS),
-        .abilities = { ABILITY_FLASH_FIRE, ABILITY_FLAME_BODY, ABILITY_INFILTRATOR },
+        .abilities = { ABILITY_INFILTRATOR, ABILITY_INFILTRATOR, ABILITY_INFILTRATOR },
         .bodyColor = BODY_COLOR_BLACK,
         .noFlip = TRUE,
         .speciesName = _("Chandelure"),
@@ -11368,7 +11374,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MINERAL),
-        .abilities = { ABILITY_IRON_FIST, ABILITY_KLUTZ, ABILITY_NO_GUARD },
+        .abilities = { ABILITY_UNSEEN_FIST, ABILITY_UNSEEN_FIST, ABILITY_UNSEEN_FIST },
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = TRUE,
         .speciesName = _("Golurk"),
@@ -11758,8 +11764,11 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .isSkyBattleBanned = B_SKY_BATTLE_STRICT_ELIGIBILITY,
         .levelUpLearnset = sRuffletLevelUpLearnset,
         .teachableLearnset = sRuffletTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 54, SPECIES_BRAVIARY, CONDITIONS({IF_PID_UPPER_MODULO_10_GT, 5})},
-                                {EVO_LEVEL, 54, SPECIES_BRAVIARY_HISUI, CONDITIONS({IF_PID_UPPER_MODULO_10_LT, 5})}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 54, SPECIES_BRAVIARY, CONDITIONS({IF_PID_UPPER_MODULO_10_GT, 5})}
+                            #if P_HISUIAN_FORMS
+                                ,{EVO_LEVEL, 54, SPECIES_BRAVIARY_HISUI, CONDITIONS({IF_PID_UPPER_MODULO_10_LT, 5})}
+                            #endif
+                            ),
     },
 
     [SPECIES_BRAVIARY] =

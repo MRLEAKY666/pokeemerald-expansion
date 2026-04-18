@@ -60,7 +60,7 @@ static void CB2_TradeEvolutionSceneUpdate(void);
 static void EvoDummyFunc(void);
 static void VBlankCB_EvolutionScene(void);
 static void VBlankCB_TradeEvolutionScene(void);
-static void EvoScene_DoMonAnimAndCry(u8 monSpriteId, u16 speciesId);
+static void EvoScene_DoMonAnimAndCry(u8 monSpriteId, enum Species speciesId);
 static bool32 EvoScene_IsMonAnimFinished(u8 monSpriteId);
 static void StartBgAnimation(bool8 isLink);
 static void StopBgAnimation(void);
@@ -180,11 +180,11 @@ static void Task_BeginEvolutionScene(u8 taskId)
     case 1:
         if (!gPaletteFade.active)
         {
-            u16 postEvoSpecies;
-            bool8 canStopEvo;
+            enum Species postEvoSpecies;
+            bool32 canStopEvo;
             u8 partyId;
 
-            mon = &gPlayerParty[gTasks[taskId].tPartyId];
+            mon = &gParties[B_TRAINER_0][gTasks[taskId].tPartyId];
             postEvoSpecies = gTasks[taskId].tPostEvoSpecies;
             canStopEvo = gTasks[taskId].tCanStop;
             partyId = gTasks[taskId].tPartyId;
@@ -196,7 +196,7 @@ static void Task_BeginEvolutionScene(u8 taskId)
     }
 }
 
-void BeginEvolutionScene(struct Pokemon *mon, u16 postEvoSpecies, bool8 canStopEvo, u8 partyId)
+void BeginEvolutionScene(struct Pokemon *mon, enum Species postEvoSpecies, bool32 canStopEvo, u8 partyId)
 {
     u8 taskId = CreateTask(Task_BeginEvolutionScene, 0);
     gTasks[taskId].tState = 0;
@@ -206,10 +206,10 @@ void BeginEvolutionScene(struct Pokemon *mon, u16 postEvoSpecies, bool8 canStopE
     SetMainCallback2(CB2_BeginEvolutionScene);
 }
 
-void EvolutionScene(struct Pokemon *mon, u16 postEvoSpecies, bool8 canStopEvo, u8 partyId)
+void EvolutionScene(struct Pokemon *mon, enum Species postEvoSpecies, bool32 canStopEvo, u8 partyId)
 {
     u8 name[POKEMON_NAME_BUFFER_SIZE];
-    u16 currSpecies;
+    enum Species currSpecies;
     u32 personality;
     bool32 isShiny;
     u8 id;
@@ -321,10 +321,10 @@ void EvolutionScene(struct Pokemon *mon, u16 postEvoSpecies, bool8 canStopEvo, u
 static void CB2_EvolutionSceneLoadGraphics(void)
 {
     u8 id;
-    u16 postEvoSpecies;
+    enum Species postEvoSpecies;
     u32 personality;
-    struct Pokemon *mon = &gPlayerParty[gTasks[sEvoStructPtr->evoTaskId].tPartyId];
-    bool8 isShiny;
+    struct Pokemon *mon = &gParties[B_TRAINER_0][gTasks[sEvoStructPtr->evoTaskId].tPartyId];
+    bool32 isShiny;
     struct BoxPokemon boxMon2;
     const u16 *pokePal;
 
@@ -400,10 +400,10 @@ static void CB2_TradeEvolutionSceneLoadGraphics(void)
 {
     struct Pokemon *mon;
     if (gTasks[sEvoStructPtr->evoTaskId].tPartyId == PC_MON_CHOSEN)
-        mon = &gEnemyParty[TRADEMON_FROM_PC];
+        mon = &gParties[B_TRAINER_1][TRADEMON_FROM_PC];
     else
-        mon = &gPlayerParty[gTasks[sEvoStructPtr->evoTaskId].tPartyId];
-    u16 postEvoSpecies = gTasks[sEvoStructPtr->evoTaskId].tPostEvoSpecies;
+        mon = &gParties[B_TRAINER_0][gTasks[sEvoStructPtr->evoTaskId].tPartyId];
+    enum Species postEvoSpecies = gTasks[sEvoStructPtr->evoTaskId].tPostEvoSpecies;
     struct BoxPokemon boxMon2;
     const u16 *pokePal;
 
@@ -492,13 +492,13 @@ static void CB2_TradeEvolutionSceneLoadGraphics(void)
     }
 }
 
-void TradeEvolutionScene(struct Pokemon *mon, u16 postEvoSpecies, u8 preEvoSpriteId, u8 partyId)
+void TradeEvolutionScene(struct Pokemon *mon, enum Species postEvoSpecies, u8 preEvoSpriteId, u8 partyId)
 {
     u8 name[POKEMON_NAME_BUFFER_SIZE];
-    u16 currSpecies;
+    enum Species currSpecies;
     u32 personality;
     u8 id;
-    bool8 isShiny;
+    bool32 isShiny;
     struct BoxPokemon boxMon2;
     const u16 *pokePal;
 
@@ -579,7 +579,7 @@ static void CB2_TradeEvolutionSceneUpdate(void)
     RunTasks();
 }
 
-static void CreateShedinja(u32 preEvoSpecies, u32 postEvoSpecies, struct Pokemon *mon)
+static void CreateShedinja(enum Species preEvoSpecies, enum Species postEvoSpecies, struct Pokemon *mon)
 {
     u32 data = 0;
     enum Item ball = ITEM_POKE_BALL;
@@ -592,34 +592,34 @@ static void CreateShedinja(u32 preEvoSpecies, u32 postEvoSpecies, struct Pokemon
     {
         if (evolutions[i].method == EVO_SPLIT_FROM_EVO
          && evolutions[i].param == postEvoSpecies
-         && gPlayerPartyCount < PARTY_SIZE
+         && gPartiesCount[B_TRAINER_0] < PARTY_SIZE
          && DoesMonMeetAdditionalConditions(mon, evolutions[i].params, NULL, PARTY_SIZE, NULL, CHECK_EVO))
         {
             s32 j;
-            struct Pokemon *shedinja = &gPlayerParty[gPlayerPartyCount];
+            struct Pokemon *shedinja = &gParties[B_TRAINER_0][gPartiesCount[B_TRAINER_0]];
 
-            CopyMon(&gPlayerParty[gPlayerPartyCount], mon, sizeof(struct Pokemon));
-            SetMonData(&gPlayerParty[gPlayerPartyCount], MON_DATA_SPECIES, &evolutions[i].targetSpecies);
-            SetMonData(&gPlayerParty[gPlayerPartyCount], MON_DATA_NICKNAME, GetSpeciesName(evolutions[i].targetSpecies));
-            SetMonData(&gPlayerParty[gPlayerPartyCount], MON_DATA_HELD_ITEM, &data);
-            SetMonData(&gPlayerParty[gPlayerPartyCount], MON_DATA_MARKINGS, &data);
+            CopyMon(&gParties[B_TRAINER_0][gPartiesCount[B_TRAINER_0]], mon, sizeof(struct Pokemon));
+            SetMonData(&gParties[B_TRAINER_0][gPartiesCount[B_TRAINER_0]], MON_DATA_SPECIES, &evolutions[i].targetSpecies);
+            SetMonData(&gParties[B_TRAINER_0][gPartiesCount[B_TRAINER_0]], MON_DATA_NICKNAME, GetSpeciesName(evolutions[i].targetSpecies));
+            SetMonData(&gParties[B_TRAINER_0][gPartiesCount[B_TRAINER_0]], MON_DATA_HELD_ITEM, &data);
+            SetMonData(&gParties[B_TRAINER_0][gPartiesCount[B_TRAINER_0]], MON_DATA_MARKINGS, &data);
             if (P_SHEDINJA_BALL >= GEN_4)
             {
                 enum PokeBall ballData = GetItemSecondaryId(ball);
-                SetMonData(&gPlayerParty[gPlayerPartyCount], MON_DATA_POKEBALL, &ballData);
+                SetMonData(&gParties[B_TRAINER_0][gPartiesCount[B_TRAINER_0]], MON_DATA_POKEBALL, &ballData);
                 RemoveBagItem(ball, 1);
             }
 
             for (j = MON_DATA_COOL_RIBBON; j < MON_DATA_COOL_RIBBON + CONTEST_CATEGORIES_COUNT; j++)
-                SetMonData(&gPlayerParty[gPlayerPartyCount], j, &data);
+                SetMonData(&gParties[B_TRAINER_0][gPartiesCount[B_TRAINER_0]], j, &data);
             for (j = MON_DATA_CHAMPION_RIBBON; j <= MON_DATA_WORLD_RIBBON; j++)
-                SetMonData(&gPlayerParty[gPlayerPartyCount], j, &data);
+                SetMonData(&gParties[B_TRAINER_0][gPartiesCount[B_TRAINER_0]], j, &data);
 
-            SetMonData(&gPlayerParty[gPlayerPartyCount], MON_DATA_STATUS, &data);
+            SetMonData(&gParties[B_TRAINER_0][gPartiesCount[B_TRAINER_0]], MON_DATA_STATUS, &data);
             data = MAIL_NONE;
-            SetMonData(&gPlayerParty[gPlayerPartyCount], MON_DATA_MAIL, &data);
+            SetMonData(&gParties[B_TRAINER_0][gPartiesCount[B_TRAINER_0]], MON_DATA_MAIL, &data);
 
-            CalculateMonStats(&gPlayerParty[gPlayerPartyCount]);
+            CalculateMonStats(&gParties[B_TRAINER_0][gPartiesCount[B_TRAINER_0]]);
             CalculatePlayerPartyCount();
 
             GetSetPokedexFlag(SpeciesToNationalPokedexNum(evolutions[i].targetSpecies), FLAG_SET_SEEN);
@@ -684,7 +684,7 @@ enum {
 static void Task_EvolutionScene(u8 taskId)
 {
     u32 var;
-    struct Pokemon *mon = &gPlayerParty[gTasks[taskId].tPartyId];
+    struct Pokemon *mon = &gParties[B_TRAINER_0][gTasks[taskId].tPartyId];
 
     // check if B Button was held, so the evolution gets stopped
     if (gMain.heldKeys == B_BUTTON
@@ -1011,7 +1011,7 @@ static void Task_EvolutionScene(u8 taskId)
             if (!gPaletteFade.active)
             {
                 FreeAllWindowBuffers();
-                ShowSelectMovePokemonSummaryScreen(gPlayerParty, gTasks[taskId].tPartyId,
+                ShowSelectMovePokemonSummaryScreen(gParties[B_TRAINER_0], gTasks[taskId].tPartyId,
                             CB2_EvolutionSceneLoadGraphics,
                             gMoveToLearn);
                 gTasks[taskId].tLearnMoveState++;
@@ -1138,9 +1138,9 @@ static void Task_TradeEvolutionScene(u8 taskId)
     u32 var = 0;
     struct Pokemon *mon;
     if (gTasks[taskId].tPartyId == PC_MON_CHOSEN)
-        mon = &gEnemyParty[TRADEMON_FROM_PC];
+        mon = &gParties[B_TRAINER_1][TRADEMON_FROM_PC];
     else
-        mon = &gPlayerParty[gTasks[taskId].tPartyId];
+        mon = &gParties[B_TRAINER_0][gTasks[taskId].tPartyId];
 
     switch (gTasks[taskId].tState)
     {
@@ -1402,7 +1402,7 @@ static void Task_TradeEvolutionScene(u8 taskId)
                 if (gTasks[taskId].tPartyId == PC_MON_CHOSEN)
                 {
                     ShowSelectMovePokemonSummaryScreen(
-                                gEnemyParty, 
+                                gParties[B_TRAINER_1], 
                                 TRADEMON_FROM_PC,
                                 CB2_TradeEvolutionSceneLoadGraphics,
                                 gMoveToLearn
@@ -1411,7 +1411,7 @@ static void Task_TradeEvolutionScene(u8 taskId)
                 else
                 {
                     ShowSelectMovePokemonSummaryScreen(
-                                gPlayerParty, 
+                                gParties[B_TRAINER_0], 
                                 gTasks[taskId].tPartyId,
                                 CB2_TradeEvolutionSceneLoadGraphics,
                                 gMoveToLearn
@@ -1748,7 +1748,7 @@ static void RestoreBgAfterAnim(void)
     Free(sBgAnimPal);
 }
 
-static void EvoScene_DoMonAnimAndCry(u8 monSpriteId, u16 speciesId)
+static void EvoScene_DoMonAnimAndCry(u8 monSpriteId, enum Species speciesId)
 {
     DoMonFrontSpriteAnimation(&gSprites[monSpriteId], speciesId, FALSE, 0);
 }

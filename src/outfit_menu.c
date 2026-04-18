@@ -518,8 +518,8 @@ static inline void SetupOutfitMenu_Sprites_DrawTrainerSprite(bool32 update, bool
 
     sOutfitMenu->spriteIds[GFX_FTS] = CreateTrainerPicSprite(frontSpriteId, TRUE, 32+27, 32+32, frontPalSlot, TAG_NONE);
     sOutfitMenu->spriteIds[GFX_BTS] = CreateTrainerPicSprite(backSpriteId, FALSE, 32+117, 32+32, backPalSlot, TAG_NONE);
-    LoadPalette(gTrainerBacksprites[backSpriteId].palette.data, OBJ_PLTT_ID(backPalSlot), PLTT_SIZE_4BPP);
-    gSprites[sOutfitMenu->spriteIds[GFX_BTS]].anims = gTrainerBacksprites[backSpriteId].animation;
+    LoadPalette(GetTrainerBackPicPalette(backSpriteId), OBJ_PLTT_ID(backPalSlot), PLTT_SIZE_4BPP);
+    gSprites[sOutfitMenu->spriteIds[GFX_BTS]].anims = GetTrainerBackPicAnims(backSpriteId);
     StartSpriteAnim(&gSprites[sOutfitMenu->spriteIds[GFX_BTS]], 0);
     if (!unlocked)
     {

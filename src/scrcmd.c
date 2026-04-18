@@ -2018,7 +2018,7 @@ bool8 ScrCmd_drawboxtext(struct ScriptContext *ctx)
 
 bool8 ScrCmd_showmonpic(struct ScriptContext *ctx)
 {
-    u16 species = VarGet(ScriptReadHalfword(ctx));
+    enum Species species = VarGet(ScriptReadHalfword(ctx));
     u8 x = ScriptReadByte(ctx);
     u8 y = ScriptReadByte(ctx);
 
@@ -2135,7 +2135,7 @@ bool8 ScrCmd_vmessage(struct ScriptContext *ctx)
 bool8 ScrCmd_bufferspeciesname(struct ScriptContext *ctx)
 {
     u8 stringVarIndex = ScriptReadByte(ctx);
-    u16 species = VarGet(ScriptReadHalfword(ctx)) & OBJ_EVENT_MON_SPECIES_MASK; // ignore possible shiny / form bits
+    enum Species species = VarGet(ScriptReadHalfword(ctx)) & OBJ_EVENT_MON_SPECIES_MASK; // ignore possible shiny / form bits
 
     Script_RequestEffects(SCREFF_V1);
 
@@ -2151,7 +2151,7 @@ bool8 ScrCmd_bufferleadmonspeciesname(struct ScriptContext *ctx)
 
     u8 *dest = sScriptStringVars[stringVarIndex];
     u8 partyIndex = GetLeadMonIndex();
-    u32 species = GetMonData(&gPlayerParty[partyIndex], MON_DATA_SPECIES);
+    enum Species species = GetMonData(&gParties[B_TRAINER_0][partyIndex], MON_DATA_SPECIES);
     StringCopy(dest, GetSpeciesName(species));
     return FALSE;
 }
@@ -2173,7 +2173,7 @@ bool8 ScrCmd_bufferpartymonnick(struct ScriptContext *ctx)
 
     Script_RequestEffects(SCREFF_V1);
 
-    GetMonData(&gPlayerParty[partyIndex], MON_DATA_NICKNAME, sScriptStringVars[stringVarIndex]);
+    GetMonData(&gParties[B_TRAINER_0][partyIndex], MON_DATA_NICKNAME, sScriptStringVars[stringVarIndex]);
     StringGet_Nickname(sScriptStringVars[stringVarIndex]);
     return FALSE;
 }
@@ -2304,7 +2304,7 @@ bool8 ScrCmd_bufferboxname(struct ScriptContext *ctx)
 
 bool8 ScrCmd_giveegg(struct ScriptContext *ctx)
 {
-    u16 species = VarGet(ScriptReadHalfword(ctx));
+    enum Species species = VarGet(ScriptReadHalfword(ctx));
 
     Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
 
@@ -2339,10 +2339,10 @@ bool8 ScrCmd_checkfieldmove(struct ScriptContext *ctx)
     move = FieldMove_GetMoveId(fieldMove);
     for (u32 i = 0; i < PARTY_SIZE; i++)
     {
-        u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
+        enum Species species = GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_SPECIES);
         if (!species)
             break;
-        if (!GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG) && MonKnowsMove(&gPlayerParty[i], move) == TRUE)
+        if (!GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_IS_EGG) && MonKnowsMove(&gParties[B_TRAINER_0][i], move) == TRUE)
         {
             gSpecialVar_Result = i;
             gSpecialVar_0x8004 = species;
@@ -2545,10 +2545,10 @@ bool8 ScrCmd_cleartrainerflag(struct ScriptContext *ctx)
 
 bool8 ScrCmd_setwildbattle(struct ScriptContext *ctx)
 {
-    u16 species = ScriptReadHalfword(ctx);
+    enum Species species = ScriptReadHalfword(ctx);
     u8 level = ScriptReadByte(ctx);
     enum Item item = ScriptReadHalfword(ctx);
-    u16 species2 = ScriptReadHalfword(ctx);
+    enum Species species2 = ScriptReadHalfword(ctx);
     u8 level2 = ScriptReadByte(ctx);
     enum Item item2 = ScriptReadHalfword(ctx);
     u8 rand;
@@ -2638,12 +2638,12 @@ bool8 ScrCmd_playslotmachine(struct ScriptContext *ctx)
 bool8 ScrCmd_setberrytree(struct ScriptContext *ctx)
 {
     u8 treeId = ScriptReadByte(ctx);
-    u8 berry = ScriptReadByte(ctx);
+    enum BerryId berryId = ScriptReadByte(ctx);
     u8 growthStage = ScriptReadByte(ctx);
 
     Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
 
-    PlantBerryTree(treeId, berry, growthStage, FALSE);
+    PlantBerryTree(treeId, berryId, growthStage, FALSE);
     return FALSE;
 }
 
@@ -2754,7 +2754,7 @@ bool8 ScrCmd_checkplayergender(struct ScriptContext *ctx)
 
 bool8 ScrCmd_playmoncry(struct ScriptContext *ctx)
 {
-    u16 species = VarGet(ScriptReadHalfword(ctx));
+    enum Species species = VarGet(ScriptReadHalfword(ctx));
     u16 mode = VarGet(ScriptReadHalfword(ctx));
 
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
@@ -2994,7 +2994,7 @@ bool8 ScrCmd_setmodernfatefulencounter(struct ScriptContext *ctx)
 
     Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
 
-    SetMonData(&gPlayerParty[partyIndex], MON_DATA_MODERN_FATEFUL_ENCOUNTER, &isModernFatefulEncounter);
+    SetMonData(&gParties[B_TRAINER_0][partyIndex], MON_DATA_MODERN_FATEFUL_ENCOUNTER, &isModernFatefulEncounter);
     return FALSE;
 }
 
@@ -3004,7 +3004,7 @@ bool8 ScrCmd_checkmodernfatefulencounter(struct ScriptContext *ctx)
 
     Script_RequestEffects(SCREFF_V1);
 
-    gSpecialVar_Result = GetMonData(&gPlayerParty[partyIndex], MON_DATA_MODERN_FATEFUL_ENCOUNTER);
+    gSpecialVar_Result = GetMonData(&gParties[B_TRAINER_0][partyIndex], MON_DATA_MODERN_FATEFUL_ENCOUNTER);
     return FALSE;
 }
 
@@ -3049,7 +3049,7 @@ bool8 ScrCmd_setmonmetlocation(struct ScriptContext *ctx)
     Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
 
     if (partyIndex < PARTY_SIZE)
-        SetMonData(&gPlayerParty[partyIndex], MON_DATA_MET_LOCATION, &location);
+        SetMonData(&gParties[B_TRAINER_0][partyIndex], MON_DATA_MET_LOCATION, &location);
     return FALSE;
 }
 
@@ -3236,7 +3236,7 @@ bool8 Scrcmd_getsetpokedexflag(struct ScriptContext *ctx)
 
 bool8 Scrcmd_checkspecies(struct ScriptContext *ctx)
 {
-    u32 givenSpecies = VarGet(ScriptReadHalfword(ctx));
+    enum Species givenSpecies = VarGet(ScriptReadHalfword(ctx));
 
     Script_RequestEffects(SCREFF_V1);
 
@@ -3258,11 +3258,11 @@ bool8 Scrcmd_checktype(struct ScriptContext *ctx)
 
 bool8 Scrcmd_checkspecies_choose(struct ScriptContext *ctx)
 {
-    u32 givenSpecies = VarGet(ScriptReadHalfword(ctx));
+    enum Species givenSpecies = VarGet(ScriptReadHalfword(ctx));
 
     Script_RequestEffects(SCREFF_V1);
 
-    gSpecialVar_Result = (GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES) == givenSpecies);
+    gSpecialVar_Result = (GetMonData(&gParties[B_TRAINER_0][gSpecialVar_0x8004], MON_DATA_SPECIES) == givenSpecies);
 
     return FALSE;
 }
@@ -3435,31 +3435,6 @@ bool8 ScrCmd_setmoverelearnerstate(struct ScriptContext *ctx)
     Script_RequestEffects(SCREFF_V1);
 
     gMoveRelearnerState = state;
-    return FALSE;
-}
-
-bool8 ScrCmd_getmoverelearnerstate(struct ScriptContext *ctx)
-{
-    u32 varId = ScriptReadHalfword(ctx);
-
-    Script_RequestEffects(SCREFF_V1);
-    Script_RequestWriteVar(varId);
-
-    u16 *varPointer = GetVarPointer(varId);
-    *varPointer = gMoveRelearnerState;
-    return FALSE;
-}
-
-bool8 ScrCmd_istmrelearneractive(struct ScriptContext *ctx)
-{
-    const u8 *ptr = (const u8 *)ScriptReadWord(ctx);
-
-    Script_RequestEffects(SCREFF_V1);
-
-    if ((P_TM_MOVES_RELEARNER || P_ENABLE_MOVE_RELEARNERS)
-     && (P_ENABLE_ALL_TM_MOVES || IsBagPocketNonEmpty(POCKET_TM_HM)))
-        ScriptCall(ctx, ptr);
-
     return FALSE;
 }
 

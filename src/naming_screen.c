@@ -177,7 +177,7 @@ struct NamingScreenData
     const struct NamingScreenTemplate *template;
     u8 templateNum;
     u8 *destBuffer;
-    u16 monSpecies;
+    enum Species monSpecies;
     u16 monGender;
     u32 monPersonality;
     MainCallback returnCallback;
@@ -400,7 +400,7 @@ static bool8 IsWideLetter(u8);
 
 static const u8 sText_MoveOkBack[] = _("{DPAD_NONE}MOVE  {A_BUTTON}OK  {B_BUTTON}BACK");
 
-void DoNamingScreen(u8 templateNum, u8 *destBuffer, u16 monSpecies, u16 monGender, u32 monPersonality, MainCallback returnCallback)
+void DoNamingScreen(u8 templateNum, u8 *destBuffer, u16 monSpeciesOrPlayerGender, u16 monGender, u32 monPersonality, MainCallback returnCallback)
 {
     sNamingScreen = Alloc(sizeof(struct NamingScreenData));
     if (!sNamingScreen)
@@ -410,7 +410,7 @@ void DoNamingScreen(u8 templateNum, u8 *destBuffer, u16 monSpecies, u16 monGende
     else
     {
         sNamingScreen->templateNum = templateNum;
-        sNamingScreen->monSpecies = monSpecies;
+        sNamingScreen->monSpecies = monSpeciesOrPlayerGender;
         sNamingScreen->monGender = monGender;
         sNamingScreen->monPersonality = monPersonality;
         sNamingScreen->destBuffer = destBuffer;
@@ -1438,6 +1438,10 @@ static void NamingScreen_CreatePlayerIcon(void)
 
     // gfxId = GetPlayerAvatarGraphicsIdByOutfitStateIdAndGender(outfit, PLAYER_AVATAR_STATE_NORMAL, gSaveBlock2Ptr->playerGender);
     spriteId = CreateObjectGraphicsSprite(gfxId, SpriteCallbackDummy, 56, 37, 0);
+
+    /* rivalGfxId = GetRivalAvatarGraphicsIdByStateIdAndGender(PLAYER_AVATAR_STATE_NORMAL, (enum Gender)sNamingScreen->monSpecies);
+    spriteId = CreateObjectGraphicsSprite(rivalGfxId, SpriteCallbackDummy, 56, 37, 0); */ // from #9507, couldn't decipher conflict with outfits
+    
     gSprites[spriteId].oam.priority = 3;
     StartSpriteAnim(&gSprites[spriteId], ANIM_STD_GO_SOUTH);
 }

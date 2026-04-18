@@ -1069,7 +1069,7 @@ EventScript_AfterWhiteOutHeal::
 	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, EventScript_ItsDangerousToGoAlone
 	special HealAfterWhiteOut
 	callnative UpdateFollowingPokemon
-	call_if_unset FLAG_DEFEATED_RUSTBORO_GYM, EventScript_AfterWhiteOutHealMsgPreRoxanne
+	call_if_unset FLAG_DEFEATED_RUSTBORO_GYM, EventScript_AfterWhiteOutHealMsgPreFirstBoss
 	call_if_set FLAG_DEFEATED_RUSTBORO_GYM, EventScript_AfterWhiteOutHealMsg
 	applymovement VAR_LAST_TALKED, Movement_PkmnCenterNurse_Bow
 	waitmovement 0
@@ -1077,7 +1077,7 @@ EventScript_AfterWhiteOutHeal::
 	release
 	end
 
-EventScript_AfterWhiteOutHealMsgPreRoxanne::
+EventScript_AfterWhiteOutHealMsgPreFirstBoss::
 	msgbox gText_MonsHealedShouldBuyPotions
 	return
 
@@ -1114,7 +1114,7 @@ EventScript_ItsDangerousToGoAlone::
 	waitstate
 	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, EventScript_ItsDangerousToGoAlone
 	special HealAfterWhiteOut
-	call_if_unset FLAG_DEFEATED_RUSTBORO_GYM, EventScript_AfterWhiteOutHealMsgPreRoxanne
+	call_if_unset FLAG_DEFEATED_RUSTBORO_GYM, EventScript_AfterWhiteOutHealMsgPreFirstBoss
 	call_if_set FLAG_DEFEATED_RUSTBORO_GYM, EventScript_AfterWhiteOutHealMsg
 	applymovement VAR_LAST_TALKED, Movement_PkmnCenterNurse_Bow
 	waitmovement 0
@@ -1390,10 +1390,10 @@ Common_EventScript_PlayerHandedOverTheItem::
 	.include "data/scripts/elite_four.inc"
 	.include "data/scripts/movement.inc"
 	.include "data/scripts/check_furniture.inc"
+	.include "data/scripts/mart_clerk.inc"
 	.include "data/text/record_mix.inc"
 	.include "data/text/pc.inc"
 	.include "data/text/pkmn_center_nurse.inc"
-	.include "data/text/mart_clerk.inc"
 	.include "data/text/obtain_item.inc"
 	.include "data/text/move_relearner.inc"
 
@@ -1497,7 +1497,7 @@ gText_HadQuiteAnExperienceTakeRest::
 gText_MomExplainHPGetPotions::
 	.string "MOM: Oh, good! You and your\n"
 	.string "POKéMON are looking better.\p"
-	.string "I just heard from PROF. BIRCH.\p"
+	.string "I just heard from {STR_VAR_1}.\p"
 	.string "He said that POKéMON's energy is\n"
 	.string "measured in HP.\p"
 	.string "If your POKéMON lose their HP,\n"

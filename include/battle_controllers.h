@@ -220,7 +220,7 @@ struct ChooseMoveStruct
     enum Move moves[MAX_MON_MOVES];
     u8 currentPp[MAX_MON_MOVES];
     u8 maxPp[MAX_MON_MOVES];
-    u16 species;
+    enum Species species;
     enum Type monTypes[3];
     struct ZMoveData zmove;
 };
@@ -492,6 +492,10 @@ void BtlCtrl_RemoveVoiceoverMessageFrame(void);
 bool32 ShouldBattleRestrictionsApply(enum BattlerId battler);
 void FreeShinyStars(void);
 enum BattleTrainer GetBattlerTrainer(enum BattlerId battler);
+enum BattleTrainer GetTrainerFromBattlePosition(enum BattlerPosition position);
+bool32 BattleSideHasTwoTrainers(enum BattleSide side);
+bool32 BattlersShareParty(enum BattlerId battler1, enum BattlerId battler2);
+bool32 TrainerHasParty(enum BattleTrainer trainer);
 
 
 // oak and old man controller

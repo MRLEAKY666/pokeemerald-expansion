@@ -61,7 +61,7 @@ FallarborTown_MoveRelearnersHouse_EventScript_ChooseMon::
 # 31 "data//maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
 	goto_if_eq VAR_RESULT, TRUE, FallarborTown_MoveRelearnersHouse_EventScript_CantTeachEgg
 # 32 "data//maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	special HasMovesToRelearn
+	special Special_HasMoveToRelearn
 # 33 "data//maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, FallarborTown_MoveRelearnersHouse_EventScript_NoMoveToTeachMon
 # 34 "data//maps/FallarborTown_MoveRelearnersHouse/scripts.pory"

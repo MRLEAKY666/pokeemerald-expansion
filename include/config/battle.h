@@ -56,6 +56,7 @@
 #define B_TAILWIND_TURNS            GEN_LATEST // In Gen5+, Tailwind lasts 4 turns instead of 3.
 #define B_SLEEP_TURNS               GEN_3 // In Gen5+, sleep lasts for 2-4 turns instead of 2-5 turns.
 #define B_TAUNT_TURNS               GEN_3 // In Gen5+, Taunt lasts 3 turns if the user acts before the target, or 4 turns if the target acted before the user. In Gen3, taunt lasts 2 turns and in Gen 4, 3-5 turns.
+#define B_ENCORE_TURNS              GEN_3 // In Gen5+, Encore lasts 3 turns if the target hasn't yet moved this turn, or 4 turns if it has. In Gen4, it lasts 3-7 turns. In Gen2-3, 2-6 turns.
 #define B_SPORT_TURNS               GEN_3 // In Gen6+, Water/Mud Sport last 5 turns, even if the user switches out.
 #define B_MEGA_EVO_TURN_ORDER       GEN_6 // In Gen7, a Pokémon's Speed after Mega Evolution is used to determine turn order, not its Speed before.
 #define B_RECALC_TURN_AFTER_ACTIONS GEN_3 // In Gen8+, switching/using a move affects the current turn's order of actions, better known as dynamic speed.
@@ -157,7 +158,8 @@
 #define B_COUNTER_TRY_HIT_PARTNER   GEN_LATEST // In Gen5+, if the user of the last attack is not on the field, it will be redirected to the partner. In Gen4-, Counter/Mirror Coat/Metal Burst would fail.
 #define B_RAGE_BUILDS               GEN_LATEST // In Gen4+, Rage's effect only sets in when it successfully hits. In Gen3, Rage's effect sets in regardless of whether it hits, misses or fails.
 #define B_CHECK_USER_FAILURE        GEN_LATEST // In Gen5+, The user no longer checks it's own failure, e.g. Soundproof will not block it's own Perish Song
-#define B_ABSORB_MESSAGE            GEN_LATEST // In Gen5+, No absorb message is played if user is already at full hp.
+#define B_ABSORB_MESSAGE            GEN_LATEST // In Gen5+, no absorb message is played if user is already at full hp.
+#define B_UPROAR                    GEN_LATEST // In Gen5+, Uproar awakens all battlers on the first turn if successful. In Gens 3-4, Uproar allows every battler to awaken before their action or at the end of a turn.
 
 // Ability settings
 #define B_GALE_WINGS                GEN_3 // In Gen7+ requires full HP to trigger.
@@ -274,6 +276,7 @@
 #define NO_BAG_RESTRICTION       0
 #define NO_BAG_AGAINST_TRAINER   1
 #define NO_BAG_IN_BATTLE         2
+#define NO_BAG_INVALID_VALUE     3
 
 #define B_VAR_NO_BAG_USE         VAR_TEMP_NO_BAG_USE     // If 1, the ability to use the bag in battle is disabled in trainer battles. If 2, it is also disabled in wild battles.
 
@@ -364,6 +367,7 @@
 #define B_TRY_CATCH_TRAINER_BALL        GEN_3 // In Gen4+, trying to catch a Trainer's Pokémon does not consume the Poké Ball.
 #define B_SLEEP_CLAUSE                  FALSE      // Enables Sleep Clause all the time in every case, overriding B_FLAG_SLEEP_CLAUSE. Use that for modularity.
 #define B_PARTNER_MONS_MARKED_SEEN      FALSE      // If TRUE, if your double battle partner sends out a Pokémon you haven't encountered yet, it will be marked as SEEN in your Pokédex.
+#define B_MULTI_HALF_TEAMS              FALSE      // If TRUE, trainers will be capped at 3 Pokémon each when there are 2 trainers on one side in a battle. If FALSE, per-battle capping may still be set using `Multi Party: Half` in `trainers.party`
 
 #define NUM_BEEPS_GEN_LATEST            4                    // Loops 4 times
 #define NUM_BEEPS_GEN_3                 -1                   // Loops infinitely

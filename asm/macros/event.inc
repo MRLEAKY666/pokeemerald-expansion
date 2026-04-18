@@ -1261,7 +1261,7 @@
 
 	@ Opens the Pokemart system, offering the specified products for sale.
 	@ Products should be a list of .2byte item values preceded by an .align 2
-	.macro pokemart products:req
+	.macro pokemart products=Pokemart_DefaultItemList
 	.byte SCR_OP_POKEMART
 	.4byte \products
 	.endm
@@ -1293,11 +1293,14 @@
 	.endm
 
 	@ Sets a berry tree's berry and growth stage. treeId is any BERRY_TREE_* constant (an index into berryTrees in SaveBlock1),
-	@ berry is any ITEM_TO_BERRY(ITEM_BERRY_NAME) value, and growthStage is any BERRY_STAGE_* constant.
-	.macro setberrytree treeId:req, berry:req, growthStage:req
+	@ berryId is any BERRY_ID_X value, and growthStage is any BERRY_STAGE_* constant.
+	.macro setberrytree treeId:req, berryId:req, growthStage:req
+	.if \berryId == 0 || \berryId > NUM_BERRIES
+		.error "setberrytree must use a valid berry index"
+	.endif
 	.byte SCR_OP_SETBERRYTREE
 	.byte \treeId
-	.byte \berry
+	.byte \berryId
 	.byte \growthStage
 	.endm
 
@@ -2835,6 +2838,11 @@
 	.byte \selectionType
 	.endm
 
+	.macro mappreview duration:req
+	callnative MapPreviewScript
+	.2byte \duration
+	.endm
+
 @ Follower NPCs
 
 	@ Sets an existing NPC up to follow the player.
@@ -2934,6 +2942,20 @@
 	.4byte \name
 	.endm
 	
+	@ Gives a random berry between the index ranges
+	.macro giverandomberry loBerry:req, hiBerry:req
+	.if \loBerry == 0 || \loBerry > NUM_BERRIES
+		.error "giverandomberry must use a valid berry index for first argument"
+	.endif
+	.if \hiBerry == 0 || \hiBerry > NUM_BERRIES
+		.error "giverandomberry must use a valid berry index for second argument"
+	.endif
+	callnative Script_GiveRandomBerry
+	.byte \loBerry
+	.byte \hiBerry
+	giveitem VAR_RESULT
+	.endm
+
 @ VS Seeker
 	.macro vsseeker_rematchid rematchId:req
 	callnative NativeVsSeekerRematchId, requests_effects=1
@@ -2950,18 +2972,6 @@
 	.macro setmoverelearnerstate state:req
 	callnative ScrCmd_setmoverelearnerstate, requests_effects=1
 	.2byte \state
-	.endm
-
-	@ Retrieves the move relearner state and stores it in the specified var
-	.macro getmoverelearnerstate varId:req
-	callnative ScrCmd_getmoverelearnerstate, requests_effects=1
-	.4byte \varId
-	.endm
-
-	@ Execute script if bag has TMs and/or HMs
-	.macro istmrelearneractive destination:req
-	callnative ScrCmd_istmrelearneractive, requests_effects=1
-	.4byte \destination
 	.endm
 
 	@ Sets a starting status for the next battle. Can be stacked.
