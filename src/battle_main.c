@@ -81,7 +81,6 @@
 #include "cable_club.h"
 #include "field_weather.h" //added wiz1989
 #include "constants/weather.h" //added wiz1989
-#include "test/test_runner_battle.h"
 
 extern const struct BgTemplate gBattleBgTemplates[];
 extern const struct WindowTemplate *const gBattleWindowTemplates[];
