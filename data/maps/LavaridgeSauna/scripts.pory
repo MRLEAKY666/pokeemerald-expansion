@@ -27,7 +27,7 @@ script LavaridgeSauna_OnResume{
         msgbox(format("Excuse me, but I've gotten several reports that you're disturbing other guests.\p"
                         "I'm going to have to ask you to leave now."), MSGBOX_DEFAULT)
         closemessage
-        warpcontinuescript(MAP_LAVARIDGE_TOWN, 9, 7, LavaridgeTown_EventScript_KickedOutOfSauna)
+        warpcontinuescript(MAP_LAVARIDGE_TOWN, 10, 7, LavaridgeTown_EventScript_KickedOutOfSauna)
     }
 }
 
