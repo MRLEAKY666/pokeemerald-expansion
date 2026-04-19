@@ -507,7 +507,7 @@ static void SetupOutfitMenu_PrintStr(void)
 static inline void SetupOutfitMenu_Sprites_DrawTrainerSprite(bool32 update, bool32 unlocked)
 {
     u32 frontSpriteId = GetPlayerTrainerPicIdByOutfitGenderType(sOutfitMenu->idx, gSaveBlock2Ptr->playerGender, 0);
-    u32 backSpriteId = GetPlayerTrainerPicIdByOutfitGenderType(sOutfitMenu->idx, gSaveBlock2Ptr->playerGender, 1);
+    u32 backSpriteId = GetPlayerTrainerPicIdByOutfitGenderType(sOutfitMenu->idx, gSaveBlock2Ptr->playerGender, 0);
     u32 frontPalSlot = sOutfitMenu->slotId ? 9 : 10;
     u32 backPalSlot = sOutfitMenu->slotId ? 12 : 13;
     if (update)

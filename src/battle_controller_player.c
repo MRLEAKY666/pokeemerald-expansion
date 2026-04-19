@@ -1887,7 +1887,7 @@ enum TrainerPicID LinkPlayerGetTrainerPicId(u32 multiplayerId)
     u8 outfitId = gLinkPlayers[multiplayerId].currOutfitId;
 
     if (outfitId < OUTFIT_COUNT)
-        return GetPlayerTrainerPicIdByOutfitGenderType(outfitId, gender, 1);
+        return GetPlayerTrainerPicIdByOutfitGenderType(outfitId, gender, 0);
     else
         return GetPlayerTrainerPic(gender, version);
 }
@@ -1899,7 +1899,7 @@ static enum TrainerPicID PlayerGetTrainerBackPicId(void)
     if (gBattleTypeFlags & BATTLE_TYPE_LINK)
         trainerPicId = LinkPlayerGetTrainerPicId(GetMultiplayerId());
     else
-        trainerPicId = GetPlayerTrainerPicIdByOutfitGenderType(gSaveBlock2Ptr->currOutfitId, gSaveBlock2Ptr->playerGender, 1);
+        trainerPicId = GetPlayerTrainerPicIdByOutfitGenderType(gSaveBlock2Ptr->currOutfitId, gSaveBlock2Ptr->playerGender, 0);
 
     return trainerPicId;
 }

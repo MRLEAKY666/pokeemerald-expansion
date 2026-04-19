@@ -638,6 +638,10 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Steven, gTrainerPalette_Steven, 0, 7, 0x188),
         .backPic = TRAINER_BACK_PIC(4, gTrainerBackPic_Steven, gTrainerPalette_Steven, sBackAnims_Hoenn),
     },
+    [TRAINER_PIC_OAK] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Oak, gTrainerPalette_Oak),
+    },
     [TRAINER_PIC_OLD_MAN_DISGUISE] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_OldManDisguise, gTrainerPalette_OldManDisguise),
