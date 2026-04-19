@@ -3965,7 +3965,7 @@ static void Cmd_tryfaintmon(void)
                 else // permadeath on faint when battle type is none of the above
                 {
                     bool8 dead = TRUE;
-                    SetMonData(&gPlayerParty[gBattlerPartyIndexes[battler]], MON_DATA_DEAD, &dead);
+                    SetMonData(&gParties[B_TRAINER_0][gBattlerPartyIndexes[battler]], MON_DATA_DEAD, &dead);
                 }
 
                 gHitMarker |= HITMARKER_PLAYER_FAINTED;

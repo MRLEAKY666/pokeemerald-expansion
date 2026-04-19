@@ -948,7 +948,7 @@ void HandleSpeciesGfxDataChange(enum BattlerId battlerAtk, enum BattlerId battle
                 targetSpecies = GetMonData(monDef, MON_DATA_SPECIES);
             /* personalityValue = GetMonData(monAtk, MON_DATA_PERSONALITY); // commented below to resolve merge conflicts from # 8146 to fix transform
             isShiny = GetMonData(monAtk, MON_DATA_IS_SHINY);
-            otId = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_ID); */ 
+            otId = GetMonData(&gParties[B_TRAINER_0][gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_ID); */ 
             //gBattleSpritesDataPtr->battlerData[battlerAtk].transformSpecies = targetSpecies; 
         }
         else
@@ -958,13 +958,13 @@ void HandleSpeciesGfxDataChange(enum BattlerId battlerAtk, enum BattlerId battle
             {
                 personalityValue = GetMonData(monDef, MON_DATA_PERSONALITY);
                 isShiny = GetMonData(monDef, MON_DATA_IS_SHINY);
-                otId = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_ID);
+                otId = GetMonData(&gParties[B_TRAINER_0][gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_ID);
             }
             else
             {
                 personalityValue = GetMonData(monAtk, MON_DATA_PERSONALITY);
                 isShiny = GetMonData(monAtk, MON_DATA_IS_SHINY);
-                otId = GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_ID);
+                otId = GetMonData(&gParties[B_TRAINER_1][gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_ID);
             } */
         }
         gBattleSpritesDataPtr->battlerData[battlerAtk].transformSpecies = targetSpecies;
@@ -973,13 +973,13 @@ void HandleSpeciesGfxDataChange(enum BattlerId battlerAtk, enum BattlerId battle
         {
             personalityValue = gTransformedPersonalities[battlerAtk];
             isShiny = gTransformedShininess[battlerAtk];
-            otId = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_ID);
+            otId = GetMonData(&gParties[B_TRAINER_0][gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_ID);
         }
         else
         {
             personalityValue = GetMonData(monAtk, MON_DATA_PERSONALITY);
             isShiny = GetMonData(monAtk, MON_DATA_IS_SHINY);
-            otId = GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_ID);
+            otId = GetMonData(&gParties[B_TRAINER_1][gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_ID);
         }
         HandleLoadSpecialPokePic(!IsOnPlayerSide(battlerAtk),
                                  gMonSpritesGfxPtr->spritesGfx[position],
@@ -1007,15 +1007,15 @@ void HandleSpeciesGfxDataChange(enum BattlerId battlerAtk, enum BattlerId battle
 
         if (GetBattlerSide(battlerAtk) == B_SIDE_PLAYER)
         {
-            ivs = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_IVS);
-            GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_NICKNAME, nickname);
-            GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_NAME, otName);
+            ivs = GetMonData(&gParties[B_TRAINER_0][gBattlerPartyIndexes[battlerAtk]], MON_DATA_IVS);
+            GetMonData(&gParties[B_TRAINER_0][gBattlerPartyIndexes[battlerAtk]], MON_DATA_NICKNAME, nickname);
+            GetMonData(&gParties[B_TRAINER_0][gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_NAME, otName);
         }
         else if (GetBattlerSide(battlerAtk) == B_SIDE_OPPONENT)
         {
-            ivs = GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_IVS);
-            GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_NICKNAME, nickname);
-            GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_NAME, otName);
+            ivs = GetMonData(&gParties[B_TRAINER_1][gBattlerPartyIndexes[battlerAtk]], MON_DATA_IVS);
+            GetMonData(&gParties[B_TRAINER_1][gBattlerPartyIndexes[battlerAtk]], MON_DATA_NICKNAME, nickname);
+            GetMonData(&gParties[B_TRAINER_1][gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_NAME, otName);
         }
 
         SetBoxMonData(&boxMon, MON_DATA_IVS, &ivs);

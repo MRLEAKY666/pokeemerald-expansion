@@ -50,21 +50,21 @@ void HealPlayerParty(void)
 void HealAfterWhiteOut(void)
 {
     u32 data = 1;
-    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_HP, &data);
+    SetMonData(&gParties[B_TRAINER_0][gSpecialVar_0x8004], MON_DATA_HP, &data);
 
-    data = (GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_LEVEL)/2);
-    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_LEVEL, &data);
-    u32 species = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES, NULL);
-    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_EXP, &gExperienceTables[gSpeciesInfo[species].growthRate][data]);
-    CalculateMonStats(&gPlayerParty[gSpecialVar_0x8004]);
+    data = (GetMonData(&gParties[B_TRAINER_0][gSpecialVar_0x8004], MON_DATA_LEVEL)/2);
+    SetMonData(&gParties[B_TRAINER_0][gSpecialVar_0x8004], MON_DATA_LEVEL, &data);
+    u32 species = GetMonData(&gParties[B_TRAINER_0][gSpecialVar_0x8004], MON_DATA_SPECIES, NULL);
+    SetMonData(&gParties[B_TRAINER_0][gSpecialVar_0x8004], MON_DATA_EXP, &gExperienceTables[gSpeciesInfo[species].growthRate][data]);
+    CalculateMonStats(&gParties[B_TRAINER_0][gSpecialVar_0x8004]);
 
     bool8 dead = FALSE;
-    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_DEAD, &dead);
+    SetMonData(&gParties[B_TRAINER_0][gSpecialVar_0x8004], MON_DATA_DEAD, &dead);
 
     data = STATUS1_NONE;
-    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_STATUS, &data);
+    SetMonData(&gParties[B_TRAINER_0][gSpecialVar_0x8004], MON_DATA_STATUS, &data);
 
-    MonRestorePP(&gPlayerParty[gSpecialVar_0x8004]);
+    MonRestorePP(&gParties[B_TRAINER_0][gSpecialVar_0x8004]);
 }
 
 static void HealPlayerBoxes(void)

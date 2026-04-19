@@ -2570,7 +2570,7 @@ bool8 ScrCmd_setwildbattle(struct ScriptContext *ctx)
     if (rand < 25)
     {
         isShiny = TRUE;
-        SetMonData(&gEnemyParty[0], MON_DATA_IS_SHINY, &isShiny);
+        SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_IS_SHINY, &isShiny);
     }
 
     return FALSE;

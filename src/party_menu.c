@@ -8508,7 +8508,7 @@ static void FieldCallback_RockClimb(void)
 void DeleteMonFromParty(void)
 {
     u8 position = VarGet(VAR_0x8004);
-    ZeroMonData(&gPlayerParty[position]);
+    ZeroMonData(&gParties[B_TRAINER_0][position]);
     CompactPartySlots();
     CalculatePlayerPartyCount();
 }
