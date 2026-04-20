@@ -819,9 +819,9 @@ PetalburgCity_Gym_EventScript_NormanBattle::
 # 410 "data//maps/PetalburgCity_Gym/scripts.pory"
 	call EventScript_HideMrBriney
 # 411 "data//maps/PetalburgCity_Gym/scripts.pory"
-	setflag FLAG_HIDE_MAUVILLE_GYM_WATTSON
+	@ setflag FLAG_HIDE_MAUVILLE_GYM_WATTSON
 # 412 "data//maps/PetalburgCity_Gym/scripts.pory"
-	clearflag FLAG_HIDE_MAUVILLE_CITY_WATTSON
+	@ clearflag FLAG_HIDE_MAUVILLE_CITY_WATTSON
 # 413 "data//maps/PetalburgCity_Gym/scripts.pory"
 	setvar VAR_0x8008, 5
 # 414 "data//maps/PetalburgCity_Gym/scripts.pory"

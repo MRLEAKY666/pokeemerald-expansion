@@ -31,7 +31,7 @@ LavaridgeSauna_OnResume_1:
 # 29 "data//maps/LavaridgeSauna/scripts.pory"
 	closemessage
 # 30 "data//maps/LavaridgeSauna/scripts.pory"
-	warpcontinuescript MAP_LAVARIDGE_TOWN, 9, 7, LavaridgeTown_EventScript_KickedOutOfSauna
+	warpcontinuescript MAP_LAVARIDGE_TOWN, 10, 7, LavaridgeTown_EventScript_KickedOutOfSauna
 	return
 
 

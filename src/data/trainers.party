@@ -19522,6 +19522,46 @@ Tags: Ace
 - Roost
 - Outrage
 
+=== TRAINER_MICK ===
+Name: MICK
+Class: Ruin Maniac
+Pic: Ruin Maniac
+Gender: Male
+Music: Hiker
+Items: Energy Root / Energy Root / Energy Root
+Double Battle: No
+AI: Basic Trainer
+
+Kleavor @ Choice Scarf
+Level: 30
+Ability: Sharpness
+IVs: 12 HP / 31 Atk / 12 Def / 12 SpA / 12 SpD / 31 Spe
+Jolly Nature
+- Stone Axe
+- U-turn
+- X-Scissor
+- Close Combat
+
+Probopass       @ Air Balloon
+Level: 31
+Ability: Sturdy
+EVs: 252 HP / 56 SpA / 200 SpD
+Calm Nature
+- Protect
+- Power Gem
+- Toxic
+- Volt Switch
+
+Bastiodon @ Leftovers
+Level: 33
+Ability: Sturdy
+IVs: 12 HP / 12 Atk / 31 Def / 12 SpA / 31 SpD / 12 Spe
+Calm Nature
+- Magic Coat
+- Roar
+- Protect
+- Toxic
+
 === TRAINER_RED ===
 Name: RED
 Class: Rival

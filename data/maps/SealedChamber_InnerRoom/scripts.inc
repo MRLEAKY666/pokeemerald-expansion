@@ -59,6 +59,9 @@ SealedChamber_InnerRoom_EventScript_BrailleBackWall::
 	fadeinbgm 0
 # 41 "data//maps/SealedChamber_InnerRoom/scripts.pory"
 	setflag FLAG_REGI_DOORS_OPENED
+# 42 "data//maps/SealedChamber_InnerRoom/scripts.pory"
+	goto_if_set FLAG_HIDE_MAUVILLE_CITY_WATTSON, SealedChamber_InnerRoom_EventScript_BrailleBackWall_8
+SealedChamber_InnerRoom_EventScript_BrailleBackWall_7:
 # 46 "data//maps/SealedChamber_InnerRoom/scripts.pory"
 	releaseall
 	return
@@ -72,6 +75,13 @@ SealedChamber_InnerRoom_EventScript_BrailleBackWall_5:
 # 18 "data//maps/SealedChamber_InnerRoom/scripts.pory"
 	releaseall
 	end
+
+SealedChamber_InnerRoom_EventScript_BrailleBackWall_8:
+# 43 "data//maps/SealedChamber_InnerRoom/scripts.pory"
+	setflag FLAG_HIDE_MAUVILLE_GYM_WATTSON
+# 44 "data//maps/SealedChamber_InnerRoom/scripts.pory"
+	clearflag FLAG_HIDE_MAUVILLE_CITY_WATTSON
+	goto SealedChamber_InnerRoom_EventScript_BrailleBackWall_7
 
 
 # 49 "data//maps/SealedChamber_InnerRoom/scripts.pory"

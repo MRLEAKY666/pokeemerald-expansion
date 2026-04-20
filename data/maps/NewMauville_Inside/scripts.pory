@@ -38,6 +38,7 @@ NewMauville_Inside_EventScript_ShowVoltorb3::
 	return
 
 NewMauville_Inside_OnLoad:
+	call_if_unset FLAG_REGI_DOORS_OPENED, NewMauville_Inside_EventScript_SetGeneratorOffMetatiles
 	call_if_eq VAR_NEW_MAUVILLE_STATE, 2, NewMauville_Inside_EventScript_SetGeneratorOffMetatiles
 	end
 
@@ -142,15 +143,15 @@ NewMauville_Inside_EventScript_SetBarrierStateGreenButton::
 	return
 
 NewMauville_Inside_EventScript_RedButton::
-	lockall
-	msgbox NewMauville_Inside_Text_SteppedOnSwitchGeneratorStopped, MSGBOX_DEFAULT
-	call NewMauville_Inside_EventScript_SetGeneratorOffMetatiles
-	setvar VAR_NEW_MAUVILLE_STATE, 2
-	releaseall
+	@ lockall
+	@ msgbox NewMauville_Inside_Text_SteppedOnSwitchGeneratorStopped, MSGBOX_DEFAULT
+	@ call NewMauville_Inside_EventScript_SetGeneratorOffMetatiles
+	@ setvar VAR_NEW_MAUVILLE_STATE, 2
+	@ releaseall
 	end
 
 NewMauville_Inside_EventScript_SetGeneratorOffMetatiles::
-	setmetatile 33, 6, METATILE_BikeShop_Button_Pressed, FALSE
+	@ setmetatile 33, 6, METATILE_BikeShop_Button_Pressed, FALSE
 	setmetatile 32, 2, METATILE_BikeShop_Generator_Off_Tile0, TRUE
 	setmetatile 33, 2, METATILE_BikeShop_Generator_Off_Tile1, TRUE
 	setmetatile 34, 2, METATILE_BikeShop_Generator_Off_Tile2, TRUE
@@ -164,13 +165,15 @@ NewMauville_Inside_EventScript_SetGeneratorOffMetatiles::
 
 NewMauville_Inside_EventScript_Generator::
 	lockall
+	goto_if_unset FLAG_REGI_DOORS_OPENED, NewMauville_Inside_EventScript_GeneratorOff
 	goto_if_eq VAR_NEW_MAUVILLE_STATE, 2, NewMauville_Inside_EventScript_GeneratorOff
 	msgbox NewMauville_Inside_Text_GeneratorRadiatingHeat, MSGBOX_DEFAULT
 	releaseall
 	end
 
 NewMauville_Inside_EventScript_GeneratorOff::
-	msgbox NewMauville_Inside_Text_GeneratorQuietedDown, MSGBOX_DEFAULT
+	@ msgbox NewMauville_Inside_Text_GeneratorQuietedDown, MSGBOX_DEFAULT
+	msgbox NewMauville_Inside_Text_GeneratorRunningSmoothly, MSGBOX_DEFAULT
 	releaseall
 	end
 
@@ -254,6 +257,10 @@ NewMauville_Inside_Text_GeneratorRadiatingHeat:
 
 NewMauville_Inside_Text_GeneratorQuietedDown:
 	.string "The generator quieted down.$"
+
+NewMauville_Inside_Text_GeneratorRunningSmoothly:
+	.string "It's a big generator.\l"
+	.string "And it's running smoothly!$"
 
 NewMauville_Inside_Text_SteppedOnSwitchGeneratorStopped:
 	.string "{PLAYER} stepped on the switch.\p"

@@ -39,10 +39,10 @@ script SealedChamber_InnerRoom_EventScript_BrailleBackWall{
 	closemessage
 	fadeinbgm(0)
 	setflag(FLAG_REGI_DOORS_OPENED)
-//	if (flag(FLAG_HIDE_MAUVILLE_CITY_WATTSON)){
-//		setflag(FLAG_HIDE_MAUVILLE_GYM_WATTSON)
-//		clearflag(FLAG_HIDE_MAUVILLE_CITY_WATTSON)
-//	}
+	if (flag(FLAG_HIDE_MAUVILLE_CITY_WATTSON)){
+		setflag(FLAG_HIDE_MAUVILLE_GYM_WATTSON)
+		clearflag(FLAG_HIDE_MAUVILLE_CITY_WATTSON)
+	}
 	releaseall
 }
 

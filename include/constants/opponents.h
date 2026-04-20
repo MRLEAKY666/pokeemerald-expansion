@@ -884,12 +884,13 @@
 #define TRAINER_GABBY_AND_TY_7              877
 #define TRAINER_PHIL_CRATERED_CREST         878
 #define TRAINER_DRAKE_CRATERED_CREST        879
+#define TRAINER_MICK                        880
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT_EMERALD     880
+#define TRAINERS_COUNT_EMERALD     881
 #define MAX_TRAINERS_COUNT_EMERALD 904
 
 #if IS_FRLG
