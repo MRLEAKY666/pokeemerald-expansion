@@ -309,7 +309,7 @@ static const s16 sEggShardVelocities[][2] =
 static void CreateHatchedMon(struct Pokemon *egg, struct Pokemon *temp)
 {
     enum Species species;
-    u8 isShiny;
+    // u8 isShiny; // old, from unique palettes, supersceded by the new bool32 isShiny;
     u32 personality, pokerus;
     enum PokeBall ball;
     u8 i, friendship, language, gameMet, markings, isModernFatefulEncounter;
