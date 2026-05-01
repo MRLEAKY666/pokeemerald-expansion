@@ -1882,6 +1882,10 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/MossdeepCity_GameCorner_Arcade/scripts.inc"
 
 	.include "data/scripts/apricorn_tree.inc"
+	
+	.include "data/scripts/wild_encounter.inc"
+
+	@ ADDED BELOW 
 
 	.include "data/maps/LavaridgeSauna/scripts.inc"
 
