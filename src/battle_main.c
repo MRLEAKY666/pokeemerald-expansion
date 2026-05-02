@@ -1987,29 +1987,30 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
                     levelFactor = (partyData[monIndex].lvl * 100 / BADGE_1_BOSS_LEVEL);
                 }
                 else if (partyData[monIndex].lvl < BADGE_2_BOSS_LEVEL){
-                    levelFactor = (partyData[monIndex].lvl * 100 / BADGE_2_BOSS_LEVEL);
+                    levelFactor = ((partyData[monIndex].lvl - BADGE_1_BOSS_LEVEL) * 100 / (BADGE_2_BOSS_LEVEL - BADGE_1_BOSS_LEVEL));
                 }
                 else if (partyData[monIndex].lvl < BADGE_3_BOSS_LEVEL){
-                    levelFactor = (partyData[monIndex].lvl * 100 / BADGE_3_BOSS_LEVEL);
+                    levelFactor = ((partyData[monIndex].lvl - BADGE_2_BOSS_LEVEL) * 100 / (BADGE_3_BOSS_LEVEL - BADGE_2_BOSS_LEVEL));
                 }
                 else if (partyData[monIndex].lvl < BADGE_4_BOSS_LEVEL){
-                    levelFactor = (partyData[monIndex].lvl * 100 / BADGE_4_BOSS_LEVEL);
+                    levelFactor = ((partyData[monIndex].lvl - BADGE_3_BOSS_LEVEL) * 100 / (BADGE_4_BOSS_LEVEL - BADGE_3_BOSS_LEVEL));
                 }
                 else if (partyData[monIndex].lvl < BADGE_5_BOSS_LEVEL){
-                    levelFactor = (partyData[monIndex].lvl * 100 / BADGE_5_BOSS_LEVEL);
+                    levelFactor = ((partyData[monIndex].lvl - BADGE_4_BOSS_LEVEL) * 100 / (BADGE_5_BOSS_LEVEL - BADGE_4_BOSS_LEVEL));
                 }
                 else if (partyData[monIndex].lvl < BADGE_6_BOSS_LEVEL){
-                    levelFactor = (partyData[monIndex].lvl * 100 / BADGE_6_BOSS_LEVEL);
+                    levelFactor = ((partyData[monIndex].lvl - BADGE_5_BOSS_LEVEL) * 100 / (BADGE_6_BOSS_LEVEL - BADGE_5_BOSS_LEVEL));
                 }
                 else if (partyData[monIndex].lvl < BADGE_7_BOSS_LEVEL){
-                    levelFactor = (partyData[monIndex].lvl * 100 / BADGE_7_BOSS_LEVEL);
+                    levelFactor = ((partyData[monIndex].lvl - BADGE_6_BOSS_LEVEL) * 100 / (BADGE_7_BOSS_LEVEL - BADGE_6_BOSS_LEVEL));
                 }
                 else if (partyData[monIndex].lvl < BADGE_8_BOSS_LEVEL){
-                    levelFactor = (partyData[monIndex].lvl * 100 / BADGE_8_BOSS_LEVEL);
+                    levelFactor = ((partyData[monIndex].lvl - BADGE_7_BOSS_LEVEL) * 100 / (BADGE_8_BOSS_LEVEL - BADGE_7_BOSS_LEVEL));
                 }
                 else if (partyData[monIndex].lvl < CHAMPION_BOSS_LEVEL){
-                    levelFactor = (partyData[monIndex].lvl * 100 / CHAMPION_BOSS_LEVEL);
+                    levelFactor = ((partyData[monIndex].lvl - BADGE_8_BOSS_LEVEL) * 100 / (CHAMPION_BOSS_LEVEL - BADGE_8_BOSS_LEVEL));
                 }
+                // need case for when opponent mon level is starting higher than champion boss level (do nothing, different type of scaling, ???)
 
                 switch (VarGet(VAR_BADGE_COUNT))
                 {

@@ -26,6 +26,7 @@ MistcladCove_EventScript_SwitchToNighttime::
 MistcladCove_OnTransition::
 	call Common_EventScript_SetupRivalGfxId
 	getplayerxy VAR_TEMP_E, VAR_TEMP_F
+	setflag FLAG_PROGRESS_BASED_LEVEL_SCALING
 	goto_if_ge VAR_TEMP_F, 13, MistcladCove_EventScript_SetFog
 	end
 

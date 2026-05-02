@@ -6,6 +6,7 @@ LavaridgeTown_Gym_B1F_MapScripts::
 LavaridgeTown_Gym_B1F_OnTransition:
 	call LavaridgeTown_Gym_B1F_EventScript_SetTrainerTempVars
 	call LavaridgeTown_Gym_B1F_EventScript_CheckBuryTrainers
+	setflag FLAG_PROGRESS_BASED_LEVEL_SCALING
 	end
 
 @ Unclear where/if these temp vars are getting checked

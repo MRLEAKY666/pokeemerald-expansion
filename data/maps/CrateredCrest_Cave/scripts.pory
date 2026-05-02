@@ -1,5 +1,6 @@
 mapscripts CrateredCrest_Cave_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
+        setflag(FLAG_PROGRESS_BASED_LEVEL_SCALING)
         if (flag(FLAG_TRIGGERED_DRAKE_LATI_SCENE) && !flag(FLAG_RECEIVED_EON_TICKET)){
             setobjectxyperm(LOCALID_CRATER_CAVE_DRAKE, 13, 15)
             setobjectmovementtype(LOCALID_CRATER_CAVE_DRAKE, MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT)
