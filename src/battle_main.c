@@ -81,6 +81,7 @@
 #include "cable_club.h"
 #include "field_weather.h" //added wiz1989
 #include "constants/weather.h" //added wiz1989
+#include "caps.h"
 
 extern const struct BgTemplate gBattleBgTemplates[];
 extern const struct WindowTemplate *const gBattleWindowTemplates[];
@@ -1963,7 +1964,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             }
 
             // level scaling additions
-            if (trainer->trainerClass == TRAINER_CLASS_CHAMPION || trainer->trainerClass == TRAINER_CLASS_ELITE_FOUR/*  || trainer->trainerClass == TRAINER_CLASS_PROFESSOR || trainer->trainerClass == TRAINER_CLASS_RIVAL */) // level scaling for elite four and champion
+            if (trainer->trainerClass == TRAINER_CLASS_CHAMPION || trainer->trainerClass == TRAINER_CLASS_ELITE_FOUR) // level scaling for elite four and champion
             {
                 levelscale = (partyData[monIndex].lvl+VarGet(VAR_HOF_COUNTER)*2);
                 if (levelscale > 100)
@@ -1971,7 +1972,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
                     levelscale = 100;
                 }
             }
-            else if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_GABBY_AND_TY_7 && gSaveBlock1Ptr->gabbyAndTyData.battleNum >= 6)
+            else if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_GABBY_AND_TY_7 && gSaveBlock1Ptr->gabbyAndTyData.battleNum >= 6) // scaling for gaby and ty after team is fully evolved
             {
                 u8 finalrematches = gSaveBlock1Ptr->gabbyAndTyData.battleNum - 6;
                 levelscale = partyData[monIndex].lvl + finalrematches;
@@ -1980,6 +1981,108 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
                     levelscale = 85;
                 } 
             }
+            else if (FlagGet(FLAG_PROGRESS_BASED_LEVEL_SCALING)){ // scaling when temp flag is set
+                u32 levelFactor = 1;
+                if (partyData[monIndex].lvl < BADGE_1_BOSS_LEVEL){
+                    levelFactor = (partyData[monIndex].lvl * 100 / BADGE_1_BOSS_LEVEL);
+                }
+                else if (partyData[monIndex].lvl < BADGE_2_BOSS_LEVEL){
+                    levelFactor = (partyData[monIndex].lvl * 100 / BADGE_2_BOSS_LEVEL);
+                }
+                else if (partyData[monIndex].lvl < BADGE_3_BOSS_LEVEL){
+                    levelFactor = (partyData[monIndex].lvl * 100 / BADGE_3_BOSS_LEVEL);
+                }
+                else if (partyData[monIndex].lvl < BADGE_4_BOSS_LEVEL){
+                    levelFactor = (partyData[monIndex].lvl * 100 / BADGE_4_BOSS_LEVEL);
+                }
+                else if (partyData[monIndex].lvl < BADGE_5_BOSS_LEVEL){
+                    levelFactor = (partyData[monIndex].lvl * 100 / BADGE_5_BOSS_LEVEL);
+                }
+                else if (partyData[monIndex].lvl < BADGE_6_BOSS_LEVEL){
+                    levelFactor = (partyData[monIndex].lvl * 100 / BADGE_6_BOSS_LEVEL);
+                }
+                else if (partyData[monIndex].lvl < BADGE_7_BOSS_LEVEL){
+                    levelFactor = (partyData[monIndex].lvl * 100 / BADGE_7_BOSS_LEVEL);
+                }
+                else if (partyData[monIndex].lvl < BADGE_8_BOSS_LEVEL){
+                    levelFactor = (partyData[monIndex].lvl * 100 / BADGE_8_BOSS_LEVEL);
+                }
+                else if (partyData[monIndex].lvl < CHAMPION_BOSS_LEVEL){
+                    levelFactor = (partyData[monIndex].lvl * 100 / CHAMPION_BOSS_LEVEL);
+                }
+
+                switch (VarGet(VAR_BADGE_COUNT))
+                {
+                case 0:
+                    if (partyData[monIndex].lvl > BADGE_1_BOSS_LEVEL){
+                        levelscale = partyData[monIndex].lvl;
+                        break;
+                    }
+                    levelscale = BADGE_1_BOSS_LEVEL * levelFactor / 100;
+                    break;
+                case 1:
+                    if (partyData[monIndex].lvl > BADGE_2_BOSS_LEVEL){
+                        levelscale = partyData[monIndex].lvl;
+                        break;
+                    }
+                    levelscale = ((BADGE_2_BOSS_LEVEL - BADGE_1_BOSS_LEVEL) * levelFactor / 100) + BADGE_1_BOSS_LEVEL;
+                    break;
+                case 2:
+                    if (partyData[monIndex].lvl > BADGE_3_BOSS_LEVEL){
+                        levelscale = partyData[monIndex].lvl;
+                        break;
+                    }
+                    levelscale = ((BADGE_3_BOSS_LEVEL - BADGE_2_BOSS_LEVEL) * levelFactor / 100) + BADGE_2_BOSS_LEVEL;
+                    break;
+                case 3:
+                    if (partyData[monIndex].lvl > BADGE_4_BOSS_LEVEL){
+                        levelscale = partyData[monIndex].lvl;
+                        break;
+                    }
+                    levelscale = ((BADGE_4_BOSS_LEVEL - BADGE_3_BOSS_LEVEL) * levelFactor / 100) + BADGE_3_BOSS_LEVEL;
+                    break;
+                case 4:
+                    if (partyData[monIndex].lvl > BADGE_5_BOSS_LEVEL){
+                        levelscale = partyData[monIndex].lvl;
+                        break;
+                    }
+                    levelscale = ((BADGE_5_BOSS_LEVEL - BADGE_4_BOSS_LEVEL) * levelFactor / 100) + BADGE_4_BOSS_LEVEL;
+                    break;
+                case 5:
+                    if (partyData[monIndex].lvl > BADGE_6_BOSS_LEVEL){
+                        levelscale = partyData[monIndex].lvl;
+                        break;
+                    }
+                    levelscale = ((BADGE_6_BOSS_LEVEL - BADGE_5_BOSS_LEVEL) * levelFactor / 100) + BADGE_5_BOSS_LEVEL;
+                    break;
+                case 6:
+                    if (partyData[monIndex].lvl > BADGE_7_BOSS_LEVEL){
+                        levelscale = partyData[monIndex].lvl;
+                        break;
+                    }
+                    levelscale = ((BADGE_7_BOSS_LEVEL - BADGE_6_BOSS_LEVEL) * levelFactor / 100) + BADGE_6_BOSS_LEVEL;
+                    break;
+                case 7:
+                    if (partyData[monIndex].lvl > BADGE_8_BOSS_LEVEL){
+                        levelscale = partyData[monIndex].lvl;
+                        break;
+                    }
+                    levelscale = ((BADGE_8_BOSS_LEVEL - BADGE_7_BOSS_LEVEL) * levelFactor / 100) + BADGE_7_BOSS_LEVEL;
+                    break;
+                case 8:
+                    if (partyData[monIndex].lvl > CHAMPION_BOSS_LEVEL){
+                        levelscale = partyData[monIndex].lvl;
+                        break;
+                    }
+                    levelscale = ((CHAMPION_BOSS_LEVEL - BADGE_8_BOSS_LEVEL) * levelFactor / 100) + BADGE_8_BOSS_LEVEL + (VarGet(VAR_HOF_COUNTER) * 2);
+                    break;
+                
+                default:
+                    levelscale = partyData[monIndex].lvl;
+                    break;
+                }
+            }
+            // end of level scaling additions, requires createmon below to use levelscale for level argument
             CreateMon(&party[i], partyData[monIndex].species, levelscale, personalityValue, otId);
             SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[monIndex].heldItem);
 

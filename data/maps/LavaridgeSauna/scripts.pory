@@ -8,6 +8,7 @@ mapscripts LavaridgeSauna_MapScripts {
         else{
             setvar(VAR_TEMP_2, 11)
         }
+        setflag(FLAG_PROGRESS_BASED_LEVEL_SCALING)
     }
 }
 
