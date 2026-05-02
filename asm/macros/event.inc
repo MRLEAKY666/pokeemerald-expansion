@@ -508,6 +508,7 @@
 	@ 
 	.macro warpinplace a, b
 	.byte SCR_OP_WARPINPLACE
+	waitstate
 	.endm
 
 	@ Sets the destination that diving or emerging from a dive will take the player to. Note that this only

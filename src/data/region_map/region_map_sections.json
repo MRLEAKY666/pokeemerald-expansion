@@ -1710,6 +1710,10 @@
     {
       "id": "MAPSEC_IMPACTED_GROTTO",
       "name": "IMPACTED GROTTO"
+    },
+    {
+      "id": "MAPSEC_SECRET_VAULT",
+      "name": "SECRET VAULT"
     }
   ]
 }

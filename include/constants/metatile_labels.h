@@ -89,6 +89,8 @@
 #define METATILE_BikeShop_Barrier_Green_TopMid     0x8BE
 #define METATILE_BikeShop_Barrier_Hidden_Bottom    0x871
 #define METATILE_BikeShop_Barrier_Hidden_Top       0x869
+#define METATILE_BikeShop_Basement_Door_Closed     0x8EC
+#define METATILE_BikeShop_Basement_Door_Open       0x8ED
 #define METATILE_BikeShop_Button_Blue              0x836
 #define METATILE_BikeShop_Button_Green             0x82E
 #define METATILE_BikeShop_Button_Pressed           0x84F

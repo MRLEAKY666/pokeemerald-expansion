@@ -1,0 +1,84 @@
+{
+  "id": "MAP_SECRET_VAULT",
+  "name": "SecretVault",
+  "layout": "LAYOUT_SECRET_VAULT",
+  "music": "MUS_SEALED_CHAMBER",
+  "region_map_section": "MAPSEC_SECRET_VAULT",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": true,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(REGIELEKI)",
+      "x": 8,
+      "y": 7,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SecretVault_EventScript_Regieleki",
+      "flag": "FLAG_HIDE_REGIELEKI"
+    }
+  ],
+  "warp_events": [
+    {
+      "warp_id": "WARP_ID_FROM_SECRET_VAULT",
+      "x": 8,
+      "y": 27,
+      "elevation": 3,
+      "dest_map": "MAP_NEW_MAUVILLE_INSIDE",
+      "dest_warp_id": "WARP_ID_NEWMAUVILLE_TO_VAULT"
+    },
+    {
+      "warp_id": "WARP_ID_SECRETVAULT_TO_INNER_ROOM",
+      "x": 8,
+      "y": 20,
+      "elevation": 0,
+      "dest_map": "MAP_SECRET_VAULT",
+      "dest_warp_id": "2"
+    },
+    {
+      "warp_id": "WARP_ID_SECRETVAULT_FROM_INNER_ROOM",
+      "x": 8,
+      "y": 11,
+      "elevation": 3,
+      "dest_map": "MAP_SECRET_VAULT",
+      "dest_warp_id": "1"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 8,
+      "y": 20,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "ImpactedGrotto_EventScript_CaveEntranceMiddle"
+    },
+    {
+      "type": "sign",
+      "x": 7,
+      "y": 20,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "ImpactedGrotto_EventScript_CaveEntranceSide"
+    },
+    {
+      "type": "sign",
+      "x": 9,
+      "y": 20,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "ImpactedGrotto_EventScript_CaveEntranceSide"
+    }
+  ]
+}

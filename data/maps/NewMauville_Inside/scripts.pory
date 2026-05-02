@@ -38,9 +38,39 @@ NewMauville_Inside_EventScript_ShowVoltorb3::
 	return
 
 NewMauville_Inside_OnLoad:
+	setflag FLAG_TEMP_7
 	call_if_unset FLAG_REGI_DOORS_OPENED, NewMauville_Inside_EventScript_SetGeneratorOffMetatiles
 	call_if_eq VAR_NEW_MAUVILLE_STATE, 2, NewMauville_Inside_EventScript_SetGeneratorOffMetatiles
+	call_if_unset FLAG_UNLOCKED_NEW_MAUVILLE_BASEMENT_DOOR, NewMauville_Inside_EventScript_ShowLockedBasementDoor
 	end
+
+NewMauville_Inside_EventScript_ShowLockedBasementDoor::
+	clearflag FLAG_TEMP_7
+	setmetatile 33, 12, METATILE_BikeShop_Basement_Door_Closed, TRUE
+	return
+
+`
+
+script NewMauville_Inside_EventScript_LockedBasementDoor{
+	lock
+	msgbox(format("The door is locked."), MSGBOX_DEFAULT)
+	checkitem(ITEM_BASEMENT_KEY)
+	if (var(VAR_RESULT) == TRUE){
+		msgbox(format("{PLAYER} used the BASEMENT KEY!"), MSGBOX_DEFAULT)
+		setflag(FLAG_UNLOCKED_NEW_MAUVILLE_BASEMENT_DOOR)
+		setmetatile(33, 12, METATILE_BikeShop_Basement_Door_Open, FALSE)
+		setobjectxy(LOCALID_NEWMAUVILLE_LOCKED_BASEMENT, 33, 17)
+		setflag(FLAG_TEMP_7)
+		special(DrawWholeMapView)
+		playse(SE_UNLOCK)
+		waitse
+		msgbox(format("The basement door opened."), MSGBOX_DEFAULT)
+	}
+	release
+	end
+}
+
+raw`
 
 NewMauville_Inside_EventScript_BlueButton::
 	lockall

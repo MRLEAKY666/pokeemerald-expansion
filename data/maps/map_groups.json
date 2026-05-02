@@ -504,7 +504,8 @@
     "CrateredCrest",
     "CrateredCrest_Cave",
     "CrateredCrest_House1",
-    "ImpactedGrotto"
+    "ImpactedGrotto",
+    "SecretVault"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",

@@ -34,6 +34,11 @@ EverGrandeCity_HallOfFame_EventScript_ResetDefeatedEventLegendaries::
 	clearflag FLAG_DEFEATED_LUGIA
 	clearflag FLAG_DEFEATED_HO_OH
 	clearflag FLAG_DEFEATED_ZAPDOS
+	clearflag FLAG_DEFEATED_REGIROCK
+	clearflag FLAG_DEFEATED_REGICE
+	clearflag FLAG_DEFEATED_REGISTEEL
+	clearflag FLAG_DEFEATED_REGIDRAGO
+	clearflag FLAG_DEFEATED_REGIELEKI
 	return
 
 EverGrandeCity_HallOfFame_EventScript_UpdateHoFCounter::

@@ -106,7 +106,7 @@
 #define FLAG_RESCUED_BIRCH                       0x52
 #define FLAG_LEGENDARIES_IN_SOOTOPOLIS           0x53
 
-#define FLAG_UNUSED_0x054                    0x54  // Unused Flag
+#define FLAG_UNLOCKED_NEW_MAUVILLE_BASEMENT_DOOR                    0x54  // 
 #define FLAG_CAUGHT_ZAPDOS                    0x55  // Previously Unused Flag
 
 #define FLAG_HIDE_CONTEST_POKE_BALL          0x56  // Always set after new game, object it hides is added directly
@@ -666,7 +666,7 @@
 
 #define FLAG_HIDDEN_ITEM_LAVARIDGE_TOWN_ITEM_1  0x264 // 
 #define FLAG_CRATERED_CREST_METEORITE  0x265 // 
-#define FLAG_UNUSED_0x266  0x266 // Unused Flag
+#define FLAG_HIDDEN_ITEM_ROUTE_110_NEW1  0x266 // 
 #define FLAG_UNUSED_0x267  0x267 // Unused Flag
 #define FLAG_UNUSED_0x268  0x268 // Unused Flag
 #define FLAG_UNUSED_0x269  0x269 // Unused Flag
@@ -735,8 +735,8 @@
 #define FLAG_UNUSED_0x2A8  0x2A8 // Unused Flag
 #define FLAG_UNUSED_0x2A9  0x2A9 // Unused Flag
 #define FLAG_UNUSED_0x2AA  0x2AA // Unused Flag
-#define FLAG_UNUSED_0x2AB  0x2AB // Unused Flag
-#define FLAG_UNUSED_0x2AC  0x2AC // Unused Flag
+#define FLAG_DEFEATED_REGIELEKI  0x2AB // Unused Flag
+#define FLAG_HIDE_REGIELEKI  0x2AC // Unused Flag
 #define FLAG_CRATERED_CREST_CARNIVINE2  0x2AD // 
 #define FLAG_HIDE_REGIDRAGO  0x2AE // 
 #define FLAG_DEFEATED_REGIDRAGO  0x2AF // 

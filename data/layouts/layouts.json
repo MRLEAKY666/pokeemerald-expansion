@@ -9884,6 +9884,17 @@
       "border_height": 2,
       "border_width": 2,
       "layout_version": "frlg"
+    },
+    {
+      "id": "LAYOUT_SECRET_VAULT",
+      "name": "SecretVault_Layout",
+      "width": 17,
+      "height": 33,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/SecretVault/border.bin",
+      "blockdata_filepath": "data/layouts/SecretVault/map.bin",
+      "layout_version": "emerald"
     }
   ]
 }
