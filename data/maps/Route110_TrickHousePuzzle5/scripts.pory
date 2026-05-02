@@ -4,6 +4,7 @@ Route110_TrickHousePuzzle5_MapScripts::
 	.byte 0
 
 Route110_TrickHousePuzzle5_OnTransition:
+	setflag FLAG_PROGRESS_BASED_LEVEL_SCALING
 	setvar VAR_TEMP_1, 0
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_3, 0

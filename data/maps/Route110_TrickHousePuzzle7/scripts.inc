@@ -149,636 +149,638 @@ Route110_TrickHousePuzzle7_EventScript_SetSwitch5MetatilesOff::
 # 75 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
 Route110_TrickHousePuzzle7_OnTransition:
 # 76 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	goto_if_eq VAR_TRICK_HOUSE_PUZZLE_7_STATE_2, 1, Route110_TrickHousePuzzle7_EventScript_TeleportedTransition
+	setflag FLAG_PROGRESS_BASED_LEVEL_SCALING
 # 77 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	clearflag FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_1
+	goto_if_eq VAR_TRICK_HOUSE_PUZZLE_7_STATE_2, 1, Route110_TrickHousePuzzle7_EventScript_TeleportedTransition
 # 78 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	clearflag FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_2
-# 79 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	clearflag FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_3
-# 80 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	clearflag FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_4
-# 81 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	clearflag FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_5
-# 82 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
-# 83 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
-# 84 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_TeleportedTransition::
-# 85 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
-# 86 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
-# 87 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_OnLoad:
-# 88 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	call_if_eq VAR_TRICK_HOUSE_PUZZLE_7_STATE_2, 1, Route110_TrickHousePuzzle7_EventScript_UpdateSwitchMetatiles
-# 89 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
-# 90 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
-# 91 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_OnFrame:
-# 92 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	map_script_2 VAR_TRICK_HOUSE_PUZZLE_7_STATE_2, 1, Route110_TrickHousePuzzle7_EventScript_ClearState2
-# 93 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.2byte 0
-# 94 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
-# 95 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_ClearState2::
-# 96 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	setvar VAR_TRICK_HOUSE_PUZZLE_7_STATE_2, 0
-# 97 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
-# 98 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
-# 99 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_Scroll::
-# 100 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	lockall
-# 101 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	goto_if_eq VAR_TRICK_HOUSE_PUZZLE_7_STATE, 0, Route110_TrickHousePuzzle7_EventScript_FoundScroll
-# 102 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	goto Route110_TrickHousePuzzle_EventScript_ReadScrollAgain
-# 103 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
-# 104 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
-# 105 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_FoundScroll::
-# 106 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	setvar VAR_TRICK_HOUSE_PUZZLE_7_STATE, 1
-# 107 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	goto Route110_TrickHousePuzzle_EventScript_FoundScroll
-# 108 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
-# 109 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
-# 110 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-@ Unused, leftover from R/S
-# 111 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_TeleportPad::
-# 112 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	lockall
-# 113 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	setvar VAR_TRICK_HOUSE_PUZZLE_7_STATE_2, 1
-# 114 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	warpteleport MAP_ROUTE110_TRICK_HOUSE_PUZZLE7, 3, 19
-# 115 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	waitstate
-# 116 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	releaseall
-# 117 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
-# 118 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
-# 119 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-@ All the below switch scripts are unused leftover from R/S
-# 120 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_Switch1::
-# 121 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	lockall
-# 122 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	delay 32
-# 123 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	call_if_unset FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_1, Route110_TrickHousePuzzle7_EventScript_SetSwitch1MetatilesOn
-# 124 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	call_if_set FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_1, Route110_TrickHousePuzzle7_EventScript_SetSwitch1MetatilesOff
-# 125 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	special DrawWholeMapView
-# 126 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	playse SE_CLICK
-# 127 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	goto_if_unset FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_1, Route110_TrickHousePuzzle7_EventScript_SetSwitch1On
-# 128 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	goto_if_set FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_1, Route110_TrickHousePuzzle7_EventScript_SetSwitch1Off
-# 129 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
-# 130 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
-# 131 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_Switch2::
-# 132 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	lockall
-# 133 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	delay 32
-# 134 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	call_if_unset FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_2, Route110_TrickHousePuzzle7_EventScript_SetSwitch2MetatilesOn
-# 135 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	call_if_set FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_2, Route110_TrickHousePuzzle7_EventScript_SetSwitch2MetatilesOff
-# 136 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	special DrawWholeMapView
-# 137 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	playse SE_CLICK
-# 138 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	goto_if_unset FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_2, Route110_TrickHousePuzzle7_EventScript_SetSwitch2On
-# 139 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	goto_if_set FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_2, Route110_TrickHousePuzzle7_EventScript_SetSwitch2Off
-# 140 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
-# 141 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
-# 142 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_Switch3::
-# 143 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	lockall
-# 144 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	delay 32
-# 145 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	call_if_unset FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_3, Route110_TrickHousePuzzle7_EventScript_SetSwitch3MetatilesOn
-# 146 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	call_if_set FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_3, Route110_TrickHousePuzzle7_EventScript_SetSwitch3MetatilesOff
-# 147 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	special DrawWholeMapView
-# 148 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	playse SE_CLICK
-# 149 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	goto_if_unset FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_3, Route110_TrickHousePuzzle7_EventScript_SetSwitch3On
-# 150 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	goto_if_set FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_3, Route110_TrickHousePuzzle7_EventScript_SetSwitch3Off
-# 151 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
-# 152 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
-# 153 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_Switch4::
-# 154 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	lockall
-# 155 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	delay 32
-# 156 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	call_if_unset FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_4, Route110_TrickHousePuzzle7_EventScript_SetSwitch4MetatilesOn
-# 157 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	call_if_set FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_4, Route110_TrickHousePuzzle7_EventScript_SetSwitch4MetatilesOff
-# 158 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	special DrawWholeMapView
-# 159 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	playse SE_CLICK
-# 160 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	goto_if_unset FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_4, Route110_TrickHousePuzzle7_EventScript_SetSwitch4On
-# 161 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	goto_if_set FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_4, Route110_TrickHousePuzzle7_EventScript_SetSwitch4Off
-# 162 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
-# 163 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
-# 164 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_Switch5::
-# 165 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	lockall
-# 166 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	delay 32
-# 167 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	call_if_unset FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_5, Route110_TrickHousePuzzle7_EventScript_SetSwitch5MetatilesOn
-# 168 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	call_if_set FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_5, Route110_TrickHousePuzzle7_EventScript_SetSwitch5MetatilesOff
-# 169 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	special DrawWholeMapView
-# 170 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	playse SE_CLICK
-# 171 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	goto_if_unset FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_5, Route110_TrickHousePuzzle7_EventScript_SetSwitch5On
-# 172 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	goto_if_set FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_5, Route110_TrickHousePuzzle7_EventScript_SetSwitch5Off
-# 173 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
-# 174 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
-# 175 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-@ All the below switch scripts are unused leftover from R/S
-# 176 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_SetSwitch1On::
-# 177 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	setflag FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_1
-# 178 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	releaseall
-# 179 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
-# 180 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
-# 181 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_SetSwitch1Off::
-# 182 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
 	clearflag FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_1
-# 183 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	releaseall
-# 184 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
-# 185 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
-# 186 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_SetSwitch2On::
-# 187 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	setflag FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_2
-# 188 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	releaseall
-# 189 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
-# 190 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
-# 191 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_SetSwitch2Off::
-# 192 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+# 79 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
 	clearflag FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_2
-# 193 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	releaseall
-# 194 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
-# 195 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
-# 196 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_SetSwitch3On::
-# 197 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	setflag FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_3
-# 198 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	releaseall
-# 199 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
-# 200 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
-# 201 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_SetSwitch3Off::
-# 202 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+# 80 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
 	clearflag FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_3
-# 203 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	releaseall
-# 204 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
-# 205 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
-# 206 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_SetSwitch4On::
-# 207 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	setflag FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_4
-# 208 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	releaseall
-# 209 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
-# 210 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
-# 211 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_SetSwitch4Off::
-# 212 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+# 81 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
 	clearflag FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_4
-# 213 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	releaseall
-# 214 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
-# 215 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
-# 216 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_SetSwitch5On::
-# 217 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	setflag FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_5
-# 218 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	releaseall
-# 219 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
-# 220 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
-# 221 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_SetSwitch5Off::
-# 222 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+# 82 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
 	clearflag FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_5
-# 223 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+# 83 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	end
+# 84 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+
+# 85 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+Route110_TrickHousePuzzle7_EventScript_TeleportedTransition::
+# 86 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	end
+# 87 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+
+# 88 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+Route110_TrickHousePuzzle7_OnLoad:
+# 89 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	call_if_eq VAR_TRICK_HOUSE_PUZZLE_7_STATE_2, 1, Route110_TrickHousePuzzle7_EventScript_UpdateSwitchMetatiles
+# 90 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	end
+# 91 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+
+# 92 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+Route110_TrickHousePuzzle7_OnFrame:
+# 93 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	map_script_2 VAR_TRICK_HOUSE_PUZZLE_7_STATE_2, 1, Route110_TrickHousePuzzle7_EventScript_ClearState2
+# 94 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	.2byte 0
+# 95 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+
+# 96 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+Route110_TrickHousePuzzle7_EventScript_ClearState2::
+# 97 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	setvar VAR_TRICK_HOUSE_PUZZLE_7_STATE_2, 0
+# 98 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	end
+# 99 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+
+# 100 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+Route110_TrickHousePuzzle7_EventScript_Scroll::
+# 101 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	lockall
+# 102 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	goto_if_eq VAR_TRICK_HOUSE_PUZZLE_7_STATE, 0, Route110_TrickHousePuzzle7_EventScript_FoundScroll
+# 103 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	goto Route110_TrickHousePuzzle_EventScript_ReadScrollAgain
+# 104 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	end
+# 105 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+
+# 106 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+Route110_TrickHousePuzzle7_EventScript_FoundScroll::
+# 107 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	setvar VAR_TRICK_HOUSE_PUZZLE_7_STATE, 1
+# 108 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	goto Route110_TrickHousePuzzle_EventScript_FoundScroll
+# 109 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	end
+# 110 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+
+# 111 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+@ Unused, leftover from R/S
+# 112 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+Route110_TrickHousePuzzle7_EventScript_TeleportPad::
+# 113 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	lockall
+# 114 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	setvar VAR_TRICK_HOUSE_PUZZLE_7_STATE_2, 1
+# 115 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	warpteleport MAP_ROUTE110_TRICK_HOUSE_PUZZLE7, 3, 19
+# 116 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	waitstate
+# 117 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
 	releaseall
+# 118 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	end
+# 119 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+
+# 120 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+@ All the below switch scripts are unused leftover from R/S
+# 121 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+Route110_TrickHousePuzzle7_EventScript_Switch1::
+# 122 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	lockall
+# 123 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	delay 32
+# 124 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	call_if_unset FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_1, Route110_TrickHousePuzzle7_EventScript_SetSwitch1MetatilesOn
+# 125 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	call_if_set FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_1, Route110_TrickHousePuzzle7_EventScript_SetSwitch1MetatilesOff
+# 126 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	special DrawWholeMapView
+# 127 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	playse SE_CLICK
+# 128 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	goto_if_unset FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_1, Route110_TrickHousePuzzle7_EventScript_SetSwitch1On
+# 129 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	goto_if_set FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_1, Route110_TrickHousePuzzle7_EventScript_SetSwitch1Off
+# 130 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	end
+# 131 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+
+# 132 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+Route110_TrickHousePuzzle7_EventScript_Switch2::
+# 133 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	lockall
+# 134 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	delay 32
+# 135 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	call_if_unset FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_2, Route110_TrickHousePuzzle7_EventScript_SetSwitch2MetatilesOn
+# 136 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	call_if_set FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_2, Route110_TrickHousePuzzle7_EventScript_SetSwitch2MetatilesOff
+# 137 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	special DrawWholeMapView
+# 138 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	playse SE_CLICK
+# 139 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	goto_if_unset FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_2, Route110_TrickHousePuzzle7_EventScript_SetSwitch2On
+# 140 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	goto_if_set FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_2, Route110_TrickHousePuzzle7_EventScript_SetSwitch2Off
+# 141 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	end
+# 142 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+
+# 143 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+Route110_TrickHousePuzzle7_EventScript_Switch3::
+# 144 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	lockall
+# 145 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	delay 32
+# 146 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	call_if_unset FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_3, Route110_TrickHousePuzzle7_EventScript_SetSwitch3MetatilesOn
+# 147 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	call_if_set FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_3, Route110_TrickHousePuzzle7_EventScript_SetSwitch3MetatilesOff
+# 148 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	special DrawWholeMapView
+# 149 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	playse SE_CLICK
+# 150 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	goto_if_unset FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_3, Route110_TrickHousePuzzle7_EventScript_SetSwitch3On
+# 151 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	goto_if_set FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_3, Route110_TrickHousePuzzle7_EventScript_SetSwitch3Off
+# 152 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	end
+# 153 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+
+# 154 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+Route110_TrickHousePuzzle7_EventScript_Switch4::
+# 155 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	lockall
+# 156 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	delay 32
+# 157 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	call_if_unset FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_4, Route110_TrickHousePuzzle7_EventScript_SetSwitch4MetatilesOn
+# 158 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	call_if_set FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_4, Route110_TrickHousePuzzle7_EventScript_SetSwitch4MetatilesOff
+# 159 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	special DrawWholeMapView
+# 160 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	playse SE_CLICK
+# 161 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	goto_if_unset FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_4, Route110_TrickHousePuzzle7_EventScript_SetSwitch4On
+# 162 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	goto_if_set FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_4, Route110_TrickHousePuzzle7_EventScript_SetSwitch4Off
+# 163 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	end
+# 164 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+
+# 165 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+Route110_TrickHousePuzzle7_EventScript_Switch5::
+# 166 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	lockall
+# 167 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	delay 32
+# 168 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	call_if_unset FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_5, Route110_TrickHousePuzzle7_EventScript_SetSwitch5MetatilesOn
+# 169 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	call_if_set FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_5, Route110_TrickHousePuzzle7_EventScript_SetSwitch5MetatilesOff
+# 170 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	special DrawWholeMapView
+# 171 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	playse SE_CLICK
+# 172 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	goto_if_unset FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_5, Route110_TrickHousePuzzle7_EventScript_SetSwitch5On
+# 173 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	goto_if_set FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_5, Route110_TrickHousePuzzle7_EventScript_SetSwitch5Off
+# 174 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	end
+# 175 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+
+# 176 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+@ All the below switch scripts are unused leftover from R/S
+# 177 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+Route110_TrickHousePuzzle7_EventScript_SetSwitch1On::
+# 178 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	setflag FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_1
+# 179 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	releaseall
+# 180 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	end
+# 181 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+
+# 182 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+Route110_TrickHousePuzzle7_EventScript_SetSwitch1Off::
+# 183 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	clearflag FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_1
+# 184 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	releaseall
+# 185 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	end
+# 186 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+
+# 187 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+Route110_TrickHousePuzzle7_EventScript_SetSwitch2On::
+# 188 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	setflag FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_2
+# 189 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	releaseall
+# 190 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	end
+# 191 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+
+# 192 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+Route110_TrickHousePuzzle7_EventScript_SetSwitch2Off::
+# 193 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	clearflag FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_2
+# 194 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	releaseall
+# 195 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	end
+# 196 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+
+# 197 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+Route110_TrickHousePuzzle7_EventScript_SetSwitch3On::
+# 198 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	setflag FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_3
+# 199 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	releaseall
+# 200 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	end
+# 201 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+
+# 202 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+Route110_TrickHousePuzzle7_EventScript_SetSwitch3Off::
+# 203 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	clearflag FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_3
+# 204 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	releaseall
+# 205 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	end
+# 206 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+
+# 207 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+Route110_TrickHousePuzzle7_EventScript_SetSwitch4On::
+# 208 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	setflag FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_4
+# 209 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	releaseall
+# 210 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	end
+# 211 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+
+# 212 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+Route110_TrickHousePuzzle7_EventScript_SetSwitch4Off::
+# 213 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	clearflag FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_4
+# 214 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	releaseall
+# 215 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	end
+# 216 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+
+# 217 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+Route110_TrickHousePuzzle7_EventScript_SetSwitch5On::
+# 218 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	setflag FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_5
+# 219 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	releaseall
+# 220 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	end
+# 221 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+
+# 222 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+Route110_TrickHousePuzzle7_EventScript_SetSwitch5Off::
+# 223 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	clearflag FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_5
 # 224 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
+	releaseall
 # 225 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
+	end
 # 226 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-@ From here is where the new, actually used puzzle scripts begin
+
 # 227 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_YellowButton::
+@ From here is where the new, actually used puzzle scripts begin
 # 228 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	playse SE_SWITCH
+Route110_TrickHousePuzzle7_EventScript_YellowButton::
 # 229 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	waitse
+	playse SE_SWITCH
 # 230 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	playse SE_REPEL
+	waitse
 # 231 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	initrotatingtilepuzzle TRUE
+	playse SE_REPEL
 # 232 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	moverotatingtileobjects 0
+	initrotatingtilepuzzle TRUE
 # 233 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	waitmovement 0
+	moverotatingtileobjects 0
 # 234 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	turnrotatingtileobjects
+	waitmovement 0
 # 235 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	waitmovement 0
+	turnrotatingtileobjects
 # 236 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	freerotatingtilepuzzle
+	waitmovement 0
 # 237 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
+	freerotatingtilepuzzle
 # 238 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
+	end
 # 239 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_BlueButton::
+
 # 240 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	playse SE_SWITCH
+Route110_TrickHousePuzzle7_EventScript_BlueButton::
 # 241 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	waitse
+	playse SE_SWITCH
 # 242 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	playse SE_REPEL
+	waitse
 # 243 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	initrotatingtilepuzzle TRUE
+	playse SE_REPEL
 # 244 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	moverotatingtileobjects 1
+	initrotatingtilepuzzle TRUE
 # 245 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	waitmovement 0
+	moverotatingtileobjects 1
 # 246 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	turnrotatingtileobjects
+	waitmovement 0
 # 247 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	waitmovement 0
+	turnrotatingtileobjects
 # 248 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	freerotatingtilepuzzle
+	waitmovement 0
 # 249 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
+	freerotatingtilepuzzle
 # 250 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
+	end
 # 251 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_GreenButton::
+
 # 252 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	playse SE_SWITCH
+Route110_TrickHousePuzzle7_EventScript_GreenButton::
 # 253 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	waitse
+	playse SE_SWITCH
 # 254 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	playse SE_REPEL
+	waitse
 # 255 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	initrotatingtilepuzzle TRUE
+	playse SE_REPEL
 # 256 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	moverotatingtileobjects 2
+	initrotatingtilepuzzle TRUE
 # 257 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	waitmovement 0
+	moverotatingtileobjects 2
 # 258 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	turnrotatingtileobjects
+	waitmovement 0
 # 259 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	waitmovement 0
+	turnrotatingtileobjects
 # 260 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	freerotatingtilepuzzle
+	waitmovement 0
 # 261 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
+	freerotatingtilepuzzle
 # 262 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
+	end
 # 263 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_PurpleButton::
+
 # 264 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	playse SE_SWITCH
+Route110_TrickHousePuzzle7_EventScript_PurpleButton::
 # 265 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	waitse
-# 266 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	playse SE_REPEL
-# 267 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	initrotatingtilepuzzle TRUE
-# 268 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	moverotatingtileobjects 3
-# 269 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	waitmovement 0
-# 270 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	turnrotatingtileobjects
-# 271 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	waitmovement 0
-# 272 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	freerotatingtilepuzzle
-# 273 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
-# 274 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
-# 275 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-@ Unused
-# 276 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_RedButton::
-# 277 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
 	playse SE_SWITCH
-# 278 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+# 266 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
 	waitse
-# 279 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+# 267 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
 	playse SE_REPEL
-# 280 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+# 268 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
 	initrotatingtilepuzzle TRUE
-# 281 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	moverotatingtileobjects 4
-# 282 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+# 269 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	moverotatingtileobjects 3
+# 270 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
 	waitmovement 0
-# 283 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+# 271 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
 	turnrotatingtileobjects
-# 284 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+# 272 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
 	waitmovement 0
-# 285 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+# 273 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
 	freerotatingtilepuzzle
+# 274 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	end
+# 275 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+
+# 276 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+@ Unused
+# 277 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+Route110_TrickHousePuzzle7_EventScript_RedButton::
+# 278 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	playse SE_SWITCH
+# 279 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	waitse
+# 280 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	playse SE_REPEL
+# 281 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	initrotatingtilepuzzle TRUE
+# 282 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	moverotatingtileobjects 4
+# 283 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	waitmovement 0
+# 284 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	turnrotatingtileobjects
+# 285 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	waitmovement 0
 # 286 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
+	freerotatingtilepuzzle
 # 287 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
+	end
 # 288 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_Joshua::
+
 # 289 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	trainerbattle_single TRAINER_JOSHUA, Route110_TrickHousePuzzle7_Text_JoshuaIntro, Route110_TrickHousePuzzle7_Text_JoshuaDefeat
+Route110_TrickHousePuzzle7_EventScript_Joshua::
 # 290 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	msgbox Route110_TrickHousePuzzle7_Text_JoshuaPostBattle, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_JOSHUA, Route110_TrickHousePuzzle7_Text_JoshuaIntro, Route110_TrickHousePuzzle7_Text_JoshuaDefeat
 # 291 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
+	msgbox Route110_TrickHousePuzzle7_Text_JoshuaPostBattle, MSGBOX_AUTOCLOSE
 # 292 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
+	end
 # 293 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_Patricia::
+
 # 294 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	trainerbattle_single TRAINER_PATRICIA, Route110_TrickHousePuzzle7_Text_PatriciaIntro, Route110_TrickHousePuzzle7_Text_PatriciaDefeat
+Route110_TrickHousePuzzle7_EventScript_Patricia::
 # 295 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	msgbox Route110_TrickHousePuzzle7_Text_PatriciaPostBattle, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_PATRICIA, Route110_TrickHousePuzzle7_Text_PatriciaIntro, Route110_TrickHousePuzzle7_Text_PatriciaDefeat
 # 296 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
+	msgbox Route110_TrickHousePuzzle7_Text_PatriciaPostBattle, MSGBOX_AUTOCLOSE
 # 297 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
+	end
 # 298 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_Alexis::
+
 # 299 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	trainerbattle_single TRAINER_ALEXIS, Route110_TrickHousePuzzle7_Text_AlexisIntro, Route110_TrickHousePuzzle7_Text_AlexisDefeat
+Route110_TrickHousePuzzle7_EventScript_Alexis::
 # 300 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	msgbox Route110_TrickHousePuzzle7_Text_AlexisPostBattle, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_ALEXIS, Route110_TrickHousePuzzle7_Text_AlexisIntro, Route110_TrickHousePuzzle7_Text_AlexisDefeat
 # 301 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
+	msgbox Route110_TrickHousePuzzle7_Text_AlexisPostBattle, MSGBOX_AUTOCLOSE
 # 302 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
+	end
 # 303 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_Mariela::
+
 # 304 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	trainerbattle_single TRAINER_MARIELA, Route110_TrickHousePuzzle7_Text_MarielaIntro, Route110_TrickHousePuzzle7_Text_MarielaDefeat
+Route110_TrickHousePuzzle7_EventScript_Mariela::
 # 305 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	msgbox Route110_TrickHousePuzzle7_Text_MarielaPostBattle, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_MARIELA, Route110_TrickHousePuzzle7_Text_MarielaIntro, Route110_TrickHousePuzzle7_Text_MarielaDefeat
 # 306 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
+	msgbox Route110_TrickHousePuzzle7_Text_MarielaPostBattle, MSGBOX_AUTOCLOSE
 # 307 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
+	end
 # 308 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_Alvaro::
+
 # 309 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	trainerbattle_single TRAINER_ALVARO, Route110_TrickHousePuzzle7_Text_AlvaroIntro, Route110_TrickHousePuzzle7_Text_AlvaroDefeat
+Route110_TrickHousePuzzle7_EventScript_Alvaro::
 # 310 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	msgbox Route110_TrickHousePuzzle7_Text_AlvaroPostBattle, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_ALVARO, Route110_TrickHousePuzzle7_Text_AlvaroIntro, Route110_TrickHousePuzzle7_Text_AlvaroDefeat
 # 311 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	end
+	msgbox Route110_TrickHousePuzzle7_Text_AlvaroPostBattle, MSGBOX_AUTOCLOSE
 # 312 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
-# 313 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_EventScript_Everett::
-# 314 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	trainerbattle_single TRAINER_EVERETT, Route110_TrickHousePuzzle7_Text_EverettIntro, Route110_TrickHousePuzzle7_Text_EverettDefeat
-# 315 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	msgbox Route110_TrickHousePuzzle7_Text_EverettPostBattle, MSGBOX_AUTOCLOSE
-# 316 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
 	end
+# 313 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+
+# 314 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+Route110_TrickHousePuzzle7_EventScript_Everett::
+# 315 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	trainerbattle_single TRAINER_EVERETT, Route110_TrickHousePuzzle7_Text_EverettIntro, Route110_TrickHousePuzzle7_Text_EverettDefeat
+# 316 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	msgbox Route110_TrickHousePuzzle7_Text_EverettPostBattle, MSGBOX_AUTOCLOSE
 # 317 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
+	end
 # 318 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_Text_WroteSecretCodeLockOpened::
+
 # 319 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "{PLAYER} wrote down the secret code\n"
+Route110_TrickHousePuzzle7_Text_WroteSecretCodeLockOpened::
 # 320 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "on the door.\p"
+	.string "{PLAYER} wrote down the secret code\n"
 # 321 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "“TRICK MASTER is huggable.”\n"
+	.string "on the door.\p"
 # 322 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "… … … … … … … …\p"
+	.string "“TRICK MASTER is huggable.”\n"
 # 323 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "The lock clicked open!$"
+	.string "… … … … … … … …\p"
 # 324 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
+	.string "The lock clicked open!$"
 # 325 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_Text_JoshuaIntro:
+
 # 326 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "The TRICK MASTER always vanishes\n"
+Route110_TrickHousePuzzle7_Text_JoshuaIntro:
 # 327 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "like smoke. How does he do it?$"
+	.string "The TRICK MASTER always vanishes\n"
 # 328 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
+	.string "like smoke. How does he do it?$"
 # 329 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_Text_JoshuaDefeat:
+
 # 330 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "Aiyeeeh! You're much too strong!\n"
+Route110_TrickHousePuzzle7_Text_JoshuaDefeat:
 # 331 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "How do you do it?$"
+	.string "Aiyeeeh! You're much too strong!\n"
 # 332 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
+	.string "How do you do it?$"
 # 333 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_Text_JoshuaPostBattle:
+
 # 334 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "I wish I could appear and disappear as\n"
+Route110_TrickHousePuzzle7_Text_JoshuaPostBattle:
 # 335 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "if I were smoke, too.$"
+	.string "I wish I could appear and disappear as\n"
 # 336 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
+	.string "if I were smoke, too.$"
 # 337 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_Text_PatriciaIntro:
+
 # 338 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "Going around the same spot…\n"
+Route110_TrickHousePuzzle7_Text_PatriciaIntro:
 # 339 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "It begets ill fortune…$"
+	.string "Going around the same spot…\n"
 # 340 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
+	.string "It begets ill fortune…$"
 # 341 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_Text_PatriciaDefeat:
+
 # 342 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "Defeated!\n"
+Route110_TrickHousePuzzle7_Text_PatriciaDefeat:
 # 343 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "It's a bad sign…$"
+	.string "Defeated!\n"
 # 344 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
+	.string "It's a bad sign…$"
 # 345 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_Text_PatriciaPostBattle:
+
 # 346 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "I've circled the same spot over ten\n"
+Route110_TrickHousePuzzle7_Text_PatriciaPostBattle:
 # 347 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "times now… It's ill fortune…$"
+	.string "I've circled the same spot over ten\n"
 # 348 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
+	.string "times now… It's ill fortune…$"
 # 349 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_Text_AlexisIntro:
+
 # 350 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "Whoever wins will get through here\n"
+Route110_TrickHousePuzzle7_Text_AlexisIntro:
 # 351 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "first. That's the feeling I get.$"
+	.string "Whoever wins will get through here\n"
 # 352 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
+	.string "first. That's the feeling I get.$"
 # 353 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_Text_AlexisDefeat:
+
 # 354 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "Oh!\n"
+Route110_TrickHousePuzzle7_Text_AlexisDefeat:
 # 355 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "Well, go ahead, then!$"
+	.string "Oh!\n"
 # 356 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
+	.string "Well, go ahead, then!$"
 # 357 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_Text_AlexisPostBattle:
+
 # 358 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "You're solving all the puzzles in the\n"
+Route110_TrickHousePuzzle7_Text_AlexisPostBattle:
 # 359 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "TRICK HOUSE. That's the feeling I get.$"
+	.string "You're solving all the puzzles in the\n"
 # 360 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
+	.string "TRICK HOUSE. That's the feeling I get.$"
 # 361 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_Text_MarielaIntro:
+
 # 362 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "Nufufufu, here at last!\n"
+Route110_TrickHousePuzzle7_Text_MarielaIntro:
 # 363 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "Let's get right with it!$"
+	.string "Nufufufu, here at last!\n"
 # 364 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
+	.string "Let's get right with it!$"
 # 365 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_Text_MarielaDefeat:
+
 # 366 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "You're so casual about winning!$"
+Route110_TrickHousePuzzle7_Text_MarielaDefeat:
 # 367 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
+	.string "You're so casual about winning!$"
 # 368 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_Text_MarielaPostBattle:
+
 # 369 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "Humph! I'm not upset!\n"
+Route110_TrickHousePuzzle7_Text_MarielaPostBattle:
 # 370 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "Not me!$"
+	.string "Humph! I'm not upset!\n"
 # 371 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
+	.string "Not me!$"
 # 372 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_Text_AlvaroIntro:
+
 # 373 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "I ever so closely watched you coming!$"
+Route110_TrickHousePuzzle7_Text_AlvaroIntro:
 # 374 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
+	.string "I ever so closely watched you coming!$"
 # 375 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_Text_AlvaroDefeat:
+
 # 376 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "This outcome I didn't see coming…$"
+Route110_TrickHousePuzzle7_Text_AlvaroDefeat:
 # 377 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
+	.string "This outcome I didn't see coming…$"
 # 378 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_Text_AlvaroPostBattle:
+
 # 379 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "Well, anyway, we both picked a weird\n"
+Route110_TrickHousePuzzle7_Text_AlvaroPostBattle:
 # 380 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "place to get acquainted.\p"
+	.string "Well, anyway, we both picked a weird\n"
 # 381 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "As one weirdo to another,\n"
+	.string "place to get acquainted.\p"
 # 382 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "let's do our best!$"
+	.string "As one weirdo to another,\n"
 # 383 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
+	.string "let's do our best!$"
 # 384 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_Text_EverettIntro:
+
 # 385 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "It's awfully cramped in here…$"
+Route110_TrickHousePuzzle7_Text_EverettIntro:
 # 386 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-
+	.string "It's awfully cramped in here…$"
 # 387 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_Text_EverettDefeat:
-# 388 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "Oh, yes, strong you are.$"
-# 389 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
 
+# 388 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+Route110_TrickHousePuzzle7_Text_EverettDefeat:
+# 389 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	.string "Oh, yes, strong you are.$"
 # 390 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-Route110_TrickHousePuzzle7_Text_EverettPostBattle:
+
 # 391 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
-	.string "I was hoping to switch places with you\n"
+Route110_TrickHousePuzzle7_Text_EverettPostBattle:
 # 392 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
+	.string "I was hoping to switch places with you\n"
+# 393 "data//maps/Route110_TrickHousePuzzle7/scripts.pory"
 	.string "when I beat you, but…$"

@@ -5,6 +5,7 @@ Route110_TrickHousePuzzle6_MapScripts::
 	.byte 0
 
 Route110_TrickHousePuzzle6_OnTransition:
+	setflag FLAG_PROGRESS_BASED_LEVEL_SCALING
 	special RotatingGate_InitPuzzle
 	end
 

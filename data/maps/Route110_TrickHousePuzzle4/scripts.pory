@@ -1,6 +1,11 @@
 raw `
 Route110_TrickHousePuzzle4_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route110_TrickHousePuzzle4_OnTransition 
 	.byte 0
+
+Route110_TrickHousePuzzle4_OnTransition:
+	setflag FLAG_PROGRESS_BASED_LEVEL_SCALING
+	end
 
 Route110_TrickHousePuzzle4_EventScript_Scroll::
 	lockall

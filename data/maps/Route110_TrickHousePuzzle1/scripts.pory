@@ -5,6 +5,7 @@ Route110_TrickHousePuzzle1_MapScripts::
 
 Route110_TrickHousePuzzle1_OnLoad:
 	goto_if_eq VAR_TRICK_HOUSE_PUZZLE_1_STATE, 2, Route110_TrickHousePuzzle1_EventScript_OpenDoor
+	setflag FLAG_PROGRESS_BASED_LEVEL_SCALING
 	end
 
 Route110_TrickHousePuzzle1_EventScript_OpenDoor::

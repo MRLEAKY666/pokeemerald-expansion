@@ -12,6 +12,7 @@ Route110_TrickHousePuzzle2_OnResume:
 	end
 
 Route110_TrickHousePuzzle2_OnTransition:
+	setflag FLAG_PROGRESS_BASED_LEVEL_SCALING
 	setvar VAR_TEMP_1, 0
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_3, 0

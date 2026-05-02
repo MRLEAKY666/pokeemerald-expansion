@@ -2072,7 +2072,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
                     break;
                 case 8:
                     if (partyData[monIndex].lvl > CHAMPION_BOSS_LEVEL){
-                        levelscale = partyData[monIndex].lvl;
+                        levelscale = partyData[monIndex].lvl + (VarGet(VAR_HOF_COUNTER) * 2);
                         break;
                     }
                     levelscale = ((CHAMPION_BOSS_LEVEL - BADGE_8_BOSS_LEVEL) * levelFactor / 100) + BADGE_8_BOSS_LEVEL + (VarGet(VAR_HOF_COUNTER) * 2);
@@ -2081,6 +2081,10 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
                 default:
                     levelscale = partyData[monIndex].lvl;
                     break;
+                }
+                if (levelscale > 100)
+                {
+                    levelscale = 100;
                 }
             }
             // end of level scaling additions, requires createmon below to use levelscale for level argument
