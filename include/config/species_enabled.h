@@ -313,7 +313,7 @@
 #define P_FAMILY_PANSAGE                 P_GEN_5_POKEMON
 #define P_FAMILY_PANSEAR                 P_GEN_5_POKEMON
 #define P_FAMILY_PANPOUR                 P_GEN_5_POKEMON
-#define P_FAMILY_MUNNA                   P_GEN_5_POKEMON
+#define P_FAMILY_MUNNA                   TRUE
 #define P_FAMILY_PIDOVE                  TRUE
 #define P_FAMILY_BLITZLE                 TRUE
 #define P_FAMILY_ROGGENROLA              TRUE

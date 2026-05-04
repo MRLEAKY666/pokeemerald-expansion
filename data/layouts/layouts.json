@@ -9895,6 +9895,17 @@
       "border_filepath": "data/layouts/SecretVault/border.bin",
       "blockdata_filepath": "data/layouts/SecretVault/map.bin",
       "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_SHADY_GUYS_TRUCK",
+      "name": "ShadyGuysTruck_Layout",
+      "width": 6,
+      "height": 5,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_InsideOfTruck",
+      "border_filepath": "data/layouts/ShadyGuysTruck/border.bin",
+      "blockdata_filepath": "data/layouts/ShadyGuysTruck/map.bin",
+      "layout_version": "emerald"
     }
   ]
 }

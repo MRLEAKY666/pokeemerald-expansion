@@ -698,7 +698,9 @@ void Script_SetKO(struct ScriptContext *ctx)
     if (slot < PARTY_SIZE)
     {
         u32 hp = 0;
+        bool8 dead = TRUE;
         SetMonData(&gParties[B_TRAINER_0][slot], MON_DATA_HP, &hp);
+        SetMonData(&gParties[B_TRAINER_0][slot], MON_DATA_DEAD, &dead);
     }
 }
 

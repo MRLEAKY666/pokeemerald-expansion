@@ -1,0 +1,63 @@
+{
+  "id": "MAP_SHADY_GUYS_TRUCK",
+  "name": "ShadyGuysTruck",
+  "layout": "LAYOUT_SHADY_GUYS_TRUCK",
+  "music": "MUS_B_PIKE",
+  "region_map_section": "MAPSEC_SHADY_GUYS_TRUCK",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [
+    {
+      "local_id": "LOCALID_SHADYGUY_TRUCK_GUY",
+      "graphics_id": "OBJ_EVENT_GFX_CONTEST_JUDGE",
+      "x": 1,
+      "y": 2,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ShadyGuysTruck_EventScript_ShadyGuy",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_SHADYGUY_TRUCK_HYPNO",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HYPNO)",
+      "x": 2,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ShadyGuysTruck_EventScript_Hypno",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_SHADYGUY_TRUCK_MUSHARNA",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MUSHARNA)",
+      "x": 2,
+      "y": 1,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ShadyGuysTruck_EventScript_Musharna",
+      "flag": "0"
+    }
+  ],
+  "warp_events": [],
+  "coord_events": [],
+  "bg_events": []
+}

@@ -1,0 +1,242 @@
+mapscripts ShadyGuysTruck_MapScripts {}
+
+const FLAG_PAID_FOR_SHADY_GUY = FLAG_TEMP_3
+const VAR_TIMES_EXTRACTED = VAR_TEMP_A
+const VAR_CHOSEN_SPECIES = VAR_TEMP_B 
+const VAR_EXTRACTED_MEDICINE = VAR_TEMP_C 
+const VAR_EXTRACTED_MEDICINE_QUANTITY = VAR_TEMP_D 
+const VAR_ASSISTANT_MON = VAR_TEMP_E
+
+script ShadyGuysTruck_EventScript_ShadyGuy{
+    //lock
+    faceplayer
+    if (flag(FLAG_PAID_FOR_SHADY_GUY)){
+        msgbox(format("Talk to one of my assistants to get started.\p"
+                        "HYPNO will extract memories of your POKéMON's experience,\p"
+                        "while MUSHARNA will extract memories of their effort."), MSGBOX_DEFAULT)
+    }
+    else{ // normal dialogue path
+        applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceRight)
+        waitmovement
+        if (var(VAR_TIMES_EXTRACTED) == 0){ // different greetings
+            msgbox(format("SHADY PERSON: Welcome, traveler!\p"
+                            "My assistants can turn your POKéMON's memories into strengthening medicine.\p"
+                            "Would you like to try it?\nYour POKéMON will suffer…"), MSGBOX_YESNO)
+        }
+        else{
+            msgbox(format("Ah…\p"
+                            "You've had a bit of our strengthening medicine, and now you want more.\p"
+                            "Are you sure?\nEven though your POKéMON will suffer?"), MSGBOX_YESNO)
+        }
+        if (var(VAR_RESULT) == YES){
+            specialvar(VAR_RESULT, CountPartyAliveNonEggMons)
+            if (var(VAR_RESULT) == 1){
+                msgbox(format("Oh?\p"
+                                "You only have one POKéMON in your party…\p"
+                                "If something were to happen to it,\nwell…\pYou'd be defenseless.\p"
+                                "Come back with an extra teammate or two, just in case."), MSGBOX_DEFAULT)
+            }
+            else{
+                showmoneybox(0, 0)
+                msgbox(format("I charge ¥1000 for our service.\p"
+                                "It's a good deal for such a rare skill…\pYou'll benefit greatly, but your POKéMON will suffer.\p"
+                                "Do you still want to try it?"), MSGBOX_YESNO)
+                if (var(VAR_RESULT) == YES){
+                    checkmoney(1000)
+                    if (var(VAR_RESULT) == TRUE){
+                        removemoney(1000)
+                        updatemoneybox
+                        playse(SE_SHOP)
+                        waitse
+                        delay(20)
+                        hidemoneybox
+                        applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceRight)
+                        waitmovement
+                        msgbox(format("Well then…\p"
+                                        "Talk to one of my assistants to get started.\p"
+                                        "HYPNO will extract memories of your POKéMON's experience,\p"
+                                        "while MUSHARNA will extract memories of their effort."), MSGBOX_DEFAULT)
+                        setflag(FLAG_PAID_FOR_SHADY_GUY)
+                        
+                    }
+                    else{
+                        msgbox(format("You don't have enough money for our service.\p"
+                                        "It's quite taxing on me and my POKéMON to perform this skill.\p"
+                                        "If you wish to benefit from our talents, expect to compensate us appropriately."), MSGBOX_DEFAULT)
+                        hidemoneybox
+                    }
+                }
+                else{
+                    hidemoneybox
+                    msgbox(format("Yes, I understand.\p"
+                                    "Your POKéMON would find you cruel for subjecting them to this technique.\p"
+                                    "You're kind to spare them."), MSGBOX_DEFAULT)
+                }
+            }
+        }
+        else{
+            msgbox(format("Yes, I understand.\p"
+                            "Your POKéMON would find you cruel for subjecting them to this technique.\p"
+                            "You're kind to spare them."), MSGBOX_DEFAULT)
+        }
+    }
+    release
+}
+
+script ShadyGuysTruck_EventScript_Musharna{
+    faceplayer
+    waitse
+    if (flag(FLAG_PAID_FOR_SHADY_GUY)){
+        msgbox(format("Do you want to ask MUSHARNA to forcibly extract your POKéMON's memories?"), MSGBOX_YESNO)
+        if (var(VAR_RESULT) == YES){
+            setvar(VAR_ASSISTANT_MON, SPECIES_MUSHARNA)
+            playmoncry(SPECIES_MUSHARNA, CRY_MODE_NORMAL)
+            message("MUUUUUUU…")
+            call(ShadyGuysTruck_EventScript_ExtractMemories)
+            call(ShadyGuysTruck_EventScript_GiveMedicine)
+        }
+        else{
+            msgbox(format("Try asking HYPNO instead."), MSGBOX_DEFAULT)
+        }
+    }
+    else{
+        playmoncry(SPECIES_MUSHARNA, CRY_MODE_NORMAL)
+        message("MUUUUUUU…")
+        waitmoncry
+        delay(40)
+        closemessage
+    }
+    release
+}
+
+script ShadyGuysTruck_EventScript_Hypno{
+    faceplayer
+    waitse
+    if (flag(FLAG_PAID_FOR_SHADY_GUY)){
+        msgbox(format("Do you want to ask HYPNO to forcibly extract your POKéMON's memories?"), MSGBOX_YESNO)
+        if (var(VAR_RESULT) == YES){
+            setvar(VAR_ASSISTANT_MON, SPECIES_HYPNO)
+            playmoncry(SPECIES_HYPNO, CRY_MODE_NORMAL)
+            message("NOOOOOOO…")
+            call(ShadyGuysTruck_EventScript_ExtractMemories)
+            call(ShadyGuysTruck_EventScript_GiveMedicine)
+        }
+        else{
+            msgbox(format("Try asking MUSHARNA instead."), MSGBOX_DEFAULT)
+        }
+    }
+    else{
+        playmoncry(SPECIES_HYPNO, CRY_MODE_NORMAL)
+        message("NOOOOOOO…")
+        waitmoncry
+        delay(40)
+        closemessage
+    }
+    release
+}
+
+script ShadyGuysTruck_EventScript_ExtractMemories{
+    waitmoncry
+    special(ChoosePartyMon) // sets selection to VAR_0x8004
+    waitstate
+    if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN){
+        release
+        end
+    }
+    specialvar(VAR_CHOSEN_SPECIES, ScriptGetPartyMonSpecies)
+    fadeoutbgm(1)
+    delay(40)
+    closemessage
+    playse(SE_INTRO_BLAST)
+    //playse(SE_ORB)
+    fadescreenspeed(FADE_TO_WHITE, 7)
+    delay(60)
+    playse(SE_PIKE_CURTAIN_OPEN)
+    delay(80)
+    playmoncry(VAR_CHOSEN_SPECIES, CRY_MODE_WEAK)
+    waitmoncry
+    //delay(30)
+    //playse(SE_M_NIGHTMARE)
+    //waitse
+    if (var(VAR_ASSISTANT_MON) == SPECIES_HYPNO){
+        setobjectxy(LOCALID_PLAYER, 2, 2)
+        applymovement(LOCALID_PLAYER, Common_Movement_FaceDown)
+        applymovement(LOCALID_SHADYGUY_TRUCK_HYPNO, Common_Movement_FaceUp)
+        callnative(CreateCandyFromPartyMon)
+    }
+    else{ // if (var(VAR_ASSISTANT_MON) == SPECIES_MUSHARNA)
+        setobjectxy(LOCALID_PLAYER, 2, 2)
+        applymovement(LOCALID_PLAYER, Common_Movement_FaceUp)
+        applymovement(LOCALID_SHADYGUY_TRUCK_MUSHARNA, Common_Movement_FaceDown)
+        callnative(CreateVitaminFromPartyMon)
+    }
+    hidefollower
+    clearflag(FLAG_PAID_FOR_SHADY_GUY)
+    addvar(VAR_TIMES_EXTRACTED, 1)
+    fadescreenspeed(FADE_FROM_WHITE, 8)
+    fadeinbgm(1)
+    return
+}
+
+script ShadyGuysTruck_EventScript_GiveMedicine{
+    if (var(VAR_EXTRACTED_MEDICINE) == ITEM_REVIVE){
+        applymovement(LOCALID_SHADYGUY_TRUCK_GUY, Common_Movement_ExclamationMark)
+        waitmovement
+        delay(10)
+        applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
+        waitmovement
+        delay(30)
+        bufferspeciesname(STR_VAR_1, VAR_ASSISTANT_MON)
+        bufferspeciesname(STR_VAR_2, VAR_CHOSEN_SPECIES)
+        bufferitemnameplural(STR_VAR_3, VAR_EXTRACTED_MEDICINE, VAR_EXTRACTED_MEDICINE_QUANTITY)
+        msgbox(format("SHADY PERSON: Oh…\lThat's not right…\p"
+                        "It seems my {STR_VAR_1} got carried away with its ability…\p"
+                        "It devoured the entirety of your {STR_VAR_2}'s experience.\p{STR_VAR_2} wasn't able to survive in such a severely weakened state.\p"
+                        "Your {STR_VAR_2} has died."), MSGBOX_DEFAULT)
+        //checkitemspace(ITEM_RARE_CANDY, VAR_EXTRACTED_MEDICINE_QUANTITY)
+        giveitem(ITEM_RARE_CANDY, VAR_EXTRACTED_MEDICINE_QUANTITY)
+        message(format("That candy represents the extent of its experience in crystal form."))
+        waitmessage
+        waitbuttonpress
+        delay(60)
+        bufferspeciesname(STR_VAR_2, VAR_CHOSEN_SPECIES)
+        msgbox(format("But we were also able to crystallize the last of its life force into this powerful medicine.\p"
+                        "Use it wisely,\pand remember {STR_VAR_2} when you do."), MSGBOX_DEFAULT)
+        //checkitemspace(ITEM_REVIVE, 1)
+        giveitem(ITEM_REVIVE, 1)
+    }
+    elif (var(VAR_EXTRACTED_MEDICINE) == ITEM_NONE || var(VAR_EXTRACTED_MEDICINE_QUANTITY) == 0){
+        applymovement(LOCALID_SHADYGUY_TRUCK_GUY, Common_Movement_ExclamationMark)
+        waitmovement
+        delay(10)
+        applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
+        waitmovement
+        delay(30)
+        bufferspeciesname(STR_VAR_1, VAR_ASSISTANT_MON)
+        bufferspeciesname(STR_VAR_2, VAR_CHOSEN_SPECIES)
+        bufferitemnameplural(STR_VAR_3, VAR_EXTRACTED_MEDICINE, VAR_EXTRACTED_MEDICINE_QUANTITY)
+        msgbox(format("SHADY PERSON: Your POKéMON…\p"
+                        "My {STR_VAR_1} did its best, but {STR_VAR_2} just doesn't have enough experience to be of use.\p"
+                        "Next time, bring a more experienced POKéMON."), MSGBOX_DEFAULT)
+    }
+    else{
+        applymovement(LOCALID_SHADYGUY_TRUCK_GUY, Common_Movement_WalkInPlaceRight)
+        waitmovement
+        delay(10)
+        applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
+        waitmovement
+        delay(30)
+        applymovement(LOCALID_SHADYGUY_TRUCK_GUY, Common_Movement_WalkInPlaceRight)
+        //checkitemspace(VAR_EXTRACTED_MEDICINE, VAR_EXTRACTED_MEDICINE_QUANTITY)
+        giveitem(VAR_EXTRACTED_MEDICINE, VAR_EXTRACTED_MEDICINE_QUANTITY)
+        bufferspeciesname(STR_VAR_1, VAR_ASSISTANT_MON)
+        bufferspeciesname(STR_VAR_2, VAR_CHOSEN_SPECIES)
+        bufferitemnameplural(STR_VAR_3, VAR_EXTRACTED_MEDICINE, VAR_EXTRACTED_MEDICINE_QUANTITY)
+        msgbox(format("SHADY PERSON: Yes…\lThis is our talent.\p"
+                        "My {STR_VAR_1} was able to extract the memories of your {STR_VAR_2} to create {STR_VAR_3}.\p"
+                        "But in exchange, your {STR_VAR_2} is that much weaker.\p"
+                        "It's as though it never had that experience at all."), MSGBOX_DEFAULT)
+        msgbox(format("I hope you're happy!"), MSGBOX_DEFAULT)
+    }
+    return
+}

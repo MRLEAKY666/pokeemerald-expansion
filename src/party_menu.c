@@ -8426,6 +8426,212 @@ void DeleteMonFromParty(void)
     CalculatePlayerPartyCount();
 }
 
+static const u16 sShadyCandies[] = 
+{
+    ITEM_EXP_CANDY_XS,
+    ITEM_EXP_CANDY_S,
+    ITEM_EXP_CANDY_M,
+    ITEM_EXP_CANDY_L,
+    ITEM_EXP_CANDY_XL,
+};
+
+/* static u32 IndexOfShadyMedicine(u16 medicineArray, u16 item)
+{
+    u32 i;
+    for (i = 0; i < ARRAY_COUNT(medicineArray); i++)
+    {
+        if (medicineArray[i] == item)
+            return i;
+    }
+
+    return 0xFF;
+} */
+
+void CreateCandyFromPartyMon(void)
+{
+    u8 position = VarGet(VAR_0x8004);
+    u32 currExp = GetMonData(&gParties[B_TRAINER_0][position], MON_DATA_EXP);
+    u8 expSize;
+
+    if (currExp > 30000){
+        expSize = 5; // IndexOfShadyMedicine(sShadyCandies, ITEM_EXP_CANDY_XL)
+    }
+    else if (currExp > 10000){
+        expSize = 4;
+    }
+    else if (currExp > 3000){
+        expSize = 3;
+    }
+    else if (currExp > 800){
+        expSize = 2;
+    }
+    else if (currExp > 100){
+        expSize = 1;
+    }
+    else{
+        expSize = 0;
+    }
+
+    u16 maxQuantity = 1;
+    u16 givenQuantity = 1;
+    u16 item;
+    u32 finalExp;
+    switch (Random() % expSize)
+    {
+    case 0:
+        u32 data;
+        if (GetMonData(&gParties[B_TRAINER_0][position], MON_DATA_LEVEL) > 1){
+            item = ITEM_RARE_CANDY;
+            maxQuantity = GetMonData(&gParties[B_TRAINER_0][position], MON_DATA_LEVEL) - 1;
+            givenQuantity = (Random() % maxQuantity) + 1;
+            data = GetMonData(&gParties[B_TRAINER_0][position], MON_DATA_LEVEL) - givenQuantity; // data == resulting level
+            SetMonData(&gParties[B_TRAINER_0][position], MON_DATA_LEVEL, &data);
+
+            finalExp = gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_0][position], MON_DATA_SPECIES)].growthRate][data];
+            if (givenQuantity == maxQuantity 
+                 && GetMonData(&gParties[B_TRAINER_0][position], MON_DATA_DEAD) == FALSE
+                 && Random() % 2){ // if level is reduced to 1 and mon isn't already dead, chance to randomly kill
+                item = ITEM_REVIVE;
+                data = TRUE; 
+                SetMonData(&gParties[B_TRAINER_0][position], MON_DATA_DEAD, &data);
+                data = 0; 
+                SetMonData(&gParties[B_TRAINER_0][position], MON_DATA_HP, &data);
+            }
+        }
+        else {
+            item = ITEM_NONE;
+        }
+        break;
+    case 1:
+        item = ITEM_EXP_CANDY_XS;
+        maxQuantity = currExp / 100;
+        givenQuantity = Random() % maxQuantity;
+        finalExp = (currExp - (100 * givenQuantity));
+        break;
+    case 2:
+        item = ITEM_EXP_CANDY_S;
+        maxQuantity = currExp / 800;
+        givenQuantity = Random() % maxQuantity;
+        finalExp = (currExp - (800 * givenQuantity));
+        break;
+    case 3:
+        item = ITEM_EXP_CANDY_M;
+        maxQuantity = currExp / 3000;
+        givenQuantity = Random() % maxQuantity;
+        finalExp = (currExp - (3000 * givenQuantity));
+        break;
+    case 4:
+        item = ITEM_EXP_CANDY_L;
+        maxQuantity = currExp / 10000;
+        givenQuantity = Random() % maxQuantity;
+        finalExp = (currExp - (10000 * givenQuantity));
+        break;
+    case 5:
+        item = ITEM_EXP_CANDY_XL;
+        maxQuantity = currExp / 30000;
+        givenQuantity = Random() % maxQuantity;
+        finalExp = (currExp - (30000 * givenQuantity));
+        break;
+    default:
+        break;
+    }
+
+    VarSet(VAR_TEMP_C, item);
+    VarSet(VAR_TEMP_D, givenQuantity);
+    SetMonData(&gParties[B_TRAINER_0][position], MON_DATA_EXP, &finalExp);
+    CalculateMonStats(&gParties[B_TRAINER_0][position]);
+}
+
+void CreateVitaminFromPartyMon(void)
+{
+    u8 position = VarGet(VAR_0x8004);
+    u16 hpEv = GetMonData(&gParties[B_TRAINER_0][position], MON_DATA_HP_EV);
+    u16 atkEv = GetMonData(&gParties[B_TRAINER_0][position], MON_DATA_ATK_EV);
+    u16 defEv = GetMonData(&gParties[B_TRAINER_0][position], MON_DATA_DEF_EV);
+    u16 spAtkEv = GetMonData(&gParties[B_TRAINER_0][position], MON_DATA_SPATK_EV);
+    u16 spDefEv = GetMonData(&gParties[B_TRAINER_0][position], MON_DATA_SPDEF_EV);
+    u16 speEv = GetMonData(&gParties[B_TRAINER_0][position], MON_DATA_SPEED_EV);
+
+    u16 sEvTotals[] = 
+    {
+        hpEv,
+        atkEv,
+        defEv,
+        spAtkEv,
+        spDefEv,
+        speEv,
+    };
+
+    u16 mostEvStatValue = sEvTotals[0];
+    u32 mostEvStat;
+
+    u32 i;
+    for (i = 0; i < 6; i++)
+    {
+        if (sEvTotals[i] > mostEvStatValue) {
+            mostEvStatValue = sEvTotals[i];
+            switch (i)
+            {
+            case 0:
+                mostEvStat = MON_DATA_HP_EV;
+                break;
+            case 1:
+                mostEvStat = MON_DATA_ATK_EV;
+                break;
+            case 2:
+                mostEvStat = MON_DATA_DEF_EV;
+                break;
+            case 3:
+                mostEvStat = MON_DATA_SPATK_EV;
+                break;
+            case 4:
+                mostEvStat = MON_DATA_SPDEF_EV;
+                break;
+            case 5:
+                mostEvStat = MON_DATA_SPEED_EV;
+                break;
+            
+            default:
+                break;
+            }
+        }
+    }
+
+    u16 numVitamins = GetMonData(&gParties[B_TRAINER_0][position], mostEvStat) / 10;
+    u16 vitaminType = ITEM_PP_MAX;
+    switch (mostEvStat)
+    {
+    case MON_DATA_HP_EV:
+        vitaminType = ITEM_HP_UP;
+        break;
+    case MON_DATA_ATK_EV:
+        vitaminType = ITEM_PROTEIN;
+        break;
+    case MON_DATA_DEF_EV:
+        vitaminType = ITEM_IRON;
+        break;
+    case MON_DATA_SPATK_EV:
+        vitaminType = ITEM_CALCIUM;
+        break;
+    case MON_DATA_SPDEF_EV:
+        vitaminType = ITEM_ZINC;
+        break;
+    case MON_DATA_SPEED_EV:
+        vitaminType = ITEM_CARBOS;
+        break;
+    
+    default:
+        break;
+    }
+
+    u16 finalEvValue = GetMonData(&gParties[B_TRAINER_0][position], mostEvStat) - (numVitamins * 10);
+
+    VarSet(VAR_TEMP_C, vitaminType);
+    VarSet(VAR_TEMP_D, numVitamins);
+    SetMonData(&gParties[B_TRAINER_0][position], mostEvStat, &finalEvValue);
+    CalculateMonStats(&gParties[B_TRAINER_0][position]);
+}
+
 static void GetPartyAndSlotFromPartyMenuId(s8 menuId, struct Pokemon **party, s8 *partySlot)
 {
     switch (gPartyMenu.layout)

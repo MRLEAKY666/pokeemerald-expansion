@@ -1714,6 +1714,10 @@
     {
       "id": "MAPSEC_SECRET_VAULT",
       "name": "SECRET VAULT"
+    },
+    {
+      "id": "MAPSEC_SHADY_GUYS_TRUCK",
+      "name": "???"
     }
   ]
 }
