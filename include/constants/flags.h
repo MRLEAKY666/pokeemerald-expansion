@@ -1527,15 +1527,15 @@
 #define FLAG_OPENED_SIDEROOM_1                           (SYSTEM_FLAGS + 0x96) // 
 #define FLAG_OPENED_SIDEROOM_2                           (SYSTEM_FLAGS + 0x97) // 
 #define FLAG_OPENED_SIDEROOM_3                           (SYSTEM_FLAGS + 0x98) // 
-#define FLAG_LAVARBOR_RUSTURF_CREW_RECRUITED                           (SYSTEM_FLAGS + 0x99) // 
-#define FLAG_LAVARBOR_FOSSIL_MANIAC_RECRUITED                           (SYSTEM_FLAGS + 0x9A) // 
-#define FLAG_LAVARBOR_FALLARBOR_OPENED                           (SYSTEM_FLAGS + 0x9B) // 
-#define FLAG_DEFEATED_LAVARBOR_GARCHOMP                           (SYSTEM_FLAGS + 0x9C) // 
-#define FLAG_LAVARBOR_TUNNEL_FOSSIL                           (SYSTEM_FLAGS + 0x9D) // 
-#define FLAG_LAVARBOR_DIGGING_SIDEROOM                           (SYSTEM_FLAGS + 0x9E) // 
-#define FLAG_LAVARBOR_TUNNEL_ORTHWORM                           (SYSTEM_FLAGS + 0x9F) // 
-#define FLAG_TRIGGERED_DRAKE_LATI_SCENE                           (SYSTEM_FLAGS + 0xA0) // 
-#define FLAG_UNUSED_0x901                           (SYSTEM_FLAGS + 0xA1) // Unused Flag
+#define FLAG_LAVARBOR_RUSTURF_CREW_RECRUITED             (SYSTEM_FLAGS + 0x99) // 
+#define FLAG_LAVARBOR_FOSSIL_MANIAC_RECRUITED            (SYSTEM_FLAGS + 0x9A) // 
+#define FLAG_LAVARBOR_FALLARBOR_OPENED                   (SYSTEM_FLAGS + 0x9B) // 
+#define FLAG_DEFEATED_LAVARBOR_GARCHOMP                  (SYSTEM_FLAGS + 0x9C) // 
+#define FLAG_LAVARBOR_TUNNEL_FOSSIL                      (SYSTEM_FLAGS + 0x9D) // 
+#define FLAG_LAVARBOR_DIGGING_SIDEROOM                   (SYSTEM_FLAGS + 0x9E) // 
+#define FLAG_LAVARBOR_TUNNEL_ORTHWORM                    (SYSTEM_FLAGS + 0x9F) // 
+#define FLAG_TRIGGERED_DRAKE_LATI_SCENE                  (SYSTEM_FLAGS + 0xA0) // 
+#define FLAG_KEEP_SHADY_TRUCK                            (SYSTEM_FLAGS + 0xA1) // 
 #define FLAG_UNUSED_0x902                           (SYSTEM_FLAGS + 0xA2) // Unused Flag
 #define FLAG_UNUSED_0x903                           (SYSTEM_FLAGS + 0xA3) // Unused Flag
 #define FLAG_UNUSED_0x904                           (SYSTEM_FLAGS + 0xA4) // Unused Flag

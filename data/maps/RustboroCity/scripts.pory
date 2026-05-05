@@ -2,18 +2,192 @@ raw `
 RustboroCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, RustboroCity_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, RustboroCity_OnFrame
+	map_script MAP_SCRIPT_ON_RESUME, RustboroCity_OnResume
 	.byte 0
 
-RustboroCity_OnTransition:
-	setflag FLAG_VISITED_RUSTBORO_CITY
-	call Common_EventScript_SetupRivalGfxId
-	call_if_eq VAR_RUSTBORO_CITY_STATE, 6, RustboroCity_EventScript_HideMapNamePopup
-	getplayerxy VAR_TEMP_0, VAR_TEMP_1
-	goto_if_eq VAR_RUSTBORO_CITY_STATE, 6, RustboroCity_EventScript_PositionScientistForExit
-	end
+`
+
+const FLAG_TEMP_HIDE_RUSTBORO_TRUCK = FLAG_TEMP_1E
+const FLAG_TEMP_FROM_TRUCK = FLAG_TEMP_1F
+
+script RustboroCity_OnTransition{
+	setflag(FLAG_TEMP_HIDE_RUSTBORO_TRUCK)
+	setflag(FLAG_VISITED_RUSTBORO_CITY)
+	call(Common_EventScript_SetupRivalGfxId)
+	call_if_eq(VAR_RUSTBORO_CITY_STATE, 6, RustboroCity_EventScript_HideMapNamePopup)
+	getplayerxy(VAR_TEMP_E, VAR_TEMP_F)
+	goto_if_eq(VAR_RUSTBORO_CITY_STATE, 6, RustboroCity_EventScript_PositionScientistForExit)
+}
+
+script RustboroCity_OnResume{
+	if (flag(FLAG_TEMP_FROM_TRUCK)){
+		clearflag(FLAG_TEMP_FROM_TRUCK)
+	}
+	else{
+		getplayerxy(VAR_TEMP_E, VAR_TEMP_F)
+		if (var(VAR_TEMP_E) == 5 && var(VAR_TEMP_F) == 42){
+			clearflag(FLAG_TEMP_HIDE_RUSTBORO_TRUCK)
+			setflag(FLAG_TEMP_FROM_TRUCK)
+			applymovement(LOCALID_PLAYER, Common_Movement_SetInvisible)
+		}
+	}
+}
+
+script RustboroCity_EventScript_ReturningFromShadyTruck{
+	setobjectsubpriority(LOCALID_RUSTBORO_SHADY_TRUCK, MAP_RUSTBORO_CITY, 0)
+	playse(SE_BIKE_HOP)
+	applymovement(LOCALID_PLAYER, RustboroCity_Movement_JumpOutOfTruck)
+	waitmovement
+	if (!flag(FLAG_KEEP_SHADY_TRUCK)){
+		applymovement(LOCALID_PLAYER, RustboroCity_Movement_MoveAwayFromTruck)
+		waitmovement
+		applymovement(LOCALID_RUSTBORO_SHADY_ALAKAZAM, Common_Movement_WalkInPlaceFasterDown)
+		waitmovement
+		playmoncry(SPECIES_ALAKAZAM, CRY_MODE_NORMAL)
+		message(format("ZAZAZAAAAAAM!!"))
+		waitmoncry
+		delay(40)
+		closemessage
+		applymovement(LOCALID_RUSTBORO_SHADY_ALAKAZAM, RustboroCity_Movement_AlakazamEnterTruck)
+		delay(30)
+		playse(SE_BIKE_HOP)
+		waitmovement(LOCALID_RUSTBORO_SHADY_ALAKAZAM)
+		delay(30)
+		playse(SE_TRUCK_DOOR)
+		waitse
+		delay(15)
+		fadescreenswapbuffers(FADE_TO_BLACK)
+		delay(60)
+		playse(SE_TRUCK_MOVE)
+		delay(120)
+		playse(SE_TRUCK_STOP)
+		waitse
+		delay(45)
+		removeobject(LOCALID_RUSTBORO_SHADY_TRUCK)
+		removeobject(LOCALID_RUSTBORO_SHADY_ALAKAZAM)
+		removeobject(LOCALID_RUSTBORO_TRUCK_COLLISION_A)
+		removeobject(LOCALID_RUSTBORO_TRUCK_COLLISION_B)
+		fadescreenswapbuffers(FADE_FROM_BLACK)
+		delay(30)
+		message(format("The truck drove off…"))
+		waitmessage
+		delay(90)
+		closemessage
+	}
+	resetobjectsubpriority(LOCALID_RUSTBORO_SHADY_TRUCK, MAP_RUSTBORO_CITY)
+	setvar(VAR_TEMP_F, 0)
+	release
+}
+
+movement RustboroCity_Movement_JumpOutOfTruck{
+	set_visible
+	jump_right
+	delay_8
+	step_end
+}
+
+movement RustboroCity_Movement_MoveAwayFromTruck{
+	walk_right
+	walk_right
+	delay_8
+	walk_in_place_left
+	step_end
+}
+
+movement RustboroCity_Movement_AlakazamEnterTruck{
+	walk_down
+	delay_8
+	jump_left
+	set_invisible
+	step_end
+}
+
+script RustboroCity_EventScript_ExamineShadyTruck{
+	lock
+	msgbox(format("It's a big beat-up truck with no plates or logos.\p"
+					"It must have been difficult to park here."), MSGBOX_DEFAULT)
+	release
+}
+
+script RustboroCity_EventScript_ShadyAlakazam{
+	lock
+	applymovement(LOCALID_RUSTBORO_SHADY_ALAKAZAM, Common_Movement_FacePlayer)
+	waitmovement
+	playmoncry(SPECIES_ALAKAZAM, CRY_MODE_HIGH_PITCH)
+	message(format("ZAZAZAAAAAAM!!"))
+	waitmoncry
+	delay(40)
+	message(format("… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}…"))
+	waitmessage
+	delay(40)
+	specialvar(VAR_RESULT, GetPlayerFacingDirection)
+	if (var(VAR_RESULT) == DIR_WEST){
+		msgbox(format("ALAKAZAM is beckoning you towards the truck doors."), MSGBOX_DEFAULT)
+	}
+	else{
+		msgbox(format("This shady-looking ALAKAZAM is asking if you want to enter the truck.\p"
+						"Do you trust ALAKAZAM enough to get into the sketchy truck?"), MSGBOX_YESNO)
+		closemessage
+		if (var(VAR_RESULT) == YES){
+			goto(RustboroCity_EventScript_EnterShadyTruck)
+		}
+	}
+	release
+}
+
+script RustboroCity_EventScript_TruckEntrance{
+	if (!flag(FLAG_TEMP_HIDE_RUSTBORO_TRUCK)){
+		lock
+		applymovement(LOCALID_RUSTBORO_SHADY_ALAKAZAM, Common_Movement_FacePlayer)
+		waitmovement
+		delay(20)
+		specialvar(VAR_RESULT, GetPlayerFacingDirection)
+		if (var(VAR_RESULT) != DIR_NORTH){
+			applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceUp)
+			waitmovement
+		}
+		goto(RustboroCity_EventScript_ShadyAlakazam)
+	}
+}
+
+script RustboroCity_EventScript_EnterShadyTruck{
+	delay(30)
+	applymovement(LOCALID_RUSTBORO_SHADY_ALAKAZAM, Common_Movement_WalkInPlaceDown)
+	waitmovement
+	delay(20)
+	playse(SE_TRUCK_DOOR)
+	waitse
+	delay(20)
+	specialvar(VAR_RESULT, GetPlayerFacingDirection)
+	if (var(VAR_RESULT) != DIR_WEST){
+		applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
+		waitmovement
+	}
+	setobjectsubpriority(LOCALID_RUSTBORO_SHADY_TRUCK, MAP_RUSTBORO_CITY, 0)
+	hidefollower
+	applymovement(LOCALID_PLAYER, RustboroCity_Movement_PlayerEnterTruck)
+	delay(32)
+	playse(SE_BIKE_HOP)
+	waitmovement
+	playse(SE_EXIT)
+	waitse
+	delay(20)
+	warpcontinuescript(MAP_SHADY_GUYS_TRUCK, 5, 2, ShadyGuysTruck_EventScript_PlayerEntersTruck)
+}
+
+movement RustboroCity_Movement_PlayerEnterTruck{
+	face_left
+	delay_16
+	delay_16
+	jump_left
+	set_invisible
+	step_end
+}
+
+raw`
 
 RustboroCity_EventScript_PositionScientistForExit::
-	goto_if_eq VAR_TEMP_0, 11, RustboroCity_EventScript_PositionScientistLeftExit
+	goto_if_eq VAR_TEMP_E, 11, RustboroCity_EventScript_PositionScientistLeftExit
 	setobjectxyperm LOCALID_RUSTBORO_SCIENTIST, 12, 15
 	end
 
@@ -27,6 +201,7 @@ RustboroCity_EventScript_HideMapNamePopup::
 
 RustboroCity_OnFrame:
 	map_script_2 VAR_RUSTBORO_CITY_STATE, 6, RustboroCity_EventScript_ScientistAddMatchCall
+	map_script_2 VAR_TEMP_F, 42, RustboroCity_EventScript_ReturningFromShadyTruck
 	.2byte 0
 
 RustboroCity_EventScript_ScientistAddMatchCall::

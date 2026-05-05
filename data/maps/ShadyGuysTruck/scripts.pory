@@ -1,4 +1,14 @@
-mapscripts ShadyGuysTruck_MapScripts {}
+mapscripts ShadyGuysTruck_MapScripts {
+    //MAP_SCRIPT_ON_FRAME_TABLE[
+    //    VAR_TEMP_0, 0 {
+    //        getobjectfacingdirection(LOCALID_PLAYER, VAR_RESULT)
+    //        getobjectxy(LOCALID_PLAYER, CURRENT_POSITION, VAR_TEMP_E, VAR_TEMP_F)
+    //        if (var(VAR_RESULT) == DIR_EAST && var(VAR_TEMP_E) == 5 && var(VAR_TEMP_F) != 4){
+    //            call(ShadyGuysTruck_EventScript_TruckExitTile)
+    //        }
+    //    }
+    //]
+}
 
 const FLAG_PAID_FOR_SHADY_GUY = FLAG_TEMP_3
 const VAR_TIMES_EXTRACTED = VAR_TEMP_A
@@ -6,6 +16,7 @@ const VAR_CHOSEN_SPECIES = VAR_TEMP_B
 const VAR_EXTRACTED_MEDICINE = VAR_TEMP_C 
 const VAR_EXTRACTED_MEDICINE_QUANTITY = VAR_TEMP_D 
 const VAR_ASSISTANT_MON = VAR_TEMP_E
+const MAX_EXTRACTIONS = 3
 
 script ShadyGuysTruck_EventScript_ShadyGuy{
     //lock
@@ -180,8 +191,9 @@ script ShadyGuysTruck_EventScript_ExtractMemories{
 
 script ShadyGuysTruck_EventScript_GiveMedicine{
     if (var(VAR_EXTRACTED_MEDICINE) == ITEM_REVIVE){
+        playse(SE_PIN)
         applymovement(LOCALID_SHADYGUY_TRUCK_GUY, Common_Movement_ExclamationMark)
-        waitmovement
+        waitse
         delay(10)
         applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
         waitmovement
@@ -206,8 +218,9 @@ script ShadyGuysTruck_EventScript_GiveMedicine{
         giveitem(ITEM_REVIVE, 1)
     }
     elif (var(VAR_EXTRACTED_MEDICINE) == ITEM_NONE || var(VAR_EXTRACTED_MEDICINE_QUANTITY) == 0){
+        playse(SE_PIN)
         applymovement(LOCALID_SHADYGUY_TRUCK_GUY, Common_Movement_ExclamationMark)
-        waitmovement
+        waitse
         delay(10)
         applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
         waitmovement
@@ -238,5 +251,113 @@ script ShadyGuysTruck_EventScript_GiveMedicine{
                         "It's as though it never had that experience at all."), MSGBOX_DEFAULT)
         msgbox(format("I hope you're happy!"), MSGBOX_DEFAULT)
     }
+    if (var(VAR_TIMES_EXTRACTED) == MAX_EXTRACTIONS){
+        closemessage
+        delay(60)
+        message("… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}…")
+        waitmessage
+        delay(30)
+        msgbox(format("Well look at that,\pIt's about time we get moving.\p"
+                        "Offering a service like this attracts a lot of attention,\p"
+                        "especially with repeat customers like you spreading the word.\p"
+                        "We appreciate the business, but we have to keep a low profile.\p"
+                        "Please see yourself out, I'm sure we'll cross paths again soon."), MSGBOX_DEFAULT)
+        closemessage
+        delay(30)
+        applymovement(LOCALID_PLAYER, ShadyGuysTruck_Movement_LeaveTruckMaxExtractions)
+        waitmovement
+        call(ShadyGuysTruck_EventScript_LeaveTruck)
+    }
     return
+}
+
+movement ShadyGuysTruck_Movement_LeaveTruckMaxExtractions{
+    walk_right
+    walk_right
+    walk_right
+    step_end
+}
+
+script ShadyGuysTruck_EventScript_LeaveTruck{
+    if (var(VAR_TIMES_EXTRACTED) != MAX_EXTRACTIONS){
+        setflag(FLAG_KEEP_SHADY_TRUCK)
+    }
+    else{
+        clearflag(FLAG_KEEP_SHADY_TRUCK)
+    }
+    applymovement(LOCALID_SHADYGUY_TRUCK_GUY, Common_Movement_WalkInPlaceRight)
+    waitmovement
+    getobjectfacingdirection(LOCALID_PLAYER, VAR_RESULT)
+    if (var(VAR_RESULT) != DIR_WEST){
+        applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
+        waitmovement
+    }
+    message(format("SHADY PERSON: My truck is always open to reliable and discrete customers!\p"
+                    "Stop back by if you see us again."))
+    waitmessage
+    delay(60)
+    closemessage
+    hidefollower
+    delay(30)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceRight)
+    waitmovement
+    applymovement(LOCALID_PLAYER, Common_Movement_SetInvisible)
+    playse(SE_EXIT)
+    waitse
+    fadescreen(FADE_TO_BLACK)
+    setvar(VAR_SHADY_TRUCK_LOCATION, MAP_LILYCOVE_CITY)
+    switch (var(VAR_SHADY_TRUCK_LOCATION)){
+        case MAP_RUSTBORO_CITY: 
+            warpsilent(MAP_RUSTBORO_CITY, 5, 42)
+        case MAP_SLATEPORT_CITY: 
+            warpsilent(MAP_SLATEPORT_CITY, 10, 59)
+        case MAP_LILYCOVE_CITY: 
+            warpsilent(MAP_LILYCOVE_CITY, 40, 30)
+    }
+}
+
+script ShadyGuysTruck_EventScript_TruckExitTile{
+    getobjectfacingdirection(LOCALID_PLAYER, VAR_RESULT)
+    if (var(VAR_RESULT) == DIR_EAST || var(VAR_RESULT) == DIR_NORTH){
+        delay(15)
+        if (flag(FLAG_PAID_FOR_SHADY_GUY)){
+            playse(SE_PIN)
+            applymovement(LOCALID_SHADYGUY_TRUCK_GUY, Common_Movement_ExclamationMark)
+            waitse
+            applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
+            waitmovement
+            msgbox(format("SHADY PERSON: Oh, are you leaving?\p"
+                            "But you already paid for our service.\p"
+                            "Speak with one of my assistants to transform the memories of your POKéMON into something useful."), MSGBOX_DEFAULT)
+            closemessage
+            applymovement(LOCALID_PLAYER, Common_Movement_WalkLeft)
+            waitmovement
+        }
+        else{
+            playse(SE_PIN)
+            applymovement(LOCALID_SHADYGUY_TRUCK_GUY, Common_Movement_ExclamationMark)
+            waitse
+            applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
+            waitmovement
+            msgbox(format("SHADY PERSON: Oh, are you headed out?"), MSGBOX_YESNO)
+            if (var(VAR_RESULT) == YES){
+                call(ShadyGuysTruck_EventScript_LeaveTruck)
+            }
+            else{
+                msgbox(format("Good, good.\p"
+                                "Our service is hard to come by,\nconsider giving it a try…"), MSGBOX_DEFAULT)
+                closemessage
+                applymovement(LOCALID_PLAYER, Common_Movement_WalkLeft)
+                waitmovement
+            }
+        }
+    }
+    release
+}
+
+script ShadyGuysTruck_EventScript_PlayerEntersTruck{
+    fadescreen(FADE_FROM_BLACK)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkLeft)
+    waitmovement
+    release
 }

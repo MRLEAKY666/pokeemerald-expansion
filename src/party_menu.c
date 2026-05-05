@@ -8454,22 +8454,22 @@ void CreateCandyFromPartyMon(void)
     u8 expSize;
 
     if (currExp > 30000){
-        expSize = 5; // IndexOfShadyMedicine(sShadyCandies, ITEM_EXP_CANDY_XL)
+        expSize = 6; // IndexOfShadyMedicine(sShadyCandies, ITEM_EXP_CANDY_XL)
     }
     else if (currExp > 10000){
-        expSize = 4;
+        expSize = 5;
     }
     else if (currExp > 3000){
-        expSize = 3;
+        expSize = 4;
     }
     else if (currExp > 800){
-        expSize = 2;
+        expSize = 3;
     }
     else if (currExp > 100){
-        expSize = 1;
+        expSize = 2;
     }
     else{
-        expSize = 0;
+        expSize = 1;
     }
 
     u16 maxQuantity = 1;
@@ -8504,35 +8504,36 @@ void CreateCandyFromPartyMon(void)
         break;
     case 1:
         item = ITEM_EXP_CANDY_XS;
-        maxQuantity = currExp / 100;
-        givenQuantity = Random() % maxQuantity;
+        maxQuantity = ((currExp / 100) < 999) ? (currExp / 100) : 999;
+        givenQuantity = (Random() % maxQuantity) + 1;
         finalExp = (currExp - (100 * givenQuantity));
         break;
     case 2:
         item = ITEM_EXP_CANDY_S;
-        maxQuantity = currExp / 800;
-        givenQuantity = Random() % maxQuantity;
+        maxQuantity = ((currExp / 800) < 999) ? (currExp / 800) : 999;
+        givenQuantity = (Random() % maxQuantity) + 1;
         finalExp = (currExp - (800 * givenQuantity));
         break;
     case 3:
         item = ITEM_EXP_CANDY_M;
-        maxQuantity = currExp / 3000;
-        givenQuantity = Random() % maxQuantity;
+        maxQuantity = ((currExp / 3000) < 999) ? (currExp / 3000) : 999;
+        givenQuantity = (Random() % maxQuantity) + 1;
         finalExp = (currExp - (3000 * givenQuantity));
         break;
     case 4:
         item = ITEM_EXP_CANDY_L;
-        maxQuantity = currExp / 10000;
-        givenQuantity = Random() % maxQuantity;
+        maxQuantity = ((currExp / 10000) < 999) ? (currExp / 10000) : 999;
+        givenQuantity = (Random() % maxQuantity) + 1;
         finalExp = (currExp - (10000 * givenQuantity));
         break;
     case 5:
         item = ITEM_EXP_CANDY_XL;
-        maxQuantity = currExp / 30000;
-        givenQuantity = Random() % maxQuantity;
+        maxQuantity = ((currExp / 30000) < 999) ? (currExp / 30000) : 999;
+        givenQuantity = (Random() % maxQuantity) + 1;
         finalExp = (currExp - (30000 * givenQuantity));
         break;
     default:
+        item = ITEM_NUGGET; // to make it obvious if this case accidnetally occurs
         break;
     }
 

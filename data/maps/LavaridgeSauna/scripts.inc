@@ -446,7 +446,7 @@ LavaridgeSauna_EventScript_FindTunnelManiac_49:
 # 405 "data//maps/LavaridgeSauna/scripts.pory"
 	playse SE_EXIT
 # 406 "data//maps/LavaridgeSauna/scripts.pory"
-	warp MAP_LAVARIDGE_TOWN, 9, 7
+	warp MAP_LAVARIDGE_TOWN, 10, 7
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_17
 
 LavaridgeSauna_EventScript_FindTunnelManiac_51:

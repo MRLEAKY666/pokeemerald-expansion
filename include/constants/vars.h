@@ -120,7 +120,7 @@
 #define VAR_RYDEL_DEBT                          0x405C // 
 #define VAR_MOSSDEEP_CITY_STATE                          0x405D
 #define VAR_SOOTOPOLIS_CITY_STATE                        0x405E
-#define VAR_EVER_GRANDE_CITY_STATE                       0x405F // Unused Var
+#define VAR_SHADY_TRUCK_LOCATION                       0x405F // 
 #define VAR_ROUTE101_STATE                               0x4060
 #define VAR_OLDALE_BUG_KILLING                               0x4061 // previously Unused Var
 #define VAR_ROUTE103_STATE                               0x4062 // Unused Var

@@ -403,7 +403,7 @@ script LavaridgeSauna_EventScript_FindTunnelManiac{
             fadescreen(FADE_TO_BLACK)
             delay(15)
             playse(SE_EXIT)
-            warp(MAP_LAVARIDGE_TOWN, 9, 7)
+            warp(MAP_LAVARIDGE_TOWN, 10, 7)
         }
     }
     applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)

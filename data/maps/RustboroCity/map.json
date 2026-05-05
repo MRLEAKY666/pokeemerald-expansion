@@ -490,6 +490,62 @@
       "trainer_sight_or_berry_tree_id": "LIGHT_TYPE_POKE_MART_SIGN",
       "script": "NULL",
       "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_RUSTBORO_SHADY_TRUCK",
+      "graphics_id": "OBJ_EVENT_GFX_TRUCK",
+      "x": 4,
+      "y": 42,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "RustboroCity_EventScript_ExamineShadyTruck",
+      "flag": "FLAG_TEMP_1E"
+    },
+    {
+      "local_id": "LOCALID_RUSTBORO_SHADY_ALAKAZAM",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ALAKAZAM)",
+      "x": 6,
+      "y": 41,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "RustboroCity_EventScript_ShadyAlakazam",
+      "flag": "FLAG_TEMP_1E"
+    },
+    {
+      "local_id": "LOCALID_RUSTBORO_TRUCK_COLLISION_A",
+      "graphics_id": "OBJ_EVENT_GFX_BRENDAN_NORMAL",
+      "x": 3,
+      "y": 42,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "RustboroCity_EventScript_ExamineShadyTruck",
+      "flag": "FLAG_TEMP_1E"
+    },
+    {
+      "local_id": "LOCALID_RUSTBORO_TRUCK_COLLISION_B",
+      "graphics_id": "OBJ_EVENT_GFX_BRENDAN_NORMAL",
+      "x": 5,
+      "y": 42,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "RustboroCity_EventScript_ExamineShadyTruck",
+      "flag": "FLAG_TEMP_1E"
     }
   ],
   "warp_events": [
@@ -515,6 +571,7 @@
       "dest_warp_id": "0"
     },
     {
+      "warp_id": "WARP_ID_RUSTBORO_FROM_PC",
       "x": 16,
       "y": 38,
       "elevation": 0,
@@ -767,6 +824,15 @@
       "var": "VAR_RUSTBORO_CITY_STATE",
       "var_value": "7",
       "script": "RustboroCity_EventScript_RivalTrigger7"
+    },
+    {
+      "type": "trigger",
+      "x": 6,
+      "y": 42,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "RustboroCity_EventScript_TruckEntrance"
     }
   ],
   "bg_events": [

@@ -2,15 +2,158 @@ raw `
 LilycoveCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, LilycoveCity_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD, LilycoveCity_OnLoad
+	map_script MAP_SCRIPT_ON_RESUME, LilycoveCity_OnResume
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, LilycoveCity_OnFrame
 	.byte 0
 
-LilycoveCity_OnTransition:
-	setflag FLAG_VISITED_LILYCOVE_CITY
-	setvar VAR_CONTEST_HALL_STATE, 0
-	setflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_REPORTER
-	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
-	call Common_EventScript_SetupRivalGfxId
+`
+
+const FLAG_TEMP_HIDE_LILYCOVE_TRUCK = FLAG_TEMP_1E
+const FLAG_TEMP_FROM_TRUCK = FLAG_TEMP_1F 
+
+script LilycoveCity_OnTransition{
+	setflag(FLAG_TEMP_HIDE_LILYCOVE_TRUCK) 
+	setflag(FLAG_VISITED_LILYCOVE_CITY)
+	setvar(VAR_CONTEST_HALL_STATE, 0)
+	setflag(FLAG_HIDE_LILYCOVE_CONTEST_HALL_REPORTER)
+	call_if_set(FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather)
+	call(Common_EventScript_SetupRivalGfxId)
 	end
+}
+
+script LilycoveCity_OnResume{
+	if (flag(FLAG_TEMP_FROM_TRUCK)){
+		clearflag(FLAG_TEMP_FROM_TRUCK)
+	}
+	else{
+		getplayerxy(VAR_TEMP_E, VAR_TEMP_F)
+		if (var(VAR_TEMP_E) == 40 && var(VAR_TEMP_F) == 30){
+			clearflag(FLAG_TEMP_HIDE_LILYCOVE_TRUCK)
+			setflag(FLAG_TEMP_FROM_TRUCK)
+			applymovement(LOCALID_PLAYER, Common_Movement_SetInvisible)
+		}
+	}
+}
+
+script LilycoveCity_EventScript_ReturningFromShadyTruck{
+	if (flag(FLAG_TEMP_FROM_TRUCK)){
+		setobjectsubpriority(LOCALID_LILYCOVE_SHADY_TRUCK, MAP_LILYCOVE_CITY, 0)
+		playse(SE_BIKE_HOP)
+		applymovement(LOCALID_PLAYER, RustboroCity_Movement_JumpOutOfTruck)
+		waitmovement
+		if (!flag(FLAG_KEEP_SHADY_TRUCK)){
+			applymovement(LOCALID_PLAYER, RustboroCity_Movement_MoveAwayFromTruck)
+			waitmovement
+			applymovement(LOCALID_RUSTBORO_SHADY_ALAKAZAM, Common_Movement_WalkInPlaceFasterDown)
+			waitmovement
+			playmoncry(SPECIES_ALAKAZAM, CRY_MODE_NORMAL)
+			message(format("ZAZAZAAAAAAM!!"))
+			waitmoncry
+			delay(40)
+			closemessage
+			applymovement(LOCALID_LILYCOVE_SHADY_ALAKAZAM, RustboroCity_Movement_AlakazamEnterTruck)
+			delay(30)
+			playse(SE_BIKE_HOP)
+			waitmovement(LOCALID_LILYCOVE_SHADY_ALAKAZAM)
+			delay(30)
+			playse(SE_TRUCK_DOOR)
+			waitse
+			delay(15)
+			fadescreenswapbuffers(FADE_TO_BLACK)
+			delay(60)
+			playse(SE_TRUCK_MOVE)
+			delay(120)
+			playse(SE_TRUCK_STOP)
+			waitse
+			delay(45)
+			removeobject(LOCALID_LILYCOVE_SHADY_TRUCK)
+			removeobject(LOCALID_LILYCOVE_SHADY_ALAKAZAM)
+			removeobject(LOCALID_LILYCOVE_TRUCK_COLLISION_A)
+			removeobject(LOCALID_LILYCOVE_TRUCK_COLLISION_B)
+			fadescreenswapbuffers(FADE_FROM_BLACK)
+			delay(30)
+			message(format("The truck drove off…"))
+			waitmessage
+			delay(90)
+			closemessage
+		}
+		resetobjectsubpriority(LOCALID_LILYCOVE_SHADY_TRUCK, MAP_LILYCOVE_CITY)
+	}
+	setvar(VAR_TEMP_F, 0)
+	release
+}
+
+script LilycoveCity_EventScript_ShadyAlakazam{
+	lock
+	applymovement(LOCALID_LILYCOVE_SHADY_ALAKAZAM, Common_Movement_FacePlayer)
+	waitmovement
+	playmoncry(SPECIES_ALAKAZAM, CRY_MODE_HIGH_PITCH)
+	message(format("ZAZAZAAAAAAM!!"))
+	waitmoncry
+	delay(40)
+	message(format("… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}…"))
+	waitmessage
+	delay(40)
+	specialvar(VAR_RESULT, GetPlayerFacingDirection)
+	if (var(VAR_RESULT) == DIR_WEST){
+		msgbox(format("ALAKAZAM is beckoning you towards the truck doors."), MSGBOX_DEFAULT)
+	}
+	else{
+		msgbox(format("This shady-looking ALAKAZAM is asking if you want to enter the truck.\p"
+						"Do you trust ALAKAZAM enough to get into the sketchy truck?"), MSGBOX_YESNO)
+		closemessage
+		if (var(VAR_RESULT) == YES){
+			goto(LilycoveCity_EventScript_EnterShadyTruck)
+		}
+	}
+	release
+}
+
+script LilycoveCity_EventScript_TruckEntrance{
+	if (!flag(FLAG_TEMP_HIDE_LILYCOVE_TRUCK)){
+		lock
+		applymovement(LOCALID_LILYCOVE_SHADY_ALAKAZAM, Common_Movement_FacePlayer)
+		waitmovement
+		delay(20)
+		specialvar(VAR_RESULT, GetPlayerFacingDirection)
+		if (var(VAR_RESULT) != DIR_NORTH){
+			applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceUp)
+			waitmovement
+		}
+		goto(LilycoveCity_EventScript_ShadyAlakazam)
+	}
+}
+
+script LilycoveCity_EventScript_EnterShadyTruck{
+	delay(30)
+	applymovement(LOCALID_LILYCOVE_SHADY_ALAKAZAM, Common_Movement_WalkInPlaceDown)
+	waitmovement
+	delay(20)
+	playse(SE_TRUCK_DOOR)
+	waitse
+	delay(20)
+	specialvar(VAR_RESULT, GetPlayerFacingDirection)
+	if (var(VAR_RESULT) != DIR_WEST){
+		applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
+		waitmovement
+	}
+	setobjectsubpriority(LOCALID_LILYCOVE_SHADY_TRUCK, MAP_LILYCOVE_CITY, 0)
+	hidefollower
+	applymovement(LOCALID_PLAYER, RustboroCity_Movement_PlayerEnterTruck)
+	delay(32)
+	playse(SE_BIKE_HOP)
+	waitmovement
+	playse(SE_EXIT)
+	waitse
+	delay(20)
+	warpcontinuescript(MAP_SHADY_GUYS_TRUCK, 5, 2, ShadyGuysTruck_EventScript_PlayerEntersTruck)
+}
+
+raw`
+
+LilycoveCity_OnFrame:
+	map_script_2 VAR_TEMP_F, 30, LilycoveCity_EventScript_ReturningFromShadyTruck
+	.2byte 0
 
 LilycoveCity_OnLoad:
 	call_if_unset FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE, LilycoveCity_EventScript_SetWailmerMetatiles
