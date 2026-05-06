@@ -2,6 +2,7 @@
 #include "item_use.h"
 #include "battle.h"
 #include "battle_anim.h"
+#include "battle_stat_change.h"
 #include "battle_pyramid.h"
 #include "battle_pyramid_bag.h"
 #include "berry.h"
@@ -1159,7 +1160,7 @@ static u32 GetBallThrowableState(void)
         return BALL_THROW_UNABLE_NO_ROOM;
     else if (GetConfig(B_SEMI_INVULNERABLE_CATCH) >= GEN_4 &&  IsSemiInvulnerable(GetCatchingBattler(), CHECK_ALL))
         return BALL_THROW_UNABLE_SEMI_INVULNERABLE;
-    else if (FlagGet(B_FLAG_NO_CATCHING) || !IsAllowedToUseBag())
+    else if (FlagGet(WE_FLAG_NO_CATCHING) || !IsAllowedToUseBag())
         return BALL_THROW_UNABLE_DISABLED_FLAG;
 
     return BALL_THROW_ABLE;
@@ -1291,6 +1292,8 @@ bool32 CannotUseItemsInBattle(enum Item itemId, struct Pokemon *mon)
             cannotUse = TRUE;
         else if (CompareStat(battlerTarget, GetItemEffect(itemId)[1], MAX_STAT_STAGE, CMP_EQUAL, GetBattlerAbility(battlerTarget)))
             cannotUse = TRUE;
+        else
+            SetStatChange(battlerTarget, GetItemEffect(itemId)[1], 1);
         break;
     case EFFECT_ITEM_SET_FOCUS_ENERGY:
         if (hp == 0 ||gPartyMenu.slotId > 1)
@@ -1328,6 +1331,7 @@ bool32 CannotUseItemsInBattle(enum Item itemId, struct Pokemon *mon)
         }
         break;
     case EFFECT_ITEM_INCREASE_ALL_STATS:
+    // Never called
     {
         if (hp == 0 || gPartyMenu.slotId > 1)
         {
