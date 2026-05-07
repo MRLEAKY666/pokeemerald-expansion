@@ -491,6 +491,8 @@ ShadyGuysTruck_EventScript_LeaveTruck_8:
 	case 1, ShadyGuysTruck_EventScript_LeaveTruck_13
 # 328 "data//maps/ShadyGuysTruck/scripts.pory"
 	case 2, ShadyGuysTruck_EventScript_LeaveTruck_14
+# 331 "data//maps/ShadyGuysTruck/scripts.pory"
+	warpsilent MAP_RUSTBORO_CITY, 5, 42
 	return
 
 ShadyGuysTruck_EventScript_LeaveTruck_2:
@@ -527,84 +529,84 @@ ShadyGuysTruck_EventScript_LeaveTruck_14:
 
 
 ShadyGuysTruck_EventScript_TruckExitTile::
-# 334 "data//maps/ShadyGuysTruck/scripts.pory"
+# 336 "data//maps/ShadyGuysTruck/scripts.pory"
 	getobjectfacingdirection LOCALID_PLAYER, VAR_RESULT
-# 335 "data//maps/ShadyGuysTruck/scripts.pory"
+# 337 "data//maps/ShadyGuysTruck/scripts.pory"
 	compare VAR_RESULT, DIR_EAST
 	goto_if_eq ShadyGuysTruck_EventScript_TruckExitTile_2
-# 335 "data//maps/ShadyGuysTruck/scripts.pory"
+# 337 "data//maps/ShadyGuysTruck/scripts.pory"
 	compare VAR_RESULT, DIR_NORTH
 	goto_if_eq ShadyGuysTruck_EventScript_TruckExitTile_2
 ShadyGuysTruck_EventScript_TruckExitTile_1:
-# 369 "data//maps/ShadyGuysTruck/scripts.pory"
+# 371 "data//maps/ShadyGuysTruck/scripts.pory"
 	release
 	return
 
 ShadyGuysTruck_EventScript_TruckExitTile_2:
-# 336 "data//maps/ShadyGuysTruck/scripts.pory"
+# 338 "data//maps/ShadyGuysTruck/scripts.pory"
 	delay 15
-# 337 "data//maps/ShadyGuysTruck/scripts.pory"
+# 339 "data//maps/ShadyGuysTruck/scripts.pory"
 	goto_if_set FLAG_TEMP_3, ShadyGuysTruck_EventScript_TruckExitTile_6
-# 351 "data//maps/ShadyGuysTruck/scripts.pory"
-	playse SE_PIN
-# 352 "data//maps/ShadyGuysTruck/scripts.pory"
-	applymovement LOCALID_SHADYGUY_TRUCK_GUY, Common_Movement_ExclamationMark
 # 353 "data//maps/ShadyGuysTruck/scripts.pory"
-	waitse
+	playse SE_PIN
 # 354 "data//maps/ShadyGuysTruck/scripts.pory"
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft
+	applymovement LOCALID_SHADYGUY_TRUCK_GUY, Common_Movement_ExclamationMark
 # 355 "data//maps/ShadyGuysTruck/scripts.pory"
-	waitmovement
+	waitse
 # 356 "data//maps/ShadyGuysTruck/scripts.pory"
-	msgbox ShadyGuysTruck_EventScript_TruckExitTile_Text_1, MSGBOX_YESNO
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft
 # 357 "data//maps/ShadyGuysTruck/scripts.pory"
+	waitmovement
+# 358 "data//maps/ShadyGuysTruck/scripts.pory"
+	msgbox ShadyGuysTruck_EventScript_TruckExitTile_Text_1, MSGBOX_YESNO
+# 359 "data//maps/ShadyGuysTruck/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq ShadyGuysTruck_EventScript_TruckExitTile_9
-# 361 "data//maps/ShadyGuysTruck/scripts.pory"
-	msgbox ShadyGuysTruck_EventScript_TruckExitTile_Text_2, MSGBOX_DEFAULT
 # 363 "data//maps/ShadyGuysTruck/scripts.pory"
-	closemessage
-# 364 "data//maps/ShadyGuysTruck/scripts.pory"
-	applymovement LOCALID_PLAYER, Common_Movement_WalkLeft
+	msgbox ShadyGuysTruck_EventScript_TruckExitTile_Text_2, MSGBOX_DEFAULT
 # 365 "data//maps/ShadyGuysTruck/scripts.pory"
+	closemessage
+# 366 "data//maps/ShadyGuysTruck/scripts.pory"
+	applymovement LOCALID_PLAYER, Common_Movement_WalkLeft
+# 367 "data//maps/ShadyGuysTruck/scripts.pory"
 	waitmovement
 	goto ShadyGuysTruck_EventScript_TruckExitTile_1
 
 ShadyGuysTruck_EventScript_TruckExitTile_6:
-# 338 "data//maps/ShadyGuysTruck/scripts.pory"
-	playse SE_PIN
-# 339 "data//maps/ShadyGuysTruck/scripts.pory"
-	applymovement LOCALID_SHADYGUY_TRUCK_GUY, Common_Movement_ExclamationMark
 # 340 "data//maps/ShadyGuysTruck/scripts.pory"
-	waitse
+	playse SE_PIN
 # 341 "data//maps/ShadyGuysTruck/scripts.pory"
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft
+	applymovement LOCALID_SHADYGUY_TRUCK_GUY, Common_Movement_ExclamationMark
 # 342 "data//maps/ShadyGuysTruck/scripts.pory"
-	waitmovement
+	waitse
 # 343 "data//maps/ShadyGuysTruck/scripts.pory"
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft
+# 344 "data//maps/ShadyGuysTruck/scripts.pory"
+	waitmovement
+# 345 "data//maps/ShadyGuysTruck/scripts.pory"
 	msgbox ShadyGuysTruck_EventScript_TruckExitTile_Text_0, MSGBOX_DEFAULT
-# 346 "data//maps/ShadyGuysTruck/scripts.pory"
-	closemessage
-# 347 "data//maps/ShadyGuysTruck/scripts.pory"
-	applymovement LOCALID_PLAYER, Common_Movement_WalkLeft
 # 348 "data//maps/ShadyGuysTruck/scripts.pory"
+	closemessage
+# 349 "data//maps/ShadyGuysTruck/scripts.pory"
+	applymovement LOCALID_PLAYER, Common_Movement_WalkLeft
+# 350 "data//maps/ShadyGuysTruck/scripts.pory"
 	waitmovement
 	goto ShadyGuysTruck_EventScript_TruckExitTile_1
 
 ShadyGuysTruck_EventScript_TruckExitTile_9:
-# 358 "data//maps/ShadyGuysTruck/scripts.pory"
+# 360 "data//maps/ShadyGuysTruck/scripts.pory"
 	call ShadyGuysTruck_EventScript_LeaveTruck
 	goto ShadyGuysTruck_EventScript_TruckExitTile_1
 
 
 ShadyGuysTruck_EventScript_PlayerEntersTruck::
-# 373 "data//maps/ShadyGuysTruck/scripts.pory"
-	fadescreen FADE_FROM_BLACK
-# 374 "data//maps/ShadyGuysTruck/scripts.pory"
-	applymovement LOCALID_PLAYER, Common_Movement_WalkLeft
 # 375 "data//maps/ShadyGuysTruck/scripts.pory"
-	waitmovement
+	fadescreen FADE_FROM_BLACK
 # 376 "data//maps/ShadyGuysTruck/scripts.pory"
+	applymovement LOCALID_PLAYER, Common_Movement_WalkLeft
+# 377 "data//maps/ShadyGuysTruck/scripts.pory"
+	waitmovement
+# 378 "data//maps/ShadyGuysTruck/scripts.pory"
 	release
 	return
 
@@ -780,7 +782,7 @@ ShadyGuysTruck_EventScript_LeaveTruck_Text_0:
 	.string "Stop back by if you see us again.$"
 
 ShadyGuysTruck_EventScript_TruckExitTile_Text_0:
-# 343 "data//maps/ShadyGuysTruck/scripts.pory"
+# 345 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "SHADY PERSON: Oh, are you leaving?\p"
 	.string "But you already paid for our service.\p"
 	.string "Speak with one of my assistants to\n"
@@ -788,11 +790,11 @@ ShadyGuysTruck_EventScript_TruckExitTile_Text_0:
 	.string "into something useful.$"
 
 ShadyGuysTruck_EventScript_TruckExitTile_Text_1:
-# 356 "data//maps/ShadyGuysTruck/scripts.pory"
+# 358 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "SHADY PERSON: Oh, are you headed out?$"
 
 ShadyGuysTruck_EventScript_TruckExitTile_Text_2:
-# 361 "data//maps/ShadyGuysTruck/scripts.pory"
+# 363 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "Good, good.\p"
 	.string "Our service is hard to come by,\n"
 	.string "consider giving it a try…$"

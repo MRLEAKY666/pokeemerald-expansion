@@ -8502,6 +8502,7 @@ void CreateCandyFromPartyMon(void)
             }
         }
         else {
+            finalExp = GetMonData(&gParties[B_TRAINER_0][position], MON_DATA_EXP);
             item = ITEM_NONE;
         }
         break;
