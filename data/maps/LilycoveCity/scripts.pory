@@ -12,7 +12,10 @@ const FLAG_TEMP_HIDE_LILYCOVE_TRUCK = FLAG_TEMP_1E
 const FLAG_TEMP_FROM_TRUCK = FLAG_TEMP_1F 
 
 script LilycoveCity_OnTransition{
-	setflag(FLAG_TEMP_HIDE_LILYCOVE_TRUCK) 
+	setflag(FLAG_TEMP_HIDE_LILYCOVE_TRUCK)
+	if (flag(FLAG_SHOW_SHADY_TRUCK) && var(VAR_SHADY_TRUCK_LOCATION) == 2){
+		clearflag(FLAG_TEMP_HIDE_LILYCOVE_TRUCK)
+	}
 	setflag(FLAG_VISITED_LILYCOVE_CITY)
 	setvar(VAR_CONTEST_HALL_STATE, 0)
 	setflag(FLAG_HIDE_LILYCOVE_CONTEST_HALL_REPORTER)
@@ -41,7 +44,7 @@ script LilycoveCity_EventScript_ReturningFromShadyTruck{
 		playse(SE_BIKE_HOP)
 		applymovement(LOCALID_PLAYER, RustboroCity_Movement_JumpOutOfTruck)
 		waitmovement
-		if (!flag(FLAG_KEEP_SHADY_TRUCK)){
+		if (!flag(FLAG_SHOW_SHADY_TRUCK)){
 			applymovement(LOCALID_PLAYER, RustboroCity_Movement_MoveAwayFromTruck)
 			waitmovement
 			applymovement(LOCALID_RUSTBORO_SHADY_ALAKAZAM, Common_Movement_WalkInPlaceFasterDown)

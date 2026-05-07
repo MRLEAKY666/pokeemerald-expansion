@@ -706,3 +706,70 @@ void ProgressLavarborTunnelState(void)
         }
     }
 }
+
+void TryShowShadyTruck(void)
+{
+    // set new location on sunday every week
+    if (GetDayOfWeek() == WEEKDAY_SUN){
+        VarSet(VAR_SHADY_TRUCK_LOCATION, ((VarGet(VAR_SHADY_TRUCK_LOCATION) + 1) % 3)); // increment location var and wrap to 0-2
+        switch (Random() % 3) // decide which day of the week the truck has a chance to first appear
+        {
+        case 0:
+            VarSet(VAR_SHADY_TRUCK_DAY, WEEKDAY_THU);
+            break;
+        case 1:
+            VarSet(VAR_SHADY_TRUCK_DAY, WEEKDAY_FRI);
+            break;
+        case 2:
+            VarSet(VAR_SHADY_TRUCK_DAY, WEEKDAY_SAT);
+            break;
+        
+        default:
+            VarSet(VAR_SHADY_TRUCK_DAY, 0);
+            break;
+        }
+    }
+
+    // on thursdays, fridays, and saturdays, roll to decide whether truck will appear
+    if (GetDayOfWeek() == WEEKDAY_THU && VarGet(VAR_SHADY_TRUCK_DAY) == WEEKDAY_THU){
+        if (Random() % 4){
+            FlagSet(FLAG_SHOW_SHADY_TRUCK);
+            VarSet(VAR_SHADY_TRUCK_DAY, 8);
+        }
+        else {
+            VarSet(VAR_SHADY_TRUCK_DAY, WEEKDAY_FRI);
+        }
+    }
+    else if (GetDayOfWeek() == WEEKDAY_FRI && VarGet(VAR_SHADY_TRUCK_DAY) == WEEKDAY_FRI){
+        if (!FlagGet(FLAG_SHOW_SHADY_TRUCK)){
+            if (Random() % 4){
+                FlagSet(FLAG_SHOW_SHADY_TRUCK);
+                VarSet(VAR_SHADY_TRUCK_DAY, 8); // 8 means truck has arrived for the weekend
+            }
+            else {
+                VarSet(VAR_SHADY_TRUCK_DAY, WEEKDAY_SAT);
+            }
+        }
+    }
+    else if (GetDayOfWeek() == WEEKDAY_SAT && VarGet(VAR_SHADY_TRUCK_DAY) == WEEKDAY_SAT){
+        if (!FlagGet(FLAG_SHOW_SHADY_TRUCK)){
+            if (Random() % 4){
+                FlagSet(FLAG_SHOW_SHADY_TRUCK);
+                VarSet(VAR_SHADY_TRUCK_DAY, 8);
+            }
+            else { 
+                VarSet(VAR_SHADY_TRUCK_DAY, 0);
+            }
+        }
+    }
+    else if ((GetDayOfWeek() == WEEKDAY_FRI || GetDayOfWeek() == WEEKDAY_SAT) && VarGet(VAR_SHADY_TRUCK_DAY) == 8){
+        if (!FlagGet(FLAG_SHOW_SHADY_TRUCK)){
+            FlagSet(FLAG_SHOW_SHADY_TRUCK);
+        }
+    }
+    else{
+        if (FlagGet(FLAG_SHOW_SHADY_TRUCK)){
+            FlagClear(FLAG_SHOW_SHADY_TRUCK);
+        }
+    }
+}

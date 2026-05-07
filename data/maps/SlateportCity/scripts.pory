@@ -26,7 +26,15 @@ script SlateportCity_OnResume{
 
 
 script SlateportCity_OnTransition{
-	setflag(FLAG_TEMP_HIDE_SLATEPORT_TRUCK) 
+	setflag(FLAG_TEMP_HIDE_SLATEPORT_TRUCK)
+	if (flag(FLAG_SHOW_SHADY_TRUCK) && var(VAR_SHADY_TRUCK_LOCATION) == 1){
+		applymovement(LOCALID_ROUTE109_SHADY_ALAKAZAM, Common_Movement_SetInvisible, MAP_SLATEPORT_CITY)
+		waitmovement
+		//applymovement(LOCALID_SLATEPORT_SHADY_ALAKAZAM, Common_Movement_SetVisible, MAP_SLATEPORT_CITY)
+		//waitmovement
+		removeobject(LOCALID_ROUTE109_SHADY_ALAKAZAM, MAP_ROUTE109)
+		clearflag(FLAG_TEMP_HIDE_SLATEPORT_TRUCK)
+	}
 	setvar(VAR_SLATEPORT_MUSEUM_1F_STATE, 0)
 	call(SlateportCity_EventScript_EnterSlateport)
 	call_if_eq(VAR_SLATEPORT_CITY_STATE, 1, SlateportCity_EventScript_MovePeopleForSternInterview)
@@ -40,7 +48,7 @@ script SlateportCity_EventScript_ReturningFromShadyTruck{
 		playse(SE_BIKE_HOP)
 		applymovement(LOCALID_PLAYER, RustboroCity_Movement_JumpOutOfTruck)
 		waitmovement
-		if (!flag(FLAG_KEEP_SHADY_TRUCK)){
+		if (!flag(FLAG_SHOW_SHADY_TRUCK)){
 			applymovement(LOCALID_PLAYER, RustboroCity_Movement_MoveAwayFromTruck)
 			waitmovement
 			applymovement(LOCALID_SLATEPORT_SHADY_ALAKAZAM, Common_Movement_WalkInPlaceFasterDown)

@@ -1,579 +1,616 @@
 ShadyGuysTruck_MapScripts::
+# 10 "data//maps/ShadyGuysTruck/scripts.pory"
+	map_script MAP_SCRIPT_ON_TRANSITION, ShadyGuysTruck_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+ShadyGuysTruck_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+# 11 "data//maps/ShadyGuysTruck/scripts.pory"
+	switch VAR_SHADY_TRUCK_DAY
+# 12 "data//maps/ShadyGuysTruck/scripts.pory"
+	case 1, ShadyGuysTruck_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
+# 14 "data//maps/ShadyGuysTruck/scripts.pory"
+	case 2, ShadyGuysTruck_MapScripts_MAP_SCRIPT_ON_TRANSITION_3
+# 16 "data//maps/ShadyGuysTruck/scripts.pory"
+	case 3, ShadyGuysTruck_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
+# 19 "data//maps/ShadyGuysTruck/scripts.pory"
+	setvar VAR_TEMP_A, 0
+	return
+
+ShadyGuysTruck_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
+# 13 "data//maps/ShadyGuysTruck/scripts.pory"
+	copyvar VAR_TEMP_A, VAR_SHADY_TRUCK_DAY
+	return
+
+ShadyGuysTruck_MapScripts_MAP_SCRIPT_ON_TRANSITION_3:
+# 15 "data//maps/ShadyGuysTruck/scripts.pory"
+	copyvar VAR_TEMP_A, VAR_SHADY_TRUCK_DAY
+	return
+
+ShadyGuysTruck_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
+# 17 "data//maps/ShadyGuysTruck/scripts.pory"
+	copyvar VAR_TEMP_A, VAR_SHADY_TRUCK_DAY
+	return
 
 
 ShadyGuysTruck_EventScript_ShadyGuy::
-# 23 "data//maps/ShadyGuysTruck/scripts.pory"
+# 35 "data//maps/ShadyGuysTruck/scripts.pory"
 	faceplayer
-# 24 "data//maps/ShadyGuysTruck/scripts.pory"
+# 36 "data//maps/ShadyGuysTruck/scripts.pory"
 	goto_if_set FLAG_TEMP_3, ShadyGuysTruck_EventScript_ShadyGuy_2
-# 30 "data//maps/ShadyGuysTruck/scripts.pory"
+# 42 "data//maps/ShadyGuysTruck/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceRight
-# 31 "data//maps/ShadyGuysTruck/scripts.pory"
+# 43 "data//maps/ShadyGuysTruck/scripts.pory"
 	waitmovement
-# 32 "data//maps/ShadyGuysTruck/scripts.pory"
+# 44 "data//maps/ShadyGuysTruck/scripts.pory"
 	compare VAR_TEMP_A, 0
 	goto_if_eq ShadyGuysTruck_EventScript_ShadyGuy_6
-# 38 "data//maps/ShadyGuysTruck/scripts.pory"
+# 50 "data//maps/ShadyGuysTruck/scripts.pory"
 	msgbox ShadyGuysTruck_EventScript_ShadyGuy_Text_2, MSGBOX_YESNO
 ShadyGuysTruck_EventScript_ShadyGuy_5:
-# 42 "data//maps/ShadyGuysTruck/scripts.pory"
+# 54 "data//maps/ShadyGuysTruck/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq ShadyGuysTruck_EventScript_ShadyGuy_9
-# 89 "data//maps/ShadyGuysTruck/scripts.pory"
+# 101 "data//maps/ShadyGuysTruck/scripts.pory"
 	msgbox ShadyGuysTruck_EventScript_ShadyGuy_Text_7, MSGBOX_DEFAULT
 ShadyGuysTruck_EventScript_ShadyGuy_1:
-# 94 "data//maps/ShadyGuysTruck/scripts.pory"
+# 106 "data//maps/ShadyGuysTruck/scripts.pory"
 	release
 	return
 
 ShadyGuysTruck_EventScript_ShadyGuy_2:
-# 25 "data//maps/ShadyGuysTruck/scripts.pory"
+# 37 "data//maps/ShadyGuysTruck/scripts.pory"
 	msgbox ShadyGuysTruck_EventScript_ShadyGuy_Text_0, MSGBOX_DEFAULT
 	goto ShadyGuysTruck_EventScript_ShadyGuy_1
 
 ShadyGuysTruck_EventScript_ShadyGuy_6:
-# 33 "data//maps/ShadyGuysTruck/scripts.pory"
+# 45 "data//maps/ShadyGuysTruck/scripts.pory"
 	msgbox ShadyGuysTruck_EventScript_ShadyGuy_Text_1, MSGBOX_YESNO
 	goto ShadyGuysTruck_EventScript_ShadyGuy_5
 
 ShadyGuysTruck_EventScript_ShadyGuy_9:
-# 43 "data//maps/ShadyGuysTruck/scripts.pory"
+# 55 "data//maps/ShadyGuysTruck/scripts.pory"
 	specialvar VAR_RESULT, CountPartyAliveNonEggMons
-# 44 "data//maps/ShadyGuysTruck/scripts.pory"
+# 56 "data//maps/ShadyGuysTruck/scripts.pory"
 	compare VAR_RESULT, 1
 	goto_if_eq ShadyGuysTruck_EventScript_ShadyGuy_12
-# 51 "data//maps/ShadyGuysTruck/scripts.pory"
+# 63 "data//maps/ShadyGuysTruck/scripts.pory"
 	showmoneybox 0, 0
-# 52 "data//maps/ShadyGuysTruck/scripts.pory"
+# 64 "data//maps/ShadyGuysTruck/scripts.pory"
 	msgbox ShadyGuysTruck_EventScript_ShadyGuy_Text_4, MSGBOX_YESNO
-# 55 "data//maps/ShadyGuysTruck/scripts.pory"
+# 67 "data//maps/ShadyGuysTruck/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq ShadyGuysTruck_EventScript_ShadyGuy_15
-# 81 "data//maps/ShadyGuysTruck/scripts.pory"
+# 93 "data//maps/ShadyGuysTruck/scripts.pory"
 	hidemoneybox
-# 82 "data//maps/ShadyGuysTruck/scripts.pory"
+# 94 "data//maps/ShadyGuysTruck/scripts.pory"
 	msgbox ShadyGuysTruck_EventScript_ShadyGuy_Text_7, MSGBOX_DEFAULT
 	goto ShadyGuysTruck_EventScript_ShadyGuy_1
 
 ShadyGuysTruck_EventScript_ShadyGuy_12:
-# 45 "data//maps/ShadyGuysTruck/scripts.pory"
+# 57 "data//maps/ShadyGuysTruck/scripts.pory"
 	msgbox ShadyGuysTruck_EventScript_ShadyGuy_Text_3, MSGBOX_DEFAULT
 	goto ShadyGuysTruck_EventScript_ShadyGuy_1
 
 ShadyGuysTruck_EventScript_ShadyGuy_15:
-# 56 "data//maps/ShadyGuysTruck/scripts.pory"
+# 68 "data//maps/ShadyGuysTruck/scripts.pory"
 	checkmoney 1000
-# 57 "data//maps/ShadyGuysTruck/scripts.pory"
+# 69 "data//maps/ShadyGuysTruck/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq ShadyGuysTruck_EventScript_ShadyGuy_18
-# 74 "data//maps/ShadyGuysTruck/scripts.pory"
+# 86 "data//maps/ShadyGuysTruck/scripts.pory"
 	msgbox ShadyGuysTruck_EventScript_ShadyGuy_Text_6, MSGBOX_DEFAULT
-# 77 "data//maps/ShadyGuysTruck/scripts.pory"
+# 89 "data//maps/ShadyGuysTruck/scripts.pory"
 	hidemoneybox
 	goto ShadyGuysTruck_EventScript_ShadyGuy_1
 
 ShadyGuysTruck_EventScript_ShadyGuy_18:
-# 58 "data//maps/ShadyGuysTruck/scripts.pory"
-	removemoney 1000
-# 59 "data//maps/ShadyGuysTruck/scripts.pory"
-	updatemoneybox
-# 60 "data//maps/ShadyGuysTruck/scripts.pory"
-	playse SE_SHOP
-# 61 "data//maps/ShadyGuysTruck/scripts.pory"
-	waitse
-# 62 "data//maps/ShadyGuysTruck/scripts.pory"
-	delay 20
-# 63 "data//maps/ShadyGuysTruck/scripts.pory"
-	hidemoneybox
-# 64 "data//maps/ShadyGuysTruck/scripts.pory"
-	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceRight
-# 65 "data//maps/ShadyGuysTruck/scripts.pory"
-	waitmovement
-# 66 "data//maps/ShadyGuysTruck/scripts.pory"
-	msgbox ShadyGuysTruck_EventScript_ShadyGuy_Text_5, MSGBOX_DEFAULT
 # 70 "data//maps/ShadyGuysTruck/scripts.pory"
+	removemoney 1000
+# 71 "data//maps/ShadyGuysTruck/scripts.pory"
+	updatemoneybox
+# 72 "data//maps/ShadyGuysTruck/scripts.pory"
+	playse SE_SHOP
+# 73 "data//maps/ShadyGuysTruck/scripts.pory"
+	waitse
+# 74 "data//maps/ShadyGuysTruck/scripts.pory"
+	delay 20
+# 75 "data//maps/ShadyGuysTruck/scripts.pory"
+	hidemoneybox
+# 76 "data//maps/ShadyGuysTruck/scripts.pory"
+	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceRight
+# 77 "data//maps/ShadyGuysTruck/scripts.pory"
+	waitmovement
+# 78 "data//maps/ShadyGuysTruck/scripts.pory"
+	msgbox ShadyGuysTruck_EventScript_ShadyGuy_Text_5, MSGBOX_DEFAULT
+# 82 "data//maps/ShadyGuysTruck/scripts.pory"
 	setflag FLAG_TEMP_3
 	goto ShadyGuysTruck_EventScript_ShadyGuy_1
 
 
 ShadyGuysTruck_EventScript_Musharna::
-# 98 "data//maps/ShadyGuysTruck/scripts.pory"
+# 110 "data//maps/ShadyGuysTruck/scripts.pory"
 	faceplayer
-# 99 "data//maps/ShadyGuysTruck/scripts.pory"
+# 111 "data//maps/ShadyGuysTruck/scripts.pory"
 	waitse
-# 100 "data//maps/ShadyGuysTruck/scripts.pory"
+# 112 "data//maps/ShadyGuysTruck/scripts.pory"
 	goto_if_set FLAG_TEMP_3, ShadyGuysTruck_EventScript_Musharna_2
-# 114 "data//maps/ShadyGuysTruck/scripts.pory"
+# 126 "data//maps/ShadyGuysTruck/scripts.pory"
 	playmoncry SPECIES_MUSHARNA, CRY_MODE_NORMAL
-# 115 "data//maps/ShadyGuysTruck/scripts.pory"
+# 127 "data//maps/ShadyGuysTruck/scripts.pory"
 	message ShadyGuysTruck_EventScript_Musharna_Text_1
-# 116 "data//maps/ShadyGuysTruck/scripts.pory"
+# 128 "data//maps/ShadyGuysTruck/scripts.pory"
 	waitmoncry
-# 117 "data//maps/ShadyGuysTruck/scripts.pory"
+# 129 "data//maps/ShadyGuysTruck/scripts.pory"
 	delay 40
-# 118 "data//maps/ShadyGuysTruck/scripts.pory"
+# 130 "data//maps/ShadyGuysTruck/scripts.pory"
 	closemessage
 ShadyGuysTruck_EventScript_Musharna_1:
-# 120 "data//maps/ShadyGuysTruck/scripts.pory"
+# 132 "data//maps/ShadyGuysTruck/scripts.pory"
 	release
 	return
 
 ShadyGuysTruck_EventScript_Musharna_2:
-# 101 "data//maps/ShadyGuysTruck/scripts.pory"
+# 113 "data//maps/ShadyGuysTruck/scripts.pory"
 	msgbox ShadyGuysTruck_EventScript_Musharna_Text_0, MSGBOX_YESNO
-# 102 "data//maps/ShadyGuysTruck/scripts.pory"
+# 114 "data//maps/ShadyGuysTruck/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq ShadyGuysTruck_EventScript_Musharna_5
-# 110 "data//maps/ShadyGuysTruck/scripts.pory"
+# 122 "data//maps/ShadyGuysTruck/scripts.pory"
 	msgbox ShadyGuysTruck_EventScript_Musharna_Text_2, MSGBOX_DEFAULT
 	goto ShadyGuysTruck_EventScript_Musharna_1
 
 ShadyGuysTruck_EventScript_Musharna_5:
-# 103 "data//maps/ShadyGuysTruck/scripts.pory"
+# 115 "data//maps/ShadyGuysTruck/scripts.pory"
 	setvar VAR_TEMP_E, SPECIES_MUSHARNA
-# 104 "data//maps/ShadyGuysTruck/scripts.pory"
+# 116 "data//maps/ShadyGuysTruck/scripts.pory"
 	playmoncry SPECIES_MUSHARNA, CRY_MODE_NORMAL
-# 105 "data//maps/ShadyGuysTruck/scripts.pory"
+# 117 "data//maps/ShadyGuysTruck/scripts.pory"
 	message ShadyGuysTruck_EventScript_Musharna_Text_1
-# 106 "data//maps/ShadyGuysTruck/scripts.pory"
+# 118 "data//maps/ShadyGuysTruck/scripts.pory"
 	call ShadyGuysTruck_EventScript_ExtractMemories
-# 107 "data//maps/ShadyGuysTruck/scripts.pory"
+# 119 "data//maps/ShadyGuysTruck/scripts.pory"
 	call ShadyGuysTruck_EventScript_GiveMedicine
 	goto ShadyGuysTruck_EventScript_Musharna_1
 
 
 ShadyGuysTruck_EventScript_Hypno::
-# 124 "data//maps/ShadyGuysTruck/scripts.pory"
+# 136 "data//maps/ShadyGuysTruck/scripts.pory"
 	faceplayer
-# 125 "data//maps/ShadyGuysTruck/scripts.pory"
+# 137 "data//maps/ShadyGuysTruck/scripts.pory"
 	waitse
-# 126 "data//maps/ShadyGuysTruck/scripts.pory"
+# 138 "data//maps/ShadyGuysTruck/scripts.pory"
 	goto_if_set FLAG_TEMP_3, ShadyGuysTruck_EventScript_Hypno_2
-# 140 "data//maps/ShadyGuysTruck/scripts.pory"
+# 152 "data//maps/ShadyGuysTruck/scripts.pory"
 	playmoncry SPECIES_HYPNO, CRY_MODE_NORMAL
-# 141 "data//maps/ShadyGuysTruck/scripts.pory"
+# 153 "data//maps/ShadyGuysTruck/scripts.pory"
 	message ShadyGuysTruck_EventScript_Hypno_Text_1
-# 142 "data//maps/ShadyGuysTruck/scripts.pory"
+# 154 "data//maps/ShadyGuysTruck/scripts.pory"
 	waitmoncry
-# 143 "data//maps/ShadyGuysTruck/scripts.pory"
+# 155 "data//maps/ShadyGuysTruck/scripts.pory"
 	delay 40
-# 144 "data//maps/ShadyGuysTruck/scripts.pory"
+# 156 "data//maps/ShadyGuysTruck/scripts.pory"
 	closemessage
 ShadyGuysTruck_EventScript_Hypno_1:
-# 146 "data//maps/ShadyGuysTruck/scripts.pory"
+# 158 "data//maps/ShadyGuysTruck/scripts.pory"
 	release
 	return
 
 ShadyGuysTruck_EventScript_Hypno_2:
-# 127 "data//maps/ShadyGuysTruck/scripts.pory"
+# 139 "data//maps/ShadyGuysTruck/scripts.pory"
 	msgbox ShadyGuysTruck_EventScript_Hypno_Text_0, MSGBOX_YESNO
-# 128 "data//maps/ShadyGuysTruck/scripts.pory"
+# 140 "data//maps/ShadyGuysTruck/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq ShadyGuysTruck_EventScript_Hypno_5
-# 136 "data//maps/ShadyGuysTruck/scripts.pory"
+# 148 "data//maps/ShadyGuysTruck/scripts.pory"
 	msgbox ShadyGuysTruck_EventScript_Hypno_Text_2, MSGBOX_DEFAULT
 	goto ShadyGuysTruck_EventScript_Hypno_1
 
 ShadyGuysTruck_EventScript_Hypno_5:
-# 129 "data//maps/ShadyGuysTruck/scripts.pory"
+# 141 "data//maps/ShadyGuysTruck/scripts.pory"
 	setvar VAR_TEMP_E, SPECIES_HYPNO
-# 130 "data//maps/ShadyGuysTruck/scripts.pory"
+# 142 "data//maps/ShadyGuysTruck/scripts.pory"
 	playmoncry SPECIES_HYPNO, CRY_MODE_NORMAL
-# 131 "data//maps/ShadyGuysTruck/scripts.pory"
+# 143 "data//maps/ShadyGuysTruck/scripts.pory"
 	message ShadyGuysTruck_EventScript_Hypno_Text_1
-# 132 "data//maps/ShadyGuysTruck/scripts.pory"
+# 144 "data//maps/ShadyGuysTruck/scripts.pory"
 	call ShadyGuysTruck_EventScript_ExtractMemories
-# 133 "data//maps/ShadyGuysTruck/scripts.pory"
+# 145 "data//maps/ShadyGuysTruck/scripts.pory"
 	call ShadyGuysTruck_EventScript_GiveMedicine
 	goto ShadyGuysTruck_EventScript_Hypno_1
 
 
 ShadyGuysTruck_EventScript_ExtractMemories::
-# 150 "data//maps/ShadyGuysTruck/scripts.pory"
+# 162 "data//maps/ShadyGuysTruck/scripts.pory"
 	waitmoncry
-# 151 "data//maps/ShadyGuysTruck/scripts.pory"
+# 163 "data//maps/ShadyGuysTruck/scripts.pory"
 	special ChoosePartyMon
-# 152 "data//maps/ShadyGuysTruck/scripts.pory"
+# 164 "data//maps/ShadyGuysTruck/scripts.pory"
 	waitstate
-# 153 "data//maps/ShadyGuysTruck/scripts.pory"
+# 165 "data//maps/ShadyGuysTruck/scripts.pory"
 	compare VAR_0x8004, PARTY_NOTHING_CHOSEN
 	goto_if_eq ShadyGuysTruck_EventScript_ExtractMemories_2
-# 157 "data//maps/ShadyGuysTruck/scripts.pory"
+# 169 "data//maps/ShadyGuysTruck/scripts.pory"
 	specialvar VAR_TEMP_B, ScriptGetPartyMonSpecies
-# 158 "data//maps/ShadyGuysTruck/scripts.pory"
+# 170 "data//maps/ShadyGuysTruck/scripts.pory"
 	fadeoutbgm 1
-# 159 "data//maps/ShadyGuysTruck/scripts.pory"
+# 171 "data//maps/ShadyGuysTruck/scripts.pory"
 	delay 40
-# 160 "data//maps/ShadyGuysTruck/scripts.pory"
-	closemessage
-# 161 "data//maps/ShadyGuysTruck/scripts.pory"
-	playse SE_INTRO_BLAST
-# 163 "data//maps/ShadyGuysTruck/scripts.pory"
-	fadescreenspeed FADE_TO_WHITE, 7
-# 164 "data//maps/ShadyGuysTruck/scripts.pory"
-	delay 60
-# 165 "data//maps/ShadyGuysTruck/scripts.pory"
-	playse SE_PIKE_CURTAIN_OPEN
-# 166 "data//maps/ShadyGuysTruck/scripts.pory"
-	delay 80
-# 167 "data//maps/ShadyGuysTruck/scripts.pory"
-	playmoncry VAR_TEMP_B, CRY_MODE_WEAK
-# 168 "data//maps/ShadyGuysTruck/scripts.pory"
-	waitmoncry
 # 172 "data//maps/ShadyGuysTruck/scripts.pory"
+	closemessage
+# 173 "data//maps/ShadyGuysTruck/scripts.pory"
+	playse SE_INTRO_BLAST
+# 175 "data//maps/ShadyGuysTruck/scripts.pory"
+	fadescreenspeed FADE_TO_WHITE, 7
+# 176 "data//maps/ShadyGuysTruck/scripts.pory"
+	delay 60
+# 177 "data//maps/ShadyGuysTruck/scripts.pory"
+	playse SE_PIKE_CURTAIN_OPEN
+# 178 "data//maps/ShadyGuysTruck/scripts.pory"
+	delay 80
+# 179 "data//maps/ShadyGuysTruck/scripts.pory"
+	playmoncry VAR_TEMP_B, CRY_MODE_WEAK
+# 180 "data//maps/ShadyGuysTruck/scripts.pory"
+	waitmoncry
+# 184 "data//maps/ShadyGuysTruck/scripts.pory"
 	compare VAR_TEMP_E, SPECIES_HYPNO
 	goto_if_eq ShadyGuysTruck_EventScript_ExtractMemories_5
-# 179 "data//maps/ShadyGuysTruck/scripts.pory"
+# 191 "data//maps/ShadyGuysTruck/scripts.pory"
 	setobjectxy LOCALID_PLAYER, 2, 2
-# 180 "data//maps/ShadyGuysTruck/scripts.pory"
+# 192 "data//maps/ShadyGuysTruck/scripts.pory"
 	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
-# 181 "data//maps/ShadyGuysTruck/scripts.pory"
+# 193 "data//maps/ShadyGuysTruck/scripts.pory"
 	applymovement LOCALID_SHADYGUY_TRUCK_MUSHARNA, Common_Movement_FaceDown
-# 182 "data//maps/ShadyGuysTruck/scripts.pory"
+# 194 "data//maps/ShadyGuysTruck/scripts.pory"
 	callnative CreateVitaminFromPartyMon
 ShadyGuysTruck_EventScript_ExtractMemories_4:
-# 184 "data//maps/ShadyGuysTruck/scripts.pory"
+# 196 "data//maps/ShadyGuysTruck/scripts.pory"
 	hidefollower
-# 185 "data//maps/ShadyGuysTruck/scripts.pory"
+# 197 "data//maps/ShadyGuysTruck/scripts.pory"
 	clearflag FLAG_TEMP_3
-# 186 "data//maps/ShadyGuysTruck/scripts.pory"
+# 198 "data//maps/ShadyGuysTruck/scripts.pory"
 	addvar VAR_TEMP_A, 1
-# 187 "data//maps/ShadyGuysTruck/scripts.pory"
+# 199 "data//maps/ShadyGuysTruck/scripts.pory"
 	fadescreenspeed FADE_FROM_WHITE, 8
-# 188 "data//maps/ShadyGuysTruck/scripts.pory"
+# 200 "data//maps/ShadyGuysTruck/scripts.pory"
 	fadeinbgm 1
 	return
 
 ShadyGuysTruck_EventScript_ExtractMemories_2:
-# 154 "data//maps/ShadyGuysTruck/scripts.pory"
+# 166 "data//maps/ShadyGuysTruck/scripts.pory"
 	release
 	end
 
 ShadyGuysTruck_EventScript_ExtractMemories_5:
-# 173 "data//maps/ShadyGuysTruck/scripts.pory"
+# 185 "data//maps/ShadyGuysTruck/scripts.pory"
 	setobjectxy LOCALID_PLAYER, 2, 2
-# 174 "data//maps/ShadyGuysTruck/scripts.pory"
+# 186 "data//maps/ShadyGuysTruck/scripts.pory"
 	applymovement LOCALID_PLAYER, Common_Movement_FaceDown
-# 175 "data//maps/ShadyGuysTruck/scripts.pory"
+# 187 "data//maps/ShadyGuysTruck/scripts.pory"
 	applymovement LOCALID_SHADYGUY_TRUCK_HYPNO, Common_Movement_FaceUp
-# 176 "data//maps/ShadyGuysTruck/scripts.pory"
+# 188 "data//maps/ShadyGuysTruck/scripts.pory"
 	callnative CreateCandyFromPartyMon
 	goto ShadyGuysTruck_EventScript_ExtractMemories_4
 
 
 ShadyGuysTruck_EventScript_GiveMedicine::
-# 193 "data//maps/ShadyGuysTruck/scripts.pory"
+# 205 "data//maps/ShadyGuysTruck/scripts.pory"
 	compare VAR_TEMP_C, ITEM_REVIVE
 	goto_if_eq ShadyGuysTruck_EventScript_GiveMedicine_2
-# 220 "data//maps/ShadyGuysTruck/scripts.pory"
+# 232 "data//maps/ShadyGuysTruck/scripts.pory"
 	compare VAR_TEMP_C, ITEM_NONE
 	goto_if_eq ShadyGuysTruck_EventScript_GiveMedicine_3
-# 220 "data//maps/ShadyGuysTruck/scripts.pory"
+# 232 "data//maps/ShadyGuysTruck/scripts.pory"
 	compare VAR_TEMP_D, 0
 	goto_if_eq ShadyGuysTruck_EventScript_GiveMedicine_3
-# 236 "data//maps/ShadyGuysTruck/scripts.pory"
-	applymovement LOCALID_SHADYGUY_TRUCK_GUY, Common_Movement_WalkInPlaceRight
-# 237 "data//maps/ShadyGuysTruck/scripts.pory"
-	waitmovement
-# 238 "data//maps/ShadyGuysTruck/scripts.pory"
-	delay 10
-# 239 "data//maps/ShadyGuysTruck/scripts.pory"
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft
-# 240 "data//maps/ShadyGuysTruck/scripts.pory"
-	waitmovement
-# 241 "data//maps/ShadyGuysTruck/scripts.pory"
-	delay 30
-# 242 "data//maps/ShadyGuysTruck/scripts.pory"
-	applymovement LOCALID_SHADYGUY_TRUCK_GUY, Common_Movement_WalkInPlaceRight
-# 244 "data//maps/ShadyGuysTruck/scripts.pory"
-	giveitem VAR_TEMP_C, VAR_TEMP_D
-# 245 "data//maps/ShadyGuysTruck/scripts.pory"
-	bufferspeciesname STR_VAR_1, VAR_TEMP_E
-# 246 "data//maps/ShadyGuysTruck/scripts.pory"
-	bufferspeciesname STR_VAR_2, VAR_TEMP_B
-# 247 "data//maps/ShadyGuysTruck/scripts.pory"
-	bufferitemnameplural STR_VAR_3, VAR_TEMP_C, VAR_TEMP_D
 # 248 "data//maps/ShadyGuysTruck/scripts.pory"
-	msgbox ShadyGuysTruck_EventScript_GiveMedicine_Text_4, MSGBOX_DEFAULT
+	applymovement LOCALID_SHADYGUY_TRUCK_GUY, Common_Movement_WalkInPlaceRight
+# 249 "data//maps/ShadyGuysTruck/scripts.pory"
+	waitmovement
+# 250 "data//maps/ShadyGuysTruck/scripts.pory"
+	delay 10
+# 251 "data//maps/ShadyGuysTruck/scripts.pory"
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft
 # 252 "data//maps/ShadyGuysTruck/scripts.pory"
+	waitmovement
+# 253 "data//maps/ShadyGuysTruck/scripts.pory"
+	delay 30
+# 254 "data//maps/ShadyGuysTruck/scripts.pory"
+	applymovement LOCALID_SHADYGUY_TRUCK_GUY, Common_Movement_WalkInPlaceRight
+# 256 "data//maps/ShadyGuysTruck/scripts.pory"
+	giveitem VAR_TEMP_C, VAR_TEMP_D
+# 257 "data//maps/ShadyGuysTruck/scripts.pory"
+	bufferspeciesname STR_VAR_1, VAR_TEMP_E
+# 258 "data//maps/ShadyGuysTruck/scripts.pory"
+	bufferspeciesname STR_VAR_2, VAR_TEMP_B
+# 259 "data//maps/ShadyGuysTruck/scripts.pory"
+	bufferitemnameplural STR_VAR_3, VAR_TEMP_C, VAR_TEMP_D
+# 260 "data//maps/ShadyGuysTruck/scripts.pory"
+	msgbox ShadyGuysTruck_EventScript_GiveMedicine_Text_4, MSGBOX_DEFAULT
+# 264 "data//maps/ShadyGuysTruck/scripts.pory"
 	msgbox ShadyGuysTruck_EventScript_GiveMedicine_Text_5, MSGBOX_DEFAULT
 ShadyGuysTruck_EventScript_GiveMedicine_1:
-# 254 "data//maps/ShadyGuysTruck/scripts.pory"
+# 266 "data//maps/ShadyGuysTruck/scripts.pory"
 	compare VAR_TEMP_A, 3
 	goto_if_eq ShadyGuysTruck_EventScript_GiveMedicine_10
 ShadyGuysTruck_EventScript_GiveMedicine_9:
 	return
 
 ShadyGuysTruck_EventScript_GiveMedicine_2:
-# 194 "data//maps/ShadyGuysTruck/scripts.pory"
+# 206 "data//maps/ShadyGuysTruck/scripts.pory"
 	playse SE_PIN
-# 195 "data//maps/ShadyGuysTruck/scripts.pory"
+# 207 "data//maps/ShadyGuysTruck/scripts.pory"
 	applymovement LOCALID_SHADYGUY_TRUCK_GUY, Common_Movement_ExclamationMark
-# 196 "data//maps/ShadyGuysTruck/scripts.pory"
+# 208 "data//maps/ShadyGuysTruck/scripts.pory"
 	waitse
-# 197 "data//maps/ShadyGuysTruck/scripts.pory"
-	delay 10
-# 198 "data//maps/ShadyGuysTruck/scripts.pory"
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft
-# 199 "data//maps/ShadyGuysTruck/scripts.pory"
-	waitmovement
-# 200 "data//maps/ShadyGuysTruck/scripts.pory"
-	delay 30
-# 201 "data//maps/ShadyGuysTruck/scripts.pory"
-	bufferspeciesname STR_VAR_1, VAR_TEMP_E
-# 202 "data//maps/ShadyGuysTruck/scripts.pory"
-	bufferspeciesname STR_VAR_2, VAR_TEMP_B
-# 203 "data//maps/ShadyGuysTruck/scripts.pory"
-	bufferitemnameplural STR_VAR_3, VAR_TEMP_C, VAR_TEMP_D
-# 204 "data//maps/ShadyGuysTruck/scripts.pory"
-	msgbox ShadyGuysTruck_EventScript_GiveMedicine_Text_0, MSGBOX_DEFAULT
 # 209 "data//maps/ShadyGuysTruck/scripts.pory"
-	giveitem ITEM_RARE_CANDY, VAR_TEMP_D
+	delay 10
 # 210 "data//maps/ShadyGuysTruck/scripts.pory"
-	message ShadyGuysTruck_EventScript_GiveMedicine_Text_1
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft
 # 211 "data//maps/ShadyGuysTruck/scripts.pory"
-	waitmessage
+	waitmovement
 # 212 "data//maps/ShadyGuysTruck/scripts.pory"
-	waitbuttonpress
+	delay 30
 # 213 "data//maps/ShadyGuysTruck/scripts.pory"
-	delay 60
+	bufferspeciesname STR_VAR_1, VAR_TEMP_E
 # 214 "data//maps/ShadyGuysTruck/scripts.pory"
 	bufferspeciesname STR_VAR_2, VAR_TEMP_B
 # 215 "data//maps/ShadyGuysTruck/scripts.pory"
+	bufferitemnameplural STR_VAR_3, VAR_TEMP_C, VAR_TEMP_D
+# 216 "data//maps/ShadyGuysTruck/scripts.pory"
+	msgbox ShadyGuysTruck_EventScript_GiveMedicine_Text_0, MSGBOX_DEFAULT
+# 221 "data//maps/ShadyGuysTruck/scripts.pory"
+	giveitem ITEM_RARE_CANDY, VAR_TEMP_D
+# 222 "data//maps/ShadyGuysTruck/scripts.pory"
+	message ShadyGuysTruck_EventScript_GiveMedicine_Text_1
+# 223 "data//maps/ShadyGuysTruck/scripts.pory"
+	waitmessage
+# 224 "data//maps/ShadyGuysTruck/scripts.pory"
+	waitbuttonpress
+# 225 "data//maps/ShadyGuysTruck/scripts.pory"
+	delay 60
+# 226 "data//maps/ShadyGuysTruck/scripts.pory"
+	bufferspeciesname STR_VAR_2, VAR_TEMP_B
+# 227 "data//maps/ShadyGuysTruck/scripts.pory"
 	msgbox ShadyGuysTruck_EventScript_GiveMedicine_Text_2, MSGBOX_DEFAULT
-# 218 "data//maps/ShadyGuysTruck/scripts.pory"
+# 230 "data//maps/ShadyGuysTruck/scripts.pory"
 	giveitem ITEM_REVIVE, 1
 	goto ShadyGuysTruck_EventScript_GiveMedicine_1
 
 ShadyGuysTruck_EventScript_GiveMedicine_3:
-# 221 "data//maps/ShadyGuysTruck/scripts.pory"
+# 233 "data//maps/ShadyGuysTruck/scripts.pory"
 	playse SE_PIN
-# 222 "data//maps/ShadyGuysTruck/scripts.pory"
+# 234 "data//maps/ShadyGuysTruck/scripts.pory"
 	applymovement LOCALID_SHADYGUY_TRUCK_GUY, Common_Movement_ExclamationMark
-# 223 "data//maps/ShadyGuysTruck/scripts.pory"
+# 235 "data//maps/ShadyGuysTruck/scripts.pory"
 	waitse
-# 224 "data//maps/ShadyGuysTruck/scripts.pory"
+# 236 "data//maps/ShadyGuysTruck/scripts.pory"
 	delay 10
-# 225 "data//maps/ShadyGuysTruck/scripts.pory"
+# 237 "data//maps/ShadyGuysTruck/scripts.pory"
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft
-# 226 "data//maps/ShadyGuysTruck/scripts.pory"
+# 238 "data//maps/ShadyGuysTruck/scripts.pory"
 	waitmovement
-# 227 "data//maps/ShadyGuysTruck/scripts.pory"
+# 239 "data//maps/ShadyGuysTruck/scripts.pory"
 	delay 30
-# 228 "data//maps/ShadyGuysTruck/scripts.pory"
+# 240 "data//maps/ShadyGuysTruck/scripts.pory"
 	bufferspeciesname STR_VAR_1, VAR_TEMP_E
-# 229 "data//maps/ShadyGuysTruck/scripts.pory"
+# 241 "data//maps/ShadyGuysTruck/scripts.pory"
 	bufferspeciesname STR_VAR_2, VAR_TEMP_B
-# 230 "data//maps/ShadyGuysTruck/scripts.pory"
+# 242 "data//maps/ShadyGuysTruck/scripts.pory"
 	bufferitemnameplural STR_VAR_3, VAR_TEMP_C, VAR_TEMP_D
-# 231 "data//maps/ShadyGuysTruck/scripts.pory"
+# 243 "data//maps/ShadyGuysTruck/scripts.pory"
 	msgbox ShadyGuysTruck_EventScript_GiveMedicine_Text_3, MSGBOX_DEFAULT
 	goto ShadyGuysTruck_EventScript_GiveMedicine_1
 
 ShadyGuysTruck_EventScript_GiveMedicine_10:
-# 255 "data//maps/ShadyGuysTruck/scripts.pory"
-	closemessage
-# 256 "data//maps/ShadyGuysTruck/scripts.pory"
-	delay 60
-# 257 "data//maps/ShadyGuysTruck/scripts.pory"
-	message ShadyGuysTruck_EventScript_GiveMedicine_Text_6
-# 258 "data//maps/ShadyGuysTruck/scripts.pory"
-	waitmessage
-# 259 "data//maps/ShadyGuysTruck/scripts.pory"
-	delay 30
-# 260 "data//maps/ShadyGuysTruck/scripts.pory"
-	msgbox ShadyGuysTruck_EventScript_GiveMedicine_Text_7, MSGBOX_DEFAULT
-# 265 "data//maps/ShadyGuysTruck/scripts.pory"
-	closemessage
-# 266 "data//maps/ShadyGuysTruck/scripts.pory"
-	delay 30
 # 267 "data//maps/ShadyGuysTruck/scripts.pory"
-	applymovement LOCALID_PLAYER, ShadyGuysTruck_Movement_LeaveTruckMaxExtractions
+	closemessage
 # 268 "data//maps/ShadyGuysTruck/scripts.pory"
-	waitmovement
+	delay 60
 # 269 "data//maps/ShadyGuysTruck/scripts.pory"
+	message ShadyGuysTruck_EventScript_GiveMedicine_Text_6
+# 270 "data//maps/ShadyGuysTruck/scripts.pory"
+	waitmessage
+# 271 "data//maps/ShadyGuysTruck/scripts.pory"
+	delay 30
+# 272 "data//maps/ShadyGuysTruck/scripts.pory"
+	msgbox ShadyGuysTruck_EventScript_GiveMedicine_Text_7, MSGBOX_DEFAULT
+# 277 "data//maps/ShadyGuysTruck/scripts.pory"
+	closemessage
+# 278 "data//maps/ShadyGuysTruck/scripts.pory"
+	delay 30
+# 279 "data//maps/ShadyGuysTruck/scripts.pory"
+	applymovement LOCALID_PLAYER, ShadyGuysTruck_Movement_LeaveTruckMaxExtractions
+# 280 "data//maps/ShadyGuysTruck/scripts.pory"
+	waitmovement
+# 281 "data//maps/ShadyGuysTruck/scripts.pory"
 	call ShadyGuysTruck_EventScript_LeaveTruck
 	goto ShadyGuysTruck_EventScript_GiveMedicine_9
 
 
-# 274 "data//maps/ShadyGuysTruck/scripts.pory"
+# 286 "data//maps/ShadyGuysTruck/scripts.pory"
 ShadyGuysTruck_Movement_LeaveTruckMaxExtractions:
-# 275 "data//maps/ShadyGuysTruck/scripts.pory"
+# 287 "data//maps/ShadyGuysTruck/scripts.pory"
 	walk_right
-# 276 "data//maps/ShadyGuysTruck/scripts.pory"
+# 288 "data//maps/ShadyGuysTruck/scripts.pory"
 	walk_right
-# 277 "data//maps/ShadyGuysTruck/scripts.pory"
+# 289 "data//maps/ShadyGuysTruck/scripts.pory"
 	walk_right
-# 278 "data//maps/ShadyGuysTruck/scripts.pory"
+# 290 "data//maps/ShadyGuysTruck/scripts.pory"
 	step_end
 
 ShadyGuysTruck_EventScript_LeaveTruck::
-# 282 "data//maps/ShadyGuysTruck/scripts.pory"
+# 294 "data//maps/ShadyGuysTruck/scripts.pory"
 	compare VAR_TEMP_A, 3
 	goto_if_ne ShadyGuysTruck_EventScript_LeaveTruck_2
-# 286 "data//maps/ShadyGuysTruck/scripts.pory"
-	clearflag FLAG_KEEP_SHADY_TRUCK
+# 298 "data//maps/ShadyGuysTruck/scripts.pory"
+	clearflag FLAG_SHOW_SHADY_TRUCK
 ShadyGuysTruck_EventScript_LeaveTruck_1:
-# 288 "data//maps/ShadyGuysTruck/scripts.pory"
+# 300 "data//maps/ShadyGuysTruck/scripts.pory"
 	applymovement LOCALID_SHADYGUY_TRUCK_GUY, Common_Movement_WalkInPlaceRight
-# 289 "data//maps/ShadyGuysTruck/scripts.pory"
+# 301 "data//maps/ShadyGuysTruck/scripts.pory"
 	waitmovement
-# 290 "data//maps/ShadyGuysTruck/scripts.pory"
+# 302 "data//maps/ShadyGuysTruck/scripts.pory"
 	getobjectfacingdirection LOCALID_PLAYER, VAR_RESULT
-# 291 "data//maps/ShadyGuysTruck/scripts.pory"
+# 303 "data//maps/ShadyGuysTruck/scripts.pory"
 	compare VAR_RESULT, DIR_WEST
 	goto_if_ne ShadyGuysTruck_EventScript_LeaveTruck_6
 ShadyGuysTruck_EventScript_LeaveTruck_5:
-# 295 "data//maps/ShadyGuysTruck/scripts.pory"
-	message ShadyGuysTruck_EventScript_LeaveTruck_Text_0
-# 297 "data//maps/ShadyGuysTruck/scripts.pory"
-	waitmessage
-# 298 "data//maps/ShadyGuysTruck/scripts.pory"
-	delay 60
-# 299 "data//maps/ShadyGuysTruck/scripts.pory"
-	closemessage
-# 300 "data//maps/ShadyGuysTruck/scripts.pory"
-	hidefollower
-# 301 "data//maps/ShadyGuysTruck/scripts.pory"
-	delay 30
-# 302 "data//maps/ShadyGuysTruck/scripts.pory"
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceRight
-# 303 "data//maps/ShadyGuysTruck/scripts.pory"
-	waitmovement
-# 304 "data//maps/ShadyGuysTruck/scripts.pory"
-	applymovement LOCALID_PLAYER, Common_Movement_SetInvisible
-# 305 "data//maps/ShadyGuysTruck/scripts.pory"
-	playse SE_EXIT
-# 306 "data//maps/ShadyGuysTruck/scripts.pory"
-	waitse
 # 307 "data//maps/ShadyGuysTruck/scripts.pory"
-	fadescreen FADE_TO_BLACK
-# 308 "data//maps/ShadyGuysTruck/scripts.pory"
-	setvar VAR_SHADY_TRUCK_LOCATION, MAP_LILYCOVE_CITY
+	message ShadyGuysTruck_EventScript_LeaveTruck_Text_0
 # 309 "data//maps/ShadyGuysTruck/scripts.pory"
-	switch VAR_SHADY_TRUCK_LOCATION
+	waitmessage
 # 310 "data//maps/ShadyGuysTruck/scripts.pory"
-	case MAP_RUSTBORO_CITY, ShadyGuysTruck_EventScript_LeaveTruck_9
+	delay 60
+# 311 "data//maps/ShadyGuysTruck/scripts.pory"
+	closemessage
 # 312 "data//maps/ShadyGuysTruck/scripts.pory"
-	case MAP_SLATEPORT_CITY, ShadyGuysTruck_EventScript_LeaveTruck_10
+	hidefollower
+# 313 "data//maps/ShadyGuysTruck/scripts.pory"
+	delay 30
 # 314 "data//maps/ShadyGuysTruck/scripts.pory"
-	case MAP_LILYCOVE_CITY, ShadyGuysTruck_EventScript_LeaveTruck_11
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceRight
+# 315 "data//maps/ShadyGuysTruck/scripts.pory"
+	waitmovement
+# 316 "data//maps/ShadyGuysTruck/scripts.pory"
+	applymovement LOCALID_PLAYER, Common_Movement_SetInvisible
+# 317 "data//maps/ShadyGuysTruck/scripts.pory"
+	playse SE_EXIT
+# 318 "data//maps/ShadyGuysTruck/scripts.pory"
+	waitse
+# 319 "data//maps/ShadyGuysTruck/scripts.pory"
+	fadescreen FADE_TO_BLACK
+# 320 "data//maps/ShadyGuysTruck/scripts.pory"
+	compare VAR_TEMP_A, 0
+	goto_if_gt ShadyGuysTruck_EventScript_LeaveTruck_9
+ShadyGuysTruck_EventScript_LeaveTruck_8:
+# 323 "data//maps/ShadyGuysTruck/scripts.pory"
+	switch VAR_SHADY_TRUCK_LOCATION
+# 324 "data//maps/ShadyGuysTruck/scripts.pory"
+	case 0, ShadyGuysTruck_EventScript_LeaveTruck_12
+# 326 "data//maps/ShadyGuysTruck/scripts.pory"
+	case 1, ShadyGuysTruck_EventScript_LeaveTruck_13
+# 328 "data//maps/ShadyGuysTruck/scripts.pory"
+	case 2, ShadyGuysTruck_EventScript_LeaveTruck_14
 	return
 
 ShadyGuysTruck_EventScript_LeaveTruck_2:
-# 283 "data//maps/ShadyGuysTruck/scripts.pory"
-	setflag FLAG_KEEP_SHADY_TRUCK
+# 295 "data//maps/ShadyGuysTruck/scripts.pory"
+	setflag FLAG_SHOW_SHADY_TRUCK
 	goto ShadyGuysTruck_EventScript_LeaveTruck_1
 
 ShadyGuysTruck_EventScript_LeaveTruck_6:
-# 292 "data//maps/ShadyGuysTruck/scripts.pory"
+# 304 "data//maps/ShadyGuysTruck/scripts.pory"
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft
-# 293 "data//maps/ShadyGuysTruck/scripts.pory"
+# 305 "data//maps/ShadyGuysTruck/scripts.pory"
 	waitmovement
 	goto ShadyGuysTruck_EventScript_LeaveTruck_5
 
 ShadyGuysTruck_EventScript_LeaveTruck_9:
-# 311 "data//maps/ShadyGuysTruck/scripts.pory"
+# 321 "data//maps/ShadyGuysTruck/scripts.pory"
+	copyvar VAR_SHADY_TRUCK_DAY, VAR_TEMP_A
+	goto ShadyGuysTruck_EventScript_LeaveTruck_8
+
+ShadyGuysTruck_EventScript_LeaveTruck_12:
+# 325 "data//maps/ShadyGuysTruck/scripts.pory"
 	warpsilent MAP_RUSTBORO_CITY, 5, 42
 	return
 
-ShadyGuysTruck_EventScript_LeaveTruck_10:
-# 313 "data//maps/ShadyGuysTruck/scripts.pory"
+ShadyGuysTruck_EventScript_LeaveTruck_13:
+# 327 "data//maps/ShadyGuysTruck/scripts.pory"
 	warpsilent MAP_SLATEPORT_CITY, 10, 59
 	return
 
-ShadyGuysTruck_EventScript_LeaveTruck_11:
-# 315 "data//maps/ShadyGuysTruck/scripts.pory"
+ShadyGuysTruck_EventScript_LeaveTruck_14:
+# 329 "data//maps/ShadyGuysTruck/scripts.pory"
 	warpsilent MAP_LILYCOVE_CITY, 40, 30
 	return
 
 
 ShadyGuysTruck_EventScript_TruckExitTile::
-# 320 "data//maps/ShadyGuysTruck/scripts.pory"
+# 334 "data//maps/ShadyGuysTruck/scripts.pory"
 	getobjectfacingdirection LOCALID_PLAYER, VAR_RESULT
-# 321 "data//maps/ShadyGuysTruck/scripts.pory"
+# 335 "data//maps/ShadyGuysTruck/scripts.pory"
 	compare VAR_RESULT, DIR_EAST
 	goto_if_eq ShadyGuysTruck_EventScript_TruckExitTile_2
-# 321 "data//maps/ShadyGuysTruck/scripts.pory"
+# 335 "data//maps/ShadyGuysTruck/scripts.pory"
 	compare VAR_RESULT, DIR_NORTH
 	goto_if_eq ShadyGuysTruck_EventScript_TruckExitTile_2
 ShadyGuysTruck_EventScript_TruckExitTile_1:
-# 355 "data//maps/ShadyGuysTruck/scripts.pory"
+# 369 "data//maps/ShadyGuysTruck/scripts.pory"
 	release
 	return
 
 ShadyGuysTruck_EventScript_TruckExitTile_2:
-# 322 "data//maps/ShadyGuysTruck/scripts.pory"
+# 336 "data//maps/ShadyGuysTruck/scripts.pory"
 	delay 15
-# 323 "data//maps/ShadyGuysTruck/scripts.pory"
-	goto_if_set FLAG_TEMP_3, ShadyGuysTruck_EventScript_TruckExitTile_6
 # 337 "data//maps/ShadyGuysTruck/scripts.pory"
+	goto_if_set FLAG_TEMP_3, ShadyGuysTruck_EventScript_TruckExitTile_6
+# 351 "data//maps/ShadyGuysTruck/scripts.pory"
 	playse SE_PIN
-# 338 "data//maps/ShadyGuysTruck/scripts.pory"
+# 352 "data//maps/ShadyGuysTruck/scripts.pory"
 	applymovement LOCALID_SHADYGUY_TRUCK_GUY, Common_Movement_ExclamationMark
-# 339 "data//maps/ShadyGuysTruck/scripts.pory"
+# 353 "data//maps/ShadyGuysTruck/scripts.pory"
 	waitse
-# 340 "data//maps/ShadyGuysTruck/scripts.pory"
+# 354 "data//maps/ShadyGuysTruck/scripts.pory"
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft
-# 341 "data//maps/ShadyGuysTruck/scripts.pory"
+# 355 "data//maps/ShadyGuysTruck/scripts.pory"
 	waitmovement
-# 342 "data//maps/ShadyGuysTruck/scripts.pory"
+# 356 "data//maps/ShadyGuysTruck/scripts.pory"
 	msgbox ShadyGuysTruck_EventScript_TruckExitTile_Text_1, MSGBOX_YESNO
-# 343 "data//maps/ShadyGuysTruck/scripts.pory"
+# 357 "data//maps/ShadyGuysTruck/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq ShadyGuysTruck_EventScript_TruckExitTile_9
-# 347 "data//maps/ShadyGuysTruck/scripts.pory"
+# 361 "data//maps/ShadyGuysTruck/scripts.pory"
 	msgbox ShadyGuysTruck_EventScript_TruckExitTile_Text_2, MSGBOX_DEFAULT
-# 349 "data//maps/ShadyGuysTruck/scripts.pory"
+# 363 "data//maps/ShadyGuysTruck/scripts.pory"
 	closemessage
-# 350 "data//maps/ShadyGuysTruck/scripts.pory"
+# 364 "data//maps/ShadyGuysTruck/scripts.pory"
 	applymovement LOCALID_PLAYER, Common_Movement_WalkLeft
-# 351 "data//maps/ShadyGuysTruck/scripts.pory"
+# 365 "data//maps/ShadyGuysTruck/scripts.pory"
 	waitmovement
 	goto ShadyGuysTruck_EventScript_TruckExitTile_1
 
 ShadyGuysTruck_EventScript_TruckExitTile_6:
-# 324 "data//maps/ShadyGuysTruck/scripts.pory"
+# 338 "data//maps/ShadyGuysTruck/scripts.pory"
 	playse SE_PIN
-# 325 "data//maps/ShadyGuysTruck/scripts.pory"
+# 339 "data//maps/ShadyGuysTruck/scripts.pory"
 	applymovement LOCALID_SHADYGUY_TRUCK_GUY, Common_Movement_ExclamationMark
-# 326 "data//maps/ShadyGuysTruck/scripts.pory"
+# 340 "data//maps/ShadyGuysTruck/scripts.pory"
 	waitse
-# 327 "data//maps/ShadyGuysTruck/scripts.pory"
+# 341 "data//maps/ShadyGuysTruck/scripts.pory"
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft
-# 328 "data//maps/ShadyGuysTruck/scripts.pory"
+# 342 "data//maps/ShadyGuysTruck/scripts.pory"
 	waitmovement
-# 329 "data//maps/ShadyGuysTruck/scripts.pory"
+# 343 "data//maps/ShadyGuysTruck/scripts.pory"
 	msgbox ShadyGuysTruck_EventScript_TruckExitTile_Text_0, MSGBOX_DEFAULT
-# 332 "data//maps/ShadyGuysTruck/scripts.pory"
+# 346 "data//maps/ShadyGuysTruck/scripts.pory"
 	closemessage
-# 333 "data//maps/ShadyGuysTruck/scripts.pory"
+# 347 "data//maps/ShadyGuysTruck/scripts.pory"
 	applymovement LOCALID_PLAYER, Common_Movement_WalkLeft
-# 334 "data//maps/ShadyGuysTruck/scripts.pory"
+# 348 "data//maps/ShadyGuysTruck/scripts.pory"
 	waitmovement
 	goto ShadyGuysTruck_EventScript_TruckExitTile_1
 
 ShadyGuysTruck_EventScript_TruckExitTile_9:
-# 344 "data//maps/ShadyGuysTruck/scripts.pory"
+# 358 "data//maps/ShadyGuysTruck/scripts.pory"
 	call ShadyGuysTruck_EventScript_LeaveTruck
 	goto ShadyGuysTruck_EventScript_TruckExitTile_1
 
 
 ShadyGuysTruck_EventScript_PlayerEntersTruck::
-# 359 "data//maps/ShadyGuysTruck/scripts.pory"
+# 373 "data//maps/ShadyGuysTruck/scripts.pory"
 	fadescreen FADE_FROM_BLACK
-# 360 "data//maps/ShadyGuysTruck/scripts.pory"
+# 374 "data//maps/ShadyGuysTruck/scripts.pory"
 	applymovement LOCALID_PLAYER, Common_Movement_WalkLeft
-# 361 "data//maps/ShadyGuysTruck/scripts.pory"
+# 375 "data//maps/ShadyGuysTruck/scripts.pory"
 	waitmovement
-# 362 "data//maps/ShadyGuysTruck/scripts.pory"
+# 376 "data//maps/ShadyGuysTruck/scripts.pory"
 	release
 	return
 
 
 ShadyGuysTruck_EventScript_ShadyGuy_Text_0:
-# 25 "data//maps/ShadyGuysTruck/scripts.pory"
+# 37 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "Talk to one of my assistants to get\n"
 	.string "started.\p"
 	.string "HYPNO will extract memories of your\n"
@@ -582,7 +619,7 @@ ShadyGuysTruck_EventScript_ShadyGuy_Text_0:
 	.string "their effort.$"
 
 ShadyGuysTruck_EventScript_ShadyGuy_Text_1:
-# 33 "data//maps/ShadyGuysTruck/scripts.pory"
+# 45 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "SHADY PERSON: Welcome, traveler!\p"
 	.string "My assistants can turn your POKéMON's\n"
 	.string "memories into strengthening medicine.\p"
@@ -590,7 +627,7 @@ ShadyGuysTruck_EventScript_ShadyGuy_Text_1:
 	.string "Your POKéMON will suffer…$"
 
 ShadyGuysTruck_EventScript_ShadyGuy_Text_2:
-# 38 "data//maps/ShadyGuysTruck/scripts.pory"
+# 50 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "Ah…\p"
 	.string "You've had a bit of our strengthening\n"
 	.string "medicine, and now you want more.\p"
@@ -598,7 +635,7 @@ ShadyGuysTruck_EventScript_ShadyGuy_Text_2:
 	.string "Even though your POKéMON will suffer?$"
 
 ShadyGuysTruck_EventScript_ShadyGuy_Text_3:
-# 45 "data//maps/ShadyGuysTruck/scripts.pory"
+# 57 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "Oh?\p"
 	.string "You only have one POKéMON in your\n"
 	.string "party…\p"
@@ -609,7 +646,7 @@ ShadyGuysTruck_EventScript_ShadyGuy_Text_3:
 	.string "two, just in case.$"
 
 ShadyGuysTruck_EventScript_ShadyGuy_Text_4:
-# 52 "data//maps/ShadyGuysTruck/scripts.pory"
+# 64 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "I charge ¥1000 for our service.\p"
 	.string "It's a good deal for such a rare skill…\p"
 	.string "You'll benefit greatly, but your\n"
@@ -617,7 +654,7 @@ ShadyGuysTruck_EventScript_ShadyGuy_Text_4:
 	.string "Do you still want to try it?$"
 
 ShadyGuysTruck_EventScript_ShadyGuy_Text_5:
-# 66 "data//maps/ShadyGuysTruck/scripts.pory"
+# 78 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "Well then…\p"
 	.string "Talk to one of my assistants to get\n"
 	.string "started.\p"
@@ -627,7 +664,7 @@ ShadyGuysTruck_EventScript_ShadyGuy_Text_5:
 	.string "their effort.$"
 
 ShadyGuysTruck_EventScript_ShadyGuy_Text_6:
-# 74 "data//maps/ShadyGuysTruck/scripts.pory"
+# 86 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "You don't have enough money for our\n"
 	.string "service.\p"
 	.string "It's quite taxing on me and my POKéMON\n"
@@ -636,40 +673,40 @@ ShadyGuysTruck_EventScript_ShadyGuy_Text_6:
 	.string "expect to compensate us appropriately.$"
 
 ShadyGuysTruck_EventScript_ShadyGuy_Text_7:
-# 82 "data//maps/ShadyGuysTruck/scripts.pory"
+# 94 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "Yes, I understand.\p"
 	.string "Your POKéMON would find you cruel for\n"
 	.string "subjecting them to this technique.\p"
 	.string "You're kind to spare them.$"
 
 ShadyGuysTruck_EventScript_Musharna_Text_0:
-# 101 "data//maps/ShadyGuysTruck/scripts.pory"
+# 113 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "Do you want to ask MUSHARNA to forcibly\n"
 	.string "extract your POKéMON's memories?$"
 
 ShadyGuysTruck_EventScript_Musharna_Text_1:
-# 105 "data//maps/ShadyGuysTruck/scripts.pory"
+# 117 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "MUUUUUUU…$"
 
 ShadyGuysTruck_EventScript_Musharna_Text_2:
-# 110 "data//maps/ShadyGuysTruck/scripts.pory"
+# 122 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "Try asking HYPNO instead.$"
 
 ShadyGuysTruck_EventScript_Hypno_Text_0:
-# 127 "data//maps/ShadyGuysTruck/scripts.pory"
+# 139 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "Do you want to ask HYPNO to forcibly\n"
 	.string "extract your POKéMON's memories?$"
 
 ShadyGuysTruck_EventScript_Hypno_Text_1:
-# 131 "data//maps/ShadyGuysTruck/scripts.pory"
+# 143 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "NOOOOOOO…$"
 
 ShadyGuysTruck_EventScript_Hypno_Text_2:
-# 136 "data//maps/ShadyGuysTruck/scripts.pory"
+# 148 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "Try asking MUSHARNA instead.$"
 
 ShadyGuysTruck_EventScript_GiveMedicine_Text_0:
-# 204 "data//maps/ShadyGuysTruck/scripts.pory"
+# 216 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "SHADY PERSON: Oh…\l"
 	.string "That's not right…\p"
 	.string "It seems my {STR_VAR_1} got carried\n"
@@ -681,12 +718,12 @@ ShadyGuysTruck_EventScript_GiveMedicine_Text_0:
 	.string "Your {STR_VAR_2} has died.$"
 
 ShadyGuysTruck_EventScript_GiveMedicine_Text_1:
-# 210 "data//maps/ShadyGuysTruck/scripts.pory"
+# 222 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "That candy represents the extent of\n"
 	.string "its experience in crystal form.$"
 
 ShadyGuysTruck_EventScript_GiveMedicine_Text_2:
-# 215 "data//maps/ShadyGuysTruck/scripts.pory"
+# 227 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "But we were also able to crystallize the\n"
 	.string "last of its life force into this\l"
 	.string "powerful medicine.\p"
@@ -695,7 +732,7 @@ ShadyGuysTruck_EventScript_GiveMedicine_Text_2:
 	.string "do.$"
 
 ShadyGuysTruck_EventScript_GiveMedicine_Text_3:
-# 231 "data//maps/ShadyGuysTruck/scripts.pory"
+# 243 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "SHADY PERSON: Your POKéMON…\p"
 	.string "My {STR_VAR_1} did its best, but\n"
 	.string "{STR_VAR_2} just doesn't have\l"
@@ -704,7 +741,7 @@ ShadyGuysTruck_EventScript_GiveMedicine_Text_3:
 	.string "POKéMON.$"
 
 ShadyGuysTruck_EventScript_GiveMedicine_Text_4:
-# 248 "data//maps/ShadyGuysTruck/scripts.pory"
+# 260 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "SHADY PERSON: Yes…\l"
 	.string "This is our talent.\p"
 	.string "My {STR_VAR_1} was able to extract\n"
@@ -716,15 +753,15 @@ ShadyGuysTruck_EventScript_GiveMedicine_Text_4:
 	.string "experience at all.$"
 
 ShadyGuysTruck_EventScript_GiveMedicine_Text_5:
-# 252 "data//maps/ShadyGuysTruck/scripts.pory"
+# 264 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "I hope you're happy!$"
 
 ShadyGuysTruck_EventScript_GiveMedicine_Text_6:
-# 257 "data//maps/ShadyGuysTruck/scripts.pory"
+# 269 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}…$"
 
 ShadyGuysTruck_EventScript_GiveMedicine_Text_7:
-# 260 "data//maps/ShadyGuysTruck/scripts.pory"
+# 272 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "Well look at that,\p"
 	.string "It's about time we get moving.\p"
 	.string "Offering a service like this attracts a\n"
@@ -737,13 +774,13 @@ ShadyGuysTruck_EventScript_GiveMedicine_Text_7:
 	.string "cross paths again soon.$"
 
 ShadyGuysTruck_EventScript_LeaveTruck_Text_0:
-# 295 "data//maps/ShadyGuysTruck/scripts.pory"
+# 307 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "SHADY PERSON: My truck is always open\n"
 	.string "to reliable and discrete customers!\p"
 	.string "Stop back by if you see us again.$"
 
 ShadyGuysTruck_EventScript_TruckExitTile_Text_0:
-# 329 "data//maps/ShadyGuysTruck/scripts.pory"
+# 343 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "SHADY PERSON: Oh, are you leaving?\p"
 	.string "But you already paid for our service.\p"
 	.string "Speak with one of my assistants to\n"
@@ -751,11 +788,11 @@ ShadyGuysTruck_EventScript_TruckExitTile_Text_0:
 	.string "into something useful.$"
 
 ShadyGuysTruck_EventScript_TruckExitTile_Text_1:
-# 342 "data//maps/ShadyGuysTruck/scripts.pory"
+# 356 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "SHADY PERSON: Oh, are you headed out?$"
 
 ShadyGuysTruck_EventScript_TruckExitTile_Text_2:
-# 347 "data//maps/ShadyGuysTruck/scripts.pory"
+# 361 "data//maps/ShadyGuysTruck/scripts.pory"
 	.string "Good, good.\p"
 	.string "Our service is hard to come by,\n"
 	.string "consider giving it a try…$"

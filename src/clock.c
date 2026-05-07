@@ -64,6 +64,7 @@ static void UpdatePerDay(struct Time *localTime)
         ResetDailyTrainers();
         ProgressLavarborTunnelState();
         DailyResetApricornTrees();
+        TryShowShadyTruck();
         *days = localTime->days;
     }
 }

@@ -10,5 +10,6 @@ void RestockBerryMasterCellar(void);
 void CountBikeDeliveryDays(u16 days);
 void ResetDailyTrainers(void);
 void ProgressLavarborTunnelState(void);
+void TryShowShadyTruck(void);
 
 #endif // GUARD_TIME_EVENTS_H

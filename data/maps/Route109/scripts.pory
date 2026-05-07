@@ -9,9 +9,24 @@ Route109_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, Route109_OnResume
 	.byte 0
 
-Route109_OnTransition:
-	call_if_eq VAR_BRINEY_LOCATION, 4, Route109_EventScript_SetupPlayerClone
-	end
+`
+
+const FLAG_TEMP_HIDE_SLATEPORT_TRUCK = FLAG_TEMP_1E
+
+script Route109_OnTransition{
+	call_if_eq(VAR_BRINEY_LOCATION, 4, Route109_EventScript_SetupPlayerClone)
+	setflag(FLAG_TEMP_HIDE_SLATEPORT_TRUCK)
+	if (flag(FLAG_SHOW_SHADY_TRUCK) && var(VAR_SHADY_TRUCK_LOCATION) == 1){
+		applymovement(LOCALID_SLATEPORT_SHADY_ALAKAZAM, Common_Movement_SetInvisible, MAP_ROUTE109)
+		waitmovement
+		//applymovement(LOCALID_ROUTE109_SHADY_ALAKAZAM, Common_Movement_SetVisible, MAP_ROUTE109)
+		//waitmovement
+		removeobject(LOCALID_SLATEPORT_SHADY_ALAKAZAM, MAP_SLATEPORT_CITY)
+		clearflag(FLAG_TEMP_HIDE_SLATEPORT_TRUCK)
+	}
+}
+
+raw`
 
 Route109_OnWarp:
 	map_script_2 VAR_BRINEY_LOCATION, 4, Route109_EventScript_SetupBrineyReturnScene

@@ -1,4 +1,24 @@
+const FLAG_PAID_FOR_SHADY_GUY = FLAG_TEMP_3
+const VAR_TIMES_EXTRACTED = VAR_TEMP_A
+const VAR_CHOSEN_SPECIES = VAR_TEMP_B 
+const VAR_EXTRACTED_MEDICINE = VAR_TEMP_C 
+const VAR_EXTRACTED_MEDICINE_QUANTITY = VAR_TEMP_D 
+const VAR_ASSISTANT_MON = VAR_TEMP_E
+const MAX_EXTRACTIONS = 3
+
 mapscripts ShadyGuysTruck_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        switch (var(VAR_SHADY_TRUCK_DAY)){
+            case 1:
+                copyvar(VAR_TIMES_EXTRACTED, VAR_SHADY_TRUCK_DAY)
+            case 2:
+                copyvar(VAR_TIMES_EXTRACTED, VAR_SHADY_TRUCK_DAY)
+            case 3:
+                copyvar(VAR_TIMES_EXTRACTED, VAR_SHADY_TRUCK_DAY)
+            default:
+                setvar(VAR_TIMES_EXTRACTED, 0)
+        }
+    }
     //MAP_SCRIPT_ON_FRAME_TABLE[
     //    VAR_TEMP_0, 0 {
     //        getobjectfacingdirection(LOCALID_PLAYER, VAR_RESULT)
@@ -9,14 +29,6 @@ mapscripts ShadyGuysTruck_MapScripts {
     //    }
     //]
 }
-
-const FLAG_PAID_FOR_SHADY_GUY = FLAG_TEMP_3
-const VAR_TIMES_EXTRACTED = VAR_TEMP_A
-const VAR_CHOSEN_SPECIES = VAR_TEMP_B 
-const VAR_EXTRACTED_MEDICINE = VAR_TEMP_C 
-const VAR_EXTRACTED_MEDICINE_QUANTITY = VAR_TEMP_D 
-const VAR_ASSISTANT_MON = VAR_TEMP_E
-const MAX_EXTRACTIONS = 3
 
 script ShadyGuysTruck_EventScript_ShadyGuy{
     //lock
@@ -280,10 +292,10 @@ movement ShadyGuysTruck_Movement_LeaveTruckMaxExtractions{
 
 script ShadyGuysTruck_EventScript_LeaveTruck{
     if (var(VAR_TIMES_EXTRACTED) != MAX_EXTRACTIONS){
-        setflag(FLAG_KEEP_SHADY_TRUCK)
+        setflag(FLAG_SHOW_SHADY_TRUCK)
     }
     else{
-        clearflag(FLAG_KEEP_SHADY_TRUCK)
+        clearflag(FLAG_SHOW_SHADY_TRUCK)
     }
     applymovement(LOCALID_SHADYGUY_TRUCK_GUY, Common_Movement_WalkInPlaceRight)
     waitmovement
@@ -305,14 +317,18 @@ script ShadyGuysTruck_EventScript_LeaveTruck{
     playse(SE_EXIT)
     waitse
     fadescreen(FADE_TO_BLACK)
-    setvar(VAR_SHADY_TRUCK_LOCATION, MAP_LILYCOVE_CITY)
+    if (var(VAR_TIMES_EXTRACTED) > 0){
+        copyvar(VAR_SHADY_TRUCK_DAY, VAR_TIMES_EXTRACTED) // when VAR_SHADY_TRUCK_DAY == 1 or 2 (or 3) it means that's how many times you've used shady guy this week on (an)other visit(s)
+    }
     switch (var(VAR_SHADY_TRUCK_LOCATION)){
-        case MAP_RUSTBORO_CITY: 
+        case 0: 
             warpsilent(MAP_RUSTBORO_CITY, 5, 42)
-        case MAP_SLATEPORT_CITY: 
+        case 1: 
             warpsilent(MAP_SLATEPORT_CITY, 10, 59)
-        case MAP_LILYCOVE_CITY: 
+        case 2: 
             warpsilent(MAP_LILYCOVE_CITY, 40, 30)
+        default: // prevents soft locks, not intended to be selected
+            warpsilent(MAP_RUSTBORO_CITY, 5, 42)
     }
 }
 

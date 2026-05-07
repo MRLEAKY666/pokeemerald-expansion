@@ -12,6 +12,9 @@ const FLAG_TEMP_FROM_TRUCK = FLAG_TEMP_1F
 
 script RustboroCity_OnTransition{
 	setflag(FLAG_TEMP_HIDE_RUSTBORO_TRUCK)
+	if (flag(FLAG_SHOW_SHADY_TRUCK) && var(VAR_SHADY_TRUCK_LOCATION) == 0){
+		clearflag(FLAG_TEMP_HIDE_RUSTBORO_TRUCK)
+	}
 	setflag(FLAG_VISITED_RUSTBORO_CITY)
 	call(Common_EventScript_SetupRivalGfxId)
 	call_if_eq(VAR_RUSTBORO_CITY_STATE, 6, RustboroCity_EventScript_HideMapNamePopup)
@@ -34,47 +37,49 @@ script RustboroCity_OnResume{
 }
 
 script RustboroCity_EventScript_ReturningFromShadyTruck{
-	setobjectsubpriority(LOCALID_RUSTBORO_SHADY_TRUCK, MAP_RUSTBORO_CITY, 0)
-	playse(SE_BIKE_HOP)
-	applymovement(LOCALID_PLAYER, RustboroCity_Movement_JumpOutOfTruck)
-	waitmovement
-	if (!flag(FLAG_KEEP_SHADY_TRUCK)){
-		applymovement(LOCALID_PLAYER, RustboroCity_Movement_MoveAwayFromTruck)
-		waitmovement
-		applymovement(LOCALID_RUSTBORO_SHADY_ALAKAZAM, Common_Movement_WalkInPlaceFasterDown)
-		waitmovement
-		playmoncry(SPECIES_ALAKAZAM, CRY_MODE_NORMAL)
-		message(format("ZAZAZAAAAAAM!!"))
-		waitmoncry
-		delay(40)
-		closemessage
-		applymovement(LOCALID_RUSTBORO_SHADY_ALAKAZAM, RustboroCity_Movement_AlakazamEnterTruck)
-		delay(30)
+	if (flag(FLAG_TEMP_FROM_TRUCK)){
+		setobjectsubpriority(LOCALID_RUSTBORO_SHADY_TRUCK, MAP_RUSTBORO_CITY, 0)
 		playse(SE_BIKE_HOP)
-		waitmovement(LOCALID_RUSTBORO_SHADY_ALAKAZAM)
-		delay(30)
-		playse(SE_TRUCK_DOOR)
-		waitse
-		delay(15)
-		fadescreenswapbuffers(FADE_TO_BLACK)
-		delay(60)
-		playse(SE_TRUCK_MOVE)
-		delay(120)
-		playse(SE_TRUCK_STOP)
-		waitse
-		delay(45)
-		removeobject(LOCALID_RUSTBORO_SHADY_TRUCK)
-		removeobject(LOCALID_RUSTBORO_SHADY_ALAKAZAM)
-		removeobject(LOCALID_RUSTBORO_TRUCK_COLLISION_A)
-		removeobject(LOCALID_RUSTBORO_TRUCK_COLLISION_B)
-		fadescreenswapbuffers(FADE_FROM_BLACK)
-		delay(30)
-		message(format("The truck drove off…"))
-		waitmessage
-		delay(90)
-		closemessage
+		applymovement(LOCALID_PLAYER, RustboroCity_Movement_JumpOutOfTruck)
+		waitmovement
+		if (!flag(FLAG_SHOW_SHADY_TRUCK)){
+			applymovement(LOCALID_PLAYER, RustboroCity_Movement_MoveAwayFromTruck)
+			waitmovement
+			applymovement(LOCALID_RUSTBORO_SHADY_ALAKAZAM, Common_Movement_WalkInPlaceFasterDown)
+			waitmovement
+			playmoncry(SPECIES_ALAKAZAM, CRY_MODE_NORMAL)
+			message(format("ZAZAZAAAAAAM!!"))
+			waitmoncry
+			delay(40)
+			closemessage
+			applymovement(LOCALID_RUSTBORO_SHADY_ALAKAZAM, RustboroCity_Movement_AlakazamEnterTruck)
+			delay(30)
+			playse(SE_BIKE_HOP)
+			waitmovement(LOCALID_RUSTBORO_SHADY_ALAKAZAM)
+			delay(30)
+			playse(SE_TRUCK_DOOR)
+			waitse
+			delay(15)
+			fadescreenswapbuffers(FADE_TO_BLACK)
+			delay(60)
+			playse(SE_TRUCK_MOVE)
+			delay(120)
+			playse(SE_TRUCK_STOP)
+			waitse
+			delay(45)
+			removeobject(LOCALID_RUSTBORO_SHADY_TRUCK)
+			removeobject(LOCALID_RUSTBORO_SHADY_ALAKAZAM)
+			removeobject(LOCALID_RUSTBORO_TRUCK_COLLISION_A)
+			removeobject(LOCALID_RUSTBORO_TRUCK_COLLISION_B)
+			fadescreenswapbuffers(FADE_FROM_BLACK)
+			delay(30)
+			message(format("The truck drove off…"))
+			waitmessage
+			delay(90)
+			closemessage
+		}
+		resetobjectsubpriority(LOCALID_RUSTBORO_SHADY_TRUCK, MAP_RUSTBORO_CITY)
 	}
-	resetobjectsubpriority(LOCALID_RUSTBORO_SHADY_TRUCK, MAP_RUSTBORO_CITY)
 	setvar(VAR_TEMP_F, 0)
 	release
 }
