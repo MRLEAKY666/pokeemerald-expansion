@@ -17,11 +17,6 @@
 	.4byte \ptr
 	.endm
 
-	.macro critcalc
-	.warning "critcalc macro has been deprecated, please remove from scripts"
-	.byte B_SCR_OP_CRITCALC
-	.endm
-
 	.macro damagecalc
 	.byte B_SCR_OP_DAMAGECALC
 	.endm
@@ -942,16 +937,6 @@
 	.byte B_SCR_OP_SELECTFIRSTVALIDTARGET
 	.endm
 
-	.macro setfutureattack
-	.byte B_SCR_OP_SETFUTUREATTACK
-	.endm
-
-	.macro trydobeatup endInstr:req, failInstr:req
-	.byte B_SCR_OP_TRYDOBEATUP
-	.4byte \endInstr
-	.4byte \failInstr
-	.endm
-
 	.macro setsemiinvulnerablebit clear=FALSE
 	.byte B_SCR_OP_SETSEMIINVULNERABLEBIT
 	.byte \clear
@@ -1092,11 +1077,6 @@
 	.4byte \failInstr
 	.endm
 
-	.macro pursuitdoubles failInstr:req
-	.byte B_SCR_OP_PURSUITDOUBLES
-	.4byte \failInstr
-	.endm
-
 	.macro snatchsetbattlers
 	.byte B_SCR_OP_SNATCHSETBATTLERS
 	.endm
@@ -1178,16 +1158,12 @@
     .byte \battler
 	.endm
 
-    .macro tryanystatchange
-    .byte B_SCR_OP_TRYANYSTATCHANGE
+    .macro trymovestatchanges
+    .byte B_SCR_OP_TRYMOVESTATCHANGES
     .endm
 
-    .macro trystatchange
-    .byte B_SCR_OP_TRYSTATCHANGE
-    .endm
-
-    .macro trynonmovestatchange battler:req statChangeFlags:req
-    .byte B_SCR_OP_TRYNONMOVESTATCHANGE
+    .macro trystatchanges battler:req statChangeFlags:req
+    .byte B_SCR_OP_TRYSTATCHANGES
     .byte \battler
     .2byte \statChangeFlags
     .endm
@@ -1261,17 +1237,6 @@
 	.macro trysetoctolock failInstr:req
 	callnative BS_TrySetOctolock
 	.4byte \failInstr
-	.endm
-
-	.macro setpledge jumpInstr:req
-	callnative BS_SetPledge
-	.4byte \jumpInstr
-	.endm
-
-	.macro setpledgestatus battler:req, sidestatus:req
-	callnative BS_SetPledgeStatus
-	.byte \battler
-	.4byte \sidestatus
 	.endm
 
 	.macro setzeffect
