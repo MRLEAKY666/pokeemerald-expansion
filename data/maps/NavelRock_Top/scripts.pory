@@ -5,6 +5,7 @@ NavelRock_Top_MapScripts::
 	.byte 0
 
 NavelRock_Top_OnTransition:
+	setflag FLAG_TEMP_5
 	call_if_set FLAG_CAUGHT_HO_OH, NavelRock_Top_EventScript_HideHoOh
 	call_if_unset FLAG_CAUGHT_HO_OH, NavelRock_Top_EventScript_TryShowHoOh
 	end
@@ -17,6 +18,7 @@ NavelRock_Top_EventScript_HideHoOh::
 NavelRock_Top_EventScript_TryShowHoOh::
 	setvar VAR_TEMP_1, 1
 	goto_if_set FLAG_DEFEATED_HO_OH, Common_EventScript_NopReturn
+	goto_if_not_defeated TRAINER_WALLACE_NAVEL_ROCK, NavelRock_Top_EventScript_HideHoOh
 	setvar VAR_TEMP_1, 0
 	clearflag FLAG_HIDE_HO_OH
 	return

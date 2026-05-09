@@ -3,9 +3,15 @@ LilycoveCity_CoveLilyMotel_2F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, LilycoveCity_CoveLilyMotel_OnTransition
 	.byte 0
 
-LilycoveCity_CoveLilyMotel_OnTransition:
-	setflag FLAG_TEMP_3
-	end
+`
+
+script LilycoveCity_CoveLilyMotel_OnTransition{
+	if (flag(FLAG_CAUGHT_LUGIA)){
+		setflag(FLAG_TEMP_3)
+	}
+}
+
+raw`
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_GameDesigner::
 	lock
@@ -48,16 +54,16 @@ LilycoveCity_CoveLilyMotel_2F_EventScript_GraphicArtist::
 LilycoveCity_CoveLilyMotel_2F_EventScript_ProfOak::
 	lock
 	faceplayer
+	goto_if_set FLAG_START_LUGIA_QUEST, LilycoveCity_CoveLilyMotel_2F_EventScript_MeetAtNavelRock
 	call_if_set FLAG_MET_PROF_OAK, LilycoveCity_CoveLilyMotel_2F_EventScript_MetProfOak
 	call_if_unset FLAG_MET_PROF_OAK, LilycoveCity_CoveLilyMotel_2F_EventScript_MeetProfOak
-	waitmessage
+	closemessage
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex
 	end
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_MeetProfOak::
 	setflag FLAG_MET_PROF_OAK
 	msgbox LilycoveCity_CoveLilyMotel_2F_Text_MeetProfOak, MSGBOX_DEFAULT
-	waitmessage
 	msgbox LilycoveCity_CoveLilyMotel_2F_Text_APokedex, MSGBOX_DEFAULT
 	return
 
@@ -294,194 +300,444 @@ LilycoveCity_CoveLilyMotel_2F_Text_VisitingHoenn:
 	.string "Come back  and show me if you\n"
 	.string "find any POKéMON like that.$"
 
+LilycoveCity_CoveLilyMotel_2F_Text_Thinking:
+	.string "… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}…$"
+
 `
-script LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex {
+
+script LilycoveCity_CoveLilyMotel_2F_EventScript_MeetAtNavelRock{
+	msgbox(format("I'll meet you at NAVEL ROCK to discuss our next steps towards finding LUGIA.\p"
+						"Bring ARTICUNO, ZAPDOS, and MOLTRES with you,\p"
+						"and be ready to catch a mighty POKéMON.\p"
+						"LUGIA's POKéDEX data would be sure to send a tsunami through the POKéMON PROFESSOR community!"), MSGBOX_DEFAULT)
+	release
+}
+
+script LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedex{
+	applymovement(LOCALID_COVELILY_OAK, Common_Movement_WalkInPlaceUp)
+	delay(30)
 	playse(SE_PC_ON)
 	waitse
-	getseenmon(SPECIES_ARTICUNO)
-	copyvar(VAR_TEMP_0, VAR_RESULT)
-	getseenmon(SPECIES_ZAPDOS)
-	copyvar(VAR_TEMP_1, VAR_RESULT)
-	getseenmon(SPECIES_MOLTRES)
-	copyvar(VAR_TEMP_2, VAR_RESULT)
-	if ((var(VAR_TEMP_0) == TRUE) && (var(VAR_TEMP_1) == FALSE) && (var(VAR_TEMP_2) == FALSE)) {
-		msgbox(LilycoveCity_CoveLilyMotel_2F_Text_SeenArticuno)
-		waitmessage
-		getcaughtmon(SPECIES_ARTICUNO)
-		if (var(VAR_RESULT)) {
-			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_CaughtArticuno)
-			waitmessage
-		}
-	}
-	elif ((var(VAR_TEMP_0) == FALSE) && (var(VAR_TEMP_1) == TRUE) && (var(VAR_TEMP_2) == FALSE)) {
-		msgbox(LilycoveCity_CoveLilyMotel_2F_Text_SeenZapdos)
-		waitmessage
-		getcaughtmon(SPECIES_ZAPDOS)
-		if (var(VAR_RESULT)) {
-			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_CaughtZapdos)
-			waitmessage
-		}
-	}
-	elif ((var(VAR_TEMP_0) == FALSE) && (var(VAR_TEMP_1) == FALSE) && (var(VAR_TEMP_2) == TRUE)) {
-		msgbox(LilycoveCity_CoveLilyMotel_2F_Text_SeenMoltres)
-		waitmessage
-		getcaughtmon(SPECIES_MOLTRES)
-		if (var(VAR_RESULT)) {
-			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_CaughtMoltres)
-			waitmessage
-		}
-	}
-	elif ((var(VAR_TEMP_0) == TRUE) && (var(VAR_TEMP_1) == TRUE) && (var(VAR_TEMP_2) == FALSE)) {
-		msgbox(LilycoveCity_CoveLilyMotel_2F_Text_SeenArticunoZapdos)
-		waitmessage
-		getcaughtmon(SPECIES_ARTICUNO)
-		if (var(VAR_RESULT)) {
-			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_CaughtArticuno)
-			waitmessage
-			getcaughtmon(SPECIES_ZAPDOS)
-			if (var(VAR_RESULT)) {
-				msgbox(LilycoveCity_CoveLilyMotel_2F_Text_AlsoCaughtZapdos)
-				waitmessage
-			}
-			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds)
-			waitmessage
-			release
-			end
-		}
-		getcaughtmon(SPECIES_ZAPDOS)
-		if (var(VAR_RESULT)) {
-			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_CaughtZapdos)
-			waitmessage
-		}
-	}
-	elif ((var(VAR_TEMP_0) == TRUE) && (var(VAR_TEMP_1) == FALSE) && (var(VAR_TEMP_2) == TRUE)) {
-		msgbox(LilycoveCity_CoveLilyMotel_2F_Text_SeenArticunoMoltres)
-		waitmessage
-		getcaughtmon(SPECIES_ARTICUNO)
-		if (var(VAR_RESULT)) {
-			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_CaughtArticuno)
-			waitmessage
-			getcaughtmon(SPECIES_MOLTRES)
-			if (var(VAR_RESULT)) {
-				msgbox(LilycoveCity_CoveLilyMotel_2F_Text_AlsoCaughtMoltres)
-				waitmessage
-			}
-			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds)
-			waitmessage
-			release
-			end
-		}
-		getcaughtmon(SPECIES_MOLTRES)
-		if (var(VAR_RESULT)) {
-			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_CaughtMoltres)
-			waitmessage
-		}
-	}
-	elif ((var(VAR_TEMP_0) == FALSE) && (var(VAR_TEMP_1) == TRUE) && (var(VAR_TEMP_2) == TRUE)) {
-		msgbox(LilycoveCity_CoveLilyMotel_2F_Text_SeenZapdosMoltres)
-		waitmessage
-		getcaughtmon(SPECIES_ZAPDOS)
-		if (var(VAR_RESULT)) {
-			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_CaughtZapdos)
-			waitmessage
-			getcaughtmon(SPECIES_MOLTRES)
-			if (var(VAR_RESULT)) {
-				msgbox(LilycoveCity_CoveLilyMotel_2F_Text_AlsoCaughtMoltres)
-				waitmessage
-			}
-			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds)
-			waitmessage
-			release
-			end
-		}
-		getcaughtmon(SPECIES_MOLTRES)
-		if (var(VAR_RESULT)) {
-			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_CaughtMoltres)
-			waitmessage
-		}
-	}
-	elif ((var(VAR_TEMP_0) == TRUE) && (var(VAR_TEMP_1) == TRUE) && (var(VAR_TEMP_2) == TRUE)) {
-		msgbox(LilycoveCity_CoveLilyMotel_2F_Text_SeenAllBirds)
-		waitmessage
-		getcaughtmon(SPECIES_ARTICUNO)
-		if (var(VAR_RESULT)) {
-			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_CaughtArticuno)
-			waitmessage
-			getcaughtmon(SPECIES_ZAPDOS)
-			if (var(VAR_RESULT)) {
-				msgbox(LilycoveCity_CoveLilyMotel_2F_Text_AlsoCaughtZapdos)
-				waitmessage
-				getcaughtmon(SPECIES_MOLTRES)
-				if (var(VAR_RESULT)) {
-					msgbox(LilycoveCity_CoveLilyMotel_2F_Text_EvenCaughtMoltres)
-					waitmessage
-					msgbox(LilycoveCity_CoveLilyMotel_2F_Text_NavelRock)
-					waitmessage
-					if (!flag(FLAG_RECEIVED_MYSTIC_TICKET)) {
-						msgbox(LilycoveCity_CoveLilyMotel_2F_Text_TakeThisTicket)
-						waitmessage
-						giveitem(ITEM_MYSTIC_TICKET)
-						setflag(FLAG_ENABLE_SHIP_NAVEL_ROCK)
-						setflag(FLAG_RECEIVED_MYSTIC_TICKET)
-						setflag(FLAG_START_LUGIA_QUEST)
-						msgbox(LilycoveCity_CoveLilyMotel_2F_Text_GiveMysticTicket)
-						waitmessage
-					}
-					msgbox(LilycoveCity_CoveLilyMotel_2F_Text_MeetMeThere)
-					release
-					end
-				}
-				msgbox(LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds)
-				waitmessage
-				release
-				end
-			}
-			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds)
-			waitmessage
-			release
-			end
-		}
-		getcaughtmon(SPECIES_ZAPDOS)
-		if (var(VAR_RESULT)) {
-			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_CaughtZapdos)
-			waitmessage
-			getcaughtmon(SPECIES_MOLTRES)
-			if (var(VAR_RESULT)) {
-				msgbox(LilycoveCity_CoveLilyMotel_2F_Text_AlsoCaughtMoltres)
-				waitmessage
-				msgbox(LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds)
-				waitmessage
-				release
-				end
-			}
-			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds)
-			waitmessage
-			release
-			end
-		}
-		getcaughtmon(SPECIES_MOLTRES)
-		if (var(VAR_RESULT)) {
-			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_CaughtMoltres)
-			waitmessage
-			msgbox(LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds)
-			waitmessage
-			release
-			end
-		}
-		msgbox(LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds)
-		waitmessage
-		release
-		end
-		
-	}
-	else {
-		msgbox(LilycoveCity_CoveLilyMotel_2F_Text_VisitingHoenn)
-		waitmessage
-		release
-		end
-	}
-	msgbox(LilycoveCity_CoveLilyMotel_2F_Text_StudyingBirds)
+	message(LilycoveCity_CoveLilyMotel_2F_Text_Thinking)
 	waitmessage
+	delay(45)
+	//closemessage
+	setvar(VAR_0x8004, 0)
+	specialvar(VAR_RESULT, ScriptGetPokedexInfo)
+	copyvar(VAR_0x8008, VAR_0x8005)
+	copyvar(VAR_0x8009, VAR_0x8006)
+	copyvar(VAR_0x800A, VAR_RESULT)
+	buffernumberstring(STR_VAR_1, VAR_0x8008  @ Num Hoenn seen)
+	buffernumberstring(STR_VAR_2, VAR_0x8009  @ Num Hoenn caught)
+	msgbox("Ah, so you've seen {STR_VAR_1} of HOENN's\nnative POKéMON.\pYou've even caught {STR_VAR_2} of them!", MSGBOX_DEFAULT)
+	if (flag(FLAG_SYS_NATIONAL_DEX)){
+		setvar(VAR_0x8004, 1)
+	specialvar(VAR_RESULT, ScriptGetPokedexInfo)
+	copyvar(VAR_0x8008, VAR_0x8005)
+	copyvar(VAR_0x8009, VAR_0x8006)
+	buffernumberstring(STR_VAR_1, VAR_0x8008)  // Num National seen
+	buffernumberstring(STR_VAR_2, VAR_0x8009)  // Num National caught
+	msgbox("And on a nationwide basis…\pYou've seen {STR_VAR_1} POKéMON,\nand you've caught {STR_VAR_2} POKéMON…$", MSGBOX_DEFAULT)
+	}
+
+	setvar(VAR_TEMP_4, 0)
+	getseenmon(SPECIES_ARTICUNO)
+	if (var(VAR_RESULT) == TRUE){
+		setvar(VAR_TEMP_0, 1)
+		addvar(VAR_TEMP_4, 1)
+	}
+	getseenmon(SPECIES_ZAPDOS)
+	if (var(VAR_RESULT) == TRUE){
+		setvar(VAR_TEMP_1, 2)
+		addvar(VAR_TEMP_4, 2)
+	}
+	getseenmon(SPECIES_MOLTRES)
+	if (var(VAR_RESULT) == TRUE){
+		setvar(VAR_TEMP_2, 4)
+		addvar(VAR_TEMP_4, 4)
+	}
+	message(LilycoveCity_CoveLilyMotel_2F_Text_Thinking)
+	waitmessage
+	delay(45)
+	switch (var(VAR_TEMP_4)){
+		case 0: // seen no legendary birds
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedexEnd)
+		case 1: // seen only articuno
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_SeenArticuno)
+		case 2: // seen only zapdos
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_SeenZapdos)
+		case 4: // seen only moltres
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_SeenMoltres)
+		case 3: // seen articuno and zapdos
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_SeenArticunoAndZapdos)
+		case 5: // seen articuno and moltres
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_SeenArticunoAndMoltres)
+		case 6: // seen zapdos and moltres
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_SeenZapdosAndMoltres)
+		case 7: // seen all three
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_SeenAllBirds)
+		default:
+			special(DoSoftReset)
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedexEnd)
+	}
 	release
-	end
+}
+
+script LilycoveCity_CoveLilyMotel_2F_EventScript_SeenArticuno{
+	getcaughtmon(SPECIES_ARTICUNO)
+	if (var(VAR_RESULT) == TRUE) {
+		msgbox(format("Oh, that's interesting…\p"
+						"You've even caught the POKéMON ARTICUNO!\p"
+						"To be honest, that POKéMON is exactly why I'm visiting HOENN!\p"
+						"Three BIRD POKéMON representing ICE, ELECTRIC, and FIRE have been spotted and are believed to be roosting here.\p"
+						"ARTICUNO is one of these POKéMON!\p"
+						"Thanks to this POKéDEX data, we'll be able to learn a lot about this rare and powerful POKéMON.\p"
+						"Come show me your POKéDEX again if you learn anything about the other two POKéMON!"), MSGBOX_DEFAULT)
+	}
+	else{
+		msgbox(format("Oh, that's interesting…\p"
+						"You've seen the POKéMON ARTICUNO!\p"
+						"To be honest, that POKéMON is exactly why I'm visiting HOENN!\p"
+						"Three BIRD POKéMON representing ICE, ELECTRIC, and FIRE have been spotted and are believed to be roosting here.\p"
+						"ARTICUNO is one of these POKéMON!\p"
+						"If you manage to catch that POKéMON, please show me your POKéDEX again!"), MSGBOX_DEFAULT)
+	}	
+	closemessage
+	release
+}
+
+script LilycoveCity_CoveLilyMotel_2F_EventScript_SeenZapdos{
+	getcaughtmon(SPECIES_ZAPDOS)
+	if (var(VAR_RESULT) == TRUE) {
+		msgbox(format("Oh, that's interesting…\p"
+						"You've even caught the POKéMON ZAPDOS!\p"
+						"To be honest, that POKéMON is exactly why I'm visiting HOENN!\p"
+						"Three BIRD POKéMON representing ICE, ELECTRIC, and FIRE have been spotted and are believed to be roosting here.\p"
+						"ZAPDOS is one of these POKéMON!\p"
+						"Thanks to this POKéDEX data, we'll be able to learn a lot about this rare and powerful POKéMON.\p"
+						"Come show me your POKéDEX again if you learn anything about the other two POKéMON!"), MSGBOX_DEFAULT)
+	}
+	else{
+		msgbox(format("Oh, that's interesting…\p"
+						"You've seen the POKéMON ZAPDOS!\p"
+						"To be honest, that POKéMON is exactly why I'm visiting HOENN!\p"
+						"Three BIRD POKéMON representing ICE, ELECTRIC, and FIRE have been spotted and are believed to be roosting here.\p"
+						"ZAPDOS is one of these POKéMON!\p"
+						"If you manage to catch that POKéMON, please show me your POKéDEX again!"), MSGBOX_DEFAULT)
+	}
+	closemessage
+	release
+}
+
+script LilycoveCity_CoveLilyMotel_2F_EventScript_SeenMoltres{
+	getcaughtmon(SPECIES_MOLTRES)
+	if (var(VAR_RESULT) == TRUE) {
+		msgbox(format("Oh, that's interesting…\p"
+						"You've even caught the POKéMON MOLTRES!\p"
+						"To be honest, that POKéMON is exactly why I'm visiting HOENN!\p"
+						"Three BIRD POKéMON representing ICE, ELECTRIC, and FIRE have been spotted and are believed to be roosting here.\p"
+						"MOLTRES is one of these POKéMON!\p"
+						"Thanks to this POKéDEX data, we'll be able to learn a lot about this rare and powerful POKéMON.\p"
+						"Come show me your POKéDEX again if you learn anything about the other two POKéMON!"), MSGBOX_DEFAULT)
+	}
+	else{
+		msgbox(format("Oh, that's interesting…\p"
+						"You've seen the POKéMON MOLTRES!\p"
+						"To be honest, that POKéMON is exactly why I'm visiting HOENN!\p"
+						"Three BIRD POKéMON representing ICE, ELECTRIC, and FIRE have been spotted and are believed to be roosting here.\p"
+						"MOLTRES is one of these POKéMON!\p"
+					"If you manage to catch that POKéMON, please show me your POKéDEX again!"), MSGBOX_DEFAULT)
+	}
+	closemessage
+	release
+}
+
+script LilycoveCity_CoveLilyMotel_2F_EventScript_SeenArticunoAndZapdos{
+	setvar(VAR_TEMP_4, 0)
+	getcaughtmon(SPECIES_ARTICUNO)
+	if (var(VAR_RESULT) == TRUE){
+		setvar(VAR_TEMP_1, 1)
+		addvar(VAR_TEMP_4, 1)
+	}
+	getcaughtmon(SPECIES_ZAPDOS)
+	if (var(VAR_RESULT) == TRUE){
+		setvar(VAR_TEMP_2, 2)
+		addvar(VAR_TEMP_4, 2)
+	}
+	switch (var(VAR_TEMP_4)){
+		case 0: // caught no legendary birds
+			bufferspeciesname(STR_VAR_1, SPECIES_ARTICUNO)
+			bufferspeciesname(STR_VAR_2, SPECIES_ZAPDOS)
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_SawTwoCaughtNoneBird)
+		case 1: // caught only articuno
+			bufferspeciesname(STR_VAR_1, SPECIES_ARTICUNO)
+			bufferspeciesname(STR_VAR_2, SPECIES_ZAPDOS)
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_SawTwoCaughtOneBird)
+		case 2: // caught only zapdos
+			bufferspeciesname(STR_VAR_1, SPECIES_ZAPDOS)
+			bufferspeciesname(STR_VAR_2, SPECIES_ARTICUNO)
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_SawTwoCaughtOneBird)
+		case 3: // caught articuno and zapdos
+			bufferspeciesname(STR_VAR_1, SPECIES_ARTICUNO)
+			bufferspeciesname(STR_VAR_2, SPECIES_ZAPDOS)
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_SawTwoCaughtTwoBirds)
+		default:
+			special(DoSoftReset)
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedexEnd)
+	}
+	release
+}
+
+script LilycoveCity_CoveLilyMotel_2F_EventScript_SeenArticunoAndMoltres{
+	setvar(VAR_TEMP_4, 0)
+	getcaughtmon(SPECIES_ARTICUNO)
+	if (var(VAR_RESULT) == TRUE){
+		setvar(VAR_TEMP_1, 1)
+		addvar(VAR_TEMP_4, 1)
+	}
+	getcaughtmon(SPECIES_MOLTRES)
+	if (var(VAR_RESULT) == TRUE){
+		setvar(VAR_TEMP_2, 4)
+		addvar(VAR_TEMP_4, 4)
+	}
+	switch (var(VAR_TEMP_4)){
+		case 0: // caught no legendary birds
+			bufferspeciesname(STR_VAR_1, SPECIES_ARTICUNO)
+			bufferspeciesname(STR_VAR_2, SPECIES_MOLTRES)
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_SawTwoCaughtNoneBird)
+		case 1: // caught only articuno
+			bufferspeciesname(STR_VAR_1, SPECIES_ARTICUNO)
+			bufferspeciesname(STR_VAR_2, SPECIES_MOLTRES)
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_SawTwoCaughtOneBird)
+		case 4: // caught only moltres
+			bufferspeciesname(STR_VAR_1, SPECIES_MOLTRES)
+			bufferspeciesname(STR_VAR_2, SPECIES_ARTICUNO)
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_SawTwoCaughtOneBird)
+		case 5: // caught articuno and moltres
+			bufferspeciesname(STR_VAR_1, SPECIES_ARTICUNO)
+			bufferspeciesname(STR_VAR_2, SPECIES_MOLTRES)
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_SawTwoCaughtTwoBirds)
+		default:
+			special(DoSoftReset)
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedexEnd)
+	}
+	release
+}
+
+script LilycoveCity_CoveLilyMotel_2F_EventScript_SeenZapdosAndMoltres{
+	setvar(VAR_TEMP_4, 0)
+	getcaughtmon(SPECIES_ZAPDOS)
+	if (var(VAR_RESULT) == TRUE){
+		setvar(VAR_TEMP_1, 2)
+		addvar(VAR_TEMP_4, 2)
+	}
+	getcaughtmon(SPECIES_MOLTRES)
+	if (var(VAR_RESULT) == TRUE){
+		setvar(VAR_TEMP_2, 4)
+		addvar(VAR_TEMP_4, 4)
+	}
+	switch (var(VAR_TEMP_4)){
+		case 0: // caught no legendary birds
+			bufferspeciesname(STR_VAR_1, SPECIES_ZAPDOS)
+			bufferspeciesname(STR_VAR_2, SPECIES_MOLTRES)
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_SawTwoCaughtNoneBird)
+		case 2: // caught only zapdos
+			bufferspeciesname(STR_VAR_1, SPECIES_ZAPDOS)
+			bufferspeciesname(STR_VAR_2, SPECIES_MOLTRES)
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_SawTwoCaughtOneBird)
+		case 4: // caught only moltres
+			bufferspeciesname(STR_VAR_1, SPECIES_MOLTRES)
+			bufferspeciesname(STR_VAR_2, SPECIES_ZAPDOS)
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_SawTwoCaughtOneBird)
+		case 6: // caught zapdos and moltres
+			bufferspeciesname(STR_VAR_1, SPECIES_ZAPDOS)
+			bufferspeciesname(STR_VAR_2, SPECIES_MOLTRES)
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_SawTwoCaughtTwoBirds)
+		default:
+			special(DoSoftReset)
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedexEnd)
+	}
+	release
+}
+
+script LilycoveCity_CoveLilyMotel_2F_EventScript_SawTwoCaughtNoneBird{
+	msgbox(format("Oh, that's interesting…\p"
+					"You've seen the POKéMON {STR_VAR_1} and {STR_VAR_2}!\p"
+					"To be honest, those POKéMON are exactly why I'm visiting HOENN!\p"
+					"Three BIRD POKéMON representing ICE, ELECTRIC, and FIRE have been spotted and are believed to be roosting here.\p"
+					"{STR_VAR_1} and {STR_VAR_2} are two of these POKéMON!\p"
+					"Come show me your POKéDEX again if you manage to catch either of them!"), MSGBOX_DEFAULT)
+	closemessage
+	release
+}
+
+script LilycoveCity_CoveLilyMotel_2F_EventScript_SawTwoCaughtOneBird{
+	msgbox(format("Oh, that's interesting…\p"
+					"You've seen the POKéMON {STR_VAR_1} and {STR_VAR_2},\N"
+					"and you've even caught {STR_VAR_1}!\p"
+					"To be honest, those POKéMON are exactly why I'm visiting HOENN.\p"
+					"Three BIRD POKéMON representing ICE, ELECTRIC, and FIRE have been spotted and are believed to be roosting here.\p"
+					"{STR_VAR_1} and {STR_VAR_2} are two of these POKéMON!\p"
+					"Thanks to this POKéDEX data, we'll be able to learn a lot about this rare and powerful POKéMON.\p"
+					"Come show me your POKéDEX again if you manage to catch the other two!"), MSGBOX_DEFAULT)
+	closemessage
+	release
+}
+
+script LilycoveCity_CoveLilyMotel_2F_EventScript_SawTwoCaughtTwoBirds{
+	msgbox(format("Oh, that's interesting…\p"
+					"You've caught the POKéMON {STR_VAR_1} and {STR_VAR_2}!\p"
+					"To be honest, those POKéMON are exactly why I'm visiting HOENN.\p"
+					"Three BIRD POKéMON representing ICE, ELECTRIC, and FIRE have been spotted and are believed to be roosting here.\p"
+					"{STR_VAR_1} and {STR_VAR_2} are two of these POKéMON!\p"
+					"Thanks to this POKéDEX data, we'll be able to learn a lot about these rare and powerful POKéMON.\p"
+					"Come show me your POKéDEX again if you manage to catch the third one!"), MSGBOX_DEFAULT)
+	closemessage
+	release
+}
+
+script LilycoveCity_CoveLilyMotel_2F_EventScript_SeenAllBirds{
+	setvar(VAR_TEMP_4, 0)
+	getcaughtmon(SPECIES_ARTICUNO)
+	if (var(VAR_RESULT) == TRUE){
+		setvar(VAR_TEMP_0, 1)
+		addvar(VAR_TEMP_4, 1)
+	}
+	getcaughtmon(SPECIES_ZAPDOS)
+	if (var(VAR_RESULT) == TRUE){
+		setvar(VAR_TEMP_1, 2)
+		addvar(VAR_TEMP_4, 2)
+	}
+	getcaughtmon(SPECIES_MOLTRES)
+	if (var(VAR_RESULT) == TRUE){
+		setvar(VAR_TEMP_2, 4)
+		addvar(VAR_TEMP_4, 4)
+	}
+	switch (var(VAR_TEMP_4)){
+		case 0: // caught no legendary birds
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_CaughtNoBirds)
+		case 1: // caught only articuno
+			bufferspeciesname(STR_VAR_1, SPECIES_ARTICUNO)
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_CaughtOneBird)
+		case 2: // caught only zapdos
+			bufferspeciesname(STR_VAR_1, SPECIES_ZAPDOS)
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_CaughtOneBird)
+		case 4: // caught only moltres
+			bufferspeciesname(STR_VAR_1, SPECIES_MOLTRES)
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_CaughtOneBird)
+		case 3: // caught articuno and zapdos
+			bufferspeciesname(STR_VAR_1, SPECIES_ARTICUNO)
+			bufferspeciesname(STR_VAR_2, SPECIES_ZAPDOS)
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_CaughtTwoBirds)
+		case 5: // caught articuno and moltres
+			bufferspeciesname(STR_VAR_1, SPECIES_ARTICUNO)
+			bufferspeciesname(STR_VAR_2, SPECIES_MOLTRES)
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_CaughtTwoBirds)
+		case 6: // caught zapdos and moltres
+			bufferspeciesname(STR_VAR_1, SPECIES_ZAPDOS)
+			bufferspeciesname(STR_VAR_2, SPECIES_MOLTRES)
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_CaughtTwoBirds)
+		case 7: // caught all three
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_CaughtAllBirds)
+		default:
+			special(DoSoftReset)
+			goto(LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedexEnd)
+	}
+	release
+}
+
+script LilycoveCity_CoveLilyMotel_2F_EventScript_CaughtNoBirds{
+	msgbox(format("Oh, that's interesting…\p"
+					"You've seen the POKéMON ARTICUNO, ZAPDOS, and MOLTRES!\p"
+					"To be honest, those POKéMON are exactly why I'm visiting HOENN.\p"
+					"These are the three LEGENDARY BIRD POKéMON representing ICE, ELECTRIC, and FIRE!\p"
+					"Come show me your POKéDEX again if you manage to catch any of them!"), MSGBOX_DEFAULT)
+	closemessage
+	release
+}
+
+script LilycoveCity_CoveLilyMotel_2F_EventScript_CaughtOneBird{
+	msgbox(format("Oh, that's interesting…\p"
+					"You've seen the POKéMON ARTICUNO, ZAPDOS, and MOLTRES…\p"
+					"and you've even caught {STR_VAR_1}!\p"
+					"To be honest, those POKéMON are exactly why I'm visiting HOENN.\p"
+					"These are the three LEGENDARY BIRD POKéMON representing ICE, ELECTRIC, and FIRE!\p"
+					"Thanks to this POKéDEX data, we'll be able to learn a lot about this rare and powerful POKéMON.\p"
+					"Come show me your POKéDEX again if you manage to catch the other two!"), MSGBOX_DEFAULT)
+	closemessage
+	release
+}
+
+script LilycoveCity_CoveLilyMotel_2F_EventScript_CaughtTwoBirds{
+	msgbox(format("Oh, that's interesting…\p"
+					"You've seen the POKéMON ARTICUNO, ZAPDOS, and MOLTRES…\p"
+					"and you've even caught {STR_VAR_1} and {STR_VAR_2}!\p"
+					"To be honest, those POKéMON are exactly why I'm visiting HOENN.\p"
+					"These are the three LEGENDARY BIRD POKéMON representing ICE, ELECTRIC, and FIRE!\p"
+					"Thanks to this POKéDEX data, we'll be able to learn a lot about these rare and powerful POKéMON.\p"
+					"Come show me your POKéDEX again if you manage to catch the third one!"), MSGBOX_DEFAULT)
+	closemessage
+	release
+}
+
+script LilycoveCity_CoveLilyMotel_2F_EventScript_CaughtAllBirds{
+	msgbox(format("Oh, that's interesting…\p"
+					"You've caught the POKéMON ARTICUNO, ZAPDOS, and MOLTRES!\p"
+					"To be honest, those POKéMON are exactly why I'm visiting HOENN.\p"
+					"These are the three LEGENDARY BIRD POKéMON representing ICE, ELECTRIC, and FIRE!\p"
+					"Thanks to this POKéDEX data, we'll be able to learn a lot about these rare and powerful POKéMON."), MSGBOX_DEFAULT)
+	message(LilycoveCity_CoveLilyMotel_2F_Text_Thinking)
+	waitmessage
+	delay(45)
+	msgbox(format("Actually…\lMaybe you can help…\p"
+					"There's another LEGENDARY POKéMON related to these three.\p"
+					"Yes, the POKéMON LUGIA is said to be connected to the LEGENDARY BIRD POKéMON!\p"
+					"Apparently LUGIA has been known to roost in the nearby landmark NAVEL ROCK…\p"
+					"But this POKéMON is a force of nature!\pMy POKéMON and I are long in the tooth; our battling days are over,\p"
+					"But catching those three LEGENDARY BIRD POKéMON was quite a feat…\pYes,\nI'm sure you can help!"), MSGBOX_DEFAULT)
+	if (flag(FLAG_RECEIVED_SS_TICKET)){
+		msgbox(format("Take this;\nuse it to travel to NAVEL ROCK on the S.S. TIDAL."), MSGBOX_DEFAULT)
+		if (!flag(FLAG_RECEIVED_MYSTIC_TICKET)) {
+			giveitem(ITEM_MYSTIC_TICKET)
+			setflag(FLAG_ENABLE_SHIP_NAVEL_ROCK)
+			setflag(FLAG_RECEIVED_MYSTIC_TICKET)
+			setflag(FLAG_START_LUGIA_QUEST)
+		}
+		else{
+			msgbox(format("Huh?\pYou already have the MYSTIC TICKET.\p"
+					"You should be all set to travel to NAVEL ROCK then."), MSGBOX_DEFAULT)
+		}
+	}
+	else{
+		msgbox(format("Take this;\pwhen the long-awaited S.S. TIDAL finally sets sail, use it to travel to NAVEL ROCK."), MSGBOX_DEFAULT)
+		if (!flag(FLAG_RECEIVED_MYSTIC_TICKET)) {
+			giveitem(ITEM_MYSTIC_TICKET)
+			setflag(FLAG_ENABLE_SHIP_NAVEL_ROCK)
+			setflag(FLAG_RECEIVED_MYSTIC_TICKET)
+			setflag(FLAG_START_LUGIA_QUEST)
+		}
+		else{
+			msgbox(format("Huh?\pYou already have the MYSTIC TICKET.\p"
+					"You should be all set to travel to NAVEL ROCK then."), MSGBOX_DEFAULT)
+		}
+	}
+	msgbox(format("I'll meet you there to discuss our next steps.\p"
+						"Bring ARTICUNO, ZAPDOS, and MOLTRES with you, and be ready to catch a mighty POKéMON.\p"
+						"LUGIA's POKéDEX data would be sure to make waves in the POKéMON PROFESSOR community!"), MSGBOX_DEFAULT)
+	closemessage
+	release
+}
+
+script LilycoveCity_CoveLilyMotel_2F_EventScript_OakCheckPokedexEnd{
+	message("Here's some advice:")
+	waitmessage
+	delay(40)
+	special(ShowPokedexRatingMessage)
+	waitmessage
+	delay(45)
+	msgbox(format("Trust me, I know what I'm talking about. Take it from an old-timer like me!\p"
+					"To be honest, I'm here in HOENN looking for some rare POKéMON.\p"
+					"Three BIRD POKéMON representing ICE, ELECTRIC, and FIRE have been spotted and are believed to be roosting here.\p"
+					"Come show me your POKéDEX if you learn anything about these POKéMON!"), MSGBOX_DEFAULT)
+	release
 }

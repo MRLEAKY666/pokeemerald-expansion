@@ -401,7 +401,7 @@ const u16 gObjectEventPal_MoltresOld[] = INCBIN_U16("graphics/object_events/pics
 const u32 gObjectEventPic_ZapdosOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/zapdos.4bpp");
 const u16 gObjectEventPal_ZapdosOld[] = INCBIN_U16("graphics/object_events/pics/pokemon_old/zapdos.gbapal");
 
-const u16 gObjectEventPic_ProfOak[] = INCBIN_U16("graphics/object_events/pics/people/prof_oak.4bpp");
+const u16 gObjectEventPic_ProfOak[] = INCGFX_U16("graphics/object_events/pics/people/prof_oak.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPal_ProfOak[] = INCBIN_U16("graphics/object_events/pics/people/prof_oak.gbapal");
 
 

@@ -5,14 +5,14 @@ NavelRock_Entrance_MapScripts::
 
 NavelRock_Entrance_OnTransition::
 	call_if_eq VAR_BEAST_SPECIES, SPECIES_HO_OH, NavelRock_Entrance_EventScript_ShowWallace
-	call_if_set FLAG_START_LUGIA_QUEST, NavelRock_Entrance_EventScript_ShowOak
+	call_if_set FLAG_START_LUGIA_QUEST, NavelRock_Entrance_EventScript_TryShowOak
 	end
 
 NavelRock_Entrance_EventScript_ShowWallace::
 	clearflag FLAG_HIDE_NAVEL_ROCK_WALLACE
 	return
 
-NavelRock_Entrance_EventScript_ShowOak::
+NavelRock_Entrance_EventScript_TryShowOak::
 	clearflag FLAG_HIDE_NAVEL_ROCK_OAK
 	return
 
@@ -20,8 +20,14 @@ NavelRock_Entrance_EventScript_ProfOak::
 	lock
 	faceplayer
 	goto_if_defeated TRAINER_OAK_NAVEL_ROCK, NavelRock_Entrance_EventScript_ProfOakFindLugia
-	msgbox NavelRock_Entance_Text_OakDidYouBringThem, MSGBOX_DEFAULT
+	msgbox NavelRock_Entance_Text_OakDidYouBringThem, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, NavelRock_Entrance_EventScript_OakBringTheBirds
 	call NavelRock_Entrance_EventScript_CheckForBirds
+	@ msgbox NavelRock_Entance_Text_OakBringTheBirds, MSGBOX_DEFAULT
+	release
+	end
+
+NavelRock_Entrance_EventScript_OakBringTheBirds::
 	msgbox NavelRock_Entance_Text_OakBringTheBirds, MSGBOX_DEFAULT
 	release
 	end
@@ -33,6 +39,7 @@ NavelRock_Entrance_EventScript_Wallace::
 	end
 
 NavelRock_Entrance_EventScript_ProfOakFindLugia::
+	goto_if_set FLAG_DEFEATED_LUGIA, NavelRock_Entrance_EventScript_WaitForLugia
 	msgbox NavelRock_Entance_Text_OakFindLugia, MSGBOX_DEFAULT
 	release
 	end
@@ -44,36 +51,34 @@ NavelRock_Entance_Text_OakDidYouBringThem:
 	.string "ARTICUNO, ZAPDOS, and MOLTRES?$"
 
 NavelRock_Entance_Text_OakBringTheBirds:
-	.string "That's too bad . . .\p"
+	.string "That's too bad…\p"
 	.string "Come back here with those\n"
 	.string "POKéMON.\p"
 	.string "I'd like to see if their presence\n"
-	.string "might attract another rare POKéMON\l"
-	.string "to this place.$"
+	.string "might draw LUGIA back to this place.$"
 
 NavelRock_Entrance_Text_OakPrepareForBattle:
 	.string "If you want to help me attract\n"
-	.string "LUGIA to NAVEL ROCK, prepare for a\l"
+	.string "LUGIA to NAVEL ROCK, I'll need\l"
+	.string "to draw out the full potential of\l" 
+	.string "your LEGEDARY BIRD POKéMON.\p"
+	.string "You should be prepared for a\n"
 	.string "tough battle.$"
 
 NavelRock_Entance_Text_OakExplain:
-	.string ". . .\n"
-	.string ". . .\p"
 	.string "You did!\p"
-	.string "Now {PLAYER}, this place is called\n"
-	.string "NAVEL ROCK . . .\p"
-	.string "Some very rare and powerful\n"
-	.string "POKéMON are known to roost here.\p"
+	.string "Now {PLAYER}, this is NAVEL ROCK.\p"
+	.string "Some very rare and powerful POKéMON\n"
+	.string "are known to roost here.\p"
 	.string "One such POKéMON, LUGIA, is said\n"
-	.string "to have a connection to the\l"
-	.string "legendary birds.\p"
+	.string "to have a connection to your\l"
+	.string "LEGENDARY BIRD POKéMON.\p"
 	.string "I theorize that by allowing your\n"
 	.string "POKéMON to demonstrate their full\l"
-	.string "power in this place, we can\l"
-	.string "summon LUGIA.$"
+	.string "power in this place, we can summon LUGIA.$"
 
 NavelRock_Entance_Text_OakAskToBattle:
-	.string "{PLAYER} . . .\p"
+	.string "{PLAYER}…\l"
 	.string "Will you battle me here?$"
 
 NavelRock_Entance_Text_OakStartBattle:
@@ -106,48 +111,61 @@ NavelRock_Entance_Text_OakFindLugia:
 
 `
 
+script NavelRock_Entrance_EventScript_WaitForLugia{
+	msgbox("What's that?\lYou saw LUGIA?\p"
+					"But you think you killed it??\p"
+					"Don't worry, {PLAYER}, A LEGENDARY POKéMON\nlike LUGIA Can't be killed\p"
+					"Not permanently, at least!\p"
+					"It's a minor setback to be sure, but I'm\ncertain if we give it time that LUGIA\lwill be back to roost here.", MSGBOX_DEFAULT)
+	release
+	end
+}
+
 script NavelRock_Entrance_EventScript_CheckForBirds {
 	checkspecies(SPECIES_ARTICUNO, NO_PARTY_SCREEN)
-	if (var(VAR_RESULT)) {
-		checkspecies(SPECIES_ZAPDOS, NO_PARTY_SCREEN)
-		if (var(VAR_RESULT)) {
-			checkspecies(SPECIES_MOLTRES, NO_PARTY_SCREEN)
-			if (var(VAR_RESULT)) {
-				msgbox(NavelRock_Entance_Text_OakExplain)
-				msgbox(NavelRock_Entance_Text_OakAskToBattle, MSGBOX_YESNO)
-				if (var(VAR_RESULT) == YES) {
-					msgbox(NavelRock_Entance_Text_OakStartBattle)
-					trainerbattle_no_intro(TRAINER_OAK_NAVEL_ROCK, NavelRock_Entance_Text_OakEndBattle)
-					playmoncry(SPECIES_LUGIA, CRY_MODE_ENCOUNTER)
-					setvar(VAR_0x8004, 0)
-					setvar(VAR_0x8005, 3)  
-					setvar(VAR_0x8006, 4) 
-					setvar(VAR_0x8007, 2)  
-					special(ShakeCamera)
-					delay(30)
-					playmoncry(SPECIES_LUGIA, CRY_MODE_ENCOUNTER)
-					setvar(VAR_0x8004, 0) 
-					setvar(VAR_0x8005, 3) 
-					setvar(VAR_0x8006, 4)
-					setvar(VAR_0x8007, 2)  
-					special(ShakeCamera)
-					delay(30)
-					delay(50)
-					waitse
-					playmoncry(SPECIES_LUGIA, CRY_MODE_ENCOUNTER)
-					waitmoncry
-					delay(20)
-					msgbox(NavelRock_Entance_Text_OakPostBattle)
-					release
-					end
-				}
-				else {
-					msgbox(NavelRock_Entrance_Text_OakPrepareForBattle)
-					release
-					end
-				}
-			}
+	copyvar(VAR_TEMP_A, VAR_RESULT)
+	checkspecies(SPECIES_ZAPDOS, NO_PARTY_SCREEN)
+	copyvar(VAR_TEMP_B, VAR_RESULT)
+	checkspecies(SPECIES_MOLTRES, NO_PARTY_SCREEN)
+	copyvar(VAR_TEMP_C, VAR_RESULT)
+	if (var(VAR_TEMP_A) && var(VAR_TEMP_B) && var(VAR_TEMP_C)){
+		msgbox(NavelRock_Entance_Text_OakExplain)
+		msgbox(NavelRock_Entance_Text_OakAskToBattle, MSGBOX_YESNO)
+		if (var(VAR_RESULT) == YES) {
+			msgbox(NavelRock_Entance_Text_OakStartBattle)
+			trainerbattle_no_intro(TRAINER_OAK_NAVEL_ROCK, NavelRock_Entance_Text_OakEndBattle)
+			playmoncry(SPECIES_LUGIA, CRY_MODE_ENCOUNTER)
+			setvar(VAR_0x8004, 0)
+			setvar(VAR_0x8005, 3)  
+			setvar(VAR_0x8006, 4) 
+			setvar(VAR_0x8007, 2)  
+			special(ShakeCamera)
+			delay(30)
+			playmoncry(SPECIES_LUGIA, CRY_MODE_ENCOUNTER)
+			setvar(VAR_0x8004, 0) 
+			setvar(VAR_0x8005, 3) 
+			setvar(VAR_0x8006, 4)
+			setvar(VAR_0x8007, 2)  
+			special(ShakeCamera)
+			delay(30)
+			delay(50)
+			waitse
+			playmoncry(SPECIES_LUGIA, CRY_MODE_ENCOUNTER)
+			waitmoncry
+			delay(20)
+			msgbox(NavelRock_Entance_Text_OakPostBattle)
+			release
+			end
 		}
-	} 
-	return
+		else {
+			msgbox(NavelRock_Entrance_Text_OakPrepareForBattle)
+			release
+			end
+		}
+	}
+	msgbox(format("Hmm?\p"
+					"Come on, {PLAYER}, we're on the cusp of a breakthrough.\p"
+					"This is no time to be joking around!\p"
+					"Meet me here with ARTICUNO, ZAPDOS, and MOLTRES in your party so we can get on with the research."), MSGBOX_DEFAULT)
+	release
 }

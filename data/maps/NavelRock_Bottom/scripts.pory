@@ -2,7 +2,110 @@ raw `
 NavelRock_Bottom_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, NavelRock_Bottom_OnTransition
 	map_script MAP_SCRIPT_ON_RESUME, NavelRock_Bottom_OnResume
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, NavelRock_Bottom_OnFrame
 	.byte 0
+
+NavelRock_Bottom_OnFrame:
+	map_script_2 VAR_TEMP_1, 1, NavelRock_Bottom_EventScript_DoOakScene
+	.2byte 0
+
+`
+
+script NavelRock_Bottom_EventScript_DoOakScene{
+	setvar(VAR_TEMP_1, 0)
+	delay(15)
+	message(format("{PLAYER} … {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}!"))
+	waitmessage
+	delay(20)
+	closemessage
+	hidefollower
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, Common_Movement_ExclamationMark)
+	waitmovement
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceDown)
+	waitmovement
+	delay(45)
+	//setobjectxy(LOCALID_NAVELROCK_BOTTOM_OAK, 11, 20)
+	setobjectxyperm(LOCALID_NAVELROCK_BOTTOM_OAK, 14, 19)
+	addobject(LOCALID_NAVELROCK_BOTTOM_OAK, MAP_NAVEL_ROCK_BOTTOM)
+	applymovement(LOCALID_NAVELROCK_BOTTOM_OAK, NavelRock_Bottom_Movement_OakApproachPlayer)
+	delay(32)
+	playse(SE_EXIT)
+	waitmovement
+	delay(15)
+	applymovement(LOCALID_NAVELROCK_BOTTOM_OAK, Common_Movement_WalkInPlaceUp)
+	waitmovement
+	msgbox(format("PROF. OAK: {PLAYER} … {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}…\p"
+					"I finally … {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}…\nmade it down here … {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}…\p"
+					"to the bottom … {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}…\lof this confounded cavern!"), MSGBOX_DEFAULT)
+	closemessage
+	delay(15)
+	message(LilycoveCity_CoveLilyMotel_2F_Text_Thinking)
+	waitmessage
+	delay(45)
+	msgbox(format("Hmm?\lIt's already over?\pYou actually caught LUGIA??\p{PLAYER}…\pA discovery like this is once in a lifetime!\p"
+					"The POKéDEX data from this capture will be a great boon to POKéMON research!\p"
+					"You don't mind if I just take a look here and copy that data over, do you?"), MSGBOX_DEFAULT)
+	closemessage
+	delay(15)
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceDown)
+	waitmovement
+	applymovement(LOCALID_NAVELROCK_BOTTOM_OAK, Common_Movement_WalkInPlaceUp)
+	delay(30)
+	applymovement(LOCALID_NAVELROCK_BOTTOM_OAK, Common_Movement_WalkInPlaceUp)
+	playse(SE_PC_ON)
+	waitse
+	message(LilycoveCity_CoveLilyMotel_2F_Text_Thinking)
+	waitmessage
+	delay(30)
+	msgbox(format("Done!\lMany thanks, {PLAYER}\pWhatever knowledge and innovation comes from this, you can take pride knowing that you were a part of it!\p"
+					"{PAUSE 20}{PAUSE 20}{PAUSE 20}Well, {PAUSE 20}I'd better get moving if I'm going to make it out of this deep cave anytime this decade…\p"
+					"I hope to cross paths with you again, {PLAYER}."), MSGBOX_DEFAULT)
+	closemessage
+	delay(15)
+	applymovement(LOCALID_NAVELROCK_BOTTOM_OAK, NavelRock_Bottom_Movement_OakLeaves)
+	delay(148)
+	playse(SE_EXIT)
+	waitse
+	removeobject(LOCALID_NAVELROCK_BOTTOM_OAK)
+	release
+}
+
+script NavelRock_Bottom_Movement_OakApproachPlayer{
+	//walk_in_place_left
+	delay_16
+	delay_16
+	set_visible
+	delay_16
+	delay_16
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	delay_16
+	delay_16
+	step_end
+}
+
+script NavelRock_Bottom_Movement_OakLeaves{
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	delay_16
+	face_up
+	delay_16
+	set_invisible
+	step_end
+}
+
+raw `
 
 NavelRock_Bottom_OnTransition:
 	call_if_set FLAG_CAUGHT_LUGIA, NavelRock_Bottom_EventScript_HideLugia
@@ -15,7 +118,7 @@ NavelRock_Bottom_EventScript_HideLugia::
 
 NavelRock_Bottom_EventScript_TryShowLugia::
 	goto_if_set FLAG_DEFEATED_LUGIA, Common_EventScript_NopReturn
-	goto_if_not_defeated TRAINER_OAK_NAVEL_ROCK, Common_EventScript_NopReturn
+	goto_if_not_defeated TRAINER_OAK_NAVEL_ROCK, NavelRock_Bottom_EventScript_HideLugia
 	clearflag FLAG_HIDE_LUGIA
 	return
 
@@ -63,6 +166,8 @@ NavelRock_Bottom_EventScript_Lugia::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, NavelRock_Bottom_EventScript_RanFromLugia
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, NavelRock_Bottom_EventScript_RanFromLugia
 	setflag FLAG_CAUGHT_LUGIA
+	setflag FLAG_HIDE_NAVEL_ROCK_OAK
+	setvar VAR_TEMP_1, 1
 	release
 	end
 
