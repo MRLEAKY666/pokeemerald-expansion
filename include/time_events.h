@@ -11,5 +11,6 @@ void CountBikeDeliveryDays(u16 days);
 void ResetDailyTrainers(void);
 void ProgressLavarborTunnelState(void);
 void TryShowShadyTruck(void);
+void CheckRoamingNPCAtLocation(u32 flagId, u8 mapNum, u8 mapGroup);
 
 #endif // GUARD_TIME_EVENTS_H

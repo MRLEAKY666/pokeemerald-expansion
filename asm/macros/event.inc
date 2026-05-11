@@ -3066,3 +3066,10 @@
 	getbraillestringwidth \text
 	call EventScript_BrailleCursorWaitButton
 	.endm
+
+	@ check if the roaming given roaming NPC should be shown at the given location, returns TRUE/FALSE to VAR_RESULT 
+	.macro checkroamingnpcatlocation flag:req, map:req
+		callnative ScrCmd_CheckRoamingNPCAtLocation, requests_effects=0
+		.2byte \flag
+		map \map
+	.endm

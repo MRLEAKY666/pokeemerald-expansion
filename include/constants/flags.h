@@ -1536,7 +1536,7 @@
 #define FLAG_LAVARBOR_TUNNEL_ORTHWORM                    (SYSTEM_FLAGS + 0x9F) // 
 #define FLAG_TRIGGERED_DRAKE_LATI_SCENE                  (SYSTEM_FLAGS + 0xA0) // 
 #define FLAG_SHOW_SHADY_TRUCK                            (SYSTEM_FLAGS + 0xA1) // 
-#define FLAG_UNUSED_0x902                           (SYSTEM_FLAGS + 0xA2) // Unused Flag
+#define FLAG_PKMN_CNTR_WALLACE                           (SYSTEM_FLAGS + 0xA2) // 
 #define FLAG_UNUSED_0x903                           (SYSTEM_FLAGS + 0xA3) // Unused Flag
 #define FLAG_UNUSED_0x904                           (SYSTEM_FLAGS + 0xA4) // Unused Flag
 #define FLAG_UNUSED_0x905                           (SYSTEM_FLAGS + 0xA5) // Unused Flag

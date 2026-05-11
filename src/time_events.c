@@ -9,6 +9,10 @@
 #include "script.h"
 #include "task.h"
 
+#include "main.h"
+
+#include "event_object_movement.h"
+
 #include "battle_setup.h"
 
 static u32 GetMirageRnd(void)
@@ -772,4 +776,45 @@ void TryShowShadyTruck(void)
             FlagClear(FLAG_SHOW_SHADY_TRUCK);
         }
     }
+}
+
+static const int sPkmnCntrWallaceLocations[] =
+{
+    MAP_OLDALE_TOWN_POKEMON_CENTER_2F,
+    MAP_PETALBURG_CITY_POKEMON_CENTER_2F,
+    MAP_RUSTBORO_CITY_POKEMON_CENTER_2F,
+    MAP_DEWFORD_TOWN_POKEMON_CENTER_2F,
+    MAP_SLATEPORT_CITY_POKEMON_CENTER_2F,
+    MAP_MAUVILLE_CITY_POKEMON_CENTER_2F,
+    MAP_VERDANTURF_TOWN_POKEMON_CENTER_2F,
+    MAP_FALLARBOR_TOWN_POKEMON_CENTER_2F,
+    MAP_LAVARIDGE_TOWN_POKEMON_CENTER_2F,
+    MAP_FORTREE_CITY_POKEMON_CENTER_2F,
+    MAP_LILYCOVE_CITY_POKEMON_CENTER_2F,
+    MAP_MOSSDEEP_CITY_POKEMON_CENTER_2F,
+    MAP_SOOTOPOLIS_CITY_POKEMON_CENTER_2F,
+    MAP_PACIFIDLOG_TOWN_POKEMON_CENTER_2F,
+};
+
+void CheckRoamingNPCAtLocation(u32 flagId, u8 mapNum, u8 mapGroup)
+{
+    //DoSoftReset();
+    bool8 atLocation = FALSE;
+    u8 NPCCurrentLocationIndex;
+    u16 NPCFlag = flagId;
+
+    switch (NPCFlag)
+    {
+    case FLAG_PKMN_CNTR_WALLACE:
+        NPCCurrentLocationIndex = (gLocalTime.days % ARRAY_COUNT(sPkmnCntrWallaceLocations)) + 1;
+        if (mapNum == MAP_NUM(sPkmnCntrWallaceLocations[NPCCurrentLocationIndex])){
+            atLocation = TRUE;
+        }
+        break;
+    default:
+        atLocation = FALSE;
+        break;
+    }
+
+    gSpecialVar_Result = atLocation;
 }
