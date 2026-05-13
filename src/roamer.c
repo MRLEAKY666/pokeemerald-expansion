@@ -397,7 +397,7 @@ void CaughtRoamer(u32 roamerIndex)
     }
 }
 
-void ActivateRoamer(u32 roamerIndex)
+void ActivateRoamer(u32 roamerIndex) // this doesn't work right! need to get correct index first
 {
     if (gSpecialVar_Unused_0x8014 == 1) // articuno
     {

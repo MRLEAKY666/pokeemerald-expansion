@@ -12,6 +12,7 @@ script LavaridgeTown_PokemonCenter_2F_OnTransition{
 	if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) == 0){
 		setflag(FLAG_LAVARIDGE_BREAK_NURSE)
 	}
+	call(LavaridgeTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC)
 }
 
 script LavaridgeTown_PokemonCenter_2F_EventScript_NurseOnBreak{
@@ -30,6 +31,46 @@ script LavaridgeTown_PokemonCenter_2F_EventScript_NurseOnBreak{
 	delay(15)
 	applymovement(LOCALID_LAVARIDGE_PKMNCNTR_NURSE_ON_BREAK, Common_Movement_FaceOriginalDirection)
 	waitmovement(LOCALID_LAVARIDGE_PKMNCNTR_NURSE_ON_BREAK)
+	release
+	end
+}
+
+script LavaridgeTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC{
+	checkroamingnpcatlocation(FLAG_PKMN_CNTR_WALLACE, MAP_LAVARIDGE_TOWN_POKEMON_CENTER_2F)
+	if (var(VAR_RESULT) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_WALLACE)
+	}
+	else{
+		setflag(FLAG_TEMP_A)
+	}
+	return
+}
+
+script LavaridgeTown_PokemonCenter_2F_EventScript_SpRoamingNPC{
+	if (var(VAR_OBJ_GFX_ID_A) == OBJ_EVENT_GFX_WALLACE){
+		goto(FortreeCity_PokemonCenter_2F_EventScript_Wallace)
+	}
+}
+
+script LavaridgeTown_PokemonCenter_2F_EventScript_Wallace{
+	applymovement(VAR_LAST_TALKED, Common_Movement_FacePlayer)
+	waitmovement
+	if (flag(FLAG_MET_WALLACE)){
+		msgbox(format("WALLACE: Good to see you again, {PLAYER}."), MSGBOX_DEFAULT)
+		call(SootopolisCity_House3_EventScript_WallaceCheckBeasts)
+	}
+	else{
+		msgbox(format("Ah, a young TRAINER…\p"
+						"Yes, I can tell you're one to watch.\p"
+						"But how rude of me,\Nmy name is WALLACE, former GYM LEADER of SOOTOPOLIS CITY.\p"
+						"As many trainer's final obstacle before challenging the POKéMON LEAGUE,\NI've honed an eye for spotting promising TRAINERS.\p"
+						"I can tell you'll make it there one day too."), MSGBOX_DEFAULT)
+		setflag(FLAG_MET_WALLACE)
+	}
+	closemessage
+	delay(15)
+	applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceRight)
+	waitmovement
 	release
 	end
 }

@@ -47,22 +47,24 @@ FallarborTown_PokemonCenter_2F_OnLoad_2:
 FallarborTown_PokemonCenter_2F_OnTransition::
 # 27 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
 	call FallarborTown_PokemonCenter_2F_EventScript_ShowHideFossilManiac
+# 28 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+	call FallarborTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC
 	return
 
 
 FallarborTown_PokemonCenter_2F_EventScript_ShowHideFossilManiac::
-# 31 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+# 32 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
 	compare VAR_LAVARBOR_TUNNEL_QUEST_STATE, 24
 	goto_if_ge FallarborTown_PokemonCenter_2F_EventScript_ShowHideFossilManiac_1
-# 34 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+# 35 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
 	goto_if_set FLAG_LAVARBOR_FOSSIL_MANIAC_RECRUITED, FallarborTown_PokemonCenter_2F_EventScript_ShowHideFossilManiac_4
 FallarborTown_PokemonCenter_2F_EventScript_ShowHideFossilManiac_3:
-# 38 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+# 39 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
 	setflag FLAG_TEMP_5
 	return
 
 FallarborTown_PokemonCenter_2F_EventScript_ShowHideFossilManiac_1:
-# 32 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+# 33 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
 	setflag FLAG_TEMP_5
 	return
 
@@ -70,78 +72,164 @@ FallarborTown_PokemonCenter_2F_EventScript_ShowHideFossilManiac_2:
 	return
 
 FallarborTown_PokemonCenter_2F_EventScript_ShowHideFossilManiac_4:
-# 34 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+# 35 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
 	goto_if_unset FLAG_LAVARBOR_FALLARBOR_OPENED, FallarborTown_PokemonCenter_2F_EventScript_ShowHideFossilManiac_2
 	goto FallarborTown_PokemonCenter_2F_EventScript_ShowHideFossilManiac_3
 
 
 FallarborTown_PokemonCenter_2F_EventScript_FossilManiac::
-# 44 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
-	lock
 # 45 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
-	faceplayer
+	lock
 # 46 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
-	msgbox FallarborTown_PokemonCenter_2F_EventScript_FossilManiac_Text_0, MSGBOX_DEFAULT
+	faceplayer
 # 47 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
-	closemessage
+	msgbox FallarborTown_PokemonCenter_2F_EventScript_FossilManiac_Text_0, MSGBOX_DEFAULT
 # 48 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
-	delay 45
+	closemessage
 # 49 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
-	message FallarborTown_PokemonCenter_2F_EventScript_FossilManiac_Text_1
+	delay 45
 # 50 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
-	waitmessage
+	message FallarborTown_PokemonCenter_2F_EventScript_FossilManiac_Text_1
 # 51 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
-	delay 30
+	waitmessage
 # 52 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
-	msgbox FallarborTown_PokemonCenter_2F_EventScript_FossilManiac_Text_2, MSGBOX_DEFAULT
+	delay 30
 # 53 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+	msgbox FallarborTown_PokemonCenter_2F_EventScript_FossilManiac_Text_2, MSGBOX_DEFAULT
 # 54 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
-	waitmovement
+	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 # 55 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+	waitmovement
+# 56 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
 	release
 	end
 
 
-# 59 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
-
-# 60 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
-
+FallarborTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC::
 # 61 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
-@ The below 3 are unused and leftover from RS
+	checkroamingnpcatlocation FLAG_PKMN_CNTR_WALLACE, MAP_FALLARBOR_TOWN_POKEMON_CENTER_2F
 # 62 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
-FallarborTown_PokemonCenter_2F_EventScript_Colosseum::
-# 63 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
-	call CableClub_EventScript_Colosseum
-# 64 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
-	end
-# 65 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
-
+	compare VAR_RESULT, TRUE
+	goto_if_eq FallarborTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC_2
 # 66 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
-FallarborTown_PokemonCenter_2F_EventScript_TradeCenter::
-# 67 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
-	call CableClub_EventScript_TradeCenter
-# 68 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
-	end
-# 69 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+	setflag FLAG_TEMP_A
+FallarborTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC_1:
+	return
 
-# 70 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
-FallarborTown_PokemonCenter_2F_EventScript_RecordCorner::
-# 71 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
-	call CableClub_EventScript_RecordCorner
+FallarborTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC_2:
+# 63 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_WALLACE
+	goto FallarborTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC_1
+
+
+FallarborTown_PokemonCenter_2F_EventScript_SpRoamingNPC::
 # 72 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+	compare VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_WALLACE
+	goto_if_eq FallarborTown_PokemonCenter_2F_EventScript_SpRoamingNPC_1
+	return
+
+FallarborTown_PokemonCenter_2F_EventScript_SpRoamingNPC_1:
+# 73 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+	goto FallarborTown_PokemonCenter_2F_EventScript_Wallace
+	return
+
+
+FallarborTown_PokemonCenter_2F_EventScript_Wallace::
+# 78 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
+# 79 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+	waitmovement
+# 80 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+	goto_if_set FLAG_MET_WALLACE, FallarborTown_PokemonCenter_2F_EventScript_Wallace_2
+# 85 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+	msgbox FallarborTown_PokemonCenter_2F_EventScript_Wallace_Text_1, MSGBOX_DEFAULT
+# 90 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+	setflag FLAG_MET_WALLACE
+FallarborTown_PokemonCenter_2F_EventScript_Wallace_1:
+# 92 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+	closemessage
+# 93 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+	delay 15
+# 94 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceLeft
+# 95 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+	waitmovement
+# 96 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+	release
+	end
+
+FallarborTown_PokemonCenter_2F_EventScript_Wallace_2:
+# 81 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+	msgbox FallarborTown_PokemonCenter_2F_EventScript_Wallace_Text_0, MSGBOX_DEFAULT
+# 82 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+	call SootopolisCity_House3_EventScript_WallaceCheckBeasts
+	goto FallarborTown_PokemonCenter_2F_EventScript_Wallace_1
+
+
+FallarborTown_PokemonCenter_2F_EventScript_TrRoamingNPC::
+# 101 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+	release
+	end
+
+
+# 105 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+
+# 106 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+
+# 107 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+@ The below 3 are unused and leftover from RS
+# 108 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+FallarborTown_PokemonCenter_2F_EventScript_Colosseum::
+# 109 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+	call CableClub_EventScript_Colosseum
+# 110 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+	end
+# 111 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+
+# 112 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+FallarborTown_PokemonCenter_2F_EventScript_TradeCenter::
+# 113 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+	call CableClub_EventScript_TradeCenter
+# 114 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+	end
+# 115 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+
+# 116 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+FallarborTown_PokemonCenter_2F_EventScript_RecordCorner::
+# 117 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+	call CableClub_EventScript_RecordCorner
+# 118 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
 	end
 
 FallarborTown_PokemonCenter_2F_EventScript_FossilManiac_Text_0:
-# 46 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+# 47 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
 	.string "FOSSIL MANIAC: I'm going to be opening\n"
 	.string "up a hole in the wall here.$"
 
 FallarborTown_PokemonCenter_2F_EventScript_FossilManiac_Text_1:
-# 49 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+# 50 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
 	.string "What?$"
 
 FallarborTown_PokemonCenter_2F_EventScript_FossilManiac_Text_2:
-# 52 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+# 53 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
 	.string "Yeah, yeah,\l"
 	.string "I cleared it with the staff…$"
+
+FallarborTown_PokemonCenter_2F_EventScript_Wallace_Text_0:
+# 81 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+	.string "WALLACE: Good to see you again,\n"
+	.string "{PLAYER}.$"
+
+FallarborTown_PokemonCenter_2F_EventScript_Wallace_Text_1:
+# 85 "data//maps/FallarborTown_PokemonCenter_2F/scripts.pory"
+	.string "Ah, a young TRAINER…\p"
+	.string "Yes, I can tell you're one to watch.\p"
+	.string "But how rude of me,\n"
+	.string "my name is WALLACE, former GYM LEADER\l"
+	.string "of SOOTOPOLIS CITY.\p"
+	.string "As many trainer's final obstacle before\n"
+	.string "challenging the POKéMON LEAGUE,\l"
+	.string "I've honed an eye for spotting\l"
+	.string "promising TRAINERS.\p"
+	.string "I can tell you'll make it there one day\n"
+	.string "too.$"

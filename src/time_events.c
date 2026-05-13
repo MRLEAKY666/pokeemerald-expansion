@@ -792,7 +792,7 @@ static const int sPkmnCntrWallaceLocations[] =
     MAP_FORTREE_CITY_POKEMON_CENTER_2F,
     MAP_LILYCOVE_CITY_POKEMON_CENTER_2F,
     MAP_MOSSDEEP_CITY_POKEMON_CENTER_2F,
-    MAP_SOOTOPOLIS_CITY_POKEMON_CENTER_2F,
+    MAP_SOOTOPOLIS_CITY_HOUSE3,
     MAP_PACIFIDLOG_TOWN_POKEMON_CENTER_2F,
 };
 
@@ -807,7 +807,8 @@ void CheckRoamingNPCAtLocation(u32 flagId, u8 mapNum, u8 mapGroup)
     {
     case FLAG_PKMN_CNTR_WALLACE:
         NPCCurrentLocationIndex = (gLocalTime.days % ARRAY_COUNT(sPkmnCntrWallaceLocations)) + 1;
-        if (mapNum == MAP_NUM(sPkmnCntrWallaceLocations[NPCCurrentLocationIndex])){
+        if (mapNum == MAP_NUM(sPkmnCntrWallaceLocations[NPCCurrentLocationIndex])
+             && !FlagGet(FLAG_HIDE_ROAMING_WALLACE)){
             atLocation = TRUE;
         }
         break;

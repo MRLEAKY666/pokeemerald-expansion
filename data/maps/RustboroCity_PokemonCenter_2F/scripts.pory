@@ -3,8 +3,57 @@ RustboroCity_PokemonCenter_2F_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, CableClub_OnFrame
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, CableClub_OnWarp
 	map_script MAP_SCRIPT_ON_LOAD, CableClub_OnLoad
-	map_script MAP_SCRIPT_ON_TRANSITION, CableClub_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, RustboroCity_PokemonCenter_2F_OnTransition
 	.byte 0
+
+`
+
+script RustboroCity_PokemonCenter_2F_OnTransition{
+	call(RustboroCity_PokemonCenter_2F_EventScript_SetSpRoamingNPC)
+	end
+}
+
+script RustboroCity_PokemonCenter_2F_EventScript_SetSpRoamingNPC{
+	checkroamingnpcatlocation(FLAG_PKMN_CNTR_WALLACE, MAP_RUSTBORO_CITY_POKEMON_CENTER_2F)
+	if (var(VAR_RESULT) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_WALLACE)
+	}
+	else{
+		setflag(FLAG_TEMP_A)
+	}
+	return
+}
+
+script RustboroCity_PokemonCenter_2F_EventScript_SpRoamingNPC{
+	if (var(VAR_OBJ_GFX_ID_A) == OBJ_EVENT_GFX_WALLACE){
+		goto(RustboroCity_PokemonCenter_2F_EventScript_Wallace)
+	}
+}
+
+script RustboroCity_PokemonCenter_2F_EventScript_Wallace{
+	applymovement(VAR_LAST_TALKED, Common_Movement_FacePlayer)
+	waitmovement
+	if (flag(FLAG_MET_WALLACE)){
+		msgbox(format("WALLACE: Good to see you again, {PLAYER}."), MSGBOX_DEFAULT)
+		call(SootopolisCity_House3_EventScript_WallaceCheckBeasts)
+	}
+	else{
+		msgbox(format("Ah, a young TRAINER…\p"
+						"Yes, I can tell you're one to watch.\p"
+						"But how rude of me,\Nmy name is WALLACE, former GYM LEADER of SOOTOPOLIS CITY.\p"
+						"As many trainer's final obstacle before challenging the POKéMON LEAGUE,\NI've honed an eye for spotting promising TRAINERS.\p"
+						"I can tell you'll make it there one day too."), MSGBOX_DEFAULT)
+		setflag(FLAG_MET_WALLACE)
+	}
+	closemessage
+	delay(15)
+	//applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceLeft)
+	//waitmovement
+	release
+	end
+}
+
+raw`
 
 @ The below 3 are unused and leftover from RS
 RustboroCity_PokemonCenter_2F_EventScript_Colosseum::

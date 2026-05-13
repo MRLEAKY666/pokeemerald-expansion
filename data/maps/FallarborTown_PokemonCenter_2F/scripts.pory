@@ -25,6 +25,7 @@ script FallarborTown_PokemonCenter_2F_OnLoad{
 
 script FallarborTown_PokemonCenter_2F_OnTransition{
 	call(FallarborTown_PokemonCenter_2F_EventScript_ShowHideFossilManiac)
+	call(FallarborTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC)
 }
 
 script FallarborTown_PokemonCenter_2F_EventScript_ShowHideFossilManiac{
@@ -52,6 +53,51 @@ script FallarborTown_PokemonCenter_2F_EventScript_FossilManiac{
 	msgbox(format("Yeah, yeah,\lI cleared it with the staff…"), MSGBOX_DEFAULT)
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
 	waitmovement
+	release
+	end
+}
+
+script FallarborTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC{
+	checkroamingnpcatlocation(FLAG_PKMN_CNTR_WALLACE, MAP_FALLARBOR_TOWN_POKEMON_CENTER_2F)
+	if (var(VAR_RESULT) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_WALLACE)
+	}
+	else{
+		setflag(FLAG_TEMP_A)
+	}
+	return
+}
+
+script FallarborTown_PokemonCenter_2F_EventScript_SpRoamingNPC{
+	if (var(VAR_OBJ_GFX_ID_A) == OBJ_EVENT_GFX_WALLACE){
+		goto(FallarborTown_PokemonCenter_2F_EventScript_Wallace)
+	}
+}
+
+script FallarborTown_PokemonCenter_2F_EventScript_Wallace{
+	applymovement(VAR_LAST_TALKED, Common_Movement_FacePlayer)
+	waitmovement
+	if (flag(FLAG_MET_WALLACE)){
+		msgbox(format("WALLACE: Good to see you again, {PLAYER}."), MSGBOX_DEFAULT)
+		call(SootopolisCity_House3_EventScript_WallaceCheckBeasts)
+	}
+	else{
+		msgbox(format("Ah, a young TRAINER…\p"
+						"Yes, I can tell you're one to watch.\p"
+						"But how rude of me,\Nmy name is WALLACE, former GYM LEADER of SOOTOPOLIS CITY.\p"
+						"As many trainer's final obstacle before challenging the POKéMON LEAGUE,\NI've honed an eye for spotting promising TRAINERS.\p"
+						"I can tell you'll make it there one day too."), MSGBOX_DEFAULT)
+		setflag(FLAG_MET_WALLACE)
+	}
+	closemessage
+	delay(15)
+	applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceLeft)
+	waitmovement
+	release
+	end
+}
+
+script FallarborTown_PokemonCenter_2F_EventScript_TrRoamingNPC{
 	release
 	end
 }

@@ -5,6 +5,7 @@ CaveOfOrigin_B1F_MapScripts::
 CaveOfOrigin_B1F_EventScript_Wallace::
 	lock
 	faceplayer
+	call_if_unset FLAG_MET_WALLACE, CaveOfOrigin_B1F_EventScript_MeetWallace
 	msgbox CaveOfOrigin_B1F_Text_WallaceStory, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_CAVE_OF_ORIGIN_WALLACE, Common_Movement_WalkInPlaceFasterUp
@@ -21,6 +22,10 @@ CaveOfOrigin_B1F_EventScript_Wallace::
 	message CaveOfOrigin_B1F_Text_WhereIsRayquaza
 	waitmessage
 	goto CaveOfOrigin_B1F_EventScript_WheresRayquaza
+
+CaveOfOrigin_B1F_EventScript_MeetWallace::
+	setflag FLAG_MET_WALLACE
+	return
 
 CaveOfOrigin_B1F_EventScript_WheresRayquaza::
 	multichoice 0, 0, MULTI_WHERES_RAYQUAZA, FALSE

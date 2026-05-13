@@ -58,9 +58,9 @@
 #define FLAG_CAUGHT_ROAMING_SUICUNE    0x24 // PREVIOUSLY Unused Flag
 #define FLAG_CAUGHT_ROAMING_RAIKOU    0x25 // PREVIOUSLY Unused Flag
 #define FLAG_NO_ACTIVE_BEAST    0x26 // PREVIOUSLY Unused Flag
-#define FLAG_MET_WALLACE_HOUSE    0x27 // PREVIOUSLY Unused Flag
+#define FLAG_MET_WALLACE    0x27 // PREVIOUSLY Unused Flag
 #define FLAG_ROAMING_BEASTS_CAUGHT    0x28 // PREVIOUSLY Unused Flag
-#define FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE_HOUSE    0x29 // previously Unused Flag
+#define FLAG_HIDE_ROAMING_WALLACE    0x29 // previously Unused Flag
 #define FLAG_FORTREE_CLIFFS_SNORLAX    0x2A // Unused Flag
 #define FLAG_GRANITE_COVE_SNOVER    0x2B // previously Flag
 #define FLAG_GRANITE_COVE_ABOMASNOW    0x2C // previously Flag
@@ -87,7 +87,7 @@
 #define FLAG_GAME_CORNER_UNC    0x41 //  Flag
 #define FLAG_ORIGINAL_MOSSDEEP_GAME_CORNER    0x42 //  Flag
 #define FLAG_DRAKE_DRACO_METEOR_TUTORING    0x43 //  Flag
-#define FLAG_UNUSED_0x044    0x44 // Unused Flag
+#define FLAG_WALLACE_SHOWED_BEAST    0x44 // 
 #define FLAG_UNUSED_0x045    0x45 // Unused Flag
 #define FLAG_UNUSED_0x046    0x46 // Unused Flag
 #define FLAG_UNUSED_0x047    0x47 // Unused Flag

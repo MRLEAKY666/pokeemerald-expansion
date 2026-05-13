@@ -1,12 +1,340 @@
 raw `
 SootopolisCity_House3_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, SootopolisCity_House3_OnTransition
 	.byte 0
+
+`
+
+script SootopolisCity_House3_OnTransition{
+	checkroamingnpcatlocation(FLAG_PKMN_CNTR_WALLACE, MAP_SOOTOPOLIS_CITY_HOUSE3)
+	if (var(VAR_RESULT) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_WALLACE)
+	}
+	else{
+		setflag(FLAG_TEMP_A)
+	}
+}
+
+script SootopolisCity_PokemonCenter_2F_EventScript_Wallace{
+	applymovement(VAR_LAST_TALKED, Common_Movement_FacePlayer)
+	waitmovement
+	if (flag(FLAG_MET_WALLACE)){
+		msgbox(format("WALLACE: Good to see you again, {PLAYER}."), MSGBOX_DEFAULT)
+		call(SootopolisCity_House3_EventScript_WallaceCheckBeasts)
+	}
+	else{
+		msgbox(format("Ah, a young TRAINER…\p"
+						"Yes, I can tell you're one to watch.\p"
+						"But how rude of me,\Nmy name is WALLACE, former GYM LEADER of SOOTOPOLIS CITY.\p"
+						"As many trainer's final obstacle before challenging the POKéMON LEAGUE,\NI've honed an eye for spotting promising TRAINERS.\p"
+						"I can tell you'll make it there one day too."), MSGBOX_DEFAULT)
+		setflag(FLAG_MET_WALLACE)
+	}
+	closemessage
+	delay(15)
+	//applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceLeft)
+	//waitmovement
+	release
+	end
+}
+
+script SootopolisCity_House3_EventScript_WallaceCheckBeasts{
+	getseenmon(VAR_BEAST_SPECIES)
+	if (var(VAR_RESULT) == TRUE){ // seen or caught curretn or all beasts
+		switch (var(VAR_BEAST_SPECIES)){
+			case SPECIES_SUICUNE:
+				msgbox(format("I'm traveling HOENN right now in search of the POKéMON SUICUNE.\p"
+								"My swift and elegant, yet unbreakable battle style is based partly on legends of SUICUNE's might.\p"
+								"I have reason to believe SUICUNE has been roaming the region as of late."), MSGBOX_DEFAULT)
+			case SPECIES_RAIKOU:
+				msgbox(format("I'm traveling HOENN right now in search of the POKéMON RAIKOU.\p"
+								"RAIKOU is one of a trio of BEAST POKéMON that have fascinated me all my life.\p"
+								"It's stealthy and lightning fast, yet strikes with a supercharged destructive force.\p"
+								"I have reason to believe RAIKOU has been roaming the region as of late."), MSGBOX_DEFAULT)
+			case SPECIES_ENTEI:
+				msgbox(format("I'm traveling HOENN right now in search of the POKéMON ENTEI.\p"
+								"ENTEI is one of a trio of BEAST POKéMON that have fascinated me all my life.\p"
+								"It commands respect with its regal prescence, yet is capable of unrivaled intensity in battle.\p"
+								"I have reason to believe ENTEI has been roaming the region as of late."), MSGBOX_DEFAULT)
+			default: 
+				bufferspeciesname(STR_VAR_1, VAR_BEAST_SPECIES)
+				msgbox(format("I'm traveling HOENN right now in search of the POKéMON {STR_VAR_1}.\p"
+								"I have reason to believe {STR_VAR_1} has been roaming the region as of late."), MSGBOX_DEFAULT)
+		}
+		getcaughtmon(VAR_BEAST_SPECIES)
+		if (var(VAR_RESULT) == TRUE){ // caught current beast
+			closemessage
+			delay(60)
+			message("… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}…")
+			waitmessage
+			delay(30)
+			closemessage
+			delay(30)
+			applymovement(VAR_LAST_TALKED, Common_Movement_ExclamationMark)
+			playse(SE_PIN)
+			waitmovement
+			switch (var(VAR_BEAST_SPECIES)){
+				case SPECIES_SUICUNE:
+					msgbox(format("You caught the roaming SUICUNE??\p"
+									"{PLAYER}…{PAUSE 20}\lSo nonchalant…\p"
+									"You're still caught in the carefree currents of youth,\p"
+									"yet you managed to best a LEGENDARY POKéMON as elusive as SUICUNE seemingly with ease…"), MSGBOX_DEFAULT)
+					
+				case SPECIES_RAIKOU:
+					msgbox(format("You caught the roaming RAIKOU??\p"
+									"{PLAYER}…{PAUSE 20}\lIncredible…\p"
+									"You're still caught in the carefree clouds of youth,\p"
+									"yet you managed to best a LEGENDARY POKéMON as relentless as RAIKOU seemingly with ease…"), MSGBOX_DEFAULT)
+				case SPECIES_ENTEI:
+					msgbox(format("You caught the roaming ENTEI??\p"
+									"{PLAYER}…{PAUSE 20}\lHow terrifying…\p"
+									"You embody the wild flame of youth,\p"
+									"yet you managed to best a LEGENDARY POKéMON as commanding as ENTEI seemingly with ease…"), MSGBOX_DEFAULT)
+				default: 
+					bufferspeciesname(STR_VAR_1, VAR_BEAST_SPECIES)
+					msgbox(format("You caught the roaming {STR_VAR_1}??\p"
+									"How impressive that you managed to best a LEGENDARY POKéMON like {STR_VAR_1} seemingly with ease…"), MSGBOX_DEFAULT)
+			}
+			//delay(30)
+			if (flag(FLAG_ROAMING_BEASTS_CAUGHT)){ // caught all beasts
+				setvar(VAR_BEAST_SPECIES, SPECIES_HO_OH)
+				closemessage
+				delay(60)
+				message("… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}…")
+				waitmessage
+				delay(30)
+				closemessage
+				delay(30)
+				msgbox(format("{PLAYER}, this means you've caught all three LEGENDARY BEAST POKéMON…\p"
+								"I'm amazed…\p"
+								"Now I have no choice but to ask of you a true favor…\p"
+								"{PLAYER}…\pI need you to demonstrate the power of these three POKéMON.\p"
+								"{PAUSE 20}Yes,{PAUSE 20}{PAUSE 20}\n{PLAYER}…{PAUSE 20}{PAUSE 20} I need you to battle me using RAIKOU, ENTEI, and SUICUNE.\p"
+								"But the battle needs to take place in a special location.\p"
+								"I'll explain when you arrive.\nFor now, take this ticket."), MSGBOX_DEFAULT)
+				closemessage
+				specialvar(VAR_RESULT, GetPlayerFacingDirection)
+				switch (var(VAR_RESULT)){
+					case DIR_NORTH:
+						applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceDown)
+					case DIR_SOUTH:
+						applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceUp)
+					case DIR_EAST:
+						applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceLeft)
+					case DIR_WEST:
+						applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceRight)
+					default: 
+				}
+				waitmovement
+				delay(20)
+				if (flag(FLAG_SYS_GAME_CLEAR)){
+					checkitem(ITEM_MYSTIC_TICKET)
+					if (var(VAR_RESULT) == TRUE){
+						applymovement(VAR_LAST_TALKED, Common_Movement_ExclamationMark)
+						waitmovement
+						msgbox(format("Ah, it seems you already have a MYSTIC TICKET.\p"
+										"Well show it when boarding the S.S. TIDAL to travel to NAVEL ROCK.\p"
+										"There, we'll witness the relentless force of your BEAST POKéMON in action!"), MSGBOX_DEFAULT)
+					}
+					else{
+						giveitem(ITEM_MYSTIC_TICKET)
+						setflag(FLAG_ENABLE_SHIP_NAVEL_ROCK)
+						setflag(FLAG_RECEIVED_MYSTIC_TICKET)
+						msgbox(format("Show that when boarding the S.S. TIDAL to travel to NAVEL ROCK.\p"
+										"There, we'll witness the relentless force of your BEAST POKéMON in action!"), MSGBOX_DEFAULT)
+					}
+				}
+				else{
+					checkitem(ITEM_MYSTIC_TICKET)
+					if (var(VAR_RESULT) == TRUE){
+						applymovement(VAR_LAST_TALKED, Common_Movement_ExclamationMark)
+						waitmovement
+						msgbox(format("Ah, it seems you already have a MYSTIC TICKET.\p"
+										"Well when the S.S. TIDAL opens, use it to travel to NAVEL ROCK.\p"
+										"There, we'll witness the relentless force of your BEAST POKéMON in action!"), MSGBOX_DEFAULT)
+					}
+					else{
+						giveitem(ITEM_MYSTIC_TICKET)
+						setflag(FLAG_ENABLE_SHIP_NAVEL_ROCK)
+						setflag(FLAG_RECEIVED_MYSTIC_TICKET)
+						msgbox(format("When the S.S. TIDAL opens, use that ticket to travel to NAVEL ROCK.\p"
+										"There, we'll witness the relentless force of your BEAST POKéMON in action!"), MSGBOX_DEFAULT)
+					}
+				}
+				release 
+				end
+			}
+			closemessage
+			delay(60)
+			message("… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}…")
+			waitmessage
+			delay(30)
+			closemessage
+			delay(30)
+			switch (var(VAR_BEAST_SPECIES)){
+				case SPECIES_RAIKOU: 
+					setvar(VAR_BEAST_SPECIES, SPECIES_ENTEI)
+					setvar(VAR_0x8004, 0)
+				case SPECIES_ENTEI:
+					setvar(VAR_BEAST_SPECIES, SPECIES_SUICUNE)
+					setvar(VAR_0x8004, 1)
+				case SPECIES_SUICUNE:
+					setvar(VAR_BEAST_SPECIES, SPECIES_RAIKOU)
+					setvar(VAR_0x8004, 2)
+				default:
+			}
+			bufferspeciesname(STR_VAR_1, VAR_BEAST_SPECIES)
+			if (flag(FLAG_CAUGHT_ROAMING_RAIKOU) && flag(FLAG_CAUGHT_ROAMING_ENTEI) // if you've caught two beasts
+					|| flag(FLAG_CAUGHT_ROAMING_RAIKOU) && flag(FLAG_CAUGHT_ROAMING_SUICUNE)
+					|| flag(FLAG_CAUGHT_ROAMING_ENTEI) && flag(FLAG_CAUGHT_ROAMING_SUICUNE)){
+				msgbox(format("You know, {PLAYER}…\nThere is yet a third species of these LEGENDARY BEAST POKéMON.\p"
+								"I've also heard rumors of a roaming {STR_VAR_1} having recently been seen across HOENN."), MSGBOX_DEFAULT)
+			}
+			else{
+				msgbox(format("You know, {PLAYER}…\nThere is not one, but three of these LEGENDARY BEAST POKéMON.\p"
+								"I've also heard rumors of a roaming {STR_VAR_1} having recently been seen across HOENN."), MSGBOX_DEFAULT)
+			}
+			//closemessage
+			setvar(VAR_UNUSED_0x8014, 0)
+			special(InitRoamer)
+			clearflag(FLAG_NO_ACTIVE_BEAST)
+			delay(30)
+			showmonpic(VAR_BEAST_SPECIES, 10, 3)
+			playmoncry(VAR_BEAST_SPECIES, CRY_MODE_NORMAL)
+			message(format("This is the BEAST POKéMON {STR_VAR_1}."))
+			waitmessage
+			waitbuttonpress
+			hidemonpic
+			//closemessage
+			setseenmon(VAR_BEAST_SPECIES)
+			if (!flag(FLAG_WALLACE_SHOWED_BEAST)){
+				setflag(FLAG_WALLACE_SHOWED_BEAST)
+			}
+			msgbox(format("I know it's out there, {PLAYER}.\p"
+							"If you learn anything about {STR_VAR_1}, please let me know!"), MSGBOX_DEFAULT)
+			return
+		}
+		else{ // only seen
+			if (flag(FLAG_WALLACE_SHOWED_BEAST)){
+				switch (var(VAR_BEAST_SPECIES)){
+					case SPECIES_SUICUNE:
+						msgbox(format("Have you seen the roaming SUICUNE?\p"
+										"Such a beautiful POKéMON…\pOh how I yearn to see that elegant beast for myself someday…"), MSGBOX_DEFAULT)
+					case SPECIES_RAIKOU:
+						msgbox(format("Have you seen the roaming RAIKOU?\p"
+										"Such a striking POKéMON…\pOh how I yearn to see that terrifying beast for myself someday…"), MSGBOX_DEFAULT)
+					case SPECIES_ENTEI:
+						msgbox(format("Have you seen the roaming ENTEI?\p"
+										"Such an intense POKéMON…\pOh how I yearn to see that majestic beast for myself someday…"), MSGBOX_DEFAULT)
+					default: 
+						bufferspeciesname(STR_VAR_1, VAR_BEAST_SPECIES)
+						msgbox(format("Have you seen the roaming {STR_VAR_1}?\p"
+										"Oh how I yearn to see that beast for myself someday…"), MSGBOX_DEFAULT)
+				}
+			}
+			else{
+				closemessage
+				delay(60)
+				message("… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}…")
+				waitmessage
+				delay(30)
+				closemessage
+				delay(30)
+				applymovement(VAR_LAST_TALKED, Common_Movement_ExclamationMark)
+				playse(SE_PIN)
+				waitmovement
+				switch (var(VAR_BEAST_SPECIES)){
+					case SPECIES_SUICUNE:
+						msgbox(format("You saw the roaming SUICUNE??\p"
+										"Isn't it beautiful?\pOh how I yearn to see that elegant beast for myself someday…"), MSGBOX_DEFAULT)
+					case SPECIES_RAIKOU:
+						msgbox(format("You saw the roaming RAIKOU??\p"
+										"Isn't it striking?\pOh how I yearn to see that terrifying beast for myself someday…"), MSGBOX_DEFAULT)
+					case SPECIES_ENTEI:
+						msgbox(format("You saw the roaming ENTEI??\p"
+										"Isn't it intense?\pOh how I yearn to see that majestic beast for myself someday…"), MSGBOX_DEFAULT)
+					default: 
+						bufferspeciesname(STR_VAR_1, VAR_BEAST_SPECIES)
+						msgbox(format("You saw the roaming {STR_VAR_1}??\p"
+										"Oh how I yearn to see that beast for myself someday…"), MSGBOX_DEFAULT)
+				}
+			}
+			if (flag(FLAG_NO_ACTIVE_BEAST)){ // reactivate after killing curretn beast
+				setvar(VAR_UNUSED_0x8014, 0)
+				switch (var(VAR_BEAST_SPECIES)){
+					case SPECIES_ENTEI:
+						setvar(VAR_0x8004, 0)
+					case SPECIES_RAIKOU:
+						setvar(VAR_0x8004, 2)
+					case SPECIES_SUICUNE:
+						setvar(VAR_0x8004, 1)
+					default:
+				}
+				//special(ActivateRoamer)
+				special(InitRoamer)
+				clearflag(FLAG_NO_ACTIVE_BEAST)
+				msgbox(format("I know it's still out there, {PLAYER}.\p"
+								"Please let me know if you learn anything more!"), MSGBOX_DEFAULT)
+			}
+			else{
+				msgbox(format("Please let me know if you learn anything more!"), MSGBOX_DEFAULT)
+			}
+			return
+		}
+		
+	}
+	else{ // not yet seen
+		switch (var(VAR_BEAST_SPECIES)){
+			case SPECIES_SUICUNE:
+				msgbox(format("I'm traveling HOENN right now in search of the POKéMON SUICUNE.\p"
+								"My swift and elegant, yet unbreakable battle style is based partly on legends of SUICUNE's might.\p"
+								"I have reason to believe SUICUNE has been roaming the region as of late.\p"
+								"I aspire to glimpse it with my own eyes…"), MSGBOX_DEFAULT)
+			case SPECIES_RAIKOU:
+				msgbox(format("I'm traveling HOENN right now in search of the POKéMON RAIKOU.\p"
+								"RAIKOU is one of a trio of BEAST POKéMON that have fascinated me all my life.\p"
+								"It's stealthy and lightning fast, yet strikes with a supercharged destructive force.\p"
+								"I have reason to believe RAIKOU has been roaming the region as of late.\p"
+								"I aspire to glimpse it with my own eyes…"), MSGBOX_DEFAULT)
+			case SPECIES_ENTEI:
+				msgbox(format("I'm traveling HOENN right now in search of the POKéMON ENTEI.\p"
+								"ENTEI is one of a trio of BEAST POKéMON that have fascinated me all my life.\p"
+								"It commands respect with its regal prescence, yet is capable of unrivaled intensity in battle.\p"
+								"I have reason to believe ENTEI has been roaming the region as of late.\p"
+								"I aspire to glimpse it with my own eyes…"), MSGBOX_DEFAULT)
+			default: 
+				bufferspeciesname(STR_VAR_1, VAR_BEAST_SPECIES)
+				msgbox(format("I'm traveling HOENN right now in search of the POKéMON {STR_VAR_1}.\p"
+								"{PLAYER}, if you encounter {STR_VAR_1}, please inform me!"), MSGBOX_DEFAULT)
+				return
+		}
+		bufferspeciesname(STR_VAR_1, VAR_BEAST_SPECIES)
+		delay(30)
+		showmonpic(VAR_BEAST_SPECIES, 10, 3)
+		playmoncry(VAR_BEAST_SPECIES, CRY_MODE_NORMAL)
+		message(format("This is the BEAST POKéMON {STR_VAR_1}."))
+		waitmessage
+		waitbuttonpress
+		hidemonpic
+		//closemessage
+		setseenmon(VAR_BEAST_SPECIES)
+		if (!flag(FLAG_WALLACE_SHOWED_BEAST)){
+			setflag(FLAG_WALLACE_SHOWED_BEAST)
+		}
+		//delay(20)
+		msgbox(format("I know it's out there, {PLAYER}.\p"
+						"If you learn anything about {STR_VAR_1}, please let me know!"), MSGBOX_DEFAULT)
+	}
+	return
+}
+
+raw`
 
 SootopolisCity_House3_EventScript_Wallace::
 	lock
 	faceplayer
 	goto_if_eq VAR_BEAST_SPECIES, SPECIES_HO_OH, SootopolisCity_House3_EventScript_WallaceMeetAtNavelRock
-	call_if_unset FLAG_MET_WALLACE_HOUSE, SootopolisCity_House3_EventScript_WallaceThanks
+	call_if_unset FLAG_MET_WALLACE, SootopolisCity_House3_EventScript_WallaceThanks
 	msgbox SootopolisCity_House3_Text_WallaceSearchingBeasts, MSGBOX_DEFAULT
 	waitmessage
 	goto_if_eq VAR_BEAST_SPECIES, SPECIES_ENTEI, SootopolisCity_House3_EventScript_EnteiSpeech
@@ -20,7 +348,7 @@ SootopolisCity_House3_EventScript_Wallace::
 SootopolisCity_House3_EventScript_WallaceThanks::
 	msgbox SootopolisCity_House3_Text_WallaceThanks, MSGBOX_DEFAULT
 	waitmessage
-	setflag FLAG_MET_WALLACE_HOUSE
+	setflag FLAG_MET_WALLACE
 	return
 
 SootopolisCity_House3_EventScript_EnteiSpeech::

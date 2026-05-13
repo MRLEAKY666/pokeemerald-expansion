@@ -76,6 +76,7 @@ Route128_EventScript_KyogreAwakenedScene::
 	waitfieldeffect FLDEFF_NPCFLY_OUT
 	clearflag FLAG_HIDE_MAP_NAME_POPUP
 	setvar VAR_ROUTE128_STATE, 2
+	setflag FLAG_HIDE_ROAMING_WALLACE
 	releaseall
 	end
 
