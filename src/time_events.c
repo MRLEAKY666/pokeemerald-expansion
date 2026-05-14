@@ -808,7 +808,9 @@ void CheckRoamingNPCAtLocation(u32 flagId, u8 mapNum, u8 mapGroup)
     case FLAG_PKMN_CNTR_WALLACE:
         NPCCurrentLocationIndex = (gLocalTime.days % ARRAY_COUNT(sPkmnCntrWallaceLocations)) + 1;
         if (mapNum == MAP_NUM(sPkmnCntrWallaceLocations[NPCCurrentLocationIndex])
-             && !FlagGet(FLAG_HIDE_ROAMING_WALLACE)){
+             && !FlagGet(FLAG_HIDE_ROAMING_WALLACE)
+             && FlagGet(FLAG_HIDE_NAVEL_ROCK_WALLACE)
+             /* && VarGet(VAR_BEAST_SPECIES) != SPECIES_HO_OH */){
             atLocation = TRUE;
         }
         break;

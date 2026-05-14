@@ -15,7 +15,7 @@ script SootopolisCity_House3_OnTransition{
 	}
 }
 
-script SootopolisCity_PokemonCenter_2F_EventScript_Wallace{
+script SootopolisCity_House3_EventScript_Wallace{
 	applymovement(VAR_LAST_TALKED, Common_Movement_FacePlayer)
 	waitmovement
 	if (flag(FLAG_MET_WALLACE)){
@@ -40,6 +40,14 @@ script SootopolisCity_PokemonCenter_2F_EventScript_Wallace{
 
 script SootopolisCity_House3_EventScript_WallaceCheckBeasts{
 	getseenmon(VAR_BEAST_SPECIES)
+	if (var(VAR_BEAST_SPECIES) == SPECIES_HO_OH){
+		msgbox(format("With the MYSTIC TICKET you can travel to NAVEL ROCK.\p"
+						"I want you to meet me there with the three BEAST POKéMON you've caught.\p"
+						"Once there, I'll ask you to demonstrate\n"
+						"their legendary strength by engaging me in an all-out POKéMON battle!"), MSGBOX_DEFAULT) 
+		release
+		end
+	}
 	if (var(VAR_RESULT) == TRUE){ // seen or caught curretn or all beasts
 		switch (var(VAR_BEAST_SPECIES)){
 			case SPECIES_SUICUNE:
@@ -330,7 +338,7 @@ script SootopolisCity_House3_EventScript_WallaceCheckBeasts{
 
 raw`
 
-SootopolisCity_House3_EventScript_Wallace::
+SootopolisCity_House3_EventScript_WallaceOld::
 	lock
 	faceplayer
 	goto_if_eq VAR_BEAST_SPECIES, SPECIES_HO_OH, SootopolisCity_House3_EventScript_WallaceMeetAtNavelRock
@@ -790,13 +798,14 @@ SootopolisCity_House3_Text_WallaceThreeBeasts:
 	.string "I'd like you to take this.$"
 
 SootopolisCity_House3_Text_WallaceGiveHoohQuest:
-	.string "WALLACE: With the MYSTIC TICKET\n"
+	.string "With the MYSTIC TICKET\n"
 	.string "you can travel to NAVEL ROCK.\p"
 	.string "I want you to meet me there with the\n"
 	.string "three legendary beast POKéMON you've\l"
 	.string "caught.\p"
-	.string "By assembling them all in that place...\n"
-	.string "Can we summon HO-OH?$" 
+	.string "Once there, I'll ask you to demonstrate\n"
+	.string "their legendary strength by engaging me\l"
+	.string "in an all-out POKéMON battle!$" 
 
 SootopolisCity_House3_Text_WallaceGiveHoohQuest2:
 	.string "{PLAYER} . . .\p"

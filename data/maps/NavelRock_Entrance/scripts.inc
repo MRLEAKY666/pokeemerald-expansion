@@ -16,62 +16,57 @@ NavelRock_Entrance_OnTransition::
 	call_if_set FLAG_START_LUGIA_QUEST, NavelRock_Entrance_EventScript_TryShowOak
 # 9 "data//maps/NavelRock_Entrance/scripts.pory"
 	end
-# 10 "data//maps/NavelRock_Entrance/scripts.pory"
 
-# 11 "data//maps/NavelRock_Entrance/scripts.pory"
 NavelRock_Entrance_EventScript_ShowWallace::
-# 12 "data//maps/NavelRock_Entrance/scripts.pory"
-	clearflag FLAG_HIDE_NAVEL_ROCK_WALLACE
 # 13 "data//maps/NavelRock_Entrance/scripts.pory"
+	goto_if_set FLAG_HIDE_NAVEL_ROCK_WALLACE, NavelRock_Entrance_EventScript_ShowWallace_2
+NavelRock_Entrance_EventScript_ShowWallace_1:
 	return
-# 14 "data//maps/NavelRock_Entrance/scripts.pory"
 
-# 15 "data//maps/NavelRock_Entrance/scripts.pory"
-NavelRock_Entrance_EventScript_TryShowOak::
-# 16 "data//maps/NavelRock_Entrance/scripts.pory"
-	clearflag FLAG_HIDE_NAVEL_ROCK_OAK
-# 17 "data//maps/NavelRock_Entrance/scripts.pory"
-	return
-# 18 "data//maps/NavelRock_Entrance/scripts.pory"
+NavelRock_Entrance_EventScript_ShowWallace_2:
+# 14 "data//maps/NavelRock_Entrance/scripts.pory"
+	clearflag FLAG_HIDE_NAVEL_ROCK_WALLACE
+	goto NavelRock_Entrance_EventScript_ShowWallace_1
+
 
 # 19 "data//maps/NavelRock_Entrance/scripts.pory"
-NavelRock_Entrance_EventScript_ProfOak::
+
 # 20 "data//maps/NavelRock_Entrance/scripts.pory"
-	lock
+
 # 21 "data//maps/NavelRock_Entrance/scripts.pory"
-	faceplayer
+NavelRock_Entrance_EventScript_TryShowOak::
 # 22 "data//maps/NavelRock_Entrance/scripts.pory"
-	goto_if_defeated TRAINER_OAK_NAVEL_ROCK, NavelRock_Entrance_EventScript_ProfOakFindLugia
+	clearflag FLAG_HIDE_NAVEL_ROCK_OAK
 # 23 "data//maps/NavelRock_Entrance/scripts.pory"
-	msgbox NavelRock_Entance_Text_OakDidYouBringThem, MSGBOX_YESNO
+	return
 # 24 "data//maps/NavelRock_Entrance/scripts.pory"
-	goto_if_eq VAR_RESULT, NO, NavelRock_Entrance_EventScript_OakBringTheBirds
+
 # 25 "data//maps/NavelRock_Entrance/scripts.pory"
-	call NavelRock_Entrance_EventScript_CheckForBirds
+NavelRock_Entrance_EventScript_ProfOak::
 # 26 "data//maps/NavelRock_Entrance/scripts.pory"
-	@ msgbox NavelRock_Entance_Text_OakBringTheBirds, MSGBOX_DEFAULT
-# 27 "data//maps/NavelRock_Entrance/scripts.pory"
-	release
-# 28 "data//maps/NavelRock_Entrance/scripts.pory"
-	end
-# 29 "data//maps/NavelRock_Entrance/scripts.pory"
-
-# 30 "data//maps/NavelRock_Entrance/scripts.pory"
-NavelRock_Entrance_EventScript_OakBringTheBirds::
-# 31 "data//maps/NavelRock_Entrance/scripts.pory"
-	msgbox NavelRock_Entance_Text_OakBringTheBirds, MSGBOX_DEFAULT
-# 32 "data//maps/NavelRock_Entrance/scripts.pory"
-	release
-# 33 "data//maps/NavelRock_Entrance/scripts.pory"
-	end
-# 34 "data//maps/NavelRock_Entrance/scripts.pory"
-
-# 35 "data//maps/NavelRock_Entrance/scripts.pory"
-NavelRock_Entrance_EventScript_Wallace::
-# 36 "data//maps/NavelRock_Entrance/scripts.pory"
 	lock
-# 37 "data//maps/NavelRock_Entrance/scripts.pory"
+# 27 "data//maps/NavelRock_Entrance/scripts.pory"
 	faceplayer
+# 28 "data//maps/NavelRock_Entrance/scripts.pory"
+	goto_if_defeated TRAINER_OAK_NAVEL_ROCK, NavelRock_Entrance_EventScript_ProfOakFindLugia
+# 29 "data//maps/NavelRock_Entrance/scripts.pory"
+	msgbox NavelRock_Entance_Text_OakDidYouBringThem, MSGBOX_YESNO
+# 30 "data//maps/NavelRock_Entrance/scripts.pory"
+	goto_if_eq VAR_RESULT, NO, NavelRock_Entrance_EventScript_OakBringTheBirds
+# 31 "data//maps/NavelRock_Entrance/scripts.pory"
+	call NavelRock_Entrance_EventScript_CheckForBirds
+# 32 "data//maps/NavelRock_Entrance/scripts.pory"
+	@ msgbox NavelRock_Entance_Text_OakBringTheBirds, MSGBOX_DEFAULT
+# 33 "data//maps/NavelRock_Entrance/scripts.pory"
+	release
+# 34 "data//maps/NavelRock_Entrance/scripts.pory"
+	end
+# 35 "data//maps/NavelRock_Entrance/scripts.pory"
+
+# 36 "data//maps/NavelRock_Entrance/scripts.pory"
+NavelRock_Entrance_EventScript_OakBringTheBirds::
+# 37 "data//maps/NavelRock_Entrance/scripts.pory"
+	msgbox NavelRock_Entance_Text_OakBringTheBirds, MSGBOX_DEFAULT
 # 38 "data//maps/NavelRock_Entrance/scripts.pory"
 	release
 # 39 "data//maps/NavelRock_Entrance/scripts.pory"
@@ -183,151 +178,396 @@ NavelRock_Entance_Text_OakEndBattle:
 # 92 "data//maps/NavelRock_Entrance/scripts.pory"
 
 # 93 "data//maps/NavelRock_Entrance/scripts.pory"
-NavelRock_Entance_Text_OakPostBattle:
+NavelRock_Entance_Text_WallaceEndBattle:
 # 94 "data//maps/NavelRock_Entrance/scripts.pory"
-	.string "Did you hear that?\p"
+	.string "{PLAYER}…\lHow spectacular…$"
 # 95 "data//maps/NavelRock_Entrance/scripts.pory"
-	.string "I think LUGIA is here on the\n"
-# 96 "data//maps/NavelRock_Entrance/scripts.pory"
-	.string "island!\p"
-# 97 "data//maps/NavelRock_Entrance/scripts.pory"
-	.string "LUGIA probably roosts deep under\n"
-# 98 "data//maps/NavelRock_Entrance/scripts.pory"
-	.string "NAVEL ROCK, close to the water.\p"
-# 99 "data//maps/NavelRock_Entrance/scripts.pory"
-	.string "{PLAYER}, will you go find LUGIA?\p"
-# 100 "data//maps/NavelRock_Entrance/scripts.pory"
-	.string "I'd very much appreciate the\n"
-# 101 "data//maps/NavelRock_Entrance/scripts.pory"
-	.string "opportunity to study its POKéDEX\l"
-# 102 "data//maps/NavelRock_Entrance/scripts.pory"
-	.string "data.$"
-# 103 "data//maps/NavelRock_Entrance/scripts.pory"
 
-# 104 "data//maps/NavelRock_Entrance/scripts.pory"
-NavelRock_Entance_Text_OakFindLugia:
-# 105 "data//maps/NavelRock_Entrance/scripts.pory"
+# 96 "data//maps/NavelRock_Entrance/scripts.pory"
+NavelRock_Entance_Text_OakPostBattle:
+# 97 "data//maps/NavelRock_Entrance/scripts.pory"
+	.string "Did you hear that?\p"
+# 98 "data//maps/NavelRock_Entrance/scripts.pory"
+	.string "I think LUGIA is here on the\n"
+# 99 "data//maps/NavelRock_Entrance/scripts.pory"
+	.string "island!\p"
+# 100 "data//maps/NavelRock_Entrance/scripts.pory"
 	.string "LUGIA probably roosts deep under\n"
-# 106 "data//maps/NavelRock_Entrance/scripts.pory"
+# 101 "data//maps/NavelRock_Entrance/scripts.pory"
 	.string "NAVEL ROCK, close to the water.\p"
-# 107 "data//maps/NavelRock_Entrance/scripts.pory"
+# 102 "data//maps/NavelRock_Entrance/scripts.pory"
 	.string "{PLAYER}, will you go find LUGIA?\p"
-# 108 "data//maps/NavelRock_Entrance/scripts.pory"
+# 103 "data//maps/NavelRock_Entrance/scripts.pory"
 	.string "I'd very much appreciate the\n"
-# 109 "data//maps/NavelRock_Entrance/scripts.pory"
+# 104 "data//maps/NavelRock_Entrance/scripts.pory"
 	.string "opportunity to study its POKéDEX\l"
-# 110 "data//maps/NavelRock_Entrance/scripts.pory"
+# 105 "data//maps/NavelRock_Entrance/scripts.pory"
 	.string "data.$"
+# 106 "data//maps/NavelRock_Entrance/scripts.pory"
+
+# 107 "data//maps/NavelRock_Entrance/scripts.pory"
+NavelRock_Entance_Text_OakFindLugia:
+# 108 "data//maps/NavelRock_Entrance/scripts.pory"
+	.string "LUGIA probably roosts deep under\n"
+# 109 "data//maps/NavelRock_Entrance/scripts.pory"
+	.string "NAVEL ROCK, close to the water.\p"
+# 110 "data//maps/NavelRock_Entrance/scripts.pory"
+	.string "{PLAYER}, will you go find LUGIA?\p"
+# 111 "data//maps/NavelRock_Entrance/scripts.pory"
+	.string "I'd very much appreciate the\n"
+# 112 "data//maps/NavelRock_Entrance/scripts.pory"
+	.string "opportunity to study its POKéDEX\l"
+# 113 "data//maps/NavelRock_Entrance/scripts.pory"
+	.string "data.$"
+
+NavelRock_Entrance_EventScript_Wallace::
+# 118 "data//maps/NavelRock_Entrance/scripts.pory"
+	lock
+# 119 "data//maps/NavelRock_Entrance/scripts.pory"
+	faceplayer
+# 120 "data//maps/NavelRock_Entrance/scripts.pory"
+	goto_if_defeated TRAINER_WALLACE_NAVEL_ROCK, NavelRock_Entrance_EventScript_WallaceFindHooh
+# 121 "data//maps/NavelRock_Entrance/scripts.pory"
+	msgbox NavelRock_Entrance_EventScript_Wallace_Text_0, MSGBOX_YESNO
+# 123 "data//maps/NavelRock_Entrance/scripts.pory"
+	compare VAR_RESULT, NO
+	goto_if_eq NavelRock_Entrance_EventScript_Wallace_2
+# 129 "data//maps/NavelRock_Entrance/scripts.pory"
+	call NavelRock_Entrance_EventScript_CheckForBeasts
+# 130 "data//maps/NavelRock_Entrance/scripts.pory"
+	release
+	return
+
+NavelRock_Entrance_EventScript_Wallace_2:
+# 124 "data//maps/NavelRock_Entrance/scripts.pory"
+	msgbox NavelRock_Entrance_EventScript_Wallace_Text_1, MSGBOX_DEFAULT
+# 126 "data//maps/NavelRock_Entrance/scripts.pory"
+	release
+	end
+
+
+NavelRock_Entrance_EventScript_WallaceFindHooh::
+# 134 "data//maps/NavelRock_Entrance/scripts.pory"
+	goto_if_set FLAG_DEFEATED_HO_OH, NavelRock_Entrance_EventScript_WallaceFindHooh_2
+# 142 "data//maps/NavelRock_Entrance/scripts.pory"
+	msgbox NavelRock_Entrance_EventScript_WallaceFindHooh_Text_1, MSGBOX_DEFAULT
+# 145 "data//maps/NavelRock_Entrance/scripts.pory"
+	release
+	end
+
+NavelRock_Entrance_EventScript_WallaceFindHooh_2:
+# 135 "data//maps/NavelRock_Entrance/scripts.pory"
+	msgbox NavelRock_Entrance_EventScript_WallaceFindHooh_Text_0, MSGBOX_DEFAULT
+# 139 "data//maps/NavelRock_Entrance/scripts.pory"
+	release
+	end
+
+
+NavelRock_Entrance_EventScript_CheckForBeasts::
+# 150 "data//maps/NavelRock_Entrance/scripts.pory"
+	checkspecies SPECIES_RAIKOU, NO_PARTY_SCREEN
+# 151 "data//maps/NavelRock_Entrance/scripts.pory"
+	copyvar VAR_TEMP_A, VAR_RESULT
+# 152 "data//maps/NavelRock_Entrance/scripts.pory"
+	checkspecies SPECIES_ENTEI, NO_PARTY_SCREEN
+# 153 "data//maps/NavelRock_Entrance/scripts.pory"
+	copyvar VAR_TEMP_B, VAR_RESULT
+# 154 "data//maps/NavelRock_Entrance/scripts.pory"
+	checkspecies SPECIES_SUICUNE, NO_PARTY_SCREEN
+# 155 "data//maps/NavelRock_Entrance/scripts.pory"
+	copyvar VAR_TEMP_C, VAR_RESULT
+# 156 "data//maps/NavelRock_Entrance/scripts.pory"
+	compare VAR_TEMP_A, 0
+	goto_if_ne NavelRock_Entrance_EventScript_CheckForBeasts_4
+NavelRock_Entrance_EventScript_CheckForBeasts_1:
+# 207 "data//maps/NavelRock_Entrance/scripts.pory"
+	msgbox NavelRock_Entrance_EventScript_CheckForBeasts_Text_5, MSGBOX_DEFAULT
+# 209 "data//maps/NavelRock_Entrance/scripts.pory"
+	release
+	end
+
+NavelRock_Entrance_EventScript_CheckForBeasts_2:
+# 157 "data//maps/NavelRock_Entrance/scripts.pory"
+	msgbox NavelRock_Entrance_EventScript_CheckForBeasts_Text_0, MSGBOX_DEFAULT
+# 166 "data//maps/NavelRock_Entrance/scripts.pory"
+	msgbox NavelRock_Entrance_EventScript_CheckForBeasts_Text_1, MSGBOX_YESNO
+# 167 "data//maps/NavelRock_Entrance/scripts.pory"
+	compare VAR_RESULT, YES
+	goto_if_eq NavelRock_Entrance_EventScript_CheckForBeasts_8
+# 200 "data//maps/NavelRock_Entrance/scripts.pory"
+	msgbox NavelRock_Entrance_EventScript_CheckForBeasts_Text_4, MSGBOX_DEFAULT
+# 203 "data//maps/NavelRock_Entrance/scripts.pory"
+	release
+	end
+
+NavelRock_Entrance_EventScript_CheckForBeasts_3:
+# 156 "data//maps/NavelRock_Entrance/scripts.pory"
+	compare VAR_TEMP_C, 0
+	goto_if_ne NavelRock_Entrance_EventScript_CheckForBeasts_2
+	goto NavelRock_Entrance_EventScript_CheckForBeasts_1
+
+NavelRock_Entrance_EventScript_CheckForBeasts_4:
+# 156 "data//maps/NavelRock_Entrance/scripts.pory"
+	compare VAR_TEMP_B, 0
+	goto_if_ne NavelRock_Entrance_EventScript_CheckForBeasts_3
+	goto NavelRock_Entrance_EventScript_CheckForBeasts_1
+
+NavelRock_Entrance_EventScript_CheckForBeasts_8:
+# 168 "data//maps/NavelRock_Entrance/scripts.pory"
+	msgbox NavelRock_Entrance_EventScript_CheckForBeasts_Text_2, MSGBOX_DEFAULT
+# 170 "data//maps/NavelRock_Entrance/scripts.pory"
+	trainerbattle_no_intro TRAINER_WALLACE_NAVEL_ROCK, NavelRock_Entance_Text_WallaceEndBattle
+# 171 "data//maps/NavelRock_Entrance/scripts.pory"
+	closemessage
+# 172 "data//maps/NavelRock_Entrance/scripts.pory"
+	delay 60
+# 173 "data//maps/NavelRock_Entrance/scripts.pory"
+	playmoncry SPECIES_HO_OH, CRY_MODE_ENCOUNTER
+# 174 "data//maps/NavelRock_Entrance/scripts.pory"
+	setvar VAR_0x8004, 0
+# 175 "data//maps/NavelRock_Entrance/scripts.pory"
+	setvar VAR_0x8005, 3
+# 176 "data//maps/NavelRock_Entrance/scripts.pory"
+	setvar VAR_0x8006, 4
+# 177 "data//maps/NavelRock_Entrance/scripts.pory"
+	setvar VAR_0x8007, 2
+# 178 "data//maps/NavelRock_Entrance/scripts.pory"
+	special ShakeCamera
+# 179 "data//maps/NavelRock_Entrance/scripts.pory"
+	delay 30
+# 180 "data//maps/NavelRock_Entrance/scripts.pory"
+	playmoncry SPECIES_HO_OH, CRY_MODE_ENCOUNTER
+# 181 "data//maps/NavelRock_Entrance/scripts.pory"
+	setvar VAR_0x8004, 0
+# 182 "data//maps/NavelRock_Entrance/scripts.pory"
+	setvar VAR_0x8005, 3
+# 183 "data//maps/NavelRock_Entrance/scripts.pory"
+	setvar VAR_0x8006, 4
+# 184 "data//maps/NavelRock_Entrance/scripts.pory"
+	setvar VAR_0x8007, 2
+# 185 "data//maps/NavelRock_Entrance/scripts.pory"
+	special ShakeCamera
+# 186 "data//maps/NavelRock_Entrance/scripts.pory"
+	delay 30
+# 187 "data//maps/NavelRock_Entrance/scripts.pory"
+	delay 50
+# 188 "data//maps/NavelRock_Entrance/scripts.pory"
+	waitse
+# 189 "data//maps/NavelRock_Entrance/scripts.pory"
+	playmoncry SPECIES_HO_OH, CRY_MODE_ENCOUNTER
+# 190 "data//maps/NavelRock_Entrance/scripts.pory"
+	waitmoncry
+# 191 "data//maps/NavelRock_Entrance/scripts.pory"
+	delay 20
+# 192 "data//maps/NavelRock_Entrance/scripts.pory"
+	msgbox NavelRock_Entrance_EventScript_CheckForBeasts_Text_3, MSGBOX_DEFAULT
+# 196 "data//maps/NavelRock_Entrance/scripts.pory"
+	release
+	end
+
 
 NavelRock_Entrance_EventScript_WaitForLugia::
-# 115 "data//maps/NavelRock_Entrance/scripts.pory"
+# 214 "data//maps/NavelRock_Entrance/scripts.pory"
 	msgbox NavelRock_Entrance_EventScript_WaitForLugia_Text_0, MSGBOX_DEFAULT
-# 120 "data//maps/NavelRock_Entrance/scripts.pory"
+# 219 "data//maps/NavelRock_Entrance/scripts.pory"
 	release
 	end
 
 
 NavelRock_Entrance_EventScript_CheckForBirds::
-# 125 "data//maps/NavelRock_Entrance/scripts.pory"
+# 224 "data//maps/NavelRock_Entrance/scripts.pory"
 	checkspecies SPECIES_ARTICUNO, NO_PARTY_SCREEN
-# 126 "data//maps/NavelRock_Entrance/scripts.pory"
+# 225 "data//maps/NavelRock_Entrance/scripts.pory"
 	copyvar VAR_TEMP_A, VAR_RESULT
-# 127 "data//maps/NavelRock_Entrance/scripts.pory"
+# 226 "data//maps/NavelRock_Entrance/scripts.pory"
 	checkspecies SPECIES_ZAPDOS, NO_PARTY_SCREEN
-# 128 "data//maps/NavelRock_Entrance/scripts.pory"
+# 227 "data//maps/NavelRock_Entrance/scripts.pory"
 	copyvar VAR_TEMP_B, VAR_RESULT
-# 129 "data//maps/NavelRock_Entrance/scripts.pory"
+# 228 "data//maps/NavelRock_Entrance/scripts.pory"
 	checkspecies SPECIES_MOLTRES, NO_PARTY_SCREEN
-# 130 "data//maps/NavelRock_Entrance/scripts.pory"
+# 229 "data//maps/NavelRock_Entrance/scripts.pory"
 	copyvar VAR_TEMP_C, VAR_RESULT
-# 131 "data//maps/NavelRock_Entrance/scripts.pory"
+# 230 "data//maps/NavelRock_Entrance/scripts.pory"
 	compare VAR_TEMP_A, 0
 	goto_if_ne NavelRock_Entrance_EventScript_CheckForBirds_4
 NavelRock_Entrance_EventScript_CheckForBirds_1:
-# 166 "data//maps/NavelRock_Entrance/scripts.pory"
+# 265 "data//maps/NavelRock_Entrance/scripts.pory"
 	msgbox NavelRock_Entrance_EventScript_CheckForBirds_Text_0, MSGBOX_DEFAULT
-# 170 "data//maps/NavelRock_Entrance/scripts.pory"
+# 269 "data//maps/NavelRock_Entrance/scripts.pory"
 	release
 	return
 
 NavelRock_Entrance_EventScript_CheckForBirds_2:
-# 132 "data//maps/NavelRock_Entrance/scripts.pory"
+# 231 "data//maps/NavelRock_Entrance/scripts.pory"
 	msgbox NavelRock_Entance_Text_OakExplain
-# 133 "data//maps/NavelRock_Entrance/scripts.pory"
+# 232 "data//maps/NavelRock_Entrance/scripts.pory"
 	msgbox NavelRock_Entance_Text_OakAskToBattle, MSGBOX_YESNO
-# 134 "data//maps/NavelRock_Entrance/scripts.pory"
+# 233 "data//maps/NavelRock_Entrance/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq NavelRock_Entrance_EventScript_CheckForBirds_8
-# 161 "data//maps/NavelRock_Entrance/scripts.pory"
+# 260 "data//maps/NavelRock_Entrance/scripts.pory"
 	msgbox NavelRock_Entrance_Text_OakPrepareForBattle
-# 162 "data//maps/NavelRock_Entrance/scripts.pory"
+# 261 "data//maps/NavelRock_Entrance/scripts.pory"
 	release
 	end
 
 NavelRock_Entrance_EventScript_CheckForBirds_3:
-# 131 "data//maps/NavelRock_Entrance/scripts.pory"
+# 230 "data//maps/NavelRock_Entrance/scripts.pory"
 	compare VAR_TEMP_C, 0
 	goto_if_ne NavelRock_Entrance_EventScript_CheckForBirds_2
 	goto NavelRock_Entrance_EventScript_CheckForBirds_1
 
 NavelRock_Entrance_EventScript_CheckForBirds_4:
-# 131 "data//maps/NavelRock_Entrance/scripts.pory"
+# 230 "data//maps/NavelRock_Entrance/scripts.pory"
 	compare VAR_TEMP_B, 0
 	goto_if_ne NavelRock_Entrance_EventScript_CheckForBirds_3
 	goto NavelRock_Entrance_EventScript_CheckForBirds_1
 
 NavelRock_Entrance_EventScript_CheckForBirds_8:
-# 135 "data//maps/NavelRock_Entrance/scripts.pory"
+# 234 "data//maps/NavelRock_Entrance/scripts.pory"
 	msgbox NavelRock_Entance_Text_OakStartBattle
-# 136 "data//maps/NavelRock_Entrance/scripts.pory"
+# 235 "data//maps/NavelRock_Entrance/scripts.pory"
 	trainerbattle_no_intro TRAINER_OAK_NAVEL_ROCK, NavelRock_Entance_Text_OakEndBattle
-# 137 "data//maps/NavelRock_Entrance/scripts.pory"
+# 236 "data//maps/NavelRock_Entrance/scripts.pory"
 	playmoncry SPECIES_LUGIA, CRY_MODE_ENCOUNTER
-# 138 "data//maps/NavelRock_Entrance/scripts.pory"
+# 237 "data//maps/NavelRock_Entrance/scripts.pory"
 	setvar VAR_0x8004, 0
-# 139 "data//maps/NavelRock_Entrance/scripts.pory"
+# 238 "data//maps/NavelRock_Entrance/scripts.pory"
 	setvar VAR_0x8005, 3
-# 140 "data//maps/NavelRock_Entrance/scripts.pory"
+# 239 "data//maps/NavelRock_Entrance/scripts.pory"
 	setvar VAR_0x8006, 4
-# 141 "data//maps/NavelRock_Entrance/scripts.pory"
+# 240 "data//maps/NavelRock_Entrance/scripts.pory"
 	setvar VAR_0x8007, 2
-# 142 "data//maps/NavelRock_Entrance/scripts.pory"
+# 241 "data//maps/NavelRock_Entrance/scripts.pory"
 	special ShakeCamera
-# 143 "data//maps/NavelRock_Entrance/scripts.pory"
+# 242 "data//maps/NavelRock_Entrance/scripts.pory"
 	delay 30
-# 144 "data//maps/NavelRock_Entrance/scripts.pory"
+# 243 "data//maps/NavelRock_Entrance/scripts.pory"
 	playmoncry SPECIES_LUGIA, CRY_MODE_ENCOUNTER
-# 145 "data//maps/NavelRock_Entrance/scripts.pory"
+# 244 "data//maps/NavelRock_Entrance/scripts.pory"
 	setvar VAR_0x8004, 0
-# 146 "data//maps/NavelRock_Entrance/scripts.pory"
+# 245 "data//maps/NavelRock_Entrance/scripts.pory"
 	setvar VAR_0x8005, 3
-# 147 "data//maps/NavelRock_Entrance/scripts.pory"
+# 246 "data//maps/NavelRock_Entrance/scripts.pory"
 	setvar VAR_0x8006, 4
-# 148 "data//maps/NavelRock_Entrance/scripts.pory"
+# 247 "data//maps/NavelRock_Entrance/scripts.pory"
 	setvar VAR_0x8007, 2
-# 149 "data//maps/NavelRock_Entrance/scripts.pory"
+# 248 "data//maps/NavelRock_Entrance/scripts.pory"
 	special ShakeCamera
-# 150 "data//maps/NavelRock_Entrance/scripts.pory"
+# 249 "data//maps/NavelRock_Entrance/scripts.pory"
 	delay 30
-# 151 "data//maps/NavelRock_Entrance/scripts.pory"
+# 250 "data//maps/NavelRock_Entrance/scripts.pory"
 	delay 50
-# 152 "data//maps/NavelRock_Entrance/scripts.pory"
+# 251 "data//maps/NavelRock_Entrance/scripts.pory"
 	waitse
-# 153 "data//maps/NavelRock_Entrance/scripts.pory"
+# 252 "data//maps/NavelRock_Entrance/scripts.pory"
 	playmoncry SPECIES_LUGIA, CRY_MODE_ENCOUNTER
-# 154 "data//maps/NavelRock_Entrance/scripts.pory"
+# 253 "data//maps/NavelRock_Entrance/scripts.pory"
 	waitmoncry
-# 155 "data//maps/NavelRock_Entrance/scripts.pory"
+# 254 "data//maps/NavelRock_Entrance/scripts.pory"
 	delay 20
-# 156 "data//maps/NavelRock_Entrance/scripts.pory"
+# 255 "data//maps/NavelRock_Entrance/scripts.pory"
 	msgbox NavelRock_Entance_Text_OakPostBattle
-# 157 "data//maps/NavelRock_Entrance/scripts.pory"
+# 256 "data//maps/NavelRock_Entrance/scripts.pory"
 	release
 	end
 
 
+NavelRock_Entrance_EventScript_Wallace_Text_0:
+# 121 "data//maps/NavelRock_Entrance/scripts.pory"
+	.string "WALLACE: {PLAYER},\n"
+	.string "you made it.\p"
+	.string "Did you bring the LEGENDARY BEAST\n"
+	.string "POKéMON?$"
+
+NavelRock_Entrance_EventScript_Wallace_Text_1:
+# 124 "data//maps/NavelRock_Entrance/scripts.pory"
+	.string "Meet me at this location with your\n"
+	.string "LEGENDARY BEAST POKéMON.\p"
+	.string "At that time, we'll conduct a fierce\n"
+	.string "POKéMON battle.\p"
+	.string "$"
+
+NavelRock_Entrance_EventScript_WallaceFindHooh_Text_0:
+# 135 "data//maps/NavelRock_Entrance/scripts.pory"
+	.string "Hm?\l"
+	.string "You think you defeated HO-OH?\p"
+	.string "HO-OH is like a force of nature,\n"
+	.string "{PLAYER}\p"
+	.string "It may subside temporarily, but not\n"
+	.string "forever.\p"
+	.string "I'm sure HO-OH will return to roost\n"
+	.string "soon.$"
+
+NavelRock_Entrance_EventScript_WallaceFindHooh_Text_1:
+# 142 "data//maps/NavelRock_Entrance/scripts.pory"
+	.string "HO-OH probably roosts high atop\n"
+	.string "NAVEL ROCK\p"
+	.string "{PLAYER}, will you go find HO-OH?\p"
+	.string "Surely it is your destiny as the gifted\n"
+	.string "TRAINER who tamed all three LEGENDARY\l"
+	.string "BEASTS…\p"
+	.string "Yes,\n"
+	.string "I truly believe you can even tame\l"
+	.string "HO-OH.$"
+
+NavelRock_Entrance_EventScript_CheckForBeasts_Text_0:
+# 157 "data//maps/NavelRock_Entrance/scripts.pory"
+	.string "Good, you did indeed.\pNow {PLAYER}, this is NAVEL ROCK.\p"
+	.string "Some very rare and powerful POKéMON\n"
+	.string "are known to roost here.\p"
+	.string "One such POKéMON, HO-OH, is said\n"
+	.string "to have a connection to your\l"
+	.string "LEGENDARY BEAST POKéMON.\p"
+	.string "It's my hope that by invoking your\n"
+	.string "POKéMON's full power through fierce combat,\l"
+	.string "we can summon HO-OH.$"
+
+NavelRock_Entrance_EventScript_CheckForBeasts_Text_1:
+# 166 "data//maps/NavelRock_Entrance/scripts.pory"
+	.string "{PLAYER}…\lWill you battle me here?$"
+
+NavelRock_Entrance_EventScript_CheckForBeasts_Text_2:
+# 168 "data//maps/NavelRock_Entrance/scripts.pory"
+	.string "Then brace yourself.\p"
+	.string "Our torrential assault won't be\n"
+	.string "restrained as in official League\l"
+	.string "battles.\p"
+	.string "No, {PLAYER}\l"
+	.string "This is our full power!$"
+
+NavelRock_Entrance_EventScript_CheckForBeasts_Text_3:
+# 192 "data//maps/NavelRock_Entrance/scripts.pory"
+	.string "Did you hear that?\p"
+	.string "That must have been HO-OH!\p"
+	.string "HO-OH probably roosts high atop\n"
+	.string "NAVEL ROCK\p"
+	.string "{PLAYER}, will you go find HO-OH?\p"
+	.string "Surely it is your destiny as the gifted\n"
+	.string "TRAINER who tamed all three LEGENDARY\l"
+	.string "BEASTS…\p"
+	.string "Yes,\n"
+	.string "I truly believe you can even tame\l"
+	.string "HO-OH.$"
+
+NavelRock_Entrance_EventScript_CheckForBeasts_Text_4:
+# 200 "data//maps/NavelRock_Entrance/scripts.pory"
+	.string "If we're going to summon HO-OH, we'll\n"
+	.string "need to battle with our full strength.\p"
+	.string "No, this won't be like the regulated\n"
+	.string "battles under the League's purview…\p"
+	.string "You'll need to be ready for a torrential\n"
+	.string "assault.$"
+
+NavelRock_Entrance_EventScript_CheckForBeasts_Text_5:
+# 207 "data//maps/NavelRock_Entrance/scripts.pory"
+	.string "Don't bluff me, {PLAYER}.\p"
+	.string "Meet me here with the three LEGENDARY\n"
+	.string "BEAST POKéMON so we can engage in\l"
+	.string "unrestrained combat!$"
+
 NavelRock_Entrance_EventScript_WaitForLugia_Text_0:
-# 115 "data//maps/NavelRock_Entrance/scripts.pory"
+# 214 "data//maps/NavelRock_Entrance/scripts.pory"
 	.string "What's that?\lYou saw LUGIA?\p"
 	.string "But you think you killed it??\p"
 	.string "Don't worry, {PLAYER}, A LEGENDARY POKéMON\nlike LUGIA Can't be killed\p"
@@ -335,7 +575,7 @@ NavelRock_Entrance_EventScript_WaitForLugia_Text_0:
 	.string "It's a minor setback to be sure, but I'm\ncertain if we give it time that LUGIA\lwill be back to roost here.$"
 
 NavelRock_Entrance_EventScript_CheckForBirds_Text_0:
-# 166 "data//maps/NavelRock_Entrance/scripts.pory"
+# 265 "data//maps/NavelRock_Entrance/scripts.pory"
 	.string "Hmm?\p"
 	.string "Come on, {PLAYER}, we're on the cusp\n"
 	.string "of a breakthrough.\p"

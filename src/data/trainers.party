@@ -18607,6 +18607,107 @@ IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 - Calm Mind  
 - Ice Beam  
 
+=== TRAINER_WALLACE_NAVEL_ROCK ===
+Name: WALLACE
+Class: rival
+Pic: Champion Wallace
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability / Smart Switching
+Party Size: 6
+Pool Rules: Boss Species Clause
+Pool Pick Functions: Default
+
+Samurott-Hisui @ Assault Vest
+Level: 60
+Ability: Sharpness
+EVs: 248 HP / 84 SpA / 124 SpD / 52 Spe
+IVs: 20 HP / 20 Atk / 20 Def / 31 SpA / 20 SpD / 31 Spe  
+Modest Nature
+Tags: Lead
+- Ceaseless Edge
+- Aqua Cutter
+- Sucker Punch
+- Flip Turn
+
+Starmie @ Life Orb
+Level: 63
+Ability: Natural Cure
+EVs: 252 SpA / 4 SpD / 252 Spe
+IVs: 31 HP / 20 Atk / 20 Def / 31 SpA / 20 SpD / 31 Spe  
+Timid Nature
+Tags: Tag6
+- Flip Turn
+- Ice Beam
+- Thunderbolt
+- Recover
+
+Greninja @ Expert Belt
+Ability: Battle Bond
+EVs: 252 SpA / 4 SpD / 252 Spe
+IVs: 20 HP / 20 Atk / 20 Def / 31 SpA / 20 SpD / 31 Spe  
+Timid Nature
+Tags: Tag6
+- Surf
+- Dark Pulse
+- Ice Beam
+- Grass Knot
+
+Cloyster @ Focus Sash
+Ability: Skill Link
+EVs: 4 Atk / 252 SpA / 252 Spe
+IVs: 20 HP / 31 Atk / 20 Def / 31 SpA / 20 SpD / 31 Spe  
+Naughty Nature
+- Shell Smash
+- Icicle Spear
+- Rock Blast
+- Hydro Pump
+
+Dragalge @ Black Sludge
+Ability: Adaptability
+EVs: 252 HP / 200 Def / 56 Spe
+IVs: 20 HP / 31 Atk / 20 Def / 31 SpA / 20 SpD / 31 Spe  
+Bold Nature
+Tags: Tag7
+- Sludge Bomb
+- Dragon Tail
+- Toxic Spikes
+- Flip Turn
+
+Tatsugiri-Curly @ Eject Pack
+Ability: Storm Drain
+EVs: 252 SpA / 4 SpD / 252 Spe
+IVs: 20 HP / 20 Atk / 20 Def / 31 SpA / 20 SpD / 31 Spe  
+Modest Nature
+Tags: Tag7
+- Nasty Plot
+- Draco Meteor
+- Surf
+- Rapid Spin
+
+Walrein @ Leftovers
+Ability: Thick Fat
+EVs: 232 HP / 252 Def / 24 SpD
+IVs: 31 HP / 20 Atk / 31 Def / 20 SpA / 20 SpD / 0 Spe  
+Bold Nature
+- Protect
+- Substitute
+- Toxic
+- Surf
+
+Milotic @ Sitrus Berry
+Level: 63
+Ability: Marvel Scale
+EVs: 252 HP / 252 Def / 4 SpD
+IVs: 31 HP / 20 Atk / 31 Def / 20 SpA / 31 SpD / 20 Spe  
+Calm Nature
+Tags: Ace
+- Scald
+- Dragon Tail
+- Flip Turn
+- Recover
+
 === TRAINER_BRAWLY_1B ===
 Name: BRAWLY
 Class: Leader

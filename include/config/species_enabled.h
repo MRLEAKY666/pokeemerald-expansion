@@ -565,7 +565,7 @@
 #define P_FAMILY_CETODDLE                FALSE
 #define P_FAMILY_VELUZA                  FALSE
 #define P_FAMILY_DONDOZO                 FALSE
-#define P_FAMILY_TATSUGIRI               FALSE
+#define P_FAMILY_TATSUGIRI               P_GEN_9_POKEMON
 #define P_FAMILY_GREAT_TUSK              FALSE
 #define P_FAMILY_SCREAM_TAIL             FALSE
 #define P_FAMILY_BRUTE_BONNET            FALSE

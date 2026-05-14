@@ -6,11 +6,18 @@ NavelRock_Entrance_MapScripts::
 NavelRock_Entrance_OnTransition::
 	call_if_eq VAR_BEAST_SPECIES, SPECIES_HO_OH, NavelRock_Entrance_EventScript_ShowWallace
 	call_if_set FLAG_START_LUGIA_QUEST, NavelRock_Entrance_EventScript_TryShowOak
+	setflag FLAG_PROGRESS_BASED_LEVEL_SCALING
 	end
+`
 
-NavelRock_Entrance_EventScript_ShowWallace::
-	clearflag FLAG_HIDE_NAVEL_ROCK_WALLACE
+script NavelRock_Entrance_EventScript_ShowWallace{
+	if (flag(FLAG_HIDE_NAVEL_ROCK_WALLACE)){
+		clearflag(FLAG_HIDE_NAVEL_ROCK_WALLACE)
+	}
 	return
+}
+
+raw`
 
 NavelRock_Entrance_EventScript_TryShowOak::
 	clearflag FLAG_HIDE_NAVEL_ROCK_OAK
@@ -29,12 +36,6 @@ NavelRock_Entrance_EventScript_ProfOak::
 
 NavelRock_Entrance_EventScript_OakBringTheBirds::
 	msgbox NavelRock_Entance_Text_OakBringTheBirds, MSGBOX_DEFAULT
-	release
-	end
-
-NavelRock_Entrance_EventScript_Wallace::
-	lock
-	faceplayer
 	release
 	end
 
@@ -90,6 +91,9 @@ NavelRock_Entance_Text_OakStartBattle:
 NavelRock_Entance_Text_OakEndBattle:
 	.string "Thank you, {PLAYER}!$"
 
+NavelRock_Entance_Text_WallaceEndBattle:
+	.string "{PLAYER}…\lHow spectacular…$"
+
 NavelRock_Entance_Text_OakPostBattle:
 	.string "Did you hear that?\p"
 	.string "I think LUGIA is here on the\n"
@@ -110,6 +114,102 @@ NavelRock_Entance_Text_OakFindLugia:
 	.string "data.$" 
 
 `
+
+script NavelRock_Entrance_EventScript_Wallace{
+	lock
+	faceplayer
+	goto_if_defeated(TRAINER_WALLACE_NAVEL_ROCK, NavelRock_Entrance_EventScript_WallaceFindHooh)
+	msgbox(format("WALLACE: {PLAYER},\nyou made it.\p"
+					"Did you bring the LEGENDARY BEAST POKéMON?"), MSGBOX_YESNO)
+	if (var(VAR_RESULT) == NO){
+		msgbox(format("Meet me at this location with your LEGENDARY BEAST POKéMON.\p"
+						"At that time, we'll conduct a fierce POKéMON battle.\p"), MSGBOX_DEFAULT)
+		release
+		end
+	}
+	call(NavelRock_Entrance_EventScript_CheckForBeasts)
+	release
+}
+
+script NavelRock_Entrance_EventScript_WallaceFindHooh{
+	if (flag(FLAG_DEFEATED_HO_OH)){
+		msgbox(format("Hm?\lYou think you defeated HO-OH?\p"
+						"HO-OH is like a force of nature, {PLAYER}.\p"
+						"It may subside temporarily, but not forever.\p"
+						"I'm sure HO-OH will return to roost soon."), MSGBOX_DEFAULT)
+		release
+		end
+	}
+	msgbox(format("HO-OH probably roosts high atop\nNAVEL ROCK\p{PLAYER}, will you go find HO-OH?\p"
+					"Surely it is your destiny as the gifted TRAINER who tamed all three LEGENDARY BEASTS…\p"
+					"Yes,\nI truly believe you can even tame HO-OH."), MSGBOX_DEFAULT)
+	release
+	end
+}
+
+script NavelRock_Entrance_EventScript_CheckForBeasts{
+	checkspecies(SPECIES_RAIKOU, NO_PARTY_SCREEN)
+	copyvar(VAR_TEMP_A, VAR_RESULT)
+	checkspecies(SPECIES_ENTEI, NO_PARTY_SCREEN)
+	copyvar(VAR_TEMP_B, VAR_RESULT)
+	checkspecies(SPECIES_SUICUNE, NO_PARTY_SCREEN)
+	copyvar(VAR_TEMP_C, VAR_RESULT)
+	if (var(VAR_TEMP_A) && var(VAR_TEMP_B) && var(VAR_TEMP_C)){
+		msgbox("Good, you did indeed.\pNow {PLAYER}, this is NAVEL ROCK.\p"
+						"Some very rare and powerful POKéMON\n"
+						"are known to roost here.\p"
+						"One such POKéMON, HO-OH, is said\n"
+						"to have a connection to your\l"
+						"LEGENDARY BEAST POKéMON.\p"
+						"It's my hope that by invoking your\n"
+						"POKéMON's full power through fierce combat,\l"
+						"we can summon HO-OH.", MSGBOX_DEFAULT)
+		msgbox("{PLAYER}…\lWill you battle me here?", MSGBOX_YESNO)
+		if (var(VAR_RESULT) == YES) {
+			msgbox(format("Then brace yourself.\pOur torrential assault won't be restrained as in official League battles.\p"
+							"No, {PLAYER}\lThis is our full power!"), MSGBOX_DEFAULT)
+			trainerbattle_no_intro(TRAINER_WALLACE_NAVEL_ROCK, NavelRock_Entance_Text_WallaceEndBattle)
+			closemessage
+			delay(60)
+			playmoncry(SPECIES_HO_OH, CRY_MODE_ENCOUNTER)
+			setvar(VAR_0x8004, 0)
+			setvar(VAR_0x8005, 3)  
+			setvar(VAR_0x8006, 4) 
+			setvar(VAR_0x8007, 2)  
+			special(ShakeCamera)
+			delay(30)
+			playmoncry(SPECIES_HO_OH, CRY_MODE_ENCOUNTER)
+			setvar(VAR_0x8004, 0) 
+			setvar(VAR_0x8005, 3) 
+			setvar(VAR_0x8006, 4)
+			setvar(VAR_0x8007, 2)  
+			special(ShakeCamera)
+			delay(30)
+			delay(50)
+			waitse
+			playmoncry(SPECIES_HO_OH, CRY_MODE_ENCOUNTER)
+			waitmoncry
+			delay(20)
+			msgbox(format("Did you hear that?\pThat must have been HO-OH!\p"
+							"HO-OH probably roosts high atop\nNAVEL ROCK\p{PLAYER}, will you go find HO-OH?\p"
+							"Surely it is your destiny as the gifted TRAINER who tamed all three LEGENDARY BEASTS…\p"
+							"Yes,\nI truly believe you can even tame HO-OH."), MSGBOX_DEFAULT)
+			release
+			end
+		}
+		else {
+			msgbox(format("If we're going to summon HO-OH, we'll need to battle with our full strength.\p"
+							"No, this won't be like the regulated battles under the League's purview…\p"
+							"You'll need to be ready for a torrential assault."), MSGBOX_DEFAULT)
+			release
+			end
+		}
+	}
+	msgbox(format("Don't bluff me, {PLAYER}.\p"
+					"Meet me here with the three LEGENDARY BEAST POKéMON so we can engage in unrestrained combat!"), MSGBOX_DEFAULT)
+	release
+	end
+}
 
 script NavelRock_Entrance_EventScript_WaitForLugia{
 	msgbox("What's that?\lYou saw LUGIA?\p"
