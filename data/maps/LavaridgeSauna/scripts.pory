@@ -29,6 +29,7 @@ script LavaridgeSauna_OnResume{
                         "I'm going to have to ask you to leave now."), MSGBOX_DEFAULT)
         closemessage
         warpcontinuescript(MAP_LAVARIDGE_TOWN, 10, 7, LavaridgeTown_EventScript_KickedOutOfSauna)
+        waitstate
     }
 }
 
@@ -108,7 +109,7 @@ script LavaridgeSauna_EventScript_OldMan11{
 }
 
 script LavaridgeSauna_EventScript_FindTunnelManiac{
-    if (flag(FLAG_FOUND_TUNNEL_MANIAC)){ //if you already talked to tunnel maniac this time in the sauna
+    if (flag(FLAG_FOUND_TUNNEL_MANIAC) && var(VAR_TUNNEL_MANIAC_NUMBER) == VAR_CURRENT_OLD_MAN){ //if you already talked to tunnel maniac this time in the sauna and talking to TM again
         if (var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) > 1 && var(VAR_LAVARBOR_TUNNEL_QUEST_STATE) <= 16){ // after you saw the incomplete tunnel, but before giving all 15 digging pokemon 
             if (flag(FLAG_GAVE_TUNNEL_MANIAC_A_MON)){
                 msgbox(format("TUNNEL MANIAC: Ah, you're back.\p"
