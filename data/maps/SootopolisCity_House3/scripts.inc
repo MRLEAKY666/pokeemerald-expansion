@@ -57,27 +57,27 @@ SootopolisCity_House3_EventScript_WallaceCheckBeasts::
 # 43 "data//maps/SootopolisCity_House3/scripts.pory"
 	compare VAR_BEAST_SPECIES, SPECIES_HO_OH
 	goto_if_eq SootopolisCity_House3_EventScript_WallaceCheckBeasts_2
-# 52 "data//maps/SootopolisCity_House3/scripts.pory"
+# 51 "data//maps/SootopolisCity_House3/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq SootopolisCity_House3_EventScript_WallaceCheckBeasts_5
-# 296 "data//maps/SootopolisCity_House3/scripts.pory"
+# 295 "data//maps/SootopolisCity_House3/scripts.pory"
 	switch VAR_BEAST_SPECIES
-# 297 "data//maps/SootopolisCity_House3/scripts.pory"
+# 296 "data//maps/SootopolisCity_House3/scripts.pory"
 	case SPECIES_SUICUNE, SootopolisCity_House3_EventScript_WallaceCheckBeasts_16
-# 302 "data//maps/SootopolisCity_House3/scripts.pory"
+# 301 "data//maps/SootopolisCity_House3/scripts.pory"
 	case SPECIES_RAIKOU, SootopolisCity_House3_EventScript_WallaceCheckBeasts_17
-# 308 "data//maps/SootopolisCity_House3/scripts.pory"
+# 307 "data//maps/SootopolisCity_House3/scripts.pory"
 	case SPECIES_ENTEI, SootopolisCity_House3_EventScript_WallaceCheckBeasts_18
-# 315 "data//maps/SootopolisCity_House3/scripts.pory"
+# 314 "data//maps/SootopolisCity_House3/scripts.pory"
 	bufferspeciesname STR_VAR_1, VAR_BEAST_SPECIES
-# 316 "data//maps/SootopolisCity_House3/scripts.pory"
+# 315 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_32, MSGBOX_DEFAULT
 	return
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_2:
 # 44 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_0, MSGBOX_DEFAULT
-# 49 "data//maps/SootopolisCity_House3/scripts.pory"
+# 48 "data//maps/SootopolisCity_House3/scripts.pory"
 	release
 	end
 
@@ -85,1436 +85,1436 @@ SootopolisCity_House3_EventScript_WallaceCheckBeasts_4:
 	return
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_5:
-# 53 "data//maps/SootopolisCity_House3/scripts.pory"
+# 52 "data//maps/SootopolisCity_House3/scripts.pory"
 	switch VAR_BEAST_SPECIES
-# 54 "data//maps/SootopolisCity_House3/scripts.pory"
+# 53 "data//maps/SootopolisCity_House3/scripts.pory"
 	case SPECIES_SUICUNE, SootopolisCity_House3_EventScript_WallaceCheckBeasts_10
-# 58 "data//maps/SootopolisCity_House3/scripts.pory"
+# 57 "data//maps/SootopolisCity_House3/scripts.pory"
 	case SPECIES_RAIKOU, SootopolisCity_House3_EventScript_WallaceCheckBeasts_11
-# 63 "data//maps/SootopolisCity_House3/scripts.pory"
+# 62 "data//maps/SootopolisCity_House3/scripts.pory"
 	case SPECIES_ENTEI, SootopolisCity_House3_EventScript_WallaceCheckBeasts_12
-# 69 "data//maps/SootopolisCity_House3/scripts.pory"
+# 68 "data//maps/SootopolisCity_House3/scripts.pory"
 	bufferspeciesname STR_VAR_1, VAR_BEAST_SPECIES
-# 70 "data//maps/SootopolisCity_House3/scripts.pory"
+# 69 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_4, MSGBOX_DEFAULT
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_8:
-# 73 "data//maps/SootopolisCity_House3/scripts.pory"
+# 72 "data//maps/SootopolisCity_House3/scripts.pory"
 	getcaughtmon VAR_BEAST_SPECIES
-# 74 "data//maps/SootopolisCity_House3/scripts.pory"
+# 73 "data//maps/SootopolisCity_House3/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq SootopolisCity_House3_EventScript_WallaceCheckBeasts_20
-# 227 "data//maps/SootopolisCity_House3/scripts.pory"
+# 226 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_set FLAG_WALLACE_SHOWED_BEAST, SootopolisCity_House3_EventScript_WallaceCheckBeasts_33
+# 244 "data//maps/SootopolisCity_House3/scripts.pory"
+	closemessage
 # 245 "data//maps/SootopolisCity_House3/scripts.pory"
-	closemessage
-# 246 "data//maps/SootopolisCity_House3/scripts.pory"
 	delay 60
-# 247 "data//maps/SootopolisCity_House3/scripts.pory"
+# 246 "data//maps/SootopolisCity_House3/scripts.pory"
 	message SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_5
-# 248 "data//maps/SootopolisCity_House3/scripts.pory"
+# 247 "data//maps/SootopolisCity_House3/scripts.pory"
 	waitmessage
+# 248 "data//maps/SootopolisCity_House3/scripts.pory"
+	delay 30
 # 249 "data//maps/SootopolisCity_House3/scripts.pory"
-	delay 30
-# 250 "data//maps/SootopolisCity_House3/scripts.pory"
 	closemessage
-# 251 "data//maps/SootopolisCity_House3/scripts.pory"
+# 250 "data//maps/SootopolisCity_House3/scripts.pory"
 	delay 30
-# 252 "data//maps/SootopolisCity_House3/scripts.pory"
+# 251 "data//maps/SootopolisCity_House3/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_ExclamationMark
-# 253 "data//maps/SootopolisCity_House3/scripts.pory"
+# 252 "data//maps/SootopolisCity_House3/scripts.pory"
 	playse SE_PIN
-# 254 "data//maps/SootopolisCity_House3/scripts.pory"
+# 253 "data//maps/SootopolisCity_House3/scripts.pory"
 	waitmovement
-# 255 "data//maps/SootopolisCity_House3/scripts.pory"
+# 254 "data//maps/SootopolisCity_House3/scripts.pory"
 	switch VAR_BEAST_SPECIES
-# 256 "data//maps/SootopolisCity_House3/scripts.pory"
+# 255 "data//maps/SootopolisCity_House3/scripts.pory"
 	case SPECIES_SUICUNE, SootopolisCity_House3_EventScript_WallaceCheckBeasts_49
-# 259 "data//maps/SootopolisCity_House3/scripts.pory"
+# 258 "data//maps/SootopolisCity_House3/scripts.pory"
 	case SPECIES_RAIKOU, SootopolisCity_House3_EventScript_WallaceCheckBeasts_50
-# 262 "data//maps/SootopolisCity_House3/scripts.pory"
+# 261 "data//maps/SootopolisCity_House3/scripts.pory"
 	case SPECIES_ENTEI, SootopolisCity_House3_EventScript_WallaceCheckBeasts_51
-# 266 "data//maps/SootopolisCity_House3/scripts.pory"
+# 265 "data//maps/SootopolisCity_House3/scripts.pory"
 	bufferspeciesname STR_VAR_1, VAR_BEAST_SPECIES
-# 267 "data//maps/SootopolisCity_House3/scripts.pory"
+# 266 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_26, MSGBOX_DEFAULT
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_32:
-# 271 "data//maps/SootopolisCity_House3/scripts.pory"
+# 270 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_set FLAG_NO_ACTIVE_BEAST, SootopolisCity_House3_EventScript_WallaceCheckBeasts_40
-# 289 "data//maps/SootopolisCity_House3/scripts.pory"
+# 288 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_28, MSGBOX_DEFAULT
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_39:
 	return
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_10:
-# 55 "data//maps/SootopolisCity_House3/scripts.pory"
+# 54 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_1, MSGBOX_DEFAULT
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_8
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_11:
-# 59 "data//maps/SootopolisCity_House3/scripts.pory"
+# 58 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_2, MSGBOX_DEFAULT
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_8
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_12:
-# 64 "data//maps/SootopolisCity_House3/scripts.pory"
+# 63 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_3, MSGBOX_DEFAULT
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_8
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_14:
-# 320 "data//maps/SootopolisCity_House3/scripts.pory"
+# 319 "data//maps/SootopolisCity_House3/scripts.pory"
 	bufferspeciesname STR_VAR_1, VAR_BEAST_SPECIES
-# 321 "data//maps/SootopolisCity_House3/scripts.pory"
+# 320 "data//maps/SootopolisCity_House3/scripts.pory"
 	delay 30
-# 322 "data//maps/SootopolisCity_House3/scripts.pory"
+# 321 "data//maps/SootopolisCity_House3/scripts.pory"
 	showmonpic VAR_BEAST_SPECIES, 10, 3
-# 323 "data//maps/SootopolisCity_House3/scripts.pory"
+# 322 "data//maps/SootopolisCity_House3/scripts.pory"
 	playmoncry VAR_BEAST_SPECIES, CRY_MODE_NORMAL
-# 324 "data//maps/SootopolisCity_House3/scripts.pory"
+# 323 "data//maps/SootopolisCity_House3/scripts.pory"
 	message SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_17
-# 325 "data//maps/SootopolisCity_House3/scripts.pory"
+# 324 "data//maps/SootopolisCity_House3/scripts.pory"
 	waitmessage
-# 326 "data//maps/SootopolisCity_House3/scripts.pory"
+# 325 "data//maps/SootopolisCity_House3/scripts.pory"
 	waitbuttonpress
-# 327 "data//maps/SootopolisCity_House3/scripts.pory"
+# 326 "data//maps/SootopolisCity_House3/scripts.pory"
 	hidemonpic
-# 329 "data//maps/SootopolisCity_House3/scripts.pory"
+# 328 "data//maps/SootopolisCity_House3/scripts.pory"
 	setseenmon VAR_BEAST_SPECIES
-# 330 "data//maps/SootopolisCity_House3/scripts.pory"
+# 329 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_unset FLAG_WALLACE_SHOWED_BEAST, SootopolisCity_House3_EventScript_WallaceCheckBeasts_24
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_23:
-# 334 "data//maps/SootopolisCity_House3/scripts.pory"
+# 333 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_18, MSGBOX_DEFAULT
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_4
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_16:
-# 298 "data//maps/SootopolisCity_House3/scripts.pory"
+# 297 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_29, MSGBOX_DEFAULT
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_14
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_17:
-# 303 "data//maps/SootopolisCity_House3/scripts.pory"
+# 302 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_30, MSGBOX_DEFAULT
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_14
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_18:
-# 309 "data//maps/SootopolisCity_House3/scripts.pory"
+# 308 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_31, MSGBOX_DEFAULT
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_14
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_20:
+# 74 "data//maps/SootopolisCity_House3/scripts.pory"
+	closemessage
 # 75 "data//maps/SootopolisCity_House3/scripts.pory"
-	closemessage
-# 76 "data//maps/SootopolisCity_House3/scripts.pory"
 	delay 60
-# 77 "data//maps/SootopolisCity_House3/scripts.pory"
+# 76 "data//maps/SootopolisCity_House3/scripts.pory"
 	message SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_5
-# 78 "data//maps/SootopolisCity_House3/scripts.pory"
+# 77 "data//maps/SootopolisCity_House3/scripts.pory"
 	waitmessage
+# 78 "data//maps/SootopolisCity_House3/scripts.pory"
+	delay 30
 # 79 "data//maps/SootopolisCity_House3/scripts.pory"
-	delay 30
-# 80 "data//maps/SootopolisCity_House3/scripts.pory"
 	closemessage
-# 81 "data//maps/SootopolisCity_House3/scripts.pory"
+# 80 "data//maps/SootopolisCity_House3/scripts.pory"
 	delay 30
-# 82 "data//maps/SootopolisCity_House3/scripts.pory"
+# 81 "data//maps/SootopolisCity_House3/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_ExclamationMark
-# 83 "data//maps/SootopolisCity_House3/scripts.pory"
+# 82 "data//maps/SootopolisCity_House3/scripts.pory"
 	playse SE_PIN
-# 84 "data//maps/SootopolisCity_House3/scripts.pory"
+# 83 "data//maps/SootopolisCity_House3/scripts.pory"
 	waitmovement
-# 85 "data//maps/SootopolisCity_House3/scripts.pory"
+# 84 "data//maps/SootopolisCity_House3/scripts.pory"
 	switch VAR_BEAST_SPECIES
-# 86 "data//maps/SootopolisCity_House3/scripts.pory"
+# 85 "data//maps/SootopolisCity_House3/scripts.pory"
 	case SPECIES_SUICUNE, SootopolisCity_House3_EventScript_WallaceCheckBeasts_28
-# 92 "data//maps/SootopolisCity_House3/scripts.pory"
+# 91 "data//maps/SootopolisCity_House3/scripts.pory"
 	case SPECIES_RAIKOU, SootopolisCity_House3_EventScript_WallaceCheckBeasts_29
-# 97 "data//maps/SootopolisCity_House3/scripts.pory"
+# 96 "data//maps/SootopolisCity_House3/scripts.pory"
 	case SPECIES_ENTEI, SootopolisCity_House3_EventScript_WallaceCheckBeasts_30
-# 103 "data//maps/SootopolisCity_House3/scripts.pory"
+# 102 "data//maps/SootopolisCity_House3/scripts.pory"
 	bufferspeciesname STR_VAR_1, VAR_BEAST_SPECIES
-# 104 "data//maps/SootopolisCity_House3/scripts.pory"
+# 103 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_9, MSGBOX_DEFAULT
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_26:
-# 108 "data//maps/SootopolisCity_House3/scripts.pory"
+# 107 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_set FLAG_ROAMING_BEASTS_CAUGHT, SootopolisCity_House3_EventScript_WallaceCheckBeasts_37
+# 175 "data//maps/SootopolisCity_House3/scripts.pory"
+	closemessage
 # 176 "data//maps/SootopolisCity_House3/scripts.pory"
-	closemessage
-# 177 "data//maps/SootopolisCity_House3/scripts.pory"
 	delay 60
-# 178 "data//maps/SootopolisCity_House3/scripts.pory"
+# 177 "data//maps/SootopolisCity_House3/scripts.pory"
 	message SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_5
-# 179 "data//maps/SootopolisCity_House3/scripts.pory"
+# 178 "data//maps/SootopolisCity_House3/scripts.pory"
 	waitmessage
+# 179 "data//maps/SootopolisCity_House3/scripts.pory"
+	delay 30
 # 180 "data//maps/SootopolisCity_House3/scripts.pory"
-	delay 30
-# 181 "data//maps/SootopolisCity_House3/scripts.pory"
 	closemessage
-# 182 "data//maps/SootopolisCity_House3/scripts.pory"
+# 181 "data//maps/SootopolisCity_House3/scripts.pory"
 	delay 30
-# 183 "data//maps/SootopolisCity_House3/scripts.pory"
+# 182 "data//maps/SootopolisCity_House3/scripts.pory"
 	switch VAR_BEAST_SPECIES
-# 184 "data//maps/SootopolisCity_House3/scripts.pory"
+# 183 "data//maps/SootopolisCity_House3/scripts.pory"
 	case SPECIES_RAIKOU, SootopolisCity_House3_EventScript_WallaceCheckBeasts_55
-# 187 "data//maps/SootopolisCity_House3/scripts.pory"
+# 186 "data//maps/SootopolisCity_House3/scripts.pory"
 	case SPECIES_ENTEI, SootopolisCity_House3_EventScript_WallaceCheckBeasts_56
-# 190 "data//maps/SootopolisCity_House3/scripts.pory"
+# 189 "data//maps/SootopolisCity_House3/scripts.pory"
 	case SPECIES_SUICUNE, SootopolisCity_House3_EventScript_WallaceCheckBeasts_57
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_53:
-# 195 "data//maps/SootopolisCity_House3/scripts.pory"
+# 194 "data//maps/SootopolisCity_House3/scripts.pory"
 	bufferspeciesname STR_VAR_1, VAR_BEAST_SPECIES
-# 196 "data//maps/SootopolisCity_House3/scripts.pory"
+# 195 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_set FLAG_CAUGHT_ROAMING_RAIKOU, SootopolisCity_House3_EventScript_WallaceCheckBeasts_73
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_72:
-# 197 "data//maps/SootopolisCity_House3/scripts.pory"
+# 196 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_set FLAG_CAUGHT_ROAMING_RAIKOU, SootopolisCity_House3_EventScript_WallaceCheckBeasts_77
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_76:
-# 198 "data//maps/SootopolisCity_House3/scripts.pory"
+# 197 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_set FLAG_CAUGHT_ROAMING_ENTEI, SootopolisCity_House3_EventScript_WallaceCheckBeasts_80
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_71:
-# 203 "data//maps/SootopolisCity_House3/scripts.pory"
+# 202 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_16, MSGBOX_DEFAULT
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_69:
-# 207 "data//maps/SootopolisCity_House3/scripts.pory"
+# 206 "data//maps/SootopolisCity_House3/scripts.pory"
 	setvar VAR_UNUSED_0x8014, 0
-# 208 "data//maps/SootopolisCity_House3/scripts.pory"
+# 207 "data//maps/SootopolisCity_House3/scripts.pory"
 	special InitRoamer
-# 209 "data//maps/SootopolisCity_House3/scripts.pory"
+# 208 "data//maps/SootopolisCity_House3/scripts.pory"
 	clearflag FLAG_NO_ACTIVE_BEAST
-# 210 "data//maps/SootopolisCity_House3/scripts.pory"
+# 209 "data//maps/SootopolisCity_House3/scripts.pory"
 	delay 30
-# 211 "data//maps/SootopolisCity_House3/scripts.pory"
+# 210 "data//maps/SootopolisCity_House3/scripts.pory"
 	showmonpic VAR_BEAST_SPECIES, 10, 3
-# 212 "data//maps/SootopolisCity_House3/scripts.pory"
+# 211 "data//maps/SootopolisCity_House3/scripts.pory"
 	playmoncry VAR_BEAST_SPECIES, CRY_MODE_NORMAL
-# 213 "data//maps/SootopolisCity_House3/scripts.pory"
+# 212 "data//maps/SootopolisCity_House3/scripts.pory"
 	message SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_17
-# 214 "data//maps/SootopolisCity_House3/scripts.pory"
+# 213 "data//maps/SootopolisCity_House3/scripts.pory"
 	waitmessage
-# 215 "data//maps/SootopolisCity_House3/scripts.pory"
+# 214 "data//maps/SootopolisCity_House3/scripts.pory"
 	waitbuttonpress
-# 216 "data//maps/SootopolisCity_House3/scripts.pory"
+# 215 "data//maps/SootopolisCity_House3/scripts.pory"
 	hidemonpic
-# 218 "data//maps/SootopolisCity_House3/scripts.pory"
+# 217 "data//maps/SootopolisCity_House3/scripts.pory"
 	setseenmon VAR_BEAST_SPECIES
-# 219 "data//maps/SootopolisCity_House3/scripts.pory"
+# 218 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_unset FLAG_WALLACE_SHOWED_BEAST, SootopolisCity_House3_EventScript_WallaceCheckBeasts_88
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_87:
-# 222 "data//maps/SootopolisCity_House3/scripts.pory"
+# 221 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_18, MSGBOX_DEFAULT
 	return
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_24:
-# 331 "data//maps/SootopolisCity_House3/scripts.pory"
+# 330 "data//maps/SootopolisCity_House3/scripts.pory"
 	setflag FLAG_WALLACE_SHOWED_BEAST
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_23
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_28:
-# 87 "data//maps/SootopolisCity_House3/scripts.pory"
+# 86 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_6, MSGBOX_DEFAULT
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_26
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_29:
-# 93 "data//maps/SootopolisCity_House3/scripts.pory"
+# 92 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_7, MSGBOX_DEFAULT
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_26
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_30:
-# 98 "data//maps/SootopolisCity_House3/scripts.pory"
+# 97 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_8, MSGBOX_DEFAULT
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_26
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_33:
-# 228 "data//maps/SootopolisCity_House3/scripts.pory"
+# 227 "data//maps/SootopolisCity_House3/scripts.pory"
 	switch VAR_BEAST_SPECIES
-# 229 "data//maps/SootopolisCity_House3/scripts.pory"
+# 228 "data//maps/SootopolisCity_House3/scripts.pory"
 	case SPECIES_SUICUNE, SootopolisCity_House3_EventScript_WallaceCheckBeasts_44
-# 232 "data//maps/SootopolisCity_House3/scripts.pory"
+# 231 "data//maps/SootopolisCity_House3/scripts.pory"
 	case SPECIES_RAIKOU, SootopolisCity_House3_EventScript_WallaceCheckBeasts_45
-# 235 "data//maps/SootopolisCity_House3/scripts.pory"
+# 234 "data//maps/SootopolisCity_House3/scripts.pory"
 	case SPECIES_ENTEI, SootopolisCity_House3_EventScript_WallaceCheckBeasts_46
-# 239 "data//maps/SootopolisCity_House3/scripts.pory"
+# 238 "data//maps/SootopolisCity_House3/scripts.pory"
 	bufferspeciesname STR_VAR_1, VAR_BEAST_SPECIES
-# 240 "data//maps/SootopolisCity_House3/scripts.pory"
+# 239 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_22, MSGBOX_DEFAULT
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_32
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_37:
-# 109 "data//maps/SootopolisCity_House3/scripts.pory"
+# 108 "data//maps/SootopolisCity_House3/scripts.pory"
 	setvar VAR_BEAST_SPECIES, SPECIES_HO_OH
+# 109 "data//maps/SootopolisCity_House3/scripts.pory"
+	closemessage
 # 110 "data//maps/SootopolisCity_House3/scripts.pory"
-	closemessage
-# 111 "data//maps/SootopolisCity_House3/scripts.pory"
 	delay 60
-# 112 "data//maps/SootopolisCity_House3/scripts.pory"
+# 111 "data//maps/SootopolisCity_House3/scripts.pory"
 	message SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_5
-# 113 "data//maps/SootopolisCity_House3/scripts.pory"
+# 112 "data//maps/SootopolisCity_House3/scripts.pory"
 	waitmessage
+# 113 "data//maps/SootopolisCity_House3/scripts.pory"
+	delay 30
 # 114 "data//maps/SootopolisCity_House3/scripts.pory"
-	delay 30
+	closemessage
 # 115 "data//maps/SootopolisCity_House3/scripts.pory"
-	closemessage
-# 116 "data//maps/SootopolisCity_House3/scripts.pory"
 	delay 30
-# 117 "data//maps/SootopolisCity_House3/scripts.pory"
+# 116 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_10, MSGBOX_DEFAULT
-# 124 "data//maps/SootopolisCity_House3/scripts.pory"
+# 123 "data//maps/SootopolisCity_House3/scripts.pory"
 	closemessage
-# 125 "data//maps/SootopolisCity_House3/scripts.pory"
+# 124 "data//maps/SootopolisCity_House3/scripts.pory"
 	specialvar VAR_RESULT, GetPlayerFacingDirection
-# 126 "data//maps/SootopolisCity_House3/scripts.pory"
+# 125 "data//maps/SootopolisCity_House3/scripts.pory"
 	switch VAR_RESULT
-# 127 "data//maps/SootopolisCity_House3/scripts.pory"
+# 126 "data//maps/SootopolisCity_House3/scripts.pory"
 	case DIR_NORTH, SootopolisCity_House3_EventScript_WallaceCheckBeasts_60
-# 129 "data//maps/SootopolisCity_House3/scripts.pory"
+# 128 "data//maps/SootopolisCity_House3/scripts.pory"
 	case DIR_SOUTH, SootopolisCity_House3_EventScript_WallaceCheckBeasts_61
-# 131 "data//maps/SootopolisCity_House3/scripts.pory"
+# 130 "data//maps/SootopolisCity_House3/scripts.pory"
 	case DIR_EAST, SootopolisCity_House3_EventScript_WallaceCheckBeasts_62
-# 133 "data//maps/SootopolisCity_House3/scripts.pory"
+# 132 "data//maps/SootopolisCity_House3/scripts.pory"
 	case DIR_WEST, SootopolisCity_House3_EventScript_WallaceCheckBeasts_63
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_58:
-# 137 "data//maps/SootopolisCity_House3/scripts.pory"
+# 136 "data//maps/SootopolisCity_House3/scripts.pory"
 	waitmovement
-# 138 "data//maps/SootopolisCity_House3/scripts.pory"
+# 137 "data//maps/SootopolisCity_House3/scripts.pory"
 	delay 20
-# 139 "data//maps/SootopolisCity_House3/scripts.pory"
+# 138 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_set FLAG_SYS_GAME_CLEAR, SootopolisCity_House3_EventScript_WallaceCheckBeasts_84
-# 157 "data//maps/SootopolisCity_House3/scripts.pory"
+# 156 "data//maps/SootopolisCity_House3/scripts.pory"
 	checkitem ITEM_MYSTIC_TICKET
-# 158 "data//maps/SootopolisCity_House3/scripts.pory"
+# 157 "data//maps/SootopolisCity_House3/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq SootopolisCity_House3_EventScript_WallaceCheckBeasts_93
-# 166 "data//maps/SootopolisCity_House3/scripts.pory"
+# 165 "data//maps/SootopolisCity_House3/scripts.pory"
 	giveitem ITEM_MYSTIC_TICKET
-# 167 "data//maps/SootopolisCity_House3/scripts.pory"
+# 166 "data//maps/SootopolisCity_House3/scripts.pory"
 	setflag FLAG_ENABLE_SHIP_NAVEL_ROCK
-# 168 "data//maps/SootopolisCity_House3/scripts.pory"
+# 167 "data//maps/SootopolisCity_House3/scripts.pory"
 	setflag FLAG_RECEIVED_MYSTIC_TICKET
-# 169 "data//maps/SootopolisCity_House3/scripts.pory"
+# 168 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_14, MSGBOX_DEFAULT
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_83:
-# 173 "data//maps/SootopolisCity_House3/scripts.pory"
+# 172 "data//maps/SootopolisCity_House3/scripts.pory"
 	release
 	end
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_40:
-# 272 "data//maps/SootopolisCity_House3/scripts.pory"
+# 271 "data//maps/SootopolisCity_House3/scripts.pory"
 	setvar VAR_UNUSED_0x8014, 0
-# 273 "data//maps/SootopolisCity_House3/scripts.pory"
+# 272 "data//maps/SootopolisCity_House3/scripts.pory"
 	switch VAR_BEAST_SPECIES
-# 274 "data//maps/SootopolisCity_House3/scripts.pory"
+# 273 "data//maps/SootopolisCity_House3/scripts.pory"
 	case SPECIES_ENTEI, SootopolisCity_House3_EventScript_WallaceCheckBeasts_66
-# 276 "data//maps/SootopolisCity_House3/scripts.pory"
+# 275 "data//maps/SootopolisCity_House3/scripts.pory"
 	case SPECIES_RAIKOU, SootopolisCity_House3_EventScript_WallaceCheckBeasts_67
-# 278 "data//maps/SootopolisCity_House3/scripts.pory"
+# 277 "data//maps/SootopolisCity_House3/scripts.pory"
 	case SPECIES_SUICUNE, SootopolisCity_House3_EventScript_WallaceCheckBeasts_68
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_64:
-# 283 "data//maps/SootopolisCity_House3/scripts.pory"
+# 282 "data//maps/SootopolisCity_House3/scripts.pory"
 	special InitRoamer
-# 284 "data//maps/SootopolisCity_House3/scripts.pory"
+# 283 "data//maps/SootopolisCity_House3/scripts.pory"
 	clearflag FLAG_NO_ACTIVE_BEAST
-# 285 "data//maps/SootopolisCity_House3/scripts.pory"
+# 284 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_27, MSGBOX_DEFAULT
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_39
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_44:
-# 230 "data//maps/SootopolisCity_House3/scripts.pory"
+# 229 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_19, MSGBOX_DEFAULT
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_32
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_45:
-# 233 "data//maps/SootopolisCity_House3/scripts.pory"
+# 232 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_20, MSGBOX_DEFAULT
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_32
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_46:
-# 236 "data//maps/SootopolisCity_House3/scripts.pory"
+# 235 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_21, MSGBOX_DEFAULT
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_32
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_49:
-# 257 "data//maps/SootopolisCity_House3/scripts.pory"
+# 256 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_23, MSGBOX_DEFAULT
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_32
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_50:
-# 260 "data//maps/SootopolisCity_House3/scripts.pory"
+# 259 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_24, MSGBOX_DEFAULT
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_32
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_51:
-# 263 "data//maps/SootopolisCity_House3/scripts.pory"
+# 262 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_25, MSGBOX_DEFAULT
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_32
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_55:
-# 185 "data//maps/SootopolisCity_House3/scripts.pory"
+# 184 "data//maps/SootopolisCity_House3/scripts.pory"
 	setvar VAR_BEAST_SPECIES, SPECIES_ENTEI
-# 186 "data//maps/SootopolisCity_House3/scripts.pory"
+# 185 "data//maps/SootopolisCity_House3/scripts.pory"
 	setvar VAR_0x8004, 0
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_53
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_56:
-# 188 "data//maps/SootopolisCity_House3/scripts.pory"
+# 187 "data//maps/SootopolisCity_House3/scripts.pory"
 	setvar VAR_BEAST_SPECIES, SPECIES_SUICUNE
-# 189 "data//maps/SootopolisCity_House3/scripts.pory"
+# 188 "data//maps/SootopolisCity_House3/scripts.pory"
 	setvar VAR_0x8004, 1
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_53
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_57:
-# 191 "data//maps/SootopolisCity_House3/scripts.pory"
+# 190 "data//maps/SootopolisCity_House3/scripts.pory"
 	setvar VAR_BEAST_SPECIES, SPECIES_RAIKOU
-# 192 "data//maps/SootopolisCity_House3/scripts.pory"
+# 191 "data//maps/SootopolisCity_House3/scripts.pory"
 	setvar VAR_0x8004, 2
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_53
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_60:
-# 128 "data//maps/SootopolisCity_House3/scripts.pory"
+# 127 "data//maps/SootopolisCity_House3/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceDown
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_58
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_61:
-# 130 "data//maps/SootopolisCity_House3/scripts.pory"
+# 129 "data//maps/SootopolisCity_House3/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceUp
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_58
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_62:
-# 132 "data//maps/SootopolisCity_House3/scripts.pory"
+# 131 "data//maps/SootopolisCity_House3/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceLeft
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_58
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_63:
-# 134 "data//maps/SootopolisCity_House3/scripts.pory"
+# 133 "data//maps/SootopolisCity_House3/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceRight
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_58
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_66:
-# 275 "data//maps/SootopolisCity_House3/scripts.pory"
+# 274 "data//maps/SootopolisCity_House3/scripts.pory"
 	setvar VAR_0x8004, 0
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_64
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_67:
-# 277 "data//maps/SootopolisCity_House3/scripts.pory"
+# 276 "data//maps/SootopolisCity_House3/scripts.pory"
 	setvar VAR_0x8004, 2
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_64
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_68:
-# 279 "data//maps/SootopolisCity_House3/scripts.pory"
+# 278 "data//maps/SootopolisCity_House3/scripts.pory"
 	setvar VAR_0x8004, 1
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_64
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_70:
-# 199 "data//maps/SootopolisCity_House3/scripts.pory"
+# 198 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_15, MSGBOX_DEFAULT
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_69
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_73:
-# 196 "data//maps/SootopolisCity_House3/scripts.pory"
+# 195 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_set FLAG_CAUGHT_ROAMING_ENTEI, SootopolisCity_House3_EventScript_WallaceCheckBeasts_70
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_72
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_77:
-# 197 "data//maps/SootopolisCity_House3/scripts.pory"
+# 196 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_set FLAG_CAUGHT_ROAMING_SUICUNE, SootopolisCity_House3_EventScript_WallaceCheckBeasts_70
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_76
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_80:
-# 198 "data//maps/SootopolisCity_House3/scripts.pory"
+# 197 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_set FLAG_CAUGHT_ROAMING_SUICUNE, SootopolisCity_House3_EventScript_WallaceCheckBeasts_70
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_71
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_84:
-# 140 "data//maps/SootopolisCity_House3/scripts.pory"
+# 139 "data//maps/SootopolisCity_House3/scripts.pory"
 	checkitem ITEM_MYSTIC_TICKET
-# 141 "data//maps/SootopolisCity_House3/scripts.pory"
+# 140 "data//maps/SootopolisCity_House3/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq SootopolisCity_House3_EventScript_WallaceCheckBeasts_90
-# 149 "data//maps/SootopolisCity_House3/scripts.pory"
+# 148 "data//maps/SootopolisCity_House3/scripts.pory"
 	giveitem ITEM_MYSTIC_TICKET
-# 150 "data//maps/SootopolisCity_House3/scripts.pory"
+# 149 "data//maps/SootopolisCity_House3/scripts.pory"
 	setflag FLAG_ENABLE_SHIP_NAVEL_ROCK
-# 151 "data//maps/SootopolisCity_House3/scripts.pory"
+# 150 "data//maps/SootopolisCity_House3/scripts.pory"
 	setflag FLAG_RECEIVED_MYSTIC_TICKET
-# 152 "data//maps/SootopolisCity_House3/scripts.pory"
+# 151 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_12, MSGBOX_DEFAULT
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_83
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_88:
-# 220 "data//maps/SootopolisCity_House3/scripts.pory"
+# 219 "data//maps/SootopolisCity_House3/scripts.pory"
 	setflag FLAG_WALLACE_SHOWED_BEAST
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_87
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_90:
-# 142 "data//maps/SootopolisCity_House3/scripts.pory"
+# 141 "data//maps/SootopolisCity_House3/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_ExclamationMark
-# 143 "data//maps/SootopolisCity_House3/scripts.pory"
+# 142 "data//maps/SootopolisCity_House3/scripts.pory"
 	waitmovement
-# 144 "data//maps/SootopolisCity_House3/scripts.pory"
+# 143 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_11, MSGBOX_DEFAULT
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_83
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_93:
-# 159 "data//maps/SootopolisCity_House3/scripts.pory"
+# 158 "data//maps/SootopolisCity_House3/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_ExclamationMark
-# 160 "data//maps/SootopolisCity_House3/scripts.pory"
+# 159 "data//maps/SootopolisCity_House3/scripts.pory"
 	waitmovement
-# 161 "data//maps/SootopolisCity_House3/scripts.pory"
+# 160 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_13, MSGBOX_DEFAULT
 	goto SootopolisCity_House3_EventScript_WallaceCheckBeasts_83
 
 
+# 339 "data//maps/SootopolisCity_House3/scripts.pory"
+
 # 340 "data//maps/SootopolisCity_House3/scripts.pory"
 
 # 341 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 342 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_WallaceOld::
+# 342 "data//maps/SootopolisCity_House3/scripts.pory"
+	lock
 # 343 "data//maps/SootopolisCity_House3/scripts.pory"
-	lock
+	faceplayer
 # 344 "data//maps/SootopolisCity_House3/scripts.pory"
-	faceplayer
-# 345 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_eq VAR_BEAST_SPECIES, SPECIES_HO_OH, SootopolisCity_House3_EventScript_WallaceMeetAtNavelRock
-# 346 "data//maps/SootopolisCity_House3/scripts.pory"
+# 345 "data//maps/SootopolisCity_House3/scripts.pory"
 	call_if_unset FLAG_MET_WALLACE, SootopolisCity_House3_EventScript_WallaceThanks
-# 347 "data//maps/SootopolisCity_House3/scripts.pory"
+# 346 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_WallaceSearchingBeasts, MSGBOX_DEFAULT
+# 347 "data//maps/SootopolisCity_House3/scripts.pory"
+	waitmessage
 # 348 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
-# 349 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_eq VAR_BEAST_SPECIES, SPECIES_ENTEI, SootopolisCity_House3_EventScript_EnteiSpeech
-# 350 "data//maps/SootopolisCity_House3/scripts.pory"
+# 349 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_eq VAR_BEAST_SPECIES, SPECIES_SUICUNE, SootopolisCity_House3_EventScript_SuicuneSpeech
-# 351 "data//maps/SootopolisCity_House3/scripts.pory"
+# 350 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_eq VAR_BEAST_SPECIES, SPECIES_RAIKOU, SootopolisCity_House3_EventScript_RaikouSpeech
+# 351 "data//maps/SootopolisCity_House3/scripts.pory"
+	msgbox SootopolisCity_House3_Text_AlwaysHunting, MSGBOX_DEFAULT
 # 352 "data//maps/SootopolisCity_House3/scripts.pory"
-	msgbox SootopolisCity_House3_Text_AlwaysHunting, MSGBOX_DEFAULT
+	waitmessage
 # 353 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
+	release
 # 354 "data//maps/SootopolisCity_House3/scripts.pory"
-	release
+	end
 # 355 "data//maps/SootopolisCity_House3/scripts.pory"
-	end
+
 # 356 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 357 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_WallaceThanks::
-# 358 "data//maps/SootopolisCity_House3/scripts.pory"
+# 357 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_WallaceThanks, MSGBOX_DEFAULT
+# 358 "data//maps/SootopolisCity_House3/scripts.pory"
+	waitmessage
 # 359 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
-# 360 "data//maps/SootopolisCity_House3/scripts.pory"
 	setflag FLAG_MET_WALLACE
+# 360 "data//maps/SootopolisCity_House3/scripts.pory"
+	return
 # 361 "data//maps/SootopolisCity_House3/scripts.pory"
-	return
+
 # 362 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 363 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_EnteiSpeech::
-# 364 "data//maps/SootopolisCity_House3/scripts.pory"
+# 363 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_EnteiSpeech, MSGBOX_DEFAULT
+# 364 "data//maps/SootopolisCity_House3/scripts.pory"
+	waitmessage
 # 365 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
-# 366 "data//maps/SootopolisCity_House3/scripts.pory"
 	getseenmon SPECIES_ENTEI
-# 367 "data//maps/SootopolisCity_House3/scripts.pory"
+# 366 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_eq VAR_RESULT, TRUE, SootopolisCity_House3_EventScript_SeenEntei
+# 367 "data//maps/SootopolisCity_House3/scripts.pory"
+	return
 # 368 "data//maps/SootopolisCity_House3/scripts.pory"
-	return
+
 # 369 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 370 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_SeenEntei::
-# 371 "data//maps/SootopolisCity_House3/scripts.pory"
+# 370 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_SeenEntei, MSGBOX_DEFAULT
+# 371 "data//maps/SootopolisCity_House3/scripts.pory"
+	waitmessage
 # 372 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
-# 373 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_set FLAG_CAUGHT_ROAMING_ENTEI, SootopolisCity_House3_EventScript_CaughtEntei
+# 373 "data//maps/SootopolisCity_House3/scripts.pory"
+	msgbox SootopolisCity_House3_Text_ShowMeEntei, MSGBOX_DEFAULT
 # 374 "data//maps/SootopolisCity_House3/scripts.pory"
-	msgbox SootopolisCity_House3_Text_ShowMeEntei, MSGBOX_DEFAULT
+	waitmessage
 # 375 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
-# 376 "data//maps/SootopolisCity_House3/scripts.pory"
 	call_if_set FLAG_NO_ACTIVE_BEAST SootopolisCity_House3_EventScript_SpawnNewEntei
+# 376 "data//maps/SootopolisCity_House3/scripts.pory"
+	release
 # 377 "data//maps/SootopolisCity_House3/scripts.pory"
-	release
+	end
 # 378 "data//maps/SootopolisCity_House3/scripts.pory"
-	end
+
 # 379 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 380 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_CaughtEntei::
-# 381 "data//maps/SootopolisCity_House3/scripts.pory"
+# 380 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_CaughtEntei, MSGBOX_DEFAULT
+# 381 "data//maps/SootopolisCity_House3/scripts.pory"
+	waitmessage
 # 382 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
-# 383 "data//maps/SootopolisCity_House3/scripts.pory"
 	checkspecies SPECIES_ENTEI, NO_PARTY_SCREEN
-# 384 "data//maps/SootopolisCity_House3/scripts.pory"
+# 383 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_eq VAR_RESULT, TRUE, SootopolisCity_House3_EventScript_ShowEntei
-# 385 "data//maps/SootopolisCity_House3/scripts.pory"
+# 384 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_ShowMeEntei, MSGBOX_DEFAULT
+# 385 "data//maps/SootopolisCity_House3/scripts.pory"
+	waitmessage
 # 386 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
+	release
 # 387 "data//maps/SootopolisCity_House3/scripts.pory"
-	release
+	end
 # 388 "data//maps/SootopolisCity_House3/scripts.pory"
-	end
+
 # 389 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 390 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_ShowEntei::
-# 391 "data//maps/SootopolisCity_House3/scripts.pory"
+# 390 "data//maps/SootopolisCity_House3/scripts.pory"
 	@ checkspecies SPECIES_ENTEI, OPEN_PARTY_SCREEN
-# 392 "data//maps/SootopolisCity_House3/scripts.pory"
+# 391 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_set FLAG_ROAMING_BEASTS_CAUGHT, SootopolisCity_House3_EventScript_WallaceGiveTicketEntei
-# 393 "data//maps/SootopolisCity_House3/scripts.pory"
+# 392 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_eq VAR_RESULT, TRUE, SootopolisCity_House3_EventScript_SpawnFirstSuicune
+# 393 "data//maps/SootopolisCity_House3/scripts.pory"
+	msgbox SootopolisCity_House3_Text_AlwaysHunting, MSGBOX_DEFAULT
 # 394 "data//maps/SootopolisCity_House3/scripts.pory"
-	msgbox SootopolisCity_House3_Text_AlwaysHunting, MSGBOX_DEFAULT
+	waitmessage
 # 395 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
+	release
 # 396 "data//maps/SootopolisCity_House3/scripts.pory"
-	release
+	end
 # 397 "data//maps/SootopolisCity_House3/scripts.pory"
-	end
+
 # 398 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 399 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_SpawnFirstEntei::
+# 399 "data//maps/SootopolisCity_House3/scripts.pory"
+	setvar VAR_0x8004, 0
 # 400 "data//maps/SootopolisCity_House3/scripts.pory"
-	setvar VAR_0x8004, 0
+	setvar VAR_UNUSED_0x8014, 0
 # 401 "data//maps/SootopolisCity_House3/scripts.pory"
-	setvar VAR_UNUSED_0x8014, 0
+	special InitRoamer
 # 402 "data//maps/SootopolisCity_House3/scripts.pory"
-	special InitRoamer
+	clearflag FLAG_NO_ACTIVE_BEAST
 # 403 "data//maps/SootopolisCity_House3/scripts.pory"
-	clearflag FLAG_NO_ACTIVE_BEAST
+	setvar VAR_BEAST_SPECIES, SPECIES_ENTEI
 # 404 "data//maps/SootopolisCity_House3/scripts.pory"
-	setvar VAR_BEAST_SPECIES, SPECIES_ENTEI
-# 405 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_ThatsRaikou, MSGBOX_DEFAULT
+# 405 "data//maps/SootopolisCity_House3/scripts.pory"
+	waitmessage
 # 406 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
-# 407 "data//maps/SootopolisCity_House3/scripts.pory"
 	playmoncry SPECIES_ENTEI, CRY_MODE_NORMAL
-# 408 "data//maps/SootopolisCity_House3/scripts.pory"
+# 407 "data//maps/SootopolisCity_House3/scripts.pory"
 	showmonpic SPECIES_ENTEI, 0, 0
-# 409 "data//maps/SootopolisCity_House3/scripts.pory"
+# 408 "data//maps/SootopolisCity_House3/scripts.pory"
 	setseenmon SPECIES_ENTEI
-# 410 "data//maps/SootopolisCity_House3/scripts.pory"
+# 409 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_IntroEntei, MSGBOX_DEFAULT
+# 410 "data//maps/SootopolisCity_House3/scripts.pory"
+	waitmessage
 # 411 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
+	hidemonpic
 # 412 "data//maps/SootopolisCity_House3/scripts.pory"
-	hidemonpic
+	release
 # 413 "data//maps/SootopolisCity_House3/scripts.pory"
-	release
+	end
 # 414 "data//maps/SootopolisCity_House3/scripts.pory"
-	end
+
 # 415 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 416 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_SpawnNewEntei::
-# 417 "data//maps/SootopolisCity_House3/scripts.pory"
+# 416 "data//maps/SootopolisCity_House3/scripts.pory"
 	setvar VAR_0x8004, 0
+# 417 "data//maps/SootopolisCity_House3/scripts.pory"
+	setvar VAR_UNUSED_0x8014, 0
 # 418 "data//maps/SootopolisCity_House3/scripts.pory"
-	setvar VAR_UNUSED_0x8014, 0
+	special InitRoamer
 # 419 "data//maps/SootopolisCity_House3/scripts.pory"
-	special InitRoamer
+	clearflag FLAG_NO_ACTIVE_BEAST
 # 420 "data//maps/SootopolisCity_House3/scripts.pory"
-	clearflag FLAG_NO_ACTIVE_BEAST
-# 421 "data//maps/SootopolisCity_House3/scripts.pory"
 	setvar VAR_BEAST_SPECIES, SPECIES_ENTEI
+# 421 "data//maps/SootopolisCity_House3/scripts.pory"
+	return
 # 422 "data//maps/SootopolisCity_House3/scripts.pory"
-	return
+
 # 423 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 424 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_SuicuneSpeech::
-# 425 "data//maps/SootopolisCity_House3/scripts.pory"
+# 424 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_SuicuneSpeech, MSGBOX_DEFAULT
+# 425 "data//maps/SootopolisCity_House3/scripts.pory"
+	waitmessage
 # 426 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
-# 427 "data//maps/SootopolisCity_House3/scripts.pory"
 	getseenmon SPECIES_SUICUNE
-# 428 "data//maps/SootopolisCity_House3/scripts.pory"
+# 427 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_eq VAR_RESULT, TRUE, SootopolisCity_House3_EventScript_SeenSuicune
+# 428 "data//maps/SootopolisCity_House3/scripts.pory"
+	return
 # 429 "data//maps/SootopolisCity_House3/scripts.pory"
-	return
+
 # 430 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 431 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_SeenSuicune::
-# 432 "data//maps/SootopolisCity_House3/scripts.pory"
+# 431 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_SeenSuicune, MSGBOX_DEFAULT
+# 432 "data//maps/SootopolisCity_House3/scripts.pory"
+	waitmessage
 # 433 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
-# 434 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_set FLAG_CAUGHT_ROAMING_SUICUNE, SootopolisCity_House3_EventScript_CaughtSuicune
+# 434 "data//maps/SootopolisCity_House3/scripts.pory"
+	msgbox SootopolisCity_House3_Text_ShowMeSuicune, MSGBOX_DEFAULT
 # 435 "data//maps/SootopolisCity_House3/scripts.pory"
-	msgbox SootopolisCity_House3_Text_ShowMeSuicune, MSGBOX_DEFAULT
+	waitmessage
 # 436 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
-# 437 "data//maps/SootopolisCity_House3/scripts.pory"
 	call_if_set FLAG_NO_ACTIVE_BEAST SootopolisCity_House3_EventScript_SpawnNewSuicune
+# 437 "data//maps/SootopolisCity_House3/scripts.pory"
+	release
 # 438 "data//maps/SootopolisCity_House3/scripts.pory"
-	release
+	end
 # 439 "data//maps/SootopolisCity_House3/scripts.pory"
-	end
+
 # 440 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 441 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_CaughtSuicune::
-# 442 "data//maps/SootopolisCity_House3/scripts.pory"
+# 441 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_CaughtSuicune, MSGBOX_DEFAULT
+# 442 "data//maps/SootopolisCity_House3/scripts.pory"
+	waitmessage
 # 443 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
-# 444 "data//maps/SootopolisCity_House3/scripts.pory"
 	checkspecies SPECIES_SUICUNE, NO_PARTY_SCREEN
-# 445 "data//maps/SootopolisCity_House3/scripts.pory"
+# 444 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_eq VAR_RESULT, TRUE, SootopolisCity_House3_EventScript_ShowSuicune
-# 446 "data//maps/SootopolisCity_House3/scripts.pory"
+# 445 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_ShowMeSuicune, MSGBOX_DEFAULT
+# 446 "data//maps/SootopolisCity_House3/scripts.pory"
+	waitmessage
 # 447 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
+	release
 # 448 "data//maps/SootopolisCity_House3/scripts.pory"
-	release
+	end
 # 449 "data//maps/SootopolisCity_House3/scripts.pory"
-	end
+
 # 450 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 451 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_ShowSuicune::
-# 452 "data//maps/SootopolisCity_House3/scripts.pory"
+# 451 "data//maps/SootopolisCity_House3/scripts.pory"
 	@ checkspecies SPECIES_SUICUNE, OPEN_PARTY_SCREEN
-# 453 "data//maps/SootopolisCity_House3/scripts.pory"
+# 452 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_set FLAG_ROAMING_BEASTS_CAUGHT, SootopolisCity_House3_EventScript_WallaceGiveTicketSuicune
-# 454 "data//maps/SootopolisCity_House3/scripts.pory"
+# 453 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_eq VAR_RESULT, TRUE, SootopolisCity_House3_EventScript_SpawnFirstRaikou
+# 454 "data//maps/SootopolisCity_House3/scripts.pory"
+	msgbox SootopolisCity_House3_Text_AlwaysHunting, MSGBOX_DEFAULT
 # 455 "data//maps/SootopolisCity_House3/scripts.pory"
-	msgbox SootopolisCity_House3_Text_AlwaysHunting, MSGBOX_DEFAULT
+	waitmessage
 # 456 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
+	release
 # 457 "data//maps/SootopolisCity_House3/scripts.pory"
-	release
+	end
 # 458 "data//maps/SootopolisCity_House3/scripts.pory"
-	end
+
 # 459 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 460 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_SpawnFirstSuicune::
+# 460 "data//maps/SootopolisCity_House3/scripts.pory"
+	setvar VAR_0x8004, 1
 # 461 "data//maps/SootopolisCity_House3/scripts.pory"
-	setvar VAR_0x8004, 1
+	setvar VAR_UNUSED_0x8014, 0
 # 462 "data//maps/SootopolisCity_House3/scripts.pory"
-	setvar VAR_UNUSED_0x8014, 0
+	special InitRoamer
 # 463 "data//maps/SootopolisCity_House3/scripts.pory"
-	special InitRoamer
+	clearflag FLAG_NO_ACTIVE_BEAST
 # 464 "data//maps/SootopolisCity_House3/scripts.pory"
-	clearflag FLAG_NO_ACTIVE_BEAST
+	setvar VAR_BEAST_SPECIES, SPECIES_SUICUNE
 # 465 "data//maps/SootopolisCity_House3/scripts.pory"
-	setvar VAR_BEAST_SPECIES, SPECIES_SUICUNE
-# 466 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_ThatsEntei, MSGBOX_DEFAULT
+# 466 "data//maps/SootopolisCity_House3/scripts.pory"
+	waitmessage
 # 467 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
-# 468 "data//maps/SootopolisCity_House3/scripts.pory"
 	playmoncry SPECIES_SUICUNE, CRY_MODE_NORMAL
-# 469 "data//maps/SootopolisCity_House3/scripts.pory"
+# 468 "data//maps/SootopolisCity_House3/scripts.pory"
 	showmonpic SPECIES_SUICUNE, 0, 0
-# 470 "data//maps/SootopolisCity_House3/scripts.pory"
+# 469 "data//maps/SootopolisCity_House3/scripts.pory"
 	setseenmon SPECIES_SUICUNE
-# 471 "data//maps/SootopolisCity_House3/scripts.pory"
+# 470 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_IntroSuicune, MSGBOX_DEFAULT
+# 471 "data//maps/SootopolisCity_House3/scripts.pory"
+	waitmessage
 # 472 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
+	hidemonpic
 # 473 "data//maps/SootopolisCity_House3/scripts.pory"
-	hidemonpic
+	release
 # 474 "data//maps/SootopolisCity_House3/scripts.pory"
-	release
+	end
 # 475 "data//maps/SootopolisCity_House3/scripts.pory"
-	end
+
 # 476 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 477 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_SpawnNewSuicune::
-# 478 "data//maps/SootopolisCity_House3/scripts.pory"
+# 477 "data//maps/SootopolisCity_House3/scripts.pory"
 	setvar VAR_0x8004, 1
+# 478 "data//maps/SootopolisCity_House3/scripts.pory"
+	setvar VAR_UNUSED_0x8014, 0
 # 479 "data//maps/SootopolisCity_House3/scripts.pory"
-	setvar VAR_UNUSED_0x8014, 0
+	special InitRoamer
 # 480 "data//maps/SootopolisCity_House3/scripts.pory"
-	special InitRoamer
+	clearflag FLAG_NO_ACTIVE_BEAST
 # 481 "data//maps/SootopolisCity_House3/scripts.pory"
-	clearflag FLAG_NO_ACTIVE_BEAST
-# 482 "data//maps/SootopolisCity_House3/scripts.pory"
 	setvar VAR_BEAST_SPECIES, SPECIES_SUICUNE
+# 482 "data//maps/SootopolisCity_House3/scripts.pory"
+	return
 # 483 "data//maps/SootopolisCity_House3/scripts.pory"
-	return
+
 # 484 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 485 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_RaikouSpeech::
-# 486 "data//maps/SootopolisCity_House3/scripts.pory"
+# 485 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_RaikouSpeech, MSGBOX_DEFAULT
+# 486 "data//maps/SootopolisCity_House3/scripts.pory"
+	waitmessage
 # 487 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
-# 488 "data//maps/SootopolisCity_House3/scripts.pory"
 	getseenmon SPECIES_RAIKOU
-# 489 "data//maps/SootopolisCity_House3/scripts.pory"
+# 488 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_eq VAR_RESULT, TRUE, SootopolisCity_House3_EventScript_SeenRaikou
+# 489 "data//maps/SootopolisCity_House3/scripts.pory"
+	return
 # 490 "data//maps/SootopolisCity_House3/scripts.pory"
-	return
+
 # 491 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 492 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_SeenRaikou::
-# 493 "data//maps/SootopolisCity_House3/scripts.pory"
+# 492 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_SeenRaikou, MSGBOX_DEFAULT
+# 493 "data//maps/SootopolisCity_House3/scripts.pory"
+	waitmessage
 # 494 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
-# 495 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_set FLAG_CAUGHT_ROAMING_RAIKOU, SootopolisCity_House3_EventScript_CaughtRaikou
+# 495 "data//maps/SootopolisCity_House3/scripts.pory"
+	msgbox SootopolisCity_House3_Text_ShowMeRaikou, MSGBOX_DEFAULT
 # 496 "data//maps/SootopolisCity_House3/scripts.pory"
-	msgbox SootopolisCity_House3_Text_ShowMeRaikou, MSGBOX_DEFAULT
+	waitmessage
 # 497 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
-# 498 "data//maps/SootopolisCity_House3/scripts.pory"
 	call_if_set FLAG_NO_ACTIVE_BEAST SootopolisCity_House3_EventScript_SpawnNewRaikou
+# 498 "data//maps/SootopolisCity_House3/scripts.pory"
+	release
 # 499 "data//maps/SootopolisCity_House3/scripts.pory"
-	release
+	end
 # 500 "data//maps/SootopolisCity_House3/scripts.pory"
-	end
+
 # 501 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 502 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_CaughtRaikou::
-# 503 "data//maps/SootopolisCity_House3/scripts.pory"
+# 502 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_CaughtRaikou, MSGBOX_DEFAULT
+# 503 "data//maps/SootopolisCity_House3/scripts.pory"
+	waitmessage
 # 504 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
-# 505 "data//maps/SootopolisCity_House3/scripts.pory"
 	checkspecies SPECIES_RAIKOU, NO_PARTY_SCREEN
-# 506 "data//maps/SootopolisCity_House3/scripts.pory"
+# 505 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_eq VAR_RESULT, TRUE, SootopolisCity_House3_EventScript_ShowRaikou
-# 507 "data//maps/SootopolisCity_House3/scripts.pory"
+# 506 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_ShowMeRaikou, MSGBOX_DEFAULT
+# 507 "data//maps/SootopolisCity_House3/scripts.pory"
+	waitmessage
 # 508 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
+	release
 # 509 "data//maps/SootopolisCity_House3/scripts.pory"
-	release
+	end
 # 510 "data//maps/SootopolisCity_House3/scripts.pory"
-	end
+
 # 511 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 512 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_ShowRaikou::
-# 513 "data//maps/SootopolisCity_House3/scripts.pory"
+# 512 "data//maps/SootopolisCity_House3/scripts.pory"
 	@ checkspecies SPECIES_RAIKOU, OPEN_PARTY_SCREEN
-# 514 "data//maps/SootopolisCity_House3/scripts.pory"
+# 513 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_set FLAG_ROAMING_BEASTS_CAUGHT, SootopolisCity_House3_EventScript_WallaceGiveTicketRaikou
-# 515 "data//maps/SootopolisCity_House3/scripts.pory"
+# 514 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_eq VAR_RESULT, TRUE, SootopolisCity_House3_EventScript_SpawnFirstEntei
-# 516 "data//maps/SootopolisCity_House3/scripts.pory"
+# 515 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_AlwaysHunting, MSGBOX_DEFAULT
+# 516 "data//maps/SootopolisCity_House3/scripts.pory"
+	waitmessage
 # 517 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
+	release
 # 518 "data//maps/SootopolisCity_House3/scripts.pory"
-	release
+	end
 # 519 "data//maps/SootopolisCity_House3/scripts.pory"
-	end
+
 # 520 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 521 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_SpawnFirstRaikou::
+# 521 "data//maps/SootopolisCity_House3/scripts.pory"
+	setvar VAR_0x8004, 2
 # 522 "data//maps/SootopolisCity_House3/scripts.pory"
-	setvar VAR_0x8004, 2
+	setvar VAR_UNUSED_0x8014, 0
 # 523 "data//maps/SootopolisCity_House3/scripts.pory"
-	setvar VAR_UNUSED_0x8014, 0
+	special InitRoamer
 # 524 "data//maps/SootopolisCity_House3/scripts.pory"
-	special InitRoamer
+	clearflag FLAG_NO_ACTIVE_BEAST
 # 525 "data//maps/SootopolisCity_House3/scripts.pory"
-	clearflag FLAG_NO_ACTIVE_BEAST
+	setvar VAR_BEAST_SPECIES, SPECIES_RAIKOU
 # 526 "data//maps/SootopolisCity_House3/scripts.pory"
-	setvar VAR_BEAST_SPECIES, SPECIES_RAIKOU
-# 527 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_ThatsSuicune, MSGBOX_DEFAULT
+# 527 "data//maps/SootopolisCity_House3/scripts.pory"
+	waitmessage
 # 528 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
-# 529 "data//maps/SootopolisCity_House3/scripts.pory"
 	playmoncry SPECIES_RAIKOU, CRY_MODE_NORMAL
-# 530 "data//maps/SootopolisCity_House3/scripts.pory"
+# 529 "data//maps/SootopolisCity_House3/scripts.pory"
 	showmonpic SPECIES_RAIKOU, 0, 0
-# 531 "data//maps/SootopolisCity_House3/scripts.pory"
+# 530 "data//maps/SootopolisCity_House3/scripts.pory"
 	setseenmon SPECIES_RAIKOU
-# 532 "data//maps/SootopolisCity_House3/scripts.pory"
+# 531 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_IntroRaikou, MSGBOX_DEFAULT
+# 532 "data//maps/SootopolisCity_House3/scripts.pory"
+	waitmessage
 # 533 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
-# 534 "data//maps/SootopolisCity_House3/scripts.pory"
 	hidemonpic
+# 534 "data//maps/SootopolisCity_House3/scripts.pory"
+	release
 # 535 "data//maps/SootopolisCity_House3/scripts.pory"
-	release
+	end
 # 536 "data//maps/SootopolisCity_House3/scripts.pory"
-	end
+
 # 537 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 538 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_SpawnNewRaikou::
-# 539 "data//maps/SootopolisCity_House3/scripts.pory"
+# 538 "data//maps/SootopolisCity_House3/scripts.pory"
 	setvar VAR_0x8004, 2
-# 540 "data//maps/SootopolisCity_House3/scripts.pory"
+# 539 "data//maps/SootopolisCity_House3/scripts.pory"
 	setvar VAR_UNUSED_0x8014, 0
-# 541 "data//maps/SootopolisCity_House3/scripts.pory"
+# 540 "data//maps/SootopolisCity_House3/scripts.pory"
 	special InitRoamer
-# 542 "data//maps/SootopolisCity_House3/scripts.pory"
+# 541 "data//maps/SootopolisCity_House3/scripts.pory"
 	clearflag FLAG_NO_ACTIVE_BEAST
-# 543 "data//maps/SootopolisCity_House3/scripts.pory"
+# 542 "data//maps/SootopolisCity_House3/scripts.pory"
 	setvar VAR_BEAST_SPECIES, SPECIES_RAIKOU
-# 544 "data//maps/SootopolisCity_House3/scripts.pory"
+# 543 "data//maps/SootopolisCity_House3/scripts.pory"
 	return
+# 544 "data//maps/SootopolisCity_House3/scripts.pory"
+
 # 545 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 546 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_Woman::
-# 547 "data//maps/SootopolisCity_House3/scripts.pory"
+# 546 "data//maps/SootopolisCity_House3/scripts.pory"
 	lock
-# 548 "data//maps/SootopolisCity_House3/scripts.pory"
+# 547 "data//maps/SootopolisCity_House3/scripts.pory"
 	faceplayer
-# 549 "data//maps/SootopolisCity_House3/scripts.pory"
+# 548 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_JuanHasManyFansDoYou, MSGBOX_YESNO
-# 550 "data//maps/SootopolisCity_House3/scripts.pory"
+# 549 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_eq VAR_RESULT, YES, SootopolisCity_House3_EventScript_HaveFans
-# 551 "data//maps/SootopolisCity_House3/scripts.pory"
+# 550 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_LonesomeTryWorkingHarder, MSGBOX_DEFAULT
+# 551 "data//maps/SootopolisCity_House3/scripts.pory"
+	release
 # 552 "data//maps/SootopolisCity_House3/scripts.pory"
-	release
+	end
 # 553 "data//maps/SootopolisCity_House3/scripts.pory"
-	end
+
 # 554 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 555 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_HaveFans::
-# 556 "data//maps/SootopolisCity_House3/scripts.pory"
+# 555 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_YouMustBePrettyStrong, MSGBOX_DEFAULT
+# 556 "data//maps/SootopolisCity_House3/scripts.pory"
+	release
 # 557 "data//maps/SootopolisCity_House3/scripts.pory"
-	release
+	end
 # 558 "data//maps/SootopolisCity_House3/scripts.pory"
-	end
+
 # 559 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 560 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_Girl::
-# 561 "data//maps/SootopolisCity_House3/scripts.pory"
+# 560 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_TrainerFanClubWasWild, MSGBOX_NPC
+# 561 "data//maps/SootopolisCity_House3/scripts.pory"
+	end
 # 562 "data//maps/SootopolisCity_House3/scripts.pory"
-	end
+
 # 563 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 564 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_WallaceGiveTicketEntei::
-# 565 "data//maps/SootopolisCity_House3/scripts.pory"
+# 564 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_WallaceFinalBeastEntei, MSGBOX_DEFAULT
+# 565 "data//maps/SootopolisCity_House3/scripts.pory"
+	waitmessage
 # 566 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
+	goto_if_unset FLAG_RECEIVED_MYSTIC_TICKET, SootopolisCity_House3_EventScript_WallaceGiveTicket
 # 567 "data//maps/SootopolisCity_House3/scripts.pory"
-	goto_if_unset FLAG_RECEIVED_MYSTIC_TICKET, SootopolisCity_House3_EventScript_WallaceGiveTicket
+	msgbox SootopolisCity_House3_Text_WallaceGiveHoohQuest2 MSGBOX_DEFAULT
 # 568 "data//maps/SootopolisCity_House3/scripts.pory"
-	msgbox SootopolisCity_House3_Text_WallaceGiveHoohQuest2 MSGBOX_DEFAULT
+	waitmessage
 # 569 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
+	setvar VAR_BEAST_SPECIES, SPECIES_HO_OH
 # 570 "data//maps/SootopolisCity_House3/scripts.pory"
-	setvar VAR_BEAST_SPECIES, SPECIES_HO_OH
+	release
 # 571 "data//maps/SootopolisCity_House3/scripts.pory"
-	release
+	end
 # 572 "data//maps/SootopolisCity_House3/scripts.pory"
-	end
+
 # 573 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 574 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_WallaceGiveTicketSuicune::
-# 575 "data//maps/SootopolisCity_House3/scripts.pory"
+# 574 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_WallaceFinalBeastSuicune, MSGBOX_DEFAULT
+# 575 "data//maps/SootopolisCity_House3/scripts.pory"
+	waitmessage
 # 576 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
+	goto_if_unset FLAG_RECEIVED_MYSTIC_TICKET, SootopolisCity_House3_EventScript_WallaceGiveTicket
 # 577 "data//maps/SootopolisCity_House3/scripts.pory"
-	goto_if_unset FLAG_RECEIVED_MYSTIC_TICKET, SootopolisCity_House3_EventScript_WallaceGiveTicket
+	msgbox SootopolisCity_House3_Text_WallaceGiveHoohQuest2 MSGBOX_DEFAULT
 # 578 "data//maps/SootopolisCity_House3/scripts.pory"
-	msgbox SootopolisCity_House3_Text_WallaceGiveHoohQuest2 MSGBOX_DEFAULT
+	waitmessage
 # 579 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
+	setvar VAR_BEAST_SPECIES, SPECIES_HO_OH
 # 580 "data//maps/SootopolisCity_House3/scripts.pory"
-	setvar VAR_BEAST_SPECIES, SPECIES_HO_OH
+	release
 # 581 "data//maps/SootopolisCity_House3/scripts.pory"
-	release
+	end
 # 582 "data//maps/SootopolisCity_House3/scripts.pory"
-	end
+
 # 583 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 584 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_WallaceGiveTicketRaikou::
-# 585 "data//maps/SootopolisCity_House3/scripts.pory"
+# 584 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_WallaceFinalBeastRaikou, MSGBOX_DEFAULT
+# 585 "data//maps/SootopolisCity_House3/scripts.pory"
+	waitmessage
 # 586 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
-# 587 "data//maps/SootopolisCity_House3/scripts.pory"
 	goto_if_unset FLAG_RECEIVED_MYSTIC_TICKET, SootopolisCity_House3_EventScript_WallaceGiveTicket
-# 588 "data//maps/SootopolisCity_House3/scripts.pory"
+# 587 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_WallaceGiveHoohQuest2 MSGBOX_DEFAULT
+# 588 "data//maps/SootopolisCity_House3/scripts.pory"
+	waitmessage
 # 589 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
+	setvar VAR_BEAST_SPECIES, SPECIES_HO_OH
 # 590 "data//maps/SootopolisCity_House3/scripts.pory"
-	setvar VAR_BEAST_SPECIES, SPECIES_HO_OH
+	release
 # 591 "data//maps/SootopolisCity_House3/scripts.pory"
-	release
+	end
 # 592 "data//maps/SootopolisCity_House3/scripts.pory"
-	end
+
 # 593 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 594 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_WallaceGiveTicket::
-# 595 "data//maps/SootopolisCity_House3/scripts.pory"
+# 594 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_WallaceThreeBeasts, MSGBOX_DEFAULT
+# 595 "data//maps/SootopolisCity_House3/scripts.pory"
+	waitmessage
 # 596 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
-# 597 "data//maps/SootopolisCity_House3/scripts.pory"
 	giveitem ITEM_MYSTIC_TICKET
-# 598 "data//maps/SootopolisCity_House3/scripts.pory"
+# 597 "data//maps/SootopolisCity_House3/scripts.pory"
 	setflag FLAG_ENABLE_SHIP_NAVEL_ROCK
-# 599 "data//maps/SootopolisCity_House3/scripts.pory"
+# 598 "data//maps/SootopolisCity_House3/scripts.pory"
 	setflag FLAG_RECEIVED_MYSTIC_TICKET
-# 600 "data//maps/SootopolisCity_House3/scripts.pory"
+# 599 "data//maps/SootopolisCity_House3/scripts.pory"
 	setvar VAR_BEAST_SPECIES, SPECIES_HO_OH
+# 600 "data//maps/SootopolisCity_House3/scripts.pory"
+	msgbox SootopolisCity_House3_Text_WallaceGiveHoohQuest MSGBOX_DEFAULT
 # 601 "data//maps/SootopolisCity_House3/scripts.pory"
-	msgbox SootopolisCity_House3_Text_WallaceGiveHoohQuest MSGBOX_DEFAULT
+	waitmessage
 # 602 "data//maps/SootopolisCity_House3/scripts.pory"
-	waitmessage
+	release
 # 603 "data//maps/SootopolisCity_House3/scripts.pory"
-	release
+	end
 # 604 "data//maps/SootopolisCity_House3/scripts.pory"
-	end
+
 # 605 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 606 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_EventScript_WallaceMeetAtNavelRock::
-# 607 "data//maps/SootopolisCity_House3/scripts.pory"
+# 606 "data//maps/SootopolisCity_House3/scripts.pory"
 	msgbox SootopolisCity_House3_Text_WallaceGiveHoohQuest MSGBOX_DEFAULT
-# 608 "data//maps/SootopolisCity_House3/scripts.pory"
+# 607 "data//maps/SootopolisCity_House3/scripts.pory"
 	waitmessage
-# 609 "data//maps/SootopolisCity_House3/scripts.pory"
+# 608 "data//maps/SootopolisCity_House3/scripts.pory"
 	release
-# 610 "data//maps/SootopolisCity_House3/scripts.pory"
+# 609 "data//maps/SootopolisCity_House3/scripts.pory"
 	end
+# 610 "data//maps/SootopolisCity_House3/scripts.pory"
+
 # 611 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 612 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_ShowMeEntei:
-# 613 "data//maps/SootopolisCity_House3/scripts.pory"
+# 612 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "If you can show me ENTEI, I'll be\n"
+# 613 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "indebted to you once more, {PLAYER}.$"
 # 614 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "indebted to you once more, {PLAYER}.$"
+
 # 615 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 616 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_ShowMeSuicune:
-# 617 "data//maps/SootopolisCity_House3/scripts.pory"
+# 616 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "If you can show me SUICUNE, I'll be\n"
+# 617 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "indebted to you once more, {PLAYER}.$"
 # 618 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "indebted to you once more, {PLAYER}.$"
+
 # 619 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 620 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_ShowMeRaikou:
-# 621 "data//maps/SootopolisCity_House3/scripts.pory"
+# 620 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "If you can show me RAIKOU, I'll be\n"
-# 622 "data//maps/SootopolisCity_House3/scripts.pory"
+# 621 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "indebted to you once more, {PLAYER}.$"
+# 622 "data//maps/SootopolisCity_House3/scripts.pory"
+
 # 623 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 624 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_CaughtEntei:
+# 624 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string ". . .\n"
 # 625 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\n"
+	.string ". . .\p"
 # 626 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\p"
+	.string ". . .\n"
 # 627 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\n"
+	.string ". . .\p"
 # 628 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\p"
-# 629 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "You've captured ENTEI?!$"
+# 629 "data//maps/SootopolisCity_House3/scripts.pory"
+
 # 630 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 631 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_CaughtSuicune:
+# 631 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string ". . .\n"
 # 632 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\n"
+	.string ". . .\p"
 # 633 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\p"
+	.string ". . .\n"
 # 634 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\n"
+	.string ". . .\p"
 # 635 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\p"
-# 636 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "You've captured SUICUNE?!$"
+# 636 "data//maps/SootopolisCity_House3/scripts.pory"
+
 # 637 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 638 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_CaughtRaikou:
+# 638 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string ". . .\n"
 # 639 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\n"
+	.string ". . .\p"
 # 640 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\p"
+	.string ". . .\n"
 # 641 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\n"
+	.string ". . .\p"
 # 642 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\p"
-# 643 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "You've captured RAIKOU?!$"
+# 643 "data//maps/SootopolisCity_House3/scripts.pory"
+
 # 644 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 645 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_SeenEntei:
+# 645 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string ". . .\n"
 # 646 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\n"
+	.string ". . .\p"
 # 647 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\p"
-# 648 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Oh! You've seen ENTEI?$"
+# 648 "data//maps/SootopolisCity_House3/scripts.pory"
+
 # 649 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 650 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_SeenSuicune:
+# 650 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string ". . .\n"
 # 651 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\n"
+	.string ". . .\p"
 # 652 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\p"
-# 653 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Oh! You've seen SUICUNE?$"
+# 653 "data//maps/SootopolisCity_House3/scripts.pory"
+
 # 654 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 655 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_SeenRaikou:
+# 655 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string ". . .\n"
 # 656 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\n"
+	.string ". . .\p"
 # 657 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\p"
-# 658 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Oh! You've seen RAIKOU?$"
+# 658 "data//maps/SootopolisCity_House3/scripts.pory"
+
 # 659 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 660 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_EnteiSpeech:
+# 660 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "Lately there have been rumors of\n"
 # 661 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "Lately there have been rumors of\n"
+	.string "sightings of one such POKéMON.\p"
 # 662 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "sightings of one such POKéMON.\p"
-# 663 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Yes, the POKéMON ENTEI has been\n"
+# 663 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "seen recently around the HOENN region.$"
 # 664 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "seen recently around the HOENN region.$"
+
 # 665 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 666 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_SuicuneSpeech:
+# 666 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "Lately there have been rumors of\n"
 # 667 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "Lately there have been rumors of\n"
+	.string "sightings of one such POKéMON.\p"
 # 668 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "sightings of one such POKéMON.\p"
-# 669 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Yes, the POKéMON SUICUNE has been\n"
+# 669 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "seen recently around the HOENN region.$"
 # 670 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "seen recently around the HOENN region.$"
+
 # 671 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 672 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_RaikouSpeech:
-# 673 "data//maps/SootopolisCity_House3/scripts.pory"
+# 672 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Lately there have been rumors of\n"
-# 674 "data//maps/SootopolisCity_House3/scripts.pory"
+# 673 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "sightings of one such POKéMON.\p"
-# 675 "data//maps/SootopolisCity_House3/scripts.pory"
+# 674 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Yes, the POKéMON RAIKOU has been\n"
-# 676 "data//maps/SootopolisCity_House3/scripts.pory"
+# 675 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "seen recently around the HOENN region.$"
+# 676 "data//maps/SootopolisCity_House3/scripts.pory"
+
 # 677 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 678 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_ThatsEntei:
+# 678 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "That POKéMON . . .\p"
 # 679 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "That POKéMON . . .\p"
+	.string "That's ENTEI!\p"
 # 680 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "That's ENTEI!\p"
+	.string "It's incredible to see a POKéMON as\n"
 # 681 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "It's incredible to see a POKéMON as\n"
+	.string "magnificent as this up close.\p"
 # 682 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "magnificent as this up close.\p"
+	.string "Maybe someday I will be able to see\n"
 # 683 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "Maybe someday I will be able to see\n"
+	.string "the other legendary beasts as well.\p"
 # 684 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "the other legendary beasts as well.\p"
-# 685 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "I've recently heard news of SUICUNE\n"
-# 686 "data//maps/SootopolisCity_House3/scripts.pory"
+# 685 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "roaming around HOENN as well...$"
+# 686 "data//maps/SootopolisCity_House3/scripts.pory"
+
 # 687 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 688 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_IntroSuicune:
-# 689 "data//maps/SootopolisCity_House3/scripts.pory"
+# 688 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "SUICUNE is the Aurora POKéMON.\p"
-# 690 "data//maps/SootopolisCity_House3/scripts.pory"
+# 689 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "If you can capture SUICUNE and show it\n" 
+# 690 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "to me, I'll be indebted to you once more.$"
 # 691 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "to me, I'll be indebted to you once more.$"
+
 # 692 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 693 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_ThatsSuicune:
+# 693 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "That POKéMON . . .\p"
 # 694 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "That POKéMON . . .\p"
+	.string "That's SUICUNE!\p"
 # 695 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "That's SUICUNE!\p"
+	.string "It's incredible to see a POKéMON as\n"
 # 696 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "It's incredible to see a POKéMON as\n"
+	.string "magnificent as this up close.\p"
 # 697 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "magnificent as this up close.\p"
+	.string "Maybe someday I will be able to see\n"
 # 698 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "Maybe someday I will be able to see\n"
+	.string "the other legendary beasts as well.\p"
 # 699 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "the other legendary beasts as well.\p"
-# 700 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "I've recently heard reports that RAIKOU\n"
+# 700 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "has been spotted around HOENN as well...$"
 # 701 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "has been spotted around HOENN as well...$"
+
 # 702 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 703 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_IntroRaikou:
-# 704 "data//maps/SootopolisCity_House3/scripts.pory"
+# 703 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "RAIKOU is the Thunder POKéMON.\p"
-# 705 "data//maps/SootopolisCity_House3/scripts.pory"
+# 704 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "If you can capture RAIKOU and show it\n" 
+# 705 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "to me, I'll be indebted to you once more.$"
 # 706 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "to me, I'll be indebted to you once more.$"
+
 # 707 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 708 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_ThatsRaikou:
+# 708 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "That POKéMON . . .\p"
 # 709 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "That POKéMON . . .\p"
+	.string "That's RAIKOU!\p"
 # 710 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "That's RAIKOU!\p"
+	.string "It's incredible to see a POKéMON as\n"
 # 711 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "It's incredible to see a POKéMON as\n"
-# 712 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "magnificent as this up close.\p"
-# 713 "data//maps/SootopolisCity_House3/scripts.pory"
+# 712 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Maybe someday I will be able to see\n"
-# 714 "data//maps/SootopolisCity_House3/scripts.pory"
+# 713 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "the other legendary beasts as well.\p"
-# 715 "data//maps/SootopolisCity_House3/scripts.pory"
+# 714 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "I've recently heard reports that ENTEI\n"
-# 716 "data//maps/SootopolisCity_House3/scripts.pory"
+# 715 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "has been spotted around HOENN as well...$"
+# 716 "data//maps/SootopolisCity_House3/scripts.pory"
+
 # 717 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 718 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_IntroEntei:
-# 719 "data//maps/SootopolisCity_House3/scripts.pory"
+# 718 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "ENTEI is the Volcano POKéMON.\p"
-# 720 "data//maps/SootopolisCity_House3/scripts.pory"
+# 719 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "If you can capture ENTEI and show it\n" 
-# 721 "data//maps/SootopolisCity_House3/scripts.pory"
+# 720 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "to me, I'll be indebted to you once more.$"
+# 721 "data//maps/SootopolisCity_House3/scripts.pory"
+
 # 722 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 723 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_WallaceThanks:
-# 724 "data//maps/SootopolisCity_House3/scripts.pory"
+# 723 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "WALLACE: Thanks for your help with\n"
-# 725 "data//maps/SootopolisCity_House3/scripts.pory"
+# 724 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "that incident. Your help finding\l"
-# 726 "data//maps/SootopolisCity_House3/scripts.pory"
+# 725 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "RAYQUAZA was invaluable.$"
+# 726 "data//maps/SootopolisCity_House3/scripts.pory"
+
 # 727 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 728 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_WallaceSearchingBeasts:
-# 729 "data//maps/SootopolisCity_House3/scripts.pory"
+# 728 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "WALLACE: I'm considered an expert\n"
-# 730 "data//maps/SootopolisCity_House3/scripts.pory"
+# 729 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "on the mythology of super-ancient\l"
-# 731 "data//maps/SootopolisCity_House3/scripts.pory"
+# 730 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "POKéMON because I've spent my life\l"
-# 732 "data//maps/SootopolisCity_House3/scripts.pory"
+# 731 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "researching a POKéMON called SUICUNE.\p"
-# 733 "data//maps/SootopolisCity_House3/scripts.pory"
+# 732 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Through my research and my travels,\n"
-# 734 "data//maps/SootopolisCity_House3/scripts.pory"
+# 733 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "I've learned quite a bit about the\l"
-# 735 "data//maps/SootopolisCity_House3/scripts.pory"
+# 734 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "myths surrounding the super-ancient\l"
-# 736 "data//maps/SootopolisCity_House3/scripts.pory"
+# 735 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "POKéMON called the legendary beasts.$"
+# 736 "data//maps/SootopolisCity_House3/scripts.pory"
+
 # 737 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 738 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_JuanHasManyFansDoYou:
-# 739 "data//maps/SootopolisCity_House3/scripts.pory"
+# 738 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "You're a POKéMON TRAINER, aren't you?\p"
-# 740 "data//maps/SootopolisCity_House3/scripts.pory"
+# 739 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "SOOTOPOLIS's JUAN has many fans.\n"
-# 741 "data//maps/SootopolisCity_House3/scripts.pory"
+# 740 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Even more than his student WALLACE!\p"
-# 742 "data//maps/SootopolisCity_House3/scripts.pory"
+# 741 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Do you have any?$"
+# 742 "data//maps/SootopolisCity_House3/scripts.pory"
+
 # 743 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 744 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_YouMustBePrettyStrong:
-# 745 "data//maps/SootopolisCity_House3/scripts.pory"
+# 744 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Oh, then you must be pretty strong.$"
+# 745 "data//maps/SootopolisCity_House3/scripts.pory"
+
 # 746 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 747 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_LonesomeTryWorkingHarder:
-# 748 "data//maps/SootopolisCity_House3/scripts.pory"
+# 747 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Oh, dear…\n"
-# 749 "data//maps/SootopolisCity_House3/scripts.pory"
+# 748 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "That's a little lonesome.\p"
-# 750 "data//maps/SootopolisCity_House3/scripts.pory"
+# 749 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Try working a little harder to get\n"
-# 751 "data//maps/SootopolisCity_House3/scripts.pory"
+# 750 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "a fan following.$"
+# 751 "data//maps/SootopolisCity_House3/scripts.pory"
+
 # 752 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 753 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_TrainerFanClubWasWild:
-# 754 "data//maps/SootopolisCity_House3/scripts.pory"
+# 753 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Dedicated fans come over from even\n"
-# 755 "data//maps/SootopolisCity_House3/scripts.pory"
+# 754 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "outside of HOENN.\p"
-# 756 "data//maps/SootopolisCity_House3/scripts.pory"
+# 755 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "It was really wild when I went to the\n"
-# 757 "data//maps/SootopolisCity_House3/scripts.pory"
+# 756 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "TRAINER FAN CLUB in LILYCOVE.$"
+# 757 "data//maps/SootopolisCity_House3/scripts.pory"
+
 # 758 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 759 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_AlwaysHunting:
-# 760 "data//maps/SootopolisCity_House3/scripts.pory"
+# 759 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "I'm always hunting for more information\n"
-# 761 "data//maps/SootopolisCity_House3/scripts.pory"
+# 760 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "regarding the legendary beasts ENTEI,\l"
-# 762 "data//maps/SootopolisCity_House3/scripts.pory"
+# 761 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "SUICUNE, and RAIKOU.\p"
-# 763 "data//maps/SootopolisCity_House3/scripts.pory"
+# 762 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "If you see one, please come back and\n"
-# 764 "data//maps/SootopolisCity_House3/scripts.pory"
+# 763 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "let me know.$"
+# 764 "data//maps/SootopolisCity_House3/scripts.pory"
+
 # 765 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 766 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_WallaceFinalBeastEntei:
+# 766 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "That POKéMON . . .\p"
 # 767 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "That POKéMON . . .\p"
-# 768 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "That's ENTEI!\p"
+# 768 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "It's incredible to see a POKéMON as\n"
 # 769 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "It's incredible to see a POKéMON as\n"
+	.string "magnificent as this up close.$"
 # 770 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "magnificent as this up close.$"
+
 # 771 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 772 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_WallaceFinalBeastSuicune:
+# 772 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "That POKéMON . . .\p"
 # 773 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "That POKéMON . . .\p"
-# 774 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "That's SUICUNE!\p"
+# 774 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "It's incredible to see a POKéMON as\n"
 # 775 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "It's incredible to see a POKéMON as\n"
+	.string "magnificent as this up close.$"
 # 776 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "magnificent as this up close.$"
+
 # 777 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 778 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_WallaceFinalBeastRaikou:
-# 779 "data//maps/SootopolisCity_House3/scripts.pory"
+# 778 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "That POKéMON . . .\p"
-# 780 "data//maps/SootopolisCity_House3/scripts.pory"
+# 779 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "That's RAIKOU!\p"
-# 781 "data//maps/SootopolisCity_House3/scripts.pory"
+# 780 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "It's incredible to see a POKéMON as\n"
-# 782 "data//maps/SootopolisCity_House3/scripts.pory"
+# 781 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "magnificent as this up close.$"
+# 782 "data//maps/SootopolisCity_House3/scripts.pory"
+
 # 783 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 784 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_WallaceThreeBeasts:
+# 784 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string ". . .\n"
 # 785 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\n"
+	.string ". . .\p"
 # 786 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string ". . .\p"
+	.string "{PLAYER} . . .\p"
 # 787 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "{PLAYER} . . .\p"
-# 788 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Thanks to you, I've been able to fulfill\n"
-# 789 "data//maps/SootopolisCity_House3/scripts.pory"
+# 788 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "my life's dream of seeing all three of\l"
-# 790 "data//maps/SootopolisCity_House3/scripts.pory"
+# 789 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "the legendary beast POKéMON . . .\p"
-# 791 "data//maps/SootopolisCity_House3/scripts.pory"
+# 790 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string ". . .\n"
-# 792 "data//maps/SootopolisCity_House3/scripts.pory"
+# 791 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string ". . .\p"
-# 793 "data//maps/SootopolisCity_House3/scripts.pory"
+# 792 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Ultimately, though I dedicated my life\n"
-# 794 "data//maps/SootopolisCity_House3/scripts.pory"
+# 793 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "to finding SUICUNE, it was you alone,\l"
+# 794 "data//maps/SootopolisCity_House3/scripts.pory"
+	.string "{PLAYER} . . .\p"
 # 795 "data//maps/SootopolisCity_House3/scripts.pory"
-	.string "{PLAYER} . . .\p"
-# 796 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Yes, I, WALLACE, had nothing to do with\n"
-# 797 "data//maps/SootopolisCity_House3/scripts.pory"
+# 796 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "your dazzling discovery . . .\p"
-# 798 "data//maps/SootopolisCity_House3/scripts.pory"
+# 797 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "{PLAYER},\n"
-# 799 "data//maps/SootopolisCity_House3/scripts.pory"
+# 798 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "I'd like you to take this.$"
+# 799 "data//maps/SootopolisCity_House3/scripts.pory"
+
 # 800 "data//maps/SootopolisCity_House3/scripts.pory"
-
-# 801 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_WallaceGiveHoohQuest:
-# 802 "data//maps/SootopolisCity_House3/scripts.pory"
+# 801 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "With the MYSTIC TICKET\n"
-# 803 "data//maps/SootopolisCity_House3/scripts.pory"
+# 802 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "you can travel to NAVEL ROCK.\p"
-# 804 "data//maps/SootopolisCity_House3/scripts.pory"
+# 803 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "I want you to meet me there with the\n"
-# 805 "data//maps/SootopolisCity_House3/scripts.pory"
+# 804 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "three legendary beast POKéMON you've\l"
-# 806 "data//maps/SootopolisCity_House3/scripts.pory"
+# 805 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "caught.\p"
-# 807 "data//maps/SootopolisCity_House3/scripts.pory"
+# 806 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Once there, I'll ask you to demonstrate\n"
-# 808 "data//maps/SootopolisCity_House3/scripts.pory"
+# 807 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "their legendary strength by engaging me\l"
-# 809 "data//maps/SootopolisCity_House3/scripts.pory"
+# 808 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "in an all-out POKéMON battle!$" 
-# 810 "data//maps/SootopolisCity_House3/scripts.pory"
+# 809 "data//maps/SootopolisCity_House3/scripts.pory"
 
-# 811 "data//maps/SootopolisCity_House3/scripts.pory"
+# 810 "data//maps/SootopolisCity_House3/scripts.pory"
 SootopolisCity_House3_Text_WallaceGiveHoohQuest2:
-# 812 "data//maps/SootopolisCity_House3/scripts.pory"
+# 811 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "{PLAYER} . . .\p"
-# 813 "data//maps/SootopolisCity_House3/scripts.pory"
+# 812 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "I want you to meet me at NAVEL ROCK with\n"
-# 814 "data//maps/SootopolisCity_House3/scripts.pory"
+# 813 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "the three legendary beast POKéMON.\p"
-# 815 "data//maps/SootopolisCity_House3/scripts.pory"
+# 814 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "By assembling them all in that place...\n"
-# 816 "data//maps/SootopolisCity_House3/scripts.pory"
+# 815 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Can we summon HO-OH?$"
 
 SootopolisCity_House3_EventScript_Wallace_Text_0:
@@ -1544,11 +1544,10 @@ SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_0:
 	.string "three BEAST POKéMON you've caught.\p"
 	.string "Once there, I'll ask you to demonstrate\n"
 	.string "their legendary strength by engaging\l"
-	.string "me\l"
-	.string "in an all-out POKéMON battle!$"
+	.string "me in an all-out POKéMON battle!$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_1:
-# 55 "data//maps/SootopolisCity_House3/scripts.pory"
+# 54 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "I'm traveling HOENN right now in search\n"
 	.string "of the POKéMON SUICUNE.\p"
 	.string "My swift and elegant, yet unbreakable\n"
@@ -1558,7 +1557,7 @@ SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_1:
 	.string "been roaming the region as of late.$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_2:
-# 59 "data//maps/SootopolisCity_House3/scripts.pory"
+# 58 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "I'm traveling HOENN right now in search\n"
 	.string "of the POKéMON RAIKOU.\p"
 	.string "RAIKOU is one of a trio of BEAST\n"
@@ -1571,7 +1570,7 @@ SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_2:
 	.string "been roaming the region as of late.$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_3:
-# 64 "data//maps/SootopolisCity_House3/scripts.pory"
+# 63 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "I'm traveling HOENN right now in search\n"
 	.string "of the POKéMON ENTEI.\p"
 	.string "ENTEI is one of a trio of BEAST POKéMON\n"
@@ -1583,7 +1582,7 @@ SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_3:
 	.string "roaming the region as of late.$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_4:
-# 70 "data//maps/SootopolisCity_House3/scripts.pory"
+# 69 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "I'm traveling HOENN right now in search\n"
 	.string "of the POKéMON {STR_VAR_1}.\p"
 	.string "I have reason to believe\n"
@@ -1591,11 +1590,11 @@ SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_4:
 	.string "region as of late.$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_5:
-# 77 "data//maps/SootopolisCity_House3/scripts.pory"
+# 76 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}… {PAUSE 5}…$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_6:
-# 87 "data//maps/SootopolisCity_House3/scripts.pory"
+# 86 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "You caught the roaming SUICUNE??\p"
 	.string "{PLAYER}…{PAUSE 20}\l"
 	.string "So nonchalant…\p"
@@ -1606,7 +1605,7 @@ SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_6:
 	.string "seemingly with ease…$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_7:
-# 93 "data//maps/SootopolisCity_House3/scripts.pory"
+# 92 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "You caught the roaming RAIKOU??\p"
 	.string "{PLAYER}…{PAUSE 20}\l"
 	.string "Incredible…\p"
@@ -1617,7 +1616,7 @@ SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_7:
 	.string "seemingly with ease…$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_8:
-# 98 "data//maps/SootopolisCity_House3/scripts.pory"
+# 97 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "You caught the roaming ENTEI??\p"
 	.string "{PLAYER}…{PAUSE 20}\l"
 	.string "How terrifying…\p"
@@ -1627,7 +1626,7 @@ SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_8:
 	.string "seemingly with ease…$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_9:
-# 104 "data//maps/SootopolisCity_House3/scripts.pory"
+# 103 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "You caught the roaming\n"
 	.string "{STR_VAR_1}??\p"
 	.string "How impressive that you managed to\n"
@@ -1635,7 +1634,7 @@ SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_9:
 	.string "{STR_VAR_1} seemingly with ease…$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_10:
-# 117 "data//maps/SootopolisCity_House3/scripts.pory"
+# 116 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "{PLAYER}, this means you've caught\n"
 	.string "all three LEGENDARY BEAST POKéMON…\p"
 	.string "I'm amazed…\p"
@@ -1653,7 +1652,7 @@ SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_10:
 	.string "For now, take this ticket.$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_11:
-# 144 "data//maps/SootopolisCity_House3/scripts.pory"
+# 143 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Ah, it seems you already have a MYSTIC\n"
 	.string "TICKET.\p"
 	.string "Well show it when boarding the S.S.\n"
@@ -1662,14 +1661,14 @@ SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_11:
 	.string "force of your BEAST POKéMON in action!$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_12:
-# 152 "data//maps/SootopolisCity_House3/scripts.pory"
+# 151 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Show that when boarding the S.S. TIDAL\n"
 	.string "to travel to NAVEL ROCK.\p"
 	.string "There, we'll witness the relentless\n"
 	.string "force of your BEAST POKéMON in action!$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_13:
-# 161 "data//maps/SootopolisCity_House3/scripts.pory"
+# 160 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Ah, it seems you already have a MYSTIC\n"
 	.string "TICKET.\p"
 	.string "Well when the S.S. TIDAL opens, use it to\n"
@@ -1678,14 +1677,14 @@ SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_13:
 	.string "force of your BEAST POKéMON in action!$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_14:
-# 169 "data//maps/SootopolisCity_House3/scripts.pory"
+# 168 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "When the S.S. TIDAL opens, use that\n"
 	.string "ticket to travel to NAVEL ROCK.\p"
 	.string "There, we'll witness the relentless\n"
 	.string "force of your BEAST POKéMON in action!$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_15:
-# 199 "data//maps/SootopolisCity_House3/scripts.pory"
+# 198 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "You know, {PLAYER}…\n"
 	.string "There is yet a third species of these\l"
 	.string "LEGENDARY BEAST POKéMON.\p"
@@ -1694,7 +1693,7 @@ SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_15:
 	.string "seen across HOENN.$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_16:
-# 203 "data//maps/SootopolisCity_House3/scripts.pory"
+# 202 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "You know, {PLAYER}…\n"
 	.string "There is not one, but three of these\l"
 	.string "LEGENDARY BEAST POKéMON.\p"
@@ -1703,84 +1702,84 @@ SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_16:
 	.string "seen across HOENN.$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_17:
-# 213 "data//maps/SootopolisCity_House3/scripts.pory"
+# 212 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "This is the BEAST POKéMON\n"
 	.string "{STR_VAR_1}.$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_18:
-# 222 "data//maps/SootopolisCity_House3/scripts.pory"
+# 221 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "I know it's out there, {PLAYER}.\p"
 	.string "If you learn anything about\n"
 	.string "{STR_VAR_1}, please let me know!$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_19:
-# 230 "data//maps/SootopolisCity_House3/scripts.pory"
+# 229 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Have you seen the roaming SUICUNE?\p"
 	.string "Such a beautiful POKéMON…\p"
 	.string "Oh how I yearn to see that elegant\n"
 	.string "beast for myself someday…$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_20:
-# 233 "data//maps/SootopolisCity_House3/scripts.pory"
+# 232 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Have you seen the roaming RAIKOU?\p"
 	.string "Such a striking POKéMON…\p"
 	.string "Oh how I yearn to see that terrifying\n"
 	.string "beast for myself someday…$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_21:
-# 236 "data//maps/SootopolisCity_House3/scripts.pory"
+# 235 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Have you seen the roaming ENTEI?\p"
 	.string "Such an intense POKéMON…\p"
 	.string "Oh how I yearn to see that majestic\n"
 	.string "beast for myself someday…$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_22:
-# 240 "data//maps/SootopolisCity_House3/scripts.pory"
+# 239 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Have you seen the roaming\n"
 	.string "{STR_VAR_1}?\p"
 	.string "Oh how I yearn to see that beast for\n"
 	.string "myself someday…$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_23:
-# 257 "data//maps/SootopolisCity_House3/scripts.pory"
+# 256 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "You saw the roaming SUICUNE??\p"
 	.string "Isn't it beautiful?\p"
 	.string "Oh how I yearn to see that elegant\n"
 	.string "beast for myself someday…$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_24:
-# 260 "data//maps/SootopolisCity_House3/scripts.pory"
+# 259 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "You saw the roaming RAIKOU??\p"
 	.string "Isn't it striking?\p"
 	.string "Oh how I yearn to see that terrifying\n"
 	.string "beast for myself someday…$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_25:
-# 263 "data//maps/SootopolisCity_House3/scripts.pory"
+# 262 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "You saw the roaming ENTEI??\p"
 	.string "Isn't it intense?\p"
 	.string "Oh how I yearn to see that majestic\n"
 	.string "beast for myself someday…$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_26:
-# 267 "data//maps/SootopolisCity_House3/scripts.pory"
+# 266 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "You saw the roaming {STR_VAR_1}??\p"
 	.string "Oh how I yearn to see that beast for\n"
 	.string "myself someday…$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_27:
-# 285 "data//maps/SootopolisCity_House3/scripts.pory"
+# 284 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "I know it's still out there, {PLAYER}.\p"
 	.string "Please let me know if you learn anything\n"
 	.string "more!$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_28:
-# 289 "data//maps/SootopolisCity_House3/scripts.pory"
+# 288 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "Please let me know if you learn anything\n"
 	.string "more!$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_29:
-# 298 "data//maps/SootopolisCity_House3/scripts.pory"
+# 297 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "I'm traveling HOENN right now in search\n"
 	.string "of the POKéMON SUICUNE.\p"
 	.string "My swift and elegant, yet unbreakable\n"
@@ -1791,7 +1790,7 @@ SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_29:
 	.string "I aspire to glimpse it with my own eyes…$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_30:
-# 303 "data//maps/SootopolisCity_House3/scripts.pory"
+# 302 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "I'm traveling HOENN right now in search\n"
 	.string "of the POKéMON RAIKOU.\p"
 	.string "RAIKOU is one of a trio of BEAST\n"
@@ -1805,7 +1804,7 @@ SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_30:
 	.string "I aspire to glimpse it with my own eyes…$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_31:
-# 309 "data//maps/SootopolisCity_House3/scripts.pory"
+# 308 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "I'm traveling HOENN right now in search\n"
 	.string "of the POKéMON ENTEI.\p"
 	.string "ENTEI is one of a trio of BEAST POKéMON\n"
@@ -1818,7 +1817,7 @@ SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_31:
 	.string "I aspire to glimpse it with my own eyes…$"
 
 SootopolisCity_House3_EventScript_WallaceCheckBeasts_Text_32:
-# 316 "data//maps/SootopolisCity_House3/scripts.pory"
+# 315 "data//maps/SootopolisCity_House3/scripts.pory"
 	.string "I'm traveling HOENN right now in search\n"
 	.string "of the POKéMON {STR_VAR_1}.\p"
 	.string "{PLAYER}, if you encounter\n"
