@@ -1840,6 +1840,12 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/scripts/dexnav.inc"
 	.include "data/scripts/battle_frontier.inc"
 
+	.include "data/scripts/apricorn_tree.inc"
+	
+	.include "data/scripts/wild_encounter.inc"
+
+	@ ADDED BELOW 
+
 	.include "data/maps/DragonsRoost/scripts.inc"
 
 	.include "data/maps/GraniteCove/scripts.inc"
@@ -1882,12 +1888,6 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 
 	.include "data/maps/MossdeepCity_GameCorner_Arcade/scripts.inc"
 
-	.include "data/scripts/apricorn_tree.inc"
-	
-	.include "data/scripts/wild_encounter.inc"
-
-	@ ADDED BELOW 
-
 	.include "data/maps/LavaridgeSauna/scripts.inc"
 
 	.include "data/maps/LavarborTunnelEntrance/scripts.inc"
@@ -1917,3 +1917,5 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/SecretVault/scripts.inc"
 
 	.include "data/maps/ShadyGuysTruck/scripts.inc"
+
+	.include "data/scripts/roaming_traders.inc"

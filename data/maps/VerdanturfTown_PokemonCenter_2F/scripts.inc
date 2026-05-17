@@ -16,108 +16,190 @@ VerdanturfTown_PokemonCenter_2F_MapScripts::
 VerdanturfTown_PokemonCenter_2F_OnTransition::
 # 12 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 	call VerdanturfTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC
+# 13 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+	call VerdanturfTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC
 	return
 
 
 VerdanturfTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC::
-# 16 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
-	checkroamingnpcatlocation FLAG_PKMN_CNTR_WALLACE, MAP_VERDANTURF_TOWN_POKEMON_CENTER_2F
 # 17 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+	checkroamingnpcatlocation FLAG_ROAMING_WALLACE, MAP_VERDANTURF_TOWN_POKEMON_CENTER_2F
+# 18 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq VerdanturfTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC_2
-# 21 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+# 22 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 	setflag FLAG_TEMP_A
 VerdanturfTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC_1:
 	return
 
 VerdanturfTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC_2:
-# 18 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+# 19 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 	setvar VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_WALLACE
 	goto VerdanturfTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC_1
 
 
 VerdanturfTown_PokemonCenter_2F_EventScript_SpRoamingNPC::
-# 27 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+# 28 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 	compare VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_WALLACE
 	goto_if_eq VerdanturfTown_PokemonCenter_2F_EventScript_SpRoamingNPC_1
 	return
 
 VerdanturfTown_PokemonCenter_2F_EventScript_SpRoamingNPC_1:
-# 28 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+# 29 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 	goto VerdanturfTown_PokemonCenter_2F_EventScript_Wallace
 	return
 
 
-VerdanturfTown_PokemonCenter_2F_EventScript_Wallace::
-# 33 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
-	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
-# 34 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
-	waitmovement
+VerdanturfTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC::
+	checkroamingnpcatlocation FLAG_ROAMING_SCIENTIST, MAP_VERDANTURF_TOWN_POKEMON_CENTER_2F
+# 0 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq VerdanturfTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_2
+	checkroamingnpcatlocation FLAG_ROAMING_BREEDER, MAP_VERDANTURF_TOWN_POKEMON_CENTER_2F
+# 0 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq VerdanturfTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_3
+	checkroamingnpcatlocation FLAG_ROAMING_HIKER, MAP_VERDANTURF_TOWN_POKEMON_CENTER_2F
+# 0 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq VerdanturfTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_4
+	checkroamingnpcatlocation FLAG_ROAMING_RANGER, MAP_VERDANTURF_TOWN_POKEMON_CENTER_2F
+# 0 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq VerdanturfTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_5
+# 47 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+	setflag FLAG_TEMP_B
+VerdanturfTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1:
+	return
+
+VerdanturfTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_2:
 # 35 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_SCIENTIST_1
+	goto VerdanturfTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1
+
+VerdanturfTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_3:
+# 38 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_MAN_4
+	goto VerdanturfTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1
+
+VerdanturfTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_4:
+# 41 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_HIKER
+	goto VerdanturfTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1
+
+VerdanturfTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_5:
+# 44 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_CAMPER
+	goto VerdanturfTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1
+
+
+VerdanturfTown_PokemonCenter_2F_EventScript_TrRoamingNPC::
+# 53 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+	faceplayer
+# 54 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+	switch VAR_OBJ_GFX_ID_B
+# 55 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+	case OBJ_EVENT_GFX_SCIENTIST_1, VerdanturfTown_PokemonCenter_2F_EventScript_TrRoamingNPC_3
+# 57 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+	case OBJ_EVENT_GFX_MAN_4, VerdanturfTown_PokemonCenter_2F_EventScript_TrRoamingNPC_4
+# 59 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+	case OBJ_EVENT_GFX_HIKER, VerdanturfTown_PokemonCenter_2F_EventScript_TrRoamingNPC_5
+# 61 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+	case OBJ_EVENT_GFX_CAMPER, VerdanturfTown_PokemonCenter_2F_EventScript_TrRoamingNPC_6
+VerdanturfTown_PokemonCenter_2F_EventScript_TrRoamingNPC_1:
+# 64 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceLeft
+# 65 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+	waitmovement
+# 66 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+	release
+	return
+
+VerdanturfTown_PokemonCenter_2F_EventScript_TrRoamingNPC_3:
+# 56 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+	call RoamingTraders_EventScript_TMTrader
+	goto VerdanturfTown_PokemonCenter_2F_EventScript_TrRoamingNPC_1
+
+VerdanturfTown_PokemonCenter_2F_EventScript_TrRoamingNPC_4:
+# 58 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+	call RoamingTraders_EventScript_BallTrader
+	goto VerdanturfTown_PokemonCenter_2F_EventScript_TrRoamingNPC_1
+
+VerdanturfTown_PokemonCenter_2F_EventScript_TrRoamingNPC_5:
+# 60 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+	call RoamingTraders_EventScript_SurvivalItemTrader
+	goto VerdanturfTown_PokemonCenter_2F_EventScript_TrRoamingNPC_1
+
+VerdanturfTown_PokemonCenter_2F_EventScript_TrRoamingNPC_6:
+# 62 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+	call RoamingTraders_EventScript_HerbTrader
+	goto VerdanturfTown_PokemonCenter_2F_EventScript_TrRoamingNPC_1
+
+
+VerdanturfTown_PokemonCenter_2F_EventScript_Wallace::
+# 70 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
+# 71 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+	waitmovement
+# 72 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 	goto_if_set FLAG_MET_WALLACE, VerdanturfTown_PokemonCenter_2F_EventScript_Wallace_2
-# 40 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+# 77 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 	msgbox VerdanturfTown_PokemonCenter_2F_EventScript_Wallace_Text_1, MSGBOX_DEFAULT
-# 45 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+# 82 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 	setflag FLAG_MET_WALLACE
 VerdanturfTown_PokemonCenter_2F_EventScript_Wallace_1:
-# 47 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+# 84 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 	closemessage
-# 48 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+# 85 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 	delay 15
-# 51 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+# 88 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 	release
 	end
 
 VerdanturfTown_PokemonCenter_2F_EventScript_Wallace_2:
-# 36 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+# 73 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 	msgbox VerdanturfTown_PokemonCenter_2F_EventScript_Wallace_Text_0, MSGBOX_DEFAULT
-# 37 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+# 74 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 	call SootopolisCity_House3_EventScript_WallaceCheckBeasts
 	goto VerdanturfTown_PokemonCenter_2F_EventScript_Wallace_1
 
 
-VerdanturfTown_PokemonCenter_2F_EventScript_TrRoamingNPC::
-# 56 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
-	release
-	end
+# 92 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 
+# 93 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 
-# 60 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
-
-# 61 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
-
-# 62 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+# 94 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 @ The below 3 are unused and leftover from RS
-# 63 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+# 95 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 VerdanturfTown_PokemonCenter_2F_EventScript_Colosseum::
-# 64 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+# 96 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 	call CableClub_EventScript_Colosseum
-# 65 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+# 97 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 	end
-# 66 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+# 98 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 
-# 67 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+# 99 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 VerdanturfTown_PokemonCenter_2F_EventScript_TradeCenter::
-# 68 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+# 100 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 	call CableClub_EventScript_TradeCenter
-# 69 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+# 101 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 	end
-# 70 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+# 102 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 
-# 71 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+# 103 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 VerdanturfTown_PokemonCenter_2F_EventScript_RecordCorner::
-# 72 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+# 104 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 	call CableClub_EventScript_RecordCorner
-# 73 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+# 105 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 	end
 
 VerdanturfTown_PokemonCenter_2F_EventScript_Wallace_Text_0:
-# 36 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+# 73 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 	.string "WALLACE: Good to see you again,\n"
 	.string "{PLAYER}.$"
 
 VerdanturfTown_PokemonCenter_2F_EventScript_Wallace_Text_1:
-# 40 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
+# 77 "data//maps/VerdanturfTown_PokemonCenter_2F/scripts.pory"
 	.string "Ah, a young TRAINER…\p"
 	.string "Yes, I can tell you're one to watch.\p"
 	.string "But how rude of me,\n"

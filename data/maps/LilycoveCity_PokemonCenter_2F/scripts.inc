@@ -16,106 +16,190 @@ LilycoveCity_PokemonCenter_2F_MapScripts::
 LilycoveCity_PokemonCenter_2F_OnTransition::
 # 12 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 	call LilycoveCity_PokemonCenter_2F_EventScript_SetSpRoamingNPC
+# 13 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+	call LilycoveCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC
 	end
 
 
 LilycoveCity_PokemonCenter_2F_EventScript_SetSpRoamingNPC::
-# 17 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
-	checkroamingnpcatlocation FLAG_PKMN_CNTR_WALLACE, MAP_LILYCOVE_CITY_POKEMON_CENTER_2F
 # 18 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+	checkroamingnpcatlocation FLAG_ROAMING_WALLACE, MAP_LILYCOVE_CITY_POKEMON_CENTER_2F
+# 19 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq LilycoveCity_PokemonCenter_2F_EventScript_SetSpRoamingNPC_2
-# 22 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 23 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 	setflag FLAG_TEMP_A
 LilycoveCity_PokemonCenter_2F_EventScript_SetSpRoamingNPC_1:
 	return
 
 LilycoveCity_PokemonCenter_2F_EventScript_SetSpRoamingNPC_2:
-# 19 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 20 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 	setvar VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_WALLACE
 	goto LilycoveCity_PokemonCenter_2F_EventScript_SetSpRoamingNPC_1
 
 
 LilycoveCity_PokemonCenter_2F_EventScript_SpRoamingNPC::
-# 28 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 29 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 	compare VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_WALLACE
 	goto_if_eq LilycoveCity_PokemonCenter_2F_EventScript_SpRoamingNPC_1
 	return
 
 LilycoveCity_PokemonCenter_2F_EventScript_SpRoamingNPC_1:
-# 29 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 30 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 	goto LilycoveCity_PokemonCenter_2F_EventScript_Wallace
 	return
 
 
-LilycoveCity_PokemonCenter_2F_EventScript_Wallace::
-# 34 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
-	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
-# 35 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
-	waitmovement
+LilycoveCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC::
+	checkroamingnpcatlocation FLAG_ROAMING_SCIENTIST, MAP_LILYCOVE_CITY_POKEMON_CENTER_2F
+# 0 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq LilycoveCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_2
+	checkroamingnpcatlocation FLAG_ROAMING_BREEDER, MAP_LILYCOVE_CITY_POKEMON_CENTER_2F
+# 0 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq LilycoveCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_3
+	checkroamingnpcatlocation FLAG_ROAMING_HIKER, MAP_LILYCOVE_CITY_POKEMON_CENTER_2F
+# 0 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq LilycoveCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_4
+	checkroamingnpcatlocation FLAG_ROAMING_RANGER, MAP_LILYCOVE_CITY_POKEMON_CENTER_2F
+# 0 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq LilycoveCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_5
+# 48 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+	setflag FLAG_TEMP_B
+LilycoveCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1:
+	return
+
+LilycoveCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_2:
 # 36 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_SCIENTIST_1
+	goto LilycoveCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1
+
+LilycoveCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_3:
+# 39 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_MAN_4
+	goto LilycoveCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1
+
+LilycoveCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_4:
+# 42 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_HIKER
+	goto LilycoveCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1
+
+LilycoveCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_5:
+# 45 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_CAMPER
+	goto LilycoveCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1
+
+
+LilycoveCity_PokemonCenter_2F_EventScript_TrRoamingNPC::
+# 54 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+	faceplayer
+# 55 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+	switch VAR_OBJ_GFX_ID_B
+# 56 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+	case OBJ_EVENT_GFX_SCIENTIST_1, LilycoveCity_PokemonCenter_2F_EventScript_TrRoamingNPC_3
+# 58 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+	case OBJ_EVENT_GFX_MAN_4, LilycoveCity_PokemonCenter_2F_EventScript_TrRoamingNPC_4
+# 60 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+	case OBJ_EVENT_GFX_HIKER, LilycoveCity_PokemonCenter_2F_EventScript_TrRoamingNPC_5
+# 62 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+	case OBJ_EVENT_GFX_CAMPER, LilycoveCity_PokemonCenter_2F_EventScript_TrRoamingNPC_6
+LilycoveCity_PokemonCenter_2F_EventScript_TrRoamingNPC_1:
+# 67 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+	release
+	return
+
+LilycoveCity_PokemonCenter_2F_EventScript_TrRoamingNPC_3:
+# 57 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+	call RoamingTraders_EventScript_TMTrader
+	goto LilycoveCity_PokemonCenter_2F_EventScript_TrRoamingNPC_1
+
+LilycoveCity_PokemonCenter_2F_EventScript_TrRoamingNPC_4:
+# 59 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+	call RoamingTraders_EventScript_BallTrader
+	goto LilycoveCity_PokemonCenter_2F_EventScript_TrRoamingNPC_1
+
+LilycoveCity_PokemonCenter_2F_EventScript_TrRoamingNPC_5:
+# 61 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+	call RoamingTraders_EventScript_SurvivalItemTrader
+	goto LilycoveCity_PokemonCenter_2F_EventScript_TrRoamingNPC_1
+
+LilycoveCity_PokemonCenter_2F_EventScript_TrRoamingNPC_6:
+# 63 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+	call RoamingTraders_EventScript_HerbTrader
+	goto LilycoveCity_PokemonCenter_2F_EventScript_TrRoamingNPC_1
+
+
+LilycoveCity_PokemonCenter_2F_EventScript_Wallace::
+# 71 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
+# 72 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+	waitmovement
+# 73 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 	goto_if_set FLAG_MET_WALLACE, LilycoveCity_PokemonCenter_2F_EventScript_Wallace_2
-# 41 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 78 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 	msgbox LilycoveCity_PokemonCenter_2F_EventScript_Wallace_Text_1, MSGBOX_DEFAULT
-# 46 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 83 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 	setflag FLAG_MET_WALLACE
 LilycoveCity_PokemonCenter_2F_EventScript_Wallace_1:
-# 48 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 85 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 	closemessage
-# 49 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 86 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 	delay 15
-# 50 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 87 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceRight
-# 51 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 88 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 	waitmovement
-# 52 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 89 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 	release
 	end
 
 LilycoveCity_PokemonCenter_2F_EventScript_Wallace_2:
-# 37 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 74 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 	msgbox LilycoveCity_PokemonCenter_2F_EventScript_Wallace_Text_0, MSGBOX_DEFAULT
-# 38 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 75 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 	call SootopolisCity_House3_EventScript_WallaceCheckBeasts
 	goto LilycoveCity_PokemonCenter_2F_EventScript_Wallace_1
 
 
-# 56 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 93 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 
-# 57 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 94 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 
-# 58 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 95 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 @ The below 3 are unused and leftover from RS
-# 59 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 96 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 LilycoveCity_PokemonCenter_2F_EventScript_Colosseum::
-# 60 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 97 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 	call CableClub_EventScript_Colosseum
-# 61 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 98 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 	end
-# 62 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 99 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 
-# 63 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 100 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 LilycoveCity_PokemonCenter_2F_EventScript_TradeCenter::
-# 64 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 101 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 	call CableClub_EventScript_TradeCenter
-# 65 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 102 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 	end
-# 66 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 103 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 
-# 67 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 104 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 LilycoveCity_PokemonCenter_2F_EventScript_RecordCorner::
-# 68 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 105 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 	call CableClub_EventScript_RecordCorner
-# 69 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 106 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 	end
 
 LilycoveCity_PokemonCenter_2F_EventScript_Wallace_Text_0:
-# 37 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 74 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 	.string "WALLACE: Good to see you again,\n"
 	.string "{PLAYER}.$"
 
 LilycoveCity_PokemonCenter_2F_EventScript_Wallace_Text_1:
-# 41 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
+# 78 "data//maps/LilycoveCity_PokemonCenter_2F/scripts.pory"
 	.string "Ah, a young TRAINER…\p"
 	.string "Yes, I can tell you're one to watch.\p"
 	.string "But how rude of me,\n"

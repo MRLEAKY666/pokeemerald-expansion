@@ -3,8 +3,54 @@ SootopolisCity_PokemonCenter_2F_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, CableClub_OnFrame
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, CableClub_OnWarp
 	map_script MAP_SCRIPT_ON_LOAD, CableClub_OnLoad
-	map_script MAP_SCRIPT_ON_TRANSITION, CableClub_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, SootopolisCity_PokemonCenter_2F_OnTransition
 	.byte 0
+
+`
+
+script SootopolisCity_PokemonCenter_2F_OnTransition{
+	call(SootopolisCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC)
+	end
+}
+
+script SootopolisCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC{
+	if (checkroamingnpcatlocation(FLAG_ROAMING_SCIENTIST, MAP_SOOTOPOLIS_CITY_POKEMON_CENTER_2F) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_SCIENTIST_1)
+	}
+	elif (checkroamingnpcatlocation(FLAG_ROAMING_BREEDER, MAP_SOOTOPOLIS_CITY_POKEMON_CENTER_2F) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_MAN_4)
+	}
+	elif (checkroamingnpcatlocation(FLAG_ROAMING_HIKER, MAP_SOOTOPOLIS_CITY_POKEMON_CENTER_2F) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_HIKER)
+	}
+	elif (checkroamingnpcatlocation(FLAG_ROAMING_RANGER, MAP_SOOTOPOLIS_CITY_POKEMON_CENTER_2F) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_CAMPER)
+	}
+	else{
+		setflag(FLAG_TEMP_B)
+	}
+	return
+}
+
+script SootopolisCity_PokemonCenter_2F_EventScript_TrRoamingNPC{
+	faceplayer
+	switch (var(VAR_OBJ_GFX_ID_B)){
+		case OBJ_EVENT_GFX_SCIENTIST_1:
+			call(RoamingTraders_EventScript_TMTrader)
+		case OBJ_EVENT_GFX_MAN_4:
+			call(RoamingTraders_EventScript_BallTrader)
+		case OBJ_EVENT_GFX_HIKER:
+			call(RoamingTraders_EventScript_SurvivalItemTrader)
+		case OBJ_EVENT_GFX_CAMPER:
+			call(RoamingTraders_EventScript_HerbTrader)
+	}
+	applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceLeft)
+	waitmovement
+	release
+}
+
+
+raw`
 
 @ The below 3 are unused and leftover from RS
 SootopolisCity_PokemonCenter_2F_EventScript_Colosseum::

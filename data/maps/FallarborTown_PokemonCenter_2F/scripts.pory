@@ -26,6 +26,7 @@ script FallarborTown_PokemonCenter_2F_OnLoad{
 script FallarborTown_PokemonCenter_2F_OnTransition{
 	call(FallarborTown_PokemonCenter_2F_EventScript_ShowHideFossilManiac)
 	call(FallarborTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC)
+	call(FallarborTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC)
 }
 
 script FallarborTown_PokemonCenter_2F_EventScript_ShowHideFossilManiac{
@@ -58,7 +59,7 @@ script FallarborTown_PokemonCenter_2F_EventScript_FossilManiac{
 }
 
 script FallarborTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC{
-	checkroamingnpcatlocation(FLAG_PKMN_CNTR_WALLACE, MAP_FALLARBOR_TOWN_POKEMON_CENTER_2F)
+	checkroamingnpcatlocation(FLAG_ROAMING_WALLACE, MAP_FALLARBOR_TOWN_POKEMON_CENTER_2F)
 	if (var(VAR_RESULT) == TRUE){
 		setvar(VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_WALLACE)
 	}
@@ -72,6 +73,42 @@ script FallarborTown_PokemonCenter_2F_EventScript_SpRoamingNPC{
 	if (var(VAR_OBJ_GFX_ID_A) == OBJ_EVENT_GFX_WALLACE){
 		goto(FallarborTown_PokemonCenter_2F_EventScript_Wallace)
 	}
+}
+
+script FallarborTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC{
+	if (checkroamingnpcatlocation(FLAG_ROAMING_SCIENTIST, MAP_FALLARBOR_TOWN_POKEMON_CENTER_2F) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_SCIENTIST_1)
+	}
+	elif (checkroamingnpcatlocation(FLAG_ROAMING_BREEDER, MAP_FALLARBOR_TOWN_POKEMON_CENTER_2F) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_MAN_4)
+	}
+	elif (checkroamingnpcatlocation(FLAG_ROAMING_HIKER, MAP_FALLARBOR_TOWN_POKEMON_CENTER_2F) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_HIKER)
+	}
+	elif (checkroamingnpcatlocation(FLAG_ROAMING_RANGER, MAP_FALLARBOR_TOWN_POKEMON_CENTER_2F) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_CAMPER)
+	}
+	else{
+		setflag(FLAG_TEMP_B)
+	}
+	return
+}
+
+script FallarborTown_PokemonCenter_2F_EventScript_TrRoamingNPC{
+	faceplayer
+	switch (var(VAR_OBJ_GFX_ID_B)){
+		case OBJ_EVENT_GFX_SCIENTIST_1:
+			call(RoamingTraders_EventScript_TMTrader)
+		case OBJ_EVENT_GFX_MAN_4:
+			call(RoamingTraders_EventScript_BallTrader)
+		case OBJ_EVENT_GFX_HIKER:
+			call(RoamingTraders_EventScript_SurvivalItemTrader)
+		case OBJ_EVENT_GFX_CAMPER:
+			call(RoamingTraders_EventScript_HerbTrader)
+	}
+	//applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceLeft)
+	//waitmovement
+	release
 }
 
 script FallarborTown_PokemonCenter_2F_EventScript_Wallace{
@@ -93,11 +130,6 @@ script FallarborTown_PokemonCenter_2F_EventScript_Wallace{
 	delay(15)
 	applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceLeft)
 	waitmovement
-	release
-	end
-}
-
-script FallarborTown_PokemonCenter_2F_EventScript_TrRoamingNPC{
 	release
 	end
 }

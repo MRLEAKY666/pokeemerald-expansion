@@ -3084,9 +3084,32 @@
 	call EventScript_BrailleCursorWaitButton
 	.endm
 
-	@ check if the roaming given roaming NPC should be shown at the given location, returns TRUE/FALSE to VAR_RESULT 
+	@ check if the given roaming NPC should be shown at the given location, returns TRUE/FALSE to VAR_RESULT 
 	.macro checkroamingnpcatlocation flag:req, map:req
 		callnative ScrCmd_CheckRoamingNPCAtLocation, requests_effects=0
 		.2byte \flag
 		map \map
 	.endm
+
+	@ generate inventory for roaming trader and assign to variables
+	.macro generateroamingshop flag:req
+		callnative ScrCmd_GenerateRoamingNPCShop, requests_effects=0
+		.2byte \flag
+	.endm
+
+	@ check an item and set its price to (dest)
+	.macro getitemprice dest:req, itemId:req, quantity=1
+	callnative ScrCmd_GetItemPrice, requests_effects=0
+	.2byte \dest
+	.2byte \itemId
+	.2byte \quantity
+	.endm
+
+	@ check an item and set its price to (dest)
+	.macro gettradersitemprice dest:req, itemId:req, quantity=1
+	callnative ScrCmd_GetTradersItemPrice, requests_effects=0
+	.2byte \dest
+	.2byte \itemId
+	.2byte \quantity
+	.endm
+	

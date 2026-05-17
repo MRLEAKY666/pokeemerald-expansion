@@ -9,7 +9,7 @@ SootopolisCity_House3_MapScripts::
 
 SootopolisCity_House3_OnTransition::
 # 9 "data//maps/SootopolisCity_House3/scripts.pory"
-	checkroamingnpcatlocation FLAG_PKMN_CNTR_WALLACE, MAP_SOOTOPOLIS_CITY_HOUSE3
+	checkroamingnpcatlocation FLAG_ROAMING_WALLACE, MAP_SOOTOPOLIS_CITY_HOUSE3
 # 10 "data//maps/SootopolisCity_House3/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq SootopolisCity_House3_OnTransition_1

@@ -64,7 +64,7 @@ static void UpdatePerDay(struct Time *localTime)
         SetShoalItemFlag(daysSince);
         SetRandomLotteryNumber(daysSince);
         UpdateDaysPassedSinceFormChange(daysSince);
-        ResetRandomItem();
+        RespawnRandomOWItem();
         ResetWildOverworldMons();
         RestockBerryMasterCellar();
         CountBikeDeliveryDays(daysSince);
@@ -72,6 +72,7 @@ static void UpdatePerDay(struct Time *localTime)
         ProgressLavarborTunnelState();
         DailyResetApricornTrees();
         TryShowShadyTruck();
+        ClearRoamingTraderFlags();
         *days = localTime->days;
     }
 }

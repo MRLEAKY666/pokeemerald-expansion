@@ -282,5 +282,6 @@ u32 GetItemSellPrice(enum Item itemId);
 bool32 IsHoldEffectChoice(enum HoldEffect holdEffect);
 ShopCriteriaFunc GetItemShopCriteriaFunc(u32 itemId);
 bool32 IsItemShopCriteriaFulfilled(u32 itemId);
+void GenerateRoamingNPCShop(u32 flagId);
 
 #endif // GUARD_ITEM_H

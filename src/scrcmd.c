@@ -3588,3 +3588,34 @@ bool8 ScrCmd_CheckRoamingNPCAtLocation(struct ScriptContext *ctx)
 
     return FALSE;
 }
+
+bool8 ScrCmd_GenerateRoamingNPCShop(struct ScriptContext *ctx)
+{
+    u32 flagId = ScriptReadHalfword(ctx);
+
+    GenerateRoamingNPCShop(flagId);
+
+    return FALSE;
+}
+
+bool8 ScrCmd_GetItemPrice(struct ScriptContext *ctx)
+{
+    u16 destVar = ScriptReadHalfword(ctx);
+    enum Item itemId = VarGet(ScriptReadHalfword(ctx));
+    u32 quantity = VarGet(ScriptReadHalfword(ctx));
+
+    VarSet(destVar, (GetItemPrice(itemId) * quantity));
+
+    return FALSE;
+}
+
+bool8 ScrCmd_GetTradersItemPrice(struct ScriptContext *ctx)
+{
+    u16 destVar = ScriptReadHalfword(ctx);
+    enum Item itemId = VarGet(ScriptReadHalfword(ctx));
+    u32 quantity = VarGet(ScriptReadHalfword(ctx));
+
+    VarSet(destVar, ((GetItemPrice(itemId) * quantity) / 4));
+
+    return FALSE;
+}

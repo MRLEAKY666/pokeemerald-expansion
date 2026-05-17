@@ -23,6 +23,8 @@
 #include "constants/item_effects.h"
 #include "constants/hold_effects.h"
 
+#include "random.h"
+
 #define DUMMY_PC_BAG_POCKET                 \
 {                                           \
     .id = POCKET_DUMMY,                     \
@@ -973,4 +975,191 @@ bool32 IsItemShopCriteriaFulfilled(u32 itemId)
         return TRUE;
 
     return func(SanitizeItemId(itemId));
+};
+
+static const u32 sTMTraderPool[] = 
+{
+    ITEM_TM_SKILL_SWAP,
+    ITEM_TM_SHADOW_BALL,
+    ITEM_TM_SLUDGE_BOMB,
+    ITEM_TM_IRON_TAIL,
+    ITEM_TM_RETURN,
+    ITEM_TM_SANDSTORM,
+    ITEM_TM_RAIN_DANCE,
+    ITEM_TM_SUNNY_DAY,
+    ITEM_TM_DRAGON_CLAW,
+    ITEM_TM_PSYSHOCK,
+    ITEM_TM_SMACK_DOWN,
+    ITEM_TM_AERIAL_ACE,
+    ITEM_TM_FLAME_CHARGE,
+    ITEM_TM_THIEF,
+    ITEM_TM_ENERGY_BALL,
+    ITEM_TM_FALSE_SWIPE,
+    ITEM_TM_SCALD,
+    ITEM_TM_CHARGE_BEAM,
+    ITEM_TM_WILL_O_WISP,
+    ITEM_TM_ACROBATICS,
+    ITEM_TM_SHADOW_CLAW,
+    ITEM_TM_ROCK_POLISH,
+    ITEM_TM_VOLT_SWITCH,
+    ITEM_TM_THUNDER_WAVE,
+    ITEM_TM_DRAGON_TAIL,
+    ITEM_TM_GRASS_KNOT,
+    ITEM_TM_U_TURN,
+    ITEM_TM_FLASH_CANNON,
+    ITEM_TM_TRICK_ROOM,
+    ITEM_TM_WILD_CHARGE,
+    ITEM_TM_STEEL_WING,
+};
+
+static const u32 sBallTraderPool[] =
+{
+    ITEM_POKE_BALL,
+    ITEM_GREAT_BALL,
+    ITEM_ULTRA_BALL,
+    ITEM_FAST_BALL,
+    ITEM_LEVEL_BALL,
+    ITEM_LURE_BALL,
+    ITEM_HEAVY_BALL,
+    ITEM_LOVE_BALL,
+    ITEM_FRIEND_BALL,
+    ITEM_MOON_BALL,
+    ITEM_SPORT_BALL,
+    ITEM_NET_BALL,
+    ITEM_NEST_BALL,
+    ITEM_REPEAT_BALL,
+    ITEM_TIMER_BALL,
+    ITEM_LUXURY_BALL,
+    ITEM_PREMIER_BALL,
+    ITEM_DIVE_BALL,
+    ITEM_DUSK_BALL,
+    ITEM_HEAL_BALL,
+    ITEM_QUICK_BALL,
+    ITEM_CHERISH_BALL,
+    ITEM_DREAM_BALL,
+    ITEM_STRANGE_BALL,
+};
+
+static const u32 sMintTraderPool[] =
+{
+    ITEM_LONELY_MINT,
+    ITEM_ADAMANT_MINT,
+    ITEM_NAUGHTY_MINT,
+    ITEM_BRAVE_MINT,
+    ITEM_BOLD_MINT,
+    ITEM_IMPISH_MINT,
+    ITEM_LAX_MINT,
+    ITEM_RELAXED_MINT,
+    ITEM_MODEST_MINT,
+    ITEM_MILD_MINT,
+    ITEM_RASH_MINT,
+    ITEM_QUIET_MINT,
+    ITEM_CALM_MINT,
+    ITEM_GENTLE_MINT,
+    ITEM_CAREFUL_MINT,
+    ITEM_SASSY_MINT,
+    ITEM_TIMID_MINT,
+    ITEM_HASTY_MINT,
+    ITEM_JOLLY_MINT,
+    ITEM_NAIVE_MINT,
+    ITEM_SERIOUS_MINT,
+};
+
+static const u32 sHeldItemTraderPool[] =
+{
+    ITEM_ABSORB_BULB,
+    ITEM_AIR_BALLOON,
+    ITEM_CELL_BATTERY,
+    ITEM_FOCUS_SASH,
+    ITEM_MIRROR_HERB,
+    ITEM_POWER_HERB,
+    ITEM_THROAT_SPRAY,
+    ITEM_WHITE_HERB,
+    ITEM_LAVA_COOKIE,
+    ITEM_MAX_REPEL,
+    ITEM_LUM_BERRY,
+    ITEM_LIECHI_BERRY,
+    ITEM_PETAYA_BERRY,
+    ITEM_SALAC_BERRY,
+};
+
+void GenerateRoamingNPCShop(u32 flagId)
+{
+    u8 poolSize;
+
+    switch (flagId)
+    {
+    case FLAG_ROAMING_SCIENTIST:
+        poolSize = ARRAY_COUNT(sTMTraderPool);
+        if (FlagGet(FLAG_BLANK_DISC_DELIVERED)){
+            poolSize++;
+        }
+        break;
+    case FLAG_ROAMING_BREEDER:
+        poolSize = ARRAY_COUNT(sBallTraderPool);
+        break;
+    case FLAG_ROAMING_HIKER:
+        poolSize = ARRAY_COUNT(sHeldItemTraderPool);
+        break;
+    case FLAG_ROAMING_RANGER:
+        poolSize = ARRAY_COUNT(sMintTraderPool);
+        break;
+    
+    default:
+        poolSize = 5;
+        break;
+    }
+
+    u16 inventoryPool[poolSize];
+
+    switch (flagId)
+    {
+    case FLAG_ROAMING_SCIENTIST:
+        for (int i=0; i < ARRAY_COUNT(sTMTraderPool); i++){
+            inventoryPool[i] = sTMTraderPool[i];
+            if (FlagGet(FLAG_BLANK_DISC_DELIVERED) && i == poolSize){
+                inventoryPool[i] = ITEM_BLANK_DISC;
+            }
+        }
+        break;
+    case FLAG_ROAMING_BREEDER:
+        for (int i=0; i < ARRAY_COUNT(sBallTraderPool); i++){
+        inventoryPool[i] = sBallTraderPool[i];
+        }
+        break;
+    case FLAG_ROAMING_HIKER:
+        for (int i=0; i < ARRAY_COUNT(sHeldItemTraderPool); i++){
+        inventoryPool[i] = sHeldItemTraderPool[i];
+        }
+        break;
+    case FLAG_ROAMING_RANGER:
+        for (int i=0; i < ARRAY_COUNT(sMintTraderPool); i++){
+        inventoryPool[i] = sMintTraderPool[i];
+        }
+        break;
+    
+    default:
+        for (int i=0; i < poolSize; i++){
+        inventoryPool[i] = ITEM_NONE;
+        }
+        break;
+    }
+
+    //Shuffle16(inventoryPool, ARRAY_COUNT(inventoryPool));
+
+    for (int i = 0; i < ARRAY_COUNT(inventoryPool) - 1; i++) {
+        // Generate a random index between i and size - 1
+        int j = i + gSaveBlock1Ptr->dailySeed % (ARRAY_COUNT(inventoryPool) - i);
+
+        // Swap the elements at indices i and j
+        int temp = inventoryPool[i];
+        inventoryPool[i] = inventoryPool[j];
+        inventoryPool[j] = temp;
+    }
+
+    gSpecialVar_0x8007 = inventoryPool[0];
+    gSpecialVar_0x8008 = inventoryPool[1];
+    gSpecialVar_0x8009 = inventoryPool[2];
+    gSpecialVar_0x800A = inventoryPool[3];
+    gSpecialVar_0x800B = inventoryPool[4];
 }

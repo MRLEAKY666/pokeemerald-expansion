@@ -16,224 +16,242 @@ OldaleTown_PokemonCenter_2F_MapScripts::
 OldaleTown_PokemonCenter_2F_OnTransition::
 # 12 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	call OldaleTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC
+# 13 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	call OldaleTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC
 	end
 
 
 OldaleTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC::
-# 17 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	checkroamingnpcatlocation FLAG_PKMN_CNTR_WALLACE, MAP_OLDALE_TOWN_POKEMON_CENTER_2F
 # 18 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	checkroamingnpcatlocation FLAG_ROAMING_WALLACE, MAP_OLDALE_TOWN_POKEMON_CENTER_2F
+# 19 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq OldaleTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC_2
-# 22 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 23 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	setflag FLAG_TEMP_A
 OldaleTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC_1:
 	return
 
 OldaleTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC_2:
-# 19 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 20 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	setvar VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_WALLACE
 	goto OldaleTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC_1
 
 
+OldaleTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC::
+	checkroamingnpcatlocation FLAG_ROAMING_SCIENTIST, MAP_OLDALE_TOWN_POKEMON_CENTER_2F
+# 0 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq OldaleTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_2
+	checkroamingnpcatlocation FLAG_ROAMING_BREEDER, MAP_OLDALE_TOWN_POKEMON_CENTER_2F
+# 0 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq OldaleTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_3
+	checkroamingnpcatlocation FLAG_ROAMING_HIKER, MAP_OLDALE_TOWN_POKEMON_CENTER_2F
+# 0 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq OldaleTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_4
+	checkroamingnpcatlocation FLAG_ROAMING_RANGER, MAP_OLDALE_TOWN_POKEMON_CENTER_2F
+# 0 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq OldaleTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_5
+# 42 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	setflag FLAG_TEMP_B
+OldaleTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1:
+	return
+
+OldaleTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_2:
+# 30 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_SCIENTIST_1
+	goto OldaleTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1
+
+OldaleTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_3:
+# 33 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_MAN_4
+	goto OldaleTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1
+
+OldaleTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_4:
+# 36 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_HIKER
+	goto OldaleTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1
+
+OldaleTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_5:
+# 39 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_CAMPER
+	goto OldaleTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1
+
+
+OldaleTown_PokemonCenter_2F_EventScript_TrRoamingNPC::
+# 48 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	faceplayer
+# 49 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	switch VAR_OBJ_GFX_ID_B
+# 50 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	case OBJ_EVENT_GFX_SCIENTIST_1, OldaleTown_PokemonCenter_2F_EventScript_TrRoamingNPC_3
+# 52 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	case OBJ_EVENT_GFX_MAN_4, OldaleTown_PokemonCenter_2F_EventScript_TrRoamingNPC_4
+# 54 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	case OBJ_EVENT_GFX_HIKER, OldaleTown_PokemonCenter_2F_EventScript_TrRoamingNPC_5
+# 56 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	case OBJ_EVENT_GFX_CAMPER, OldaleTown_PokemonCenter_2F_EventScript_TrRoamingNPC_6
+OldaleTown_PokemonCenter_2F_EventScript_TrRoamingNPC_1:
+# 59 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceLeft
+# 60 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	waitmovement
+# 61 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	release
+	return
+
+OldaleTown_PokemonCenter_2F_EventScript_TrRoamingNPC_3:
+# 51 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	call RoamingTraders_EventScript_TMTrader
+	goto OldaleTown_PokemonCenter_2F_EventScript_TrRoamingNPC_1
+
+OldaleTown_PokemonCenter_2F_EventScript_TrRoamingNPC_4:
+# 53 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	call RoamingTraders_EventScript_BallTrader
+	goto OldaleTown_PokemonCenter_2F_EventScript_TrRoamingNPC_1
+
+OldaleTown_PokemonCenter_2F_EventScript_TrRoamingNPC_5:
+# 55 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	call RoamingTraders_EventScript_SurvivalItemTrader
+	goto OldaleTown_PokemonCenter_2F_EventScript_TrRoamingNPC_1
+
+OldaleTown_PokemonCenter_2F_EventScript_TrRoamingNPC_6:
+# 57 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	call RoamingTraders_EventScript_HerbTrader
+	goto OldaleTown_PokemonCenter_2F_EventScript_TrRoamingNPC_1
+
+
 OldaleTown_PokemonCenter_2F_EventScript_SpRoamingNPC::
-# 28 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 65 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	compare VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_WALLACE
 	goto_if_eq OldaleTown_PokemonCenter_2F_EventScript_SpRoamingNPC_1
 	return
 
 OldaleTown_PokemonCenter_2F_EventScript_SpRoamingNPC_1:
-# 29 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 66 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	goto OldaleTown_PokemonCenter_2F_EventScript_Wallace
 	return
 
 
 OldaleTown_PokemonCenter_2F_EventScript_Wallace::
-# 34 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 71 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
-# 35 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 72 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	waitmovement
-# 36 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 73 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	goto_if_set FLAG_MET_WALLACE, OldaleTown_PokemonCenter_2F_EventScript_Wallace_2
-# 41 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 78 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	msgbox OldaleTown_PokemonCenter_2F_EventScript_Wallace_Text_1, MSGBOX_DEFAULT
-# 46 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 83 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	setflag FLAG_MET_WALLACE
 OldaleTown_PokemonCenter_2F_EventScript_Wallace_1:
-# 48 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 85 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	closemessage
-# 49 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 86 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	delay 15
-# 50 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 87 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceLeft
-# 51 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 88 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	waitmovement
-# 52 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 89 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	release
 	end
 
 OldaleTown_PokemonCenter_2F_EventScript_Wallace_2:
-# 37 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 74 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	msgbox OldaleTown_PokemonCenter_2F_EventScript_Wallace_Text_0, MSGBOX_DEFAULT
-# 38 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 75 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	call SootopolisCity_House3_EventScript_WallaceCheckBeasts
 	goto OldaleTown_PokemonCenter_2F_EventScript_Wallace_1
 
 
-OldaleTown_PokemonCenter_2F_EventScript_TrRoamingNPC::
-# 57 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	release
-	end
-
-
-# 61 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-
-# 62 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-
-# 63 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-@ The below 3 are unused and leftover from RS
-# 64 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_EventScript_Colosseum::
-# 65 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	call CableClub_EventScript_Colosseum
-# 66 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	end
-# 67 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-
-# 68 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_EventScript_TradeCenter::
-# 69 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	call CableClub_EventScript_TradeCenter
-# 70 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	end
-# 71 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-
-# 72 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_EventScript_RecordCorner::
-# 73 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	call CableClub_EventScript_RecordCorner
-# 74 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	end
-# 75 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-
-# 76 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_EventScript_BugLass::
-# 77 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	lock
-# 78 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	faceplayer
-# 79 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	waitmovement
-# 80 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	call_if_ge VAR_OLDALE_BUG_KILLING, 2, OldaleTown_PokemonCenter_2F_EventScript_SucceededForBugKilling
-# 81 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	call_if_eq VAR_OLDALE_BUG_KILLING, 1, OldaleTown_PokemonCenter_2F_EventScript_ContinueBugKilling
-# 82 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	call_if_eq VAR_OLDALE_BUG_KILLING, 0, OldaleTown_PokemonCenter_2F_EventScript_StartBugKilling
-# 83 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, Common_Movement_FaceOriginalDirection
-# 84 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	waitmovement 0
-# 85 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	release
-# 86 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	end
-# 87 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-
-# 88 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_EventScript_SucceededForBugKilling::
-# 89 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	msgbox OldaleTown_PokemonCenter_2F_Text_SucceededBugKilling, MSGBOX_DEFAULT
-# 90 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	closemessage
-# 91 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	
-# 92 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	getobjectfacingdirection LOCALID_OLDALE_PKMNCENTER_BUGLASS, VAR_RESULT
 # 93 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 
 # 94 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	switch VAR_RESULT
+
 # 95 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	case DIR_SOUTH, OldaleTown_PokemonCenter_2F_EventScript_CountMoneySouth
+@ The below 3 are unused and leftover from RS
 # 96 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	case DIR_WEST, OldaleTown_PokemonCenter_2F_EventScript_CountMoneyWest
+OldaleTown_PokemonCenter_2F_EventScript_Colosseum::
 # 97 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	case DIR_NORTH, OldaleTown_PokemonCenter_2F_EventScript_CountMoneyNorth
+	call CableClub_EventScript_Colosseum
 # 98 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	end
 # 99 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 
 # 100 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-
+OldaleTown_PokemonCenter_2F_EventScript_TradeCenter::
 # 101 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_EventScript_CountMoneySouth::
+	call CableClub_EventScript_TradeCenter
 # 102 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_CountMoney
+	end
 # 103 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	playse SE_FU_ZAKU
+
 # 104 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	delay 20
+OldaleTown_PokemonCenter_2F_EventScript_RecordCorner::
 # 105 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	playse SE_FU_ZAKU
+	call CableClub_EventScript_RecordCorner
 # 106 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	delay 20
+	end
 # 107 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	playse SE_FU_ZAKU
+
 # 108 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	waitmovement
+OldaleTown_PokemonCenter_2F_EventScript_BugLass::
 # 109 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	delay 5
+	lock
 # 110 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	showmoneybox 0, 0
+	faceplayer
 # 111 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	calcbugmoney
-# 112 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	goto_if_le VAR_OLDALE_BUG_KILLING, 1000, OldaleTown_PokemonCenter_2F_EventScript_PayBugKillingNormal
-# 113 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	goto_if_gt VAR_OLDALE_BUG_KILLING, 1000, OldaleTown_PokemonCenter_2F_EventScript_PayBugKillingMax
-# 114 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	end
-# 115 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-
-# 116 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_EventScript_CountMoneyWest::
-# 117 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_CountMoneyWest
-# 118 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	playse SE_FU_ZAKU
-# 119 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	delay 20
-# 120 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	playse SE_FU_ZAKU
-# 121 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	delay 20
-# 122 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	playse SE_FU_ZAKU
-# 123 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	waitmovement
-# 124 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	delay 5
-# 125 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	showmoneybox 0, 0
-# 126 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	calcbugmoney
-# 127 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	goto_if_le VAR_OLDALE_BUG_KILLING, 1000, OldaleTown_PokemonCenter_2F_EventScript_PayBugKillingNormal
-# 128 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	goto_if_gt VAR_OLDALE_BUG_KILLING, 1000, OldaleTown_PokemonCenter_2F_EventScript_PayBugKillingMax
-# 129 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 112 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	call_if_ge VAR_OLDALE_BUG_KILLING, 2, OldaleTown_PokemonCenter_2F_EventScript_SucceededForBugKilling
+# 113 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	call_if_eq VAR_OLDALE_BUG_KILLING, 1, OldaleTown_PokemonCenter_2F_EventScript_ContinueBugKilling
+# 114 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	call_if_eq VAR_OLDALE_BUG_KILLING, 0, OldaleTown_PokemonCenter_2F_EventScript_StartBugKilling
+# 115 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, Common_Movement_FaceOriginalDirection
+# 116 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	waitmovement 0
+# 117 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	release
+# 118 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	end
-# 130 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 119 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 
+# 120 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+OldaleTown_PokemonCenter_2F_EventScript_SucceededForBugKilling::
+# 121 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	msgbox OldaleTown_PokemonCenter_2F_Text_SucceededBugKilling, MSGBOX_DEFAULT
+# 122 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	closemessage
+# 123 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	
+# 124 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	getobjectfacingdirection LOCALID_OLDALE_PKMNCENTER_BUGLASS, VAR_RESULT
+# 125 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+
+# 126 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	switch VAR_RESULT
+# 127 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	case DIR_SOUTH, OldaleTown_PokemonCenter_2F_EventScript_CountMoneySouth
+# 128 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	case DIR_WEST, OldaleTown_PokemonCenter_2F_EventScript_CountMoneyWest
+# 129 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	case DIR_NORTH, OldaleTown_PokemonCenter_2F_EventScript_CountMoneyNorth
+# 130 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	end
 # 131 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_EventScript_CountMoneyNorth::
+
 # 132 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_CountMoneyNorth
+
 # 133 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	playse SE_FU_ZAKU
+OldaleTown_PokemonCenter_2F_EventScript_CountMoneySouth::
 # 134 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	delay 20
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_CountMoney
 # 135 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	playse SE_FU_ZAKU
 # 136 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
@@ -241,459 +259,523 @@ OldaleTown_PokemonCenter_2F_EventScript_CountMoneyNorth::
 # 137 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	playse SE_FU_ZAKU
 # 138 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	waitmovement
+	delay 20
 # 139 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	delay 5
+	playse SE_FU_ZAKU
 # 140 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	showmoneybox 0, 0
+	waitmovement
 # 141 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	calcbugmoney
+	delay 5
 # 142 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	goto_if_le VAR_OLDALE_BUG_KILLING, 1000, OldaleTown_PokemonCenter_2F_EventScript_PayBugKillingNormal
+	showmoneybox 0, 0
 # 143 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	goto_if_gt VAR_OLDALE_BUG_KILLING, 1000, OldaleTown_PokemonCenter_2F_EventScript_PayBugKillingMax
+	calcbugmoney
 # 144 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	end
+	goto_if_le VAR_OLDALE_BUG_KILLING, 1000, OldaleTown_PokemonCenter_2F_EventScript_PayBugKillingNormal
 # 145 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-
+	goto_if_gt VAR_OLDALE_BUG_KILLING, 1000, OldaleTown_PokemonCenter_2F_EventScript_PayBugKillingMax
 # 146 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_EventScript_PayBugKillingNormal::
+	end
 # 147 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	msgbox OldaleTown_PokemonCenter_2F_Text_PayBugKilling, MSGBOX_DEFAULT
+
 # 148 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	playse SE_SHOP
+OldaleTown_PokemonCenter_2F_EventScript_CountMoneyWest::
 # 149 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	updatemoneybox
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_CountMoneyWest
 # 150 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	getobjectfacingdirection LOCALID_OLDALE_PKMNCENTER_BUGLASS, VAR_RESULT
+	playse SE_FU_ZAKU
 # 151 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	switch VAR_RESULT
+	delay 20
 # 152 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	case DIR_SOUTH, OldaleTown_PokemonCenter_2F_EventScript_GiveMoneySouth
+	playse SE_FU_ZAKU
 # 153 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	case DIR_WEST, OldaleTown_PokemonCenter_2F_EventScript_GiveMoneyWest
+	delay 20
 # 154 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	case DIR_NORTH, OldaleTown_PokemonCenter_2F_EventScript_GiveMoneyNorth
+	playse SE_FU_ZAKU
 # 155 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	end
+	waitmovement
 # 156 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-
+	delay 5
 # 157 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_EventScript_GiveMoneySouth::
+	showmoneybox 0, 0
 # 158 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_GiveMoneySouth
+	calcbugmoney
 # 159 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	waitmovement
+	goto_if_le VAR_OLDALE_BUG_KILLING, 1000, OldaleTown_PokemonCenter_2F_EventScript_PayBugKillingNormal
 # 160 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	delay 20
+	goto_if_gt VAR_OLDALE_BUG_KILLING, 1000, OldaleTown_PokemonCenter_2F_EventScript_PayBugKillingMax
 # 161 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	waitse
+	end
 # 162 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	hidemoneybox
+
 # 163 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	msgbox OldaleTown_PokemonCenter_2F_Text_KeepBugKilling, MSGBOX_DEFAULT
+OldaleTown_PokemonCenter_2F_EventScript_CountMoneyNorth::
 # 164 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	setvar VAR_OLDALE_BUG_KILLING, 1
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_CountMoneyNorth
 # 165 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, Common_Movement_FaceOriginalDirection
+	playse SE_FU_ZAKU
 # 166 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	waitmovement 0
+	delay 20
 # 167 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	release
+	playse SE_FU_ZAKU
 # 168 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	end
+	delay 20
 # 169 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-
+	playse SE_FU_ZAKU
 # 170 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_EventScript_GiveMoneyWest::
+	waitmovement
 # 171 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_GiveMoneyWest
+	delay 5
 # 172 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	waitmovement
+	showmoneybox 0, 0
 # 173 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	delay 20
+	calcbugmoney
 # 174 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	waitse
+	goto_if_le VAR_OLDALE_BUG_KILLING, 1000, OldaleTown_PokemonCenter_2F_EventScript_PayBugKillingNormal
 # 175 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	hidemoneybox
+	goto_if_gt VAR_OLDALE_BUG_KILLING, 1000, OldaleTown_PokemonCenter_2F_EventScript_PayBugKillingMax
 # 176 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	msgbox OldaleTown_PokemonCenter_2F_Text_KeepBugKilling, MSGBOX_DEFAULT
+	end
 # 177 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	setvar VAR_OLDALE_BUG_KILLING, 1
+
 # 178 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, Common_Movement_FaceOriginalDirection
+OldaleTown_PokemonCenter_2F_EventScript_PayBugKillingNormal::
 # 179 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	waitmovement 0
+	msgbox OldaleTown_PokemonCenter_2F_Text_PayBugKilling, MSGBOX_DEFAULT
 # 180 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	release
-# 181 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	end
-# 182 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-
-# 183 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_EventScript_GiveMoneyNorth::
-# 184 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_GiveMoneyNorth
-# 185 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	waitmovement
-# 186 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	delay 20
-# 187 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	waitse
-# 188 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	hidemoneybox
-# 189 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	msgbox OldaleTown_PokemonCenter_2F_Text_KeepBugKilling, MSGBOX_DEFAULT
-# 190 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	setvar VAR_OLDALE_BUG_KILLING, 1
-# 191 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, Common_Movement_FaceOriginalDirection
-# 192 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	waitmovement 0
-# 193 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	release
-# 194 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	end
-# 195 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-
-# 196 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_EventScript_PayBugKillingMax::
-# 197 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	delay 5
-# 198 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, Common_Movement_ExclamationMark
-# 199 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	playse SE_PIN
-# 200 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	msgbox OldaleTown_PokemonCenter_2F_Text_PayBugKillingMax, MSGBOX_DEFAULT
-# 201 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	waitse
-# 202 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	playse SE_SHOP
-# 203 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 181 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	updatemoneybox
-# 204 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-
-# 205 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 182 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	getobjectfacingdirection LOCALID_OLDALE_PKMNCENTER_BUGLASS, VAR_RESULT
-# 206 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 183 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	switch VAR_RESULT
-# 207 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	case DIR_SOUTH, OldaleTown_PokemonCenter_2F_EventScript_GiveMaxMoneySouth
-# 208 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	case DIR_WEST, OldaleTown_PokemonCenter_2F_EventScript_GiveMaxMoneyWest
-# 209 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	case DIR_NORTH, OldaleTown_PokemonCenter_2F_EventScript_GiveMaxMoneyNorth
-# 210 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 184 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	case DIR_SOUTH, OldaleTown_PokemonCenter_2F_EventScript_GiveMoneySouth
+# 185 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	case DIR_WEST, OldaleTown_PokemonCenter_2F_EventScript_GiveMoneyWest
+# 186 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	case DIR_NORTH, OldaleTown_PokemonCenter_2F_EventScript_GiveMoneyNorth
+# 187 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	end
-# 211 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 188 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 
-# 212 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_EventScript_GiveMaxMoneySouth::
-# 213 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 189 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+OldaleTown_PokemonCenter_2F_EventScript_GiveMoneySouth::
+# 190 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_GiveMoneySouth
-# 214 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 191 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	waitmovement
-# 215 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 192 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	delay 20
-# 216 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 193 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	waitse
-# 217 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 194 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	hidemoneybox
-# 218 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	msgbox OldaleTown_PokemonCenter_2F_Text_KeepBugKillingMax, MSGBOX_DEFAULT
-# 219 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 195 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	msgbox OldaleTown_PokemonCenter_2F_Text_KeepBugKilling, MSGBOX_DEFAULT
+# 196 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	setvar VAR_OLDALE_BUG_KILLING, 1
-# 220 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 197 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, Common_Movement_FaceOriginalDirection
-# 221 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 198 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	waitmovement 0
-# 222 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 199 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	release
-# 223 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 200 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	end
-# 224 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 201 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 
-# 225 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_EventScript_GiveMaxMoneyWest::
-# 226 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 202 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+OldaleTown_PokemonCenter_2F_EventScript_GiveMoneyWest::
+# 203 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_GiveMoneyWest
-# 227 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 204 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	waitmovement
-# 228 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 205 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	delay 20
-# 229 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 206 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	waitse
-# 230 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 207 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	hidemoneybox
-# 231 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	msgbox OldaleTown_PokemonCenter_2F_Text_KeepBugKillingMax, MSGBOX_DEFAULT
-# 232 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 208 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	msgbox OldaleTown_PokemonCenter_2F_Text_KeepBugKilling, MSGBOX_DEFAULT
+# 209 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	setvar VAR_OLDALE_BUG_KILLING, 1
-# 233 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 210 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, Common_Movement_FaceOriginalDirection
-# 234 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 211 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	waitmovement 0
-# 235 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 212 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	release
-# 236 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 213 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	end
-# 237 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 214 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 
-# 238 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_EventScript_GiveMaxMoneyNorth::
-# 239 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 215 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+OldaleTown_PokemonCenter_2F_EventScript_GiveMoneyNorth::
+# 216 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_GiveMoneyNorth
-# 240 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 217 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	waitmovement
-# 241 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 218 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	delay 20
-# 242 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 219 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	waitse
-# 243 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 220 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	hidemoneybox
-# 244 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	msgbox OldaleTown_PokemonCenter_2F_Text_KeepBugKillingMax, MSGBOX_DEFAULT
-# 245 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 221 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	msgbox OldaleTown_PokemonCenter_2F_Text_KeepBugKilling, MSGBOX_DEFAULT
+# 222 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	setvar VAR_OLDALE_BUG_KILLING, 1
-# 246 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 223 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, Common_Movement_FaceOriginalDirection
-# 247 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 224 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	waitmovement 0
-# 248 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 225 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	release
-# 249 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 226 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	end
+# 227 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+
+# 228 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+OldaleTown_PokemonCenter_2F_EventScript_PayBugKillingMax::
+# 229 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	delay 5
+# 230 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, Common_Movement_ExclamationMark
+# 231 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	playse SE_PIN
+# 232 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	msgbox OldaleTown_PokemonCenter_2F_Text_PayBugKillingMax, MSGBOX_DEFAULT
+# 233 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	waitse
+# 234 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	playse SE_SHOP
+# 235 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	updatemoneybox
+# 236 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+
+# 237 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	getobjectfacingdirection LOCALID_OLDALE_PKMNCENTER_BUGLASS, VAR_RESULT
+# 238 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	switch VAR_RESULT
+# 239 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	case DIR_SOUTH, OldaleTown_PokemonCenter_2F_EventScript_GiveMaxMoneySouth
+# 240 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	case DIR_WEST, OldaleTown_PokemonCenter_2F_EventScript_GiveMaxMoneyWest
+# 241 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	case DIR_NORTH, OldaleTown_PokemonCenter_2F_EventScript_GiveMaxMoneyNorth
+# 242 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	end
+# 243 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+
+# 244 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+OldaleTown_PokemonCenter_2F_EventScript_GiveMaxMoneySouth::
+# 245 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_GiveMoneySouth
+# 246 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	waitmovement
+# 247 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	delay 20
+# 248 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	waitse
+# 249 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	hidemoneybox
 # 250 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-
+	msgbox OldaleTown_PokemonCenter_2F_Text_KeepBugKillingMax, MSGBOX_DEFAULT
 # 251 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_Movement_CountMoney:
-# 252 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	face_away_player
-# 253 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	delay_16
-# 254 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	walk_in_place_faster_up
-# 255 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	delay_16
-# 256 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	walk_in_place_faster_up
-# 257 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	delay_16
-# 258 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	walk_in_place_faster_up
-# 259 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	walk_in_place_faster_up
-# 260 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	delay_16
-# 261 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	face_player
-# 262 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	step_end
-# 263 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-
-# 264 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_Movement_CountMoneyWest:
-# 265 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	face_away_player
-# 266 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	delay_16
-# 267 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	walk_in_place_faster_right
-# 268 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	delay_16
-# 269 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	walk_in_place_faster_right
-# 270 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	delay_16
-# 271 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	walk_in_place_faster_right
-# 272 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	walk_in_place_faster_right
-# 273 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	delay_16
-# 274 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	face_player
-# 275 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	step_end
-# 276 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-
-# 277 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_Movement_CountMoneyNorth:
-# 278 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	face_away_player
-# 279 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	delay_16
-# 280 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	walk_in_place_faster_down
-# 281 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	delay_16
-# 282 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	walk_in_place_faster_down
-# 283 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	delay_16
-# 284 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	walk_in_place_faster_down
-# 285 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	walk_in_place_faster_down
-# 286 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	delay_16
-# 287 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	face_player
-# 288 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	step_end
-# 289 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-
-# 290 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_Movement_GiveMoneySouth:
-# 291 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	walk_in_place_down
-# 292 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	step_end
-# 293 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-
-# 294 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_Movement_GiveMoneyWest:
-# 295 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	walk_in_place_left
-# 296 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	step_end
-# 297 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-
-# 298 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_Movement_GiveMoneyNorth:
-# 299 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	walk_in_place_up
-# 300 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	step_end
-# 301 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-
-# 302 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_EventScript_ContinueBugKilling::
-# 303 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	msgbox OldaleTown_PokemonCenter_2F_Text_ContinueBugKilling, MSGBOX_DEFAULT
-# 304 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	closemessage
-# 305 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	delay 5
-# 306 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	return
-# 307 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-
-# 308 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_EventScript_StartBugKilling::
-# 309 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	msgbox OldaleTown_PokemonCenter_2F_Text_StartBugKilling, MSGBOX_DEFAULT
-# 310 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	closemessage
-# 311 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	setvar VAR_OLDALE_BUG_KILLING, 1
+# 252 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, Common_Movement_FaceOriginalDirection
+# 253 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	waitmovement 0
+# 254 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	release
+# 255 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	end
+# 256 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+
+# 257 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+OldaleTown_PokemonCenter_2F_EventScript_GiveMaxMoneyWest::
+# 258 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_GiveMoneyWest
+# 259 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	waitmovement
+# 260 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	delay 20
+# 261 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	waitse
+# 262 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	hidemoneybox
+# 263 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	msgbox OldaleTown_PokemonCenter_2F_Text_KeepBugKillingMax, MSGBOX_DEFAULT
+# 264 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OLDALE_BUG_KILLING, 1
+# 265 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, Common_Movement_FaceOriginalDirection
+# 266 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	waitmovement 0
+# 267 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	release
+# 268 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	end
+# 269 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+
+# 270 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+OldaleTown_PokemonCenter_2F_EventScript_GiveMaxMoneyNorth::
+# 271 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, OldaleTown_PokemonCenter_2F_Movement_GiveMoneyNorth
+# 272 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	waitmovement
+# 273 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	delay 20
+# 274 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	waitse
+# 275 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	hidemoneybox
+# 276 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	msgbox OldaleTown_PokemonCenter_2F_Text_KeepBugKillingMax, MSGBOX_DEFAULT
+# 277 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OLDALE_BUG_KILLING, 1
+# 278 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	applymovement LOCALID_OLDALE_PKMNCENTER_BUGLASS, Common_Movement_FaceOriginalDirection
+# 279 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	waitmovement 0
+# 280 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	release
+# 281 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	end
+# 282 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+
+# 283 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+OldaleTown_PokemonCenter_2F_Movement_CountMoney:
+# 284 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	face_away_player
+# 285 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	delay_16
+# 286 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	walk_in_place_faster_up
+# 287 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	delay_16
+# 288 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	walk_in_place_faster_up
+# 289 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	delay_16
+# 290 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	walk_in_place_faster_up
+# 291 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	walk_in_place_faster_up
+# 292 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	delay_16
+# 293 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	face_player
+# 294 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	step_end
+# 295 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+
+# 296 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+OldaleTown_PokemonCenter_2F_Movement_CountMoneyWest:
+# 297 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	face_away_player
+# 298 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	delay_16
+# 299 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	walk_in_place_faster_right
+# 300 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	delay_16
+# 301 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	walk_in_place_faster_right
+# 302 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	delay_16
+# 303 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	walk_in_place_faster_right
+# 304 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	walk_in_place_faster_right
+# 305 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	delay_16
+# 306 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	face_player
+# 307 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	step_end
+# 308 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+
+# 309 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+OldaleTown_PokemonCenter_2F_Movement_CountMoneyNorth:
+# 310 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	face_away_player
+# 311 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	delay_16
 # 312 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	delay 5
+	walk_in_place_faster_down
 # 313 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	return
+	delay_16
 # 314 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-
+	walk_in_place_faster_down
 # 315 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_Text_KeepBugKilling:
+	delay_16
 # 316 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "If you kill more wild BUG POKéMON,\n"
+	walk_in_place_faster_down
 # 317 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "come back and let me know!$"
+	walk_in_place_faster_down
 # 318 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-
+	delay_16
 # 319 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_Text_KeepBugKillingMax:
+	face_player
 # 320 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "It's hard to believe, but I bet\n"
+	step_end
 # 321 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "there are still lots of BUGS out there.\p"
+
 # 322 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "If you kill more wild BUG POKéMON,\n"
+OldaleTown_PokemonCenter_2F_Movement_GiveMoneySouth:
 # 323 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "come back and let me know!$"
+	walk_in_place_down
 # 324 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-
+	step_end
 # 325 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_Text_PayBugKilling:
-# 326 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "You killed {STR_VAR_1} BUG POKéMON…\n"
-# 327 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "So that comes out to ¥{STR_VAR_2}, right?\p"
-# 328 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "Oh don't worry, I've got a lot!\n"
-# 329 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "Here you go!$"
-# 330 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 
+# 326 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+OldaleTown_PokemonCenter_2F_Movement_GiveMoneyWest:
+# 327 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	walk_in_place_left
+# 328 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	step_end
+# 329 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+
+# 330 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+OldaleTown_PokemonCenter_2F_Movement_GiveMoneyNorth:
 # 331 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_Text_PayBugKillingMax:
+	walk_in_place_up
 # 332 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "WOW!!\p"
+	step_end
 # 333 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "You really killed a TON of\n" 
+
 # 334 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "BUG POKéMON!!\p"
+OldaleTown_PokemonCenter_2F_EventScript_ContinueBugKilling::
 # 335 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "Look, I have a lot of money, and I'm\n"
+	msgbox OldaleTown_PokemonCenter_2F_Text_ContinueBugKilling, MSGBOX_DEFAULT
 # 336 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "actually SO grateful…\p"
+	closemessage
 # 337 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "But the most I can give you is\n"
+	delay 5
 # 338 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "¥75,000.$"
+	return
 # 339 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 
 # 340 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_Text_SucceededBugKilling:
+OldaleTown_PokemonCenter_2F_EventScript_StartBugKilling::
 # 341 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "Oh! You really killed some BUG\n"
+	msgbox OldaleTown_PokemonCenter_2F_Text_StartBugKilling, MSGBOX_DEFAULT
 # 342 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "POKéMON for me?\p"
+	closemessage
 # 343 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "Thank you so much!!\l"
+	setvar VAR_OLDALE_BUG_KILLING, 1
 # 344 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "But I guess you were really just\n"
+	delay 5
 # 345 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "after the reward I promised, right?$"
+	return
 # 346 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 
 # 347 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_Text_ContinueBugKilling:
+OldaleTown_PokemonCenter_2F_Text_KeepBugKilling:
 # 348 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "I'll pay you ¥40 for every wild BUG you\n"
+	.string "If you kill more wild BUG POKéMON,\n"
 # 349 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "kill on ROUTE 101, 102, or 103!\p"
+	.string "come back and let me know!$"
 # 350 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "Please help!$"
-# 351 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 
+# 351 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+OldaleTown_PokemonCenter_2F_Text_KeepBugKillingMax:
 # 352 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-OldaleTown_PokemonCenter_2F_Text_StartBugKilling:
+	.string "It's hard to believe, but I bet\n"
 # 353 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "I can't stand all the BUG POKéMON\n"
+	.string "there are still lots of BUGS out there.\p"
 # 354 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "out here in the country!\p"
+	.string "If you kill more wild BUG POKéMON,\n"
 # 355 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "Are you just starting out traveling?\l"
+	.string "come back and let me know!$"
 # 356 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "Tell you what- I'll give you ¥40 for\n"
+
 # 357 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "each wild BUG you kill around here.\p"
+OldaleTown_PokemonCenter_2F_Text_PayBugKilling:
 # 358 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "That way you'll have a little more\n"
+	.string "You killed {STR_VAR_1} BUG POKéMON…\n"
 # 359 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
-	.string "for supplies, and hopefully I'll see\l"
+	.string "So that comes out to ¥{STR_VAR_2}, right?\p"
 # 360 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	.string "Oh don't worry, I've got a lot!\n"
+# 361 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	.string "Here you go!$"
+# 362 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+
+# 363 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+OldaleTown_PokemonCenter_2F_Text_PayBugKillingMax:
+# 364 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	.string "WOW!!\p"
+# 365 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	.string "You really killed a TON of\n" 
+# 366 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	.string "BUG POKéMON!!\p"
+# 367 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	.string "Look, I have a lot of money, and I'm\n"
+# 368 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	.string "actually SO grateful…\p"
+# 369 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	.string "But the most I can give you is\n"
+# 370 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	.string "¥75,000.$"
+# 371 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+
+# 372 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+OldaleTown_PokemonCenter_2F_Text_SucceededBugKilling:
+# 373 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	.string "Oh! You really killed some BUG\n"
+# 374 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	.string "POKéMON for me?\p"
+# 375 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	.string "Thank you so much!!\l"
+# 376 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	.string "But I guess you were really just\n"
+# 377 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	.string "after the reward I promised, right?$"
+# 378 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+
+# 379 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+OldaleTown_PokemonCenter_2F_Text_ContinueBugKilling:
+# 380 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	.string "I'll pay you ¥40 for every wild BUG you\n"
+# 381 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	.string "kill on ROUTE 101, 102, or 103!\p"
+# 382 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	.string "Please help!$"
+# 383 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+
+# 384 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+OldaleTown_PokemonCenter_2F_Text_StartBugKilling:
+# 385 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	.string "I can't stand all the BUG POKéMON\n"
+# 386 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	.string "out here in the country!\p"
+# 387 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	.string "Are you just starting out traveling?\l"
+# 388 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	.string "Tell you what- I'll give you ¥40 for\n"
+# 389 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	.string "each wild BUG you kill around here.\p"
+# 390 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	.string "That way you'll have a little more\n"
+# 391 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+	.string "for supplies, and hopefully I'll see\l"
+# 392 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	.string "less of these awful BUGS!$"
 
 OldaleTown_PokemonCenter_2F_EventScript_Wallace_Text_0:
-# 37 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 74 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	.string "WALLACE: Good to see you again,\n"
 	.string "{PLAYER}.$"
 
 OldaleTown_PokemonCenter_2F_EventScript_Wallace_Text_1:
-# 41 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
+# 78 "data//maps/OldaleTown_PokemonCenter_2F/scripts.pory"
 	.string "Ah, a young TRAINER…\p"
 	.string "Yes, I can tell you're one to watch.\p"
 	.string "But how rude of me,\n"

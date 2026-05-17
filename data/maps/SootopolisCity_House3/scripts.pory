@@ -6,7 +6,7 @@ SootopolisCity_House3_MapScripts::
 `
 
 script SootopolisCity_House3_OnTransition{
-	checkroamingnpcatlocation(FLAG_PKMN_CNTR_WALLACE, MAP_SOOTOPOLIS_CITY_HOUSE3)
+	checkroamingnpcatlocation(FLAG_ROAMING_WALLACE, MAP_SOOTOPOLIS_CITY_HOUSE3)
 	if (var(VAR_RESULT) == TRUE){
 		setvar(VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_WALLACE)
 	}

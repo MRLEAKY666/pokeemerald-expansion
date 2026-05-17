@@ -1,0 +1,451 @@
+script RoamingTraders_EventScript_TMTrader{
+	msgbox(format("Greetings young trainer,\pI'm traveling around HOENN on behalf of DEVON CORP to spread the word about some of our new TMs.\p"
+					"I've got a small selection of demo units for upcoming new models!\pDo you want to take a look?"), MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES){
+		call(RoamingTraders_EventScript_GenerateRoamingTMShop)
+	}
+	else{
+		msgbox(format("They're really quite marvelous, but that's okay.\pWe're likely to cross paths again anyway."), MSGBOX_DEFAULT)
+	}
+}
+
+script RoamingTraders_EventScript_GenerateRoamingTMShop{
+	generateroamingshop(FLAG_ROAMING_SCIENTIST)
+	bufferitemname(STR_VAR_1, VAR_0x8007)
+	bufferitemname(STR_VAR_2, VAR_0x8008)
+	bufferitemname(STR_VAR_3, VAR_0x8009)
+	dynmultipush("{STR_VAR_1}", VAR_0x8007)
+	dynmultipush("{STR_VAR_2}", VAR_0x8008)
+	dynmultipush("{STR_VAR_3}", VAR_0x8009)
+	dynmultipush("Cancel", ITEM_NONE)
+	message(format("Here are the TMs I have with me right now."))
+	waitmessage
+	dynmultistack(0, 0, FALSE, 4, FALSE, VAR_0x8007, DYN_MULTICHOICE_CB_SHOW_ITEM)
+	switch (var(VAR_RESULT)){
+		case VAR_0x8007:
+			copyvar(VAR_0x8004, VAR_0x8007)
+		case VAR_0x8008:
+			copyvar(VAR_0x8004, VAR_0x8008)
+		case VAR_0x8009:
+			copyvar(VAR_0x8004, VAR_0x8009)
+		case 0:
+			msgbox(format("They're really quite marvelous, but that's okay.\pWe're likely to cross paths again anyway."), MSGBOX_DEFAULT)
+			closemessage
+			return
+		case 127:
+			msgbox(format("They're really quite marvelous, but that's okay.\pWe're likely to cross paths again anyway."), MSGBOX_DEFAULT)
+			closemessage
+			return
+		default:
+			msgbox(format("They're really quite marvelous, but that's okay.\pWe're likely to cross paths again anyway."), MSGBOX_DEFAULT)
+			closemessage
+			return
+	}
+	if (var(VAR_0x8004) == ITEM_BLANK_DISC){
+		bufferitemname(STR_VAR_1, VAR_0x8004)
+		msgbox(format("Oh, that's brand new!\pYou're interested in the {STR_VAR_1}?"), MSGBOX_YESNO)
+	}
+	else{
+		special(BufferTMHMMoveName)
+		msgbox(format("Oh, you're interested in {STR_VAR_1}: {STR_VAR_2}?"), MSGBOX_YESNO)
+	}
+	if (var(VAR_RESULT) == YES){
+		showmoneybox(0, 0)
+		gettradersitemprice(VAR_0x8005, VAR_0x8004)
+		buffernumberstring(STR_VAR_3, VAR_0x8005)
+		message(format("These are demo units, so I'm selling them at a discount;\pHow does a promotional price of ¥{STR_VAR_3} sound?"))
+		waitmessage
+		dynmultichoice(20, 8, TRUE, 2, 0, DYN_MULTICHOICE_CB_NONE, "Accept", "Decline")
+		if (var(VAR_RESULT) == 1){
+			message(format("Oh,{PAUSE 20}{PAUSE 20}\nstill too much?"))
+			waitmessage
+			delay(60)
+			hidemoneybox
+			msgbox(format("Well\lI'm sure we'll run into each other again.\p"
+							"Maybe by then you'll have saved up enough!"), MSGBOX_DEFAULT)
+			closemessage
+			return
+		}
+		specialvar(VAR_RESULT, IsEnoughForCostInVar0x8005)
+		if (var(VAR_RESULT) == FALSE){
+			message(format("Oh,{PAUSE 20}{PAUSE 20}\nbut you don't have that much!"))
+			waitmessage
+			delay(60)
+			hidemoneybox
+			msgbox(format("Well\lI'm sure we'll run into each other again.\p"
+							"Maybe by then you'll have saved up enough!"), MSGBOX_DEFAULT)
+			closemessage
+			return
+		}
+		checkitemspace(VAR_0x8004)
+		if (var(VAR_RESULT) == FALSE){
+			message(format("Oh!"))
+			waitmessage
+			delay(60)
+			hidemoneybox
+			msgbox(format("you don't have room for it.\pTalk to me again if you make room!"), MSGBOX_DEFAULT)
+			closemessage
+			return
+		}
+		special(SubtractMoneyFromVar0x8005)
+		updatemoneybox
+		playse(SE_SHOP)
+		waitse
+		hidemoneybox
+		message(format("Excellent choice!\n{PAUSE 20}Here you go."))
+		waitmessage
+		delay(60)
+		giveitem(VAR_0x8004)
+		msgbox(format("Well,\lI'm sure we'll run into each other again,\nbut for now, I've got to get moving!\p"
+						"MR. STONE has me traveling at a demanding pace!"), MSGBOX_DEFAULT)
+		closemessage
+		delay(10)
+        fadescreen(FADE_TO_BLACK)
+        removeobject(VAR_LAST_TALKED)
+		setflag(FLAG_ROAMING_SCIENTIST)
+		playse(SE_EXIT)
+        waitse
+        fadescreen(FADE_FROM_BLACK)
+		return
+	}
+	else{
+		call(RoamingTraders_EventScript_GenerateRoamingTMShop)
+	}
+}
+
+script RoamingTraders_EventScript_BallTrader{
+	msgbox(format("Hey trainer!\pIf you're catching or breeding POKéMON, you'll need lots of POKéBALLS!\p"
+					"I'm traveling around HOENN selling POKéBALLS in bulk right now;\pyou can get a great deal on some rare BALLS in packs of six!\p"
+					"Want to see what BALLS I have in stock right now?"), MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES){
+		call(RoamingTraders_EventScript_GenerateRoamingBallShop)
+	}
+	else{
+		msgbox(format("Oh…{PAUSE 20}\nThat's too bad\pBut if you're not caching or breeding many POKéMON, I understand…\p"
+							"Maybe next time, then!"), MSGBOX_DEFAULT)
+	}
+}
+
+script RoamingTraders_EventScript_GenerateRoamingBallShop{
+	generateroamingshop(FLAG_ROAMING_BREEDER)
+	bufferitemname(STR_VAR_1, VAR_0x8007)
+	bufferitemname(STR_VAR_2, VAR_0x8008)
+	bufferitemname(STR_VAR_3, VAR_0x8009)
+	dynmultipush("{STR_VAR_1}", VAR_0x8007)
+	dynmultipush("{STR_VAR_2}", VAR_0x8008)
+	dynmultipush("{STR_VAR_3}", VAR_0x8009)
+	dynmultipush("Cancel", ITEM_NONE)
+	message(format("I've got packs of these BALLS in stock right now."))
+	waitmessage
+	dynmultistack(0, 0, FALSE, 4, FALSE, VAR_0x8007, DYN_MULTICHOICE_CB_SHOW_ITEM)
+	switch (var(VAR_RESULT)){
+		case VAR_0x8007:
+			copyvar(VAR_0x8004, VAR_0x8007)
+		case VAR_0x8008:
+			copyvar(VAR_0x8004, VAR_0x8008)
+		case VAR_0x8009:
+			copyvar(VAR_0x8004, VAR_0x8009)
+		case 0:
+			msgbox(format("Oh…{PAUSE 20}\nThat's too bad\pBut if you're not caching or breeding many POKéMON, I understand…\p"
+							"Maybe next time, then!"), MSGBOX_DEFAULT)
+			closemessage
+			return
+		case 127:
+			msgbox(format("Oh…{PAUSE 20}\nThat's too bad\pBut if you're not caching or breeding many POKéMON, I understand…\p"
+							"Maybe next time, then!"), MSGBOX_DEFAULT)
+			closemessage
+			return
+		default:
+			msgbox(format("Oh…{PAUSE 20}\nThat's too bad\pBut if you're not caching or breeding many POKéMON, I understand…\p"
+							"Maybe next time, then!"), MSGBOX_DEFAULT)
+			closemessage
+			return
+	}
+	bufferitemnameplural(STR_VAR_2, VAR_0x8004, 6)
+	msgbox(format("You want to buy a pack of six {STR_VAR_2}?"), MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES){
+		showmoneybox(0, 0)
+		gettradersitemprice(VAR_0x8005, VAR_0x8004, 6)
+		buffernumberstring(STR_VAR_3, VAR_0x8005)
+		message(format("Sure, I can sell you six {STR_VAR_2} for ¥{STR_VAR_3}. How's that?"))
+		waitmessage
+		dynmultichoice(20, 8, TRUE, 2, 0, DYN_MULTICHOICE_CB_NONE, "Accept", "Decline")
+		if (var(VAR_RESULT) == 1){
+			message(format("Oh…{PAUSE 20}{PAUSE 20}\nstill too much?"))
+			waitmessage
+			delay(60)
+			hidemoneybox
+			msgbox(format("It really is a great deal…\pBut if you're not caching or breeding many POKéMON, I understand…\p"
+							"Maybe next time, then!"), MSGBOX_DEFAULT)
+			closemessage
+			return
+		}
+		specialvar(VAR_RESULT, IsEnoughForCostInVar0x8005)
+		if (var(VAR_RESULT) == FALSE){
+			message(format("Oh…{PAUSE 20}{PAUSE 20}\nbut you don't have that much!"))
+			waitmessage
+			delay(60)
+			hidemoneybox
+			msgbox(format("well,{PAUSE 20}\nit is a great deal…\pBut if you can't afford it, I understand…\p"
+							"Maybe next time, then!"), MSGBOX_DEFAULT)
+			closemessage
+			return
+		}
+		checkitemspace(VAR_0x8004)
+		if (var(VAR_RESULT) == FALSE){
+			message(format("Oh, but…"))
+			waitmessage
+			delay(60)
+			hidemoneybox
+			msgbox(format("you don't have room for it!\pTalk to me again if you make room!"), MSGBOX_DEFAULT)
+			closemessage
+			return
+		}
+		special(SubtractMoneyFromVar0x8005)
+		updatemoneybox
+		playse(SE_SHOP)
+		waitse
+		hidemoneybox
+		message(format("What a steal!\n{PAUSE 20}Here you go."))
+		waitmessage
+		delay(40)
+		giveitem(VAR_0x8004, 6)
+		msgbox(format("I'm sure I'll see you again,\nbut I've gotta head out now!\p"
+						"POKéMON everywhere need quality BALLS to call home!"), MSGBOX_DEFAULT)
+		closemessage
+		delay(10)
+        fadescreen(FADE_TO_BLACK)
+        removeobject(VAR_LAST_TALKED)
+		setflag(FLAG_ROAMING_BREEDER)
+		playse(SE_EXIT)
+        waitse
+        fadescreen(FADE_FROM_BLACK)
+		return
+	}
+	else{
+		call(RoamingTraders_EventScript_GenerateRoamingBallShop)
+	}
+}
+
+script RoamingTraders_EventScript_SurvivalItemTrader{
+	msgbox(format("Hello there!\pI'm selling packs of items to help trainers survive in the backcountry.\pMy supplies are so affordable because they come in packs of five.\pWant to see?"), MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES){
+		call(RoamingTraders_EventScript_GenerateRoamingSurvivalShop)
+	}
+	else{
+		msgbox(format("Huh?{PAUSE 20}\nAre you sure?\pWell I guess if you just plan to hang around town and take it easy, you wouldn't need this kind of stuff!\p"
+							"See you around, trainer."), MSGBOX_DEFAULT)
+	}
+}
+
+script RoamingTraders_EventScript_GenerateRoamingSurvivalShop{
+	generateroamingshop(FLAG_ROAMING_HIKER)
+	bufferitemname(STR_VAR_1, VAR_0x8007)
+	bufferitemname(STR_VAR_2, VAR_0x8008)
+	bufferitemname(STR_VAR_3, VAR_0x8009)
+	dynmultipush("{STR_VAR_1}", VAR_0x8007)
+	dynmultipush("{STR_VAR_2}", VAR_0x8008)
+	dynmultipush("{STR_VAR_3}", VAR_0x8009)
+	dynmultipush("Cancel", ITEM_NONE)
+	message(format("These are the supplies I have for sale currently."))
+	waitmessage
+	dynmultistack(0, 0, FALSE, 4, FALSE, VAR_0x8007, DYN_MULTICHOICE_CB_SHOW_ITEM)
+	switch (var(VAR_RESULT)){
+		case VAR_0x8007:
+			copyvar(VAR_0x8004, VAR_0x8007)
+		case VAR_0x8008:
+			copyvar(VAR_0x8004, VAR_0x8008)
+		case VAR_0x8009:
+			copyvar(VAR_0x8004, VAR_0x8009)
+		case 0:
+			msgbox(format("Huh?{PAUSE 20}\nAre you sure?\pWell I guess if you just plan to hang around town and take it easy, you wouldn't need this kind of stuff!\p"
+							"See you around, trainer."), MSGBOX_DEFAULT)
+			closemessage
+			return
+		case 127:
+			msgbox(format("Huh?{PAUSE 20}\nAre you sure?\pWell I guess if you just plan to hang around town and take it easy, you wouldn't need this kind of stuff!\p"
+							"See you around, trainer."), MSGBOX_DEFAULT)
+			closemessage
+			return
+		default:
+			msgbox(format("Huh?{PAUSE 20}\nAre you sure?\pWell I guess if you just plan to hang around town and take it easy, you wouldn't need this kind of stuff!\p"
+							"See you around, trainer."), MSGBOX_DEFAULT)
+			closemessage
+			return
+	}
+	bufferitemnameplural(STR_VAR_2, VAR_0x8004, 6)
+	msgbox(format("You want to buy a pack of five {STR_VAR_2}?"), MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES){
+		showmoneybox(0, 0)
+		gettradersitemprice(VAR_0x8005, VAR_0x8004, 5)
+		buffernumberstring(STR_VAR_3, VAR_0x8005)
+		message(format("It's ¥{STR_VAR_3} for a pack of five {STR_VAR_2}. Does that work for you?"))
+		waitmessage
+		dynmultichoice(20, 8, TRUE, 2, 0, DYN_MULTICHOICE_CB_NONE, "Accept", "Decline")
+		if (var(VAR_RESULT) == 1){
+			message(format("Huh?{PAUSE 20}\nYou don't like my price?"))
+			waitmessage
+			delay(60)
+			hidemoneybox
+			msgbox(format("I doubt you'll find a better deal…\pBut if you just plan to hang around town and take it easy,\pyou wouldn't need this kind of stuff!\p"
+							"Maybe next time, then!"), MSGBOX_DEFAULT)
+			closemessage
+			return
+		}
+		specialvar(VAR_RESULT, IsEnoughForCostInVar0x8005)
+		if (var(VAR_RESULT) == FALSE){
+			message(format("Huh?{PAUSE 20}\nYou can't afford it!"))
+			waitmessage
+			delay(60)
+			hidemoneybox
+			msgbox(format("I doubt you'll find a better deal.\pYou should definitely save up if you're headed into the backcountry.\p"
+							"Maybe next time, then!"), MSGBOX_DEFAULT)
+			closemessage
+			return
+		}
+		checkitemspace(VAR_0x8004)
+		if (var(VAR_RESULT) == FALSE){
+			message(format("Oh, but…"))
+			waitmessage
+			delay(60)
+			hidemoneybox
+			msgbox(format("you don't have room for it!\pTalk to me again if you make room!"), MSGBOX_DEFAULT)
+			closemessage
+			return
+		}
+		special(SubtractMoneyFromVar0x8005)
+		updatemoneybox
+		playse(SE_SHOP)
+		waitse
+		hidemoneybox
+		message(format("Yeah, this'll come in handy.\n{PAUSE 20}Here you go."))
+		waitmessage
+		delay(40)
+		giveitem(VAR_0x8004, 5)
+		msgbox(format("Well I'll be seeing you, trainer.\nI have to hit the road.\p"
+						"I have a calling to ensure that trainers everywhere stay well supplied!"), MSGBOX_DEFAULT)
+		closemessage
+		delay(10)
+        fadescreen(FADE_TO_BLACK)
+        removeobject(VAR_LAST_TALKED)
+		setflag(FLAG_ROAMING_HIKER)
+		playse(SE_EXIT)
+        waitse
+        fadescreen(FADE_FROM_BLACK)
+		return
+	}
+	else{
+		call(RoamingTraders_EventScript_GenerateRoamingSurvivalShop)
+	}
+}
+
+script RoamingTraders_EventScript_HerbTrader{
+	msgbox(format("Hey, you must be a TRAINER!\pI'm gathering wild MINTS from around HOENN to sell to trainers like you!\pWant to take a look?"), MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES){
+		call(RoamingTraders_EventScript_GenerateRoamingHerbShop)
+	}
+	else{
+		msgbox(format("Oh…{PAUSE 20}{PAUSE 20}\nReally?\pThat's too bad,\nyour POKéMON would love these MINTS.\p"
+							"But that's okay,{PAUSE 20}\nmaybe next time!"), MSGBOX_DEFAULT)
+	}
+}
+
+script RoamingTraders_EventScript_GenerateRoamingHerbShop{
+	generateroamingshop(FLAG_ROAMING_RANGER)
+	bufferitemname(STR_VAR_1, VAR_0x8007)
+	bufferitemname(STR_VAR_2, VAR_0x8008)
+	bufferitemname(STR_VAR_3, VAR_0x8009)
+	dynmultipush("{STR_VAR_1}", VAR_0x8007)
+	dynmultipush("{STR_VAR_2}", VAR_0x8008)
+	dynmultipush("{STR_VAR_3}", VAR_0x8009)
+	dynmultipush("Cancel", ITEM_NONE)
+	message(format("Here are the fresh MINTS I've found recently!"))
+	waitmessage
+	dynmultistack(0, 0, FALSE, 4, FALSE, VAR_0x8007, DYN_MULTICHOICE_CB_SHOW_ITEM)
+	switch (var(VAR_RESULT)){
+		case VAR_0x8007:
+			copyvar(VAR_0x8004, VAR_0x8007)
+		case VAR_0x8008:
+			copyvar(VAR_0x8004, VAR_0x8008)
+		case VAR_0x8009:
+			copyvar(VAR_0x8004, VAR_0x8009)
+		case 0:
+			msgbox(format("Oh…{PAUSE 20}{PAUSE 20}\nReally?\pThat's too bad,\nyour POKéMON would love these MINTS.\p"
+							"But that's okay,{PAUSE 20}\nmaybe next time!"), MSGBOX_DEFAULT)
+			closemessage
+			return
+		case 127:
+			msgbox(format("Oh…{PAUSE 20}{PAUSE 20}\nReally?\pThat's too bad,\nyour POKéMON would love these MINTS.\p"
+							"But that's okay,{PAUSE 20}\nmaybe next time!"), MSGBOX_DEFAULT)
+			closemessage
+			return
+		default:
+			msgbox(format("Oh…{PAUSE 20}{PAUSE 20}\nReally?\pThat's too bad,\nyour POKéMON would love these MINTS.\p"
+							"But that's okay,{PAUSE 20}\nmaybe next time!"), MSGBOX_DEFAULT)
+			closemessage
+			return
+	}
+	bufferitemnameplural(STR_VAR_2, VAR_0x8004, 1)
+	msgbox(format("Oh, good eye,\nyou're want the {STR_VAR_2}?"), MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES){
+		showmoneybox(0, 0)
+		getitemprice(VAR_0x8005, VAR_0x8004, 1)
+		buffernumberstring(STR_VAR_3, VAR_0x8005)
+		message(format("For the {STR_VAR_2} that'll be ¥{STR_VAR_3}. Sound good?"))
+		waitmessage
+		dynmultichoice(20, 8, TRUE, 2, 0, DYN_MULTICHOICE_CB_NONE, "Accept", "Decline")
+		if (var(VAR_RESULT) == 1){
+			message(format("Oh…{PAUSE 20}{PAUSE 20}\nReally?"))
+			waitmessage
+			delay(60)
+			hidemoneybox
+			msgbox(format("That's too bad,\nyour POKéMON would love these MINTS.\p"
+							"But that's okay,{PAUSE 20}\nmaybe next time, then!"), MSGBOX_DEFAULT)
+			closemessage
+			return
+		}
+		specialvar(VAR_RESULT, IsEnoughForCostInVar0x8005)
+		if (var(VAR_RESULT) == FALSE){
+			message(format("Oh…{PAUSE 20}{PAUSE 20}\nBut you don't have the money…"))
+			waitmessage
+			delay(60)
+			hidemoneybox
+			msgbox(format("That's too bad,\nyour POKéMON would love these MINTS.\p"
+							"But that's okay,{PAUSE 20}\nmaybe next time, then!"), MSGBOX_DEFAULT)
+			closemessage
+			return
+		}
+		checkitemspace(VAR_0x8004)
+		if (var(VAR_RESULT) == FALSE){
+			message(format("Oh, but…"))
+			waitmessage
+			delay(60)
+			hidemoneybox
+			msgbox(format("Oh…{PAUSE 20}{PAUSE 20}\nBut you don't have room for it…\pTalk to me again if you make room!"), MSGBOX_DEFAULT)
+			closemessage
+			return
+		}
+		special(SubtractMoneyFromVar0x8005)
+		updatemoneybox
+		playse(SE_SHOP)
+		waitse
+		hidemoneybox
+		message(format("Great choice!{PAUSE 20}\nYour POKéMON will love this!\lHere you go."))
+		waitmessage
+		delay(40)
+		giveitem(VAR_0x8004, 5)
+		msgbox(format("Well that's all for now,\nI've got to get moving.\pThese MINTS don't collect themselves.\pSee you next time, trainer!"), MSGBOX_DEFAULT)
+		closemessage
+		delay(10)
+        fadescreen(FADE_TO_BLACK)
+        removeobject(VAR_LAST_TALKED)
+		setflag(FLAG_ROAMING_RANGER)
+		playse(SE_EXIT)
+        waitse
+        fadescreen(FADE_FROM_BLACK)
+		return
+	}
+	else{
+		call(RoamingTraders_EventScript_GenerateRoamingHerbShop)
+	}
+}
