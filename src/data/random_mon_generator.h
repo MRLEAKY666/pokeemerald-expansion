@@ -3,6 +3,19 @@
 
 #include "constants/random_mon_generation.h"
 
+static const enum Species sRandomSpeciesMomAfterWhiteOut[] =
+{
+    SPECIES_ZIGZAGOON,
+    SPECIES_ZIGZAGOON,
+    SPECIES_ZIGZAGOON,
+    SPECIES_SLAKOTH,
+    SPECIES_ZANGOOSE,
+    SPECIES_TAILLOW,
+    SPECIES_SKITTY,
+    SPECIES_MEOWTH,
+    SPECIES_TAILLOW,
+    SPECIES_ZIGZAGOON,
+};
 
 static const enum Item sRandomItemTMTraderPool[] =
 {
@@ -108,6 +121,17 @@ static const enum Item sRandomItemHeldItemTraderPool[] =
 
 static const struct RandomSpeciesGeneratorOptions sRandomSpeciesGeneratorOptions[RANDOM_SPECIES_OPTIONS_COUNT] =
 {
+    [SPECIES_GENERATOR_MOM_AFTER_WHITEOUT] =
+    {
+        .speciesPool = sRandomSpeciesMomAfterWhiteOut,
+        .speciesPoolCount = ARRAY_COUNT(sRandomSpeciesMomAfterWhiteOut),
+        .banLegendary = TRUE,
+        .banMythical = TRUE,
+        .banSubLegendary = TRUE,
+        .banUltraBeast = TRUE,
+        .banParadox = TRUE,
+        .randomizeForms = FALSE,
+    },
 };
 
 static const struct RandomItemGeneratorOptions sRandomItemGeneratorOptions[RANDOM_ITEM_OPTIONS_COUNT] =

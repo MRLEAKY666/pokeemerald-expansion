@@ -1064,6 +1064,7 @@ EventScript_AfterWhiteOutHeal::
 	lock
 	specialvar VAR_RESULT, CountPartyAliveNonEggMons
 	goto_if_ge VAR_RESULT, 1, EventScript_RanFromTrainer
+	goto_if_eq VAR_RESULT, 0, EventScript_NewWhiteOut
 	msgbox gText_FirstShouldRestoreMonsHealth
 	special ChoosePartyMonFainted
 	waitstate
@@ -1092,6 +1093,7 @@ EventScript_AfterWhiteOutMomHeal::
 	waitmovement 0
 	specialvar VAR_RESULT, CountPartyAliveNonEggMons
 	goto_if_ge VAR_RESULT, 1, PlayersHouse_1F_EventScript_MomHealsParty
+	goto_if_eq VAR_RESULT, 0, EventScript_MomNewWhiteOut
 	msgbox gText_HadQuiteAnExperienceTakeRest
 	special ChoosePartyMonFainted
 	waitstate
@@ -1103,10 +1105,35 @@ EventScript_AfterWhiteOutMomHeal::
 	releaseall
 	end
 
+EventScript_MomNewWhiteOut::
+	msgbox gText_MomAfterWhiteOutRecovery
+	closemessage
+	hidefollower
+	delay 60
+	message LilycoveCity_CoveLilyMotel_2F_Text_Thinking
+	waitmessage
+	delay 30
+	msgbox gText_MomAfterWhiteOutGiveMon
+	goto PlayersHouse_1F_EventScript_MomGivesMonAfterWhiteOut
+	fadedefaultbgm
+	releaseall
+	end
+
 EventScript_RanFromTrainer::
 	msgbox gText_BeCarefulChallenging
 	fadedefaultbgm
 	goto Common_EventScript_PkmnCenterNurseTrainerRan
+	end
+
+EventScript_NewWhiteOut::
+	msgbox gText_AfterWhiteOutRecovery
+	hidefollower
+	setflag FLAG_POST_WHITEOUT
+	msgbox gText_StaySafe
+	applymovement VAR_LAST_TALKED, Movement_PkmnCenterNurse_Bow
+	waitmovement 0
+	fadedefaultbgm
+	release
 	end
 
 EventScript_ItsDangerousToGoAlone::
@@ -1457,6 +1484,20 @@ gText_FirstShouldRestoreMonsHealth::
 	.string "for you, but it might not be as\l"
 	.string "powerful as before . . .$"
 
+gText_AfterWhiteOutRecovery::
+	.string "Unfortunately, all of your POKéMON\n"
+	.string "appear to have died.\p"
+	.string "If you're planning to head back out,\n"
+	.string "you'll need a live POKéMON in your\l"
+	.string "party.$"
+
+gText_MomAfterWhiteOutGiveMon::
+	.string "You know,{PAUSE 20}{PAUSE 20}\n"
+	.string "your father left some POKéMON…\p"
+	.string "They're the weaker ones he loans\n"
+	.string "out to new trainers, but at least\l"
+	.string "it'll get you back out in the field!$"
+
 gText_BeCarefulChallenging::
 	.string "You should be more careful!\p"
 	.string "Think twice next time before taking\n"
@@ -1487,6 +1528,10 @@ gText_MonsHealed::
 	.string "Your POKéMON has been revived.\p"
 	.string "We hope you excel going forward!$"
 
+gText_StaySafe::
+	.string "Remeber to stay safe out there.\p"
+	.string "We hope you excel going forward!$"
+
 gText_HadQuiteAnExperienceTakeRest::
 	.string "MOM: {PLAYER}!\n"
 	.string "Welcome home.\p"
@@ -1494,6 +1539,14 @@ gText_HadQuiteAnExperienceTakeRest::
 	.string "an experience.\p"
 	.string "Let me try to revive one of your\n"
 	.string "POKéMON.$"
+
+gText_MomAfterWhiteOutRecovery::
+	.string "MOM: {PLAYER}!\n"
+	.string "Welcome home.\p"
+	.string "It sounds like you had quite\n"
+	.string "an experience.\p"
+	.string "Unfortunately, all of your POKéMON\n"
+	.string "appear to have died.$"
 
 gText_MomExplainHPGetPotions::
 	.string "MOM: Oh, good! You and your\n"

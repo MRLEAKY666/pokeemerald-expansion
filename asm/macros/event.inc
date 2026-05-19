@@ -3125,3 +3125,8 @@
 		callnative ScrCmd_GenerateRoamingNPCTrade, requests_effects=0
 		.2byte \flag
 	.endm
+
+	@ send selected party mon (in gSpecialVar_0x8004) to next open box slot
+	.macro sendpartymontofirstpcslot
+	callnative SendPartyMonToFirstPCSlot, requests_effects=0
+	.endm

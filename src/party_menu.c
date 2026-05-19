@@ -8429,6 +8429,48 @@ void DeleteMonFromParty(void)
     CalculatePlayerPartyCount();
 }
 
+void SendPartyMonToFirstPCSlot(void)
+{
+    u8 position = gSpecialVar_0x8004;
+    s32 boxNo, boxPos;
+    struct Pokemon *mon = &gParties[B_TRAINER_0][position];
+
+    VarSet(VAR_TEMP_TRANSFERRED_SPECIES, GetMonData(mon, MON_DATA_SPECIES));
+
+    SetPCBoxToSendMon(VarGet(VAR_PC_BOX_TO_SEND_MON));
+
+    boxNo = StorageGetCurrentBox();
+
+    do
+    {
+        for (boxPos = 0; boxPos < IN_BOX_COUNT; boxPos++)
+        {
+            struct BoxPokemon *checkingMon = GetBoxedMonPtr(boxNo, boxPos);
+            if (GetBoxMonData(checkingMon, MON_DATA_SPECIES) == SPECIES_NONE)
+            {
+                MonRestorePP(mon);
+                CopyMon(checkingMon, &mon->box, sizeof(mon->box));
+                gSpecialVar_MonBoxId = boxNo;
+                gSpecialVar_MonBoxPos = boxPos;
+                if (GetPCBoxToSendMon() != boxNo)
+                    FlagClear(FLAG_SHOWN_BOX_WAS_FULL_MESSAGE);
+                VarSet(VAR_PC_BOX_TO_SEND_MON, boxNo);
+                gSpecialVar_Result = MON_GIVEN_TO_PC;
+                ZeroMonData(&gParties[B_TRAINER_0][position]);
+                CompactPartySlots();
+                CalculatePlayerPartyCount();
+                return;
+            }
+        }
+
+        boxNo++;
+        if (boxNo == TOTAL_BOXES_COUNT)
+            boxNo = 0;
+    } while (boxNo != StorageGetCurrentBox());
+
+    gSpecialVar_Result = MON_CANT_GIVE;
+}
+
 static const u16 sShadyCandies[] = 
 {
     ITEM_EXP_CANDY_XS,
