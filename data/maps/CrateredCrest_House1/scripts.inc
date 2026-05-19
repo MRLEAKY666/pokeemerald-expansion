@@ -241,17 +241,17 @@ CrateredCrest_House1_EventScript_Drake_1:
 # 138 "data//maps/CrateredCrest_House1/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq CrateredCrest_House1_EventScript_Drake_5
-# 166 "data//maps/CrateredCrest_House1/scripts.pory"
+# 169 "data//maps/CrateredCrest_House1/scripts.pory"
 	msgbox CrateredCrest_House1_EventScript_Drake_Text_5, MSGBOX_DEFAULT
 CrateredCrest_House1_EventScript_Drake_4:
-# 168 "data//maps/CrateredCrest_House1/scripts.pory"
+# 171 "data//maps/CrateredCrest_House1/scripts.pory"
 	goto_if_set FLAG_DRAKE_DRACO_METEOR_TUTORING, CrateredCrest_House1_EventScript_Drake_13
 CrateredCrest_House1_EventScript_Drake_12:
-# 171 "data//maps/CrateredCrest_House1/scripts.pory"
+# 174 "data//maps/CrateredCrest_House1/scripts.pory"
 	applymovement LOCALID_CRATER_COTTAGE_DRAKE, Common_Movement_FaceOriginalDirection
-# 172 "data//maps/CrateredCrest_House1/scripts.pory"
+# 175 "data//maps/CrateredCrest_House1/scripts.pory"
 	waitmovement
-# 173 "data//maps/CrateredCrest_House1/scripts.pory"
+# 176 "data//maps/CrateredCrest_House1/scripts.pory"
 	release
 	end
 
@@ -271,8 +271,8 @@ CrateredCrest_House1_EventScript_Drake_5:
 # 140 "data//maps/CrateredCrest_House1/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq CrateredCrest_House1_EventScript_Drake_15
-# 160 "data//maps/CrateredCrest_House1/scripts.pory"
-	msgbox CrateredCrest_House1_EventScript_Drake_Text_7, MSGBOX_DEFAULT
+# 163 "data//maps/CrateredCrest_House1/scripts.pory"
+	msgbox CrateredCrest_House1_EventScript_Drake_Text_8, MSGBOX_DEFAULT
 	goto CrateredCrest_House1_EventScript_Drake_4
 
 CrateredCrest_House1_EventScript_Drake_9:
@@ -281,7 +281,7 @@ CrateredCrest_House1_EventScript_Drake_9:
 	goto CrateredCrest_House1_EventScript_Drake_8
 
 CrateredCrest_House1_EventScript_Drake_13:
-# 169 "data//maps/CrateredCrest_House1/scripts.pory"
+# 172 "data//maps/CrateredCrest_House1/scripts.pory"
 	clearflag FLAG_DRAKE_DRACO_METEOR_TUTORING
 	goto CrateredCrest_House1_EventScript_Drake_12
 
@@ -305,8 +305,11 @@ CrateredCrest_House1_EventScript_Drake_15:
 # 152 "data//maps/CrateredCrest_House1/scripts.pory"
 	compare VAR_RESULT, FALSE
 	goto_if_eq CrateredCrest_House1_EventScript_Drake_20
-# 156 "data//maps/CrateredCrest_House1/scripts.pory"
-	msgbox CrateredCrest_House1_EventScript_Drake_Text_6, MSGBOX_DEFAULT
+# 155 "data//maps/CrateredCrest_House1/scripts.pory"
+	compare VAR_RESULT, SPECIES_MEW
+	goto_if_eq CrateredCrest_House1_EventScript_Drake_21
+# 159 "data//maps/CrateredCrest_House1/scripts.pory"
+	msgbox CrateredCrest_House1_EventScript_Drake_Text_7, MSGBOX_DEFAULT
 	goto CrateredCrest_House1_EventScript_Drake_4
 
 CrateredCrest_House1_EventScript_Drake_18:
@@ -324,23 +327,28 @@ CrateredCrest_House1_EventScript_Drake_20:
 	msgbox CrateredCrest_House1_EventScript_Drake_Text_5, MSGBOX_DEFAULT
 	goto CrateredCrest_House1_EventScript_Drake_4
 
+CrateredCrest_House1_EventScript_Drake_21:
+# 156 "data//maps/CrateredCrest_House1/scripts.pory"
+	msgbox CrateredCrest_House1_EventScript_Drake_Text_6, MSGBOX_DEFAULT
+	goto CrateredCrest_House1_EventScript_Drake_4
+
 
 CrateredCrest_House1_EventScript_Drampa::
-# 179 "data//maps/CrateredCrest_House1/scripts.pory"
-	faceplayer
-# 180 "data//maps/CrateredCrest_House1/scripts.pory"
-	waitse
-# 181 "data//maps/CrateredCrest_House1/scripts.pory"
-	playmoncry SPECIES_DRAMPA, CRY_MODE_NORMAL
 # 182 "data//maps/CrateredCrest_House1/scripts.pory"
-	message CrateredCrest_House1_Text_Drampa
+	faceplayer
 # 183 "data//maps/CrateredCrest_House1/scripts.pory"
-	waitmessage
+	waitse
 # 184 "data//maps/CrateredCrest_House1/scripts.pory"
-	delay 90
+	playmoncry SPECIES_DRAMPA, CRY_MODE_NORMAL
 # 185 "data//maps/CrateredCrest_House1/scripts.pory"
-	closemessage
+	message CrateredCrest_House1_Text_Drampa
 # 186 "data//maps/CrateredCrest_House1/scripts.pory"
+	waitmessage
+# 187 "data//maps/CrateredCrest_House1/scripts.pory"
+	delay 90
+# 188 "data//maps/CrateredCrest_House1/scripts.pory"
+	closemessage
+# 189 "data//maps/CrateredCrest_House1/scripts.pory"
 	release
 	return
 
@@ -396,7 +404,14 @@ CrateredCrest_House1_EventScript_Drake_Text_6:
 	.string "I cannot teach this POKéMON.$"
 
 CrateredCrest_House1_EventScript_Drake_Text_7:
-# 160 "data//maps/CrateredCrest_House1/scripts.pory"
+# 159 "data//maps/CrateredCrest_House1/scripts.pory"
+	.string "This POKéMON can't learn this move.\p"
+	.string "When one of your DRAGON POKéMON is\n"
+	.string "ready to ascend to the peak of\l"
+	.string "strength, come back to see me.$"
+
+CrateredCrest_House1_EventScript_Drake_Text_8:
+# 163 "data//maps/CrateredCrest_House1/scripts.pory"
 	.string "None of your POKéMON can handle this\n"
 	.string "move.\p"
 	.string "Come back with a DRAGON POKéMON strong\n"

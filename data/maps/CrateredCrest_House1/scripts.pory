@@ -152,8 +152,11 @@ script CrateredCrest_House1_EventScript_Drake{
 			elif (var(VAR_RESULT) == FALSE){
 				msgbox(format("When one of your DRAGON POKéMON is ready to ascend to the peak of strength, come back to see me."), MSGBOX_DEFAULT)
 			}
-			else{ // species like mew that can learn but aren't dragon type
+			elif (var(VAR_RESULT) == SPECIES_MEW){ // species like mew that can learn but aren't dragon type
 				msgbox(format("This POKéMON…\pThough it may be capable of performing this move, it is not a DRAGON…\pI cannot teach this POKéMON."), MSGBOX_DEFAULT)
+			}
+			else{
+				msgbox(format("This POKéMON can't learn this move.\pWhen one of your DRAGON POKéMON is ready to ascend to the peak of strength, come back to see me."), MSGBOX_DEFAULT)
 			}
 		}
 		else{ // if no dragons in team
