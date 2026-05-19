@@ -1032,6 +1032,118 @@ static const struct InGameTrade sIngameTrades[] =
         .sheen = 10,
         .requestedSpecies = SPECIES_SKITTY
     },
+    [INGAME_TRADE_AFTER_WHITEOUT] =
+    {
+        .nickname = _("Fodder"),
+        .species = SPECIES_NONE,
+        .ivs = {0,0,0,0,0,0},
+        .abilityNum = 0,
+        .otId = 63119,
+        .conditions = {5, 5, 5, 30, 5},
+        .personality = 0,
+        .heldItem = ITEM_NONE,
+        .mailNum = MAIL_NONE,
+        .otName = _("Bradley"),
+        .otGender = MALE,
+        .sheen = 10,
+        .requestedSpecies = SPECIES_NONE
+    },
+    [INGAME_TRADE_PSYCHIC] =
+    {
+        .nickname = _("Garbage"),
+        .species = SPECIES_NONE,
+        .ivs = {0,0,0,0,0,0},
+        .abilityNum = 0,
+        .otId = 63119,
+        .conditions = {5, 5, 5, 30, 5},
+        .personality = 0,
+        .heldItem = ITEM_NONE,
+        .mailNum = MAIL_NONE,
+        .otName = _("Helena"),
+        .otGender = FEMALE,
+        .sheen = 10,
+        .requestedSpecies = SPECIES_NONE
+    },
+    [INGAME_TRADE_BUG_CATCHER] =
+    {
+        .nickname = _("Trash"),
+        .species = SPECIES_NONE,
+        .ivs = {0,0,0,0,0,0},
+        .abilityNum = 0,
+        .otId = 63119,
+        .conditions = {5, 5, 5, 30, 5},
+        .personality = 0,
+        .heldItem = ITEM_NONE,
+        .mailNum = MAIL_NONE,
+        .otName = _("Simon"),
+        .otGender = MALE,
+        .sheen = 10,
+        .requestedSpecies = SPECIES_NONE
+    },
+    [INGAME_TRADE_YOUNGSTER] =
+    {
+        .nickname = _("Dookie!"),
+        .species = SPECIES_NONE,
+        .ivs = {0,0,0,0,0,0},
+        .abilityNum = 0,
+        .otId = 63119,
+        .conditions = {5, 5, 5, 30, 5},
+        .personality = 0,
+        .heldItem = ITEM_NONE,
+        .mailNum = MAIL_NONE,
+        .otName = _("Timmy"),
+        .otGender = MALE,
+        .sheen = 10,
+        .requestedSpecies = SPECIES_NONE
+    },
+    [INGAME_TRADE_HEX_MANIAC] =
+    {
+        .nickname = _("Cretin"),
+        .species = SPECIES_NONE,
+        .ivs = {0,0,0,0,0,0},
+        .abilityNum = 0,
+        .otId = 63119,
+        .conditions = {5, 5, 5, 30, 5},
+        .personality = 0,
+        .heldItem = ITEM_NONE,
+        .mailNum = MAIL_NONE,
+        .otName = _("Sally"),
+        .otGender = FEMALE,
+        .sheen = 10,
+        .requestedSpecies = SPECIES_NONE
+    },
+    [INGAME_TRADE_TRIATHLETE_F] =
+    {
+        .nickname = _("Weakling"),
+        .species = SPECIES_NONE,
+        .ivs = {0,0,0,0,0,0},
+        .abilityNum = 0,
+        .otId = 63119,
+        .conditions = {5, 5, 5, 30, 5},
+        .personality = 0,
+        .heldItem = ITEM_NONE,
+        .mailNum = MAIL_NONE,
+        .otName = _("Abbi"),
+        .otGender = FEMALE,
+        .sheen = 10,
+        .requestedSpecies = SPECIES_NONE
+    },
+    [INGAME_TRADE_TRIATHLETE_M] =
+    {
+        .nickname = _("Fodder"),
+        .species = SPECIES_NONE,
+        .ivs = {0,0,0,0,0,0},
+        .abilityNum = 0,
+        .otId = 63119,
+        .conditions = {5, 5, 5, 30, 5},
+        .personality = 0,
+        .heldItem = ITEM_NONE,
+        .mailNum = MAIL_NONE,
+        .otName = _("Bradley"),
+        .otGender = MALE,
+        .sheen = 10,
+        .requestedSpecies = SPECIES_NONE
+    },
     [INGAME_TRADE_MR_MIME] = 
     {
         .nickname = _("MIMIEN"),

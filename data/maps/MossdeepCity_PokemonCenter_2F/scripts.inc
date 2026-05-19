@@ -18,34 +18,36 @@ MossdeepCity_PokemonCenter_2F_OnTransition::
 	call MossdeepCity_PokemonCenter_2F_EventScript_SetSpRoamingNPC
 # 13 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	call MossdeepCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC
+# 14 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+	call MossdeepCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC
 	end
 
 
 MossdeepCity_PokemonCenter_2F_EventScript_SetSpRoamingNPC::
-# 18 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
-	checkroamingnpcatlocation FLAG_ROAMING_WALLACE, MAP_MOSSDEEP_CITY_POKEMON_CENTER_2F
 # 19 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+	checkroamingnpcatlocation FLAG_ROAMING_WALLACE, MAP_MOSSDEEP_CITY_POKEMON_CENTER_2F
+# 20 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq MossdeepCity_PokemonCenter_2F_EventScript_SetSpRoamingNPC_2
-# 23 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 24 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	setflag FLAG_TEMP_A
 MossdeepCity_PokemonCenter_2F_EventScript_SetSpRoamingNPC_1:
 	return
 
 MossdeepCity_PokemonCenter_2F_EventScript_SetSpRoamingNPC_2:
-# 20 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 21 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	setvar VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_WALLACE
 	goto MossdeepCity_PokemonCenter_2F_EventScript_SetSpRoamingNPC_1
 
 
 MossdeepCity_PokemonCenter_2F_EventScript_SpRoamingNPC::
-# 29 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 30 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	compare VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_WALLACE
 	goto_if_eq MossdeepCity_PokemonCenter_2F_EventScript_SpRoamingNPC_1
 	return
 
 MossdeepCity_PokemonCenter_2F_EventScript_SpRoamingNPC_1:
-# 30 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 31 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	goto MossdeepCity_PokemonCenter_2F_EventScript_Wallace
 	return
 
@@ -67,161 +69,239 @@ MossdeepCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC::
 # 0 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq MossdeepCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_5
-# 48 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 49 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	setflag FLAG_TEMP_B
 MossdeepCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1:
 	return
 
 MossdeepCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_2:
-# 36 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 37 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_SCIENTIST_1
 	goto MossdeepCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1
 
 MossdeepCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_3:
-# 39 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 40 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_MAN_4
 	goto MossdeepCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1
 
 MossdeepCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_4:
-# 42 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 43 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_HIKER
 	goto MossdeepCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1
 
 MossdeepCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_5:
-# 45 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 46 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_CAMPER
 	goto MossdeepCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1
 
 
-MossdeepCity_PokemonCenter_2F_EventScript_TrRoamingNPC::
-# 54 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
-	faceplayer
+MossdeepCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC::
 # 55 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
-	switch VAR_OBJ_GFX_ID_B
+	goto_if_set FLAG_POST_WHITEOUT, MossdeepCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_2
+	checkroamingnpcatlocation FLAG_ROAMING_PSYCHIC, MAP_MOSSDEEP_CITY_POKEMON_CENTER_2F
+# 0 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq MossdeepCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_3
+	checkroamingnpcatlocation FLAG_ROAMING_BUG_CATCHER, MAP_MOSSDEEP_CITY_POKEMON_CENTER_2F
+# 0 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq MossdeepCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_4
+	checkroamingnpcatlocation FLAG_ROAMING_YOUNGSTER, MAP_MOSSDEEP_CITY_POKEMON_CENTER_2F
+# 0 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq MossdeepCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_5
+	checkroamingnpcatlocation FLAG_ROAMING_HEX_MANIAC, MAP_MOSSDEEP_CITY_POKEMON_CENTER_2F
+# 0 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq MossdeepCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_6
+	checkroamingnpcatlocation FLAG_ROAMING_TRIATHLETE_F, MAP_MOSSDEEP_CITY_POKEMON_CENTER_2F
+# 0 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq MossdeepCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_7
+	checkroamingnpcatlocation FLAG_ROAMING_TRIATHLETE_M, MAP_MOSSDEEP_CITY_POKEMON_CENTER_2F
+# 0 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq MossdeepCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_8
+# 77 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+	setflag FLAG_TEMP_C
+MossdeepCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1:
+	return
+
+MossdeepCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_2:
 # 56 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
-	case OBJ_EVENT_GFX_SCIENTIST_1, MossdeepCity_PokemonCenter_2F_EventScript_TrRoamingNPC_3
-# 58 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
-	case OBJ_EVENT_GFX_MAN_4, MossdeepCity_PokemonCenter_2F_EventScript_TrRoamingNPC_4
-# 60 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
-	case OBJ_EVENT_GFX_HIKER, MossdeepCity_PokemonCenter_2F_EventScript_TrRoamingNPC_5
+	setvar VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_SCIENTIST_2
+	goto MossdeepCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1
+
+MossdeepCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_3:
+# 59 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_LASS
+	goto MossdeepCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1
+
+MossdeepCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_4:
 # 62 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_BUG_CATCHER
+	goto MossdeepCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1
+
+MossdeepCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_5:
+# 65 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_YOUNGSTER
+	goto MossdeepCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1
+
+MossdeepCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_6:
+# 68 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_HEX_MANIAC
+	goto MossdeepCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1
+
+MossdeepCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_7:
+# 71 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F
+	goto MossdeepCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1
+
+MossdeepCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_8:
+# 74 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_RUNNING_TRIATHLETE_M
+	goto MossdeepCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1
+
+
+MossdeepCity_PokemonCenter_2F_EventScript_TrRoamingNPC::
+# 83 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+	faceplayer
+# 84 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+	switch VAR_OBJ_GFX_ID_B
+# 85 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+	case OBJ_EVENT_GFX_SCIENTIST_1, MossdeepCity_PokemonCenter_2F_EventScript_TrRoamingNPC_3
+# 87 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+	case OBJ_EVENT_GFX_MAN_4, MossdeepCity_PokemonCenter_2F_EventScript_TrRoamingNPC_4
+# 89 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+	case OBJ_EVENT_GFX_HIKER, MossdeepCity_PokemonCenter_2F_EventScript_TrRoamingNPC_5
+# 91 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	case OBJ_EVENT_GFX_CAMPER, MossdeepCity_PokemonCenter_2F_EventScript_TrRoamingNPC_6
 MossdeepCity_PokemonCenter_2F_EventScript_TrRoamingNPC_1:
-# 65 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 94 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceLeft
-# 66 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 95 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	waitmovement
-# 67 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 96 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	release
 	return
 
 MossdeepCity_PokemonCenter_2F_EventScript_TrRoamingNPC_3:
-# 57 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 86 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	call RoamingTraders_EventScript_TMTrader
 	goto MossdeepCity_PokemonCenter_2F_EventScript_TrRoamingNPC_1
 
 MossdeepCity_PokemonCenter_2F_EventScript_TrRoamingNPC_4:
-# 59 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 88 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	call RoamingTraders_EventScript_BallTrader
 	goto MossdeepCity_PokemonCenter_2F_EventScript_TrRoamingNPC_1
 
 MossdeepCity_PokemonCenter_2F_EventScript_TrRoamingNPC_5:
-# 61 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 90 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	call RoamingTraders_EventScript_SurvivalItemTrader
 	goto MossdeepCity_PokemonCenter_2F_EventScript_TrRoamingNPC_1
 
 MossdeepCity_PokemonCenter_2F_EventScript_TrRoamingNPC_6:
-# 63 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 92 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	call RoamingTraders_EventScript_HerbTrader
 	goto MossdeepCity_PokemonCenter_2F_EventScript_TrRoamingNPC_1
 
 
+MossdeepCity_PokemonCenter_2F_EventScript_PkmnTrRoamingNPC::
+# 100 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+	faceplayer
+# 101 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+	call RoamingTraders_EventScript_RoamingMonTrader
+# 102 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+	release
+	return
+
+
 MossdeepCity_PokemonCenter_2F_EventScript_Wallace::
-# 71 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 106 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
-# 72 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 107 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	waitmovement
-# 73 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 108 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	goto_if_set FLAG_MET_WALLACE, MossdeepCity_PokemonCenter_2F_EventScript_Wallace_2
-# 78 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 113 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	msgbox MossdeepCity_PokemonCenter_2F_EventScript_Wallace_Text_1, MSGBOX_DEFAULT
-# 83 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 118 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	setflag FLAG_MET_WALLACE
 MossdeepCity_PokemonCenter_2F_EventScript_Wallace_1:
-# 85 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 120 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	closemessage
-# 86 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 121 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	delay 15
-# 87 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 122 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceRight
-# 88 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 123 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	waitmovement
-# 89 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 124 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	release
 	end
 
 MossdeepCity_PokemonCenter_2F_EventScript_Wallace_2:
-# 74 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 109 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	msgbox MossdeepCity_PokemonCenter_2F_EventScript_Wallace_Text_0, MSGBOX_DEFAULT
-# 75 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 110 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	call SootopolisCity_House3_EventScript_WallaceCheckBeasts
 	goto MossdeepCity_PokemonCenter_2F_EventScript_Wallace_1
 
 
-# 93 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 128 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 
-# 94 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 129 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 
-# 95 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 130 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 @ The below 3 are unused and leftover from RS
-# 96 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 131 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 MossdeepCity_PokemonCenter_2F_EventScript_Colosseum::
-# 97 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 132 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	call CableClub_EventScript_Colosseum
-# 98 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 133 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	end
-# 99 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 134 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 
-# 100 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 135 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 MossdeepCity_PokemonCenter_2F_EventScript_TradeCenter::
-# 101 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 136 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	call CableClub_EventScript_TradeCenter
-# 102 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 137 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	end
-# 103 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 138 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 
-# 104 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 139 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 MossdeepCity_PokemonCenter_2F_EventScript_RecordCorner::
-# 105 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 140 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	call CableClub_EventScript_RecordCorner
-# 106 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 141 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	end
-# 107 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 142 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 
-# 108 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 143 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 MossdeepCity_PokemonCenter_2F_EventScript_Woman5::
-# 109 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 144 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	msgbox MossdeepCity_PokemonCenter_2F_Text_Woman5, MSGBOX_NPC
-# 110 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 145 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	end
-# 111 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 146 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 
-# 112 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 147 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 MossdeepCity_PokemonCenter_2F_Text_Woman5:
-# 113 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 148 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	.string "If I win a whole lot of link battles\n"
-# 114 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 149 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	.string "and show everyone how good I am,\l"
-# 115 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 150 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	.string "I might get a fan following!$"
 
 MossdeepCity_PokemonCenter_2F_EventScript_Wallace_Text_0:
-# 74 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 109 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	.string "WALLACE: Good to see you again,\n"
 	.string "{PLAYER}.$"
 
 MossdeepCity_PokemonCenter_2F_EventScript_Wallace_Text_1:
-# 78 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
+# 113 "data//maps/MossdeepCity_PokemonCenter_2F/scripts.pory"
 	.string "Ah, a young TRAINER…\p"
 	.string "Yes, I can tell you're one to watch.\p"
 	.string "But how rude of me,\n"

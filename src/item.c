@@ -1086,67 +1086,44 @@ static const u32 sHeldItemTraderPool[] =
 void GenerateRoamingNPCShop(u32 flagId)
 {
     u8 poolSize;
+    const u32* sourceItemPool;
 
     switch (flagId)
     {
     case FLAG_ROAMING_SCIENTIST:
+        sourceItemPool = sTMTraderPool;
         poolSize = ARRAY_COUNT(sTMTraderPool);
         if (FlagGet(FLAG_BLANK_DISC_DELIVERED)){
             poolSize++;
         }
         break;
     case FLAG_ROAMING_BREEDER:
+        sourceItemPool = sBallTraderPool;
         poolSize = ARRAY_COUNT(sBallTraderPool);
         break;
     case FLAG_ROAMING_HIKER:
+        sourceItemPool = sHeldItemTraderPool;
         poolSize = ARRAY_COUNT(sHeldItemTraderPool);
         break;
     case FLAG_ROAMING_RANGER:
+        sourceItemPool = sMintTraderPool;
         poolSize = ARRAY_COUNT(sMintTraderPool);
         break;
     
     default:
+        sourceItemPool = sHeldItemTraderPool;
         poolSize = 5;
         break;
     }
-
+    // create pool
     u16 inventoryPool[poolSize];
-
-    switch (flagId)
-    {
-    case FLAG_ROAMING_SCIENTIST:
-        for (int i=0; i < ARRAY_COUNT(sTMTraderPool); i++){
-            inventoryPool[i] = sTMTraderPool[i];
-            if (FlagGet(FLAG_BLANK_DISC_DELIVERED) && i == poolSize){
-                inventoryPool[i] = ITEM_BLANK_DISC;
-            }
-        }
-        break;
-    case FLAG_ROAMING_BREEDER:
-        for (int i=0; i < ARRAY_COUNT(sBallTraderPool); i++){
-        inventoryPool[i] = sBallTraderPool[i];
-        }
-        break;
-    case FLAG_ROAMING_HIKER:
-        for (int i=0; i < ARRAY_COUNT(sHeldItemTraderPool); i++){
-        inventoryPool[i] = sHeldItemTraderPool[i];
-        }
-        break;
-    case FLAG_ROAMING_RANGER:
-        for (int i=0; i < ARRAY_COUNT(sMintTraderPool); i++){
-        inventoryPool[i] = sMintTraderPool[i];
-        }
-        break;
-    
-    default:
-        for (int i=0; i < poolSize; i++){
-        inventoryPool[i] = ITEM_NONE;
-        }
-        break;
+    for (int i=0; i < poolSize; i++){
+        inventoryPool[i] = sourceItemPool[i];
     }
-
-    //Shuffle16(inventoryPool, ARRAY_COUNT(inventoryPool));
-
+    if (FlagGet(FLAG_BLANK_DISC_DELIVERED) && flagId == FLAG_ROAMING_SCIENTIST){
+        inventoryPool[(poolSize - 1)] = ITEM_BLANK_DISC;
+    }
+    // shuffle pool
     for (int i = 0; i < ARRAY_COUNT(inventoryPool) - 1; i++) {
         // Generate a random index between i and size - 1
         int j = i + gSaveBlock1Ptr->dailySeed % (ARRAY_COUNT(inventoryPool) - i);

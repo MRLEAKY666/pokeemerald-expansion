@@ -68,6 +68,7 @@
 #include "constants/map_types.h"
 #include "constants/party_menu.h"
 #include "time_events.h"
+#include "trade.h"
 
 typedef u16 (*SpecialFunc)(void);
 typedef void (*NativeFunc)(struct ScriptContext *ctx);
@@ -3616,6 +3617,30 @@ bool8 ScrCmd_GetTradersItemPrice(struct ScriptContext *ctx)
     u32 quantity = VarGet(ScriptReadHalfword(ctx));
 
     VarSet(destVar, ((GetItemPrice(itemId) * quantity) / 4));
+
+    return FALSE;
+}
+
+bool8 Scrcmd_CheckSpeciesHasType(struct ScriptContext *ctx)
+{
+    u16 species = VarGet(ScriptReadHalfword(ctx));
+    u32 typeId = VarGet(ScriptReadHalfword(ctx));
+
+    if (GetSpeciesType(species, 0) == typeId || GetSpeciesType(species, 1) == typeId){
+        gSpecialVar_Result = TRUE;
+    }
+    else{
+        gSpecialVar_Result = FALSE;
+    }
+
+    return FALSE;
+}
+
+bool8 ScrCmd_GenerateRoamingNPCTrade(struct ScriptContext *ctx)
+{
+    u32 flagId = ScriptReadHalfword(ctx);
+
+    GenerateRoamingNPCTrade(flagId);
 
     return FALSE;
 }

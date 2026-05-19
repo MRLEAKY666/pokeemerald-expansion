@@ -11,6 +11,7 @@ DewfordTown_PokemonCenter_2F_MapScripts::
 script DewfordTown_PokemonCenter_2F_OnTransition{
 	call(DewfordTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC)
 	call(DewfordTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC)
+	call(DewfordTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC)
 	end
 }
 
@@ -44,6 +45,34 @@ script DewfordTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC{
 	return
 }
 
+script DewfordTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC{
+	if (flag(FLAG_POST_WHITEOUT)){
+		setvar(VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_SCIENTIST_2)
+	}
+	elif (checkroamingnpcatlocation(FLAG_ROAMING_PSYCHIC, MAP_DEWFORD_TOWN_POKEMON_CENTER_2F) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_LASS)
+	}
+	elif (checkroamingnpcatlocation(FLAG_ROAMING_BUG_CATCHER, MAP_DEWFORD_TOWN_POKEMON_CENTER_2F) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_BUG_CATCHER)
+	}
+	elif (checkroamingnpcatlocation(FLAG_ROAMING_YOUNGSTER, MAP_DEWFORD_TOWN_POKEMON_CENTER_2F) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_YOUNGSTER)
+	}
+	elif (checkroamingnpcatlocation(FLAG_ROAMING_HEX_MANIAC, MAP_DEWFORD_TOWN_POKEMON_CENTER_2F) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_HEX_MANIAC)
+	}
+	elif (checkroamingnpcatlocation(FLAG_ROAMING_TRIATHLETE_F, MAP_DEWFORD_TOWN_POKEMON_CENTER_2F) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F)
+	}
+	elif (checkroamingnpcatlocation(FLAG_ROAMING_TRIATHLETE_M, MAP_DEWFORD_TOWN_POKEMON_CENTER_2F) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_RUNNING_TRIATHLETE_M)
+	}
+	else{
+		setflag(FLAG_TEMP_C)
+	}
+	return
+}
+
 script DewfordTown_PokemonCenter_2F_EventScript_TrRoamingNPC{
 	faceplayer
 	switch (var(VAR_OBJ_GFX_ID_B)){
@@ -58,6 +87,12 @@ script DewfordTown_PokemonCenter_2F_EventScript_TrRoamingNPC{
 	}
 	applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceLeft)
 	waitmovement
+	release
+}
+
+script DewfordTown_PokemonCenter_2F_EventScript_PkmnTrRoamingNPC{
+	faceplayer
+	call(RoamingTraders_EventScript_RoamingMonTrader)
 	release
 }
 

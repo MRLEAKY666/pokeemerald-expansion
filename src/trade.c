@@ -52,6 +52,8 @@
 #include "constants/songs.h"
 #include "constants/union_room.h"
 
+#include "random_mon_generation.h"
+
 // IDs for RunTradeMenuCallback
 enum {
     CB_MAIN_MENU,
@@ -5114,4 +5116,271 @@ static void CB2_SaveAndEndWirelessTrade(void)
     AnimateSprites();
     BuildOamBuffer();
     UpdatePaletteFade();
+};
+
+static const u32 sDarkTraderPool[] =
+{
+    SPECIES_PURRLOIN,
+    SPECIES_ZORUA,
+    SPECIES_RATTATA_ALOLA,
+    SPECIES_MURKROW,
+    SPECIES_QWILFISH_HISUI,
+    SPECIES_HOUNDOUR,
+    SPECIES_SCRAGGY,
+    SPECIES_PAWNIARD,
+    SPECIES_DEINO,
+    SPECIES_INKAY,
+    SPECIES_GRIMER_ALOLA,
+    SPECIES_CARVANHA,
+    SPECIES_STUNKY,
+    SPECIES_DRAPION,
+    SPECIES_SANDILE,
+};
+
+static const u32 sFireTraderPool[] =
+{
+    SPECIES_GROWLITHE,
+    SPECIES_MAGBY,
+    SPECIES_CYNDAQUIL,
+    SPECIES_GROWLITHE_HISUI,
+    SPECIES_FLETCHLING,
+    SPECIES_HOUNDOUR,
+    SPECIES_LITWICK,
+    SPECIES_CAPSAKID,
+    SPECIES_CAPSAKID,
+};
+
+static const u32 sDragonTraderPool[] =
+{
+    SPECIES_TREECKO,
+    SPECIES_EXEGGCUTE,
+    SPECIES_DRATINI,
+    SPECIES_GOOMY,
+    SPECIES_SWABLU,
+    SPECIES_GIBLE,
+    SPECIES_TATSUGIRI,
+    SPECIES_TRAPINCH,
+    SPECIES_SKRELP,
+    SPECIES_NOIBAT,
+    SPECIES_DRAMPA,
+    SPECIES_APPLIN,
+};
+
+static const u32 sGhostTraderPool[] =
+{
+    SPECIES_MISDREAVUS,
+    SPECIES_CORSOLA_GALAR,
+    SPECIES_SHUPPET,
+    SPECIES_YAMASK,
+    SPECIES_GASTLY,
+    SPECIES_DRIFLOON,
+    SPECIES_LITWICK,
+    SPECIES_YAMASK_GALAR,
+    SPECIES_ZORUA_HISUI,
+    SPECIES_ROTOM,
+    SPECIES_DREEPY,
+};
+
+static const u32 sElectricTraderPool[] =
+{
+    SPECIES_PICHU,
+    SPECIES_MAREEP,
+    SPECIES_ELEKID,
+    SPECIES_BLITZLE,
+    SPECIES_TYNAMO,
+    SPECIES_TADBULB,
+    SPECIES_VOLTORB_HISUI,
+    SPECIES_VOLTORB,
+    SPECIES_ROTOM,
+    SPECIES_EMOLGA,
+    SPECIES_HELIOPTILE,
+    SPECIES_WATTREL,
+    SPECIES_GEODUDE_ALOLA,
+    SPECIES_JOLTIK,
+    SPECIES_MAGNEMITE,
+};
+
+static const u32 sSteelTraderPool[] =
+{
+    SPECIES_MEOWTH_ALOLA,
+    SPECIES_ARON,
+    SPECIES_ORTHWORM,
+    SPECIES_SKARMORY,
+    SPECIES_MAWILE,
+    SPECIES_BRONZOR,
+    SPECIES_SANDSHREW_ALOLA,
+    SPECIES_MAGNEMITE,
+    SPECIES_PINECO,
+    SPECIES_SCYTHER,
+    SPECIES_RIOLU,
+    SPECIES_FERROSEED,
+    SPECIES_PAWNIARD,
+};
+
+static const u32 sLabRatPool[] =
+{
+    SPECIES_RATTATA,
+    SPECIES_RATTATA,
+    SPECIES_RATTATA,
+    SPECIES_RATTATA_ALOLA,
+    SPECIES_RATTATA_ALOLA,
+    SPECIES_PIKACHU,
+    SPECIES_SANDSHREW,
+    SPECIES_CYNDAQUIL,
+    SPECIES_ZIGZAGOON,
+    SPECIES_ZIGZAGOON,
+    SPECIES_ZIGZAGOON,
+    SPECIES_ZIGZAGOON,
+    SPECIES_ZIGZAGOON,
+    SPECIES_BIDOOF,
+    SPECIES_PATRAT,
+    SPECIES_PLUSLE,
+    SPECIES_MINUN,
+    SPECIES_SENTRET,
+    SPECIES_MINCCINO,
+    SPECIES_BUNNELBY,
+    SPECIES_BUNEARY,
+};
+
+void GenerateRoamingNPCTrade(u32 flagId)
+{
+    u8 poolSize;
+    const u32* sourceMonPool;
+
+    switch (flagId)
+    {
+    case FLAG_AFTER_WHITEOUT_TRADE:
+        sourceMonPool = sLabRatPool;
+        poolSize = ARRAY_COUNT(sLabRatPool);
+        break;
+    case FLAG_ROAMING_PSYCHIC:
+        sourceMonPool = sDarkTraderPool;
+        poolSize = ARRAY_COUNT(sDarkTraderPool);
+        break;
+    case FLAG_ROAMING_BUG_CATCHER:
+        sourceMonPool = sFireTraderPool;
+        poolSize = ARRAY_COUNT(sFireTraderPool);
+        break;
+    case FLAG_ROAMING_YOUNGSTER:
+        sourceMonPool = sDragonTraderPool;
+        poolSize = ARRAY_COUNT(sDragonTraderPool);
+        break;
+    case FLAG_ROAMING_HEX_MANIAC:
+        sourceMonPool = sGhostTraderPool;
+        poolSize = ARRAY_COUNT(sGhostTraderPool);
+        break;
+    case FLAG_ROAMING_TRIATHLETE_F:
+        sourceMonPool = sElectricTraderPool;
+        poolSize = ARRAY_COUNT(sElectricTraderPool);
+        break;
+    case FLAG_ROAMING_TRIATHLETE_M:
+        sourceMonPool = sSteelTraderPool;
+        poolSize = ARRAY_COUNT(sSteelTraderPool);
+        break;
+    
+    default:
+        sourceMonPool = sLabRatPool;
+        poolSize = ARRAY_COUNT(sLabRatPool);
+        break;
+    }
+
+    // create mon pool array
+    u32 tradeMonPool[poolSize];
+    for (int i=0; i < poolSize; i++){
+        tradeMonPool[i] = sourceMonPool[i];
+    }
+    // shuffle pool array
+    for (int i = 0; i < ARRAY_COUNT(tradeMonPool) - 1; i++) {
+        // Generate a random index between i and size - 1
+        int j = i + gSaveBlock1Ptr->dailySeed % (ARRAY_COUNT(tradeMonPool) - i);
+
+        // Swap the elements at indices i and j
+        int temp = tradeMonPool[i];
+        tradeMonPool[i] = tradeMonPool[j];
+        tradeMonPool[j] = temp;
+    }
+
+    gSpecialVar_0x8007 = tradeMonPool[0];
+    /* gSpecialVar_0x8008 = tradeMonPool[1];
+    gSpecialVar_0x8009 = tradeMonPool[2];
+    gSpecialVar_0x800A = tradeMonPool[3];
+    gSpecialVar_0x800B = tradeMonPool[4]; */
 }
+
+static void CreateRoamingTraderPokemonInternal(u8 whichPlayerMon, u8 whichInGameTrade)
+{
+    const struct InGameTrade *inGameTrade = &sIngameTrades[whichInGameTrade];
+    struct BoxPokemon *boxmon = GetSelectedBoxMonFromPcOrParty();
+    u32 level = GetLevelFromBoxMonExp(boxmon);
+
+    struct Mail mail;
+    metloc_u8_t metLocation = METLOC_IN_GAME_TRADE;
+    u8 mailNum;
+    struct Pokemon *pokemon = &gParties[B_TRAINER_1][0];
+    
+    enum Species species = gSpecialVar_0x8007;
+    enum PokeBall ball = BALL_RANDOM;
+    enum Move moves[MAX_MON_MOVES];
+    for (u32 i = 0; i < MAX_MON_MOVES; i++)
+        moves[i] = MOVE_RANDOM_TEACHABLE;
+    ResolveRandomMonGeneration(species, &ball, moves);
+    if (ball == BALL_MASTER || ball == BALL_BEAST){
+        ball = BALL_POKE;
+    }
+
+    u32 personality = GetMonPersonality(species, MON_GENDER_RANDOM, NATURE_RANDOM, RANDOM_UNOWN_LETTER);
+    CreateMon(pokemon, species, level, personality, OTID_STRUCT_PRESET(inGameTrade->otId));
+
+    SetMonData(pokemon, MON_DATA_POKEBALL, &ball);
+    for (u32 i = 0; i < MAX_MON_MOVES; i++)
+        SetMonMoveSlot(pokemon, moves[i], i);
+
+
+    u32 hpIv = ((Random() % 11) + 21);
+    u32 atkIv = ((Random() % 11) + 21);
+    u32 defIv = ((Random() % 11) + 21);
+    u32 spAtkIv = ((Random() % 11) + 21);
+    u32 spDefIv = ((Random() % 11) + 21);
+    u32 SpdIv = ((Random() % 11) + 21);
+
+    SetMonData(pokemon, MON_DATA_HP_IV, &hpIv);
+    SetMonData(pokemon, MON_DATA_ATK_IV, &atkIv);
+    SetMonData(pokemon, MON_DATA_DEF_IV, &defIv);
+    SetMonData(pokemon, MON_DATA_SPEED_IV, &spAtkIv);
+    SetMonData(pokemon, MON_DATA_SPATK_IV, &spDefIv);
+    SetMonData(pokemon, MON_DATA_SPDEF_IV, &SpdIv);
+    SetMonData(pokemon, MON_DATA_NICKNAME, inGameTrade->nickname);
+    SetMonData(pokemon, MON_DATA_OT_NAME, inGameTrade->otName);
+    SetMonData(pokemon, MON_DATA_OT_GENDER, &inGameTrade->otGender);
+    //SetMonData(pokemon, MON_DATA_ABILITY_NUM, &inGameTrade->abilityNum);
+    SetMonData(pokemon, MON_DATA_BEAUTY, &inGameTrade->conditions[1]);
+    SetMonData(pokemon, MON_DATA_CUTE, &inGameTrade->conditions[2]);
+    SetMonData(pokemon, MON_DATA_COOL, &inGameTrade->conditions[0]);
+    SetMonData(pokemon, MON_DATA_SMART, &inGameTrade->conditions[3]);
+    SetMonData(pokemon, MON_DATA_TOUGH, &inGameTrade->conditions[4]);
+    SetMonData(pokemon, MON_DATA_SHEEN, &inGameTrade->sheen);
+    SetMonData(pokemon, MON_DATA_MET_LOCATION, &metLocation);
+
+    mailNum = 0;
+    if (inGameTrade->heldItem != ITEM_NONE)
+    {
+        if (ItemIsMail(inGameTrade->heldItem))
+        {
+            GetInGameTradeMail(&mail, inGameTrade);
+            gTradeMail[0] = mail;
+            SetMonData(pokemon, MON_DATA_MAIL, &mailNum);
+            SetMonData(pokemon, MON_DATA_HELD_ITEM, &inGameTrade->heldItem);
+        }
+        else
+        {
+            SetMonData(pokemon, MON_DATA_HELD_ITEM, &inGameTrade->heldItem);
+        }
+    }
+    CalculateMonStats(&gParties[B_TRAINER_1][0]);
+}
+
+void CreateRoamingTraderPokemon(void)
+{
+    CreateRoamingTraderPokemonInternal(gSpecialVar_0x8004, gSpecialVar_0x8005);
+}
+

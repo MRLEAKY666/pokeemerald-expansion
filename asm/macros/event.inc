@@ -3112,4 +3112,16 @@
 	.2byte \itemId
 	.2byte \quantity
 	.endm
-	
+
+	@ Check if the party index at var source has a given type. 
+	.macro checkspecieshastype species:req, typeId:req
+	callnative Scrcmd_CheckSpeciesHasType, requests_effects=0
+	.2byte \species
+	.2byte \typeId
+	.endm
+
+	@ generate daily mon for roaming mon trader and assign to gSpecialVar_0x8007
+	.macro generateroamingnpctrade flag:req
+		callnative ScrCmd_GenerateRoamingNPCTrade, requests_effects=0
+		.2byte \flag
+	.endm

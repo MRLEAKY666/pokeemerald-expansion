@@ -18,34 +18,36 @@ SlateportCity_PokemonCenter_2F_OnTransition::
 	call SlateportCity_PokemonCenter_2F_EventScript_SetSpRoamingNPC
 # 13 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	call SlateportCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC
+# 14 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+	call SlateportCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC
 	end
 
 
 SlateportCity_PokemonCenter_2F_EventScript_SetSpRoamingNPC::
-# 18 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
-	checkroamingnpcatlocation FLAG_ROAMING_WALLACE, MAP_SLATEPORT_CITY_POKEMON_CENTER_2F
 # 19 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+	checkroamingnpcatlocation FLAG_ROAMING_WALLACE, MAP_SLATEPORT_CITY_POKEMON_CENTER_2F
+# 20 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq SlateportCity_PokemonCenter_2F_EventScript_SetSpRoamingNPC_2
-# 23 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 24 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	setflag FLAG_TEMP_A
 SlateportCity_PokemonCenter_2F_EventScript_SetSpRoamingNPC_1:
 	return
 
 SlateportCity_PokemonCenter_2F_EventScript_SetSpRoamingNPC_2:
-# 20 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 21 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	setvar VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_WALLACE
 	goto SlateportCity_PokemonCenter_2F_EventScript_SetSpRoamingNPC_1
 
 
 SlateportCity_PokemonCenter_2F_EventScript_SpRoamingNPC::
-# 29 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 30 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	compare VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_WALLACE
 	goto_if_eq SlateportCity_PokemonCenter_2F_EventScript_SpRoamingNPC_1
 	return
 
 SlateportCity_PokemonCenter_2F_EventScript_SpRoamingNPC_1:
-# 30 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 31 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	goto SlateportCity_PokemonCenter_2F_EventScript_Wallace
 	return
 
@@ -67,139 +69,217 @@ SlateportCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC::
 # 0 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq SlateportCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_5
-# 48 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 49 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	setflag FLAG_TEMP_B
 SlateportCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1:
 	return
 
 SlateportCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_2:
-# 36 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 37 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_SCIENTIST_1
 	goto SlateportCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1
 
 SlateportCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_3:
-# 39 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 40 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_MAN_4
 	goto SlateportCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1
 
 SlateportCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_4:
-# 42 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 43 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_HIKER
 	goto SlateportCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1
 
 SlateportCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_5:
-# 45 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 46 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_CAMPER
 	goto SlateportCity_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1
 
 
-SlateportCity_PokemonCenter_2F_EventScript_TrRoamingNPC::
-# 54 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
-	faceplayer
+SlateportCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC::
 # 55 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
-	switch VAR_OBJ_GFX_ID_B
+	goto_if_set FLAG_POST_WHITEOUT, SlateportCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_2
+	checkroamingnpcatlocation FLAG_ROAMING_PSYCHIC, MAP_SLATEPORT_CITY_POKEMON_CENTER_2F
+# 0 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq SlateportCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_3
+	checkroamingnpcatlocation FLAG_ROAMING_BUG_CATCHER, MAP_SLATEPORT_CITY_POKEMON_CENTER_2F
+# 0 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq SlateportCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_4
+	checkroamingnpcatlocation FLAG_ROAMING_YOUNGSTER, MAP_SLATEPORT_CITY_POKEMON_CENTER_2F
+# 0 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq SlateportCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_5
+	checkroamingnpcatlocation FLAG_ROAMING_HEX_MANIAC, MAP_SLATEPORT_CITY_POKEMON_CENTER_2F
+# 0 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq SlateportCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_6
+	checkroamingnpcatlocation FLAG_ROAMING_TRIATHLETE_F, MAP_SLATEPORT_CITY_POKEMON_CENTER_2F
+# 0 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq SlateportCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_7
+	checkroamingnpcatlocation FLAG_ROAMING_TRIATHLETE_M, MAP_SLATEPORT_CITY_POKEMON_CENTER_2F
+# 0 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq SlateportCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_8
+# 77 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+	setflag FLAG_TEMP_C
+SlateportCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1:
+	return
+
+SlateportCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_2:
 # 56 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
-	case OBJ_EVENT_GFX_SCIENTIST_1, SlateportCity_PokemonCenter_2F_EventScript_TrRoamingNPC_3
-# 58 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
-	case OBJ_EVENT_GFX_MAN_4, SlateportCity_PokemonCenter_2F_EventScript_TrRoamingNPC_4
-# 60 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
-	case OBJ_EVENT_GFX_HIKER, SlateportCity_PokemonCenter_2F_EventScript_TrRoamingNPC_5
+	setvar VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_SCIENTIST_2
+	goto SlateportCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1
+
+SlateportCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_3:
+# 59 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_LASS
+	goto SlateportCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1
+
+SlateportCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_4:
 # 62 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_BUG_CATCHER
+	goto SlateportCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1
+
+SlateportCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_5:
+# 65 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_YOUNGSTER
+	goto SlateportCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1
+
+SlateportCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_6:
+# 68 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_HEX_MANIAC
+	goto SlateportCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1
+
+SlateportCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_7:
+# 71 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F
+	goto SlateportCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1
+
+SlateportCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_8:
+# 74 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_RUNNING_TRIATHLETE_M
+	goto SlateportCity_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1
+
+
+SlateportCity_PokemonCenter_2F_EventScript_TrRoamingNPC::
+# 83 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+	faceplayer
+# 84 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+	switch VAR_OBJ_GFX_ID_B
+# 85 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+	case OBJ_EVENT_GFX_SCIENTIST_1, SlateportCity_PokemonCenter_2F_EventScript_TrRoamingNPC_3
+# 87 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+	case OBJ_EVENT_GFX_MAN_4, SlateportCity_PokemonCenter_2F_EventScript_TrRoamingNPC_4
+# 89 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+	case OBJ_EVENT_GFX_HIKER, SlateportCity_PokemonCenter_2F_EventScript_TrRoamingNPC_5
+# 91 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	case OBJ_EVENT_GFX_CAMPER, SlateportCity_PokemonCenter_2F_EventScript_TrRoamingNPC_6
 SlateportCity_PokemonCenter_2F_EventScript_TrRoamingNPC_1:
-# 67 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 96 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	release
 	return
 
 SlateportCity_PokemonCenter_2F_EventScript_TrRoamingNPC_3:
-# 57 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 86 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	call RoamingTraders_EventScript_TMTrader
 	goto SlateportCity_PokemonCenter_2F_EventScript_TrRoamingNPC_1
 
 SlateportCity_PokemonCenter_2F_EventScript_TrRoamingNPC_4:
-# 59 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 88 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	call RoamingTraders_EventScript_BallTrader
 	goto SlateportCity_PokemonCenter_2F_EventScript_TrRoamingNPC_1
 
 SlateportCity_PokemonCenter_2F_EventScript_TrRoamingNPC_5:
-# 61 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 90 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	call RoamingTraders_EventScript_SurvivalItemTrader
 	goto SlateportCity_PokemonCenter_2F_EventScript_TrRoamingNPC_1
 
 SlateportCity_PokemonCenter_2F_EventScript_TrRoamingNPC_6:
-# 63 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 92 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	call RoamingTraders_EventScript_HerbTrader
 	goto SlateportCity_PokemonCenter_2F_EventScript_TrRoamingNPC_1
 
 
+SlateportCity_PokemonCenter_2F_EventScript_PkmnTrRoamingNPC::
+# 100 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+	faceplayer
+# 101 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+	call RoamingTraders_EventScript_RoamingMonTrader
+# 102 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+	release
+	return
+
+
 SlateportCity_PokemonCenter_2F_EventScript_Wallace::
-# 71 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 106 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
-# 72 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 107 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	waitmovement
-# 73 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 108 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	goto_if_set FLAG_MET_WALLACE, SlateportCity_PokemonCenter_2F_EventScript_Wallace_2
-# 78 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 113 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	msgbox SlateportCity_PokemonCenter_2F_EventScript_Wallace_Text_1, MSGBOX_DEFAULT
-# 83 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 118 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	setflag FLAG_MET_WALLACE
 SlateportCity_PokemonCenter_2F_EventScript_Wallace_1:
-# 85 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 120 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	closemessage
-# 86 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 121 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	delay 15
-# 87 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 122 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceLeft
-# 88 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 123 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	waitmovement
-# 89 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 124 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	release
 	end
 
 SlateportCity_PokemonCenter_2F_EventScript_Wallace_2:
-# 74 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 109 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	msgbox SlateportCity_PokemonCenter_2F_EventScript_Wallace_Text_0, MSGBOX_DEFAULT
-# 75 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 110 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	call SootopolisCity_House3_EventScript_WallaceCheckBeasts
 	goto SlateportCity_PokemonCenter_2F_EventScript_Wallace_1
 
 
-# 93 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 128 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 
-# 94 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 129 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 
-# 95 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 130 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 @ The below 3 are unused and leftover from RS
-# 96 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 131 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 SlateportCity_PokemonCenter_2F_EventScript_Colosseum::
-# 97 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 132 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	call CableClub_EventScript_Colosseum
-# 98 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 133 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	end
-# 99 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 134 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 
-# 100 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 135 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 SlateportCity_PokemonCenter_2F_EventScript_TradeCenter::
-# 101 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 136 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	call CableClub_EventScript_TradeCenter
-# 102 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 137 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	end
-# 103 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 138 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 
-# 104 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 139 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 SlateportCity_PokemonCenter_2F_EventScript_RecordCorner::
-# 105 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 140 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	call CableClub_EventScript_RecordCorner
-# 106 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 141 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	end
 
 SlateportCity_PokemonCenter_2F_EventScript_Wallace_Text_0:
-# 74 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 109 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	.string "WALLACE: Good to see you again,\n"
 	.string "{PLAYER}.$"
 
 SlateportCity_PokemonCenter_2F_EventScript_Wallace_Text_1:
-# 78 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
+# 113 "data//maps/SlateportCity_PokemonCenter_2F/scripts.pory"
 	.string "Ah, a young TRAINER…\p"
 	.string "Yes, I can tell you're one to watch.\p"
 	.string "But how rude of me,\n"

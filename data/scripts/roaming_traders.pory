@@ -287,7 +287,7 @@ script RoamingTraders_EventScript_GenerateRoamingSurvivalShop{
 			waitmessage
 			delay(60)
 			hidemoneybox
-			msgbox(format("I doubt you'll find a better deal…\pBut if you just plan to hang around town and take it easy,\pyou wouldn't need this kind of stuff!\p"
+			msgbox(format("I doubt you'll find a better deal…\pBut if you just plan to hang around town and take it easy, you wouldn't need this kind of stuff!\p"
 							"Maybe next time, then!"), MSGBOX_DEFAULT)
 			closemessage
 			return
@@ -448,4 +448,153 @@ script RoamingTraders_EventScript_GenerateRoamingHerbShop{
 	else{
 		call(RoamingTraders_EventScript_GenerateRoamingHerbShop)
 	}
+}
+
+script RoamingTraders_EventScript_RoamingMonTrader{
+	switch (var(VAR_OBJ_GFX_ID_C)){
+		case OBJ_EVENT_GFX_SCIENTIST_2:
+			generateroamingnpctrade(FLAG_AFTER_WHITEOUT_TRADE)
+			bufferspeciesname(STR_VAR_2, VAR_0x8007)
+			msgbox(format("Oh{PAUSE 20}…{PAUSE 20} …{PAUSE 20} …{PAUSE 20}\nYou're a trainer, but every single one of your POKéMON is dead?\p"
+							"How terrible{PAUSE 20}…{PAUSE 20} …{PAUSE 20} …{PAUSE 20}\p"
+							"Well maybe with my help, your predicament can turn out to be mutually beneficial for us.\p"
+							"I'll take one of your POKéMON corpses off your hands in exchange for one of my lab rats."), MSGBOX_DEFAULT)
+			setvar(VAR_0x8005, INGAME_TRADE_AFTER_WHITEOUT)
+			//setvar(VAR_0x8003, TYPE_PSYCHIC)
+			//bufferstring(STR_VAR_3, "PSYCHIC")
+		case OBJ_EVENT_GFX_LASS:
+			generateroamingnpctrade(FLAG_ROAMING_PSYCHIC)
+			bufferspeciesname(STR_VAR_2, VAR_0x8007)
+			msgbox(format("Ugh{PAUSE 20}{PAUSE 20}\nI caught this {STR_VAR_2},\pbut it doesn't get along with my other POKéMON at all!\p"
+							"I know!{PAUSE 20}\nyou're a trainer, right?\lMaybe we could do a trade!\pI'd take any PSYCHIC TYPE over this {STR_VAR_2}…"), MSGBOX_DEFAULT)
+			setvar(VAR_0x8005, INGAME_TRADE_PSYCHIC)
+			setvar(VAR_0x8003, TYPE_PSYCHIC)
+			bufferstring(STR_VAR_3, "PSYCHIC")
+		case OBJ_EVENT_GFX_BUG_CATCHER:
+			generateroamingnpctrade(FLAG_ROAMING_BUG_CATCHER)
+			bufferspeciesname(STR_VAR_2, VAR_0x8007)
+			msgbox(format("Ugh{PAUSE 20}{PAUSE 20}\nI caught this {STR_VAR_2},\pbut it doesn't get along with my other POKéMON at all!\p"
+							"I know!{PAUSE 20}\nyou're a trainer, right?\lMaybe we could do a trade!\pI'd take any BUG TYPE over this {STR_VAR_2}…"), MSGBOX_DEFAULT)
+			setvar(VAR_0x8005, INGAME_TRADE_BUG_CATCHER)
+			setvar(VAR_0x8003, TYPE_BUG)
+			bufferstring(STR_VAR_3, "BUG")
+		case OBJ_EVENT_GFX_YOUNGSTER:
+			generateroamingnpctrade(FLAG_ROAMING_YOUNGSTER)
+			bufferspeciesname(STR_VAR_2, VAR_0x8007)
+			msgbox(format("Ugh{PAUSE 20}{PAUSE 20}\nI caught this {STR_VAR_2},\pbut it doesn't get along with my other POKéMON at all!\p"
+							"I know!{PAUSE 20}\nyou're a trainer, right?\lMaybe we could do a trade!\pI'd take any NORMAL TYPE over this {STR_VAR_2}…"), MSGBOX_DEFAULT)
+			setvar(VAR_0x8005, INGAME_TRADE_YOUNGSTER)
+			setvar(VAR_0x8003, TYPE_NORMAL)
+			bufferstring(STR_VAR_3, "NORMAL")
+		case OBJ_EVENT_GFX_HEX_MANIAC:
+			generateroamingnpctrade(FLAG_ROAMING_HEX_MANIAC)
+			bufferspeciesname(STR_VAR_2, VAR_0x8007)
+			msgbox(format("Ugh{PAUSE 20}{PAUSE 20}\nI caught this {STR_VAR_2},\pbut it doesn't get along with my other POKéMON at all!\p"
+							"I know!{PAUSE 20}\nyou're a trainer, right?\lMaybe we could do a trade!\pI'd take any PSYCHIC TYPE over this {STR_VAR_2}…"), MSGBOX_DEFAULT)
+			setvar(VAR_0x8005, INGAME_TRADE_HEX_MANIAC)
+			setvar(VAR_0x8003, TYPE_PSYCHIC)
+			bufferstring(STR_VAR_3, "PSYCHIC")
+		case OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F:
+			generateroamingnpctrade(FLAG_ROAMING_TRIATHLETE_F)
+			bufferspeciesname(STR_VAR_2, VAR_0x8007)
+			msgbox(format("Ugh{PAUSE 20}{PAUSE 20}\nI caught this {STR_VAR_2},\pbut it doesn't get along with my other POKéMON at all!\p"
+							"I know!{PAUSE 20}\nyou're a trainer, right?\lMaybe we could do a trade!\pI'd take any WATER TYPE over this {STR_VAR_2}…"), MSGBOX_DEFAULT)
+			setvar(VAR_0x8005, INGAME_TRADE_TRIATHLETE_F)
+			setvar(VAR_0x8003, TYPE_WATER)
+			bufferstring(STR_VAR_3, "WATER")
+		case OBJ_EVENT_GFX_RUNNING_TRIATHLETE_M:
+			generateroamingnpctrade(FLAG_ROAMING_TRIATHLETE_M)
+			bufferspeciesname(STR_VAR_2, VAR_0x8007)
+			msgbox(format("Ugh{PAUSE 20}{PAUSE 20}\nI caught this {STR_VAR_2},\pbut it doesn't get along with my other POKéMON at all!\p"
+							"I know!{PAUSE 20}\nyou're a trainer, right?\lMaybe we could do a trade!\pI'd take any ICE TYPE over this {STR_VAR_2}…"), MSGBOX_DEFAULT)
+			setvar(VAR_0x8005, INGAME_TRADE_TRIATHLETE_M)
+			setvar(VAR_0x8003, TYPE_ICE)
+			bufferstring(STR_VAR_3, "ICE")
+	}
+	if (var(VAR_OBJ_GFX_ID_C) == OBJ_EVENT_GFX_SCIENTIST_2){
+		msgbox(format("What do you say?"), MSGBOX_YESNO)
+	}
+	else{
+		msgbox(format("Will you trade your {STR_VAR_3} TYPE POKéMON?"), MSGBOX_YESNO)
+	}
+	goto_if_eq(VAR_RESULT, NO, RoamingTraders_EventScript_DeclineTrade)//declineTradeJump
+	special(ChoosePartyMon)
+	waitstate
+	applymovement(VAR_LAST_TALKED, Common_Movement_FacePlayer)
+	if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN)//declineTradeJump
+	{
+		goto(RoamingTraders_EventScript_DeclineTrade)
+	}
+	specialvar(VAR_0x8008, GetTradeSpecies)
+	if (var(VAR_0x8008) == SPECIES_NONE){
+		if (var(VAR_OBJ_GFX_ID_C) == OBJ_EVENT_GFX_SCIENTIST_2){ 
+			msgbox(format("What am I supposed to do with that?\p" 
+							"If you really want to trade, come back and offer me a real POKéMON!"), MSGBOX_DEFAULT)
+		}
+		else{
+			msgbox(format("Hey, I'm serious, I want to get rid of this thing!\p" 
+							"If you really want to trade, come back and offer me a real {STR_VAR_3} TYPE POKéMON!"), MSGBOX_DEFAULT)
+		}
+		return
+	}
+
+	if (var(VAR_OBJ_GFX_ID_C) != OBJ_EVENT_GFX_SCIENTIST_2){
+		checkspecieshastype(VAR_0x8008, VAR_0x8003)
+		if (var(VAR_RESULT) == FALSE){
+			msgbox(format("Hey, I'm serious, I want to get rid of this thing!\p" 
+							"If you really want to trade, come back and offer me a real {STR_VAR_3} TYPE POKéMON!"), MSGBOX_DEFAULT)
+			return
+		}
+	}
+	special(CreateRoamingTraderPokemon)
+	special(DoInGameTradeScene)
+	waitstate
+	bufferspeciesname(STR_VAR_1, VAR_0x8008)
+	applymovement(VAR_LAST_TALKED, Common_Movement_FacePlayer)
+	if (var(VAR_OBJ_GFX_ID_C) == OBJ_EVENT_GFX_SCIENTIST_2){
+		msgbox(format("That {STR_VAR_2} is certainly not impressive, but hopefully it helps."
+						"I know this corpse will be quite useful for my research…"), MSGBOX_DEFAULT)
+	}
+	else{
+		msgbox(format("Thanks!\pI sure am glad to be rid of that little freak!\p"
+						"Now my POKéMON and I can get back to battling!\p"
+						"Maybe I'll see you around, Trainer."), MSGBOX_DEFAULT)
+	}
+	closemessage
+	delay(10)
+	fadescreen(FADE_TO_BLACK)
+	removeobject(VAR_LAST_TALKED)
+	switch (var(VAR_OBJ_GFX_ID_C)){
+		case OBJ_EVENT_GFX_LASS:
+			setflag(FLAG_ROAMING_PSYCHIC)
+		case OBJ_EVENT_GFX_BUG_CATCHER:
+			setflag(FLAG_ROAMING_BUG_CATCHER)
+		case OBJ_EVENT_GFX_YOUNGSTER:
+			setflag(FLAG_ROAMING_YOUNGSTER)
+		case OBJ_EVENT_GFX_HEX_MANIAC:
+			setflag(FLAG_ROAMING_HEX_MANIAC)
+		case OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F:
+			setflag(FLAG_ROAMING_TRIATHLETE_F)
+		case OBJ_EVENT_GFX_RUNNING_TRIATHLETE_M:
+			setflag(FLAG_ROAMING_TRIATHLETE_M)
+		case OBJ_EVENT_GFX_SCIENTIST_2:
+			setflag(FLAG_AFTER_WHITEOUT_TRADE)
+	}
+	playse(SE_EXIT)
+	waitse
+	fadescreen(FADE_FROM_BLACK)
+	//msgbox \tradeCompleteMsg, MSGBOX_DEFAULT
+	return
+}
+
+script RoamingTraders_EventScript_DeclineTrade{
+	if (var(VAR_OBJ_GFX_ID_C) == OBJ_EVENT_GFX_SCIENTIST_2){
+		msgbox(format("Oh, you think you'll find another way out of here?\pGood luck!"), MSGBOX_DEFAULT)
+	}
+	else{
+		msgbox(format("Shoot, I was really hoping to get rid of this little freak!"), MSGBOX_DEFAULT)
+	}
+	
+	release
+	end
 }

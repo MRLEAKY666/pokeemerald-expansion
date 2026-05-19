@@ -18,22 +18,24 @@ DewfordTown_PokemonCenter_2F_OnTransition::
 	call DewfordTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC
 # 13 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	call DewfordTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC
+# 14 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+	call DewfordTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC
 	end
 
 
 DewfordTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC::
-# 18 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
-	checkroamingnpcatlocation FLAG_ROAMING_WALLACE, MAP_DEWFORD_TOWN_POKEMON_CENTER_2F
 # 19 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+	checkroamingnpcatlocation FLAG_ROAMING_WALLACE, MAP_DEWFORD_TOWN_POKEMON_CENTER_2F
+# 20 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq DewfordTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC_2
-# 23 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 24 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	setflag FLAG_TEMP_A
 DewfordTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC_1:
 	return
 
 DewfordTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC_2:
-# 20 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 21 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	setvar VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_WALLACE
 	goto DewfordTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC_1
 
@@ -55,149 +57,227 @@ DewfordTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC::
 # 0 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq DewfordTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_5
-# 42 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 43 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	setflag FLAG_TEMP_B
 DewfordTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1:
 	return
 
 DewfordTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_2:
-# 30 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 31 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_SCIENTIST_1
 	goto DewfordTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1
 
 DewfordTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_3:
-# 33 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 34 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_MAN_4
 	goto DewfordTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1
 
 DewfordTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_4:
-# 36 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 37 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_HIKER
 	goto DewfordTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1
 
 DewfordTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_5:
-# 39 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 40 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_CAMPER
 	goto DewfordTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1
 
 
-DewfordTown_PokemonCenter_2F_EventScript_TrRoamingNPC::
-# 48 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
-	faceplayer
+DewfordTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC::
 # 49 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
-	switch VAR_OBJ_GFX_ID_B
+	goto_if_set FLAG_POST_WHITEOUT, DewfordTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_2
+	checkroamingnpcatlocation FLAG_ROAMING_PSYCHIC, MAP_DEWFORD_TOWN_POKEMON_CENTER_2F
+# 0 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq DewfordTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_3
+	checkroamingnpcatlocation FLAG_ROAMING_BUG_CATCHER, MAP_DEWFORD_TOWN_POKEMON_CENTER_2F
+# 0 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq DewfordTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_4
+	checkroamingnpcatlocation FLAG_ROAMING_YOUNGSTER, MAP_DEWFORD_TOWN_POKEMON_CENTER_2F
+# 0 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq DewfordTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_5
+	checkroamingnpcatlocation FLAG_ROAMING_HEX_MANIAC, MAP_DEWFORD_TOWN_POKEMON_CENTER_2F
+# 0 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq DewfordTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_6
+	checkroamingnpcatlocation FLAG_ROAMING_TRIATHLETE_F, MAP_DEWFORD_TOWN_POKEMON_CENTER_2F
+# 0 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq DewfordTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_7
+	checkroamingnpcatlocation FLAG_ROAMING_TRIATHLETE_M, MAP_DEWFORD_TOWN_POKEMON_CENTER_2F
+# 0 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq DewfordTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_8
+# 71 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+	setflag FLAG_TEMP_C
+DewfordTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1:
+	return
+
+DewfordTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_2:
 # 50 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
-	case OBJ_EVENT_GFX_SCIENTIST_1, DewfordTown_PokemonCenter_2F_EventScript_TrRoamingNPC_3
-# 52 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
-	case OBJ_EVENT_GFX_MAN_4, DewfordTown_PokemonCenter_2F_EventScript_TrRoamingNPC_4
-# 54 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
-	case OBJ_EVENT_GFX_HIKER, DewfordTown_PokemonCenter_2F_EventScript_TrRoamingNPC_5
+	setvar VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_SCIENTIST_2
+	goto DewfordTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1
+
+DewfordTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_3:
+# 53 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_LASS
+	goto DewfordTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1
+
+DewfordTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_4:
 # 56 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_BUG_CATCHER
+	goto DewfordTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1
+
+DewfordTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_5:
+# 59 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_YOUNGSTER
+	goto DewfordTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1
+
+DewfordTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_6:
+# 62 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_HEX_MANIAC
+	goto DewfordTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1
+
+DewfordTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_7:
+# 65 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F
+	goto DewfordTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1
+
+DewfordTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_8:
+# 68 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_RUNNING_TRIATHLETE_M
+	goto DewfordTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1
+
+
+DewfordTown_PokemonCenter_2F_EventScript_TrRoamingNPC::
+# 77 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+	faceplayer
+# 78 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+	switch VAR_OBJ_GFX_ID_B
+# 79 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+	case OBJ_EVENT_GFX_SCIENTIST_1, DewfordTown_PokemonCenter_2F_EventScript_TrRoamingNPC_3
+# 81 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+	case OBJ_EVENT_GFX_MAN_4, DewfordTown_PokemonCenter_2F_EventScript_TrRoamingNPC_4
+# 83 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+	case OBJ_EVENT_GFX_HIKER, DewfordTown_PokemonCenter_2F_EventScript_TrRoamingNPC_5
+# 85 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	case OBJ_EVENT_GFX_CAMPER, DewfordTown_PokemonCenter_2F_EventScript_TrRoamingNPC_6
 DewfordTown_PokemonCenter_2F_EventScript_TrRoamingNPC_1:
-# 59 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 88 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceLeft
-# 60 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 89 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	waitmovement
-# 61 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 90 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	release
 	return
 
 DewfordTown_PokemonCenter_2F_EventScript_TrRoamingNPC_3:
-# 51 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 80 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	call RoamingTraders_EventScript_TMTrader
 	goto DewfordTown_PokemonCenter_2F_EventScript_TrRoamingNPC_1
 
 DewfordTown_PokemonCenter_2F_EventScript_TrRoamingNPC_4:
-# 53 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 82 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	call RoamingTraders_EventScript_BallTrader
 	goto DewfordTown_PokemonCenter_2F_EventScript_TrRoamingNPC_1
 
 DewfordTown_PokemonCenter_2F_EventScript_TrRoamingNPC_5:
-# 55 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 84 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	call RoamingTraders_EventScript_SurvivalItemTrader
 	goto DewfordTown_PokemonCenter_2F_EventScript_TrRoamingNPC_1
 
 DewfordTown_PokemonCenter_2F_EventScript_TrRoamingNPC_6:
-# 57 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 86 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	call RoamingTraders_EventScript_HerbTrader
 	goto DewfordTown_PokemonCenter_2F_EventScript_TrRoamingNPC_1
 
 
+DewfordTown_PokemonCenter_2F_EventScript_PkmnTrRoamingNPC::
+# 94 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+	faceplayer
+# 95 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+	call RoamingTraders_EventScript_RoamingMonTrader
+# 96 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+	release
+	return
+
+
 DewfordTown_PokemonCenter_2F_EventScript_SpRoamingNPC::
-# 65 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 100 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	compare VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_WALLACE
 	goto_if_eq DewfordTown_PokemonCenter_2F_EventScript_SpRoamingNPC_1
 	return
 
 DewfordTown_PokemonCenter_2F_EventScript_SpRoamingNPC_1:
-# 66 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 101 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	goto DewfordTown_PokemonCenter_2F_EventScript_Wallace
 	return
 
 
 DewfordTown_PokemonCenter_2F_EventScript_Wallace::
-# 71 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 106 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
-# 72 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 107 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	waitmovement
-# 73 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 108 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	goto_if_set FLAG_MET_WALLACE, DewfordTown_PokemonCenter_2F_EventScript_Wallace_2
-# 78 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 113 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	msgbox DewfordTown_PokemonCenter_2F_EventScript_Wallace_Text_1, MSGBOX_DEFAULT
-# 83 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 118 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	setflag FLAG_MET_WALLACE
 DewfordTown_PokemonCenter_2F_EventScript_Wallace_1:
-# 85 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 120 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	closemessage
-# 86 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 121 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	delay 15
-# 89 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 124 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	release
 	end
 
 DewfordTown_PokemonCenter_2F_EventScript_Wallace_2:
-# 74 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 109 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	msgbox DewfordTown_PokemonCenter_2F_EventScript_Wallace_Text_0, MSGBOX_DEFAULT
-# 75 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 110 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	call SootopolisCity_House3_EventScript_WallaceCheckBeasts
 	goto DewfordTown_PokemonCenter_2F_EventScript_Wallace_1
 
 
-# 93 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 128 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 
-# 94 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 129 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 @ The below 3 are unused and leftover from RS
-# 95 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 130 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 DewfordTown_PokemonCenter_2F_EventScript_Colosseum::
-# 96 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 131 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	call CableClub_EventScript_Colosseum
-# 97 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 132 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	end
-# 98 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 133 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 
-# 99 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 134 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 DewfordTown_PokemonCenter_2F_EventScript_TradeCenter::
-# 100 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 135 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	call CableClub_EventScript_TradeCenter
-# 101 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 136 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	end
-# 102 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 137 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 
-# 103 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 138 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 DewfordTown_PokemonCenter_2F_EventScript_RecordCorner::
-# 104 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 139 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	call CableClub_EventScript_RecordCorner
-# 105 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 140 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	end
 
 DewfordTown_PokemonCenter_2F_EventScript_Wallace_Text_0:
-# 74 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 109 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	.string "WALLACE: Good to see you again,\n"
 	.string "{PLAYER}.$"
 
 DewfordTown_PokemonCenter_2F_EventScript_Wallace_Text_1:
-# 78 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
+# 113 "data//maps/DewfordTown_PokemonCenter_2F/scripts.pory"
 	.string "Ah, a young TRAINER…\p"
 	.string "Yes, I can tell you're one to watch.\p"
 	.string "But how rude of me,\n"

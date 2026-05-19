@@ -780,19 +780,22 @@ void TryShowShadyTruck(void)
 
 static const int sRoamingWallaceLocations[] =
 {
-    MAP_OLDALE_TOWN_POKEMON_CENTER_2F,
-    MAP_PETALBURG_CITY_POKEMON_CENTER_2F,
-    MAP_RUSTBORO_CITY_POKEMON_CENTER_2F,
-    MAP_DEWFORD_TOWN_POKEMON_CENTER_2F,
-    MAP_SLATEPORT_CITY_POKEMON_CENTER_2F,
+    MAP_SOOTOPOLIS_CITY_HOUSE3,
+    MAP_MOSSDEEP_CITY_POKEMON_CENTER_2F,
+    MAP_LILYCOVE_CITY_POKEMON_CENTER_2F,
+    MAP_FORTREE_CITY_POKEMON_CENTER_2F,
     MAP_MAUVILLE_CITY_POKEMON_CENTER_2F,
     MAP_VERDANTURF_TOWN_POKEMON_CENTER_2F,
-    MAP_FALLARBOR_TOWN_POKEMON_CENTER_2F,
+    MAP_RUSTBORO_CITY_POKEMON_CENTER_2F,
+    MAP_PETALBURG_CITY_POKEMON_CENTER_2F,
+    MAP_DEWFORD_TOWN_POKEMON_CENTER_2F,
+    MAP_SLATEPORT_CITY_POKEMON_CENTER_2F,
+    MAP_OLDALE_TOWN_POKEMON_CENTER_2F,
+    MAP_MAUVILLE_CITY_POKEMON_CENTER_2F,
     MAP_LAVARIDGE_TOWN_POKEMON_CENTER_2F,
-    MAP_FORTREE_CITY_POKEMON_CENTER_2F,
-    MAP_LILYCOVE_CITY_POKEMON_CENTER_2F,
-    MAP_MOSSDEEP_CITY_POKEMON_CENTER_2F,
-    MAP_SOOTOPOLIS_CITY_HOUSE3,
+    MAP_FALLARBOR_TOWN_POKEMON_CENTER_2F,
+    MAP_RUSTBORO_CITY_POKEMON_CENTER_2F,
+    MAP_DEWFORD_TOWN_POKEMON_CENTER_2F,
     MAP_PACIFIDLOG_TOWN_POKEMON_CENTER_2F,
 };
 
@@ -812,6 +815,26 @@ static const int sRoamingTraderLocations[] =
     MAP_MOSSDEEP_CITY_POKEMON_CENTER_2F,
     MAP_SOOTOPOLIS_CITY_POKEMON_CENTER_2F,
     MAP_PACIFIDLOG_TOWN_POKEMON_CENTER_2F,
+    MAP_BATTLE_FRONTIER_POKEMON_CENTER_2F,
+};
+
+static const int sRoamingPkmnTraderLocations[] = 
+{
+    MAP_FALLARBOR_TOWN_POKEMON_CENTER_2F,
+    MAP_LAVARIDGE_TOWN_POKEMON_CENTER_2F,
+    MAP_FORTREE_CITY_POKEMON_CENTER_2F,
+    MAP_LILYCOVE_CITY_POKEMON_CENTER_2F,
+    MAP_MOSSDEEP_CITY_POKEMON_CENTER_2F,
+    MAP_SOOTOPOLIS_CITY_POKEMON_CENTER_2F,
+    MAP_PACIFIDLOG_TOWN_POKEMON_CENTER_2F,
+    MAP_BATTLE_FRONTIER_POKEMON_CENTER_2F,
+    MAP_OLDALE_TOWN_POKEMON_CENTER_2F,
+    MAP_PETALBURG_CITY_POKEMON_CENTER_2F,
+    MAP_RUSTBORO_CITY_POKEMON_CENTER_2F,
+    MAP_DEWFORD_TOWN_POKEMON_CENTER_2F,
+    MAP_SLATEPORT_CITY_POKEMON_CENTER_2F,
+    MAP_MAUVILLE_CITY_POKEMON_CENTER_2F,
+    MAP_VERDANTURF_TOWN_POKEMON_CENTER_2F,
 };
 
 void CheckRoamingNPCAtLocation(u32 flagId, u8 mapNum, u8 mapGroup)
@@ -820,7 +843,49 @@ void CheckRoamingNPCAtLocation(u32 flagId, u8 mapNum, u8 mapGroup)
     bool8 atLocation = FALSE;
     u8 NPCCurrentLocationIndex;
     u16 NPCFlag = flagId;
+    const int* sourcePool;
 
+    u8 poolSize;
+    if (NPCFlag == FLAG_ROAMING_WALLACE){
+        sourcePool = sRoamingWallaceLocations;
+        poolSize = ARRAY_COUNT(sRoamingWallaceLocations);
+    }
+    else if (NPCFlag == FLAG_ROAMING_SCIENTIST 
+         || NPCFlag == FLAG_ROAMING_BREEDER 
+         || NPCFlag == FLAG_ROAMING_HIKER 
+         || NPCFlag == FLAG_ROAMING_RANGER){
+        sourcePool = sRoamingTraderLocations;
+        poolSize = ARRAY_COUNT(sRoamingTraderLocations);
+    }
+    else if (NPCFlag == FLAG_ROAMING_PSYCHIC 
+         || NPCFlag == FLAG_ROAMING_BUG_CATCHER 
+         || NPCFlag == FLAG_ROAMING_YOUNGSTER 
+         || NPCFlag == FLAG_ROAMING_HEX_MANIAC
+         || NPCFlag == FLAG_ROAMING_TRIATHLETE_F 
+         || NPCFlag == FLAG_ROAMING_TRIATHLETE_M){
+        sourcePool = sRoamingPkmnTraderLocations;
+        poolSize = ARRAY_COUNT(sRoamingPkmnTraderLocations);
+    }
+    else{
+        sourcePool = sRoamingTraderLocations;
+        poolSize = ARRAY_COUNT(sRoamingTraderLocations);
+    }
+
+    // create pool
+    u16 locationPool[poolSize];
+    for (int i=0; i < poolSize; i++){
+        locationPool[i] = sourcePool[i];
+    }
+    // shuffle pool
+    for (int i = 0; i < ARRAY_COUNT(locationPool) - 1; i++) {
+        // Generate a random index between i and size - 1
+        int j = i + gSaveBlock1Ptr->dailySeed % (ARRAY_COUNT(locationPool) - i);
+
+        // Swap the elements at indices i and j
+        int temp = locationPool[i];
+        locationPool[i] = locationPool[j];
+        locationPool[j] = temp;
+    }
 
     if (FlagGet(FLAG_SYS_POKEDEX_GET)){
         switch (NPCFlag)
@@ -835,34 +900,82 @@ void CheckRoamingNPCAtLocation(u32 flagId, u8 mapNum, u8 mapGroup)
             }
             break;
         case FLAG_ROAMING_SCIENTIST:
-            NPCCurrentLocationIndex = gSaveBlock1Ptr->dailySeed % ARRAY_COUNT(sRoamingTraderLocations);
-            if (mapNum == MAP_NUM(sRoamingTraderLocations[NPCCurrentLocationIndex])
-                && mapGroup == MAP_GROUP(sRoamingWallaceLocations[NPCCurrentLocationIndex]) 
+            NPCCurrentLocationIndex = 0;
+            if (mapNum == MAP_NUM(locationPool[NPCCurrentLocationIndex])
+                && mapGroup == MAP_GROUP(locationPool[NPCCurrentLocationIndex]) 
                 && !FlagGet(FLAG_ROAMING_SCIENTIST)){
                 atLocation = TRUE;
             }
             break;
         case FLAG_ROAMING_BREEDER:
-            NPCCurrentLocationIndex = (gSaveBlock1Ptr->dailySeed * 2) % ARRAY_COUNT(sRoamingTraderLocations);
-            if (mapNum == MAP_NUM(sRoamingTraderLocations[NPCCurrentLocationIndex])
-                && mapGroup == MAP_GROUP(sRoamingWallaceLocations[NPCCurrentLocationIndex]) 
+            NPCCurrentLocationIndex = 1;
+            if (mapNum == MAP_NUM(locationPool[NPCCurrentLocationIndex])
+                && mapGroup == MAP_GROUP(locationPool[NPCCurrentLocationIndex]) 
                 && !FlagGet(FLAG_ROAMING_BREEDER)){
                 atLocation = TRUE;
             }
             break;
         case FLAG_ROAMING_HIKER:
-            NPCCurrentLocationIndex = (gSaveBlock1Ptr->dailySeed * 3) % ARRAY_COUNT(sRoamingTraderLocations);
-            if (mapNum == MAP_NUM(sRoamingTraderLocations[NPCCurrentLocationIndex])
-                && mapGroup == MAP_GROUP(sRoamingWallaceLocations[NPCCurrentLocationIndex]) 
+            NPCCurrentLocationIndex = 2;
+            if (mapNum == MAP_NUM(locationPool[NPCCurrentLocationIndex])
+                && mapGroup == MAP_GROUP(locationPool[NPCCurrentLocationIndex]) 
                 && !FlagGet(FLAG_ROAMING_HIKER)){
                 atLocation = TRUE;
             }
             break;
         case FLAG_ROAMING_RANGER:
-            NPCCurrentLocationIndex = (gSaveBlock1Ptr->dailySeed * 5) % ARRAY_COUNT(sRoamingTraderLocations);
-            if (mapNum == MAP_NUM(sRoamingTraderLocations[NPCCurrentLocationIndex])
-                && mapGroup == MAP_GROUP(sRoamingWallaceLocations[NPCCurrentLocationIndex]) 
+            NPCCurrentLocationIndex = 3;
+            if (mapNum == MAP_NUM(locationPool[NPCCurrentLocationIndex])
+                && mapGroup == MAP_GROUP(locationPool[NPCCurrentLocationIndex]) 
                 && !FlagGet(FLAG_ROAMING_RANGER)){
+                atLocation = TRUE;
+            }
+            break;
+        case FLAG_ROAMING_PSYCHIC:
+            NPCCurrentLocationIndex = 0;
+            if (mapNum == MAP_NUM(locationPool[NPCCurrentLocationIndex])
+                && mapGroup == MAP_GROUP(locationPool[NPCCurrentLocationIndex]) 
+                && !FlagGet(FLAG_ROAMING_PSYCHIC)){
+                atLocation = TRUE;
+            }
+            break;
+        case FLAG_ROAMING_BUG_CATCHER:
+            NPCCurrentLocationIndex = 1;
+            if (mapNum == MAP_NUM(locationPool[NPCCurrentLocationIndex])
+                && mapGroup == MAP_GROUP(locationPool[NPCCurrentLocationIndex]) 
+                && !FlagGet(FLAG_ROAMING_BUG_CATCHER)){
+                atLocation = TRUE;
+            }
+            break;
+        case FLAG_ROAMING_YOUNGSTER:
+            NPCCurrentLocationIndex = 2;
+            if (mapNum == MAP_NUM(locationPool[NPCCurrentLocationIndex])
+                && mapGroup == MAP_GROUP(locationPool[NPCCurrentLocationIndex]) 
+                && !FlagGet(FLAG_ROAMING_YOUNGSTER)){
+                atLocation = TRUE;
+            }
+            break;
+        case FLAG_ROAMING_HEX_MANIAC:
+            NPCCurrentLocationIndex = 3;
+            if (mapNum == MAP_NUM(locationPool[NPCCurrentLocationIndex])
+                && mapGroup == MAP_GROUP(locationPool[NPCCurrentLocationIndex]) 
+                && !FlagGet(FLAG_ROAMING_HEX_MANIAC)){
+                atLocation = TRUE;
+            }
+            break;
+        case FLAG_ROAMING_TRIATHLETE_F:
+            NPCCurrentLocationIndex = 4;
+            if (mapNum == MAP_NUM(locationPool[NPCCurrentLocationIndex])
+                && mapGroup == MAP_GROUP(locationPool[NPCCurrentLocationIndex]) 
+                && !FlagGet(FLAG_ROAMING_TRIATHLETE_F)){
+                atLocation = TRUE;
+            }
+            break;
+        case FLAG_ROAMING_TRIATHLETE_M:
+            NPCCurrentLocationIndex = 5;
+            if (mapNum == MAP_NUM(locationPool[NPCCurrentLocationIndex])
+                && mapGroup == MAP_GROUP(locationPool[NPCCurrentLocationIndex]) 
+                && !FlagGet(FLAG_ROAMING_TRIATHLETE_M)){
                 atLocation = TRUE;
             }
             break;
@@ -888,5 +1001,24 @@ void ClearRoamingTraderFlags(void)
     }
     if (FlagGet(FLAG_ROAMING_RANGER)){
         FlagClear(FLAG_ROAMING_RANGER);
+    }
+
+    if (FlagGet(FLAG_ROAMING_PSYCHIC)){
+        FlagClear(FLAG_ROAMING_PSYCHIC);
+    }
+    if (FlagGet(FLAG_ROAMING_BUG_CATCHER)){
+        FlagClear(FLAG_ROAMING_BUG_CATCHER);
+    }
+    if (FlagGet(FLAG_ROAMING_YOUNGSTER)){
+        FlagClear(FLAG_ROAMING_YOUNGSTER);
+    }
+    if (FlagGet(FLAG_ROAMING_HEX_MANIAC)){
+        FlagClear(FLAG_ROAMING_HEX_MANIAC);
+    }
+    if (FlagGet(FLAG_ROAMING_TRIATHLETE_F)){
+        FlagClear(FLAG_ROAMING_TRIATHLETE_F);
+    }
+    if (FlagGet(FLAG_ROAMING_TRIATHLETE_M)){
+        FlagClear(FLAG_ROAMING_TRIATHLETE_M);
     }
 }

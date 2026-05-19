@@ -10,24 +10,53 @@ BattleFrontier_PokemonCenter_2F_MapScripts::
 
 script BattleFrontier_PokemonCenter_2F_OnTransition{
 	call(BattleFrontier_PokemonCenter_2F_EventScript_SetTrRoamingNPC)
+	call(BattleFrontier_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC)
 	end
 }
 
 script BattleFrontier_PokemonCenter_2F_EventScript_SetTrRoamingNPC{
-	if (checkroamingnpcatlocation(FLAG_ROAMING_SCIENTIST, MAP_EVER_GRANDE_CITY_POKEMON_CENTER_2F) == TRUE){
+	if (checkroamingnpcatlocation(FLAG_ROAMING_SCIENTIST, MAP_BATTLE_FRONTIER_POKEMON_CENTER_2F) == TRUE){
 		setvar(VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_SCIENTIST_1)
 	}
-	elif (checkroamingnpcatlocation(FLAG_ROAMING_BREEDER, MAP_EVER_GRANDE_CITY_POKEMON_CENTER_2F) == TRUE){
+	elif (checkroamingnpcatlocation(FLAG_ROAMING_BREEDER, MAP_BATTLE_FRONTIER_POKEMON_CENTER_2F) == TRUE){
 		setvar(VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_MAN_4)
 	}
-	elif (checkroamingnpcatlocation(FLAG_ROAMING_HIKER, MAP_EVER_GRANDE_CITY_POKEMON_CENTER_2F) == TRUE){
+	elif (checkroamingnpcatlocation(FLAG_ROAMING_HIKER, MAP_BATTLE_FRONTIER_POKEMON_CENTER_2F) == TRUE){
 		setvar(VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_HIKER)
 	}
-	elif (checkroamingnpcatlocation(FLAG_ROAMING_RANGER, MAP_EVER_GRANDE_CITY_POKEMON_CENTER_2F) == TRUE){
+	elif (checkroamingnpcatlocation(FLAG_ROAMING_RANGER, MAP_BATTLE_FRONTIER_POKEMON_CENTER_2F) == TRUE){
 		setvar(VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_CAMPER)
 	}
 	else{
 		setflag(FLAG_TEMP_B)
+	}
+	return
+}
+
+script BattleFrontier_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC{
+	if (flag(FLAG_POST_WHITEOUT)){
+		setvar(VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_SCIENTIST_2)
+	}
+	elif (checkroamingnpcatlocation(FLAG_ROAMING_PSYCHIC, MAP_BATTLE_FRONTIER_POKEMON_CENTER_2F) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_LASS)
+	}
+	elif (checkroamingnpcatlocation(FLAG_ROAMING_BUG_CATCHER, MAP_BATTLE_FRONTIER_POKEMON_CENTER_2F) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_BUG_CATCHER)
+	}
+	elif (checkroamingnpcatlocation(FLAG_ROAMING_YOUNGSTER, MAP_BATTLE_FRONTIER_POKEMON_CENTER_2F) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_YOUNGSTER)
+	}
+	elif (checkroamingnpcatlocation(FLAG_ROAMING_HEX_MANIAC, MAP_BATTLE_FRONTIER_POKEMON_CENTER_2F) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_HEX_MANIAC)
+	}
+	elif (checkroamingnpcatlocation(FLAG_ROAMING_TRIATHLETE_F, MAP_BATTLE_FRONTIER_POKEMON_CENTER_2F) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F)
+	}
+	elif (checkroamingnpcatlocation(FLAG_ROAMING_TRIATHLETE_M, MAP_BATTLE_FRONTIER_POKEMON_CENTER_2F) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_RUNNING_TRIATHLETE_M)
+	}
+	else{
+		setflag(FLAG_TEMP_C)
 	}
 	return
 }
@@ -46,6 +75,14 @@ script BattleFrontier_PokemonCenter_2F_EventScript_TrRoamingNPC{
 	}
 	//applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceLeft)
 	//waitmovement
+	release
+}
+
+script BattleFrontier_PokemonCenter_2F_EventScript_PkmnTrRoamingNPC{
+	faceplayer
+	call(RoamingTraders_EventScript_RoamingMonTrader)
+	applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceLeft)
+	waitmovement
 	release
 }
 

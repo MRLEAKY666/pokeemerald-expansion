@@ -841,6 +841,296 @@ RoamingTraders_EventScript_GenerateRoamingHerbShop_19:
 	return
 
 
+RoamingTraders_EventScript_RoamingMonTrader::
+# 454 "data//scripts/roaming_traders.pory"
+	switch VAR_OBJ_GFX_ID_C
+# 455 "data//scripts/roaming_traders.pory"
+	case OBJ_EVENT_GFX_SCIENTIST_2, RoamingTraders_EventScript_RoamingMonTrader_3
+# 465 "data//scripts/roaming_traders.pory"
+	case OBJ_EVENT_GFX_LASS, RoamingTraders_EventScript_RoamingMonTrader_4
+# 473 "data//scripts/roaming_traders.pory"
+	case OBJ_EVENT_GFX_BUG_CATCHER, RoamingTraders_EventScript_RoamingMonTrader_5
+# 481 "data//scripts/roaming_traders.pory"
+	case OBJ_EVENT_GFX_YOUNGSTER, RoamingTraders_EventScript_RoamingMonTrader_6
+# 489 "data//scripts/roaming_traders.pory"
+	case OBJ_EVENT_GFX_HEX_MANIAC, RoamingTraders_EventScript_RoamingMonTrader_7
+# 497 "data//scripts/roaming_traders.pory"
+	case OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F, RoamingTraders_EventScript_RoamingMonTrader_8
+# 505 "data//scripts/roaming_traders.pory"
+	case OBJ_EVENT_GFX_RUNNING_TRIATHLETE_M, RoamingTraders_EventScript_RoamingMonTrader_9
+RoamingTraders_EventScript_RoamingMonTrader_1:
+# 514 "data//scripts/roaming_traders.pory"
+	compare VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_SCIENTIST_2
+	goto_if_eq RoamingTraders_EventScript_RoamingMonTrader_11
+# 518 "data//scripts/roaming_traders.pory"
+	msgbox RoamingTraders_EventScript_RoamingMonTrader_Text_12, MSGBOX_YESNO
+RoamingTraders_EventScript_RoamingMonTrader_10:
+# 520 "data//scripts/roaming_traders.pory"
+	goto_if_eq VAR_RESULT, NO, RoamingTraders_EventScript_DeclineTrade
+# 521 "data//scripts/roaming_traders.pory"
+	special ChoosePartyMon
+# 522 "data//scripts/roaming_traders.pory"
+	waitstate
+# 523 "data//scripts/roaming_traders.pory"
+	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
+# 524 "data//scripts/roaming_traders.pory"
+	compare VAR_0x8004, PARTY_NOTHING_CHOSEN
+	goto_if_eq RoamingTraders_EventScript_RoamingMonTrader_15
+RoamingTraders_EventScript_RoamingMonTrader_14:
+# 528 "data//scripts/roaming_traders.pory"
+	specialvar VAR_0x8008, GetTradeSpecies
+# 529 "data//scripts/roaming_traders.pory"
+	compare VAR_0x8008, SPECIES_NONE
+	goto_if_eq RoamingTraders_EventScript_RoamingMonTrader_18
+# 541 "data//scripts/roaming_traders.pory"
+	compare VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_SCIENTIST_2
+	goto_if_ne RoamingTraders_EventScript_RoamingMonTrader_21
+RoamingTraders_EventScript_RoamingMonTrader_20:
+# 549 "data//scripts/roaming_traders.pory"
+	special CreateRoamingTraderPokemon
+# 550 "data//scripts/roaming_traders.pory"
+	special DoInGameTradeScene
+# 551 "data//scripts/roaming_traders.pory"
+	waitstate
+# 552 "data//scripts/roaming_traders.pory"
+	bufferspeciesname STR_VAR_1, VAR_0x8008
+# 553 "data//scripts/roaming_traders.pory"
+	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
+# 554 "data//scripts/roaming_traders.pory"
+	compare VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_SCIENTIST_2
+	goto_if_eq RoamingTraders_EventScript_RoamingMonTrader_28
+# 559 "data//scripts/roaming_traders.pory"
+	msgbox RoamingTraders_EventScript_RoamingMonTrader_Text_16, MSGBOX_DEFAULT
+RoamingTraders_EventScript_RoamingMonTrader_27:
+# 563 "data//scripts/roaming_traders.pory"
+	closemessage
+# 564 "data//scripts/roaming_traders.pory"
+	delay 10
+# 565 "data//scripts/roaming_traders.pory"
+	fadescreen FADE_TO_BLACK
+# 566 "data//scripts/roaming_traders.pory"
+	removeobject VAR_LAST_TALKED
+# 567 "data//scripts/roaming_traders.pory"
+	switch VAR_OBJ_GFX_ID_C
+# 568 "data//scripts/roaming_traders.pory"
+	case OBJ_EVENT_GFX_LASS, RoamingTraders_EventScript_RoamingMonTrader_35
+# 570 "data//scripts/roaming_traders.pory"
+	case OBJ_EVENT_GFX_BUG_CATCHER, RoamingTraders_EventScript_RoamingMonTrader_36
+# 572 "data//scripts/roaming_traders.pory"
+	case OBJ_EVENT_GFX_YOUNGSTER, RoamingTraders_EventScript_RoamingMonTrader_37
+# 574 "data//scripts/roaming_traders.pory"
+	case OBJ_EVENT_GFX_HEX_MANIAC, RoamingTraders_EventScript_RoamingMonTrader_38
+# 576 "data//scripts/roaming_traders.pory"
+	case OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F, RoamingTraders_EventScript_RoamingMonTrader_39
+# 578 "data//scripts/roaming_traders.pory"
+	case OBJ_EVENT_GFX_RUNNING_TRIATHLETE_M, RoamingTraders_EventScript_RoamingMonTrader_40
+# 580 "data//scripts/roaming_traders.pory"
+	case OBJ_EVENT_GFX_SCIENTIST_2, RoamingTraders_EventScript_RoamingMonTrader_41
+RoamingTraders_EventScript_RoamingMonTrader_33:
+# 583 "data//scripts/roaming_traders.pory"
+	playse SE_EXIT
+# 584 "data//scripts/roaming_traders.pory"
+	waitse
+# 585 "data//scripts/roaming_traders.pory"
+	fadescreen FADE_FROM_BLACK
+	return
+
+RoamingTraders_EventScript_RoamingMonTrader_3:
+# 456 "data//scripts/roaming_traders.pory"
+	generateroamingnpctrade FLAG_AFTER_WHITEOUT_TRADE
+# 457 "data//scripts/roaming_traders.pory"
+	bufferspeciesname STR_VAR_2, VAR_0x8007
+# 458 "data//scripts/roaming_traders.pory"
+	msgbox RoamingTraders_EventScript_RoamingMonTrader_Text_0, MSGBOX_DEFAULT
+# 462 "data//scripts/roaming_traders.pory"
+	setvar VAR_0x8005, INGAME_TRADE_AFTER_WHITEOUT
+	goto RoamingTraders_EventScript_RoamingMonTrader_1
+
+RoamingTraders_EventScript_RoamingMonTrader_4:
+# 466 "data//scripts/roaming_traders.pory"
+	generateroamingnpctrade FLAG_ROAMING_PSYCHIC
+# 467 "data//scripts/roaming_traders.pory"
+	bufferspeciesname STR_VAR_2, VAR_0x8007
+# 468 "data//scripts/roaming_traders.pory"
+	msgbox RoamingTraders_EventScript_RoamingMonTrader_Text_1, MSGBOX_DEFAULT
+# 470 "data//scripts/roaming_traders.pory"
+	setvar VAR_0x8005, INGAME_TRADE_PSYCHIC
+# 471 "data//scripts/roaming_traders.pory"
+	setvar VAR_0x8003, TYPE_PSYCHIC
+# 472 "data//scripts/roaming_traders.pory"
+	bufferstring STR_VAR_3, RoamingTraders_EventScript_RoamingMonTrader_Text_2
+	goto RoamingTraders_EventScript_RoamingMonTrader_1
+
+RoamingTraders_EventScript_RoamingMonTrader_5:
+# 474 "data//scripts/roaming_traders.pory"
+	generateroamingnpctrade FLAG_ROAMING_BUG_CATCHER
+# 475 "data//scripts/roaming_traders.pory"
+	bufferspeciesname STR_VAR_2, VAR_0x8007
+# 476 "data//scripts/roaming_traders.pory"
+	msgbox RoamingTraders_EventScript_RoamingMonTrader_Text_3, MSGBOX_DEFAULT
+# 478 "data//scripts/roaming_traders.pory"
+	setvar VAR_0x8005, INGAME_TRADE_BUG_CATCHER
+# 479 "data//scripts/roaming_traders.pory"
+	setvar VAR_0x8003, TYPE_BUG
+# 480 "data//scripts/roaming_traders.pory"
+	bufferstring STR_VAR_3, RoamingTraders_EventScript_RoamingMonTrader_Text_4
+	goto RoamingTraders_EventScript_RoamingMonTrader_1
+
+RoamingTraders_EventScript_RoamingMonTrader_6:
+# 482 "data//scripts/roaming_traders.pory"
+	generateroamingnpctrade FLAG_ROAMING_YOUNGSTER
+# 483 "data//scripts/roaming_traders.pory"
+	bufferspeciesname STR_VAR_2, VAR_0x8007
+# 484 "data//scripts/roaming_traders.pory"
+	msgbox RoamingTraders_EventScript_RoamingMonTrader_Text_5, MSGBOX_DEFAULT
+# 486 "data//scripts/roaming_traders.pory"
+	setvar VAR_0x8005, INGAME_TRADE_YOUNGSTER
+# 487 "data//scripts/roaming_traders.pory"
+	setvar VAR_0x8003, TYPE_NORMAL
+# 488 "data//scripts/roaming_traders.pory"
+	bufferstring STR_VAR_3, RoamingTraders_EventScript_RoamingMonTrader_Text_6
+	goto RoamingTraders_EventScript_RoamingMonTrader_1
+
+RoamingTraders_EventScript_RoamingMonTrader_7:
+# 490 "data//scripts/roaming_traders.pory"
+	generateroamingnpctrade FLAG_ROAMING_HEX_MANIAC
+# 491 "data//scripts/roaming_traders.pory"
+	bufferspeciesname STR_VAR_2, VAR_0x8007
+# 492 "data//scripts/roaming_traders.pory"
+	msgbox RoamingTraders_EventScript_RoamingMonTrader_Text_1, MSGBOX_DEFAULT
+# 494 "data//scripts/roaming_traders.pory"
+	setvar VAR_0x8005, INGAME_TRADE_HEX_MANIAC
+# 495 "data//scripts/roaming_traders.pory"
+	setvar VAR_0x8003, TYPE_PSYCHIC
+# 496 "data//scripts/roaming_traders.pory"
+	bufferstring STR_VAR_3, RoamingTraders_EventScript_RoamingMonTrader_Text_2
+	goto RoamingTraders_EventScript_RoamingMonTrader_1
+
+RoamingTraders_EventScript_RoamingMonTrader_8:
+# 498 "data//scripts/roaming_traders.pory"
+	generateroamingnpctrade FLAG_ROAMING_TRIATHLETE_F
+# 499 "data//scripts/roaming_traders.pory"
+	bufferspeciesname STR_VAR_2, VAR_0x8007
+# 500 "data//scripts/roaming_traders.pory"
+	msgbox RoamingTraders_EventScript_RoamingMonTrader_Text_7, MSGBOX_DEFAULT
+# 502 "data//scripts/roaming_traders.pory"
+	setvar VAR_0x8005, INGAME_TRADE_TRIATHLETE_F
+# 503 "data//scripts/roaming_traders.pory"
+	setvar VAR_0x8003, TYPE_WATER
+# 504 "data//scripts/roaming_traders.pory"
+	bufferstring STR_VAR_3, RoamingTraders_EventScript_RoamingMonTrader_Text_8
+	goto RoamingTraders_EventScript_RoamingMonTrader_1
+
+RoamingTraders_EventScript_RoamingMonTrader_9:
+# 506 "data//scripts/roaming_traders.pory"
+	generateroamingnpctrade FLAG_ROAMING_TRIATHLETE_M
+# 507 "data//scripts/roaming_traders.pory"
+	bufferspeciesname STR_VAR_2, VAR_0x8007
+# 508 "data//scripts/roaming_traders.pory"
+	msgbox RoamingTraders_EventScript_RoamingMonTrader_Text_9, MSGBOX_DEFAULT
+# 510 "data//scripts/roaming_traders.pory"
+	setvar VAR_0x8005, INGAME_TRADE_TRIATHLETE_M
+# 511 "data//scripts/roaming_traders.pory"
+	setvar VAR_0x8003, TYPE_ICE
+# 512 "data//scripts/roaming_traders.pory"
+	bufferstring STR_VAR_3, RoamingTraders_EventScript_RoamingMonTrader_Text_10
+	goto RoamingTraders_EventScript_RoamingMonTrader_1
+
+RoamingTraders_EventScript_RoamingMonTrader_11:
+# 515 "data//scripts/roaming_traders.pory"
+	msgbox RoamingTraders_EventScript_RoamingMonTrader_Text_11, MSGBOX_YESNO
+	goto RoamingTraders_EventScript_RoamingMonTrader_10
+
+RoamingTraders_EventScript_RoamingMonTrader_15:
+# 526 "data//scripts/roaming_traders.pory"
+	goto RoamingTraders_EventScript_DeclineTrade
+	goto RoamingTraders_EventScript_RoamingMonTrader_14
+
+RoamingTraders_EventScript_RoamingMonTrader_18:
+# 530 "data//scripts/roaming_traders.pory"
+	compare VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_SCIENTIST_2
+	goto_if_eq RoamingTraders_EventScript_RoamingMonTrader_24
+# 535 "data//scripts/roaming_traders.pory"
+	msgbox RoamingTraders_EventScript_RoamingMonTrader_Text_14, MSGBOX_DEFAULT
+RoamingTraders_EventScript_RoamingMonTrader_23:
+	return
+
+RoamingTraders_EventScript_RoamingMonTrader_21:
+# 542 "data//scripts/roaming_traders.pory"
+	checkspecieshastype VAR_0x8008, VAR_0x8003
+# 543 "data//scripts/roaming_traders.pory"
+	compare VAR_RESULT, FALSE
+	goto_if_eq RoamingTraders_EventScript_RoamingMonTrader_31
+	goto RoamingTraders_EventScript_RoamingMonTrader_20
+
+RoamingTraders_EventScript_RoamingMonTrader_24:
+# 531 "data//scripts/roaming_traders.pory"
+	msgbox RoamingTraders_EventScript_RoamingMonTrader_Text_13, MSGBOX_DEFAULT
+	goto RoamingTraders_EventScript_RoamingMonTrader_23
+
+RoamingTraders_EventScript_RoamingMonTrader_28:
+# 555 "data//scripts/roaming_traders.pory"
+	msgbox RoamingTraders_EventScript_RoamingMonTrader_Text_15, MSGBOX_DEFAULT
+	goto RoamingTraders_EventScript_RoamingMonTrader_27
+
+RoamingTraders_EventScript_RoamingMonTrader_31:
+# 544 "data//scripts/roaming_traders.pory"
+	msgbox RoamingTraders_EventScript_RoamingMonTrader_Text_14, MSGBOX_DEFAULT
+	return
+
+RoamingTraders_EventScript_RoamingMonTrader_35:
+# 569 "data//scripts/roaming_traders.pory"
+	setflag FLAG_ROAMING_PSYCHIC
+	goto RoamingTraders_EventScript_RoamingMonTrader_33
+
+RoamingTraders_EventScript_RoamingMonTrader_36:
+# 571 "data//scripts/roaming_traders.pory"
+	setflag FLAG_ROAMING_BUG_CATCHER
+	goto RoamingTraders_EventScript_RoamingMonTrader_33
+
+RoamingTraders_EventScript_RoamingMonTrader_37:
+# 573 "data//scripts/roaming_traders.pory"
+	setflag FLAG_ROAMING_YOUNGSTER
+	goto RoamingTraders_EventScript_RoamingMonTrader_33
+
+RoamingTraders_EventScript_RoamingMonTrader_38:
+# 575 "data//scripts/roaming_traders.pory"
+	setflag FLAG_ROAMING_HEX_MANIAC
+	goto RoamingTraders_EventScript_RoamingMonTrader_33
+
+RoamingTraders_EventScript_RoamingMonTrader_39:
+# 577 "data//scripts/roaming_traders.pory"
+	setflag FLAG_ROAMING_TRIATHLETE_F
+	goto RoamingTraders_EventScript_RoamingMonTrader_33
+
+RoamingTraders_EventScript_RoamingMonTrader_40:
+# 579 "data//scripts/roaming_traders.pory"
+	setflag FLAG_ROAMING_TRIATHLETE_M
+	goto RoamingTraders_EventScript_RoamingMonTrader_33
+
+RoamingTraders_EventScript_RoamingMonTrader_41:
+# 581 "data//scripts/roaming_traders.pory"
+	setflag FLAG_AFTER_WHITEOUT_TRADE
+	goto RoamingTraders_EventScript_RoamingMonTrader_33
+
+
+RoamingTraders_EventScript_DeclineTrade::
+# 591 "data//scripts/roaming_traders.pory"
+	compare VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_SCIENTIST_2
+	goto_if_eq RoamingTraders_EventScript_DeclineTrade_2
+# 595 "data//scripts/roaming_traders.pory"
+	msgbox RoamingTraders_EventScript_DeclineTrade_Text_1, MSGBOX_DEFAULT
+RoamingTraders_EventScript_DeclineTrade_1:
+# 598 "data//scripts/roaming_traders.pory"
+	release
+	end
+
+RoamingTraders_EventScript_DeclineTrade_2:
+# 592 "data//scripts/roaming_traders.pory"
+	msgbox RoamingTraders_EventScript_DeclineTrade_Text_0, MSGBOX_DEFAULT
+	goto RoamingTraders_EventScript_DeclineTrade_1
+
+
 RoamingTraders_EventScript_TMTrader_Text_0:
 # 2 "data//scripts/roaming_traders.pory"
 	.string "Greetings young trainer,\p"
@@ -1068,8 +1358,8 @@ RoamingTraders_EventScript_GenerateRoamingSurvivalShop_Text_4:
 # 290 "data//scripts/roaming_traders.pory"
 	.string "I doubt you'll find a better deal…\p"
 	.string "But if you just plan to hang around\n"
-	.string "town and take it easy,\p"
-	.string "you wouldn't need this kind of stuff!\p"
+	.string "town and take it easy, you wouldn't\l"
+	.string "need this kind of stuff!\p"
 	.string "Maybe next time, then!$"
 
 RoamingTraders_EventScript_GenerateRoamingSurvivalShop_Text_5:
@@ -1162,3 +1452,146 @@ RoamingTraders_EventScript_GenerateRoamingHerbShop_Text_8:
 	.string "I've got to get moving.\p"
 	.string "These MINTS don't collect themselves.\p"
 	.string "See you next time, trainer!$"
+
+RoamingTraders_EventScript_RoamingMonTrader_Text_0:
+# 458 "data//scripts/roaming_traders.pory"
+	.string "Oh{PAUSE 20}…{PAUSE 20} …{PAUSE 20} …{PAUSE 20}\n"
+	.string "You're a trainer, but every single one\l"
+	.string "of your POKéMON is dead?\p"
+	.string "How terrible{PAUSE 20}…{PAUSE 20} …{PAUSE 20} …{PAUSE 20}\p"
+	.string "Well maybe with my help, your\n"
+	.string "predicament can turn out to be mutually\l"
+	.string "beneficial for us.\p"
+	.string "I'll take one of your POKéMON corpses\n"
+	.string "off your hands in exchange for one of\l"
+	.string "my lab rats.$"
+
+RoamingTraders_EventScript_RoamingMonTrader_Text_1:
+# 468 "data//scripts/roaming_traders.pory"
+	.string "Ugh{PAUSE 20}{PAUSE 20}\n"
+	.string "I caught this {STR_VAR_2},\p"
+	.string "but it doesn't get along with my other\n"
+	.string "POKéMON at all!\p"
+	.string "I know!{PAUSE 20}\n"
+	.string "you're a trainer, right?\l"
+	.string "Maybe we could do a trade!\p"
+	.string "I'd take any PSYCHIC TYPE over this\n"
+	.string "{STR_VAR_2}…$"
+
+RoamingTraders_EventScript_RoamingMonTrader_Text_2:
+# 472 "data//scripts/roaming_traders.pory"
+	.string "PSYCHIC$"
+
+RoamingTraders_EventScript_RoamingMonTrader_Text_3:
+# 476 "data//scripts/roaming_traders.pory"
+	.string "Ugh{PAUSE 20}{PAUSE 20}\n"
+	.string "I caught this {STR_VAR_2},\p"
+	.string "but it doesn't get along with my other\n"
+	.string "POKéMON at all!\p"
+	.string "I know!{PAUSE 20}\n"
+	.string "you're a trainer, right?\l"
+	.string "Maybe we could do a trade!\p"
+	.string "I'd take any BUG TYPE over this\n"
+	.string "{STR_VAR_2}…$"
+
+RoamingTraders_EventScript_RoamingMonTrader_Text_4:
+# 480 "data//scripts/roaming_traders.pory"
+	.string "BUG$"
+
+RoamingTraders_EventScript_RoamingMonTrader_Text_5:
+# 484 "data//scripts/roaming_traders.pory"
+	.string "Ugh{PAUSE 20}{PAUSE 20}\n"
+	.string "I caught this {STR_VAR_2},\p"
+	.string "but it doesn't get along with my other\n"
+	.string "POKéMON at all!\p"
+	.string "I know!{PAUSE 20}\n"
+	.string "you're a trainer, right?\l"
+	.string "Maybe we could do a trade!\p"
+	.string "I'd take any NORMAL TYPE over this\n"
+	.string "{STR_VAR_2}…$"
+
+RoamingTraders_EventScript_RoamingMonTrader_Text_6:
+# 488 "data//scripts/roaming_traders.pory"
+	.string "NORMAL$"
+
+RoamingTraders_EventScript_RoamingMonTrader_Text_7:
+# 500 "data//scripts/roaming_traders.pory"
+	.string "Ugh{PAUSE 20}{PAUSE 20}\n"
+	.string "I caught this {STR_VAR_2},\p"
+	.string "but it doesn't get along with my other\n"
+	.string "POKéMON at all!\p"
+	.string "I know!{PAUSE 20}\n"
+	.string "you're a trainer, right?\l"
+	.string "Maybe we could do a trade!\p"
+	.string "I'd take any WATER TYPE over this\n"
+	.string "{STR_VAR_2}…$"
+
+RoamingTraders_EventScript_RoamingMonTrader_Text_8:
+# 504 "data//scripts/roaming_traders.pory"
+	.string "WATER$"
+
+RoamingTraders_EventScript_RoamingMonTrader_Text_9:
+# 508 "data//scripts/roaming_traders.pory"
+	.string "Ugh{PAUSE 20}{PAUSE 20}\n"
+	.string "I caught this {STR_VAR_2},\p"
+	.string "but it doesn't get along with my other\n"
+	.string "POKéMON at all!\p"
+	.string "I know!{PAUSE 20}\n"
+	.string "you're a trainer, right?\l"
+	.string "Maybe we could do a trade!\p"
+	.string "I'd take any ICE TYPE over this\n"
+	.string "{STR_VAR_2}…$"
+
+RoamingTraders_EventScript_RoamingMonTrader_Text_10:
+# 512 "data//scripts/roaming_traders.pory"
+	.string "ICE$"
+
+RoamingTraders_EventScript_RoamingMonTrader_Text_11:
+# 515 "data//scripts/roaming_traders.pory"
+	.string "What do you say?$"
+
+RoamingTraders_EventScript_RoamingMonTrader_Text_12:
+# 518 "data//scripts/roaming_traders.pory"
+	.string "Will you trade your {STR_VAR_3} TYPE\n"
+	.string "POKéMON?$"
+
+RoamingTraders_EventScript_RoamingMonTrader_Text_13:
+# 531 "data//scripts/roaming_traders.pory"
+	.string "What am I supposed to do with that?\p"
+	.string "If you really want to trade, come back\n"
+	.string "and offer me a real POKéMON!$"
+
+RoamingTraders_EventScript_RoamingMonTrader_Text_14:
+# 535 "data//scripts/roaming_traders.pory"
+	.string "Hey, I'm serious, I want to get rid of\n"
+	.string "this thing!\p"
+	.string "If you really want to trade, come back\n"
+	.string "and offer me a real {STR_VAR_3} TYPE\l"
+	.string "POKéMON!$"
+
+RoamingTraders_EventScript_RoamingMonTrader_Text_15:
+# 555 "data//scripts/roaming_traders.pory"
+	.string "That {STR_VAR_2} is certainly not\n"
+	.string "impressive, but hopefully it helps. I\l"
+	.string "know this corpse will be quite useful\l"
+	.string "for my research…$"
+
+RoamingTraders_EventScript_RoamingMonTrader_Text_16:
+# 559 "data//scripts/roaming_traders.pory"
+	.string "Thanks!\p"
+	.string "I sure am glad to be rid of that little\n"
+	.string "freak!\p"
+	.string "Now my POKéMON and I can get back to\n"
+	.string "battling!\p"
+	.string "Maybe I'll see you around, Trainer.$"
+
+RoamingTraders_EventScript_DeclineTrade_Text_0:
+# 592 "data//scripts/roaming_traders.pory"
+	.string "Oh, you think you'll find another way\n"
+	.string "out of here?\p"
+	.string "Good luck!$"
+
+RoamingTraders_EventScript_DeclineTrade_Text_1:
+# 595 "data//scripts/roaming_traders.pory"
+	.string "Shoot, I was really hoping to get rid of\n"
+	.string "this little freak!$"

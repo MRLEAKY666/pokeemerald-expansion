@@ -11,6 +11,7 @@ VerdanturfTown_PokemonCenter_2F_MapScripts::
 script VerdanturfTown_PokemonCenter_2F_OnTransition{
 	call(VerdanturfTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC)
 	call(VerdanturfTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC)
+	call(VerdanturfTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC)
 }
 
 script VerdanturfTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC{
@@ -49,6 +50,34 @@ script VerdanturfTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC{
 	return
 }
 
+script VerdanturfTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC{
+	if (flag(FLAG_POST_WHITEOUT)){
+		setvar(VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_SCIENTIST_2)
+	}
+	elif (checkroamingnpcatlocation(FLAG_ROAMING_PSYCHIC, MAP_VERDANTURF_TOWN_POKEMON_CENTER_2F) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_LASS)
+	}
+	elif (checkroamingnpcatlocation(FLAG_ROAMING_BUG_CATCHER, MAP_VERDANTURF_TOWN_POKEMON_CENTER_2F) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_BUG_CATCHER)
+	}
+	elif (checkroamingnpcatlocation(FLAG_ROAMING_YOUNGSTER, MAP_VERDANTURF_TOWN_POKEMON_CENTER_2F) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_YOUNGSTER)
+	}
+	elif (checkroamingnpcatlocation(FLAG_ROAMING_HEX_MANIAC, MAP_VERDANTURF_TOWN_POKEMON_CENTER_2F) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_HEX_MANIAC)
+	}
+	elif (checkroamingnpcatlocation(FLAG_ROAMING_TRIATHLETE_F, MAP_VERDANTURF_TOWN_POKEMON_CENTER_2F) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F)
+	}
+	elif (checkroamingnpcatlocation(FLAG_ROAMING_TRIATHLETE_M, MAP_VERDANTURF_TOWN_POKEMON_CENTER_2F) == TRUE){
+		setvar(VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_RUNNING_TRIATHLETE_M)
+	}
+	else{
+		setflag(FLAG_TEMP_C)
+	}
+	return
+}
+
 script VerdanturfTown_PokemonCenter_2F_EventScript_TrRoamingNPC{
 	faceplayer
 	switch (var(VAR_OBJ_GFX_ID_B)){
@@ -61,6 +90,14 @@ script VerdanturfTown_PokemonCenter_2F_EventScript_TrRoamingNPC{
 		case OBJ_EVENT_GFX_CAMPER:
 			call(RoamingTraders_EventScript_HerbTrader)
 	}
+	applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceRight)
+	waitmovement
+	release
+}
+
+script VerdanturfTown_PokemonCenter_2F_EventScript_PkmnTrRoamingNPC{
+	faceplayer
+	call(RoamingTraders_EventScript_RoamingMonTrader)
 	applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceLeft)
 	waitmovement
 	release

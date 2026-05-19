@@ -22,6 +22,8 @@ LavaridgeTown_PokemonCenter_2F_OnTransition_1:
 	call LavaridgeTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC
 # 16 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	call LavaridgeTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC
+# 17 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+	call LavaridgeTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC
 	return
 
 LavaridgeTown_PokemonCenter_2F_OnTransition_2:
@@ -31,61 +33,61 @@ LavaridgeTown_PokemonCenter_2F_OnTransition_2:
 
 
 LavaridgeTown_PokemonCenter_2F_EventScript_NurseOnBreak::
-# 20 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
-	lock
 # 21 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
-	faceplayer
+	lock
 # 22 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
-	msgbox LavaridgeTown_PokemonCenter_2F_EventScript_NurseOnBreak_Text_0, MSGBOX_YESNO
+	faceplayer
 # 23 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+	msgbox LavaridgeTown_PokemonCenter_2F_EventScript_NurseOnBreak_Text_0, MSGBOX_YESNO
+# 24 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq LavaridgeTown_PokemonCenter_2F_EventScript_NurseOnBreak_2
-# 29 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 30 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	msgbox LavaridgeTown_PokemonCenter_2F_EventScript_NurseOnBreak_Text_2, MSGBOX_DEFAULT
 LavaridgeTown_PokemonCenter_2F_EventScript_NurseOnBreak_1:
-# 31 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
-	closemessage
 # 32 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
-	delay 15
+	closemessage
 # 33 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
-	applymovement LOCALID_LAVARIDGE_PKMNCNTR_NURSE_ON_BREAK, Common_Movement_FaceOriginalDirection
+	delay 15
 # 34 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
-	waitmovement LOCALID_LAVARIDGE_PKMNCNTR_NURSE_ON_BREAK
+	applymovement LOCALID_LAVARIDGE_PKMNCNTR_NURSE_ON_BREAK, Common_Movement_FaceOriginalDirection
 # 35 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+	waitmovement LOCALID_LAVARIDGE_PKMNCNTR_NURSE_ON_BREAK
+# 36 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	release
 	end
 
 LavaridgeTown_PokemonCenter_2F_EventScript_NurseOnBreak_2:
-# 24 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 25 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	msgbox LavaridgeTown_PokemonCenter_2F_EventScript_NurseOnBreak_Text_1, MSGBOX_DEFAULT
 	goto LavaridgeTown_PokemonCenter_2F_EventScript_NurseOnBreak_1
 
 
 LavaridgeTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC::
-# 40 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
-	checkroamingnpcatlocation FLAG_ROAMING_WALLACE, MAP_LAVARIDGE_TOWN_POKEMON_CENTER_2F
 # 41 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+	checkroamingnpcatlocation FLAG_ROAMING_WALLACE, MAP_LAVARIDGE_TOWN_POKEMON_CENTER_2F
+# 42 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq LavaridgeTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC_2
-# 45 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 46 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	setflag FLAG_TEMP_A
 LavaridgeTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC_1:
 	return
 
 LavaridgeTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC_2:
-# 42 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 43 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	setvar VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_WALLACE
 	goto LavaridgeTown_PokemonCenter_2F_EventScript_SetSpRoamingNPC_1
 
 
 LavaridgeTown_PokemonCenter_2F_EventScript_SpRoamingNPC::
-# 51 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 52 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	compare VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_WALLACE
 	goto_if_eq LavaridgeTown_PokemonCenter_2F_EventScript_SpRoamingNPC_1
 	return
 
 LavaridgeTown_PokemonCenter_2F_EventScript_SpRoamingNPC_1:
-# 52 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 53 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	goto FortreeCity_PokemonCenter_2F_EventScript_Wallace
 	return
 
@@ -107,140 +109,218 @@ LavaridgeTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC::
 # 0 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq LavaridgeTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_5
-# 70 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 71 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	setflag FLAG_TEMP_B
 LavaridgeTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1:
 	return
 
 LavaridgeTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_2:
-# 58 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 59 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_SCIENTIST_1
 	goto LavaridgeTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1
 
 LavaridgeTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_3:
-# 61 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 62 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_MAN_4
 	goto LavaridgeTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1
 
 LavaridgeTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_4:
-# 64 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 65 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_HIKER
 	goto LavaridgeTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1
 
 LavaridgeTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_5:
-# 67 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 68 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_CAMPER
 	goto LavaridgeTown_PokemonCenter_2F_EventScript_SetTrRoamingNPC_1
 
 
-LavaridgeTown_PokemonCenter_2F_EventScript_TrRoamingNPC::
-# 76 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
-	faceplayer
+LavaridgeTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC::
 # 77 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
-	switch VAR_OBJ_GFX_ID_B
+	goto_if_set FLAG_POST_WHITEOUT, LavaridgeTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_2
+	checkroamingnpcatlocation FLAG_ROAMING_PSYCHIC, MAP_LAVARIDGE_TOWN_POKEMON_CENTER_2F
+# 0 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq LavaridgeTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_3
+	checkroamingnpcatlocation FLAG_ROAMING_BUG_CATCHER, MAP_LAVARIDGE_TOWN_POKEMON_CENTER_2F
+# 0 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq LavaridgeTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_4
+	checkroamingnpcatlocation FLAG_ROAMING_YOUNGSTER, MAP_LAVARIDGE_TOWN_POKEMON_CENTER_2F
+# 0 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq LavaridgeTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_5
+	checkroamingnpcatlocation FLAG_ROAMING_HEX_MANIAC, MAP_LAVARIDGE_TOWN_POKEMON_CENTER_2F
+# 0 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq LavaridgeTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_6
+	checkroamingnpcatlocation FLAG_ROAMING_TRIATHLETE_F, MAP_LAVARIDGE_TOWN_POKEMON_CENTER_2F
+# 0 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq LavaridgeTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_7
+	checkroamingnpcatlocation FLAG_ROAMING_TRIATHLETE_M, MAP_LAVARIDGE_TOWN_POKEMON_CENTER_2F
+# 0 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq LavaridgeTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_8
+# 99 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+	setflag FLAG_TEMP_C
+LavaridgeTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1:
+	return
+
+LavaridgeTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_2:
 # 78 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
-	case OBJ_EVENT_GFX_SCIENTIST_1, LavaridgeTown_PokemonCenter_2F_EventScript_TrRoamingNPC_3
-# 80 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
-	case OBJ_EVENT_GFX_MAN_4, LavaridgeTown_PokemonCenter_2F_EventScript_TrRoamingNPC_4
-# 82 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
-	case OBJ_EVENT_GFX_HIKER, LavaridgeTown_PokemonCenter_2F_EventScript_TrRoamingNPC_5
+	setvar VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_SCIENTIST_2
+	goto LavaridgeTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1
+
+LavaridgeTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_3:
+# 81 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_LASS
+	goto LavaridgeTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1
+
+LavaridgeTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_4:
 # 84 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_BUG_CATCHER
+	goto LavaridgeTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1
+
+LavaridgeTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_5:
+# 87 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_YOUNGSTER
+	goto LavaridgeTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1
+
+LavaridgeTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_6:
+# 90 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_HEX_MANIAC
+	goto LavaridgeTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1
+
+LavaridgeTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_7:
+# 93 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F
+	goto LavaridgeTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1
+
+LavaridgeTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_8:
+# 96 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+	setvar VAR_OBJ_GFX_ID_C, OBJ_EVENT_GFX_RUNNING_TRIATHLETE_M
+	goto LavaridgeTown_PokemonCenter_2F_EventScript_SetPkmnTrRoamingNPC_1
+
+
+LavaridgeTown_PokemonCenter_2F_EventScript_TrRoamingNPC::
+# 105 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+	faceplayer
+# 106 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+	switch VAR_OBJ_GFX_ID_B
+# 107 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+	case OBJ_EVENT_GFX_SCIENTIST_1, LavaridgeTown_PokemonCenter_2F_EventScript_TrRoamingNPC_3
+# 109 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+	case OBJ_EVENT_GFX_MAN_4, LavaridgeTown_PokemonCenter_2F_EventScript_TrRoamingNPC_4
+# 111 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+	case OBJ_EVENT_GFX_HIKER, LavaridgeTown_PokemonCenter_2F_EventScript_TrRoamingNPC_5
+# 113 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	case OBJ_EVENT_GFX_CAMPER, LavaridgeTown_PokemonCenter_2F_EventScript_TrRoamingNPC_6
 LavaridgeTown_PokemonCenter_2F_EventScript_TrRoamingNPC_1:
-# 89 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 118 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	release
 	return
 
 LavaridgeTown_PokemonCenter_2F_EventScript_TrRoamingNPC_3:
-# 79 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 108 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	call RoamingTraders_EventScript_TMTrader
 	goto LavaridgeTown_PokemonCenter_2F_EventScript_TrRoamingNPC_1
 
 LavaridgeTown_PokemonCenter_2F_EventScript_TrRoamingNPC_4:
-# 81 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 110 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	call RoamingTraders_EventScript_BallTrader
 	goto LavaridgeTown_PokemonCenter_2F_EventScript_TrRoamingNPC_1
 
 LavaridgeTown_PokemonCenter_2F_EventScript_TrRoamingNPC_5:
-# 83 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 112 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	call RoamingTraders_EventScript_SurvivalItemTrader
 	goto LavaridgeTown_PokemonCenter_2F_EventScript_TrRoamingNPC_1
 
 LavaridgeTown_PokemonCenter_2F_EventScript_TrRoamingNPC_6:
-# 85 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 114 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	call RoamingTraders_EventScript_HerbTrader
 	goto LavaridgeTown_PokemonCenter_2F_EventScript_TrRoamingNPC_1
 
 
+LavaridgeTown_PokemonCenter_2F_EventScript_PkmnTrRoamingNPC::
+# 122 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+	faceplayer
+# 123 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+	call RoamingTraders_EventScript_RoamingMonTrader
+# 124 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+	release
+	return
+
+
 LavaridgeTown_PokemonCenter_2F_EventScript_Wallace::
-# 93 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 128 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
-# 94 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 129 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	waitmovement
-# 95 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 130 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	goto_if_set FLAG_MET_WALLACE, LavaridgeTown_PokemonCenter_2F_EventScript_Wallace_2
-# 100 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 135 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	msgbox LavaridgeTown_PokemonCenter_2F_EventScript_Wallace_Text_1, MSGBOX_DEFAULT
-# 105 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 140 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	setflag FLAG_MET_WALLACE
 LavaridgeTown_PokemonCenter_2F_EventScript_Wallace_1:
-# 107 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 142 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	closemessage
-# 108 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 143 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	delay 15
-# 109 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 144 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceRight
-# 110 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 145 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	waitmovement
-# 111 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 146 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	release
 	end
 
 LavaridgeTown_PokemonCenter_2F_EventScript_Wallace_2:
-# 96 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 131 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	msgbox LavaridgeTown_PokemonCenter_2F_EventScript_Wallace_Text_0, MSGBOX_DEFAULT
-# 97 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 132 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	call SootopolisCity_House3_EventScript_WallaceCheckBeasts
 	goto LavaridgeTown_PokemonCenter_2F_EventScript_Wallace_1
 
 
-# 115 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 150 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 
-# 116 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 151 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 
-# 117 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 152 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 @ The below 3 are unused and leftover from RS
-# 118 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 153 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 LavaridgeTown_PokemonCenter_2F_EventScript_Colosseum::
-# 119 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 154 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	call CableClub_EventScript_Colosseum
-# 120 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 155 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	end
-# 121 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 156 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 
-# 122 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 157 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 LavaridgeTown_PokemonCenter_2F_EventScript_TradeCenter::
-# 123 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 158 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	call CableClub_EventScript_TradeCenter
-# 124 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 159 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	end
-# 125 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 160 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 
-# 126 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 161 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 LavaridgeTown_PokemonCenter_2F_EventScript_RecordCorner::
-# 127 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 162 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	call CableClub_EventScript_RecordCorner
-# 128 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 163 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	end
 
 LavaridgeTown_PokemonCenter_2F_EventScript_NurseOnBreak_Text_0:
-# 22 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 23 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	.string "Oh, hey.\p"
 	.string "Did you want to hear about the\n"
 	.string "LAVARBOR TUNNEL again?$"
 
 LavaridgeTown_PokemonCenter_2F_EventScript_NurseOnBreak_Text_1:
-# 24 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 25 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	.string "Well, there were plans for a tunnel from\n"
 	.string "here to FALLARBOR TOWN,\l"
 	.string "but the project was cancelled…\p"
@@ -253,16 +333,16 @@ LavaridgeTown_PokemonCenter_2F_EventScript_NurseOnBreak_Text_1:
 	.string "he retired here to LAVARIDGE.$"
 
 LavaridgeTown_PokemonCenter_2F_EventScript_NurseOnBreak_Text_2:
-# 29 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 30 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	.string "Yeah, you're right, it's pretty boring…$"
 
 LavaridgeTown_PokemonCenter_2F_EventScript_Wallace_Text_0:
-# 96 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 131 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	.string "WALLACE: Good to see you again,\n"
 	.string "{PLAYER}.$"
 
 LavaridgeTown_PokemonCenter_2F_EventScript_Wallace_Text_1:
-# 100 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
+# 135 "data//maps/LavaridgeTown_PokemonCenter_2F/scripts.pory"
 	.string "Ah, a young TRAINER…\p"
 	.string "Yes, I can tell you're one to watch.\p"
 	.string "But how rude of me,\n"
