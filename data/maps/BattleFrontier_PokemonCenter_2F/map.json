@@ -29,7 +29,7 @@
       "flag": "FLAG_TEMP_B"
     },
     {
-      "local_id": "LOCALID_SOOTOPOLIS_POKEMONCENTER_2F_PK_TR_NPC",
+      "local_id": "LOCALID_FRONTIER_POKEMONCENTER_2F_PK_TR_NPC",
       "graphics_id": "OBJ_EVENT_GFX_VAR_C",
       "x": 6,
       "y": 5,
@@ -39,7 +39,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "EverGrandeCity_PokemonCenter_2F_EventScript_PkmnTrRoamingNPC",
+      "script": "BattleFrontier_PokemonCenter_2F_EventScript_PkmnTrRoamingNPC",
       "flag": "FLAG_TEMP_C"
     }
   ],
