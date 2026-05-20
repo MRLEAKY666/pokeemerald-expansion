@@ -3407,12 +3407,12 @@ bool8 ScrCmd_addminutes(struct ScriptContext *ctx)
 
 bool8 ScrCmd_fwdtime(struct ScriptContext *ctx)
 {
-    u32 hours = ScriptReadWord(ctx);
-    u32 minutes = ScriptReadWord(ctx);
+    u32 hour = ScriptReadWord(ctx);
+    u32 minute = ScriptReadWord(ctx);
 
     Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
 
-    FakeRtc_ForwardTimeTo(hours, minutes, 0);
+    FakeRtc_ForwardTimeTo(hour, minute, 0);
 
     return FALSE;
 }

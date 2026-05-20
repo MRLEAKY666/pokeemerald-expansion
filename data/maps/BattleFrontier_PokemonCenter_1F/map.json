@@ -104,6 +104,25 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 6,
+      "y": 8,
+      "elevation": 0,
+      "var": "FLAG_POST_WHITEOUT",
+      "var_value": "1",
+      "script": "PokemonCenterCommon_EventScript_CantLeave"
+    },
+    {
+      "type": "trigger",
+      "x": 7,
+      "y": 8,
+      "elevation": 0,
+      "var": "FLAG_POST_WHITEOUT",
+      "var_value": "1",
+      "script": "PokemonCenterCommon_EventScript_CantLeave"
+    }
+  ],
   "bg_events": []
 }

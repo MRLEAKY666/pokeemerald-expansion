@@ -2566,10 +2566,10 @@
 
 	@ Forwards the time to a specified hour and minute.
 	@ This causes the time to go to the next day if the time has already been past.
-	.macro fwdtime hours:req, minutes:req
+	.macro fwdtime hour:req, minute:req
 	callnative ScrCmd_fwdtime, requests_effects=1
-	.4byte \hours
-	.4byte \minutes
+	.4byte \hour
+	.4byte \minute
 	.endm
 
 	@ Forwards the time to a specified day of the week. Uses a 0-index starting from Sunday.

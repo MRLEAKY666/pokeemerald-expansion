@@ -5,7 +5,7 @@ PetalburgCity_PokemonCenter_1F_MapScripts::
 # 3 "data//maps/PetalburgCity_PokemonCenter_1F/scripts.pory"
 	map_script MAP_SCRIPT_ON_TRANSITION, PetalburgCity_PokemonCenter_1F_OnTransition
 # 4 "data//maps/PetalburgCity_PokemonCenter_1F/scripts.pory"
-	map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
+	map_script MAP_SCRIPT_ON_RESUME, PokemonCenterCommon_OnResume
 # 5 "data//maps/PetalburgCity_PokemonCenter_1F/scripts.pory"
 	.byte 0
 # 6 "data//maps/PetalburgCity_PokemonCenter_1F/scripts.pory"

@@ -1529,7 +1529,7 @@ gText_MonsHealed::
 	.string "We hope you excel going forward!$"
 
 gText_StaySafe::
-	.string "Remeber to stay safe out there.\p"
+	.string "Try to stay safe out there;\l"
 	.string "We hope you excel going forward!$"
 
 gText_HadQuiteAnExperienceTakeRest::
@@ -1972,3 +1972,5 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/ShadyGuysTruck/scripts.inc"
 
 	.include "data/scripts/roaming_traders.inc"
+
+	.include "data/scripts/pokemon_center_common.inc"

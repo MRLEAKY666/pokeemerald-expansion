@@ -1034,7 +1034,7 @@ static const struct InGameTrade sIngameTrades[] =
     },
     [INGAME_TRADE_AFTER_WHITEOUT] =
     {
-        .nickname = _("Fodder"),
+        .nickname = _("Subject-40X"),
         .species = SPECIES_NONE,
         .ivs = {0,0,0,0,0,0},
         .abilityNum = 0,
@@ -1043,7 +1043,7 @@ static const struct InGameTrade sIngameTrades[] =
         .personality = 0,
         .heldItem = ITEM_NONE,
         .mailNum = MAIL_NONE,
-        .otName = _("Bradley"),
+        .otName = _("Hans"),
         .otGender = MALE,
         .sheen = 10,
         .requestedSpecies = SPECIES_NONE

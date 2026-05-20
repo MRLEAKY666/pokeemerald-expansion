@@ -1,0 +1,213 @@
+script PokemonCenterCommon_OnResume{
+	specialvar(VAR_RESULT, CountPartyAliveNonEggMons)
+	if (var(VAR_RESULT) == 0){
+		setmetatile(6, 8, METATILE_PokemonCenter_Warpless_Rug_L, FALSE)
+		setmetatile(7, 8, METATILE_PokemonCenter_Warpless_Rug_R, FALSE)
+		special(DrawWholeMapView)
+		if (!flag(FLAG_POST_WHITEOUT)){
+			setflag(FLAG_POST_WHITEOUT)
+		}
+	}
+	else{
+		setmetatile(6, 8, METATILE_PokemonCenter_Warpful_Rug_L, FALSE)
+		setmetatile(7, 8, METATILE_PokemonCenter_Warpful_Rug_R, FALSE)
+		special(DrawWholeMapView)
+		if (flag(FLAG_POST_WHITEOUT)){
+			clearflag(FLAG_POST_WHITEOUT)
+		}
+	}
+	end
+}
+
+script PokemonCenterCommon_PokemonLeague_OnResume{
+	specialvar(VAR_RESULT, CountPartyAliveNonEggMons)
+	if (var(VAR_RESULT) == 0){
+		setmetatile(9, 11, METATILE_PokemonCenter_Warpless_Rug_L, FALSE)
+		setmetatile(10, 11, METATILE_PokemonCenter_Warpless_Rug_R, FALSE)
+		special(DrawWholeMapView)
+		if (!flag(FLAG_POST_WHITEOUT)){
+			setflag(FLAG_POST_WHITEOUT)
+		}
+	}
+	else{
+		setmetatile(9, 11, METATILE_PokemonCenter_Warpful_Rug_L, FALSE)
+		setmetatile(10, 11, METATILE_PokemonCenter_Warpful_Rug_R, FALSE)
+		special(DrawWholeMapView)
+		if (flag(FLAG_POST_WHITEOUT)){
+			clearflag(FLAG_POST_WHITEOUT)
+		}
+	}
+	end
+}
+
+script PokemonCenterCommon_EventScript_InnAttendantTrigger1{
+	specialvar(VAR_RESULT, GetPlayerFacingDirection)
+	switch (var(VAR_RESULT)){
+		case DIR_WEST:
+			release
+			end
+	}
+	setvar(VAR_0x8004, FLAG_POKEMON_CENTER_INN_ATTENDANT)
+	special(GetObjectEventLocalIdByFlag)
+	copyvar(VAR_LAST_TALKED, VAR_0x8005)
+	applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceDown)
+	waitmovement
+	delay(15)
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceUp)
+	waitmovement
+	delay(15)
+	goto(PokemonCenterCommon_EventScript_InnAttendant)
+}
+
+script PokemonCenterCommon_EventScript_InnAttendantTrigger2{
+	specialvar(VAR_RESULT, GetPlayerFacingDirection)
+	switch (var(VAR_RESULT)){
+		case DIR_WEST:
+			release
+			end
+	}
+	setvar(VAR_0x8004, FLAG_POKEMON_CENTER_INN_ATTENDANT)
+	special(GetObjectEventLocalIdByFlag)
+	copyvar(VAR_LAST_TALKED, VAR_0x8005)
+	applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceDown)
+	waitmovement
+	delay(15)
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkUp)
+	waitmovement
+	delay(15)
+	goto(PokemonCenterCommon_EventScript_InnAttendant)
+}
+
+script PokemonCenterCommon_EventScript_NurseAfterWhiteOut{
+	message(gText_WelcomeCutShort)
+	waitmessage
+	delay(30)
+	msgbox(format("Oh my…\pAll of your POKéMON are dead!\p"
+					"How terrible…\pWell,{PAUSE 20}\nI'm afraid I can't help with that at this time.\p"
+					"Make sure to bring a living POKéMON with you if you're going back out into the field!"), MSGBOX_DEFAULT)
+	closemessage
+	applymovement(VAR_LAST_TALKED, Movement_PkmnCenterNurse_Bow)
+	waitmovement
+	msgbox(format("We hope you excel!"), MSGBOX_DEFAULT)
+	release
+	end
+}
+
+script PokemonCenterCommon_EventScript_InnAttendant{
+	applymovement(VAR_LAST_TALKED, Common_Movement_FacePlayer)
+	waitmovement
+	
+	// rent room script
+	showmoneybox(0, 0)
+	msgbox(format("Welcome to the POKéMON CENTER.\p"
+					"Through here is a room that TRAINERS can rent for a time.\p"
+					"You can sleep for a while, rest your POKéMON, and change into a clean outfit.\p"
+					"It's ¥500 to spend the night, would you like to stay?"), MSGBOX_YESNO)
+	if (var(VAR_RESULT) == NO){
+		msgbox(format("Come back anytime if you need to rest for a while.\p"
+						"We hope to see you again!"), MSGBOX_DEFAULT)
+		hidemoneybox
+		closemessage
+		delay(10)
+		applymovement(LOCALID_PLAYER, Common_Movement_WalkLeft)
+		waitmovement
+		release
+		end
+	}
+	checkmoney(500)
+	if (var(VAR_RESULT) == FALSE){
+		msgbox(format("But you don't have enough money to rent this room…\p"
+						"Come back with enough money if you need to rest for a while.\p"
+						"We hope to see you again!"), MSGBOX_DEFAULT)
+		hidemoneybox
+		closemessage
+		delay(10)
+		applymovement(LOCALID_PLAYER, Common_Movement_WalkLeft)
+		waitmovement
+		release
+		end
+	}
+	removemoney(500)
+	updatemoneybox
+	playse(SE_SHOP)
+	waitse
+	msgbox(format("Please enjoy our accomodations for the night."), MSGBOX_DEFAULT)
+	setvar(VAR_TEMP_0, 1)
+	hidemoneybox
+	closemessage
+
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceDown)
+	waitmovement
+	delay(30)
+	release
+}
+
+script PokemonCenterCommon_EventScript_PkmnCntrBed{
+	hidefollower
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceDown)
+	waitmovement
+	msgbox(format("It's a bed for TRAINERS to spend the night.\p"
+					"Do you want to sleep for a while?"), MSGBOX_YESNO)
+	if (var(VAR_RESULT) == NO){
+		release
+		end
+	}
+	message(format("How long do you want to sleep?"))
+	waitmessage
+	dynmultichoice(18, 2, 
+					FALSE, 5, 0, 
+					DYN_MULTICHOICE_CB_NONE, 
+					"Morning", 
+					"Day", 
+					"Evening", 
+					"Night", 
+					"Cancel")
+	switch (var(VAR_RESULT)){
+		case 0:
+			fwdtime(MORNING_HOUR_BEGIN, 0)
+		case 1:
+			fwdtime(DAY_HOUR_BEGIN, 0)
+		case 2:
+			fwdtime(EVENING_HOUR_BEGIN, 0)
+		case 3:
+			fwdtime(NIGHT_HOUR_BEGIN, 0)
+		case 4:
+			release
+			end
+		case 127:
+			release
+			end
+		default:
+			release
+			end
+	}
+	fadescreen(FADE_TO_BLACK)
+	playfanfare(MUS_HEAL)
+	special(HealPlayerParty)
+	setvar(VAR_TEMP_0, 0)
+	waitfanfare
+	delay(30)
+	fadescreen(FADE_FROM_BLACK)
+	msgbox(format("{PLAYER} and the party woke up some time later feeling refreshed."))
+	release
+	end
+}
+
+script PokemonCenterCommon_EventScript_CantLeave{
+	lock
+	msgbox(format("You can't leave without any living POKéMON in your party!"), MSGBOX_DEFAULT)
+	closemessage
+	specialvar(VAR_RESULT, GetPlayerFacingDirection)
+	switch (var(VAR_RESULT)){
+		case DIR_NORTH:
+			applymovement(LOCALID_PLAYER, Common_Movement_WalkUp)
+		case DIR_SOUTH:
+			applymovement(LOCALID_PLAYER, Common_Movement_WalkUp)
+		case DIR_EAST:
+			applymovement(LOCALID_PLAYER, Common_Movement_WalkLeft)
+		case DIR_WEST:
+			applymovement(LOCALID_PLAYER, Common_Movement_WalkRight)
+	}
+	waitmovement
+	release
+}

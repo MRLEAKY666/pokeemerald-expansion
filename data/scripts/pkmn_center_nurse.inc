@@ -1,5 +1,6 @@
 Common_EventScript_PkmnCenterNurse::
 	lock
+	goto_if_set FLAG_POST_WHITEOUT, PokemonCenterCommon_EventScript_NurseAfterWhiteOut
 	showmoneybox 0, 0
 	faceplayer
 	setvar VAR_0x8004, 0

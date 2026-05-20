@@ -1541,15 +1541,15 @@
 #define FLAG_ROAMING_BREEDER                           (SYSTEM_FLAGS + 0xA4) // 
 #define FLAG_ROAMING_HIKER                           (SYSTEM_FLAGS + 0xA5) // 
 #define FLAG_ROAMING_RANGER                           (SYSTEM_FLAGS + 0xA6) // 
-#define FLAG_ROAMING_PSYCHIC                           (SYSTEM_FLAGS + 0xA7) // Unused Flag
-#define FLAG_ROAMING_BUG_CATCHER                           (SYSTEM_FLAGS + 0xA8) // Unused Flag
-#define FLAG_ROAMING_YOUNGSTER                           (SYSTEM_FLAGS + 0xA9) // Unused Flag
-#define FLAG_ROAMING_HEX_MANIAC                           (SYSTEM_FLAGS + 0xAA) // Unused Flag
-#define FLAG_ROAMING_TRIATHLETE_F                           (SYSTEM_FLAGS + 0xAB) // Unused Flag
-#define FLAG_ROAMING_TRIATHLETE_M                           (SYSTEM_FLAGS + 0xAC) // Unused Flag
-#define FLAG_AFTER_WHITEOUT_TRADE                           (SYSTEM_FLAGS + 0xAD) // Unused Flag
-#define FLAG_POST_WHITEOUT                           (SYSTEM_FLAGS + 0xAE) // Unused Flag
-#define FLAG_UNUSED_0x90F                           (SYSTEM_FLAGS + 0xAF) // Unused Flag
+#define FLAG_ROAMING_PSYCHIC                           (SYSTEM_FLAGS + 0xA7) // 
+#define FLAG_ROAMING_BUG_CATCHER                           (SYSTEM_FLAGS + 0xA8) // 
+#define FLAG_ROAMING_YOUNGSTER                           (SYSTEM_FLAGS + 0xA9) // 
+#define FLAG_ROAMING_HEX_MANIAC                           (SYSTEM_FLAGS + 0xAA) // 
+#define FLAG_ROAMING_TRIATHLETE_F                           (SYSTEM_FLAGS + 0xAB) // 
+#define FLAG_ROAMING_TRIATHLETE_M                           (SYSTEM_FLAGS + 0xAC) // 
+#define FLAG_AFTER_WHITEOUT_TRADE                           (SYSTEM_FLAGS + 0xAD) // 
+#define FLAG_POST_WHITEOUT                           (SYSTEM_FLAGS + 0xAE) // 
+#define FLAG_POKEMON_CENTER_INN_ATTENDANT                           (SYSTEM_FLAGS + 0xAF) // 
 #define FLAG_UNUSED_0x910                           (SYSTEM_FLAGS + 0xB0) // Unused Flag
 #define FLAG_UNUSED_0x911                           (SYSTEM_FLAGS + 0xB1) // Unused Flag
 #define FLAG_UNUSED_0x912                           (SYSTEM_FLAGS + 0xB2) // Unused Flag

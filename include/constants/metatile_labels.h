@@ -551,6 +551,10 @@
 #define METATILE_PokemonCenter_Floor_ShadowTop_Alt       0x8DC
 #define METATILE_PokemonCenter_Normal_Wall_Mid           0x813
 #define METATILE_PokemonCenter_Normal_Wall_Top           0x86A
+#define METATILE_PokemonCenter_Warpful_Rug_L             0x803
+#define METATILE_PokemonCenter_Warpful_Rug_R             0x804
+#define METATILE_PokemonCenter_Warpless_Rug_L            0x8F1
+#define METATILE_PokemonCenter_Warpless_Rug_R            0x8F2
 
 // gTileset_PokemonCenterFrlg
 #define METATILE_PokemonCenterFrlg_CableClubDoor                         0x8DE

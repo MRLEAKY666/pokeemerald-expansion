@@ -452,16 +452,6 @@ script RoamingTraders_EventScript_GenerateRoamingHerbShop{
 
 script RoamingTraders_EventScript_RoamingMonTrader{
 	switch (var(VAR_OBJ_GFX_ID_C)){
-		case OBJ_EVENT_GFX_SCIENTIST_2:
-			generateroamingnpctrade(FLAG_AFTER_WHITEOUT_TRADE)
-			bufferspeciesname(STR_VAR_2, VAR_0x8007)
-			msgbox(format("Oh{PAUSE 20}…{PAUSE 20} …{PAUSE 20} …{PAUSE 20}\nYou're a trainer, but every single one of your POKéMON is dead?\p"
-							"How terrible{PAUSE 20}…{PAUSE 20} …{PAUSE 20} …{PAUSE 20}\p"
-							"Well maybe with my help, your predicament can turn out to be mutually beneficial for us.\p"
-							"I'll take one of your POKéMON corpses off your hands in exchange for one of my lab rats."), MSGBOX_DEFAULT)
-			setvar(VAR_0x8005, INGAME_TRADE_AFTER_WHITEOUT)
-			//setvar(VAR_0x8003, TYPE_PSYCHIC)
-			//bufferstring(STR_VAR_3, "PSYCHIC")
 		case OBJ_EVENT_GFX_LASS:
 			generateroamingnpctrade(FLAG_ROAMING_PSYCHIC)
 			bufferspeciesname(STR_VAR_2, VAR_0x8007)
@@ -511,12 +501,7 @@ script RoamingTraders_EventScript_RoamingMonTrader{
 			setvar(VAR_0x8003, TYPE_ICE)
 			bufferstring(STR_VAR_3, "ICE")
 	}
-	if (var(VAR_OBJ_GFX_ID_C) == OBJ_EVENT_GFX_SCIENTIST_2){
-		msgbox(format("What do you say?"), MSGBOX_YESNO)
-	}
-	else{
-		msgbox(format("Will you trade your {STR_VAR_3} TYPE POKéMON?"), MSGBOX_YESNO)
-	}
+	msgbox(format("Will you trade your {STR_VAR_3} TYPE POKéMON?"), MSGBOX_YESNO)
 	goto_if_eq(VAR_RESULT, NO, RoamingTraders_EventScript_DeclineTrade)//declineTradeJump
 	special(ChoosePartyMon)
 	waitstate
@@ -527,17 +512,10 @@ script RoamingTraders_EventScript_RoamingMonTrader{
 	}
 	specialvar(VAR_0x8008, GetTradeSpecies)
 	if (var(VAR_0x8008) == SPECIES_NONE){
-		if (var(VAR_OBJ_GFX_ID_C) == OBJ_EVENT_GFX_SCIENTIST_2){ 
-			msgbox(format("What am I supposed to do with that?\p" 
-							"If you really want to trade, come back and offer me a real POKéMON!"), MSGBOX_DEFAULT)
-		}
-		else{
-			msgbox(format("Hey, I'm serious, I want to get rid of this thing!\p" 
-							"If you really want to trade, come back and offer me a real {STR_VAR_3} TYPE POKéMON!"), MSGBOX_DEFAULT)
-		}
+		msgbox(format("Hey, I'm serious, I want to get rid of this thing!\p" 
+						"If you really want to trade, come back and offer me a real {STR_VAR_3} TYPE POKéMON!"), MSGBOX_DEFAULT)
 		return
 	}
-
 	if (var(VAR_OBJ_GFX_ID_C) != OBJ_EVENT_GFX_SCIENTIST_2){
 		checkspecieshastype(VAR_0x8008, VAR_0x8003)
 		if (var(VAR_RESULT) == FALSE){
@@ -551,15 +529,9 @@ script RoamingTraders_EventScript_RoamingMonTrader{
 	waitstate
 	bufferspeciesname(STR_VAR_1, VAR_0x8008)
 	applymovement(VAR_LAST_TALKED, Common_Movement_FacePlayer)
-	if (var(VAR_OBJ_GFX_ID_C) == OBJ_EVENT_GFX_SCIENTIST_2){
-		msgbox(format("That {STR_VAR_2} is certainly not impressive, but hopefully it helps."
-						"I know this corpse will be quite useful for my research…"), MSGBOX_DEFAULT)
-	}
-	else{
-		msgbox(format("Thanks!\pI sure am glad to be rid of that little freak!\p"
-						"Now my POKéMON and I can get back to battling!\p"
-						"Maybe I'll see you around, Trainer."), MSGBOX_DEFAULT)
-	}
+	msgbox(format("Thanks!\pI sure am glad to be rid of that little freak!\p"
+					"Now my POKéMON and I can get back to battling!\p"
+					"Maybe I'll see you around, Trainer."), MSGBOX_DEFAULT)
 	closemessage
 	delay(10)
 	fadescreen(FADE_TO_BLACK)
@@ -577,13 +549,10 @@ script RoamingTraders_EventScript_RoamingMonTrader{
 			setflag(FLAG_ROAMING_TRIATHLETE_F)
 		case OBJ_EVENT_GFX_RUNNING_TRIATHLETE_M:
 			setflag(FLAG_ROAMING_TRIATHLETE_M)
-		case OBJ_EVENT_GFX_SCIENTIST_2:
-			setflag(FLAG_AFTER_WHITEOUT_TRADE)
 	}
 	playse(SE_EXIT)
 	waitse
 	fadescreen(FADE_FROM_BLACK)
-	//msgbox \tradeCompleteMsg, MSGBOX_DEFAULT
 	return
 }
 
@@ -597,4 +566,46 @@ script RoamingTraders_EventScript_DeclineTrade{
 	
 	release
 	end
+}
+
+script RoamingTraders_EventScript_AfterWhiteoutTrader{
+	generateroamingnpctrade(FLAG_AFTER_WHITEOUT_TRADE)
+	bufferspeciesname(STR_VAR_2, VAR_0x8007)
+	msgbox(format("Oh{PAUSE 20}…{PAUSE 20} …{PAUSE 20} …{PAUSE 20}\nYou're a trainer, but every single one of your POKéMON is dead?\p"
+					"How terrible{PAUSE 20}…{PAUSE 20} …{PAUSE 20} …{PAUSE 20}\p"
+					"Well maybe with my help, your predicament can turn out to be mutually beneficial for us.\p"
+					"I'll take one of your POKéMON corpses off your hands in exchange for one of my lab rats."), MSGBOX_DEFAULT)
+	setvar(VAR_0x8005, INGAME_TRADE_AFTER_WHITEOUT)
+	msgbox(format("What do you say?"), MSGBOX_YESNO)
+	goto_if_eq(VAR_RESULT, NO, RoamingTraders_EventScript_DeclineTrade)//declineTradeJump
+	special(ChoosePartyMon)
+	waitstate
+	applymovement(VAR_LAST_TALKED, Common_Movement_FacePlayer)
+	if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN)//declineTradeJump
+	{
+		goto(RoamingTraders_EventScript_DeclineTrade)
+	}
+	specialvar(VAR_0x8008, GetTradeSpecies)
+	if (var(VAR_0x8008) == SPECIES_NONE){
+		msgbox(format("What am I supposed to do with that?\p" 
+						"If you really want to trade, come back and offer me a real POKéMON!"), MSGBOX_DEFAULT)
+		return
+	}
+	special(CreateRoamingTraderPokemon)
+	special(DoInGameTradeScene)
+	waitstate
+	bufferspeciesname(STR_VAR_1, VAR_0x8008)
+	bufferspeciesname(STR_VAR_2, VAR_0x8007)
+	applymovement(VAR_LAST_TALKED, Common_Movement_FacePlayer)
+	msgbox(format("That {STR_VAR_2} is certainly not impressive, but hopefully it helps.\p"
+					"I know this {STR_VAR_1} corpse will prove useful for my research…\p"
+					"See you next time, Trainer…"), MSGBOX_DEFAULT)
+	closemessage
+	delay(10)
+	fadescreen(FADE_TO_BLACK)
+	removeobject(VAR_LAST_TALKED)
+	setflag(FLAG_AFTER_WHITEOUT_TRADE)
+	playse(SE_EXIT)
+	waitse
+	fadescreen(FADE_FROM_BLACK)
 }
