@@ -337,4 +337,6 @@ extern const u8 gText_CastformChangedWeather[];
 extern const u16 gStatUpStringIds[];
 extern const u16 gStatDownStringIds[];
 
+extern const u8 gText_BattleMenuForfeit[];
+
 #endif // GUARD_BATTLE_MESSAGE_H

@@ -2779,7 +2779,7 @@ static const struct OamData sOamData_MoveInfoWindow =
     .matrixNum = 0,
     .size = SPRITE_SIZE(32x32),
     .tileNum = 0,
-    .priority = 1,
+    .priority = 2,
     .paletteNum = 0,
     .affineParam = 0,
 };
@@ -2819,8 +2819,8 @@ static const struct SpriteSheet sSpriteSheet_MoveInfoWindow =
 
 #define LAST_USED_BALL_X_F    14
 #define LAST_USED_BALL_X_0    -14
-#define LAST_USED_BALL_Y      ((IsDoubleBattle()) ? 79 : 68)
-#define LAST_USED_BALL_Y_BNC  ((IsDoubleBattle()) ? 77 : 66)
+#define LAST_USED_BALL_Y      82/* ((IsDoubleBattle()) ? 79 : 68) */
+#define LAST_USED_BALL_Y_BNC  80/* ((IsDoubleBattle()) ? 77 : 66) */
 
 #define LAST_BALL_WIN_X_F       (LAST_USED_BALL_X_F - 0)
 #define LAST_BALL_WIN_X_0       (LAST_USED_BALL_X_0 - 0)
@@ -2929,7 +2929,7 @@ void TryToAddMoveInfoWindow(void)
 
     if (gBattleStruct->moveInfoSpriteId == MAX_SPRITES)
     {
-        gBattleStruct->moveInfoSpriteId = CreateSprite(&sSpriteTemplate_MoveInfoWindow, LAST_BALL_WIN_X_0, LAST_USED_WIN_Y + 32, 6);
+        gBattleStruct->moveInfoSpriteId = CreateSprite(&sSpriteTemplate_MoveInfoWindow, LAST_BALL_WIN_X_0, LAST_USED_WIN_Y + 24, 5);
         gSprites[gBattleStruct->moveInfoSpriteId].sHide = FALSE;
     }
 }
@@ -3148,7 +3148,7 @@ void ArrowsChangeColorLastBallCycle(bool32 showArrows)
     pltOutline = (struct PlttData *)&gPlttBufferFaded[paletteNum + 1];  // Arrow outline is in idx 8
     if (!showArrows) //Make invisible
     {
-        defaultPlttArrow = (struct PlttData *)&gPlttBufferFaded[paletteNum + 4];  // Background color is idx 13
+        defaultPlttArrow = (struct PlttData *)&gPlttBufferFaded[paletteNum + 5];  // Background color is idx 13
         pltArrow->r = defaultPlttArrow->r;
         pltArrow->g = defaultPlttArrow->g;
         pltArrow->b = defaultPlttArrow->b;
@@ -3158,8 +3158,8 @@ void ArrowsChangeColorLastBallCycle(bool32 showArrows)
     }
     else // Make gray
     {
-        defaultPlttArrow = (struct PlttData *)&gPlttBufferFaded[paletteNum + 14];  // Grey color is idx 11
-        defaultPlttOutline = (struct PlttData *)&gPlttBufferFaded[paletteNum + 13];  //Light grey color for outline is idx 10
+        defaultPlttArrow = (struct PlttData *)&gPlttBufferFaded[paletteNum + 13];  // Grey color is idx 11
+        defaultPlttOutline = (struct PlttData *)&gPlttBufferFaded[paletteNum + 3];  //Light grey color for outline is idx 10
         pltArrow->r = defaultPlttArrow->r;
         pltArrow->g = defaultPlttArrow->g;
         pltArrow->b = defaultPlttArrow->b;
