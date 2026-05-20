@@ -215,31 +215,31 @@ EverGrandeCity_HallOfFame_EventScript_GameClearMale::
 # 108 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 	special GameClear
 # 109 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
-	waitstate
+	releaseall
 # 110 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
-	releaseall
+	end
 # 111 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
-	end
+
 # 112 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
-
-# 113 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 EverGrandeCity_HallOfFame_EventScript_GameClearFemale::
-# 114 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 113 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_MAYS_HOUSE_2F
-# 115 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 114 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 	fadescreenspeed FADE_TO_BLACK, 24
-# 116 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 115 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 	special GameClear
-# 117 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
-	waitstate
-# 118 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 116 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 	releaseall
-# 119 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 117 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 	end
-# 120 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 118 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 
-# 121 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 119 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 EverGrandeCity_HallOfFame_Movement_WalkIntoHallOfFame1:
+# 120 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+	walk_up
+# 121 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+	walk_up
 # 122 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 	walk_up
 # 123 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
@@ -249,15 +249,15 @@ EverGrandeCity_HallOfFame_Movement_WalkIntoHallOfFame1:
 # 125 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 	walk_up
 # 126 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
-	walk_up
-# 127 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
-	walk_up
-# 128 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 	step_end
-# 129 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 127 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 
-# 130 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 128 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 EverGrandeCity_HallOfFame_Movement_WalkIntoHallOfFame2:
+# 129 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+	walk_up
+# 130 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+	walk_up
 # 131 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 	walk_up
 # 132 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
@@ -265,64 +265,60 @@ EverGrandeCity_HallOfFame_Movement_WalkIntoHallOfFame2:
 # 133 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 	walk_up
 # 134 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
-	walk_up
-# 135 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
-	walk_up
-# 136 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 	step_end
-# 137 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 135 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 
-# 138 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 136 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 EverGrandeCity_HallOfFame_Text_HereWeHonorLeagueChampions:
-# 139 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 137 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 	.string "STEVEN: This room…\p"
+# 138 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+	.string "This is where we keep records of\n"
+# 139 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+	.string "POKéMON that prevailed through\l"
 # 140 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
-	.string "This is where we keep records of\n"
+	.string "harsh battles.\p"
 # 141 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
-	.string "POKéMON that prevailed through\l"
+	.string "It is here that the LEAGUE CHAMPIONS\n"
 # 142 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
-	.string "harsh battles.\p"
+	.string "are honored.$"
 # 143 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
-	.string "It is here that the LEAGUE CHAMPIONS\n"
+
 # 144 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
-	.string "are honored.$"
-# 145 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
-
-# 146 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 EverGrandeCity_HallOfFame_Text_WelcomeBackHoF:
-# 147 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 145 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 	.string "WALLACE: Welcome back, {PLAYER}.\p"
-# 148 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 146 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 	.string "This is where we keep records of\n"
-# 149 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 147 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 	.string "POKéMON that prevailed through\l"
-# 150 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 148 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 	.string "harsh battles.\p"
-# 151 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 149 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 	.string "It is here that the LEAGUE CHAMPIONS\n"
-# 152 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 150 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 	.string "are honored.$"
-# 153 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 151 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 
-# 154 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 152 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 EverGrandeCity_HallOfFame_Text_LetsRecordYouAndYourPartnersNames:
-# 155 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 153 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 	.string "STEVEN: Come on, let's record your\n"
-# 156 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 154 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 	.string "name as a TRAINER who triumphed over\l"
-# 157 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 155 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 	.string "the POKéMON LEAGUE, and the names of\l"
-# 158 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 156 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 	.string "the partners who battled with you.$"
-# 159 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 157 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 
-# 160 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 158 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 EverGrandeCity_HallOfFame_Text_RecordNewHoF:
-# 161 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 159 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 	.string "WALLACE: Let's commemorate your\n"
-# 162 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 160 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 	.string "achievements once again, {PLAYER},\l"
-# 163 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 161 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 	.string "by recording the names of the\l"
-# 164 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
+# 162 "data//maps/EverGrandeCity_HallOfFame/scripts.pory"
 	.string "partners who battled with you.$"

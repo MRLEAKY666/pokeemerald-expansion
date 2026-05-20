@@ -599,162 +599,160 @@ LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC::
 # 300 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	special BedroomPC
 # 301 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	waitstate
+	releaseall
 # 302 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	releaseall
+	end
 # 303 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	end
+
 # 304 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-
-# 305 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 LittlerootTown_MaysHouse_2F_EventScript_TurnOffPlayerPC::
-# 306 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 305 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	setvar VAR_0x8004, PC_LOCATION_MAYS_HOUSE
-# 307 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 306 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	playse SE_PC_OFF
+# 307 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+	special DoPCTurnOffEffect
 # 308 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	special DoPCTurnOffEffect
+	releaseall
 # 309 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	releaseall
+	end
 # 310 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	end
+
 # 311 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-
-# 312 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 LittlerootTown_MaysHouse_2F_EventScript_BedroomPCSave::
-# 313 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 312 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	special DoPCTurnOffEffect
-# 314 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 313 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	callnative Script_SaveGamePC
+# 314 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+	waitstate
 # 315 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	waitstate
-# 316 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	goto_if_eq VAR_RESULT, 0, LittlerootTown_MaysHouse_2F_EventScript_PCSaveCancelled
-# 317 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 316 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	goto LittlerootTown_MaysHouse_2F_EventScript_TurnOffPlayerPC
+# 317 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+	end
 # 318 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	end
+
 # 319 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-
-# 320 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 LittlerootTown_MaysHouse_2F_EventScript_PCSaveCancelled::
-# 321 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 320 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	special DoPCTurnOnEffect
-# 322 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 321 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	playse SE_PC_ON
-# 323 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 322 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	special BedroomPC
-# 324 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 323 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	waitstate
-# 325 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 324 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	releaseall
-# 326 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 325 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	end
+# 326 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+
 # 327 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-
-# 328 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 RivalsHouse_2F_Text_MayWhoAreYou:
-# 329 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 328 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "Huh?\n"
-# 330 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 329 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "Who… Who are you?\p"
-# 331 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 330 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "Get out of my room!$"
+# 331 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+
 # 332 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-
-# 333 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 RivalsHouse_2F_Text_MayGettingReady:
-# 334 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 333 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "POKéMON fully restored!\n"
-# 335 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 334 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "Items ready, and…$"
+# 335 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+
 # 336 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-
-# 337 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 RivalsHouse_2F_Text_BrendanWhoAreYou:
-# 338 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 337 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "Hey!\n"
-# 339 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 338 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "This is my room!\p"
-# 340 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 339 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "You should leave.$"
+# 340 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+
 # 341 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-
-# 342 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 RivalsHouse_2F_Text_BrendanGettingReady:
-# 343 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 342 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "POKéMON fully restored…\n"
-# 344 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 343 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "Items all packed, and…$"
+# 344 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+
 # 345 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-
-# 346 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 RivalsHouse_2F_Text_ItsRivalsPokeBall:
-# 347 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 346 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "Isn't this Birch's POKé BALL?\p"
-# 348 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 347 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "What is {RIVAL} doing with it?$"
+# 348 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+
 # 349 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-
-# 350 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 RivalsHouse_2F_Text_MayJustCheckingMyPokedex:
-# 351 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 350 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "MAY: {PLAYER}{KUN}!\p"
-# 352 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 351 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "I was just checking my POKéDEX.\p"
-# 353 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 352 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "There's still a lot of POKéMON that\n"
-# 354 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 353 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "I've seen but haven't caught.\p"
-# 355 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 354 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "And there are many others that\n"
-# 356 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 355 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "I think will evolve.\p"
-# 357 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 356 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "I wonder where I should go catch\n"
-# 358 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 357 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "some POKéMON next?$"
+# 358 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+
 # 359 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-
-# 360 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 RivalsHouse_2F_Text_MayWhereShouldIGoNext:
-# 361 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 360 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "MAY: I wonder where I should go catch\n"
-# 362 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 361 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "some POKéMON next?\p"
-# 363 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 362 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "Wouldn't it be funny if we ran into each\n"
-# 364 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 363 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "other, {PLAYER}{KUN}?$"
+# 364 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+
 # 365 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-
-# 366 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 RivalsHouse_2F_Text_BrendanJustCheckingMyPokedex:
-# 367 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 366 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "BRENDAN: Hey, it's {PLAYER}.\p"
-# 368 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 367 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "I was just checking out my POKéDEX.\p"
-# 369 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 368 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "There are still many POKéMON that\n"
-# 370 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 369 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "I need to catch, I know, but this\l"
-# 371 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 370 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "is looking pretty good.\p"
-# 372 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 371 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "Checking this POKéDEX out gives me\n"
-# 373 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 372 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "the urge to hit the road again.$"
-# 374 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 373 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 
-# 375 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 374 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 RivalsHouse_2F_Text_BrendanWhereShouldIGoNext:
-# 376 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 375 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "BRENDAN: I'm having a hard time deciding\n"
-# 377 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 376 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "where I should catch POKéMON next.\p"
-# 378 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 377 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "Hey, {PLAYER}, if I see you while I'm out\n"
-# 379 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 378 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "catching POKéMON, I can pitch you a\l"
-# 380 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
+# 379 "data//maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "battle if you'd like.$"

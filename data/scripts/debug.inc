@@ -175,7 +175,6 @@ Debug_EventScript_CheckEVs::
 	getpartysize
 	goto_if_eq VAR_RESULT, 0, Debug_NoPokemon
 	special ChoosePartyMon
-	waitstate
 	goto_if_ge VAR_0x8004, PARTY_SIZE, Debug_EventScript_CheckEVs_End
 	callnative Script_GetChosenMonOffensiveEVs
 	msgbox Debug_EventScript_Text_OffensiveEVs, MSGBOX_DEFAULT
@@ -196,7 +195,6 @@ Debug_EventScript_CheckIVs::
 	getpartysize
 	goto_if_eq VAR_RESULT, 0, Debug_NoPokemon
 	special ChoosePartyMon
-	waitstate
 	goto_if_ge VAR_0x8004, PARTY_SIZE, Debug_EventScript_CheckIVs_End
 	callnative Script_GetChosenMonOffensiveIVs
 	msgbox Debug_EventScript_Text_OffensiveIVs, MSGBOX_DEFAULT
@@ -330,12 +328,10 @@ Debug_HatchAnEgg::
 	getpartysize
 	goto_if_eq VAR_RESULT, 0, Debug_NoPokemon
 	special ChoosePartyMon
-	waitstate
 	goto_if_ge VAR_0x8004, PARTY_SIZE, Debug_HatchAnEgg_End
 	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
 	goto_if_ne VAR_RESULT, SPECIES_EGG, DebugScript_HatchAnEgg_CantForceHatch
 	special EggHatch
-	waitstate
 Debug_HatchAnEgg_End::
 	releaseall
 	end
@@ -416,7 +412,6 @@ Debug_EventScript_WallyTutorial::
 	special SavePlayerParty
 	special LoadWallyZigzagoon
 	special StartWallyTutorialBattle
-	waitstate
 	special LoadPlayerParty
 	release
 	end
@@ -457,7 +452,6 @@ Debug_EventScript_InflictStatus1_Close:
 
 Debug_EventScript_InflictStatus1_Single:
 	special ChoosePartyMon
-	waitstate
 	goto_if_ge VAR_0x8004, PARTY_SIZE, Debug_EventScript_InflictStatus1_Close
 	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
 	goto_if_eq VAR_RESULT, SPECIES_EGG, Debug_EventScript_InflictStatus1_Close
@@ -483,7 +477,6 @@ Debug_EventScript_InflictStatus1_Single:
 
 Debug_EventScript_KoPokemon::
 	special ChoosePartyMon
-	waitstate
 	goto_if_ge VAR_0x8004, PARTY_SIZE, Debug_EventScript_InflictStatus1_Close
 	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
 	goto_if_eq VAR_RESULT, SPECIES_EGG, Debug_EventScript_InflictStatus1_Close
@@ -493,7 +486,6 @@ Debug_EventScript_KoPokemon::
 
 Debug_EventScript_SetHiddenNature::
 	special ChoosePartyMon
-	waitstate
 	goto_if_ge VAR_0x8004, PARTY_SIZE, Debug_EventScript_InflictStatus1_Close
 	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
 	goto_if_eq VAR_RESULT, SPECIES_EGG, Debug_EventScript_InflictStatus1_Close
@@ -531,7 +523,6 @@ Debug_EventScript_SetHiddenNature::
 
 Debug_EventScript_SetAbility::
 	special ChoosePartyMon
-	waitstate
 	callnative DebugNative_GetAbilityNames
 	dynmultipush gStringVar1, 0
 	dynmultipush gStringVar2, 1
@@ -546,14 +537,12 @@ Debug_EventScript_SetAbilityClose:
 
 Debug_EventScript_SetFriendship::
 	special ChoosePartyMon
-	waitstate
 	callnative DebugNative_Party_SetFriendship
 	releaseall
 	end
 
 Debug_EventScript_GivePokerus::
 	special ChoosePartyMon
-	waitstate
 	callnative DebugNative_Party_SetPokerus
 	releaseall
 	end

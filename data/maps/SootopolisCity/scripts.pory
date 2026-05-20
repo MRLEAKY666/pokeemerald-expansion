@@ -207,7 +207,6 @@ SootopolisCity_EventScript_LegendariesSceneFromPokeCenter::
 	doweather
 	setvar VAR_0x8004, 0 @ Just do Groudon/Kyogre fight scene
 	special Script_DoRayquazaScene
-	waitstate
 	applymovement LOCALID_SOOTOPOLIS_KYOGRE, Common_Movement_WalkInPlaceFasterLeft
 	applymovement LOCALID_SOOTOPOLIS_GROUDON, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
@@ -307,7 +306,6 @@ SootopolisCity_EventScript_LegendariesSceneFromDive::
 	doweather
 	setvar VAR_0x8004, 0 @ Just do Groudon/Kyogre fight scene
 	special Script_DoRayquazaScene
-	waitstate
 	applymovement LOCALID_SOOTOPOLIS_KYOGRE, Common_Movement_WalkInPlaceFasterLeft
 	applymovement LOCALID_SOOTOPOLIS_GROUDON, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
@@ -500,7 +498,6 @@ SootopolisCity_EventScript_RayquazaSceneFromPokeCenter::
 	call SootopolisCity_EventScript_SetupRayquazaVsLegendsBattle
 	setvar VAR_0x8004, 1                                                                      @ 0 ends early, 1 has battle, 2 is vanilla 
 	special Script_DoRayquazaScene
-	waitstate
 	call SootopolisCity_EventScript_ClearRayquazaVsLegendsBattle
 	playse SE_THUNDER
 	special SpawnCameraObject
@@ -529,7 +526,6 @@ SootopolisCity_EventScript_RayquazaSceneFromPokeCenter::
 	waitmovement 0
 	removeobject LOCALID_SOOTOPOLIS_RAYQUAZA
 	special WaitWeather
-	waitstate
 	clearflag FLAG_SYS_WEATHER_CTRL
 	setvar VAR_SKY_PILLAR_STATE, 3
 	clearflag FLAG_LEGENDARIES_IN_SOOTOPOLIS
@@ -555,7 +551,6 @@ SootopolisCity_EventScript_RayquazaSceneFromDive::
 	call SootopolisCity_EventScript_SetupRayquazaVsLegendsBattle
 	setvar VAR_0x8004, 1                                                                      @ 0 ends early, 1 has battle, 2 is vanilla 
 	special Script_DoRayquazaScene
-	waitstate
 	call SootopolisCity_EventScript_ClearRayquazaVsLegendsBattle
 	special SpawnCameraObject
 	applymovement LOCALID_CAMERA, SootopolisCity_Movement_PanUp
@@ -584,7 +579,6 @@ SootopolisCity_EventScript_RayquazaSceneFromDive::
 	waitmovement 0
 	removeobject LOCALID_SOOTOPOLIS_RAYQUAZA
 	special WaitWeather
-	waitstate
 	clearflag FLAG_SYS_WEATHER_CTRL
 	setvar VAR_SKY_PILLAR_STATE, 2
 	clearflag FLAG_LEGENDARIES_IN_SOOTOPOLIS
