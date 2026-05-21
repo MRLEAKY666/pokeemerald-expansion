@@ -1,0 +1,71 @@
+raw`
+Common_EventScript_FindItem::
+	callnative GetItemBallIdAndAmountFromTemplate
+	finditem VAR_RESULT VAR_0x8009
+	end
+`
+script Common_EventScript_FindMysteryItem{
+	call(Common_EventScript_GenerateRandomItem)
+	finditem(VAR_0x8008, 1)
+	end
+}
+
+script Common_EventScript_GenerateRandomItem{
+	random(10)
+	switch (var(VAR_RESULT)){
+		case 0:
+			getrandomitem(VAR_0x8008, ITEM_GENERATOR_CONSUMABLE)
+		case 1:
+			getrandomitem(VAR_0x8008, ITEM_GENERATOR_CONSUMABLE)
+		case 2:
+			getrandomitem(VAR_0x8008, ITEM_GENERATOR_CONSUMABLE)
+		case 3:
+			getrandomitem(VAR_0x8008, ITEM_GENERATOR_TREASURE)
+		case 4:
+			getrandomitem(VAR_0x8008, ITEM_GENERATOR_TREASURE)
+		case 5:
+			getrandomitem(VAR_0x8008, ITEM_GENERATOR_HELD_ITEM)
+		case 6:
+			getrandomitem(VAR_0x8008, ITEM_GENERATOR_HELD_ITEM)
+		case 7:
+			getrandomitem(VAR_0x8008, ITEM_GENERATOR_MINT)
+		case 8:
+			getrandomitem(VAR_0x8008, ITEM_GENERATOR_TM)
+		case 9:
+			getrandomitem(VAR_0x8008, ITEM_GENERATOR_TM)
+	}
+	setvar(VAR_RESULT, 1) // set quantity
+	return
+}
+
+script Common_EventScript_FindMysteryTM{
+	getrandomitem(VAR_0x8008, ITEM_GENERATOR_TM)
+	random(3)
+	addvar(VAR_RESULT, 1)
+	finditem(VAR_0x8008, VAR_RESULT)
+	end
+}
+
+script Common_EventScript_FindHiddenItem{
+	call(Common_EventScript_GenerateHiddenItem)
+	copyvar(VAR_0x8005, VAR_0x8008)
+	return
+}
+
+script Common_EventScript_GenerateHiddenItem{
+	random(5)
+	switch (var(VAR_RESULT)){
+		case 0:
+			getrandomitem(VAR_0x8008, ITEM_GENERATOR_TRASH)
+		case 1:
+			getrandomitem(VAR_0x8008, ITEM_GENERATOR_TRASH)
+		case 2:
+			getrandomitem(VAR_0x8008, ITEM_GENERATOR_TRASH)
+		case 3:
+			getrandomitem(VAR_0x8008, ITEM_GENERATOR_TREASURE)
+		case 4:
+			getrandomitem(VAR_0x8008, ITEM_GENERATOR_MINT)
+	}
+	setvar(VAR_RESULT, 1) // set quantity
+	return
+}
