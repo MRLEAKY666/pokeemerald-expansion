@@ -147,7 +147,6 @@ OldaleTown_PokemonCenter_2F_EventScript_RecordCorner::
 OldaleTown_PokemonCenter_2F_EventScript_BugLass::
 	lock
 	faceplayer
-	waitmovement
 	call_if_ge VAR_OLDALE_BUG_KILLING, 2, OldaleTown_PokemonCenter_2F_EventScript_SucceededForBugKilling
 	call_if_eq VAR_OLDALE_BUG_KILLING, 1, OldaleTown_PokemonCenter_2F_EventScript_ContinueBugKilling
 	call_if_eq VAR_OLDALE_BUG_KILLING, 0, OldaleTown_PokemonCenter_2F_EventScript_StartBugKilling
