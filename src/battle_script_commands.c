@@ -3703,21 +3703,6 @@ static void Cmd_tryfaintmon(void)
             gBattlescriptCurrInstr = BattleScript_FaintBattler;
             if (IsOnPlayerSide(battler))
             {
-                if (gBattleTypeFlags &
-                    ( BATTLE_TYPE_LINK
-                    | BATTLE_TYPE_RECORDED_LINK
-                    | BATTLE_TYPE_TRAINER_HILL
-                    | BATTLE_TYPE_FRONTIER
-                    | BATTLE_TYPE_SAFARI
-                    | BATTLE_TYPE_BATTLE_TOWER
-                    | BATTLE_TYPE_EREADER_TRAINER))
-                    {}
-                else // permadeath on faint when battle type is none of the above
-                {
-                    bool8 dead = TRUE;
-                    SetMonData(&gParties[B_TRAINER_0][gBattlerPartyIndexes[battler]], MON_DATA_DEAD, &dead);
-                }
-
                 gHitMarker |= HITMARKER_PLAYER_FAINTED;
                 if (gBattleResults.playerFaintCounter < 255)
                     gBattleResults.playerFaintCounter++;
@@ -3729,22 +3714,6 @@ static void Cmd_tryfaintmon(void)
                 if (gBattleResults.opponentFaintCounter < 255)
                     gBattleResults.opponentFaintCounter++;
                 gBattleResults.lastOpponentSpecies = GetMonData(GetBattlerMon(battler), MON_DATA_SPECIES);
-                
-                // added for oldale bug killing quest
-                if (VarGet(VAR_OLDALE_BUG_KILLING) && !(gBattleTypeFlags & BATTLE_TYPE_TRAINER))
-                {
-                    if ((gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ROUTE101) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ROUTE101))
-                        || (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ROUTE102) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ROUTE102))
-                        || (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ROUTE103) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ROUTE103)))
-                    {
-                        if (GetSpeciesType(gBattleMons[battler].species, 0) == TYPE_BUG || GetSpeciesType(gBattleMons[battler].species, 1) == TYPE_BUG)
-                        {
-                            VarSet(VAR_OLDALE_BUG_KILLING, (VarGet(VAR_OLDALE_BUG_KILLING) + 1));
-                        }
-                    }
-                }
-                // above for oldale bug killing quest
-
                 gSideTimers[B_SIDE_OPPONENT].retaliateTimer = 2;
             }
 
@@ -3765,6 +3734,41 @@ static void Cmd_dofaintanimation(void)
         return;
 
     enum BattlerId battler = GetBattlerForBattleScript(cmd->battler);
+
+    // added below -mr leaky
+    if (IsOnPlayerSide(battler))
+    {
+        if (gBattleTypeFlags &
+            ( BATTLE_TYPE_LINK
+            | BATTLE_TYPE_RECORDED_LINK
+            | BATTLE_TYPE_TRAINER_HILL
+            | BATTLE_TYPE_FRONTIER
+            | BATTLE_TYPE_SAFARI
+            | BATTLE_TYPE_BATTLE_TOWER
+            | BATTLE_TYPE_EREADER_TRAINER))
+        {}
+        else // permadeath on faint when battle type is none of the above
+        {
+            bool8 dead = TRUE;
+            SetMonData(&gParties[B_TRAINER_0][gBattlerPartyIndexes[battler]], MON_DATA_DEAD, &dead);
+        }
+    }
+    else
+    {
+        if (VarGet(VAR_OLDALE_BUG_KILLING) && !(gBattleTypeFlags & BATTLE_TYPE_TRAINER))
+        {
+            if ((gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ROUTE101) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ROUTE101))
+                || (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ROUTE102) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ROUTE102))
+                || (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ROUTE103) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ROUTE103)))
+            {
+                if (GetSpeciesType(gBattleMons[battler].species, 0) == TYPE_BUG || GetSpeciesType(gBattleMons[battler].species, 1) == TYPE_BUG)
+                {
+                    VarSet(VAR_OLDALE_BUG_KILLING, (VarGet(VAR_OLDALE_BUG_KILLING) + 1));
+                }
+            }
+        }
+    }
+    // added above -mr leaky
 
     gBattleStruct->battlerState[battler].notOnField = TRUE;
 
