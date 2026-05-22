@@ -137,6 +137,8 @@ script PokemonCenterCommon_EventScript_InnAttendant{
 	closemessage
 
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceDown)
+	//applymovement(LOCALID_PLAYER, Common_Movement_WalkRight)
+	//waitmovement
 	waitmovement
 	delay(30)
 	release

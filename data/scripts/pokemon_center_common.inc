@@ -203,11 +203,11 @@ PokemonCenterCommon_EventScript_InnAttendant::
 	closemessage
 # 139 "data//scripts/pokemon_center_common.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceDown
-# 140 "data//scripts/pokemon_center_common.pory"
-	waitmovement
-# 141 "data//scripts/pokemon_center_common.pory"
-	delay 30
 # 142 "data//scripts/pokemon_center_common.pory"
+	waitmovement
+# 143 "data//scripts/pokemon_center_common.pory"
+	delay 30
+# 144 "data//scripts/pokemon_center_common.pory"
 	release
 	return
 
@@ -247,141 +247,141 @@ PokemonCenterCommon_EventScript_InnAttendant_5:
 
 
 PokemonCenterCommon_EventScript_PkmnCntrBed::
-# 146 "data//scripts/pokemon_center_common.pory"
-	hidefollower
-# 147 "data//scripts/pokemon_center_common.pory"
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceDown
 # 148 "data//scripts/pokemon_center_common.pory"
-	waitmovement
+	hidefollower
 # 149 "data//scripts/pokemon_center_common.pory"
-	msgbox PokemonCenterCommon_EventScript_PkmnCntrBed_Text_0, MSGBOX_YESNO
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceDown
+# 150 "data//scripts/pokemon_center_common.pory"
+	waitmovement
 # 151 "data//scripts/pokemon_center_common.pory"
+	msgbox PokemonCenterCommon_EventScript_PkmnCntrBed_Text_0, MSGBOX_YESNO
+# 153 "data//scripts/pokemon_center_common.pory"
 	compare VAR_RESULT, NO
 	goto_if_eq PokemonCenterCommon_EventScript_PkmnCntrBed_2
-# 155 "data//scripts/pokemon_center_common.pory"
-	message PokemonCenterCommon_EventScript_PkmnCntrBed_Text_1
-# 156 "data//scripts/pokemon_center_common.pory"
-	waitmessage
 # 157 "data//scripts/pokemon_center_common.pory"
+	message PokemonCenterCommon_EventScript_PkmnCntrBed_Text_1
+# 158 "data//scripts/pokemon_center_common.pory"
+	waitmessage
+# 159 "data//scripts/pokemon_center_common.pory"
 	dynmultichoice 18, 2, FALSE, 5, 0, DYN_MULTICHOICE_CB_NONE, PokemonCenterCommon_EventScript_PkmnCntrBed_Text_2, PokemonCenterCommon_EventScript_PkmnCntrBed_Text_3, PokemonCenterCommon_EventScript_PkmnCntrBed_Text_4, PokemonCenterCommon_EventScript_PkmnCntrBed_Text_5, PokemonCenterCommon_EventScript_PkmnCntrBed_Text_6
-# 165 "data//scripts/pokemon_center_common.pory"
+# 167 "data//scripts/pokemon_center_common.pory"
 	switch VAR_RESULT
-# 166 "data//scripts/pokemon_center_common.pory"
-	case 0, PokemonCenterCommon_EventScript_PkmnCntrBed_6
 # 168 "data//scripts/pokemon_center_common.pory"
-	case 1, PokemonCenterCommon_EventScript_PkmnCntrBed_7
+	case 0, PokemonCenterCommon_EventScript_PkmnCntrBed_6
 # 170 "data//scripts/pokemon_center_common.pory"
-	case 2, PokemonCenterCommon_EventScript_PkmnCntrBed_8
+	case 1, PokemonCenterCommon_EventScript_PkmnCntrBed_7
 # 172 "data//scripts/pokemon_center_common.pory"
-	case 3, PokemonCenterCommon_EventScript_PkmnCntrBed_9
+	case 2, PokemonCenterCommon_EventScript_PkmnCntrBed_8
 # 174 "data//scripts/pokemon_center_common.pory"
+	case 3, PokemonCenterCommon_EventScript_PkmnCntrBed_9
+# 176 "data//scripts/pokemon_center_common.pory"
 	case 4, PokemonCenterCommon_EventScript_PkmnCntrBed_10
-# 177 "data//scripts/pokemon_center_common.pory"
+# 179 "data//scripts/pokemon_center_common.pory"
 	case 127, PokemonCenterCommon_EventScript_PkmnCntrBed_11
-# 181 "data//scripts/pokemon_center_common.pory"
+# 183 "data//scripts/pokemon_center_common.pory"
 	release
 	end
 
 PokemonCenterCommon_EventScript_PkmnCntrBed_2:
-# 152 "data//scripts/pokemon_center_common.pory"
+# 154 "data//scripts/pokemon_center_common.pory"
 	release
 	end
 
 PokemonCenterCommon_EventScript_PkmnCntrBed_4:
-# 184 "data//scripts/pokemon_center_common.pory"
-	fadescreen FADE_TO_BLACK
-# 185 "data//scripts/pokemon_center_common.pory"
-	playfanfare MUS_HEAL
 # 186 "data//scripts/pokemon_center_common.pory"
-	special HealPlayerParty
+	fadescreen FADE_TO_BLACK
 # 187 "data//scripts/pokemon_center_common.pory"
-	setvar VAR_TEMP_0, 0
+	playfanfare MUS_HEAL
 # 188 "data//scripts/pokemon_center_common.pory"
-	waitfanfare
+	special HealPlayerParty
 # 189 "data//scripts/pokemon_center_common.pory"
-	delay 30
+	setvar VAR_TEMP_0, 0
 # 190 "data//scripts/pokemon_center_common.pory"
-	fadescreen FADE_FROM_BLACK
+	waitfanfare
 # 191 "data//scripts/pokemon_center_common.pory"
-	msgbox PokemonCenterCommon_EventScript_PkmnCntrBed_Text_7
+	delay 30
 # 192 "data//scripts/pokemon_center_common.pory"
+	fadescreen FADE_FROM_BLACK
+# 193 "data//scripts/pokemon_center_common.pory"
+	msgbox PokemonCenterCommon_EventScript_PkmnCntrBed_Text_7
+# 194 "data//scripts/pokemon_center_common.pory"
 	release
 	end
 
 PokemonCenterCommon_EventScript_PkmnCntrBed_6:
-# 167 "data//scripts/pokemon_center_common.pory"
+# 169 "data//scripts/pokemon_center_common.pory"
 	fwdtime MORNING_HOUR_BEGIN, 0
 	goto PokemonCenterCommon_EventScript_PkmnCntrBed_4
 
 PokemonCenterCommon_EventScript_PkmnCntrBed_7:
-# 169 "data//scripts/pokemon_center_common.pory"
+# 171 "data//scripts/pokemon_center_common.pory"
 	fwdtime DAY_HOUR_BEGIN, 0
 	goto PokemonCenterCommon_EventScript_PkmnCntrBed_4
 
 PokemonCenterCommon_EventScript_PkmnCntrBed_8:
-# 171 "data//scripts/pokemon_center_common.pory"
+# 173 "data//scripts/pokemon_center_common.pory"
 	fwdtime EVENING_HOUR_BEGIN, 0
 	goto PokemonCenterCommon_EventScript_PkmnCntrBed_4
 
 PokemonCenterCommon_EventScript_PkmnCntrBed_9:
-# 173 "data//scripts/pokemon_center_common.pory"
+# 175 "data//scripts/pokemon_center_common.pory"
 	fwdtime NIGHT_HOUR_BEGIN, 0
 	goto PokemonCenterCommon_EventScript_PkmnCntrBed_4
 
 PokemonCenterCommon_EventScript_PkmnCntrBed_10:
-# 175 "data//scripts/pokemon_center_common.pory"
+# 177 "data//scripts/pokemon_center_common.pory"
 	release
 	end
 
 PokemonCenterCommon_EventScript_PkmnCntrBed_11:
-# 178 "data//scripts/pokemon_center_common.pory"
+# 180 "data//scripts/pokemon_center_common.pory"
 	release
 	end
 
 
 PokemonCenterCommon_EventScript_CantLeave::
-# 197 "data//scripts/pokemon_center_common.pory"
-	lock
-# 198 "data//scripts/pokemon_center_common.pory"
-	msgbox PokemonCenterCommon_EventScript_CantLeave_Text_0, MSGBOX_DEFAULT
 # 199 "data//scripts/pokemon_center_common.pory"
-	closemessage
+	lock
 # 200 "data//scripts/pokemon_center_common.pory"
-	specialvar VAR_RESULT, GetPlayerFacingDirection
+	msgbox PokemonCenterCommon_EventScript_CantLeave_Text_0, MSGBOX_DEFAULT
 # 201 "data//scripts/pokemon_center_common.pory"
-	switch VAR_RESULT
+	closemessage
 # 202 "data//scripts/pokemon_center_common.pory"
-	case DIR_NORTH, PokemonCenterCommon_EventScript_CantLeave_3
+	specialvar VAR_RESULT, GetPlayerFacingDirection
+# 203 "data//scripts/pokemon_center_common.pory"
+	switch VAR_RESULT
 # 204 "data//scripts/pokemon_center_common.pory"
-	case DIR_SOUTH, PokemonCenterCommon_EventScript_CantLeave_4
+	case DIR_NORTH, PokemonCenterCommon_EventScript_CantLeave_3
 # 206 "data//scripts/pokemon_center_common.pory"
-	case DIR_EAST, PokemonCenterCommon_EventScript_CantLeave_5
+	case DIR_SOUTH, PokemonCenterCommon_EventScript_CantLeave_4
 # 208 "data//scripts/pokemon_center_common.pory"
+	case DIR_EAST, PokemonCenterCommon_EventScript_CantLeave_5
+# 210 "data//scripts/pokemon_center_common.pory"
 	case DIR_WEST, PokemonCenterCommon_EventScript_CantLeave_6
 PokemonCenterCommon_EventScript_CantLeave_1:
-# 211 "data//scripts/pokemon_center_common.pory"
+# 213 "data//scripts/pokemon_center_common.pory"
 	waitmovement
-# 212 "data//scripts/pokemon_center_common.pory"
+# 214 "data//scripts/pokemon_center_common.pory"
 	release
 	return
 
 PokemonCenterCommon_EventScript_CantLeave_3:
-# 203 "data//scripts/pokemon_center_common.pory"
-	applymovement LOCALID_PLAYER, Common_Movement_WalkUp
-	goto PokemonCenterCommon_EventScript_CantLeave_1
-
-PokemonCenterCommon_EventScript_CantLeave_4:
 # 205 "data//scripts/pokemon_center_common.pory"
 	applymovement LOCALID_PLAYER, Common_Movement_WalkUp
 	goto PokemonCenterCommon_EventScript_CantLeave_1
 
-PokemonCenterCommon_EventScript_CantLeave_5:
+PokemonCenterCommon_EventScript_CantLeave_4:
 # 207 "data//scripts/pokemon_center_common.pory"
+	applymovement LOCALID_PLAYER, Common_Movement_WalkUp
+	goto PokemonCenterCommon_EventScript_CantLeave_1
+
+PokemonCenterCommon_EventScript_CantLeave_5:
+# 209 "data//scripts/pokemon_center_common.pory"
 	applymovement LOCALID_PLAYER, Common_Movement_WalkLeft
 	goto PokemonCenterCommon_EventScript_CantLeave_1
 
 PokemonCenterCommon_EventScript_CantLeave_6:
-# 209 "data//scripts/pokemon_center_common.pory"
+# 211 "data//scripts/pokemon_center_common.pory"
 	applymovement LOCALID_PLAYER, Common_Movement_WalkRight
 	goto PokemonCenterCommon_EventScript_CantLeave_1
 
@@ -433,41 +433,41 @@ PokemonCenterCommon_EventScript_InnAttendant_Text_3:
 	.string "night.$"
 
 PokemonCenterCommon_EventScript_PkmnCntrBed_Text_0:
-# 149 "data//scripts/pokemon_center_common.pory"
+# 151 "data//scripts/pokemon_center_common.pory"
 	.string "It's a bed for TRAINERS to spend the\n"
 	.string "night.\p"
 	.string "Do you want to sleep for a while?$"
 
 PokemonCenterCommon_EventScript_PkmnCntrBed_Text_1:
-# 155 "data//scripts/pokemon_center_common.pory"
+# 157 "data//scripts/pokemon_center_common.pory"
 	.string "How long do you want to sleep?$"
 
 PokemonCenterCommon_EventScript_PkmnCntrBed_Text_2:
-# 160 "data//scripts/pokemon_center_common.pory"
+# 162 "data//scripts/pokemon_center_common.pory"
 	.string "Morning$"
 
 PokemonCenterCommon_EventScript_PkmnCntrBed_Text_3:
-# 161 "data//scripts/pokemon_center_common.pory"
+# 163 "data//scripts/pokemon_center_common.pory"
 	.string "Day$"
 
 PokemonCenterCommon_EventScript_PkmnCntrBed_Text_4:
-# 162 "data//scripts/pokemon_center_common.pory"
+# 164 "data//scripts/pokemon_center_common.pory"
 	.string "Evening$"
 
 PokemonCenterCommon_EventScript_PkmnCntrBed_Text_5:
-# 163 "data//scripts/pokemon_center_common.pory"
+# 165 "data//scripts/pokemon_center_common.pory"
 	.string "Night$"
 
 PokemonCenterCommon_EventScript_PkmnCntrBed_Text_6:
-# 164 "data//scripts/pokemon_center_common.pory"
+# 166 "data//scripts/pokemon_center_common.pory"
 	.string "Cancel$"
 
 PokemonCenterCommon_EventScript_PkmnCntrBed_Text_7:
-# 191 "data//scripts/pokemon_center_common.pory"
+# 193 "data//scripts/pokemon_center_common.pory"
 	.string "{PLAYER} and the party woke up some\n"
 	.string "time later feeling refreshed.$"
 
 PokemonCenterCommon_EventScript_CantLeave_Text_0:
-# 198 "data//scripts/pokemon_center_common.pory"
+# 200 "data//scripts/pokemon_center_common.pory"
 	.string "You can't leave without any living\n"
 	.string "POKéMON in your party!$"
