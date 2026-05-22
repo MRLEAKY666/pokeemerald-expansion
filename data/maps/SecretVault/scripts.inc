@@ -199,111 +199,109 @@ SecretVault_EventScript_Regieleki::
 # 103 "data//maps/SecretVault/scripts.pory"
 	special StartRegiBattle
 # 104 "data//maps/SecretVault/scripts.pory"
-	waitstate
-# 105 "data//maps/SecretVault/scripts.pory"
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
-# 106 "data//maps/SecretVault/scripts.pory"
+# 105 "data//maps/SecretVault/scripts.pory"
 	specialvar VAR_RESULT, GetBattleOutcome
-# 108 "data//maps/SecretVault/scripts.pory"
+# 107 "data//maps/SecretVault/scripts.pory"
 	compare VAR_RESULT, B_OUTCOME_WON
 	goto_if_eq SecretVault_EventScript_Regieleki_2
-# 123 "data//maps/SecretVault/scripts.pory"
+# 122 "data//maps/SecretVault/scripts.pory"
 	compare VAR_RESULT, B_OUTCOME_RAN
 	goto_if_eq SecretVault_EventScript_Regieleki_5
-# 123 "data//maps/SecretVault/scripts.pory"
+# 122 "data//maps/SecretVault/scripts.pory"
 	compare VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED
 	goto_if_eq SecretVault_EventScript_Regieleki_5
-# 138 "data//maps/SecretVault/scripts.pory"
+# 137 "data//maps/SecretVault/scripts.pory"
 	setflag FLAG_DEFEATED_REGIELEKI
-# 139 "data//maps/SecretVault/scripts.pory"
+# 138 "data//maps/SecretVault/scripts.pory"
 	release
 	end
 
 SecretVault_EventScript_Regieleki_2:
-# 109 "data//maps/SecretVault/scripts.pory"
+# 108 "data//maps/SecretVault/scripts.pory"
 	setflag FLAG_DEFEATED_REGIELEKI
-# 110 "data//maps/SecretVault/scripts.pory"
+# 109 "data//maps/SecretVault/scripts.pory"
 	fadescreenswapbuffers FADE_TO_BLACK
-# 111 "data//maps/SecretVault/scripts.pory"
+# 110 "data//maps/SecretVault/scripts.pory"
 	removeobject VAR_LAST_TALKED
-# 112 "data//maps/SecretVault/scripts.pory"
+# 111 "data//maps/SecretVault/scripts.pory"
 	fadescreenswapbuffers FADE_FROM_BLACK
-# 113 "data//maps/SecretVault/scripts.pory"
+# 112 "data//maps/SecretVault/scripts.pory"
 	compare VAR_NEW_MAUVILLE_STATE, 2
 	goto_if_lt SecretVault_EventScript_Regieleki_10
 SecretVault_EventScript_Regieleki_9:
-# 118 "data//maps/SecretVault/scripts.pory"
+# 117 "data//maps/SecretVault/scripts.pory"
 	release
 	end
 
 SecretVault_EventScript_Regieleki_5:
-# 124 "data//maps/SecretVault/scripts.pory"
+# 123 "data//maps/SecretVault/scripts.pory"
 	setvar VAR_0x8004, SPECIES_REGIELEKI
-# 125 "data//maps/SecretVault/scripts.pory"
+# 124 "data//maps/SecretVault/scripts.pory"
 	fadescreenswapbuffers FADE_TO_BLACK
-# 126 "data//maps/SecretVault/scripts.pory"
+# 125 "data//maps/SecretVault/scripts.pory"
 	removeobject VAR_LAST_TALKED
-# 127 "data//maps/SecretVault/scripts.pory"
+# 126 "data//maps/SecretVault/scripts.pory"
 	fadescreenswapbuffers FADE_FROM_BLACK
-# 128 "data//maps/SecretVault/scripts.pory"
+# 127 "data//maps/SecretVault/scripts.pory"
 	bufferspeciesname STR_VAR_1, VAR_0x8004
-# 129 "data//maps/SecretVault/scripts.pory"
+# 128 "data//maps/SecretVault/scripts.pory"
 	msgbox gText_LegendaryFlewAway, MSGBOX_DEFAULT
-# 130 "data//maps/SecretVault/scripts.pory"
+# 129 "data//maps/SecretVault/scripts.pory"
 	compare VAR_NEW_MAUVILLE_STATE, 2
 	goto_if_lt SecretVault_EventScript_Regieleki_13
 SecretVault_EventScript_Regieleki_12:
-# 135 "data//maps/SecretVault/scripts.pory"
+# 134 "data//maps/SecretVault/scripts.pory"
 	release
 	end
 
 SecretVault_EventScript_Regieleki_10:
-# 114 "data//maps/SecretVault/scripts.pory"
+# 113 "data//maps/SecretVault/scripts.pory"
 	setvar VAR_NEW_MAUVILLE_STATE, 2
-# 115 "data//maps/SecretVault/scripts.pory"
+# 114 "data//maps/SecretVault/scripts.pory"
 	msgbox SecretVault_EventScript_Regieleki_Text_0, MSGBOX_DEFAULT
 	goto SecretVault_EventScript_Regieleki_9
 
 SecretVault_EventScript_Regieleki_13:
-# 131 "data//maps/SecretVault/scripts.pory"
+# 130 "data//maps/SecretVault/scripts.pory"
 	setvar VAR_NEW_MAUVILLE_STATE, 2
-# 132 "data//maps/SecretVault/scripts.pory"
+# 131 "data//maps/SecretVault/scripts.pory"
 	msgbox SecretVault_EventScript_Regieleki_Text_1, MSGBOX_DEFAULT
 	goto SecretVault_EventScript_Regieleki_12
 
 
+# 142 "data//maps/SecretVault/scripts.pory"
+
 # 143 "data//maps/SecretVault/scripts.pory"
 
 # 144 "data//maps/SecretVault/scripts.pory"
-
-# 145 "data//maps/SecretVault/scripts.pory"
 SecretVault_EventScript_DefeatedRegieleki::
-# 146 "data//maps/SecretVault/scripts.pory"
+# 145 "data//maps/SecretVault/scripts.pory"
 	setflag FLAG_DEFEATED_REGIELEKI
-# 147 "data//maps/SecretVault/scripts.pory"
+# 146 "data//maps/SecretVault/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
-# 148 "data//maps/SecretVault/scripts.pory"
+# 147 "data//maps/SecretVault/scripts.pory"
 	end
-# 149 "data//maps/SecretVault/scripts.pory"
+# 148 "data//maps/SecretVault/scripts.pory"
 
-# 150 "data//maps/SecretVault/scripts.pory"
+# 149 "data//maps/SecretVault/scripts.pory"
 SecretVault_EventScript_RanFromRegieleki::
-# 151 "data//maps/SecretVault/scripts.pory"
+# 150 "data//maps/SecretVault/scripts.pory"
 	setvar VAR_0x8004, SPECIES_REGIELEKI
-# 152 "data//maps/SecretVault/scripts.pory"
+# 151 "data//maps/SecretVault/scripts.pory"
 	goto Common_EventScript_LegendaryFlewAway
-# 153 "data//maps/SecretVault/scripts.pory"
+# 152 "data//maps/SecretVault/scripts.pory"
 	end
 
 SecretVault_EventScript_Regieleki_Text_0:
-# 115 "data//maps/SecretVault/scripts.pory"
+# 114 "data//maps/SecretVault/scripts.pory"
 	.string "With REGIELEKI's passing, the rampant\n"
 	.string "electric field subsided.\p"
 	.string "The GENERATOR should be able to\n"
 	.string "function normally now.$"
 
 SecretVault_EventScript_Regieleki_Text_1:
-# 132 "data//maps/SecretVault/scripts.pory"
+# 131 "data//maps/SecretVault/scripts.pory"
 	.string "With REGIELEKI gone, the rampant\n"
 	.string "electric field subsided.\p"
 	.string "The GENERATOR should be able to\n"

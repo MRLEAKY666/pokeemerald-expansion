@@ -1070,7 +1070,6 @@ EventScript_AfterWhiteOutHeal::
 	goto_if_eq VAR_RESULT, 0, EventScript_NewWhiteOut
 	msgbox gText_FirstShouldRestoreMonsHealth
 	special ChoosePartyMonFainted
-	waitstate
 	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, EventScript_ItsDangerousToGoAlone
 	special HealAfterWhiteOut
 	callnative UpdateFollowingPokemon
@@ -1099,7 +1098,6 @@ EventScript_AfterWhiteOutMomHeal::
 	goto_if_eq VAR_RESULT, 0, EventScript_MomNewWhiteOut
 	msgbox gText_HadQuiteAnExperienceTakeRest
 	special ChoosePartyMonFainted
-	waitstate
 	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, EventScript_ItsDangerousToGoAloneMom
 	special HealAfterWhiteOut
 	callnative UpdateFollowingPokemon
@@ -1142,7 +1140,6 @@ EventScript_NewWhiteOut::
 EventScript_ItsDangerousToGoAlone::
 	msgbox gText_ItsDangerousToGoAlone
 	special ChoosePartyMon
-	waitstate
 	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, EventScript_ItsDangerousToGoAlone
 	special HealAfterWhiteOut
 	call_if_unset FLAG_DEFEATED_RUSTBORO_GYM, EventScript_AfterWhiteOutHealMsgPreFirstBoss
@@ -1156,7 +1153,6 @@ EventScript_ItsDangerousToGoAlone::
 EventScript_ItsDangerousToGoAloneMom::
 	msgbox gText_ItsDangerousToGoAloneMom
 	special ChoosePartyMon
-	waitstate
 	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, EventScript_ItsDangerousToGoAloneMom
 	special HealAfterWhiteOut
 	msgbox gText_MomExplainHPGetPotions

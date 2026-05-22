@@ -355,7 +355,6 @@ FortreeCliffs_EventScript_OfferBraviaryBerry::
 FortreeCliffs_EventScript_TryGiveBraviaryBerry::
 	fadescreenswapbuffers FADE_TO_BLACK
 	special Bag_ChooseBerry
-	waitstate
 	playmoncry SPECIES_BRAVIARY, CRY_MODE_NORMAL
 	waitmoncry
 	goto_if_eq VAR_ITEM_ID, 0, FortreeCliffs_EventScript_DidntGiveBerry

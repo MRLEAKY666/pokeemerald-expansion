@@ -713,375 +713,375 @@ FortreeCliffs_EventScript_TryGiveBraviaryBerry::
 # 357 "data//maps/FortreeCliffs/scripts.pory"
 	special Bag_ChooseBerry
 # 358 "data//maps/FortreeCliffs/scripts.pory"
-	waitstate
-# 359 "data//maps/FortreeCliffs/scripts.pory"
 	playmoncry SPECIES_BRAVIARY, CRY_MODE_NORMAL
+# 359 "data//maps/FortreeCliffs/scripts.pory"
+	waitmoncry
 # 360 "data//maps/FortreeCliffs/scripts.pory"
-	waitmoncry
-# 361 "data//maps/FortreeCliffs/scripts.pory"
 	goto_if_eq VAR_ITEM_ID, 0, FortreeCliffs_EventScript_DidntGiveBerry
-# 362 "data//maps/FortreeCliffs/scripts.pory"
+# 361 "data//maps/FortreeCliffs/scripts.pory"
 	switch VAR_ITEM_ID                                                                                 @ check that the berry is one bird likes 
-# 363 "data//maps/FortreeCliffs/scripts.pory"
+# 362 "data//maps/FortreeCliffs/scripts.pory"
 	case ITEM_POMEG_BERRY, FortreeCliffs_EventScript_InspectBerryOffering 
-# 364 "data//maps/FortreeCliffs/scripts.pory"
+# 363 "data//maps/FortreeCliffs/scripts.pory"
 	case ITEM_KELPSY_BERRY, FortreeCliffs_EventScript_InspectBerryOffering 
-# 365 "data//maps/FortreeCliffs/scripts.pory"
+# 364 "data//maps/FortreeCliffs/scripts.pory"
 	case ITEM_QUALOT_BERRY, FortreeCliffs_EventScript_InspectBerryOffering 
-# 366 "data//maps/FortreeCliffs/scripts.pory"
+# 365 "data//maps/FortreeCliffs/scripts.pory"
 	case ITEM_HONDEW_BERRY, FortreeCliffs_EventScript_InspectBerryOffering 
-# 367 "data//maps/FortreeCliffs/scripts.pory"
+# 366 "data//maps/FortreeCliffs/scripts.pory"
 	case ITEM_GREPA_BERRY, FortreeCliffs_EventScript_InspectBerryOffering 
-# 368 "data//maps/FortreeCliffs/scripts.pory"
+# 367 "data//maps/FortreeCliffs/scripts.pory"
 	case ITEM_TAMATO_BERRY, FortreeCliffs_EventScript_InspectBerryOffering 
+# 368 "data//maps/FortreeCliffs/scripts.pory"
+	playmoncry SPECIES_BRAVIARY, CRY_MODE_WEAK
 # 369 "data//maps/FortreeCliffs/scripts.pory"
-	playmoncry SPECIES_BRAVIARY, CRY_MODE_WEAK
+	msgbox FortreeCliffs_Text_BraviaryUninterested, MSGBOX_DEFAULT
 # 370 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_BraviaryUninterested, MSGBOX_DEFAULT
+	waitmoncry
 # 371 "data//maps/FortreeCliffs/scripts.pory"
-	waitmoncry
+	return
 # 372 "data//maps/FortreeCliffs/scripts.pory"
-	return
+
 # 373 "data//maps/FortreeCliffs/scripts.pory"
-
-# 374 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_EventScript_InspectBerryOffering::
-# 375 "data//maps/FortreeCliffs/scripts.pory"
+# 374 "data//maps/FortreeCliffs/scripts.pory"
 	goto_if_eq VAR_ITEM_ID, VAR_BRAVIARY_BERRY_1, FortreeCliffs_EventScript_BraviaryUninterested                  @ can't give duplicates
-# 376 "data//maps/FortreeCliffs/scripts.pory"
+# 375 "data//maps/FortreeCliffs/scripts.pory"
 	goto_if_eq VAR_ITEM_ID, VAR_BRAVIARY_BERRY_2, FortreeCliffs_EventScript_BraviaryUninterested
-# 377 "data//maps/FortreeCliffs/scripts.pory"
+# 376 "data//maps/FortreeCliffs/scripts.pory"
 	goto_if_eq VAR_ITEM_ID, VAR_BRAVIARY_BERRY_3, FortreeCliffs_EventScript_BraviaryUninterested
-# 378 "data//maps/FortreeCliffs/scripts.pory"
+# 377 "data//maps/FortreeCliffs/scripts.pory"
 	goto_if_eq VAR_BRAVIARY_BERRY_1, 0, FortreeCliffs_EventScript_GiveFirstBerry                                  @ check how many have been given
-# 379 "data//maps/FortreeCliffs/scripts.pory"
+# 378 "data//maps/FortreeCliffs/scripts.pory"
 	goto_if_eq VAR_BRAVIARY_BERRY_2, 0, FortreeCliffs_EventScript_GiveSecondBerry
-# 380 "data//maps/FortreeCliffs/scripts.pory"
+# 379 "data//maps/FortreeCliffs/scripts.pory"
 	goto_if_eq VAR_BRAVIARY_BERRY_3, 0, FortreeCliffs_EventScript_GiveThirdBerry
+# 380 "data//maps/FortreeCliffs/scripts.pory"
+	end
 # 381 "data//maps/FortreeCliffs/scripts.pory"
-	end
+
 # 382 "data//maps/FortreeCliffs/scripts.pory"
-
-# 383 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_EventScript_BraviaryUninterested::
-# 384 "data//maps/FortreeCliffs/scripts.pory"
+# 383 "data//maps/FortreeCliffs/scripts.pory"
 	playmoncry SPECIES_BRAVIARY, CRY_MODE_WEAK
-# 385 "data//maps/FortreeCliffs/scripts.pory"
+# 384 "data//maps/FortreeCliffs/scripts.pory"
 	msgbox FortreeCliffs_Text_BraviaryUninterested, MSGBOX_DEFAULT
+# 385 "data//maps/FortreeCliffs/scripts.pory"
+	waitmoncry
 # 386 "data//maps/FortreeCliffs/scripts.pory"
-	waitmoncry
+	return
 # 387 "data//maps/FortreeCliffs/scripts.pory"
-	return
+
 # 388 "data//maps/FortreeCliffs/scripts.pory"
-
-# 389 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_EventScript_GiveFirstBerry::
-# 390 "data//maps/FortreeCliffs/scripts.pory"
+# 389 "data//maps/FortreeCliffs/scripts.pory"
 	setvar VAR_FORTREE_CLIFFS_BRAVIARY_TRUST, 1
+# 390 "data//maps/FortreeCliffs/scripts.pory"
+	removeitem VAR_ITEM_ID
 # 391 "data//maps/FortreeCliffs/scripts.pory"
-	removeitem VAR_ITEM_ID
-# 392 "data//maps/FortreeCliffs/scripts.pory"
 	copyvar VAR_BRAVIARY_BERRY_1, VAR_ITEM_ID
+# 392 "data//maps/FortreeCliffs/scripts.pory"
+	bufferitemname STR_VAR_1, VAR_ITEM_ID
 # 393 "data//maps/FortreeCliffs/scripts.pory"
-	bufferitemname STR_VAR_1, VAR_ITEM_ID
+	msgbox FortreeCliffs_Text_BraviaryAcceptedBerry, MSGBOX_DEFAULT
 # 394 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_BraviaryAcceptedBerry, MSGBOX_DEFAULT
+	playmoncry SPECIES_BRAVIARY, CRY_MODE_HIGH_PITCH
 # 395 "data//maps/FortreeCliffs/scripts.pory"
-	playmoncry SPECIES_BRAVIARY, CRY_MODE_HIGH_PITCH
+	waitmoncry
 # 396 "data//maps/FortreeCliffs/scripts.pory"
-	waitmoncry
-# 397 "data//maps/FortreeCliffs/scripts.pory"
 	msgbox FortreeCliffs_Text_GaveFirstBerry, MSGBOX_DEFAULT
+# 397 "data//maps/FortreeCliffs/scripts.pory"
+	return
 # 398 "data//maps/FortreeCliffs/scripts.pory"
-	return
+
 # 399 "data//maps/FortreeCliffs/scripts.pory"
-
-# 400 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_EventScript_GiveSecondBerry::
-# 401 "data//maps/FortreeCliffs/scripts.pory"
+# 400 "data//maps/FortreeCliffs/scripts.pory"
 	setvar VAR_FORTREE_CLIFFS_BRAVIARY_TRUST, 2
+# 401 "data//maps/FortreeCliffs/scripts.pory"
+	removeitem VAR_ITEM_ID
 # 402 "data//maps/FortreeCliffs/scripts.pory"
-	removeitem VAR_ITEM_ID
-# 403 "data//maps/FortreeCliffs/scripts.pory"
 	copyvar VAR_BRAVIARY_BERRY_2, VAR_ITEM_ID
+# 403 "data//maps/FortreeCliffs/scripts.pory"
+	bufferitemname STR_VAR_1, VAR_ITEM_ID
 # 404 "data//maps/FortreeCliffs/scripts.pory"
-	bufferitemname STR_VAR_1, VAR_ITEM_ID
+	msgbox FortreeCliffs_Text_BraviaryAcceptedBerry, MSGBOX_DEFAULT
 # 405 "data//maps/FortreeCliffs/scripts.pory"
-	msgbox FortreeCliffs_Text_BraviaryAcceptedBerry, MSGBOX_DEFAULT
+	playmoncry SPECIES_BRAVIARY, CRY_MODE_HIGH_PITCH
 # 406 "data//maps/FortreeCliffs/scripts.pory"
-	playmoncry SPECIES_BRAVIARY, CRY_MODE_HIGH_PITCH
+	waitmoncry
 # 407 "data//maps/FortreeCliffs/scripts.pory"
-	waitmoncry
-# 408 "data//maps/FortreeCliffs/scripts.pory"
 	msgbox FortreeCliffs_Text_GaveSecondBerry, MSGBOX_DEFAULT
+# 408 "data//maps/FortreeCliffs/scripts.pory"
+	return
 # 409 "data//maps/FortreeCliffs/scripts.pory"
-	return
+
 # 410 "data//maps/FortreeCliffs/scripts.pory"
-
-# 411 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_EventScript_GiveThirdBerry::
-# 412 "data//maps/FortreeCliffs/scripts.pory"
+# 411 "data//maps/FortreeCliffs/scripts.pory"
 	setvar VAR_FORTREE_CLIFFS_BRAVIARY_TRUST, 3
-# 413 "data//maps/FortreeCliffs/scripts.pory"
+# 412 "data//maps/FortreeCliffs/scripts.pory"
 	removeitem VAR_ITEM_ID
-# 414 "data//maps/FortreeCliffs/scripts.pory"
+# 413 "data//maps/FortreeCliffs/scripts.pory"
 	copyvar VAR_BRAVIARY_BERRY_3, VAR_ITEM_ID
-# 415 "data//maps/FortreeCliffs/scripts.pory"
+# 414 "data//maps/FortreeCliffs/scripts.pory"
 	bufferitemname STR_VAR_1, VAR_ITEM_ID
-# 416 "data//maps/FortreeCliffs/scripts.pory"
+# 415 "data//maps/FortreeCliffs/scripts.pory"
 	msgbox FortreeCliffs_Text_BraviaryAcceptedBerry, MSGBOX_DEFAULT
-# 417 "data//maps/FortreeCliffs/scripts.pory"
+# 416 "data//maps/FortreeCliffs/scripts.pory"
 	playmoncry SPECIES_BRAVIARY, CRY_MODE_HIGH_PITCH
-# 418 "data//maps/FortreeCliffs/scripts.pory"
+# 417 "data//maps/FortreeCliffs/scripts.pory"
 	waitmoncry
-# 419 "data//maps/FortreeCliffs/scripts.pory"
+# 418 "data//maps/FortreeCliffs/scripts.pory"
 	msgbox FortreeCliffs_Text_GaveThirdBerry, MSGBOX_DEFAULT
+# 419 "data//maps/FortreeCliffs/scripts.pory"
+	return
 # 420 "data//maps/FortreeCliffs/scripts.pory"
-	return
+
 # 421 "data//maps/FortreeCliffs/scripts.pory"
-
-# 422 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_EventScript_WantsYouToFollow::
-# 423 "data//maps/FortreeCliffs/scripts.pory"
+# 422 "data//maps/FortreeCliffs/scripts.pory"
 	setvar VAR_FORTREE_CLIFFS_BRAVIARY_TRUST, 4
-# 424 "data//maps/FortreeCliffs/scripts.pory"
+# 423 "data//maps/FortreeCliffs/scripts.pory"
 	msgbox FortreeCliffs_Text_WantsYouToFollow, MSGBOX_DEFAULT
+# 424 "data//maps/FortreeCliffs/scripts.pory"
+	closemessage
 # 425 "data//maps/FortreeCliffs/scripts.pory"
-	closemessage
+	special SpawnCameraObject                                                                               @ pan back down
 # 426 "data//maps/FortreeCliffs/scripts.pory"
-	special SpawnCameraObject                                                                               @ pan back down
+	applymovement OBJ_EVENT_ID_CAMERA, FortreeCliffs_Movement_CameraPanDown
 # 427 "data//maps/FortreeCliffs/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, FortreeCliffs_Movement_CameraPanDown
+	waitmovement OBJ_EVENT_ID_CAMERA
 # 428 "data//maps/FortreeCliffs/scripts.pory"
-	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
 # 429 "data//maps/FortreeCliffs/scripts.pory"
-	special RemoveCameraObject
+	release
 # 430 "data//maps/FortreeCliffs/scripts.pory"
-	release
+	end
 # 431 "data//maps/FortreeCliffs/scripts.pory"
-	end
+
 # 432 "data//maps/FortreeCliffs/scripts.pory"
-
-# 433 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_EventScript_BraviaryWantsToFly::
-# 434 "data//maps/FortreeCliffs/scripts.pory"
+# 433 "data//maps/FortreeCliffs/scripts.pory"
 	msgbox FortreeCliffs_Text_AskingToFly, MSGBOX_YESNO
-# 435 "data//maps/FortreeCliffs/scripts.pory"
+# 434 "data//maps/FortreeCliffs/scripts.pory"
 	closemessage
-# 436 "data//maps/FortreeCliffs/scripts.pory"
+# 435 "data//maps/FortreeCliffs/scripts.pory"
 	goto_if_eq VAR_RESULT, NO, FortreeCliffs_EventScript_DeclinedFlight
-# 437 "data//maps/FortreeCliffs/scripts.pory"
+# 436 "data//maps/FortreeCliffs/scripts.pory"
 	setflag FLAG_TEMP_5
+# 437 "data//maps/FortreeCliffs/scripts.pory"
+	return
 # 438 "data//maps/FortreeCliffs/scripts.pory"
-	return
+
 # 439 "data//maps/FortreeCliffs/scripts.pory"
-
-# 440 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_EventScript_DeclinedFlight::
-# 441 "data//maps/FortreeCliffs/scripts.pory"
+# 440 "data//maps/FortreeCliffs/scripts.pory"
 	special SpawnCameraObject                                                                               @ pan back down
-# 442 "data//maps/FortreeCliffs/scripts.pory"
+# 441 "data//maps/FortreeCliffs/scripts.pory"
 	applymovement OBJ_EVENT_ID_CAMERA, FortreeCliffs_Movement_CameraPanDown
-# 443 "data//maps/FortreeCliffs/scripts.pory"
+# 442 "data//maps/FortreeCliffs/scripts.pory"
 	waitmovement OBJ_EVENT_ID_CAMERA
-# 444 "data//maps/FortreeCliffs/scripts.pory"
+# 443 "data//maps/FortreeCliffs/scripts.pory"
 	special RemoveCameraObject
+# 444 "data//maps/FortreeCliffs/scripts.pory"
+	release
 # 445 "data//maps/FortreeCliffs/scripts.pory"
-	release
+	end
 # 446 "data//maps/FortreeCliffs/scripts.pory"
-	end
+
 # 447 "data//maps/FortreeCliffs/scripts.pory"
-
-# 448 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_EventScript_DidntGiveBerry::
+# 448 "data//maps/FortreeCliffs/scripts.pory"
+	return
 # 449 "data//maps/FortreeCliffs/scripts.pory"
-	return
+
 # 450 "data//maps/FortreeCliffs/scripts.pory"
-
-# 451 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_EventScript_Ninja1::
-# 452 "data//maps/FortreeCliffs/scripts.pory"
+# 451 "data//maps/FortreeCliffs/scripts.pory"
 	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_1, FortreeCliffs_Text_Ninja1Intro, FortreeCliffs_Text_Ninja1Defeat
-# 453 "data//maps/FortreeCliffs/scripts.pory"
+# 452 "data//maps/FortreeCliffs/scripts.pory"
 	msgbox FortreeCliffs_Text_Ninja1Defeat, MSGBOX_AUTOCLOSE
+# 453 "data//maps/FortreeCliffs/scripts.pory"
+	end
 # 454 "data//maps/FortreeCliffs/scripts.pory"
-	end
+
 # 455 "data//maps/FortreeCliffs/scripts.pory"
-
-# 456 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_EventScript_Ninja2::
-# 457 "data//maps/FortreeCliffs/scripts.pory"
+# 456 "data//maps/FortreeCliffs/scripts.pory"
 	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_2, FortreeCliffs_Text_Ninja2Intro, FortreeCliffs_Text_Ninja2Defeat
-# 458 "data//maps/FortreeCliffs/scripts.pory"
+# 457 "data//maps/FortreeCliffs/scripts.pory"
 	msgbox FortreeCliffs_Text_Ninja2Defeat, MSGBOX_AUTOCLOSE
+# 458 "data//maps/FortreeCliffs/scripts.pory"
+	end
 # 459 "data//maps/FortreeCliffs/scripts.pory"
-	end
+
 # 460 "data//maps/FortreeCliffs/scripts.pory"
-
-# 461 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_EventScript_Ninja3::
-# 462 "data//maps/FortreeCliffs/scripts.pory"
+# 461 "data//maps/FortreeCliffs/scripts.pory"
 	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_3, FortreeCliffs_Text_Ninja3Intro, FortreeCliffs_Text_Ninja3Defeat
-# 463 "data//maps/FortreeCliffs/scripts.pory"
+# 462 "data//maps/FortreeCliffs/scripts.pory"
 	msgbox FortreeCliffs_Text_Ninja3Defeat, MSGBOX_AUTOCLOSE
+# 463 "data//maps/FortreeCliffs/scripts.pory"
+	end
 # 464 "data//maps/FortreeCliffs/scripts.pory"
-	end
+
 # 465 "data//maps/FortreeCliffs/scripts.pory"
-
-# 466 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_EventScript_Expert1::
-# 467 "data//maps/FortreeCliffs/scripts.pory"
+# 466 "data//maps/FortreeCliffs/scripts.pory"
 	trainerbattle_single TRAINER_FORTREE_CLIFFS_EXPERT_1, FortreeCliffs_Text_Expert1Intro, FortreeCliffs_Text_Expert1Defeat
-# 468 "data//maps/FortreeCliffs/scripts.pory"
+# 467 "data//maps/FortreeCliffs/scripts.pory"
 	msgbox FortreeCliffs_Text_Expert1Defeat, MSGBOX_AUTOCLOSE
+# 468 "data//maps/FortreeCliffs/scripts.pory"
+	end
 # 469 "data//maps/FortreeCliffs/scripts.pory"
-	end
+
 # 470 "data//maps/FortreeCliffs/scripts.pory"
-
-# 471 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_EventScript_Ninja4::
-# 472 "data//maps/FortreeCliffs/scripts.pory"
+# 471 "data//maps/FortreeCliffs/scripts.pory"
 	cant_see_if_trainerflag_set TRAINER_FORTREE_CLIFFS_NINJA_4
-# 473 "data//maps/FortreeCliffs/scripts.pory"
+# 472 "data//maps/FortreeCliffs/scripts.pory"
 	lock
-# 474 "data//maps/FortreeCliffs/scripts.pory"
+# 473 "data//maps/FortreeCliffs/scripts.pory"
 	call_if_defeated TRAINER_FORTREE_CLIFFS_NINJA_4, FortreeCliffs_EventScript_DefeatedNinja4
-# 475 "data//maps/FortreeCliffs/scripts.pory"
+# 474 "data//maps/FortreeCliffs/scripts.pory"
 	applymovement LOCALID_FORTREE_CLIFFS_NINJA_4, FortreeCliffs_Movement_NinjaAppears
-# 476 "data//maps/FortreeCliffs/scripts.pory"
+# 475 "data//maps/FortreeCliffs/scripts.pory"
 	waitmovement
-# 477 "data//maps/FortreeCliffs/scripts.pory"
+# 476 "data//maps/FortreeCliffs/scripts.pory"
 	delay 30
-# 478 "data//maps/FortreeCliffs/scripts.pory"
+# 477 "data//maps/FortreeCliffs/scripts.pory"
 	msgbox FortreeCliffs_Text_Ninja4Intro, MSGBOX_DEFAULT
-# 479 "data//maps/FortreeCliffs/scripts.pory"
+# 478 "data//maps/FortreeCliffs/scripts.pory"
 	call_if_not_defeated TRAINER_FORTREE_CLIFFS_NINJA_4, FortreeCliffs_EventScript_BattleNinja4
-# 480 "data//maps/FortreeCliffs/scripts.pory"
+# 479 "data//maps/FortreeCliffs/scripts.pory"
 	@ msgbox FortreeCliffs_Text_Ninja4Defeat, MSGBOX_AUTOCLOSE
+# 480 "data//maps/FortreeCliffs/scripts.pory"
+	release
 # 481 "data//maps/FortreeCliffs/scripts.pory"
-	release
+	end
 # 482 "data//maps/FortreeCliffs/scripts.pory"
-	end
+
 # 483 "data//maps/FortreeCliffs/scripts.pory"
-
-# 484 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_EventScript_DefeatedNinja4::
-# 485 "data//maps/FortreeCliffs/scripts.pory"
+# 484 "data//maps/FortreeCliffs/scripts.pory"
 	msgbox FortreeCliffs_Text_Ninja4Defeat, MSGBOX_AUTOCLOSE
-# 486 "data//maps/FortreeCliffs/scripts.pory"
+# 485 "data//maps/FortreeCliffs/scripts.pory"
 	release
+# 486 "data//maps/FortreeCliffs/scripts.pory"
+	end
 # 487 "data//maps/FortreeCliffs/scripts.pory"
-	end
+
 # 488 "data//maps/FortreeCliffs/scripts.pory"
-
-# 489 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_EventScript_BattleNinja4::
-# 490 "data//maps/FortreeCliffs/scripts.pory"
+# 489 "data//maps/FortreeCliffs/scripts.pory"
 	trainerbattle_no_intro TRAINER_FORTREE_CLIFFS_NINJA_4, FortreeCliffs_Text_Ninja4Defeat
-# 491 "data//maps/FortreeCliffs/scripts.pory"
+# 490 "data//maps/FortreeCliffs/scripts.pory"
 	return
+# 491 "data//maps/FortreeCliffs/scripts.pory"
+
 # 492 "data//maps/FortreeCliffs/scripts.pory"
-
-# 493 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Movement_NinjaAppears:
+# 493 "data//maps/FortreeCliffs/scripts.pory"
+	set_visible
 # 494 "data//maps/FortreeCliffs/scripts.pory"
-	set_visible
+	delay_4
 # 495 "data//maps/FortreeCliffs/scripts.pory"
-	delay_4
+	set_invisible
 # 496 "data//maps/FortreeCliffs/scripts.pory"
-	set_invisible
+	delay_4
 # 497 "data//maps/FortreeCliffs/scripts.pory"
-	delay_4
+	set_visible
 # 498 "data//maps/FortreeCliffs/scripts.pory"
-	set_visible
+	delay_4
 # 499 "data//maps/FortreeCliffs/scripts.pory"
-	delay_4
+	set_invisible
 # 500 "data//maps/FortreeCliffs/scripts.pory"
-	set_invisible
-# 501 "data//maps/FortreeCliffs/scripts.pory"
 	delay_4
+# 501 "data//maps/FortreeCliffs/scripts.pory"
+	set_visible
 # 502 "data//maps/FortreeCliffs/scripts.pory"
-	set_visible
+	delay_8
 # 503 "data//maps/FortreeCliffs/scripts.pory"
-	delay_8
+	set_invisible
 # 504 "data//maps/FortreeCliffs/scripts.pory"
-	set_invisible
+	delay_8
 # 505 "data//maps/FortreeCliffs/scripts.pory"
-	delay_8
+	set_visible
 # 506 "data//maps/FortreeCliffs/scripts.pory"
-	set_visible
+	delay_8
 # 507 "data//maps/FortreeCliffs/scripts.pory"
-	delay_8
+	set_invisible
 # 508 "data//maps/FortreeCliffs/scripts.pory"
-	set_invisible
-# 509 "data//maps/FortreeCliffs/scripts.pory"
 	delay_8
+# 509 "data//maps/FortreeCliffs/scripts.pory"
+	set_visible
 # 510 "data//maps/FortreeCliffs/scripts.pory"
-	set_visible
+	delay_16
 # 511 "data//maps/FortreeCliffs/scripts.pory"
-	delay_16
-# 512 "data//maps/FortreeCliffs/scripts.pory"
 	set_invisible
-# 513 "data//maps/FortreeCliffs/scripts.pory"
+# 512 "data//maps/FortreeCliffs/scripts.pory"
 	delay_16
-# 514 "data//maps/FortreeCliffs/scripts.pory"
+# 513 "data//maps/FortreeCliffs/scripts.pory"
 	set_visible
-# 515 "data//maps/FortreeCliffs/scripts.pory"
+# 514 "data//maps/FortreeCliffs/scripts.pory"
 	step_end
+# 515 "data//maps/FortreeCliffs/scripts.pory"
+
 # 516 "data//maps/FortreeCliffs/scripts.pory"
-
-# 517 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_EventScript_Ninja5::
-# 518 "data//maps/FortreeCliffs/scripts.pory"
+# 517 "data//maps/FortreeCliffs/scripts.pory"
 	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_5, FortreeCliffs_Text_Ninja5Intro, FortreeCliffs_Text_Ninja5Defeat
-# 519 "data//maps/FortreeCliffs/scripts.pory"
+# 518 "data//maps/FortreeCliffs/scripts.pory"
 	msgbox FortreeCliffs_Text_Ninja5Defeat, MSGBOX_AUTOCLOSE
+# 519 "data//maps/FortreeCliffs/scripts.pory"
+	end
 # 520 "data//maps/FortreeCliffs/scripts.pory"
-	end
+
 # 521 "data//maps/FortreeCliffs/scripts.pory"
-
-# 522 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_EventScript_Ninja6::
-# 523 "data//maps/FortreeCliffs/scripts.pory"
+# 522 "data//maps/FortreeCliffs/scripts.pory"
 	trainerbattle_single TRAINER_FORTREE_CLIFFS_NINJA_6, FortreeCliffs_Text_Ninja6Intro, FortreeCliffs_Text_Ninja6Defeat
-# 524 "data//maps/FortreeCliffs/scripts.pory"
+# 523 "data//maps/FortreeCliffs/scripts.pory"
 	msgbox FortreeCliffs_Text_Ninja6Defeat, MSGBOX_AUTOCLOSE
+# 524 "data//maps/FortreeCliffs/scripts.pory"
+	end
 # 525 "data//maps/FortreeCliffs/scripts.pory"
-	end
+
 # 526 "data//maps/FortreeCliffs/scripts.pory"
-
-# 527 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_EventScript_BirdKeeper1::
-# 528 "data//maps/FortreeCliffs/scripts.pory"
+# 527 "data//maps/FortreeCliffs/scripts.pory"
 	trainerbattle_single TRAINER_FORTREE_CLIFFS_BIRDKEEPER_1, FortreeCliffs_Text_BirdKeeper1Intro, FortreeCliffs_Text_BirdKeeper1Defeat
-# 529 "data//maps/FortreeCliffs/scripts.pory"
+# 528 "data//maps/FortreeCliffs/scripts.pory"
 	msgbox FortreeCliffs_Text_BirdKeeper1Defeat, MSGBOX_AUTOCLOSE
+# 529 "data//maps/FortreeCliffs/scripts.pory"
+	end
 # 530 "data//maps/FortreeCliffs/scripts.pory"
-	end
+
 # 531 "data//maps/FortreeCliffs/scripts.pory"
-
-# 532 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_EventScript_Ranger1::
-# 533 "data//maps/FortreeCliffs/scripts.pory"
+# 532 "data//maps/FortreeCliffs/scripts.pory"
 	trainerbattle_single TRAINER_FORTREE_CLIFFS_RANGER_1, FortreeCliffs_Text_Ranger1Intro, FortreeCliffs_Text_Ranger1Defeat
-# 534 "data//maps/FortreeCliffs/scripts.pory"
+# 533 "data//maps/FortreeCliffs/scripts.pory"
 	msgbox FortreeCliffs_Text_Ranger1Defeat, MSGBOX_AUTOCLOSE
+# 534 "data//maps/FortreeCliffs/scripts.pory"
+	end
 # 535 "data//maps/FortreeCliffs/scripts.pory"
-	end
+
 # 536 "data//maps/FortreeCliffs/scripts.pory"
-
-# 537 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_EventScript_Ranger2::
-# 538 "data//maps/FortreeCliffs/scripts.pory"
+# 537 "data//maps/FortreeCliffs/scripts.pory"
 	trainerbattle_single TRAINER_FORTREE_CLIFFS_RANGER_2, FortreeCliffs_Text_Ranger2Intro, FortreeCliffs_Text_Ranger2Defeat
-# 539 "data//maps/FortreeCliffs/scripts.pory"
+# 538 "data//maps/FortreeCliffs/scripts.pory"
 	msgbox FortreeCliffs_Text_Ranger2Defeat, MSGBOX_AUTOCLOSE
-# 540 "data//maps/FortreeCliffs/scripts.pory"
+# 539 "data//maps/FortreeCliffs/scripts.pory"
 	end
-# 541 "data//maps/FortreeCliffs/scripts.pory"
+# 540 "data//maps/FortreeCliffs/scripts.pory"
 
-# 542 "data//maps/FortreeCliffs/scripts.pory"
+# 541 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Movement_CameraPanUp:
+# 542 "data//maps/FortreeCliffs/scripts.pory"
+	walk_up
 # 543 "data//maps/FortreeCliffs/scripts.pory"
 	walk_up
 # 544 "data//maps/FortreeCliffs/scripts.pory"
@@ -1089,13 +1089,13 @@ FortreeCliffs_Movement_CameraPanUp:
 # 545 "data//maps/FortreeCliffs/scripts.pory"
 	walk_up
 # 546 "data//maps/FortreeCliffs/scripts.pory"
-	walk_up
-# 547 "data//maps/FortreeCliffs/scripts.pory"
 	step_end
-# 548 "data//maps/FortreeCliffs/scripts.pory"
+# 547 "data//maps/FortreeCliffs/scripts.pory"
 
-# 549 "data//maps/FortreeCliffs/scripts.pory"
+# 548 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Movement_CameraPanDown:
+# 549 "data//maps/FortreeCliffs/scripts.pory"
+	walk_down
 # 550 "data//maps/FortreeCliffs/scripts.pory"
 	walk_down
 # 551 "data//maps/FortreeCliffs/scripts.pory"
@@ -1103,13 +1103,13 @@ FortreeCliffs_Movement_CameraPanDown:
 # 552 "data//maps/FortreeCliffs/scripts.pory"
 	walk_down
 # 553 "data//maps/FortreeCliffs/scripts.pory"
-	walk_down
-# 554 "data//maps/FortreeCliffs/scripts.pory"
 	step_end
-# 555 "data//maps/FortreeCliffs/scripts.pory"
+# 554 "data//maps/FortreeCliffs/scripts.pory"
 
-# 556 "data//maps/FortreeCliffs/scripts.pory"
+# 555 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Movement_BraviaryFlyOff:
+# 556 "data//maps/FortreeCliffs/scripts.pory"
+	walk_up
 # 557 "data//maps/FortreeCliffs/scripts.pory"
 	walk_up
 # 558 "data//maps/FortreeCliffs/scripts.pory"
@@ -1121,7 +1121,7 @@ FortreeCliffs_Movement_BraviaryFlyOff:
 # 561 "data//maps/FortreeCliffs/scripts.pory"
 	walk_up
 # 562 "data//maps/FortreeCliffs/scripts.pory"
-	walk_up
+	slide_up
 # 563 "data//maps/FortreeCliffs/scripts.pory"
 	slide_up
 # 564 "data//maps/FortreeCliffs/scripts.pory"
@@ -1139,342 +1139,340 @@ FortreeCliffs_Movement_BraviaryFlyOff:
 # 570 "data//maps/FortreeCliffs/scripts.pory"
 	slide_up
 # 571 "data//maps/FortreeCliffs/scripts.pory"
-	slide_up
-# 572 "data//maps/FortreeCliffs/scripts.pory"
 	walk_down
+# 572 "data//maps/FortreeCliffs/scripts.pory"
+	step_end
 # 573 "data//maps/FortreeCliffs/scripts.pory"
-	step_end
+
 # 574 "data//maps/FortreeCliffs/scripts.pory"
-
-# 575 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Movement_BraviaryJumpUp::
-# 576 "data//maps/FortreeCliffs/scripts.pory"
+# 575 "data//maps/FortreeCliffs/scripts.pory"
 	jump_2_up
-# 577 "data//maps/FortreeCliffs/scripts.pory"
+# 576 "data//maps/FortreeCliffs/scripts.pory"
 	step_end
-# 578 "data//maps/FortreeCliffs/scripts.pory"
+# 577 "data//maps/FortreeCliffs/scripts.pory"
 
-# 579 "data//maps/FortreeCliffs/scripts.pory"
+# 578 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Movement_BraviaryLands::
+# 579 "data//maps/FortreeCliffs/scripts.pory"
+	walk_down
 # 580 "data//maps/FortreeCliffs/scripts.pory"
 	walk_down
 # 581 "data//maps/FortreeCliffs/scripts.pory"
-	walk_down
-# 582 "data//maps/FortreeCliffs/scripts.pory"
 	step_end
+# 582 "data//maps/FortreeCliffs/scripts.pory"
+
 # 583 "data//maps/FortreeCliffs/scripts.pory"
-
-# 584 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_SkepticalBraviary:
-# 585 "data//maps/FortreeCliffs/scripts.pory"
+# 584 "data//maps/FortreeCliffs/scripts.pory"
 	.string "This BRAVIARY is looking at you\n"
-# 586 "data//maps/FortreeCliffs/scripts.pory"
+# 585 "data//maps/FortreeCliffs/scripts.pory"
 	.string "with skepticism.\p"
-# 587 "data//maps/FortreeCliffs/scripts.pory"
+# 586 "data//maps/FortreeCliffs/scripts.pory"
 	.string "Try offering it a BERRY?$"
+# 587 "data//maps/FortreeCliffs/scripts.pory"
+
 # 588 "data//maps/FortreeCliffs/scripts.pory"
-
-# 589 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_AskingToFly:
-# 590 "data//maps/FortreeCliffs/scripts.pory"
+# 589 "data//maps/FortreeCliffs/scripts.pory"
 	.string "BRAVIARY is looking at you\n"
-# 591 "data//maps/FortreeCliffs/scripts.pory"
+# 590 "data//maps/FortreeCliffs/scripts.pory"
 	.string "approvingly.\p"
-# 592 "data//maps/FortreeCliffs/scripts.pory"
+# 591 "data//maps/FortreeCliffs/scripts.pory"
 	.string "Try asking for help navigating the\n" 
-# 593 "data//maps/FortreeCliffs/scripts.pory"
+# 592 "data//maps/FortreeCliffs/scripts.pory"
 	.string "cliffs?$"
+# 593 "data//maps/FortreeCliffs/scripts.pory"
+
 # 594 "data//maps/FortreeCliffs/scripts.pory"
-
-# 595 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_BraviaryUninterested:
-# 596 "data//maps/FortreeCliffs/scripts.pory"
+# 595 "data//maps/FortreeCliffs/scripts.pory"
 	.string "BRAVIARY doesn't seem interested\n"
-# 597 "data//maps/FortreeCliffs/scripts.pory"
+# 596 "data//maps/FortreeCliffs/scripts.pory"
 	.string "this berry…$"
+# 597 "data//maps/FortreeCliffs/scripts.pory"
+
 # 598 "data//maps/FortreeCliffs/scripts.pory"
-
-# 599 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_BadVibeRock:
-# 600 "data//maps/FortreeCliffs/scripts.pory"
+# 599 "data//maps/FortreeCliffs/scripts.pory"
 	.string "This rock gives off a bad vibe…$"
+# 600 "data//maps/FortreeCliffs/scripts.pory"
+
 # 601 "data//maps/FortreeCliffs/scripts.pory"
-
-# 602 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_FlewToTheNextNest:
-# 603 "data//maps/FortreeCliffs/scripts.pory"
+# 602 "data//maps/FortreeCliffs/scripts.pory"
 	.string "BRAVIARY flew to another nest…$"
+# 603 "data//maps/FortreeCliffs/scripts.pory"
+
 # 604 "data//maps/FortreeCliffs/scripts.pory"
-
-# 605 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_WantsYouToFollow:
-# 606 "data//maps/FortreeCliffs/scripts.pory"
+# 605 "data//maps/FortreeCliffs/scripts.pory"
 	.string "BRAVIARY flew to another nest…\p"
-# 607 "data//maps/FortreeCliffs/scripts.pory"
+# 606 "data//maps/FortreeCliffs/scripts.pory"
 	.string "but it looks like it wants you to follow!$"
+# 607 "data//maps/FortreeCliffs/scripts.pory"
+
 # 608 "data//maps/FortreeCliffs/scripts.pory"
-
-# 609 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_BraviaryAcceptedBerry:
-# 610 "data//maps/FortreeCliffs/scripts.pory"
+# 609 "data//maps/FortreeCliffs/scripts.pory"
 	.string "BRAVIARY accepted the {STR_VAR_1}.$"
+# 610 "data//maps/FortreeCliffs/scripts.pory"
+
 # 611 "data//maps/FortreeCliffs/scripts.pory"
-
-# 612 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_GaveFirstBerry:
-# 613 "data//maps/FortreeCliffs/scripts.pory"
+# 612 "data//maps/FortreeCliffs/scripts.pory"
 	.string "The harsh look in BRAVIARY's eyes\n"
-# 614 "data//maps/FortreeCliffs/scripts.pory"
+# 613 "data//maps/FortreeCliffs/scripts.pory"
 	.string "softened a bit.\p"
-# 615 "data//maps/FortreeCliffs/scripts.pory"
+# 614 "data//maps/FortreeCliffs/scripts.pory"
 	.string "You may be able to gain its trust!$"
+# 615 "data//maps/FortreeCliffs/scripts.pory"
+
 # 616 "data//maps/FortreeCliffs/scripts.pory"
-
-# 617 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_GaveSecondBerry:
-# 618 "data//maps/FortreeCliffs/scripts.pory"
+# 617 "data//maps/FortreeCliffs/scripts.pory"
 	.string "BRAVIARY seems a bit more relaxed\n"
-# 619 "data//maps/FortreeCliffs/scripts.pory"
+# 618 "data//maps/FortreeCliffs/scripts.pory"
 	.string "in your presence.$"
+# 619 "data//maps/FortreeCliffs/scripts.pory"
+
 # 620 "data//maps/FortreeCliffs/scripts.pory"
-
-# 621 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_GaveThirdBerry:
-# 622 "data//maps/FortreeCliffs/scripts.pory"
+# 621 "data//maps/FortreeCliffs/scripts.pory"
 	.string "BRAVIARY is looking at you approvingly!$"
+# 622 "data//maps/FortreeCliffs/scripts.pory"
+
 # 623 "data//maps/FortreeCliffs/scripts.pory"
-
-# 624 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Winona1:
-# 625 "data//maps/FortreeCliffs/scripts.pory"
+# 624 "data//maps/FortreeCliffs/scripts.pory"
 	.string "… … … … … …$"
+# 625 "data//maps/FortreeCliffs/scripts.pory"
+
 # 626 "data//maps/FortreeCliffs/scripts.pory"
-
-# 627 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Winona2:
-# 628 "data//maps/FortreeCliffs/scripts.pory"
+# 627 "data//maps/FortreeCliffs/scripts.pory"
 	.string "I train atop these cliffs\n"
-# 629 "data//maps/FortreeCliffs/scripts.pory"
+# 628 "data//maps/FortreeCliffs/scripts.pory"
 	.string "because of my devotion to reaching\l"
-# 630 "data//maps/FortreeCliffs/scripts.pory"
+# 629 "data//maps/FortreeCliffs/scripts.pory"
 	.string "the greatest heights.\p"
-# 631 "data//maps/FortreeCliffs/scripts.pory"
+# 630 "data//maps/FortreeCliffs/scripts.pory"
 	.string "Very few TRAINERS ever soar so high\n"
-# 632 "data//maps/FortreeCliffs/scripts.pory"
+# 631 "data//maps/FortreeCliffs/scripts.pory"
 	.string "above FORTREE's thick forests and\l"
-# 633 "data//maps/FortreeCliffs/scripts.pory"
+# 632 "data//maps/FortreeCliffs/scripts.pory"
 	.string "steep cliffs.$"
+# 633 "data//maps/FortreeCliffs/scripts.pory"
+
 # 634 "data//maps/FortreeCliffs/scripts.pory"
-
-# 635 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Winona3:
-# 636 "data//maps/FortreeCliffs/scripts.pory"
+# 635 "data//maps/FortreeCliffs/scripts.pory"
 	.string "Take this and meet me at my gym if you\n"
-# 637 "data//maps/FortreeCliffs/scripts.pory"
+# 636 "data//maps/FortreeCliffs/scripts.pory"
 	.string "think you're up to the challenge.$"
+# 637 "data//maps/FortreeCliffs/scripts.pory"
+
 # 638 "data//maps/FortreeCliffs/scripts.pory"
-
-# 639 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Winona3a:
-# 640 "data//maps/FortreeCliffs/scripts.pory"
+# 639 "data//maps/FortreeCliffs/scripts.pory"
 	.string "If you made it here, then perhaps you\n" 
-# 641 "data//maps/FortreeCliffs/scripts.pory"
+# 640 "data//maps/FortreeCliffs/scripts.pory"
 	.string "are ready to fly.$"
+# 641 "data//maps/FortreeCliffs/scripts.pory"
+
 # 642 "data//maps/FortreeCliffs/scripts.pory"
-
-# 643 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Winona4:
-# 644 "data//maps/FortreeCliffs/scripts.pory"
+# 643 "data//maps/FortreeCliffs/scripts.pory"
 	.string "Until we meet again, {PLAYER}.$"
+# 644 "data//maps/FortreeCliffs/scripts.pory"
+
 # 645 "data//maps/FortreeCliffs/scripts.pory"
-
-# 646 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Ninja1Intro:
+# 646 "data//maps/FortreeCliffs/scripts.pory"
+	.string "Our grandpa is annoying as heck!$"
 # 647 "data//maps/FortreeCliffs/scripts.pory"
-	.string "Our grandpa is annoying as heck!$"
+
 # 648 "data//maps/FortreeCliffs/scripts.pory"
-
-# 649 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Ninja1PostBattle:
+# 649 "data//maps/FortreeCliffs/scripts.pory"
+	.string "Ha! Idiot!$"
 # 650 "data//maps/FortreeCliffs/scripts.pory"
-	.string "Ha! Idiot!$"
+
 # 651 "data//maps/FortreeCliffs/scripts.pory"
-
-# 652 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Ninja1Defeat:
+# 652 "data//maps/FortreeCliffs/scripts.pory"
+	.string "You're annoying too!$"
 # 653 "data//maps/FortreeCliffs/scripts.pory"
-	.string "You're annoying too!$"
+
 # 654 "data//maps/FortreeCliffs/scripts.pory"
-
-# 655 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Ninja2Intro:
+# 655 "data//maps/FortreeCliffs/scripts.pory"
+	.string "Our grandpa is annoying as heck!$"
 # 656 "data//maps/FortreeCliffs/scripts.pory"
-	.string "Our grandpa is annoying as heck!$"
+
 # 657 "data//maps/FortreeCliffs/scripts.pory"
-
-# 658 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Ninja2PostBattle:
+# 658 "data//maps/FortreeCliffs/scripts.pory"
+	.string "Ha! Idiot!$"
 # 659 "data//maps/FortreeCliffs/scripts.pory"
-	.string "Ha! Idiot!$"
+
 # 660 "data//maps/FortreeCliffs/scripts.pory"
-
-# 661 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Ninja2Defeat:
+# 661 "data//maps/FortreeCliffs/scripts.pory"
+	.string "You're annoying too!$"
 # 662 "data//maps/FortreeCliffs/scripts.pory"
-	.string "You're annoying too!$"
+
 # 663 "data//maps/FortreeCliffs/scripts.pory"
-
-# 664 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Ninja3Intro:
-# 665 "data//maps/FortreeCliffs/scripts.pory"
+# 664 "data//maps/FortreeCliffs/scripts.pory"
 	.string "Our grandpa is annoying as heck!$"
+# 665 "data//maps/FortreeCliffs/scripts.pory"
+
 # 666 "data//maps/FortreeCliffs/scripts.pory"
-
-# 667 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Ninja3PostBattle:
-# 668 "data//maps/FortreeCliffs/scripts.pory"
+# 667 "data//maps/FortreeCliffs/scripts.pory"
 	.string "Ha! Idiot!$"
+# 668 "data//maps/FortreeCliffs/scripts.pory"
+
 # 669 "data//maps/FortreeCliffs/scripts.pory"
-
-# 670 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Ninja3Defeat:
-# 671 "data//maps/FortreeCliffs/scripts.pory"
+# 670 "data//maps/FortreeCliffs/scripts.pory"
 	.string "You're annoying too!$"
+# 671 "data//maps/FortreeCliffs/scripts.pory"
+
 # 672 "data//maps/FortreeCliffs/scripts.pory"
-
-# 673 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Ninja4Intro:
-# 674 "data//maps/FortreeCliffs/scripts.pory"
+# 673 "data//maps/FortreeCliffs/scripts.pory"
 	.string "Surprise!\l"
-# 675 "data//maps/FortreeCliffs/scripts.pory"
+# 674 "data//maps/FortreeCliffs/scripts.pory"
 	.string "I've been studying KECLEON!$"
+# 675 "data//maps/FortreeCliffs/scripts.pory"
+
 # 676 "data//maps/FortreeCliffs/scripts.pory"
-
-# 677 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Ninja4PostBattle:
-# 678 "data//maps/FortreeCliffs/scripts.pory"
+# 677 "data//maps/FortreeCliffs/scripts.pory"
 	.string "My camouflage is perfect!$"
+# 678 "data//maps/FortreeCliffs/scripts.pory"
+
 # 679 "data//maps/FortreeCliffs/scripts.pory"
-
-# 680 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Ninja4Defeat:
-# 681 "data//maps/FortreeCliffs/scripts.pory"
+# 680 "data//maps/FortreeCliffs/scripts.pory"
 	.string "My perfect disguise…$"
+# 681 "data//maps/FortreeCliffs/scripts.pory"
+
 # 682 "data//maps/FortreeCliffs/scripts.pory"
-
-# 683 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Ninja5Intro:
-# 684 "data//maps/FortreeCliffs/scripts.pory"
+# 683 "data//maps/FortreeCliffs/scripts.pory"
 	.string "I'm the star pupil!$"
+# 684 "data//maps/FortreeCliffs/scripts.pory"
+
 # 685 "data//maps/FortreeCliffs/scripts.pory"
-
-# 686 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Ninja5PostBattle:
-# 687 "data//maps/FortreeCliffs/scripts.pory"
+# 686 "data//maps/FortreeCliffs/scripts.pory"
 	.string "That's why I'm Grandpa's favorite!$"
+# 687 "data//maps/FortreeCliffs/scripts.pory"
+
 # 688 "data//maps/FortreeCliffs/scripts.pory"
-
-# 689 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Ninja5Defeat:
-# 690 "data//maps/FortreeCliffs/scripts.pory"
+# 689 "data//maps/FortreeCliffs/scripts.pory"
 	.string "I'm such a disappointment…$"
+# 690 "data//maps/FortreeCliffs/scripts.pory"
+
 # 691 "data//maps/FortreeCliffs/scripts.pory"
-
-# 692 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Ninja6Intro:
-# 693 "data//maps/FortreeCliffs/scripts.pory"
+# 692 "data//maps/FortreeCliffs/scripts.pory"
 	.string "I'm trying to take it easy here!$"
+# 693 "data//maps/FortreeCliffs/scripts.pory"
+
 # 694 "data//maps/FortreeCliffs/scripts.pory"
-
-# 695 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Ninja6PostBattle:
-# 696 "data//maps/FortreeCliffs/scripts.pory"
+# 695 "data//maps/FortreeCliffs/scripts.pory"
 	.string "Resting pays off just as much as training.$"
+# 696 "data//maps/FortreeCliffs/scripts.pory"
+
 # 697 "data//maps/FortreeCliffs/scripts.pory"
-
-# 698 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Ninja6Defeat:
-# 699 "data//maps/FortreeCliffs/scripts.pory"
+# 698 "data//maps/FortreeCliffs/scripts.pory"
 	.string "I guess I should be trying harder…$"
+# 699 "data//maps/FortreeCliffs/scripts.pory"
+
 # 700 "data//maps/FortreeCliffs/scripts.pory"
-
-# 701 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Expert1Intro:
-# 702 "data//maps/FortreeCliffs/scripts.pory"
+# 701 "data//maps/FortreeCliffs/scripts.pory"
 	.string "Training my grandchildren is rewarding,\n"
-# 703 "data//maps/FortreeCliffs/scripts.pory"
+# 702 "data//maps/FortreeCliffs/scripts.pory"
 	.string "but they can also be quite irksome!$"
+# 703 "data//maps/FortreeCliffs/scripts.pory"
+
 # 704 "data//maps/FortreeCliffs/scripts.pory"
-
-# 705 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Expert1PostBattle:
-# 706 "data//maps/FortreeCliffs/scripts.pory"
+# 705 "data//maps/FortreeCliffs/scripts.pory"
 	.string "I'm always dealing with children…$"
+# 706 "data//maps/FortreeCliffs/scripts.pory"
+
 # 707 "data//maps/FortreeCliffs/scripts.pory"
-
-# 708 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Expert1Defeat:
-# 709 "data//maps/FortreeCliffs/scripts.pory"
+# 708 "data//maps/FortreeCliffs/scripts.pory"
 	.string "Finally, a fellow adult!$"
+# 709 "data//maps/FortreeCliffs/scripts.pory"
+
 # 710 "data//maps/FortreeCliffs/scripts.pory"
-
-# 711 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Ranger1Intro:
-# 712 "data//maps/FortreeCliffs/scripts.pory"
+# 711 "data//maps/FortreeCliffs/scripts.pory"
 	.string "Do you have the right berries?$"
+# 712 "data//maps/FortreeCliffs/scripts.pory"
+
 # 713 "data//maps/FortreeCliffs/scripts.pory"
-
-# 714 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Ranger1PostBattle:
-# 715 "data//maps/FortreeCliffs/scripts.pory"
+# 714 "data//maps/FortreeCliffs/scripts.pory"
 	.string "Collect more berries, and learn their\n"
-# 716 "data//maps/FortreeCliffs/scripts.pory"
+# 715 "data//maps/FortreeCliffs/scripts.pory"
 	.string "effects.$"
+# 716 "data//maps/FortreeCliffs/scripts.pory"
+
 # 717 "data//maps/FortreeCliffs/scripts.pory"
-
-# 718 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Ranger1Defeat:
-# 719 "data//maps/FortreeCliffs/scripts.pory"
+# 718 "data//maps/FortreeCliffs/scripts.pory"
 	.string "I need more berries now!$"
+# 719 "data//maps/FortreeCliffs/scripts.pory"
+
 # 720 "data//maps/FortreeCliffs/scripts.pory"
-
-# 721 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Ranger2Intro:
-# 722 "data//maps/FortreeCliffs/scripts.pory"
+# 721 "data//maps/FortreeCliffs/scripts.pory"
 	.string "Are you prepared for this terrain?$"
+# 722 "data//maps/FortreeCliffs/scripts.pory"
+
 # 723 "data//maps/FortreeCliffs/scripts.pory"
-
-# 724 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Ranger2PostBattle:
-# 725 "data//maps/FortreeCliffs/scripts.pory"
+# 724 "data//maps/FortreeCliffs/scripts.pory"
 	.string "Before exploring far from town,\n"
-# 726 "data//maps/FortreeCliffs/scripts.pory"
+# 725 "data//maps/FortreeCliffs/scripts.pory"
 	.string "double check your supplies!$"
+# 726 "data//maps/FortreeCliffs/scripts.pory"
+
 # 727 "data//maps/FortreeCliffs/scripts.pory"
-
-# 728 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_Ranger2Defeat:
-# 729 "data//maps/FortreeCliffs/scripts.pory"
+# 728 "data//maps/FortreeCliffs/scripts.pory"
 	.string "I wasn't prepared for this!$"
+# 729 "data//maps/FortreeCliffs/scripts.pory"
+
 # 730 "data//maps/FortreeCliffs/scripts.pory"
-
-# 731 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_BirdKeeper1Intro:
-# 732 "data//maps/FortreeCliffs/scripts.pory"
+# 731 "data//maps/FortreeCliffs/scripts.pory"
 	.string "WINONA trains here, on the highest cliffs!$"
+# 732 "data//maps/FortreeCliffs/scripts.pory"
+
 # 733 "data//maps/FortreeCliffs/scripts.pory"
-
-# 734 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_BirdKeeper1PostBattle:
-# 735 "data//maps/FortreeCliffs/scripts.pory"
+# 734 "data//maps/FortreeCliffs/scripts.pory"
 	.string "I simply mirrored WINONA's training.$"
-# 736 "data//maps/FortreeCliffs/scripts.pory"
+# 735 "data//maps/FortreeCliffs/scripts.pory"
 
-# 737 "data//maps/FortreeCliffs/scripts.pory"
+# 736 "data//maps/FortreeCliffs/scripts.pory"
 FortreeCliffs_Text_BirdKeeper1Defeat:
-# 738 "data//maps/FortreeCliffs/scripts.pory"
+# 737 "data//maps/FortreeCliffs/scripts.pory"
 	.string "How does WINONA fly so high?\p"
-# 739 "data//maps/FortreeCliffs/scripts.pory"
+# 738 "data//maps/FortreeCliffs/scripts.pory"
 	.string "She is friends with powerful\n"
-# 740 "data//maps/FortreeCliffs/scripts.pory"
+# 739 "data//maps/FortreeCliffs/scripts.pory"
 	.string "BIRD POKéMON!$"

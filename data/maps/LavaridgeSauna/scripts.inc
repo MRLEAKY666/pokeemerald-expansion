@@ -172,68 +172,68 @@ LavaridgeSauna_EventScript_FindTunnelManiac::
 # 112 "data//maps/LavaridgeSauna/scripts.pory"
 	goto_if_set FLAG_TEMP_2, LavaridgeSauna_EventScript_FindTunnelManiac_3
 LavaridgeSauna_EventScript_FindTunnelManiac_1:
-# 298 "data//maps/LavaridgeSauna/scripts.pory"
+# 297 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_FindTunnelManiac_Text_32, MSGBOX_DEFAULT
-# 299 "data//maps/LavaridgeSauna/scripts.pory"
+# 298 "data//maps/LavaridgeSauna/scripts.pory"
 	delay 10
-# 300 "data//maps/LavaridgeSauna/scripts.pory"
+# 299 "data//maps/LavaridgeSauna/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_ExclamationMark
-# 301 "data//maps/LavaridgeSauna/scripts.pory"
+# 300 "data//maps/LavaridgeSauna/scripts.pory"
 	playse SE_PIN
-# 302 "data//maps/LavaridgeSauna/scripts.pory"
+# 301 "data//maps/LavaridgeSauna/scripts.pory"
 	waitmovement
-# 303 "data//maps/LavaridgeSauna/scripts.pory"
+# 302 "data//maps/LavaridgeSauna/scripts.pory"
 	random 3
-# 304 "data//maps/LavaridgeSauna/scripts.pory"
+# 303 "data//maps/LavaridgeSauna/scripts.pory"
 	switch VAR_RESULT
-# 305 "data//maps/LavaridgeSauna/scripts.pory"
+# 304 "data//maps/LavaridgeSauna/scripts.pory"
 	case 0, LavaridgeSauna_EventScript_FindTunnelManiac_8
-# 307 "data//maps/LavaridgeSauna/scripts.pory"
+# 306 "data//maps/LavaridgeSauna/scripts.pory"
 	case 1, LavaridgeSauna_EventScript_FindTunnelManiac_9
-# 309 "data//maps/LavaridgeSauna/scripts.pory"
+# 308 "data//maps/LavaridgeSauna/scripts.pory"
 	case 2, LavaridgeSauna_EventScript_FindTunnelManiac_10
 LavaridgeSauna_EventScript_FindTunnelManiac_6:
-# 312 "data//maps/LavaridgeSauna/scripts.pory"
+# 311 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_TEMP_2, VAR_TEMP_3
 	goto_if_eq LavaridgeSauna_EventScript_FindTunnelManiac_20
-# 342 "data//maps/LavaridgeSauna/scripts.pory"
+# 341 "data//maps/LavaridgeSauna/scripts.pory"
 	random 3
-# 343 "data//maps/LavaridgeSauna/scripts.pory"
+# 342 "data//maps/LavaridgeSauna/scripts.pory"
 	switch VAR_RESULT
-# 344 "data//maps/LavaridgeSauna/scripts.pory"
+# 343 "data//maps/LavaridgeSauna/scripts.pory"
 	case 0, LavaridgeSauna_EventScript_FindTunnelManiac_35
-# 346 "data//maps/LavaridgeSauna/scripts.pory"
+# 345 "data//maps/LavaridgeSauna/scripts.pory"
 	case 1, LavaridgeSauna_EventScript_FindTunnelManiac_36
-# 348 "data//maps/LavaridgeSauna/scripts.pory"
+# 347 "data//maps/LavaridgeSauna/scripts.pory"
 	case 2, LavaridgeSauna_EventScript_FindTunnelManiac_37
 LavaridgeSauna_EventScript_FindTunnelManiac_33:
-# 351 "data//maps/LavaridgeSauna/scripts.pory"
+# 350 "data//maps/LavaridgeSauna/scripts.pory"
 	addvar VAR_TEMP_4, 1
-# 352 "data//maps/LavaridgeSauna/scripts.pory"
+# 351 "data//maps/LavaridgeSauna/scripts.pory"
 	delay 10
-# 353 "data//maps/LavaridgeSauna/scripts.pory"
+# 352 "data//maps/LavaridgeSauna/scripts.pory"
 	fadescreen FADE_TO_BLACK
-# 354 "data//maps/LavaridgeSauna/scripts.pory"
+# 353 "data//maps/LavaridgeSauna/scripts.pory"
 	removeobject VAR_LAST_TALKED
-# 355 "data//maps/LavaridgeSauna/scripts.pory"
+# 354 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_TEMP_4, 5
 	goto_if_eq LavaridgeSauna_EventScript_FindTunnelManiac_46
 LavaridgeSauna_EventScript_FindTunnelManiac_45:
-# 394 "data//maps/LavaridgeSauna/scripts.pory"
+# 393 "data//maps/LavaridgeSauna/scripts.pory"
 	playse SE_EXIT
-# 395 "data//maps/LavaridgeSauna/scripts.pory"
+# 394 "data//maps/LavaridgeSauna/scripts.pory"
 	waitse
-# 396 "data//maps/LavaridgeSauna/scripts.pory"
+# 395 "data//maps/LavaridgeSauna/scripts.pory"
 	fadescreen FADE_FROM_BLACK
-# 397 "data//maps/LavaridgeSauna/scripts.pory"
+# 396 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_TEMP_4, 5
 	goto_if_eq LavaridgeSauna_EventScript_FindTunnelManiac_51
 LavaridgeSauna_EventScript_FindTunnelManiac_19:
-# 410 "data//maps/LavaridgeSauna/scripts.pory"
+# 409 "data//maps/LavaridgeSauna/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-# 411 "data//maps/LavaridgeSauna/scripts.pory"
+# 410 "data//maps/LavaridgeSauna/scripts.pory"
 	waitmovement
-# 412 "data//maps/LavaridgeSauna/scripts.pory"
+# 411 "data//maps/LavaridgeSauna/scripts.pory"
 	release
 	end
 
@@ -242,17 +242,17 @@ LavaridgeSauna_EventScript_FindTunnelManiac_2:
 	compare VAR_LAVARBOR_TUNNEL_QUEST_STATE, 1
 	goto_if_gt LavaridgeSauna_EventScript_FindTunnelManiac_16
 LavaridgeSauna_EventScript_FindTunnelManiac_15:
-# 287 "data//maps/LavaridgeSauna/scripts.pory"
+# 286 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_LAVARBOR_TUNNEL_QUEST_STATE, 17
 	goto_if_eq LavaridgeSauna_EventScript_FindTunnelManiac_13
-# 291 "data//maps/LavaridgeSauna/scripts.pory"
+# 290 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_FindTunnelManiac_Text_31, MSGBOX_DEFAULT
 LavaridgeSauna_EventScript_FindTunnelManiac_11:
-# 293 "data//maps/LavaridgeSauna/scripts.pory"
+# 292 "data//maps/LavaridgeSauna/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-# 294 "data//maps/LavaridgeSauna/scripts.pory"
+# 293 "data//maps/LavaridgeSauna/scripts.pory"
 	waitmovement
-# 295 "data//maps/LavaridgeSauna/scripts.pory"
+# 294 "data//maps/LavaridgeSauna/scripts.pory"
 	release
 	end
 
@@ -263,17 +263,17 @@ LavaridgeSauna_EventScript_FindTunnelManiac_3:
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_1
 
 LavaridgeSauna_EventScript_FindTunnelManiac_8:
-# 306 "data//maps/LavaridgeSauna/scripts.pory"
+# 305 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_FindTunnelManiac_Text_33, MSGBOX_DEFAULT
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_6
 
 LavaridgeSauna_EventScript_FindTunnelManiac_9:
-# 308 "data//maps/LavaridgeSauna/scripts.pory"
+# 307 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_FindTunnelManiac_Text_34, MSGBOX_DEFAULT
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_6
 
 LavaridgeSauna_EventScript_FindTunnelManiac_10:
-# 310 "data//maps/LavaridgeSauna/scripts.pory"
+# 309 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_FindTunnelManiac_Text_35, MSGBOX_DEFAULT
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_6
 
@@ -286,12 +286,12 @@ LavaridgeSauna_EventScript_FindTunnelManiac_23:
 # 122 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq LavaridgeSauna_EventScript_FindTunnelManiac_38
-# 283 "data//maps/LavaridgeSauna/scripts.pory"
+# 282 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_FindTunnelManiac_Text_30, MSGBOX_DEFAULT
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_11
 
 LavaridgeSauna_EventScript_FindTunnelManiac_13:
-# 288 "data//maps/LavaridgeSauna/scripts.pory"
+# 287 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_FindTunnelManiac_Text_23, MSGBOX_DEFAULT
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_11
 
@@ -302,26 +302,26 @@ LavaridgeSauna_EventScript_FindTunnelManiac_16:
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_15
 
 LavaridgeSauna_EventScript_FindTunnelManiac_20:
-# 313 "data//maps/LavaridgeSauna/scripts.pory"
+# 312 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_LAVARBOR_TUNNEL_QUEST_STATE, 0
 	goto_if_eq LavaridgeSauna_EventScript_FindTunnelManiac_28
-# 316 "data//maps/LavaridgeSauna/scripts.pory"
+# 315 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_LAVARBOR_TUNNEL_QUEST_STATE, 1
 	goto_if_eq LavaridgeSauna_EventScript_FindTunnelManiac_29
-# 320 "data//maps/LavaridgeSauna/scripts.pory"
+# 319 "data//maps/LavaridgeSauna/scripts.pory"
 	trainerbattle_no_intro TRAINER_TUNNEL_MANIAC, LavaridgeSauna_Text_TunnelManiacMetDefeated
-# 321 "data//maps/LavaridgeSauna/scripts.pory"
+# 320 "data//maps/LavaridgeSauna/scripts.pory"
 	setflag FLAG_TEMP_2
-# 322 "data//maps/LavaridgeSauna/scripts.pory"
+# 321 "data//maps/LavaridgeSauna/scripts.pory"
 	goto LavaridgeSauna_EventScript_FindTunnelManiac
 LavaridgeSauna_EventScript_FindTunnelManiac_27:
-# 324 "data//maps/LavaridgeSauna/scripts.pory"
+# 323 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_LAVARBOR_TUNNEL_QUEST_STATE, 1
 	goto_if_eq LavaridgeSauna_EventScript_FindTunnelManiac_42
-# 337 "data//maps/LavaridgeSauna/scripts.pory"
+# 336 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_FindTunnelManiac_Text_31, MSGBOX_DEFAULT
 LavaridgeSauna_EventScript_FindTunnelManiac_41:
-# 339 "data//maps/LavaridgeSauna/scripts.pory"
+# 338 "data//maps/LavaridgeSauna/scripts.pory"
 	setflag FLAG_TEMP_2
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_19
 
@@ -331,27 +331,27 @@ LavaridgeSauna_EventScript_FindTunnelManiac_24:
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_23
 
 LavaridgeSauna_EventScript_FindTunnelManiac_28:
-# 314 "data//maps/LavaridgeSauna/scripts.pory"
+# 313 "data//maps/LavaridgeSauna/scripts.pory"
 	trainerbattle_no_intro TRAINER_TUNNEL_MANIAC, LavaridgeSauna_Text_TunnelManiacDefeated
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_27
 
 LavaridgeSauna_EventScript_FindTunnelManiac_29:
-# 317 "data//maps/LavaridgeSauna/scripts.pory"
+# 316 "data//maps/LavaridgeSauna/scripts.pory"
 	trainerbattle_no_intro TRAINER_TUNNEL_MANIAC, LavaridgeSauna_Text_TunnelManiacTunnelDefeated
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_27
 
 LavaridgeSauna_EventScript_FindTunnelManiac_35:
-# 345 "data//maps/LavaridgeSauna/scripts.pory"
+# 344 "data//maps/LavaridgeSauna/scripts.pory"
 	trainerbattle_no_intro TRAINER_RANDOM_SAUNA_OLD_MAN, LavaridgeSauna_Text_RandomSaunaOldManDefeated1
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_33
 
 LavaridgeSauna_EventScript_FindTunnelManiac_36:
-# 347 "data//maps/LavaridgeSauna/scripts.pory"
+# 346 "data//maps/LavaridgeSauna/scripts.pory"
 	trainerbattle_no_intro TRAINER_RANDOM_SAUNA_OLD_MAN, LavaridgeSauna_Text_RandomSaunaOldManDefeated2
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_33
 
 LavaridgeSauna_EventScript_FindTunnelManiac_37:
-# 349 "data//maps/LavaridgeSauna/scripts.pory"
+# 348 "data//maps/LavaridgeSauna/scripts.pory"
 	trainerbattle_no_intro TRAINER_RANDOM_SAUNA_OLD_MAN, LavaridgeSauna_Text_RandomSaunaOldManDefeated3
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_33
 
@@ -369,67 +369,65 @@ LavaridgeSauna_EventScript_FindTunnelManiac_48:
 # 141 "data//maps/LavaridgeSauna/scripts.pory"
 	special ChoosePartyMon
 # 142 "data//maps/LavaridgeSauna/scripts.pory"
-	waitstate
-# 143 "data//maps/LavaridgeSauna/scripts.pory"
 	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
-# 144 "data//maps/LavaridgeSauna/scripts.pory"
+# 143 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, SPECIES_DIGLETT
 	goto_if_eq LavaridgeSauna_EventScript_FindTunnelManiac_70
-# 144 "data//maps/LavaridgeSauna/scripts.pory"
+# 143 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, SPECIES_DUGTRIO
 	goto_if_eq LavaridgeSauna_EventScript_FindTunnelManiac_70
-# 145 "data//maps/LavaridgeSauna/scripts.pory"
+# 144 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, SPECIES_BUNNELBY
 	goto_if_eq LavaridgeSauna_EventScript_FindTunnelManiac_70
-# 145 "data//maps/LavaridgeSauna/scripts.pory"
+# 144 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, SPECIES_DIGGERSBY
 	goto_if_eq LavaridgeSauna_EventScript_FindTunnelManiac_70
-# 146 "data//maps/LavaridgeSauna/scripts.pory"
+# 145 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, SPECIES_DRILBUR
 	goto_if_eq LavaridgeSauna_EventScript_FindTunnelManiac_70
-# 146 "data//maps/LavaridgeSauna/scripts.pory"
+# 145 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, SPECIES_EXCADRILL
 	goto_if_eq LavaridgeSauna_EventScript_FindTunnelManiac_70
-# 269 "data//maps/LavaridgeSauna/scripts.pory"
+# 268 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_0x8004, PARTY_NOTHING_CHOSEN
 	goto_if_eq LavaridgeSauna_EventScript_FindTunnelManiac_71
-# 275 "data//maps/LavaridgeSauna/scripts.pory"
+# 274 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_FindTunnelManiac_Text_29, MSGBOX_DEFAULT
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_11
 
 LavaridgeSauna_EventScript_FindTunnelManiac_42:
-# 325 "data//maps/LavaridgeSauna/scripts.pory"
+# 324 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_FindTunnelManiac_Text_36, MSGBOX_DEFAULT
-# 334 "data//maps/LavaridgeSauna/scripts.pory"
+# 333 "data//maps/LavaridgeSauna/scripts.pory"
 	setvar VAR_LAVARBOR_TUNNEL_QUEST_STATE, 2
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_41
 
 LavaridgeSauna_EventScript_FindTunnelManiac_46:
-# 356 "data//maps/LavaridgeSauna/scripts.pory"
+# 355 "data//maps/LavaridgeSauna/scripts.pory"
 	hidefollower
-# 357 "data//maps/LavaridgeSauna/scripts.pory"
+# 356 "data//maps/LavaridgeSauna/scripts.pory"
 	getplayerxy VAR_TEMP_E, VAR_TEMP_F
-# 358 "data//maps/LavaridgeSauna/scripts.pory"
+# 357 "data//maps/LavaridgeSauna/scripts.pory"
 	getobjectfacingdirection LOCALID_PLAYER, VAR_RESULT
-# 359 "data//maps/LavaridgeSauna/scripts.pory"
+# 358 "data//maps/LavaridgeSauna/scripts.pory"
 	addobject LOCALID_SAUNA_SAUNAATTENDANT
-# 360 "data//maps/LavaridgeSauna/scripts.pory"
+# 359 "data//maps/LavaridgeSauna/scripts.pory"
 	showobjectat LOCALID_SAUNA_SAUNAATTENDANT, MAP_LAVARIDGE_SAUNA
-# 361 "data//maps/LavaridgeSauna/scripts.pory"
+# 360 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, DIR_NORTH
 	goto_if_eq LavaridgeSauna_EventScript_FindTunnelManiac_64
 LavaridgeSauna_EventScript_FindTunnelManiac_62:
-# 369 "data//maps/LavaridgeSauna/scripts.pory"
+# 368 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, DIR_NORTH
 	goto_if_eq LavaridgeSauna_EventScript_FindTunnelManiac_61
 LavaridgeSauna_EventScript_FindTunnelManiac_59:
-# 377 "data//maps/LavaridgeSauna/scripts.pory"
+# 376 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, DIR_WEST
 	goto_if_eq LavaridgeSauna_EventScript_FindTunnelManiac_55
-# 377 "data//maps/LavaridgeSauna/scripts.pory"
+# 376 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, DIR_EAST
 	goto_if_eq LavaridgeSauna_EventScript_FindTunnelManiac_55
-# 385 "data//maps/LavaridgeSauna/scripts.pory"
+# 384 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, DIR_SOUTH
 	goto_if_eq LavaridgeSauna_EventScript_FindTunnelManiac_56
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_45
@@ -440,84 +438,84 @@ LavaridgeSauna_EventScript_FindTunnelManiac_49:
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_48
 
 LavaridgeSauna_EventScript_FindTunnelManiac_51:
-# 398 "data//maps/LavaridgeSauna/scripts.pory"
+# 397 "data//maps/LavaridgeSauna/scripts.pory"
 	delay 40
-# 399 "data//maps/LavaridgeSauna/scripts.pory"
+# 398 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_FindTunnelManiac_Text_37, MSGBOX_DEFAULT
-# 402 "data//maps/LavaridgeSauna/scripts.pory"
+# 401 "data//maps/LavaridgeSauna/scripts.pory"
 	closemessage
+# 402 "data//maps/LavaridgeSauna/scripts.pory"
+	delay 15
 # 403 "data//maps/LavaridgeSauna/scripts.pory"
-	delay 15
-# 404 "data//maps/LavaridgeSauna/scripts.pory"
 	fadescreen FADE_TO_BLACK
-# 405 "data//maps/LavaridgeSauna/scripts.pory"
+# 404 "data//maps/LavaridgeSauna/scripts.pory"
 	delay 15
-# 406 "data//maps/LavaridgeSauna/scripts.pory"
+# 405 "data//maps/LavaridgeSauna/scripts.pory"
 	playse SE_EXIT
-# 407 "data//maps/LavaridgeSauna/scripts.pory"
+# 406 "data//maps/LavaridgeSauna/scripts.pory"
 	warp MAP_LAVARIDGE_TOWN, 10, 7
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_19
 
 LavaridgeSauna_EventScript_FindTunnelManiac_53:
-# 362 "data//maps/LavaridgeSauna/scripts.pory"
+# 361 "data//maps/LavaridgeSauna/scripts.pory"
 	addvar VAR_TEMP_E, 1
-# 364 "data//maps/LavaridgeSauna/scripts.pory"
+# 363 "data//maps/LavaridgeSauna/scripts.pory"
 	setobjectxy LOCALID_SAUNA_SAUNAATTENDANT, VAR_TEMP_E, VAR_TEMP_F
-# 365 "data//maps/LavaridgeSauna/scripts.pory"
+# 364 "data//maps/LavaridgeSauna/scripts.pory"
 	applymovement LOCALID_SAUNA_SAUNAATTENDANT, Common_Movement_WalkInPlaceLeft
-# 366 "data//maps/LavaridgeSauna/scripts.pory"
+# 365 "data//maps/LavaridgeSauna/scripts.pory"
 	waitmovement
-# 367 "data//maps/LavaridgeSauna/scripts.pory"
+# 366 "data//maps/LavaridgeSauna/scripts.pory"
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceRight
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_45
 
 LavaridgeSauna_EventScript_FindTunnelManiac_54:
-# 370 "data//maps/LavaridgeSauna/scripts.pory"
+# 369 "data//maps/LavaridgeSauna/scripts.pory"
 	addvar VAR_TEMP_E, -1
-# 372 "data//maps/LavaridgeSauna/scripts.pory"
+# 371 "data//maps/LavaridgeSauna/scripts.pory"
 	setobjectxy LOCALID_SAUNA_SAUNAATTENDANT, VAR_TEMP_E, VAR_TEMP_F
-# 373 "data//maps/LavaridgeSauna/scripts.pory"
+# 372 "data//maps/LavaridgeSauna/scripts.pory"
 	applymovement LOCALID_SAUNA_SAUNAATTENDANT, Common_Movement_WalkInPlaceRight
-# 374 "data//maps/LavaridgeSauna/scripts.pory"
+# 373 "data//maps/LavaridgeSauna/scripts.pory"
 	waitmovement
-# 375 "data//maps/LavaridgeSauna/scripts.pory"
+# 374 "data//maps/LavaridgeSauna/scripts.pory"
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_45
 
 LavaridgeSauna_EventScript_FindTunnelManiac_55:
-# 378 "data//maps/LavaridgeSauna/scripts.pory"
+# 377 "data//maps/LavaridgeSauna/scripts.pory"
 	addvar VAR_TEMP_F, 1
-# 380 "data//maps/LavaridgeSauna/scripts.pory"
+# 379 "data//maps/LavaridgeSauna/scripts.pory"
 	setobjectxy LOCALID_SAUNA_SAUNAATTENDANT, VAR_TEMP_E, VAR_TEMP_F
-# 381 "data//maps/LavaridgeSauna/scripts.pory"
+# 380 "data//maps/LavaridgeSauna/scripts.pory"
 	applymovement LOCALID_SAUNA_SAUNAATTENDANT, Common_Movement_WalkInPlaceUp
-# 382 "data//maps/LavaridgeSauna/scripts.pory"
+# 381 "data//maps/LavaridgeSauna/scripts.pory"
 	waitmovement
-# 383 "data//maps/LavaridgeSauna/scripts.pory"
+# 382 "data//maps/LavaridgeSauna/scripts.pory"
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceDown
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_45
 
 LavaridgeSauna_EventScript_FindTunnelManiac_56:
-# 386 "data//maps/LavaridgeSauna/scripts.pory"
+# 385 "data//maps/LavaridgeSauna/scripts.pory"
 	addvar VAR_TEMP_E, 1
-# 388 "data//maps/LavaridgeSauna/scripts.pory"
+# 387 "data//maps/LavaridgeSauna/scripts.pory"
 	setobjectxy LOCALID_SAUNA_SAUNAATTENDANT, VAR_TEMP_E, VAR_TEMP_F
-# 389 "data//maps/LavaridgeSauna/scripts.pory"
+# 388 "data//maps/LavaridgeSauna/scripts.pory"
 	applymovement LOCALID_SAUNA_SAUNAATTENDANT, Common_Movement_WalkInPlaceLeft
-# 390 "data//maps/LavaridgeSauna/scripts.pory"
+# 389 "data//maps/LavaridgeSauna/scripts.pory"
 	waitmovement
-# 391 "data//maps/LavaridgeSauna/scripts.pory"
+# 390 "data//maps/LavaridgeSauna/scripts.pory"
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceRight
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_45
 
 LavaridgeSauna_EventScript_FindTunnelManiac_61:
-# 369 "data//maps/LavaridgeSauna/scripts.pory"
+# 368 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_TEMP_E, 12
 	goto_if_gt LavaridgeSauna_EventScript_FindTunnelManiac_54
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_59
 
 LavaridgeSauna_EventScript_FindTunnelManiac_64:
-# 361 "data//maps/LavaridgeSauna/scripts.pory"
+# 360 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_TEMP_E, 12
 	goto_if_lt LavaridgeSauna_EventScript_FindTunnelManiac_53
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_62
@@ -542,683 +540,681 @@ LavaridgeSauna_EventScript_FindTunnelManiac_68:
 	end
 
 LavaridgeSauna_EventScript_FindTunnelManiac_70:
-# 147 "data//maps/LavaridgeSauna/scripts.pory"
+# 146 "data//maps/LavaridgeSauna/scripts.pory"
 	special BufferMonNickname
-# 148 "data//maps/LavaridgeSauna/scripts.pory"
+# 147 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_FindTunnelManiac_Text_3, MSGBOX_YESNO
-# 154 "data//maps/LavaridgeSauna/scripts.pory"
+# 153 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq LavaridgeSauna_EventScript_FindTunnelManiac_85
-# 265 "data//maps/LavaridgeSauna/scripts.pory"
+# 264 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_FindTunnelManiac_Text_27, MSGBOX_DEFAULT
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_11
 
 LavaridgeSauna_EventScript_FindTunnelManiac_71:
-# 270 "data//maps/LavaridgeSauna/scripts.pory"
+# 269 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_FindTunnelManiac_Text_28
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_11
 
 LavaridgeSauna_EventScript_FindTunnelManiac_85:
-# 155 "data//maps/LavaridgeSauna/scripts.pory"
+# 154 "data//maps/LavaridgeSauna/scripts.pory"
 	delay 10
-# 156 "data//maps/LavaridgeSauna/scripts.pory"
+# 155 "data//maps/LavaridgeSauna/scripts.pory"
 	getobjectfacingdirection LOCALID_PLAYER, VAR_RESULT
-# 157 "data//maps/LavaridgeSauna/scripts.pory"
+# 156 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, DIR_NORTH
 	goto_if_eq LavaridgeSauna_EventScript_FindTunnelManiac_89
 LavaridgeSauna_EventScript_FindTunnelManiac_88:
-# 160 "data//maps/LavaridgeSauna/scripts.pory"
+# 159 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, DIR_SOUTH
 	goto_if_eq LavaridgeSauna_EventScript_FindTunnelManiac_92
 LavaridgeSauna_EventScript_FindTunnelManiac_91:
-# 163 "data//maps/LavaridgeSauna/scripts.pory"
+# 162 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, DIR_EAST
 	goto_if_eq LavaridgeSauna_EventScript_FindTunnelManiac_95
 LavaridgeSauna_EventScript_FindTunnelManiac_94:
-# 166 "data//maps/LavaridgeSauna/scripts.pory"
+# 165 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, DIR_WEST
 	goto_if_eq LavaridgeSauna_EventScript_FindTunnelManiac_98
 LavaridgeSauna_EventScript_FindTunnelManiac_97:
-# 169 "data//maps/LavaridgeSauna/scripts.pory"
+# 168 "data//maps/LavaridgeSauna/scripts.pory"
 	waitmovement
-# 170 "data//maps/LavaridgeSauna/scripts.pory"
+# 169 "data//maps/LavaridgeSauna/scripts.pory"
 	message LavaridgeSauna_EventScript_FindTunnelManiac_Text_4
-# 172 "data//maps/LavaridgeSauna/scripts.pory"
+# 171 "data//maps/LavaridgeSauna/scripts.pory"
 	playfanfare MUS_TOO_BAD
-# 173 "data//maps/LavaridgeSauna/scripts.pory"
+# 172 "data//maps/LavaridgeSauna/scripts.pory"
 	waitfanfare
-# 174 "data//maps/LavaridgeSauna/scripts.pory"
+# 173 "data//maps/LavaridgeSauna/scripts.pory"
 	setflag FLAG_TEMP_3
-# 175 "data//maps/LavaridgeSauna/scripts.pory"
+# 174 "data//maps/LavaridgeSauna/scripts.pory"
 	callnative DeleteMonFromParty
-# 176 "data//maps/LavaridgeSauna/scripts.pory"
+# 175 "data//maps/LavaridgeSauna/scripts.pory"
 	updatefollowingmon
-# 177 "data//maps/LavaridgeSauna/scripts.pory"
+# 176 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_LAVARBOR_TUNNEL_QUEST_STATE, 16
 	goto_if_le LavaridgeSauna_EventScript_FindTunnelManiac_101
 LavaridgeSauna_EventScript_FindTunnelManiac_100:
-# 232 "data//maps/LavaridgeSauna/scripts.pory"
+# 231 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_LAVARBOR_TUNNEL_QUEST_STATE, 17
 	goto_if_eq LavaridgeSauna_EventScript_FindTunnelManiac_103
-# 251 "data//maps/LavaridgeSauna/scripts.pory"
+# 250 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_FindTunnelManiac_Text_24, MSGBOX_DEFAULT
-# 255 "data//maps/LavaridgeSauna/scripts.pory"
+# 254 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_FindTunnelManiac_Text_25, MSGBOX_YESNO
-# 256 "data//maps/LavaridgeSauna/scripts.pory"
+# 255 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq LavaridgeSauna_EventScript_FindTunnelManiac_125
-# 260 "data//maps/LavaridgeSauna/scripts.pory"
+# 259 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_FindTunnelManiac_Text_26, MSGBOX_DEFAULT
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_11
 
 LavaridgeSauna_EventScript_FindTunnelManiac_89:
-# 158 "data//maps/LavaridgeSauna/scripts.pory"
+# 157 "data//maps/LavaridgeSauna/scripts.pory"
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceUp
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_88
 
 LavaridgeSauna_EventScript_FindTunnelManiac_92:
-# 161 "data//maps/LavaridgeSauna/scripts.pory"
+# 160 "data//maps/LavaridgeSauna/scripts.pory"
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceDown
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_91
 
 LavaridgeSauna_EventScript_FindTunnelManiac_95:
-# 164 "data//maps/LavaridgeSauna/scripts.pory"
+# 163 "data//maps/LavaridgeSauna/scripts.pory"
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceRight
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_94
 
 LavaridgeSauna_EventScript_FindTunnelManiac_98:
-# 167 "data//maps/LavaridgeSauna/scripts.pory"
+# 166 "data//maps/LavaridgeSauna/scripts.pory"
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_97
 
 LavaridgeSauna_EventScript_FindTunnelManiac_101:
-# 178 "data//maps/LavaridgeSauna/scripts.pory"
+# 177 "data//maps/LavaridgeSauna/scripts.pory"
 	addvar VAR_LAVARBOR_TUNNEL_QUEST_STATE, 1
-# 179 "data//maps/LavaridgeSauna/scripts.pory"
+# 178 "data//maps/LavaridgeSauna/scripts.pory"
 	switch VAR_LAVARBOR_TUNNEL_QUEST_STATE
-# 180 "data//maps/LavaridgeSauna/scripts.pory"
+# 179 "data//maps/LavaridgeSauna/scripts.pory"
 	case 0, LavaridgeSauna_EventScript_FindTunnelManiac_107
-# 182 "data//maps/LavaridgeSauna/scripts.pory"
+# 181 "data//maps/LavaridgeSauna/scripts.pory"
 	case 1, LavaridgeSauna_EventScript_FindTunnelManiac_108
-# 184 "data//maps/LavaridgeSauna/scripts.pory"
+# 183 "data//maps/LavaridgeSauna/scripts.pory"
 	case 2, LavaridgeSauna_EventScript_FindTunnelManiac_109
-# 186 "data//maps/LavaridgeSauna/scripts.pory"
+# 185 "data//maps/LavaridgeSauna/scripts.pory"
 	case 3, LavaridgeSauna_EventScript_FindTunnelManiac_110
-# 189 "data//maps/LavaridgeSauna/scripts.pory"
+# 188 "data//maps/LavaridgeSauna/scripts.pory"
 	case 4, LavaridgeSauna_EventScript_FindTunnelManiac_111
-# 192 "data//maps/LavaridgeSauna/scripts.pory"
+# 191 "data//maps/LavaridgeSauna/scripts.pory"
 	case 5, LavaridgeSauna_EventScript_FindTunnelManiac_112
-# 195 "data//maps/LavaridgeSauna/scripts.pory"
+# 194 "data//maps/LavaridgeSauna/scripts.pory"
 	case 6, LavaridgeSauna_EventScript_FindTunnelManiac_113
-# 198 "data//maps/LavaridgeSauna/scripts.pory"
+# 197 "data//maps/LavaridgeSauna/scripts.pory"
 	case 7, LavaridgeSauna_EventScript_FindTunnelManiac_114
-# 201 "data//maps/LavaridgeSauna/scripts.pory"
+# 200 "data//maps/LavaridgeSauna/scripts.pory"
 	case 8, LavaridgeSauna_EventScript_FindTunnelManiac_115
-# 204 "data//maps/LavaridgeSauna/scripts.pory"
+# 203 "data//maps/LavaridgeSauna/scripts.pory"
 	case 9, LavaridgeSauna_EventScript_FindTunnelManiac_116
-# 207 "data//maps/LavaridgeSauna/scripts.pory"
+# 206 "data//maps/LavaridgeSauna/scripts.pory"
 	case 10, LavaridgeSauna_EventScript_FindTunnelManiac_117
-# 210 "data//maps/LavaridgeSauna/scripts.pory"
+# 209 "data//maps/LavaridgeSauna/scripts.pory"
 	case 11, LavaridgeSauna_EventScript_FindTunnelManiac_118
-# 213 "data//maps/LavaridgeSauna/scripts.pory"
+# 212 "data//maps/LavaridgeSauna/scripts.pory"
 	case 12, LavaridgeSauna_EventScript_FindTunnelManiac_119
-# 216 "data//maps/LavaridgeSauna/scripts.pory"
+# 215 "data//maps/LavaridgeSauna/scripts.pory"
 	case 13, LavaridgeSauna_EventScript_FindTunnelManiac_120
-# 219 "data//maps/LavaridgeSauna/scripts.pory"
+# 218 "data//maps/LavaridgeSauna/scripts.pory"
 	case 14, LavaridgeSauna_EventScript_FindTunnelManiac_121
-# 222 "data//maps/LavaridgeSauna/scripts.pory"
+# 221 "data//maps/LavaridgeSauna/scripts.pory"
 	case 15, LavaridgeSauna_EventScript_FindTunnelManiac_122
-# 225 "data//maps/LavaridgeSauna/scripts.pory"
+# 224 "data//maps/LavaridgeSauna/scripts.pory"
 	case 16, LavaridgeSauna_EventScript_FindTunnelManiac_123
-# 228 "data//maps/LavaridgeSauna/scripts.pory"
+# 227 "data//maps/LavaridgeSauna/scripts.pory"
 	case 17, LavaridgeSauna_EventScript_FindTunnelManiac_124
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_100
 
 LavaridgeSauna_EventScript_FindTunnelManiac_103:
-# 233 "data//maps/LavaridgeSauna/scripts.pory"
+# 232 "data//maps/LavaridgeSauna/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_ExclamationMark
-# 234 "data//maps/LavaridgeSauna/scripts.pory"
+# 233 "data//maps/LavaridgeSauna/scripts.pory"
 	playse SE_PIN
-# 235 "data//maps/LavaridgeSauna/scripts.pory"
+# 234 "data//maps/LavaridgeSauna/scripts.pory"
 	waitse
-# 236 "data//maps/LavaridgeSauna/scripts.pory"
+# 235 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_FindTunnelManiac_Text_21, MSGBOX_DEFAULT
+# 239 "data//maps/LavaridgeSauna/scripts.pory"
+	closemessage
 # 240 "data//maps/LavaridgeSauna/scripts.pory"
-	closemessage
+	delay 60
 # 241 "data//maps/LavaridgeSauna/scripts.pory"
-	delay 60
-# 242 "data//maps/LavaridgeSauna/scripts.pory"
 	message LavaridgeSauna_EventScript_FindTunnelManiac_Text_22
-# 243 "data//maps/LavaridgeSauna/scripts.pory"
+# 242 "data//maps/LavaridgeSauna/scripts.pory"
 	waitmessage
-# 244 "data//maps/LavaridgeSauna/scripts.pory"
+# 243 "data//maps/LavaridgeSauna/scripts.pory"
 	delay 45
-# 245 "data//maps/LavaridgeSauna/scripts.pory"
+# 244 "data//maps/LavaridgeSauna/scripts.pory"
 	closemessage
-# 246 "data//maps/LavaridgeSauna/scripts.pory"
+# 245 "data//maps/LavaridgeSauna/scripts.pory"
 	delay 60
-# 247 "data//maps/LavaridgeSauna/scripts.pory"
+# 246 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_FindTunnelManiac_Text_23, MSGBOX_DEFAULT
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_11
 
 LavaridgeSauna_EventScript_FindTunnelManiac_107:
-# 181 "data//maps/LavaridgeSauna/scripts.pory"
+# 180 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_5
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_100
 
 LavaridgeSauna_EventScript_FindTunnelManiac_108:
-# 183 "data//maps/LavaridgeSauna/scripts.pory"
+# 182 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_5
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_100
 
 LavaridgeSauna_EventScript_FindTunnelManiac_109:
-# 185 "data//maps/LavaridgeSauna/scripts.pory"
+# 184 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_5
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_100
 
 LavaridgeSauna_EventScript_FindTunnelManiac_110:
-# 187 "data//maps/LavaridgeSauna/scripts.pory"
+# 186 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_6
-# 188 "data//maps/LavaridgeSauna/scripts.pory"
+# 187 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_3, LavaridgeSauna_EventScript_FindTunnelManiac_Text_7
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_100
 
 LavaridgeSauna_EventScript_FindTunnelManiac_111:
-# 190 "data//maps/LavaridgeSauna/scripts.pory"
+# 189 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_8
-# 191 "data//maps/LavaridgeSauna/scripts.pory"
+# 190 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_3, LavaridgeSauna_EventScript_FindTunnelManiac_Text_9
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_100
 
 LavaridgeSauna_EventScript_FindTunnelManiac_112:
-# 193 "data//maps/LavaridgeSauna/scripts.pory"
+# 192 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_10
-# 194 "data//maps/LavaridgeSauna/scripts.pory"
+# 193 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_3, LavaridgeSauna_EventScript_FindTunnelManiac_Text_11
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_100
 
 LavaridgeSauna_EventScript_FindTunnelManiac_113:
-# 196 "data//maps/LavaridgeSauna/scripts.pory"
+# 195 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_12
-# 197 "data//maps/LavaridgeSauna/scripts.pory"
+# 196 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_3, LavaridgeSauna_EventScript_FindTunnelManiac_Text_13
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_100
 
 LavaridgeSauna_EventScript_FindTunnelManiac_114:
-# 199 "data//maps/LavaridgeSauna/scripts.pory"
+# 198 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_14
-# 200 "data//maps/LavaridgeSauna/scripts.pory"
+# 199 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_3, LavaridgeSauna_EventScript_FindTunnelManiac_Text_15
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_100
 
 LavaridgeSauna_EventScript_FindTunnelManiac_115:
-# 202 "data//maps/LavaridgeSauna/scripts.pory"
+# 201 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_16
-# 203 "data//maps/LavaridgeSauna/scripts.pory"
+# 202 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_3, LavaridgeSauna_EventScript_FindTunnelManiac_Text_17
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_100
 
 LavaridgeSauna_EventScript_FindTunnelManiac_116:
-# 205 "data//maps/LavaridgeSauna/scripts.pory"
+# 204 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_18
-# 206 "data//maps/LavaridgeSauna/scripts.pory"
+# 205 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_3, LavaridgeSauna_EventScript_FindTunnelManiac_Text_19
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_100
 
 LavaridgeSauna_EventScript_FindTunnelManiac_117:
-# 208 "data//maps/LavaridgeSauna/scripts.pory"
+# 207 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_19
-# 209 "data//maps/LavaridgeSauna/scripts.pory"
+# 208 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_3, LavaridgeSauna_EventScript_FindTunnelManiac_Text_18
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_100
 
 LavaridgeSauna_EventScript_FindTunnelManiac_118:
-# 211 "data//maps/LavaridgeSauna/scripts.pory"
+# 210 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_17
-# 212 "data//maps/LavaridgeSauna/scripts.pory"
+# 211 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_3, LavaridgeSauna_EventScript_FindTunnelManiac_Text_16
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_100
 
 LavaridgeSauna_EventScript_FindTunnelManiac_119:
-# 214 "data//maps/LavaridgeSauna/scripts.pory"
+# 213 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_15
-# 215 "data//maps/LavaridgeSauna/scripts.pory"
+# 214 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_3, LavaridgeSauna_EventScript_FindTunnelManiac_Text_14
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_100
 
 LavaridgeSauna_EventScript_FindTunnelManiac_120:
-# 217 "data//maps/LavaridgeSauna/scripts.pory"
+# 216 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_13
-# 218 "data//maps/LavaridgeSauna/scripts.pory"
+# 217 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_3, LavaridgeSauna_EventScript_FindTunnelManiac_Text_12
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_100
 
 LavaridgeSauna_EventScript_FindTunnelManiac_121:
-# 220 "data//maps/LavaridgeSauna/scripts.pory"
+# 219 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_11
-# 221 "data//maps/LavaridgeSauna/scripts.pory"
+# 220 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_3, LavaridgeSauna_EventScript_FindTunnelManiac_Text_10
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_100
 
 LavaridgeSauna_EventScript_FindTunnelManiac_122:
-# 223 "data//maps/LavaridgeSauna/scripts.pory"
+# 222 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_9
-# 224 "data//maps/LavaridgeSauna/scripts.pory"
+# 223 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_3, LavaridgeSauna_EventScript_FindTunnelManiac_Text_8
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_100
 
 LavaridgeSauna_EventScript_FindTunnelManiac_123:
-# 226 "data//maps/LavaridgeSauna/scripts.pory"
+# 225 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_7
-# 227 "data//maps/LavaridgeSauna/scripts.pory"
+# 226 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_3, LavaridgeSauna_EventScript_FindTunnelManiac_Text_6
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_100
 
 LavaridgeSauna_EventScript_FindTunnelManiac_124:
-# 229 "data//maps/LavaridgeSauna/scripts.pory"
+# 228 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_20
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_100
 
 LavaridgeSauna_EventScript_FindTunnelManiac_125:
-# 257 "data//maps/LavaridgeSauna/scripts.pory"
+# 256 "data//maps/LavaridgeSauna/scripts.pory"
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon
 	goto LavaridgeSauna_EventScript_FindTunnelManiac_11
 
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon::
-# 417 "data//maps/LavaridgeSauna/scripts.pory"
+# 416 "data//maps/LavaridgeSauna/scripts.pory"
 	specialvar VAR_RESULT, CountPartyAliveNonEggMons
-# 418 "data//maps/LavaridgeSauna/scripts.pory"
+# 417 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, 1
 	goto_if_le LavaridgeSauna_EventScript_GiveAnotherDiggingMon_2
-# 431 "data//maps/LavaridgeSauna/scripts.pory"
+# 430 "data//maps/LavaridgeSauna/scripts.pory"
 	hidefollower
-# 432 "data//maps/LavaridgeSauna/scripts.pory"
+# 431 "data//maps/LavaridgeSauna/scripts.pory"
 	special ChoosePartyMon
-# 433 "data//maps/LavaridgeSauna/scripts.pory"
-	waitstate
-# 434 "data//maps/LavaridgeSauna/scripts.pory"
+# 432 "data//maps/LavaridgeSauna/scripts.pory"
 	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
-# 435 "data//maps/LavaridgeSauna/scripts.pory"
+# 433 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, SPECIES_DIGLETT
 	goto_if_eq LavaridgeSauna_EventScript_GiveAnotherDiggingMon_5
-# 435 "data//maps/LavaridgeSauna/scripts.pory"
+# 433 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, SPECIES_DUGTRIO
 	goto_if_eq LavaridgeSauna_EventScript_GiveAnotherDiggingMon_5
-# 436 "data//maps/LavaridgeSauna/scripts.pory"
+# 434 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, SPECIES_BUNNELBY
 	goto_if_eq LavaridgeSauna_EventScript_GiveAnotherDiggingMon_5
-# 436 "data//maps/LavaridgeSauna/scripts.pory"
+# 434 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, SPECIES_DIGGERSBY
 	goto_if_eq LavaridgeSauna_EventScript_GiveAnotherDiggingMon_5
-# 437 "data//maps/LavaridgeSauna/scripts.pory"
+# 435 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, SPECIES_DRILBUR
 	goto_if_eq LavaridgeSauna_EventScript_GiveAnotherDiggingMon_5
-# 437 "data//maps/LavaridgeSauna/scripts.pory"
+# 435 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, SPECIES_EXCADRILL
 	goto_if_eq LavaridgeSauna_EventScript_GiveAnotherDiggingMon_5
-# 555 "data//maps/LavaridgeSauna/scripts.pory"
+# 553 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_0x8004, PARTY_NOTHING_CHOSEN
 	goto_if_eq LavaridgeSauna_EventScript_GiveAnotherDiggingMon_6
-# 561 "data//maps/LavaridgeSauna/scripts.pory"
+# 559 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_FindTunnelManiac_Text_29, MSGBOX_DEFAULT
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_4:
-# 566 "data//maps/LavaridgeSauna/scripts.pory"
+# 564 "data//maps/LavaridgeSauna/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-# 567 "data//maps/LavaridgeSauna/scripts.pory"
+# 565 "data//maps/LavaridgeSauna/scripts.pory"
 	waitmovement
-# 568 "data//maps/LavaridgeSauna/scripts.pory"
+# 566 "data//maps/LavaridgeSauna/scripts.pory"
 	release
 	end
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_2:
-# 419 "data//maps/LavaridgeSauna/scripts.pory"
+# 418 "data//maps/LavaridgeSauna/scripts.pory"
 	delay 30
-# 420 "data//maps/LavaridgeSauna/scripts.pory"
+# 419 "data//maps/LavaridgeSauna/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_ExclamationMark
-# 421 "data//maps/LavaridgeSauna/scripts.pory"
+# 420 "data//maps/LavaridgeSauna/scripts.pory"
 	playse SE_PIN
-# 422 "data//maps/LavaridgeSauna/scripts.pory"
+# 421 "data//maps/LavaridgeSauna/scripts.pory"
 	waitse
-# 423 "data//maps/LavaridgeSauna/scripts.pory"
+# 422 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_FindTunnelManiac_Text_2, MSGBOX_DEFAULT
-# 426 "data//maps/LavaridgeSauna/scripts.pory"
+# 425 "data//maps/LavaridgeSauna/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-# 427 "data//maps/LavaridgeSauna/scripts.pory"
+# 426 "data//maps/LavaridgeSauna/scripts.pory"
 	waitmovement
-# 428 "data//maps/LavaridgeSauna/scripts.pory"
+# 427 "data//maps/LavaridgeSauna/scripts.pory"
 	release
 	end
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_5:
-# 438 "data//maps/LavaridgeSauna/scripts.pory"
+# 436 "data//maps/LavaridgeSauna/scripts.pory"
 	special BufferMonNickname
-# 439 "data//maps/LavaridgeSauna/scripts.pory"
+# 437 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_GiveAnotherDiggingMon_Text_0, MSGBOX_YESNO
-# 442 "data//maps/LavaridgeSauna/scripts.pory"
+# 440 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq LavaridgeSauna_EventScript_GiveAnotherDiggingMon_20
-# 551 "data//maps/LavaridgeSauna/scripts.pory"
+# 549 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_FindTunnelManiac_Text_27, MSGBOX_DEFAULT
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon_4
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_6:
-# 556 "data//maps/LavaridgeSauna/scripts.pory"
+# 554 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_FindTunnelManiac_Text_28
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon_4
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_20:
-# 443 "data//maps/LavaridgeSauna/scripts.pory"
+# 441 "data//maps/LavaridgeSauna/scripts.pory"
 	delay 10
-# 444 "data//maps/LavaridgeSauna/scripts.pory"
+# 442 "data//maps/LavaridgeSauna/scripts.pory"
 	getobjectfacingdirection LOCALID_PLAYER, VAR_RESULT
-# 445 "data//maps/LavaridgeSauna/scripts.pory"
+# 443 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, DIR_NORTH
 	goto_if_eq LavaridgeSauna_EventScript_GiveAnotherDiggingMon_24
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_23:
-# 448 "data//maps/LavaridgeSauna/scripts.pory"
+# 446 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, DIR_SOUTH
 	goto_if_eq LavaridgeSauna_EventScript_GiveAnotherDiggingMon_27
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_26:
-# 451 "data//maps/LavaridgeSauna/scripts.pory"
+# 449 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, DIR_EAST
 	goto_if_eq LavaridgeSauna_EventScript_GiveAnotherDiggingMon_30
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_29:
-# 454 "data//maps/LavaridgeSauna/scripts.pory"
+# 452 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, DIR_WEST
 	goto_if_eq LavaridgeSauna_EventScript_GiveAnotherDiggingMon_33
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_32:
-# 457 "data//maps/LavaridgeSauna/scripts.pory"
+# 455 "data//maps/LavaridgeSauna/scripts.pory"
 	waitmovement
-# 458 "data//maps/LavaridgeSauna/scripts.pory"
+# 456 "data//maps/LavaridgeSauna/scripts.pory"
 	message LavaridgeSauna_EventScript_FindTunnelManiac_Text_4
-# 460 "data//maps/LavaridgeSauna/scripts.pory"
+# 458 "data//maps/LavaridgeSauna/scripts.pory"
 	playfanfare MUS_TOO_BAD
-# 461 "data//maps/LavaridgeSauna/scripts.pory"
+# 459 "data//maps/LavaridgeSauna/scripts.pory"
 	waitfanfare
-# 462 "data//maps/LavaridgeSauna/scripts.pory"
+# 460 "data//maps/LavaridgeSauna/scripts.pory"
 	callnative DeleteMonFromParty
-# 463 "data//maps/LavaridgeSauna/scripts.pory"
+# 461 "data//maps/LavaridgeSauna/scripts.pory"
 	updatefollowingmon
-# 464 "data//maps/LavaridgeSauna/scripts.pory"
+# 462 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_LAVARBOR_TUNNEL_QUEST_STATE, 16
 	goto_if_le LavaridgeSauna_EventScript_GiveAnotherDiggingMon_36
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_35:
-# 519 "data//maps/LavaridgeSauna/scripts.pory"
+# 517 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_LAVARBOR_TUNNEL_QUEST_STATE, 17
 	goto_if_eq LavaridgeSauna_EventScript_GiveAnotherDiggingMon_38
-# 538 "data//maps/LavaridgeSauna/scripts.pory"
+# 536 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_GiveAnotherDiggingMon_Text_1, MSGBOX_DEFAULT
-# 541 "data//maps/LavaridgeSauna/scripts.pory"
+# 539 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_FindTunnelManiac_Text_25, MSGBOX_YESNO
-# 542 "data//maps/LavaridgeSauna/scripts.pory"
+# 540 "data//maps/LavaridgeSauna/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq LavaridgeSauna_EventScript_GiveAnotherDiggingMon_60
-# 546 "data//maps/LavaridgeSauna/scripts.pory"
+# 544 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_FindTunnelManiac_Text_26, MSGBOX_DEFAULT
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon_4
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_24:
-# 446 "data//maps/LavaridgeSauna/scripts.pory"
+# 444 "data//maps/LavaridgeSauna/scripts.pory"
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceUp
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon_23
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_27:
-# 449 "data//maps/LavaridgeSauna/scripts.pory"
+# 447 "data//maps/LavaridgeSauna/scripts.pory"
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceDown
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon_26
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_30:
-# 452 "data//maps/LavaridgeSauna/scripts.pory"
+# 450 "data//maps/LavaridgeSauna/scripts.pory"
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceRight
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon_29
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_33:
-# 455 "data//maps/LavaridgeSauna/scripts.pory"
+# 453 "data//maps/LavaridgeSauna/scripts.pory"
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon_32
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_36:
-# 465 "data//maps/LavaridgeSauna/scripts.pory"
+# 463 "data//maps/LavaridgeSauna/scripts.pory"
 	addvar VAR_LAVARBOR_TUNNEL_QUEST_STATE, 1
-# 466 "data//maps/LavaridgeSauna/scripts.pory"
+# 464 "data//maps/LavaridgeSauna/scripts.pory"
 	switch VAR_LAVARBOR_TUNNEL_QUEST_STATE
-# 467 "data//maps/LavaridgeSauna/scripts.pory"
+# 465 "data//maps/LavaridgeSauna/scripts.pory"
 	case 0, LavaridgeSauna_EventScript_GiveAnotherDiggingMon_42
-# 469 "data//maps/LavaridgeSauna/scripts.pory"
+# 467 "data//maps/LavaridgeSauna/scripts.pory"
 	case 1, LavaridgeSauna_EventScript_GiveAnotherDiggingMon_43
-# 471 "data//maps/LavaridgeSauna/scripts.pory"
+# 469 "data//maps/LavaridgeSauna/scripts.pory"
 	case 2, LavaridgeSauna_EventScript_GiveAnotherDiggingMon_44
-# 473 "data//maps/LavaridgeSauna/scripts.pory"
+# 471 "data//maps/LavaridgeSauna/scripts.pory"
 	case 3, LavaridgeSauna_EventScript_GiveAnotherDiggingMon_45
-# 476 "data//maps/LavaridgeSauna/scripts.pory"
+# 474 "data//maps/LavaridgeSauna/scripts.pory"
 	case 4, LavaridgeSauna_EventScript_GiveAnotherDiggingMon_46
-# 479 "data//maps/LavaridgeSauna/scripts.pory"
+# 477 "data//maps/LavaridgeSauna/scripts.pory"
 	case 5, LavaridgeSauna_EventScript_GiveAnotherDiggingMon_47
-# 482 "data//maps/LavaridgeSauna/scripts.pory"
+# 480 "data//maps/LavaridgeSauna/scripts.pory"
 	case 6, LavaridgeSauna_EventScript_GiveAnotherDiggingMon_48
-# 485 "data//maps/LavaridgeSauna/scripts.pory"
+# 483 "data//maps/LavaridgeSauna/scripts.pory"
 	case 7, LavaridgeSauna_EventScript_GiveAnotherDiggingMon_49
-# 488 "data//maps/LavaridgeSauna/scripts.pory"
+# 486 "data//maps/LavaridgeSauna/scripts.pory"
 	case 8, LavaridgeSauna_EventScript_GiveAnotherDiggingMon_50
-# 491 "data//maps/LavaridgeSauna/scripts.pory"
+# 489 "data//maps/LavaridgeSauna/scripts.pory"
 	case 9, LavaridgeSauna_EventScript_GiveAnotherDiggingMon_51
-# 494 "data//maps/LavaridgeSauna/scripts.pory"
+# 492 "data//maps/LavaridgeSauna/scripts.pory"
 	case 10, LavaridgeSauna_EventScript_GiveAnotherDiggingMon_52
-# 497 "data//maps/LavaridgeSauna/scripts.pory"
+# 495 "data//maps/LavaridgeSauna/scripts.pory"
 	case 11, LavaridgeSauna_EventScript_GiveAnotherDiggingMon_53
-# 500 "data//maps/LavaridgeSauna/scripts.pory"
+# 498 "data//maps/LavaridgeSauna/scripts.pory"
 	case 12, LavaridgeSauna_EventScript_GiveAnotherDiggingMon_54
-# 503 "data//maps/LavaridgeSauna/scripts.pory"
+# 501 "data//maps/LavaridgeSauna/scripts.pory"
 	case 13, LavaridgeSauna_EventScript_GiveAnotherDiggingMon_55
-# 506 "data//maps/LavaridgeSauna/scripts.pory"
+# 504 "data//maps/LavaridgeSauna/scripts.pory"
 	case 14, LavaridgeSauna_EventScript_GiveAnotherDiggingMon_56
-# 509 "data//maps/LavaridgeSauna/scripts.pory"
+# 507 "data//maps/LavaridgeSauna/scripts.pory"
 	case 15, LavaridgeSauna_EventScript_GiveAnotherDiggingMon_57
-# 512 "data//maps/LavaridgeSauna/scripts.pory"
+# 510 "data//maps/LavaridgeSauna/scripts.pory"
 	case 16, LavaridgeSauna_EventScript_GiveAnotherDiggingMon_58
-# 515 "data//maps/LavaridgeSauna/scripts.pory"
+# 513 "data//maps/LavaridgeSauna/scripts.pory"
 	case 17, LavaridgeSauna_EventScript_GiveAnotherDiggingMon_59
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon_35
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_38:
-# 520 "data//maps/LavaridgeSauna/scripts.pory"
+# 518 "data//maps/LavaridgeSauna/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_ExclamationMark
-# 521 "data//maps/LavaridgeSauna/scripts.pory"
+# 519 "data//maps/LavaridgeSauna/scripts.pory"
 	playse SE_PIN
-# 522 "data//maps/LavaridgeSauna/scripts.pory"
+# 520 "data//maps/LavaridgeSauna/scripts.pory"
 	waitse
-# 523 "data//maps/LavaridgeSauna/scripts.pory"
+# 521 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_FindTunnelManiac_Text_21, MSGBOX_DEFAULT
+# 525 "data//maps/LavaridgeSauna/scripts.pory"
+	closemessage
+# 526 "data//maps/LavaridgeSauna/scripts.pory"
+	delay 60
 # 527 "data//maps/LavaridgeSauna/scripts.pory"
-	closemessage
-# 528 "data//maps/LavaridgeSauna/scripts.pory"
-	delay 60
-# 529 "data//maps/LavaridgeSauna/scripts.pory"
 	message LavaridgeSauna_EventScript_FindTunnelManiac_Text_22
-# 530 "data//maps/LavaridgeSauna/scripts.pory"
+# 528 "data//maps/LavaridgeSauna/scripts.pory"
 	waitmessage
-# 531 "data//maps/LavaridgeSauna/scripts.pory"
+# 529 "data//maps/LavaridgeSauna/scripts.pory"
 	delay 45
-# 532 "data//maps/LavaridgeSauna/scripts.pory"
+# 530 "data//maps/LavaridgeSauna/scripts.pory"
 	closemessage
-# 533 "data//maps/LavaridgeSauna/scripts.pory"
+# 531 "data//maps/LavaridgeSauna/scripts.pory"
 	delay 60
-# 534 "data//maps/LavaridgeSauna/scripts.pory"
+# 532 "data//maps/LavaridgeSauna/scripts.pory"
 	msgbox LavaridgeSauna_EventScript_FindTunnelManiac_Text_23, MSGBOX_DEFAULT
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon_4
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_42:
-# 468 "data//maps/LavaridgeSauna/scripts.pory"
+# 466 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_5
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon_35
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_43:
-# 470 "data//maps/LavaridgeSauna/scripts.pory"
+# 468 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_5
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon_35
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_44:
-# 472 "data//maps/LavaridgeSauna/scripts.pory"
+# 470 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_5
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon_35
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_45:
-# 474 "data//maps/LavaridgeSauna/scripts.pory"
+# 472 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_6
-# 475 "data//maps/LavaridgeSauna/scripts.pory"
+# 473 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_3, LavaridgeSauna_EventScript_FindTunnelManiac_Text_7
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon_35
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_46:
-# 477 "data//maps/LavaridgeSauna/scripts.pory"
+# 475 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_8
-# 478 "data//maps/LavaridgeSauna/scripts.pory"
+# 476 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_3, LavaridgeSauna_EventScript_FindTunnelManiac_Text_9
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon_35
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_47:
-# 480 "data//maps/LavaridgeSauna/scripts.pory"
+# 478 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_10
-# 481 "data//maps/LavaridgeSauna/scripts.pory"
+# 479 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_3, LavaridgeSauna_EventScript_FindTunnelManiac_Text_11
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon_35
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_48:
-# 483 "data//maps/LavaridgeSauna/scripts.pory"
+# 481 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_12
-# 484 "data//maps/LavaridgeSauna/scripts.pory"
+# 482 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_3, LavaridgeSauna_EventScript_FindTunnelManiac_Text_13
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon_35
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_49:
-# 486 "data//maps/LavaridgeSauna/scripts.pory"
+# 484 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_14
-# 487 "data//maps/LavaridgeSauna/scripts.pory"
+# 485 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_3, LavaridgeSauna_EventScript_FindTunnelManiac_Text_15
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon_35
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_50:
-# 489 "data//maps/LavaridgeSauna/scripts.pory"
+# 487 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_16
-# 490 "data//maps/LavaridgeSauna/scripts.pory"
+# 488 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_3, LavaridgeSauna_EventScript_FindTunnelManiac_Text_17
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon_35
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_51:
-# 492 "data//maps/LavaridgeSauna/scripts.pory"
+# 490 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_18
-# 493 "data//maps/LavaridgeSauna/scripts.pory"
+# 491 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_3, LavaridgeSauna_EventScript_FindTunnelManiac_Text_19
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon_35
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_52:
-# 495 "data//maps/LavaridgeSauna/scripts.pory"
+# 493 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_19
-# 496 "data//maps/LavaridgeSauna/scripts.pory"
+# 494 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_3, LavaridgeSauna_EventScript_FindTunnelManiac_Text_18
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon_35
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_53:
-# 498 "data//maps/LavaridgeSauna/scripts.pory"
+# 496 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_17
-# 499 "data//maps/LavaridgeSauna/scripts.pory"
+# 497 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_3, LavaridgeSauna_EventScript_FindTunnelManiac_Text_16
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon_35
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_54:
-# 501 "data//maps/LavaridgeSauna/scripts.pory"
+# 499 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_15
-# 502 "data//maps/LavaridgeSauna/scripts.pory"
+# 500 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_3, LavaridgeSauna_EventScript_FindTunnelManiac_Text_14
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon_35
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_55:
-# 504 "data//maps/LavaridgeSauna/scripts.pory"
+# 502 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_13
-# 505 "data//maps/LavaridgeSauna/scripts.pory"
+# 503 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_3, LavaridgeSauna_EventScript_FindTunnelManiac_Text_12
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon_35
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_56:
-# 507 "data//maps/LavaridgeSauna/scripts.pory"
+# 505 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_11
-# 508 "data//maps/LavaridgeSauna/scripts.pory"
+# 506 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_3, LavaridgeSauna_EventScript_FindTunnelManiac_Text_10
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon_35
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_57:
-# 510 "data//maps/LavaridgeSauna/scripts.pory"
+# 508 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_9
-# 511 "data//maps/LavaridgeSauna/scripts.pory"
+# 509 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_3, LavaridgeSauna_EventScript_FindTunnelManiac_Text_8
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon_35
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_58:
-# 513 "data//maps/LavaridgeSauna/scripts.pory"
+# 511 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_7
-# 514 "data//maps/LavaridgeSauna/scripts.pory"
+# 512 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_3, LavaridgeSauna_EventScript_FindTunnelManiac_Text_6
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon_35
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_59:
-# 516 "data//maps/LavaridgeSauna/scripts.pory"
+# 514 "data//maps/LavaridgeSauna/scripts.pory"
 	bufferstring STR_VAR_2, LavaridgeSauna_EventScript_FindTunnelManiac_Text_20
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon_35
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_60:
-# 543 "data//maps/LavaridgeSauna/scripts.pory"
+# 541 "data//maps/LavaridgeSauna/scripts.pory"
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon
 	goto LavaridgeSauna_EventScript_GiveAnotherDiggingMon_4
 
 
+# 570 "data//maps/LavaridgeSauna/scripts.pory"
+
+# 571 "data//maps/LavaridgeSauna/scripts.pory"
+
 # 572 "data//maps/LavaridgeSauna/scripts.pory"
-
-# 573 "data//maps/LavaridgeSauna/scripts.pory"
-
-# 574 "data//maps/LavaridgeSauna/scripts.pory"
 LavaridgeSauna_Text_RandomSaunaOldManDefeated1:
-# 575 "data//maps/LavaridgeSauna/scripts.pory"
+# 573 "data//maps/LavaridgeSauna/scripts.pory"
     .string "Look what you've done!\p"
-# 576 "data//maps/LavaridgeSauna/scripts.pory"
+# 574 "data//maps/LavaridgeSauna/scripts.pory"
     .string "All that commotion from your POKéMON\n"
-# 577 "data//maps/LavaridgeSauna/scripts.pory"
+# 575 "data//maps/LavaridgeSauna/scripts.pory"
     .string "made the steam disperse!$"
-# 578 "data//maps/LavaridgeSauna/scripts.pory"
+# 576 "data//maps/LavaridgeSauna/scripts.pory"
 
-# 579 "data//maps/LavaridgeSauna/scripts.pory"
+# 577 "data//maps/LavaridgeSauna/scripts.pory"
 LavaridgeSauna_Text_RandomSaunaOldManDefeated2:
-# 580 "data//maps/LavaridgeSauna/scripts.pory"
+# 578 "data//maps/LavaridgeSauna/scripts.pory"
     .string "Grrr…\p"
-# 581 "data//maps/LavaridgeSauna/scripts.pory"
+# 579 "data//maps/LavaridgeSauna/scripts.pory"
     .string "Let me relax in peace!$"
-# 582 "data//maps/LavaridgeSauna/scripts.pory"
+# 580 "data//maps/LavaridgeSauna/scripts.pory"
 
-# 583 "data//maps/LavaridgeSauna/scripts.pory"
+# 581 "data//maps/LavaridgeSauna/scripts.pory"
 LavaridgeSauna_Text_RandomSaunaOldManDefeated3:
-# 584 "data//maps/LavaridgeSauna/scripts.pory"
+# 582 "data//maps/LavaridgeSauna/scripts.pory"
     .string "Why are you in here causing a ruckus?!$"
-# 585 "data//maps/LavaridgeSauna/scripts.pory"
+# 583 "data//maps/LavaridgeSauna/scripts.pory"
 
-# 586 "data//maps/LavaridgeSauna/scripts.pory"
+# 584 "data//maps/LavaridgeSauna/scripts.pory"
 LavaridgeSauna_Text_TunnelManiacDefeated:
-# 587 "data//maps/LavaridgeSauna/scripts.pory"
+# 585 "data//maps/LavaridgeSauna/scripts.pory"
     .string "Just let me retire in peace!$"
-# 588 "data//maps/LavaridgeSauna/scripts.pory"
+# 586 "data//maps/LavaridgeSauna/scripts.pory"
 
-# 589 "data//maps/LavaridgeSauna/scripts.pory"
+# 587 "data//maps/LavaridgeSauna/scripts.pory"
 LavaridgeSauna_Text_TunnelManiacTunnelDefeated:
-# 590 "data//maps/LavaridgeSauna/scripts.pory"
+# 588 "data//maps/LavaridgeSauna/scripts.pory"
     .string "Wait a second…\l"
-# 591 "data//maps/LavaridgeSauna/scripts.pory"
+# 589 "data//maps/LavaridgeSauna/scripts.pory"
     .string "Did you say something about a tunnel?$"
-# 592 "data//maps/LavaridgeSauna/scripts.pory"
+# 590 "data//maps/LavaridgeSauna/scripts.pory"
 
-# 593 "data//maps/LavaridgeSauna/scripts.pory"
+# 591 "data//maps/LavaridgeSauna/scripts.pory"
 LavaridgeSauna_Text_TunnelManiacMetDefeated:
-# 594 "data//maps/LavaridgeSauna/scripts.pory"
+# 592 "data//maps/LavaridgeSauna/scripts.pory"
     .string "Oh,\l"
-# 595 "data//maps/LavaridgeSauna/scripts.pory"
+# 593 "data//maps/LavaridgeSauna/scripts.pory"
     .string "It's you again.$"
 
 LavaridgeSauna_OnResume_Text_0:
@@ -1254,7 +1250,7 @@ LavaridgeSauna_EventScript_FindTunnelManiac_Text_2:
 	.string "I'll just keep enjoying the sauna!$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_3:
-# 148 "data//maps/LavaridgeSauna/scripts.pory"
+# 147 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "Hmm…\l"
 	.string "This is a digging POKéMON!\p"
 	.string "But it will be hard work…\p"
@@ -1267,75 +1263,75 @@ LavaridgeSauna_EventScript_FindTunnelManiac_Text_3:
 	.string "to work on the LAVARBOR TUNNEL?$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_4:
-# 170 "data//maps/LavaridgeSauna/scripts.pory"
+# 169 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "{PLAYER} handed over {STR_VAR_1}\nto the TUNNEL MANIAC.$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_5:
-# 181 "data//maps/LavaridgeSauna/scripts.pory"
+# 180 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "no$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_6:
-# 187 "data//maps/LavaridgeSauna/scripts.pory"
+# 186 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "one$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_7:
-# 188 "data//maps/LavaridgeSauna/scripts.pory"
+# 187 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "14$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_8:
-# 190 "data//maps/LavaridgeSauna/scripts.pory"
+# 189 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "two$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_9:
-# 191 "data//maps/LavaridgeSauna/scripts.pory"
+# 190 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "13$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_10:
-# 193 "data//maps/LavaridgeSauna/scripts.pory"
+# 192 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "three$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_11:
-# 194 "data//maps/LavaridgeSauna/scripts.pory"
+# 193 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "12$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_12:
-# 196 "data//maps/LavaridgeSauna/scripts.pory"
+# 195 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "four$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_13:
-# 197 "data//maps/LavaridgeSauna/scripts.pory"
+# 196 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "11$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_14:
-# 199 "data//maps/LavaridgeSauna/scripts.pory"
+# 198 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "five$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_15:
-# 200 "data//maps/LavaridgeSauna/scripts.pory"
+# 199 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "10$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_16:
-# 202 "data//maps/LavaridgeSauna/scripts.pory"
+# 201 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "six$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_17:
-# 203 "data//maps/LavaridgeSauna/scripts.pory"
+# 202 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "nine$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_18:
-# 205 "data//maps/LavaridgeSauna/scripts.pory"
+# 204 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "seven$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_19:
-# 206 "data//maps/LavaridgeSauna/scripts.pory"
+# 205 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "eight$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_20:
-# 229 "data//maps/LavaridgeSauna/scripts.pory"
+# 228 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "15$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_21:
-# 236 "data//maps/LavaridgeSauna/scripts.pory"
+# 235 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "Ah!\l"
 	.string "This is excellent!\p"
 	.string "To be completely honest, I didn't really\n"
@@ -1346,17 +1342,17 @@ LavaridgeSauna_EventScript_FindTunnelManiac_Text_21:
 	.string "finishing the LAVARBOR TUNNEL.$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_22:
-# 242 "data//maps/LavaridgeSauna/scripts.pory"
+# 241 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "… … … … … … … … … … …$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_23:
-# 247 "data//maps/LavaridgeSauna/scripts.pory"
+# 246 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "What?\p"
 	.string "I can't start immediately,\l"
 	.string "I have to finish my sauna session!$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_24:
-# 251 "data//maps/LavaridgeSauna/scripts.pory"
+# 250 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "Ah yes, it will be difficult, but\n"
 	.string "{STR_VAR_1}'s help will surely speed\l"
 	.string "things up.\p"
@@ -1372,24 +1368,24 @@ LavaridgeSauna_EventScript_FindTunnelManiac_Text_24:
 	.string "POKéMON soon enough.$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_25:
-# 255 "data//maps/LavaridgeSauna/scripts.pory"
+# 254 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "Do you have any more POKéMON to\n"
 	.string "volunteer for the crew right now?$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_26:
-# 260 "data//maps/LavaridgeSauna/scripts.pory"
+# 259 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "Well when you do, you know where to find\n"
 	.string "me!$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_27:
-# 265 "data//maps/LavaridgeSauna/scripts.pory"
+# 264 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "Right, then.\n"
 	.string "I don't blame you.\p"
 	.string "Digging that tunnel will be very\n"
 	.string "grueling work.$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_28:
-# 270 "data//maps/LavaridgeSauna/scripts.pory"
+# 269 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "Oh, you don't want to volunteer any\n"
 	.string "POKéMON for the tunnel crew right now?\p"
 	.string "Well, I won't be able to work on the\n"
@@ -1397,7 +1393,7 @@ LavaridgeSauna_EventScript_FindTunnelManiac_Text_28:
 	.string "So I'll just keep enjoying the sauna!$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_29:
-# 275 "data//maps/LavaridgeSauna/scripts.pory"
+# 274 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "Hmm…\l"
 	.string "This is not a digging POKéMON…\p"
 	.string "Digging POKéMON are the only POKéMON\n"
@@ -1408,41 +1404,41 @@ LavaridgeSauna_EventScript_FindTunnelManiac_Text_29:
 	.string "the best digging POKéMON.$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_30:
-# 283 "data//maps/LavaridgeSauna/scripts.pory"
+# 282 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "Well, I won't be able to work on the\n"
 	.string "tunnel without POKéMON…\p"
 	.string "It's fine with me!\n"
 	.string "I'll just keep enjoying the sauna!$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_31:
-# 291 "data//maps/LavaridgeSauna/scripts.pory"
+# 290 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "They used to call me the\n"
 	.string "TUNNEL MANIAC.\p"
 	.string "But these days I've left the tunneling\n"
 	.string "to my two boys in FALLARBOR.$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_32:
-# 298 "data//maps/LavaridgeSauna/scripts.pory"
+# 297 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "… … … … … … … …$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_33:
-# 306 "data//maps/LavaridgeSauna/scripts.pory"
+# 305 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "Hey! You're blocking the warm air!\p"
 	.string "It's creating a cold pocket!$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_34:
-# 308 "data//maps/LavaridgeSauna/scripts.pory"
+# 307 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "Huh?\n"
 	.string "Some kid?\p"
 	.string "You're blocking the warm air!$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_35:
-# 310 "data//maps/LavaridgeSauna/scripts.pory"
+# 309 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "Get outta my way!\p"
 	.string "You're bringing in a draft!$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_36:
-# 325 "data//maps/LavaridgeSauna/scripts.pory"
+# 324 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "You say you're here looking for someone\n"
 	.string "who can complete the LAVARBOR TUNNEL?\p"
 	.string "Well, they used to call me the TUNNEL\n"
@@ -1466,7 +1462,7 @@ LavaridgeSauna_EventScript_FindTunnelManiac_Text_36:
 	.string "able to make some progress.$"
 
 LavaridgeSauna_EventScript_FindTunnelManiac_Text_37:
-# 399 "data//maps/LavaridgeSauna/scripts.pory"
+# 398 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "Excuse me…\p"
 	.string "I've gotten several reports that you're\n"
 	.string "disturbing other guests.\p"
@@ -1474,7 +1470,7 @@ LavaridgeSauna_EventScript_FindTunnelManiac_Text_37:
 	.string "the sauna now.$"
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_Text_0:
-# 439 "data//maps/LavaridgeSauna/scripts.pory"
+# 437 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "Hmm…\l"
 	.string "This is a digging POKéMON!\p"
 	.string "But once it's immersed in the tunnel\n"
@@ -1483,7 +1479,7 @@ LavaridgeSauna_EventScript_GiveAnotherDiggingMon_Text_0:
 	.string "to work on the LAVARBOR TUNNEL?$"
 
 LavaridgeSauna_EventScript_GiveAnotherDiggingMon_Text_1:
-# 538 "data//maps/LavaridgeSauna/scripts.pory"
+# 536 "data//maps/LavaridgeSauna/scripts.pory"
 	.string "Ah yes, it will be tough, but\n"
 	.string "{STR_VAR_1}'s help will surely speed\l"
 	.string "things up.\p"

@@ -408,12 +408,10 @@ script PlayersHouse_1F_EventScript_NoMoreRoomForPokemon{
 					"Let me hold onto one of your dead POKéMON, then.\p"
 					"If we can revive it, we'll let the gym trainers use it instead of this {STR_VAR_1}."), MSGBOX_DEFAULT)
 	special(ChoosePartyMon) 
-	waitstate
 	while (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN){
 		msgbox(format("You really ought to have a living POKéMON in your party…\p"
 						"Come on, {PLAYER}.\pChoose a dead POKéMON to give me."), MSGBOX_DEFAULT)
 		special(ChoosePartyMon) 
-		waitstate
 	}
 	callnative(DeleteMonFromParty)
 	givemon(VAR_0x8008, 5, move4=MOVE_RANDOM_TEACHABLE)
@@ -451,12 +449,10 @@ script PlayersHouse_1F_EventScript_NoRoomForPartyPokemon{
 	msgbox(format("Oh,{PAUSE 20} but you don't have room for it in your party…\p"
 					"Let's send one of your POKéMON to the PC, then."), MSGBOX_DEFAULT)
 	special(ChoosePartyMon) 
-	waitstate
 	while (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN){
 		msgbox(format("You really ought to have a living POKéMON in your party…\p"
 						"Come on, {PLAYER}.\pLet's send one of your POKéMON to the PC."), MSGBOX_DEFAULT)
 		special(ChoosePartyMon) 
-		waitstate
 	}
 	sendpartymontofirstpcslot
 	if (var(VAR_RESULT) == MON_CANT_GIVE){

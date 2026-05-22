@@ -201,40 +201,38 @@ ImpactedGrotto_EventScript_Regidrago::
 # 101 "data//maps/ImpactedGrotto/scripts.pory"
 	special StartRegiBattle
 # 102 "data//maps/ImpactedGrotto/scripts.pory"
-	waitstate
-# 103 "data//maps/ImpactedGrotto/scripts.pory"
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
-# 104 "data//maps/ImpactedGrotto/scripts.pory"
+# 103 "data//maps/ImpactedGrotto/scripts.pory"
 	specialvar VAR_RESULT, GetBattleOutcome
-# 105 "data//maps/ImpactedGrotto/scripts.pory"
+# 104 "data//maps/ImpactedGrotto/scripts.pory"
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, ImpactedGrotto_EventScript_DefeatedRegidrago
-# 106 "data//maps/ImpactedGrotto/scripts.pory"
+# 105 "data//maps/ImpactedGrotto/scripts.pory"
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, ImpactedGrotto_EventScript_RanFromRegidrago
-# 107 "data//maps/ImpactedGrotto/scripts.pory"
+# 106 "data//maps/ImpactedGrotto/scripts.pory"
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, ImpactedGrotto_EventScript_RanFromRegidrago
+# 107 "data//maps/ImpactedGrotto/scripts.pory"
+	setflag FLAG_DEFEATED_REGIDRAGO
 # 108 "data//maps/ImpactedGrotto/scripts.pory"
-	setflag FLAG_DEFEATED_REGIDRAGO
-# 109 "data//maps/ImpactedGrotto/scripts.pory"
 	release
+# 109 "data//maps/ImpactedGrotto/scripts.pory"
+	end
 # 110 "data//maps/ImpactedGrotto/scripts.pory"
-	end
+
 # 111 "data//maps/ImpactedGrotto/scripts.pory"
-
-# 112 "data//maps/ImpactedGrotto/scripts.pory"
 ImpactedGrotto_EventScript_DefeatedRegidrago::
-# 113 "data//maps/ImpactedGrotto/scripts.pory"
+# 112 "data//maps/ImpactedGrotto/scripts.pory"
 	setflag FLAG_DEFEATED_REGIDRAGO
-# 114 "data//maps/ImpactedGrotto/scripts.pory"
+# 113 "data//maps/ImpactedGrotto/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
-# 115 "data//maps/ImpactedGrotto/scripts.pory"
+# 114 "data//maps/ImpactedGrotto/scripts.pory"
 	end
-# 116 "data//maps/ImpactedGrotto/scripts.pory"
+# 115 "data//maps/ImpactedGrotto/scripts.pory"
 
-# 117 "data//maps/ImpactedGrotto/scripts.pory"
+# 116 "data//maps/ImpactedGrotto/scripts.pory"
 ImpactedGrotto_EventScript_RanFromRegidrago::
-# 118 "data//maps/ImpactedGrotto/scripts.pory"
+# 117 "data//maps/ImpactedGrotto/scripts.pory"
 	setvar VAR_0x8004, SPECIES_REGIDRAGO
-# 119 "data//maps/ImpactedGrotto/scripts.pory"
+# 118 "data//maps/ImpactedGrotto/scripts.pory"
 	goto Common_EventScript_LegendaryFlewAway
-# 120 "data//maps/ImpactedGrotto/scripts.pory"
+# 119 "data//maps/ImpactedGrotto/scripts.pory"
 	end

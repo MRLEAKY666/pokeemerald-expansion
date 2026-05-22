@@ -161,7 +161,6 @@ script ShadyGuysTruck_EventScript_Hypno{
 script ShadyGuysTruck_EventScript_ExtractMemories{
     waitmoncry
     special(ChoosePartyMon) // sets selection to VAR_0x8004
-    waitstate
     if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN){
         release
         end

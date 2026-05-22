@@ -576,7 +576,7 @@ gSpecials::
 	def_special EnterCode
 	def_special GetCodeFeedback
 	def_special ZeroPlayerPartyMons
-	def_special StartSootopolisLegendaryBattle
+	def_special StartSootopolisLegendaryBattle, waitstate=1
 	def_special UseOutfitBoxFromScript
 	def_special SetHiddenNature
 	def_special SetAbility

@@ -96,7 +96,6 @@ script LavarborTunnelCavern_EventScript_GarchompAttacks{
     createmon(1, 3, SPECIES_GARCHOMP, 40, nature=NATURE_ADAMANT, abilityNum=2, atkEv=252, defEv=4, speedEv=252, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31, move1=MOVE_DIG, move2=MOVE_SANDSTORM, move3=MOVE_ROCK_SLIDE, move4=MOVE_POISON_JAB)
     setflag(FLAG_SYS_CTRL_OBJ_DELETE)
     special(StartRegiBattle)
-	waitstate
 	clearflag(FLAG_SYS_CTRL_OBJ_DELETE)
     setflag(FLAG_TEMP_NO_RUNNING)
     endwildbossmon

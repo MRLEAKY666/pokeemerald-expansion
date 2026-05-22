@@ -139,7 +139,6 @@ script LavaridgeSauna_EventScript_FindTunnelManiac{
                 }
                 hidefollower
                 special(ChoosePartyMon) // sets selection to VAR_0x8004
-                waitstate
                 specialvar(VAR_RESULT, ScriptGetPartyMonSpecies)
                 if (var(VAR_RESULT) == SPECIES_DIGLETT || var(VAR_RESULT) == SPECIES_DUGTRIO // if chosen mon is a digging pokemon
                         || var(VAR_RESULT) == SPECIES_BUNNELBY || var(VAR_RESULT) == SPECIES_DIGGERSBY
@@ -430,7 +429,6 @@ script LavaridgeSauna_EventScript_GiveAnotherDiggingMon{
     }
     hidefollower
     special(ChoosePartyMon) // sets selection to VAR_0x8004
-    waitstate
     specialvar(VAR_RESULT, ScriptGetPartyMonSpecies)
     if (var(VAR_RESULT) == SPECIES_DIGLETT || var(VAR_RESULT) == SPECIES_DUGTRIO
             || var(VAR_RESULT) == SPECIES_BUNNELBY || var(VAR_RESULT) == SPECIES_DIGGERSBY

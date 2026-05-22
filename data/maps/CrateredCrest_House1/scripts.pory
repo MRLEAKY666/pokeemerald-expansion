@@ -142,7 +142,6 @@ script CrateredCrest_House1_EventScript_Drake{
 			setvar(VAR_0x8005, MOVE_DRACO_METEOR)
 			fadescreen(FADE_TO_BLACK)
 			special(ChooseMonForMoveTutor)
-			waitstate
 			if (var(VAR_RESULT) == TYPE_DRAGON){ // friendship too low or cancelled menu
 				msgbox(format("This POKéMON…\pIt may be capable of performing this move, but not until it trusts you more."), MSGBOX_DEFAULT)
 			}

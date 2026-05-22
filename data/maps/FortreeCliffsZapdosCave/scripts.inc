@@ -133,56 +133,54 @@ FortreeCliffsZapdosCave_EventScript_Zapdos::
 # 67 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
 	special StartRegiBattle
 # 68 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
-	waitstate
-# 69 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+# 69 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
+	specialvar VAR_RESULT, GetBattleOutcome
 # 70 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
-# 71 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, FortreeCliffsZapdosCave_EventScript_DefeatedZapdos
-# 72 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
+# 71 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, FortreeCliffsZapdosCave_EventScript_RanFromZapdos
-# 73 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
+# 72 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, FortreeCliffsZapdosCave_EventScript_RanFromZapdos
-# 74 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
+# 73 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
 	setflag FLAG_CAUGHT_ZAPDOS
+# 74 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
+	release
 # 75 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
-	release
+	end
 # 76 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
-	end
+
 # 77 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
-
-# 78 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
 FortreeCliffsZapdosCave_EventScript_TryRemoveZapdos::
-# 79 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
+# 78 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
 	specialvar VAR_RESULT, GetBattleOutcome
-# 80 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
+# 79 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
 	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
-# 81 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
+# 80 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
 	removeobject VAR_LAST_TALKED
-# 82 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
+# 81 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
 	return
+# 82 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
+
 # 83 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
-
-# 84 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
 FortreeCliffsZapdosCave_EventScript_DefeatedZapdos::
-# 85 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
+# 84 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
 	setflag FLAG_DEFEATED_ZAPDOS
-# 86 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
+# 85 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
+# 86 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
+	release
 # 87 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
-	release
-# 88 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
 	end
-# 89 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
+# 88 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
 
-# 90 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
+# 89 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
 FortreeCliffsZapdosCave_EventScript_RanFromZapdos::
-# 91 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
+# 90 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
 	setvar VAR_0x8004, SPECIES_ZAPDOS
-# 92 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
+# 91 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
 	goto Common_EventScript_LegendaryFlewAway
-# 93 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
+# 92 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
 	release
-# 94 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
+# 93 "data//maps/FortreeCliffsZapdosCave/scripts.pory"
 	end

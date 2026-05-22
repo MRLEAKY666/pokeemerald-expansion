@@ -418,7 +418,6 @@ script CrateredCrest_EventScript_Haxorus{
 	setwildbattle(SPECIES_HAXORUS, 60)
 	setflag(FLAG_SYS_CTRL_OBJ_DELETE)
 	special(StartRegiBattle)
-	waitstate
 	clearflag(FLAG_SYS_CTRL_OBJ_DELETE)
 	endwildbossmon
     setflag(FLAG_DEFEATED_CRATERED_CREST_HAXORUS)

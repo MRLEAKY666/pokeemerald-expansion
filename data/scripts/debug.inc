@@ -238,7 +238,6 @@ Debug_EventScript_Text_VoltorbFlipLost:
 Debug_EventScript_Script_2::
 	lock
 	special SaveGame
-	waitstate
 	release
 	end
 
@@ -256,7 +255,6 @@ Debug_EventScript_Script_5::
 	lock
 	call SootopolisCity_EventScript_SetupRayquazaVsLegendsBattle
 	special StartSootopolisLegendaryBattle
-	waitstate
 	call SootopolisCity_EventScript_ClearRayquazaVsLegendsBattle
 	release
 	end
