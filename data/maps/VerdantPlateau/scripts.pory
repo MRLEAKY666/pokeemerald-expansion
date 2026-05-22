@@ -65,6 +65,7 @@ VerdantPlateau_OnFrame:
 	.2byte 0
 
 VerdantPlateau_EventScript_SwitchToDaytime::
+	@ goto VerdantPlateau_EventScript_SwitchToDaytimeNew
 	@ setflag FLAG_FORCE_LOAD_OFFSCREEN_OBJEV
 	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNormal
 	waitmovement LOCALID_TEAMLEADER
@@ -77,6 +78,7 @@ VerdantPlateau_EventScript_SwitchToDaytime::
 	end
 
 VerdantPlateau_EventScript_SwitchToNighttime::
+	@ warpcontinuescript MAP_VERDANT_PLATEAU, 49, 4, VerdantPlateau_EventScript_SwitchToNighttimeNew
 	@ setflag FLAG_FORCE_LOAD_OFFSCREEN_OBJEV
 	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNormal
 	waitmovement LOCALID_TEAMLEADER
@@ -88,10 +90,82 @@ VerdantPlateau_EventScript_SwitchToNighttime::
 	releaseall
 	end
 
-VerdantPlateau_EventScript_TeamLeader::
+`
+
+script VerdantPlateau_EventScript_SwitchToDaytimeNew{
+	lock
+	fadescreenswapbuffers(FADE_TO_BLACK)
+	waitbuttonpress
+	delay(10)
+
+	getplayerxy(VAR_TEMP_E, VAR_TEMP_F)
+	special(SpawnCameraObject)
+	setobjectxy(OBJ_EVENT_ID_CAMERA, 49, 4)
+	special(DrawWholeMapView)
+
+	fadescreenswapbuffers(FADE_FROM_BLACK)
+
+	waitbuttonpress
+
+	fadescreenswapbuffers(FADE_TO_BLACK)
+	waitbuttonpress
+	delay(10)
+
+	setobjectxy(OBJ_EVENT_ID_CAMERA, VAR_TEMP_E, VAR_TEMP_F)
+	special(DrawWholeMapView)
+	special(RemoveCameraObject)
+	removeobject(LOCALID_TEAMLEADER)
+	setflag(FLAG_HIDE_PLATEAU_LEADER)
+	addvar(VAR_TIME_OF_DAY, 1)
+
+	fadescreenswapbuffers(FADE_FROM_BLACK)
+	call(VerdantPlateau_EventScript_SetSun)
+	releaseall
+	end
+}
+
+script VerdantPlateau_EventScript_SwitchToNighttimeNew{
+	waitstate
+	applymovement(LOCALID_PLAYER, Common_Movement_SetInvisible)
+	//waitmovement
+	//special(SpawnCameraObject)
+	//setobjectxy(OBJ_EVENT_ID_CAMERA, 49, 4)
+	fadescreenswapbuffers(FADE_FROM_BLACK)
+
+	//special(DrawWholeMapView)
+	waitbuttonpress
+
+	applymovement(LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNormal)
+	waitmovement
+
+	waitbuttonpress
+
+	fadescreenswapbuffers(FADE_TO_BLACK)
+	//waitbuttonpress
+	delay(10)
+
+	applymovement(LOCALID_PLAYER, Common_Movement_SetVisible)
+	waitmovement
+	setobjectxy(LOCALID_PLAYER, VAR_TEMP_E, VAR_TEMP_F)
+	//setobjectxy(OBJ_EVENT_ID_CAMERA, VAR_TEMP_E, VAR_TEMP_F)
+	//special(DrawWholeMapView)
+	//special(RemoveCameraObject)
+	removeobject(LOCALID_TEAMLEADER)
+	setflag(FLAG_HIDE_PLATEAU_LEADER)
+	addvar(VAR_TIME_OF_DAY, 1)
+
+	fadescreenswapbuffers(FADE_FROM_BLACK)
+	call(VerdantPlateau_EventScript_ClearSun)
+	releaseall
+	end
+}
+
+raw`
+
+VerdantPlateau_EventScript_TeamLeaderX::
 	setflag FLAG_PLATEAU_LEADER_EVENT
-	goto_if_eq VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_MAXIE, VerdantPlateau_EventScript_Maxie
-	goto_if_eq VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_ARCHIE, VerdantPlateau_EventScript_Archie
+	@goto_if_eq VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_MAXIE, VerdantPlateau_EventScript_Maxie
+	@goto_if_eq VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_ARCHIE, VerdantPlateau_EventScript_Archie
 	end
 
 VerdantPlateau_EventScript_Maxie::
@@ -186,44 +260,133 @@ VerdantPlateau_EventScript_MaxieLeavesNorth::
 	@ setflag FLAG_HIDE_PLATEAU_LEADER
 	return
 
-VerdantPlateau_EventScript_Archie::
+`
+
+script VerdantPlateau_EventScript_TeamLeader{
 	lock
-	faceplayer
-	msgbox VerdantPlateau_Text_Archie, MSGBOX_DEFAULT
+	applymovement(LOCALID_TEAMLEADER, Common_Movement_ExclamationMark)
+	playse(SE_PIN)
+	waitse
+	switch(var(VAR_FACING)){
+		case DIR_NORTH: applymovement(LOCALID_TEAMLEADER, Common_Movement_FaceDown)
+		case DIR_SOUTH: applymovement(LOCALID_TEAMLEADER, Common_Movement_FaceUp)
+		case DIR_EAST: applymovement(LOCALID_TEAMLEADER, Common_Movement_FaceLeft)
+		case DIR_WEST: applymovement(LOCALID_TEAMLEADER, Common_Movement_FaceRight)
+	}
+	waitmovement
+	if (var(VAR_OBJ_GFX_ID_0) == OBJ_EVENT_GFX_ARCHIE){
+	msgbox(format("Oh?\pLook at that…{PAUSE 20}\nanother trainer all the way up here!"), MSGBOX_DEFAULT)
+	}
+	else{
+		msgbox(VerdantPlateau_Text_Maxie, MSGBOX_DEFAULT)
+	}
 	closemessage
-	switch VAR_FACING
-	case DIR_WEST, VerdantPlateau_EventScript_ArchieLeavesWest
-	case DIR_NORTH, VerdantPlateau_EventScript_ArchieLeavesNorth
-	case DIR_EAST, VerdantPlateau_EventScript_ArchieLeavesEast
+	applymovement(LOCALID_TEAMLEADER, Common_Movement_FaceUp)
+	waitmovement(LOCALID_TEAMLEADER)
+	delay(60)
+	if (var(VAR_OBJ_GFX_ID_0) == OBJ_EVENT_GFX_ARCHIE){
+	msgbox(format("Gaze out on the vast expanse of wilderness that is central HOENN…\p"
+					"Observe the great MT. CHIMNEY that created it looming over the horizon…\p"
+					"It's certainly impressive, but it's also frightening."), MSGBOX_DEFAULT) 
+	}
+	else{
+		msgbox(VerdantPlateau_Text_Maxie2, MSGBOX_DEFAULT)
+	}
+	closemessage
+	delay(60)
+	if (var(VAR_OBJ_GFX_ID_0) == OBJ_EVENT_GFX_ARCHIE){
+	msgbox(format("It's right to be frightened.\p"
+					"The fire in that mountain paved the way for human life…\p"
+					"Lives that we've used to build our own monuments of fire;\p"
+					"our wasteful technologies that ooze over the earth like lava in our quest for expansion…"), MSGBOX_DEFAULT)
+	}
+	else{
+		msgbox(VerdantPlateau_Text_Maxie3, MSGBOX_DEFAULT)
+	}				
+	closemessage
+	delay(30)
+	faceplayer
+	waitmovement(LOCALID_TEAMLEADER)
+	if (var(VAR_OBJ_GFX_ID_0) == OBJ_EVENT_GFX_ARCHIE){
+		msgbox(format("But imagine…{PAUSE 20}{PAUSE 20}{PAUSE 20}\nImagine if it could all be washed away.\pImagine the vast sea\nof possibility…{PAUSE 20} …{PAUSE 20} …{PAUSE 20} …{PAUSE 20} …{PAUSE 20}"), MSGBOX_DEFAULT)
+	}
+	else{
+		msgbox(VerdantPlateau_Text_Maxie4, MSGBOX_DEFAULT)
+	}
+	closemessage
+	//setflag(FLAG_HIDE_PLATEAU_LEADER)
+	switch(var(VAR_FACING)){
+		case DIR_WEST: 
+			applymovement(LOCALID_TEAMLEADER, Common_Movement_FaceUp)
+			waitmovement(LOCALID_TEAMLEADER)
+			delay(60)
+			applymovement(LOCALID_TEAMLEADER, Common_Movement_FaceLeft)
+			waitmovement(LOCALID_TEAMLEADER)
+			delay(60)
+			applymovement(LOCALID_TEAMLEADER, Common_Movement_WalkInPlaceRight)
+		case DIR_NORTH: 
+			applymovement(LOCALID_TEAMLEADER, Common_Movement_FaceUp)
+			waitmovement(LOCALID_TEAMLEADER)
+			delay(60)
+			applymovement(LOCALID_TEAMLEADER, Common_Movement_FaceLeft)
+			waitmovement(LOCALID_TEAMLEADER)
+			delay(60)
+			applymovement(LOCALID_TEAMLEADER, Common_Movement_FaceRight)
+			waitmovement(LOCALID_TEAMLEADER)
+			delay(60)
+			applymovement(LOCALID_TEAMLEADER, Common_Movement_WalkInPlaceDown)
+		case DIR_EAST: 
+			applymovement(LOCALID_TEAMLEADER, Common_Movement_FaceUp)
+			waitmovement(LOCALID_TEAMLEADER)
+			delay(60)
+			applymovement(LOCALID_TEAMLEADER, Common_Movement_FaceRight)
+			waitmovement(LOCALID_TEAMLEADER)
+			delay(60)
+			applymovement(LOCALID_TEAMLEADER, Common_Movement_WalkInPlaceLeft)
+	}
+	waitmovement(LOCALID_TEAMLEADER)
+	if (var(VAR_OBJ_GFX_ID_0) == OBJ_EVENT_GFX_ARCHIE){
+		msgbox(format("Ah shoot,\nbut I got lost in my thoughts!\pI need to get going.\nThanks for listening to my rambling, kid.\p"
+						"You can have this as a parting gift."), MSGBOX_DEFAULT)
+	}
+	else{
+		msgbox(VerdantPlateau_Text_Maxie5, MSGBOX_DEFAULT)
+	}					
+	closemessage
+	switch(var(VAR_FACING)){
+		case DIR_NORTH: applymovement(LOCALID_TEAMLEADER, Common_Movement_WalkInPlaceDown)
+		case DIR_SOUTH: applymovement(LOCALID_TEAMLEADER, Common_Movement_WalkInPlaceUp)
+		case DIR_EAST: applymovement(LOCALID_TEAMLEADER, Common_Movement_WalkInPlaceLeft)
+		case DIR_WEST: applymovement(LOCALID_TEAMLEADER, Common_Movement_WalkInPlaceRight)
+	}
+	waitmovement
+	if (var(VAR_OBJ_GFX_ID_0) == OBJ_EVENT_GFX_ARCHIE){
+		giveitem(ITEM_MOON_STONE, 1)
+	}
+	else{
+		giveitem(ITEM_SUN_STONE, 1)
+	}
+	goto_if_eq(VAR_RESULT, 0, Common_EventScript_BagIsFull)
+	if (var(VAR_OBJ_GFX_ID_0) == OBJ_EVENT_GFX_ARCHIE){
+		msgbox(format("Maybe I'll see you around again out there!\pBut look alive, kid;\nthings are about to get interesting!"), MSGBOX_DEFAULT)
+	}
+	else{
+		msgbox(VerdantPlateau_Text_Maxie6, MSGBOX_DEFAULT)
+	}
+	closemessage
+	switch(var(VAR_FACING)){
+		case DIR_NORTH: applymovement(LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNorth)
+		case DIR_SOUTH: applymovement(LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNorth)
+		case DIR_EAST: applymovement(LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNormal)
+		case DIR_WEST: applymovement(LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNormal)
+	}
+	waitmovement(LOCALID_TEAMLEADER)
+	removeobject(LOCALID_TEAMLEADER)
 	release
 	end
+}
 
-VerdantPlateau_EventScript_ArchieLeavesWest::
-	giveitem ITEM_MOON_STONE, 1
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_BagIsFull
-	closemessage
-	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNormal
-	waitmovement LOCALID_TEAMLEADER
-	removeobject LOCALID_TEAMLEADER
-	return
-
-VerdantPlateau_EventScript_ArchieLeavesEast::
-	giveitem ITEM_MOON_STONE, 1
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_BagIsFull
-	closemessage
-	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNormal
-	waitmovement LOCALID_TEAMLEADER
-	removeobject LOCALID_TEAMLEADER
-	return
-
-VerdantPlateau_EventScript_ArchieLeavesNorth::
-	giveitem ITEM_MOON_STONE, 1
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_BagIsFull
-	closemessage
-	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNorth
-	waitmovement LOCALID_TEAMLEADER
-	removeobject LOCALID_TEAMLEADER
-	return
+raw`
 
 VerdantPlateau_Movement_LeaderLeavesNormal:
 	walk_down
@@ -238,6 +401,8 @@ VerdantPlateau_Movement_LeaderLeavesNormal:
 	walk_down
 	walk_down
 	walk_down
+	walk_down
+	walk_down
 	delay_8
 	step_end
 
@@ -245,6 +410,8 @@ VerdantPlateau_Movement_LeaderLeavesNorth:
 	walk_left
 	walk_left
 	walk_left
+	walk_down
+	walk_down
 	walk_down
 	walk_down
 	walk_down

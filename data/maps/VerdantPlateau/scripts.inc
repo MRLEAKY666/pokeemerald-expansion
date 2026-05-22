@@ -133,295 +133,242 @@ VerdantPlateau_OnFrame:
 # 67 "data//maps/VerdantPlateau/scripts.pory"
 VerdantPlateau_EventScript_SwitchToDaytime::
 # 68 "data//maps/VerdantPlateau/scripts.pory"
-	@ setflag FLAG_FORCE_LOAD_OFFSCREEN_OBJEV
+	@ goto VerdantPlateau_EventScript_SwitchToDaytimeNew
 # 69 "data//maps/VerdantPlateau/scripts.pory"
-	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNormal
-# 70 "data//maps/VerdantPlateau/scripts.pory"
-	waitmovement LOCALID_TEAMLEADER
-# 71 "data//maps/VerdantPlateau/scripts.pory"
-	removeobject LOCALID_TEAMLEADER
-# 72 "data//maps/VerdantPlateau/scripts.pory"
-	setflag FLAG_HIDE_PLATEAU_LEADER
-# 73 "data//maps/VerdantPlateau/scripts.pory"
-	addvar VAR_TIME_OF_DAY, 1
-# 74 "data//maps/VerdantPlateau/scripts.pory"
-	call VerdantPlateau_EventScript_SetSun
-# 75 "data//maps/VerdantPlateau/scripts.pory"
-	@ clearflag FLAG_FORCE_LOAD_OFFSCREEN_OBJEV
-# 76 "data//maps/VerdantPlateau/scripts.pory"
-	releaseall
-# 77 "data//maps/VerdantPlateau/scripts.pory"
-	end
-# 78 "data//maps/VerdantPlateau/scripts.pory"
-
-# 79 "data//maps/VerdantPlateau/scripts.pory"
-VerdantPlateau_EventScript_SwitchToNighttime::
-# 80 "data//maps/VerdantPlateau/scripts.pory"
 	@ setflag FLAG_FORCE_LOAD_OFFSCREEN_OBJEV
-# 81 "data//maps/VerdantPlateau/scripts.pory"
+# 70 "data//maps/VerdantPlateau/scripts.pory"
 	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNormal
-# 82 "data//maps/VerdantPlateau/scripts.pory"
+# 71 "data//maps/VerdantPlateau/scripts.pory"
 	waitmovement LOCALID_TEAMLEADER
-# 83 "data//maps/VerdantPlateau/scripts.pory"
+# 72 "data//maps/VerdantPlateau/scripts.pory"
 	removeobject LOCALID_TEAMLEADER
-# 84 "data//maps/VerdantPlateau/scripts.pory"
+# 73 "data//maps/VerdantPlateau/scripts.pory"
 	setflag FLAG_HIDE_PLATEAU_LEADER
-# 85 "data//maps/VerdantPlateau/scripts.pory"
+# 74 "data//maps/VerdantPlateau/scripts.pory"
 	addvar VAR_TIME_OF_DAY, 1
-# 86 "data//maps/VerdantPlateau/scripts.pory"
-	call VerdantPlateau_EventScript_ClearSun
-# 87 "data//maps/VerdantPlateau/scripts.pory"
+# 75 "data//maps/VerdantPlateau/scripts.pory"
+	call VerdantPlateau_EventScript_SetSun
+# 76 "data//maps/VerdantPlateau/scripts.pory"
 	@ clearflag FLAG_FORCE_LOAD_OFFSCREEN_OBJEV
-# 88 "data//maps/VerdantPlateau/scripts.pory"
+# 77 "data//maps/VerdantPlateau/scripts.pory"
 	releaseall
+# 78 "data//maps/VerdantPlateau/scripts.pory"
+	end
+# 79 "data//maps/VerdantPlateau/scripts.pory"
+
+# 80 "data//maps/VerdantPlateau/scripts.pory"
+VerdantPlateau_EventScript_SwitchToNighttime::
+# 81 "data//maps/VerdantPlateau/scripts.pory"
+	@ warpcontinuescript MAP_VERDANT_PLATEAU, 49, 4, VerdantPlateau_EventScript_SwitchToNighttimeNew
+# 82 "data//maps/VerdantPlateau/scripts.pory"
+	@ setflag FLAG_FORCE_LOAD_OFFSCREEN_OBJEV
+# 83 "data//maps/VerdantPlateau/scripts.pory"
+	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNormal
+# 84 "data//maps/VerdantPlateau/scripts.pory"
+	waitmovement LOCALID_TEAMLEADER
+# 85 "data//maps/VerdantPlateau/scripts.pory"
+	removeobject LOCALID_TEAMLEADER
+# 86 "data//maps/VerdantPlateau/scripts.pory"
+	setflag FLAG_HIDE_PLATEAU_LEADER
+# 87 "data//maps/VerdantPlateau/scripts.pory"
+	addvar VAR_TIME_OF_DAY, 1
+# 88 "data//maps/VerdantPlateau/scripts.pory"
+	call VerdantPlateau_EventScript_ClearSun
 # 89 "data//maps/VerdantPlateau/scripts.pory"
-	end
+	@ clearflag FLAG_FORCE_LOAD_OFFSCREEN_OBJEV
 # 90 "data//maps/VerdantPlateau/scripts.pory"
-
+	releaseall
 # 91 "data//maps/VerdantPlateau/scripts.pory"
-VerdantPlateau_EventScript_TeamLeader::
-# 92 "data//maps/VerdantPlateau/scripts.pory"
-	setflag FLAG_PLATEAU_LEADER_EVENT
-# 93 "data//maps/VerdantPlateau/scripts.pory"
-	goto_if_eq VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_MAXIE, VerdantPlateau_EventScript_Maxie
-# 94 "data//maps/VerdantPlateau/scripts.pory"
-	goto_if_eq VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_ARCHIE, VerdantPlateau_EventScript_Archie
-# 95 "data//maps/VerdantPlateau/scripts.pory"
 	end
+
+VerdantPlateau_EventScript_SwitchToDaytimeNew::
 # 96 "data//maps/VerdantPlateau/scripts.pory"
-
-# 97 "data//maps/VerdantPlateau/scripts.pory"
-VerdantPlateau_EventScript_Maxie::
-# 98 "data//maps/VerdantPlateau/scripts.pory"
 	lock
+# 97 "data//maps/VerdantPlateau/scripts.pory"
+	fadescreenswapbuffers FADE_TO_BLACK
+# 98 "data//maps/VerdantPlateau/scripts.pory"
+	waitbuttonpress
 # 99 "data//maps/VerdantPlateau/scripts.pory"
-	applymovement LOCALID_TEAMLEADER, Common_Movement_ExclamationMark
-# 100 "data//maps/VerdantPlateau/scripts.pory"
-	playse SE_PIN
+	delay 10
 # 101 "data//maps/VerdantPlateau/scripts.pory"
-	waitse
+	getplayerxy VAR_TEMP_E, VAR_TEMP_F
 # 102 "data//maps/VerdantPlateau/scripts.pory"
-	faceplayer
+	special SpawnCameraObject
 # 103 "data//maps/VerdantPlateau/scripts.pory"
-	msgbox VerdantPlateau_Text_Maxie, MSGBOX_DEFAULT
+	setobjectxy OBJ_EVENT_ID_CAMERA, 49, 4
 # 104 "data//maps/VerdantPlateau/scripts.pory"
-	closemessage
-# 105 "data//maps/VerdantPlateau/scripts.pory"
-	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceUp
+	special DrawWholeMapView
 # 106 "data//maps/VerdantPlateau/scripts.pory"
-	waitmovement LOCALID_TEAMLEADER
-# 107 "data//maps/VerdantPlateau/scripts.pory"
-	delay 60
+	fadescreenswapbuffers FADE_FROM_BLACK
 # 108 "data//maps/VerdantPlateau/scripts.pory"
-	msgbox VerdantPlateau_Text_Maxie2, MSGBOX_DEFAULT 
-# 109 "data//maps/VerdantPlateau/scripts.pory"
-	closemessage
+	waitbuttonpress
 # 110 "data//maps/VerdantPlateau/scripts.pory"
-	delay 60
+	fadescreenswapbuffers FADE_TO_BLACK
 # 111 "data//maps/VerdantPlateau/scripts.pory"
-	msgbox VerdantPlateau_Text_Maxie3, MSGBOX_DEFAULT
+	waitbuttonpress
 # 112 "data//maps/VerdantPlateau/scripts.pory"
-	closemessage
-# 113 "data//maps/VerdantPlateau/scripts.pory"
-	delay 30
+	delay 10
 # 114 "data//maps/VerdantPlateau/scripts.pory"
-	faceplayer
+	setobjectxy OBJ_EVENT_ID_CAMERA, VAR_TEMP_E, VAR_TEMP_F
 # 115 "data//maps/VerdantPlateau/scripts.pory"
-	waitmovement LOCALID_TEAMLEADER
+	special DrawWholeMapView
 # 116 "data//maps/VerdantPlateau/scripts.pory"
-	msgbox VerdantPlateau_Text_Maxie4, MSGBOX_DEFAULT
+	special RemoveCameraObject
 # 117 "data//maps/VerdantPlateau/scripts.pory"
-	closemessage
+	removeobject LOCALID_TEAMLEADER
 # 118 "data//maps/VerdantPlateau/scripts.pory"
-	@ setflag FLAG_HIDE_PLATEAU_LEADER
+	setflag FLAG_HIDE_PLATEAU_LEADER
 # 119 "data//maps/VerdantPlateau/scripts.pory"
-	switch VAR_FACING
-# 120 "data//maps/VerdantPlateau/scripts.pory"
-	case DIR_WEST, VerdantPlateau_EventScript_MaxieLeavesWest
+	addvar VAR_TIME_OF_DAY, 1
 # 121 "data//maps/VerdantPlateau/scripts.pory"
-	case DIR_NORTH, VerdantPlateau_EventScript_MaxieLeavesNorth
+	fadescreenswapbuffers FADE_FROM_BLACK
 # 122 "data//maps/VerdantPlateau/scripts.pory"
-	case DIR_EAST, VerdantPlateau_EventScript_MaxieLeavesEast
+	call VerdantPlateau_EventScript_SetSun
 # 123 "data//maps/VerdantPlateau/scripts.pory"
-	release
-# 124 "data//maps/VerdantPlateau/scripts.pory"
+	releaseall
 	end
-# 125 "data//maps/VerdantPlateau/scripts.pory"
 
-# 126 "data//maps/VerdantPlateau/scripts.pory"
-VerdantPlateau_EventScript_MaxieLeavesWest::
-# 127 "data//maps/VerdantPlateau/scripts.pory"
-	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceUp
+
+VerdantPlateau_EventScript_SwitchToNighttimeNew::
 # 128 "data//maps/VerdantPlateau/scripts.pory"
-	waitmovement LOCALID_TEAMLEADER
+	waitstate
 # 129 "data//maps/VerdantPlateau/scripts.pory"
-	delay 60
-# 130 "data//maps/VerdantPlateau/scripts.pory"
-	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceLeft
-# 131 "data//maps/VerdantPlateau/scripts.pory"
-	waitmovement LOCALID_TEAMLEADER
-# 132 "data//maps/VerdantPlateau/scripts.pory"
-	delay 60
+	applymovement LOCALID_PLAYER, Common_Movement_SetInvisible
 # 133 "data//maps/VerdantPlateau/scripts.pory"
-	faceplayer
-# 134 "data//maps/VerdantPlateau/scripts.pory"
-	waitmovement LOCALID_TEAMLEADER
-# 135 "data//maps/VerdantPlateau/scripts.pory"
-	msgbox VerdantPlateau_Text_Maxie5, MSGBOX_DEFAULT
+	fadescreenswapbuffers FADE_FROM_BLACK
 # 136 "data//maps/VerdantPlateau/scripts.pory"
-	giveitem ITEM_SUN_STONE, 1
-# 137 "data//maps/VerdantPlateau/scripts.pory"
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_BagIsFull
+	waitbuttonpress
 # 138 "data//maps/VerdantPlateau/scripts.pory"
-	msgbox VerdantPlateau_Text_Maxie6, MSGBOX_DEFAULT
+	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNormal
 # 139 "data//maps/VerdantPlateau/scripts.pory"
-	closemessage
-# 140 "data//maps/VerdantPlateau/scripts.pory"
-	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNormal
+	waitmovement
 # 141 "data//maps/VerdantPlateau/scripts.pory"
-	waitmovement LOCALID_TEAMLEADER
-# 142 "data//maps/VerdantPlateau/scripts.pory"
-	removeobject LOCALID_TEAMLEADER
+	waitbuttonpress
 # 143 "data//maps/VerdantPlateau/scripts.pory"
-	@ setflag FLAG_HIDE_PLATEAU_LEADER
-# 144 "data//maps/VerdantPlateau/scripts.pory"
-	return
+	fadescreenswapbuffers FADE_TO_BLACK
 # 145 "data//maps/VerdantPlateau/scripts.pory"
-
-# 146 "data//maps/VerdantPlateau/scripts.pory"
-VerdantPlateau_EventScript_MaxieLeavesEast::
+	delay 10
 # 147 "data//maps/VerdantPlateau/scripts.pory"
-	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceUp
+	applymovement LOCALID_PLAYER, Common_Movement_SetVisible
 # 148 "data//maps/VerdantPlateau/scripts.pory"
-	waitmovement LOCALID_TEAMLEADER
+	waitmovement
 # 149 "data//maps/VerdantPlateau/scripts.pory"
-	delay 60
-# 150 "data//maps/VerdantPlateau/scripts.pory"
-	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceRight
-# 151 "data//maps/VerdantPlateau/scripts.pory"
-	waitmovement LOCALID_TEAMLEADER
-# 152 "data//maps/VerdantPlateau/scripts.pory"
-	delay 60
+	setobjectxy LOCALID_PLAYER, VAR_TEMP_E, VAR_TEMP_F
 # 153 "data//maps/VerdantPlateau/scripts.pory"
-	faceplayer
-# 154 "data//maps/VerdantPlateau/scripts.pory"
-	waitmovement LOCALID_TEAMLEADER
-# 155 "data//maps/VerdantPlateau/scripts.pory"
-	msgbox VerdantPlateau_Text_Maxie5, MSGBOX_DEFAULT
-# 156 "data//maps/VerdantPlateau/scripts.pory"
-	giveitem ITEM_SUN_STONE, 1
-# 157 "data//maps/VerdantPlateau/scripts.pory"
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_BagIsFull
-# 158 "data//maps/VerdantPlateau/scripts.pory"
-	msgbox VerdantPlateau_Text_Maxie6, MSGBOX_DEFAULT
-# 159 "data//maps/VerdantPlateau/scripts.pory"
-	closemessage
-# 160 "data//maps/VerdantPlateau/scripts.pory"
-	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNormal
-# 161 "data//maps/VerdantPlateau/scripts.pory"
-	waitmovement LOCALID_TEAMLEADER
-# 162 "data//maps/VerdantPlateau/scripts.pory"
 	removeobject LOCALID_TEAMLEADER
-# 163 "data//maps/VerdantPlateau/scripts.pory"
-	@ setflag FLAG_HIDE_PLATEAU_LEADER
-# 164 "data//maps/VerdantPlateau/scripts.pory"
-	return
-# 165 "data//maps/VerdantPlateau/scripts.pory"
+# 154 "data//maps/VerdantPlateau/scripts.pory"
+	setflag FLAG_HIDE_PLATEAU_LEADER
+# 155 "data//maps/VerdantPlateau/scripts.pory"
+	addvar VAR_TIME_OF_DAY, 1
+# 157 "data//maps/VerdantPlateau/scripts.pory"
+	fadescreenswapbuffers FADE_FROM_BLACK
+# 158 "data//maps/VerdantPlateau/scripts.pory"
+	call VerdantPlateau_EventScript_ClearSun
+# 159 "data//maps/VerdantPlateau/scripts.pory"
+	releaseall
+	end
 
+
+# 163 "data//maps/VerdantPlateau/scripts.pory"
+
+# 164 "data//maps/VerdantPlateau/scripts.pory"
+
+# 165 "data//maps/VerdantPlateau/scripts.pory"
+VerdantPlateau_EventScript_TeamLeaderX::
 # 166 "data//maps/VerdantPlateau/scripts.pory"
-VerdantPlateau_EventScript_MaxieLeavesNorth::
+	setflag FLAG_PLATEAU_LEADER_EVENT
 # 167 "data//maps/VerdantPlateau/scripts.pory"
-	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceUp
+	@goto_if_eq VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_MAXIE, VerdantPlateau_EventScript_Maxie
 # 168 "data//maps/VerdantPlateau/scripts.pory"
-	waitmovement LOCALID_TEAMLEADER
+	@goto_if_eq VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_ARCHIE, VerdantPlateau_EventScript_Archie
 # 169 "data//maps/VerdantPlateau/scripts.pory"
-	delay 60
+	end
 # 170 "data//maps/VerdantPlateau/scripts.pory"
-	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceLeft
+
 # 171 "data//maps/VerdantPlateau/scripts.pory"
-	waitmovement LOCALID_TEAMLEADER
+VerdantPlateau_EventScript_Maxie::
 # 172 "data//maps/VerdantPlateau/scripts.pory"
-	delay 60
+	lock
 # 173 "data//maps/VerdantPlateau/scripts.pory"
-	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceRight
+	applymovement LOCALID_TEAMLEADER, Common_Movement_ExclamationMark
 # 174 "data//maps/VerdantPlateau/scripts.pory"
-	waitmovement LOCALID_TEAMLEADER
+	playse SE_PIN
 # 175 "data//maps/VerdantPlateau/scripts.pory"
-	delay 60
+	waitse
 # 176 "data//maps/VerdantPlateau/scripts.pory"
 	faceplayer
 # 177 "data//maps/VerdantPlateau/scripts.pory"
-	waitmovement LOCALID_TEAMLEADER
+	msgbox VerdantPlateau_Text_Maxie, MSGBOX_DEFAULT
 # 178 "data//maps/VerdantPlateau/scripts.pory"
-	msgbox VerdantPlateau_Text_Maxie5, MSGBOX_DEFAULT
+	closemessage
 # 179 "data//maps/VerdantPlateau/scripts.pory"
-	giveitem ITEM_SUN_STONE, 1
+	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceUp
 # 180 "data//maps/VerdantPlateau/scripts.pory"
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_BagIsFull
+	waitmovement LOCALID_TEAMLEADER
 # 181 "data//maps/VerdantPlateau/scripts.pory"
-	msgbox VerdantPlateau_Text_Maxie6, MSGBOX_DEFAULT
+	delay 60
 # 182 "data//maps/VerdantPlateau/scripts.pory"
-	closemessage
+	msgbox VerdantPlateau_Text_Maxie2, MSGBOX_DEFAULT 
 # 183 "data//maps/VerdantPlateau/scripts.pory"
-	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNorth
+	closemessage
 # 184 "data//maps/VerdantPlateau/scripts.pory"
-	waitmovement LOCALID_TEAMLEADER
+	delay 60
 # 185 "data//maps/VerdantPlateau/scripts.pory"
-	removeobject LOCALID_TEAMLEADER
+	msgbox VerdantPlateau_Text_Maxie3, MSGBOX_DEFAULT
 # 186 "data//maps/VerdantPlateau/scripts.pory"
-	@ setflag FLAG_HIDE_PLATEAU_LEADER
+	closemessage
 # 187 "data//maps/VerdantPlateau/scripts.pory"
-	return
+	delay 30
 # 188 "data//maps/VerdantPlateau/scripts.pory"
-
-# 189 "data//maps/VerdantPlateau/scripts.pory"
-VerdantPlateau_EventScript_Archie::
-# 190 "data//maps/VerdantPlateau/scripts.pory"
-	lock
-# 191 "data//maps/VerdantPlateau/scripts.pory"
 	faceplayer
-# 192 "data//maps/VerdantPlateau/scripts.pory"
-	msgbox VerdantPlateau_Text_Archie, MSGBOX_DEFAULT
-# 193 "data//maps/VerdantPlateau/scripts.pory"
-	closemessage
-# 194 "data//maps/VerdantPlateau/scripts.pory"
-	switch VAR_FACING
-# 195 "data//maps/VerdantPlateau/scripts.pory"
-	case DIR_WEST, VerdantPlateau_EventScript_ArchieLeavesWest
-# 196 "data//maps/VerdantPlateau/scripts.pory"
-	case DIR_NORTH, VerdantPlateau_EventScript_ArchieLeavesNorth
-# 197 "data//maps/VerdantPlateau/scripts.pory"
-	case DIR_EAST, VerdantPlateau_EventScript_ArchieLeavesEast
-# 198 "data//maps/VerdantPlateau/scripts.pory"
-	release
-# 199 "data//maps/VerdantPlateau/scripts.pory"
-	end
-# 200 "data//maps/VerdantPlateau/scripts.pory"
-
-# 201 "data//maps/VerdantPlateau/scripts.pory"
-VerdantPlateau_EventScript_ArchieLeavesWest::
-# 202 "data//maps/VerdantPlateau/scripts.pory"
-	giveitem ITEM_MOON_STONE, 1
-# 203 "data//maps/VerdantPlateau/scripts.pory"
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_BagIsFull
-# 204 "data//maps/VerdantPlateau/scripts.pory"
-	closemessage
-# 205 "data//maps/VerdantPlateau/scripts.pory"
-	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNormal
-# 206 "data//maps/VerdantPlateau/scripts.pory"
+# 189 "data//maps/VerdantPlateau/scripts.pory"
 	waitmovement LOCALID_TEAMLEADER
-# 207 "data//maps/VerdantPlateau/scripts.pory"
-	removeobject LOCALID_TEAMLEADER
-# 208 "data//maps/VerdantPlateau/scripts.pory"
-	return
-# 209 "data//maps/VerdantPlateau/scripts.pory"
+# 190 "data//maps/VerdantPlateau/scripts.pory"
+	msgbox VerdantPlateau_Text_Maxie4, MSGBOX_DEFAULT
+# 191 "data//maps/VerdantPlateau/scripts.pory"
+	closemessage
+# 192 "data//maps/VerdantPlateau/scripts.pory"
+	@ setflag FLAG_HIDE_PLATEAU_LEADER
+# 193 "data//maps/VerdantPlateau/scripts.pory"
+	switch VAR_FACING
+# 194 "data//maps/VerdantPlateau/scripts.pory"
+	case DIR_WEST, VerdantPlateau_EventScript_MaxieLeavesWest
+# 195 "data//maps/VerdantPlateau/scripts.pory"
+	case DIR_NORTH, VerdantPlateau_EventScript_MaxieLeavesNorth
+# 196 "data//maps/VerdantPlateau/scripts.pory"
+	case DIR_EAST, VerdantPlateau_EventScript_MaxieLeavesEast
+# 197 "data//maps/VerdantPlateau/scripts.pory"
+	release
+# 198 "data//maps/VerdantPlateau/scripts.pory"
+	end
+# 199 "data//maps/VerdantPlateau/scripts.pory"
 
+# 200 "data//maps/VerdantPlateau/scripts.pory"
+VerdantPlateau_EventScript_MaxieLeavesWest::
+# 201 "data//maps/VerdantPlateau/scripts.pory"
+	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceUp
+# 202 "data//maps/VerdantPlateau/scripts.pory"
+	waitmovement LOCALID_TEAMLEADER
+# 203 "data//maps/VerdantPlateau/scripts.pory"
+	delay 60
+# 204 "data//maps/VerdantPlateau/scripts.pory"
+	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceLeft
+# 205 "data//maps/VerdantPlateau/scripts.pory"
+	waitmovement LOCALID_TEAMLEADER
+# 206 "data//maps/VerdantPlateau/scripts.pory"
+	delay 60
+# 207 "data//maps/VerdantPlateau/scripts.pory"
+	faceplayer
+# 208 "data//maps/VerdantPlateau/scripts.pory"
+	waitmovement LOCALID_TEAMLEADER
+# 209 "data//maps/VerdantPlateau/scripts.pory"
+	msgbox VerdantPlateau_Text_Maxie5, MSGBOX_DEFAULT
 # 210 "data//maps/VerdantPlateau/scripts.pory"
-VerdantPlateau_EventScript_ArchieLeavesEast::
+	giveitem ITEM_SUN_STONE, 1
 # 211 "data//maps/VerdantPlateau/scripts.pory"
-	giveitem ITEM_MOON_STONE, 1
-# 212 "data//maps/VerdantPlateau/scripts.pory"
 	goto_if_eq VAR_RESULT, 0, Common_EventScript_BagIsFull
+# 212 "data//maps/VerdantPlateau/scripts.pory"
+	msgbox VerdantPlateau_Text_Maxie6, MSGBOX_DEFAULT
 # 213 "data//maps/VerdantPlateau/scripts.pory"
 	closemessage
 # 214 "data//maps/VerdantPlateau/scripts.pory"
@@ -431,162 +378,579 @@ VerdantPlateau_EventScript_ArchieLeavesEast::
 # 216 "data//maps/VerdantPlateau/scripts.pory"
 	removeobject LOCALID_TEAMLEADER
 # 217 "data//maps/VerdantPlateau/scripts.pory"
-	return
+	@ setflag FLAG_HIDE_PLATEAU_LEADER
 # 218 "data//maps/VerdantPlateau/scripts.pory"
-
-# 219 "data//maps/VerdantPlateau/scripts.pory"
-VerdantPlateau_EventScript_ArchieLeavesNorth::
-# 220 "data//maps/VerdantPlateau/scripts.pory"
-	giveitem ITEM_MOON_STONE, 1
-# 221 "data//maps/VerdantPlateau/scripts.pory"
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_BagIsFull
-# 222 "data//maps/VerdantPlateau/scripts.pory"
-	closemessage
-# 223 "data//maps/VerdantPlateau/scripts.pory"
-	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNorth
-# 224 "data//maps/VerdantPlateau/scripts.pory"
-	waitmovement LOCALID_TEAMLEADER
-# 225 "data//maps/VerdantPlateau/scripts.pory"
-	removeobject LOCALID_TEAMLEADER
-# 226 "data//maps/VerdantPlateau/scripts.pory"
 	return
+# 219 "data//maps/VerdantPlateau/scripts.pory"
+
+# 220 "data//maps/VerdantPlateau/scripts.pory"
+VerdantPlateau_EventScript_MaxieLeavesEast::
+# 221 "data//maps/VerdantPlateau/scripts.pory"
+	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceUp
+# 222 "data//maps/VerdantPlateau/scripts.pory"
+	waitmovement LOCALID_TEAMLEADER
+# 223 "data//maps/VerdantPlateau/scripts.pory"
+	delay 60
+# 224 "data//maps/VerdantPlateau/scripts.pory"
+	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceRight
+# 225 "data//maps/VerdantPlateau/scripts.pory"
+	waitmovement LOCALID_TEAMLEADER
+# 226 "data//maps/VerdantPlateau/scripts.pory"
+	delay 60
 # 227 "data//maps/VerdantPlateau/scripts.pory"
-
+	faceplayer
 # 228 "data//maps/VerdantPlateau/scripts.pory"
-VerdantPlateau_Movement_LeaderLeavesNormal:
+	waitmovement LOCALID_TEAMLEADER
 # 229 "data//maps/VerdantPlateau/scripts.pory"
-	walk_down
+	msgbox VerdantPlateau_Text_Maxie5, MSGBOX_DEFAULT
 # 230 "data//maps/VerdantPlateau/scripts.pory"
-	walk_down
+	giveitem ITEM_SUN_STONE, 1
 # 231 "data//maps/VerdantPlateau/scripts.pory"
-	walk_down
+	goto_if_eq VAR_RESULT, 0, Common_EventScript_BagIsFull
 # 232 "data//maps/VerdantPlateau/scripts.pory"
-	walk_left
+	msgbox VerdantPlateau_Text_Maxie6, MSGBOX_DEFAULT
 # 233 "data//maps/VerdantPlateau/scripts.pory"
-	walk_left
+	closemessage
 # 234 "data//maps/VerdantPlateau/scripts.pory"
-	walk_left
+	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNormal
 # 235 "data//maps/VerdantPlateau/scripts.pory"
-	walk_down
+	waitmovement LOCALID_TEAMLEADER
 # 236 "data//maps/VerdantPlateau/scripts.pory"
-	walk_down
+	removeobject LOCALID_TEAMLEADER
 # 237 "data//maps/VerdantPlateau/scripts.pory"
-	walk_down
+	@ setflag FLAG_HIDE_PLATEAU_LEADER
 # 238 "data//maps/VerdantPlateau/scripts.pory"
-	walk_down
+	return
 # 239 "data//maps/VerdantPlateau/scripts.pory"
-	walk_down
+
 # 240 "data//maps/VerdantPlateau/scripts.pory"
-	walk_down
+VerdantPlateau_EventScript_MaxieLeavesNorth::
 # 241 "data//maps/VerdantPlateau/scripts.pory"
-	delay_8
+	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceUp
 # 242 "data//maps/VerdantPlateau/scripts.pory"
-	step_end
+	waitmovement LOCALID_TEAMLEADER
 # 243 "data//maps/VerdantPlateau/scripts.pory"
-
+	delay 60
 # 244 "data//maps/VerdantPlateau/scripts.pory"
-VerdantPlateau_Movement_LeaderLeavesNorth:
+	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceLeft
 # 245 "data//maps/VerdantPlateau/scripts.pory"
-	walk_left
+	waitmovement LOCALID_TEAMLEADER
 # 246 "data//maps/VerdantPlateau/scripts.pory"
-	walk_left
+	delay 60
 # 247 "data//maps/VerdantPlateau/scripts.pory"
-	walk_left
+	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceRight
 # 248 "data//maps/VerdantPlateau/scripts.pory"
-	walk_down
+	waitmovement LOCALID_TEAMLEADER
 # 249 "data//maps/VerdantPlateau/scripts.pory"
-	walk_down
+	delay 60
 # 250 "data//maps/VerdantPlateau/scripts.pory"
-	walk_down
+	faceplayer
 # 251 "data//maps/VerdantPlateau/scripts.pory"
-	walk_down
+	waitmovement LOCALID_TEAMLEADER
 # 252 "data//maps/VerdantPlateau/scripts.pory"
-	walk_down
+	msgbox VerdantPlateau_Text_Maxie5, MSGBOX_DEFAULT
 # 253 "data//maps/VerdantPlateau/scripts.pory"
-	walk_down
+	giveitem ITEM_SUN_STONE, 1
 # 254 "data//maps/VerdantPlateau/scripts.pory"
-	walk_down
+	goto_if_eq VAR_RESULT, 0, Common_EventScript_BagIsFull
 # 255 "data//maps/VerdantPlateau/scripts.pory"
-	walk_down
+	msgbox VerdantPlateau_Text_Maxie6, MSGBOX_DEFAULT
 # 256 "data//maps/VerdantPlateau/scripts.pory"
-	walk_down
+	closemessage
 # 257 "data//maps/VerdantPlateau/scripts.pory"
-	delay_8
+	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNorth
 # 258 "data//maps/VerdantPlateau/scripts.pory"
-	step_end
+	waitmovement LOCALID_TEAMLEADER
 # 259 "data//maps/VerdantPlateau/scripts.pory"
-
+	removeobject LOCALID_TEAMLEADER
 # 260 "data//maps/VerdantPlateau/scripts.pory"
-VerdantPlateau_Text_Maxie:
+	@ setflag FLAG_HIDE_PLATEAU_LEADER
 # 261 "data//maps/VerdantPlateau/scripts.pory"
-	.string "Hm?\p"
-# 262 "data//maps/VerdantPlateau/scripts.pory"
-	.string "My apologies, it's unusual to run into\n"
-# 263 "data//maps/VerdantPlateau/scripts.pory"
-	.string "another trainer up here.$"
-# 264 "data//maps/VerdantPlateau/scripts.pory"
+	return
 
-# 265 "data//maps/VerdantPlateau/scripts.pory"
-VerdantPlateau_Text_Maxie2:
+VerdantPlateau_EventScript_TeamLeader::
 # 266 "data//maps/VerdantPlateau/scripts.pory"
-	.string "From up here there is such a clear view\n"
+	lock
 # 267 "data//maps/VerdantPlateau/scripts.pory"
-	.string "of the land extending all around us…\p"
+	applymovement LOCALID_TEAMLEADER, Common_Movement_ExclamationMark
 # 268 "data//maps/VerdantPlateau/scripts.pory"
-	.string "And the way the sunlight seems to burn\n"
+	playse SE_PIN
 # 269 "data//maps/VerdantPlateau/scripts.pory"
-	.string "so bright…$" 
+	waitse
 # 270 "data//maps/VerdantPlateau/scripts.pory"
-
+	switch VAR_FACING
 # 271 "data//maps/VerdantPlateau/scripts.pory"
-VerdantPlateau_Text_Maxie3:
+	case DIR_NORTH, VerdantPlateau_EventScript_TeamLeader_3
 # 272 "data//maps/VerdantPlateau/scripts.pory"
-	.string "Can you imagine an entire region as\n"
+	case DIR_SOUTH, VerdantPlateau_EventScript_TeamLeader_4
 # 273 "data//maps/VerdantPlateau/scripts.pory"
-	.string "beautiful as this plateau?\p"
+	case DIR_EAST, VerdantPlateau_EventScript_TeamLeader_5
 # 274 "data//maps/VerdantPlateau/scripts.pory"
-	.string "What if the whole world could be this\n"
-# 275 "data//maps/VerdantPlateau/scripts.pory"
-	.string "brilliant?$"
+	case DIR_WEST, VerdantPlateau_EventScript_TeamLeader_6
+VerdantPlateau_EventScript_TeamLeader_1:
 # 276 "data//maps/VerdantPlateau/scripts.pory"
-
+	waitmovement
 # 277 "data//maps/VerdantPlateau/scripts.pory"
-VerdantPlateau_Text_Maxie4:
-# 278 "data//maps/VerdantPlateau/scripts.pory"
-	.string "That's the type of world I want to see.$"
-# 279 "data//maps/VerdantPlateau/scripts.pory"
-
-# 280 "data//maps/VerdantPlateau/scripts.pory"
-VerdantPlateau_Text_Maxie5:
+	compare VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_ARCHIE
+	goto_if_eq VerdantPlateau_EventScript_TeamLeader_8
 # 281 "data//maps/VerdantPlateau/scripts.pory"
-	.string "And to that end, I must depart.\p"
-# 282 "data//maps/VerdantPlateau/scripts.pory"
-	.string "What was your name?\p"
+	msgbox VerdantPlateau_Text_Maxie, MSGBOX_DEFAULT
+VerdantPlateau_EventScript_TeamLeader_7:
 # 283 "data//maps/VerdantPlateau/scripts.pory"
-	.string "{PLAYER} is it?\p"
+	closemessage
 # 284 "data//maps/VerdantPlateau/scripts.pory"
-	.string "Well {PLAYER}, maybe we'll cross paths again\n"
+	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceUp
 # 285 "data//maps/VerdantPlateau/scripts.pory"
-	.string "someday.\p"
+	waitmovement LOCALID_TEAMLEADER
 # 286 "data//maps/VerdantPlateau/scripts.pory"
-	.string "I wonder if we'll be living in a new world\n"
+	delay 60
 # 287 "data//maps/VerdantPlateau/scripts.pory"
-	.string "when that time comes…\p"
-# 288 "data//maps/VerdantPlateau/scripts.pory"
-	.string "Thank you for listening, {PLAYER}.\n"
-# 289 "data//maps/VerdantPlateau/scripts.pory"
-	.string "Take this as a parting gift.$"
-# 290 "data//maps/VerdantPlateau/scripts.pory"
-
-# 291 "data//maps/VerdantPlateau/scripts.pory"
-VerdantPlateau_Text_Maxie6:
-# 292 "data//maps/VerdantPlateau/scripts.pory"
-	.string "Goodbye for now…$"
+	compare VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_ARCHIE
+	goto_if_eq VerdantPlateau_EventScript_TeamLeader_12
 # 293 "data//maps/VerdantPlateau/scripts.pory"
-
-# 294 "data//maps/VerdantPlateau/scripts.pory"
-VerdantPlateau_Text_Archie:
+	msgbox VerdantPlateau_Text_Maxie2, MSGBOX_DEFAULT
+VerdantPlateau_EventScript_TeamLeader_11:
 # 295 "data//maps/VerdantPlateau/scripts.pory"
-	.string "Talk to me again when I have my scripts\n"
+	closemessage
 # 296 "data//maps/VerdantPlateau/scripts.pory"
+	delay 60
+# 297 "data//maps/VerdantPlateau/scripts.pory"
+	compare VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_ARCHIE
+	goto_if_eq VerdantPlateau_EventScript_TeamLeader_16
+# 304 "data//maps/VerdantPlateau/scripts.pory"
+	msgbox VerdantPlateau_Text_Maxie3, MSGBOX_DEFAULT
+VerdantPlateau_EventScript_TeamLeader_15:
+# 306 "data//maps/VerdantPlateau/scripts.pory"
+	closemessage
+# 307 "data//maps/VerdantPlateau/scripts.pory"
+	delay 30
+# 308 "data//maps/VerdantPlateau/scripts.pory"
+	faceplayer
+# 309 "data//maps/VerdantPlateau/scripts.pory"
+	waitmovement LOCALID_TEAMLEADER
+# 310 "data//maps/VerdantPlateau/scripts.pory"
+	compare VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_ARCHIE
+	goto_if_eq VerdantPlateau_EventScript_TeamLeader_20
+# 314 "data//maps/VerdantPlateau/scripts.pory"
+	msgbox VerdantPlateau_Text_Maxie4, MSGBOX_DEFAULT
+VerdantPlateau_EventScript_TeamLeader_19:
+# 316 "data//maps/VerdantPlateau/scripts.pory"
+	closemessage
+# 318 "data//maps/VerdantPlateau/scripts.pory"
+	switch VAR_FACING
+# 319 "data//maps/VerdantPlateau/scripts.pory"
+	case DIR_WEST, VerdantPlateau_EventScript_TeamLeader_25
+# 327 "data//maps/VerdantPlateau/scripts.pory"
+	case DIR_NORTH, VerdantPlateau_EventScript_TeamLeader_26
+# 338 "data//maps/VerdantPlateau/scripts.pory"
+	case DIR_EAST, VerdantPlateau_EventScript_TeamLeader_27
+VerdantPlateau_EventScript_TeamLeader_23:
+# 347 "data//maps/VerdantPlateau/scripts.pory"
+	waitmovement LOCALID_TEAMLEADER
+# 348 "data//maps/VerdantPlateau/scripts.pory"
+	compare VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_ARCHIE
+	goto_if_eq VerdantPlateau_EventScript_TeamLeader_29
+# 353 "data//maps/VerdantPlateau/scripts.pory"
+	msgbox VerdantPlateau_Text_Maxie5, MSGBOX_DEFAULT
+VerdantPlateau_EventScript_TeamLeader_28:
+# 355 "data//maps/VerdantPlateau/scripts.pory"
+	closemessage
+# 356 "data//maps/VerdantPlateau/scripts.pory"
+	switch VAR_FACING
+# 357 "data//maps/VerdantPlateau/scripts.pory"
+	case DIR_NORTH, VerdantPlateau_EventScript_TeamLeader_34
+# 358 "data//maps/VerdantPlateau/scripts.pory"
+	case DIR_SOUTH, VerdantPlateau_EventScript_TeamLeader_35
+# 359 "data//maps/VerdantPlateau/scripts.pory"
+	case DIR_EAST, VerdantPlateau_EventScript_TeamLeader_36
+# 360 "data//maps/VerdantPlateau/scripts.pory"
+	case DIR_WEST, VerdantPlateau_EventScript_TeamLeader_37
+VerdantPlateau_EventScript_TeamLeader_32:
+# 362 "data//maps/VerdantPlateau/scripts.pory"
+	waitmovement
+# 363 "data//maps/VerdantPlateau/scripts.pory"
+	compare VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_ARCHIE
+	goto_if_eq VerdantPlateau_EventScript_TeamLeader_39
+# 367 "data//maps/VerdantPlateau/scripts.pory"
+	giveitem ITEM_SUN_STONE, 1
+VerdantPlateau_EventScript_TeamLeader_38:
+# 369 "data//maps/VerdantPlateau/scripts.pory"
+	goto_if_eq VAR_RESULT, 0, Common_EventScript_BagIsFull
+# 370 "data//maps/VerdantPlateau/scripts.pory"
+	compare VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_ARCHIE
+	goto_if_eq VerdantPlateau_EventScript_TeamLeader_43
+# 374 "data//maps/VerdantPlateau/scripts.pory"
+	msgbox VerdantPlateau_Text_Maxie6, MSGBOX_DEFAULT
+VerdantPlateau_EventScript_TeamLeader_42:
+# 376 "data//maps/VerdantPlateau/scripts.pory"
+	closemessage
+# 377 "data//maps/VerdantPlateau/scripts.pory"
+	switch VAR_FACING
+# 378 "data//maps/VerdantPlateau/scripts.pory"
+	case DIR_NORTH, VerdantPlateau_EventScript_TeamLeader_48
+# 379 "data//maps/VerdantPlateau/scripts.pory"
+	case DIR_SOUTH, VerdantPlateau_EventScript_TeamLeader_49
+# 380 "data//maps/VerdantPlateau/scripts.pory"
+	case DIR_EAST, VerdantPlateau_EventScript_TeamLeader_50
+# 381 "data//maps/VerdantPlateau/scripts.pory"
+	case DIR_WEST, VerdantPlateau_EventScript_TeamLeader_51
+VerdantPlateau_EventScript_TeamLeader_46:
+# 383 "data//maps/VerdantPlateau/scripts.pory"
+	waitmovement LOCALID_TEAMLEADER
+# 384 "data//maps/VerdantPlateau/scripts.pory"
+	removeobject LOCALID_TEAMLEADER
+# 385 "data//maps/VerdantPlateau/scripts.pory"
+	release
+	end
+
+VerdantPlateau_EventScript_TeamLeader_3:
+# 271 "data//maps/VerdantPlateau/scripts.pory"
+	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceDown
+	goto VerdantPlateau_EventScript_TeamLeader_1
+
+VerdantPlateau_EventScript_TeamLeader_4:
+# 272 "data//maps/VerdantPlateau/scripts.pory"
+	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceUp
+	goto VerdantPlateau_EventScript_TeamLeader_1
+
+VerdantPlateau_EventScript_TeamLeader_5:
+# 273 "data//maps/VerdantPlateau/scripts.pory"
+	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceLeft
+	goto VerdantPlateau_EventScript_TeamLeader_1
+
+VerdantPlateau_EventScript_TeamLeader_6:
+# 274 "data//maps/VerdantPlateau/scripts.pory"
+	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceRight
+	goto VerdantPlateau_EventScript_TeamLeader_1
+
+VerdantPlateau_EventScript_TeamLeader_8:
+# 278 "data//maps/VerdantPlateau/scripts.pory"
+	msgbox VerdantPlateau_EventScript_TeamLeader_Text_0, MSGBOX_DEFAULT
+	goto VerdantPlateau_EventScript_TeamLeader_7
+
+VerdantPlateau_EventScript_TeamLeader_12:
+# 288 "data//maps/VerdantPlateau/scripts.pory"
+	msgbox VerdantPlateau_EventScript_TeamLeader_Text_1, MSGBOX_DEFAULT
+	goto VerdantPlateau_EventScript_TeamLeader_11
+
+VerdantPlateau_EventScript_TeamLeader_16:
+# 298 "data//maps/VerdantPlateau/scripts.pory"
+	msgbox VerdantPlateau_EventScript_TeamLeader_Text_2, MSGBOX_DEFAULT
+	goto VerdantPlateau_EventScript_TeamLeader_15
+
+VerdantPlateau_EventScript_TeamLeader_20:
+# 311 "data//maps/VerdantPlateau/scripts.pory"
+	msgbox VerdantPlateau_EventScript_TeamLeader_Text_3, MSGBOX_DEFAULT
+	goto VerdantPlateau_EventScript_TeamLeader_19
+
+VerdantPlateau_EventScript_TeamLeader_25:
+# 320 "data//maps/VerdantPlateau/scripts.pory"
+	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceUp
+# 321 "data//maps/VerdantPlateau/scripts.pory"
+	waitmovement LOCALID_TEAMLEADER
+# 322 "data//maps/VerdantPlateau/scripts.pory"
+	delay 60
+# 323 "data//maps/VerdantPlateau/scripts.pory"
+	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceLeft
+# 324 "data//maps/VerdantPlateau/scripts.pory"
+	waitmovement LOCALID_TEAMLEADER
+# 325 "data//maps/VerdantPlateau/scripts.pory"
+	delay 60
+# 326 "data//maps/VerdantPlateau/scripts.pory"
+	applymovement LOCALID_TEAMLEADER, Common_Movement_WalkInPlaceRight
+	goto VerdantPlateau_EventScript_TeamLeader_23
+
+VerdantPlateau_EventScript_TeamLeader_26:
+# 328 "data//maps/VerdantPlateau/scripts.pory"
+	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceUp
+# 329 "data//maps/VerdantPlateau/scripts.pory"
+	waitmovement LOCALID_TEAMLEADER
+# 330 "data//maps/VerdantPlateau/scripts.pory"
+	delay 60
+# 331 "data//maps/VerdantPlateau/scripts.pory"
+	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceLeft
+# 332 "data//maps/VerdantPlateau/scripts.pory"
+	waitmovement LOCALID_TEAMLEADER
+# 333 "data//maps/VerdantPlateau/scripts.pory"
+	delay 60
+# 334 "data//maps/VerdantPlateau/scripts.pory"
+	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceRight
+# 335 "data//maps/VerdantPlateau/scripts.pory"
+	waitmovement LOCALID_TEAMLEADER
+# 336 "data//maps/VerdantPlateau/scripts.pory"
+	delay 60
+# 337 "data//maps/VerdantPlateau/scripts.pory"
+	applymovement LOCALID_TEAMLEADER, Common_Movement_WalkInPlaceDown
+	goto VerdantPlateau_EventScript_TeamLeader_23
+
+VerdantPlateau_EventScript_TeamLeader_27:
+# 339 "data//maps/VerdantPlateau/scripts.pory"
+	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceUp
+# 340 "data//maps/VerdantPlateau/scripts.pory"
+	waitmovement LOCALID_TEAMLEADER
+# 341 "data//maps/VerdantPlateau/scripts.pory"
+	delay 60
+# 342 "data//maps/VerdantPlateau/scripts.pory"
+	applymovement LOCALID_TEAMLEADER, Common_Movement_FaceRight
+# 343 "data//maps/VerdantPlateau/scripts.pory"
+	waitmovement LOCALID_TEAMLEADER
+# 344 "data//maps/VerdantPlateau/scripts.pory"
+	delay 60
+# 345 "data//maps/VerdantPlateau/scripts.pory"
+	applymovement LOCALID_TEAMLEADER, Common_Movement_WalkInPlaceLeft
+	goto VerdantPlateau_EventScript_TeamLeader_23
+
+VerdantPlateau_EventScript_TeamLeader_29:
+# 349 "data//maps/VerdantPlateau/scripts.pory"
+	msgbox VerdantPlateau_EventScript_TeamLeader_Text_4, MSGBOX_DEFAULT
+	goto VerdantPlateau_EventScript_TeamLeader_28
+
+VerdantPlateau_EventScript_TeamLeader_34:
+# 357 "data//maps/VerdantPlateau/scripts.pory"
+	applymovement LOCALID_TEAMLEADER, Common_Movement_WalkInPlaceDown
+	goto VerdantPlateau_EventScript_TeamLeader_32
+
+VerdantPlateau_EventScript_TeamLeader_35:
+# 358 "data//maps/VerdantPlateau/scripts.pory"
+	applymovement LOCALID_TEAMLEADER, Common_Movement_WalkInPlaceUp
+	goto VerdantPlateau_EventScript_TeamLeader_32
+
+VerdantPlateau_EventScript_TeamLeader_36:
+# 359 "data//maps/VerdantPlateau/scripts.pory"
+	applymovement LOCALID_TEAMLEADER, Common_Movement_WalkInPlaceLeft
+	goto VerdantPlateau_EventScript_TeamLeader_32
+
+VerdantPlateau_EventScript_TeamLeader_37:
+# 360 "data//maps/VerdantPlateau/scripts.pory"
+	applymovement LOCALID_TEAMLEADER, Common_Movement_WalkInPlaceRight
+	goto VerdantPlateau_EventScript_TeamLeader_32
+
+VerdantPlateau_EventScript_TeamLeader_39:
+# 364 "data//maps/VerdantPlateau/scripts.pory"
+	giveitem ITEM_MOON_STONE, 1
+	goto VerdantPlateau_EventScript_TeamLeader_38
+
+VerdantPlateau_EventScript_TeamLeader_43:
+# 371 "data//maps/VerdantPlateau/scripts.pory"
+	msgbox VerdantPlateau_EventScript_TeamLeader_Text_5, MSGBOX_DEFAULT
+	goto VerdantPlateau_EventScript_TeamLeader_42
+
+VerdantPlateau_EventScript_TeamLeader_48:
+# 378 "data//maps/VerdantPlateau/scripts.pory"
+	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNorth
+	goto VerdantPlateau_EventScript_TeamLeader_46
+
+VerdantPlateau_EventScript_TeamLeader_49:
+# 379 "data//maps/VerdantPlateau/scripts.pory"
+	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNorth
+	goto VerdantPlateau_EventScript_TeamLeader_46
+
+VerdantPlateau_EventScript_TeamLeader_50:
+# 380 "data//maps/VerdantPlateau/scripts.pory"
+	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNormal
+	goto VerdantPlateau_EventScript_TeamLeader_46
+
+VerdantPlateau_EventScript_TeamLeader_51:
+# 381 "data//maps/VerdantPlateau/scripts.pory"
+	applymovement LOCALID_TEAMLEADER, VerdantPlateau_Movement_LeaderLeavesNormal
+	goto VerdantPlateau_EventScript_TeamLeader_46
+
+
+# 389 "data//maps/VerdantPlateau/scripts.pory"
+
+# 390 "data//maps/VerdantPlateau/scripts.pory"
+
+# 391 "data//maps/VerdantPlateau/scripts.pory"
+VerdantPlateau_Movement_LeaderLeavesNormal:
+# 392 "data//maps/VerdantPlateau/scripts.pory"
+	walk_down
+# 393 "data//maps/VerdantPlateau/scripts.pory"
+	walk_down
+# 394 "data//maps/VerdantPlateau/scripts.pory"
+	walk_down
+# 395 "data//maps/VerdantPlateau/scripts.pory"
+	walk_left
+# 396 "data//maps/VerdantPlateau/scripts.pory"
+	walk_left
+# 397 "data//maps/VerdantPlateau/scripts.pory"
+	walk_left
+# 398 "data//maps/VerdantPlateau/scripts.pory"
+	walk_down
+# 399 "data//maps/VerdantPlateau/scripts.pory"
+	walk_down
+# 400 "data//maps/VerdantPlateau/scripts.pory"
+	walk_down
+# 401 "data//maps/VerdantPlateau/scripts.pory"
+	walk_down
+# 402 "data//maps/VerdantPlateau/scripts.pory"
+	walk_down
+# 403 "data//maps/VerdantPlateau/scripts.pory"
+	walk_down
+# 404 "data//maps/VerdantPlateau/scripts.pory"
+	walk_down
+# 405 "data//maps/VerdantPlateau/scripts.pory"
+	walk_down
+# 406 "data//maps/VerdantPlateau/scripts.pory"
+	delay_8
+# 407 "data//maps/VerdantPlateau/scripts.pory"
+	step_end
+# 408 "data//maps/VerdantPlateau/scripts.pory"
+
+# 409 "data//maps/VerdantPlateau/scripts.pory"
+VerdantPlateau_Movement_LeaderLeavesNorth:
+# 410 "data//maps/VerdantPlateau/scripts.pory"
+	walk_left
+# 411 "data//maps/VerdantPlateau/scripts.pory"
+	walk_left
+# 412 "data//maps/VerdantPlateau/scripts.pory"
+	walk_left
+# 413 "data//maps/VerdantPlateau/scripts.pory"
+	walk_down
+# 414 "data//maps/VerdantPlateau/scripts.pory"
+	walk_down
+# 415 "data//maps/VerdantPlateau/scripts.pory"
+	walk_down
+# 416 "data//maps/VerdantPlateau/scripts.pory"
+	walk_down
+# 417 "data//maps/VerdantPlateau/scripts.pory"
+	walk_down
+# 418 "data//maps/VerdantPlateau/scripts.pory"
+	walk_down
+# 419 "data//maps/VerdantPlateau/scripts.pory"
+	walk_down
+# 420 "data//maps/VerdantPlateau/scripts.pory"
+	walk_down
+# 421 "data//maps/VerdantPlateau/scripts.pory"
+	walk_down
+# 422 "data//maps/VerdantPlateau/scripts.pory"
+	walk_down
+# 423 "data//maps/VerdantPlateau/scripts.pory"
+	walk_down
+# 424 "data//maps/VerdantPlateau/scripts.pory"
+	delay_8
+# 425 "data//maps/VerdantPlateau/scripts.pory"
+	step_end
+# 426 "data//maps/VerdantPlateau/scripts.pory"
+
+# 427 "data//maps/VerdantPlateau/scripts.pory"
+VerdantPlateau_Text_Maxie:
+# 428 "data//maps/VerdantPlateau/scripts.pory"
+	.string "Hm?\p"
+# 429 "data//maps/VerdantPlateau/scripts.pory"
+	.string "My apologies, it's unusual to run into\n"
+# 430 "data//maps/VerdantPlateau/scripts.pory"
+	.string "another trainer up here.$"
+# 431 "data//maps/VerdantPlateau/scripts.pory"
+
+# 432 "data//maps/VerdantPlateau/scripts.pory"
+VerdantPlateau_Text_Maxie2:
+# 433 "data//maps/VerdantPlateau/scripts.pory"
+	.string "From up here there is such a clear view\n"
+# 434 "data//maps/VerdantPlateau/scripts.pory"
+	.string "of the land extending all around us…\p"
+# 435 "data//maps/VerdantPlateau/scripts.pory"
+	.string "And the way the sunlight seems to burn\n"
+# 436 "data//maps/VerdantPlateau/scripts.pory"
+	.string "so bright…$" 
+# 437 "data//maps/VerdantPlateau/scripts.pory"
+
+# 438 "data//maps/VerdantPlateau/scripts.pory"
+VerdantPlateau_Text_Maxie3:
+# 439 "data//maps/VerdantPlateau/scripts.pory"
+	.string "Can you imagine an entire region as\n"
+# 440 "data//maps/VerdantPlateau/scripts.pory"
+	.string "beautiful as this plateau?\p"
+# 441 "data//maps/VerdantPlateau/scripts.pory"
+	.string "What if the whole world could be this\n"
+# 442 "data//maps/VerdantPlateau/scripts.pory"
+	.string "brilliant?$"
+# 443 "data//maps/VerdantPlateau/scripts.pory"
+
+# 444 "data//maps/VerdantPlateau/scripts.pory"
+VerdantPlateau_Text_Maxie4:
+# 445 "data//maps/VerdantPlateau/scripts.pory"
+	.string "That's the type of world I want to see.$"
+# 446 "data//maps/VerdantPlateau/scripts.pory"
+
+# 447 "data//maps/VerdantPlateau/scripts.pory"
+VerdantPlateau_Text_Maxie5:
+# 448 "data//maps/VerdantPlateau/scripts.pory"
+	.string "And to that end, I must depart.\p"
+# 449 "data//maps/VerdantPlateau/scripts.pory"
+	.string "What was your name?\p"
+# 450 "data//maps/VerdantPlateau/scripts.pory"
+	.string "{PLAYER} is it?\p"
+# 451 "data//maps/VerdantPlateau/scripts.pory"
+	.string "Well {PLAYER}, maybe we'll cross paths again\n"
+# 452 "data//maps/VerdantPlateau/scripts.pory"
+	.string "someday.\p"
+# 453 "data//maps/VerdantPlateau/scripts.pory"
+	.string "I wonder if we'll be living in a new world\n"
+# 454 "data//maps/VerdantPlateau/scripts.pory"
+	.string "when that time comes…\p"
+# 455 "data//maps/VerdantPlateau/scripts.pory"
+	.string "Thank you for listening, {PLAYER}.\n"
+# 456 "data//maps/VerdantPlateau/scripts.pory"
+	.string "Take this as a parting gift.$"
+# 457 "data//maps/VerdantPlateau/scripts.pory"
+
+# 458 "data//maps/VerdantPlateau/scripts.pory"
+VerdantPlateau_Text_Maxie6:
+# 459 "data//maps/VerdantPlateau/scripts.pory"
+	.string "Goodbye for now…$"
+# 460 "data//maps/VerdantPlateau/scripts.pory"
+
+# 461 "data//maps/VerdantPlateau/scripts.pory"
+VerdantPlateau_Text_Archie:
+# 462 "data//maps/VerdantPlateau/scripts.pory"
+	.string "Talk to me again when I have my scripts\n"
+# 463 "data//maps/VerdantPlateau/scripts.pory"
 	.string "written!$"
+
+VerdantPlateau_EventScript_TeamLeader_Text_0:
+# 278 "data//maps/VerdantPlateau/scripts.pory"
+	.string "Oh?\p"
+	.string "Look at that…{PAUSE 20}\n"
+	.string "another trainer all the way up here!$"
+
+VerdantPlateau_EventScript_TeamLeader_Text_1:
+# 288 "data//maps/VerdantPlateau/scripts.pory"
+	.string "Gaze out on the vast expanse of\n"
+	.string "wilderness that is central HOENN…\p"
+	.string "Observe the great MT. CHIMNEY that\n"
+	.string "created it looming over the horizon…\p"
+	.string "It's certainly impressive, but it's also\n"
+	.string "frightening.$"
+
+VerdantPlateau_EventScript_TeamLeader_Text_2:
+# 298 "data//maps/VerdantPlateau/scripts.pory"
+	.string "It's right to be frightened.\p"
+	.string "The fire in that mountain paved the way\n"
+	.string "for human life…\p"
+	.string "Lives that we've used to build our own\n"
+	.string "monuments of fire;\p"
+	.string "our wasteful technologies that ooze\n"
+	.string "over the earth like lava in our quest\l"
+	.string "for expansion…$"
+
+VerdantPlateau_EventScript_TeamLeader_Text_3:
+# 311 "data//maps/VerdantPlateau/scripts.pory"
+	.string "But imagine…{PAUSE 20}{PAUSE 20}{PAUSE 20}\n"
+	.string "Imagine if it could all be washed away.\p"
+	.string "Imagine the vast sea\n"
+	.string "of possibility…{PAUSE 20} …{PAUSE 20} …{PAUSE 20} …{PAUSE 20} …{PAUSE 20}$"
+
+VerdantPlateau_EventScript_TeamLeader_Text_4:
+# 349 "data//maps/VerdantPlateau/scripts.pory"
+	.string "Ah shoot,\n"
+	.string "but I got lost in my thoughts!\p"
+	.string "I need to get going.\n"
+	.string "Thanks for listening to my rambling, kid.\p"
+	.string "You can have this as a parting gift.$"
+
+VerdantPlateau_EventScript_TeamLeader_Text_5:
+# 371 "data//maps/VerdantPlateau/scripts.pory"
+	.string "Maybe I'll see you around again out\n"
+	.string "there!\p"
+	.string "But look alive, kid;\n"
+	.string "things are about to get interesting!$"
