@@ -8428,7 +8428,7 @@ static void FieldCallback_RockClimb(void)
 void DeleteMonFromParty(void)
 {
     u8 position = VarGet(VAR_0x8004);
-    ZeroMonData(&gParties[B_TRAINER_0][position]);
+    ZeroMonData(&gParties[B_TRAINER_PLAYER][position]);
     CompactPartySlots();
     CalculatePlayerPartyCount();
 }
@@ -8437,7 +8437,7 @@ void SendPartyMonToFirstPCSlot(void)
 {
     u8 position = gSpecialVar_0x8004;
     s32 boxNo, boxPos;
-    struct Pokemon *mon = &gParties[B_TRAINER_0][position];
+    struct Pokemon *mon = &gParties[B_TRAINER_PLAYER][position];
 
     VarSet(VAR_TEMP_TRANSFERRED_SPECIES, GetMonData(mon, MON_DATA_SPECIES));
 
@@ -8460,7 +8460,7 @@ void SendPartyMonToFirstPCSlot(void)
                     FlagClear(FLAG_SHOWN_BOX_WAS_FULL_MESSAGE);
                 VarSet(VAR_PC_BOX_TO_SEND_MON, boxNo);
                 gSpecialVar_Result = MON_GIVEN_TO_PC;
-                ZeroMonData(&gParties[B_TRAINER_0][position]);
+                ZeroMonData(&gParties[B_TRAINER_PLAYER][position]);
                 CompactPartySlots();
                 CalculatePlayerPartyCount();
                 return;
@@ -8499,7 +8499,7 @@ static const u16 sShadyCandies[] =
 void CreateCandyFromPartyMon(void)
 {
     u8 position = VarGet(VAR_0x8004);
-    u32 currExp = GetMonData(&gParties[B_TRAINER_0][position], MON_DATA_EXP);
+    u32 currExp = GetMonData(&gParties[B_TRAINER_PLAYER][position], MON_DATA_EXP);
     u8 expSize;
 
     if (currExp > 30000){
@@ -8529,26 +8529,26 @@ void CreateCandyFromPartyMon(void)
     {
     case 0:
         u32 data;
-        if (GetMonData(&gParties[B_TRAINER_0][position], MON_DATA_LEVEL) > 1){
+        if (GetMonData(&gParties[B_TRAINER_PLAYER][position], MON_DATA_LEVEL) > 1){
             item = ITEM_RARE_CANDY;
-            maxQuantity = GetMonData(&gParties[B_TRAINER_0][position], MON_DATA_LEVEL) - 1;
+            maxQuantity = GetMonData(&gParties[B_TRAINER_PLAYER][position], MON_DATA_LEVEL) - 1;
             givenQuantity = (Random() % maxQuantity) + 1;
-            data = GetMonData(&gParties[B_TRAINER_0][position], MON_DATA_LEVEL) - givenQuantity; // data == resulting level
-            SetMonData(&gParties[B_TRAINER_0][position], MON_DATA_LEVEL, &data);
+            data = GetMonData(&gParties[B_TRAINER_PLAYER][position], MON_DATA_LEVEL) - givenQuantity; // data == resulting level
+            SetMonData(&gParties[B_TRAINER_PLAYER][position], MON_DATA_LEVEL, &data);
 
-            finalExp = gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_0][position], MON_DATA_SPECIES)].growthRate][data];
+            finalExp = gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_PLAYER][position], MON_DATA_SPECIES)].growthRate][data];
             if (givenQuantity == maxQuantity 
-                 && GetMonData(&gParties[B_TRAINER_0][position], MON_DATA_DEAD) == FALSE
+                 && GetMonData(&gParties[B_TRAINER_PLAYER][position], MON_DATA_DEAD) == FALSE
                  && Random() % 2){ // if level is reduced to 1 and mon isn't already dead, chance to randomly kill
                 item = ITEM_REVIVE;
                 data = TRUE; 
-                SetMonData(&gParties[B_TRAINER_0][position], MON_DATA_DEAD, &data);
+                SetMonData(&gParties[B_TRAINER_PLAYER][position], MON_DATA_DEAD, &data);
                 data = 0; 
-                SetMonData(&gParties[B_TRAINER_0][position], MON_DATA_HP, &data);
+                SetMonData(&gParties[B_TRAINER_PLAYER][position], MON_DATA_HP, &data);
             }
         }
         else {
-            finalExp = GetMonData(&gParties[B_TRAINER_0][position], MON_DATA_EXP);
+            finalExp = GetMonData(&gParties[B_TRAINER_PLAYER][position], MON_DATA_EXP);
             item = ITEM_NONE;
         }
         break;
@@ -8589,19 +8589,19 @@ void CreateCandyFromPartyMon(void)
 
     VarSet(VAR_TEMP_C, item);
     VarSet(VAR_TEMP_D, givenQuantity);
-    SetMonData(&gParties[B_TRAINER_0][position], MON_DATA_EXP, &finalExp);
-    CalculateMonStats(&gParties[B_TRAINER_0][position]);
+    SetMonData(&gParties[B_TRAINER_PLAYER][position], MON_DATA_EXP, &finalExp);
+    CalculateMonStats(&gParties[B_TRAINER_PLAYER][position]);
 }
 
 void CreateVitaminFromPartyMon(void)
 {
     u8 position = VarGet(VAR_0x8004);
-    u16 hpEv = GetMonData(&gParties[B_TRAINER_0][position], MON_DATA_HP_EV);
-    u16 atkEv = GetMonData(&gParties[B_TRAINER_0][position], MON_DATA_ATK_EV);
-    u16 defEv = GetMonData(&gParties[B_TRAINER_0][position], MON_DATA_DEF_EV);
-    u16 spAtkEv = GetMonData(&gParties[B_TRAINER_0][position], MON_DATA_SPATK_EV);
-    u16 spDefEv = GetMonData(&gParties[B_TRAINER_0][position], MON_DATA_SPDEF_EV);
-    u16 speEv = GetMonData(&gParties[B_TRAINER_0][position], MON_DATA_SPEED_EV);
+    u16 hpEv = GetMonData(&gParties[B_TRAINER_PLAYER][position], MON_DATA_HP_EV);
+    u16 atkEv = GetMonData(&gParties[B_TRAINER_PLAYER][position], MON_DATA_ATK_EV);
+    u16 defEv = GetMonData(&gParties[B_TRAINER_PLAYER][position], MON_DATA_DEF_EV);
+    u16 spAtkEv = GetMonData(&gParties[B_TRAINER_PLAYER][position], MON_DATA_SPATK_EV);
+    u16 spDefEv = GetMonData(&gParties[B_TRAINER_PLAYER][position], MON_DATA_SPDEF_EV);
+    u16 speEv = GetMonData(&gParties[B_TRAINER_PLAYER][position], MON_DATA_SPEED_EV);
 
     u16 sEvTotals[] = 
     {
@@ -8648,7 +8648,7 @@ void CreateVitaminFromPartyMon(void)
         }
     }
 
-    u16 numVitamins = GetMonData(&gParties[B_TRAINER_0][position], mostEvStat) / 10;
+    u16 numVitamins = GetMonData(&gParties[B_TRAINER_PLAYER][position], mostEvStat) / 10;
     u16 vitaminType = ITEM_PP_MAX;
     switch (mostEvStat)
     {
@@ -8675,12 +8675,12 @@ void CreateVitaminFromPartyMon(void)
         break;
     }
 
-    u16 finalEvValue = GetMonData(&gParties[B_TRAINER_0][position], mostEvStat) - (numVitamins * 10);
+    u16 finalEvValue = GetMonData(&gParties[B_TRAINER_PLAYER][position], mostEvStat) - (numVitamins * 10);
 
     VarSet(VAR_TEMP_C, vitaminType);
     VarSet(VAR_TEMP_D, numVitamins);
-    SetMonData(&gParties[B_TRAINER_0][position], mostEvStat, &finalEvValue);
-    CalculateMonStats(&gParties[B_TRAINER_0][position]);
+    SetMonData(&gParties[B_TRAINER_PLAYER][position], mostEvStat, &finalEvValue);
+    CalculateMonStats(&gParties[B_TRAINER_PLAYER][position]);
 }
 
 static void GetPartyAndSlotFromPartyMenuId(s8 menuId, struct Pokemon **party, s8 *partySlot)

@@ -20,7 +20,6 @@
 
 static void UpdatePerDay(struct Time *localTime);
 static void UpdatePerMinute(struct Time *localTime);
-static void UpdateDailySeed(void);
 
 void InitTimeBasedEvents(void)
 {
@@ -28,7 +27,6 @@ void InitTimeBasedEvents(void)
     RtcCalcLocalTime();
     gSaveBlock2Ptr->lastBerryTreeUpdate = gLocalTime;
     VarSet(VAR_DAYS, gLocalTime.days);
-    UpdateDailySeed();
 }
 
 void DoTimeBasedEvents(void)

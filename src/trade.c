@@ -5316,7 +5316,7 @@ static void CreateRoamingTraderPokemonInternal(u8 whichPlayerMon, u8 whichInGame
     struct Mail mail;
     metloc_u8_t metLocation = METLOC_IN_GAME_TRADE;
     u8 mailNum;
-    struct Pokemon *pokemon = &gParties[B_TRAINER_1][0];
+    struct Pokemon *pokemon = &gParties[B_TRAINER_OPPONENT_A][0];
     
     enum Species species = gSpecialVar_0x8007;
     enum PokeBall ball = BALL_RANDOM;
@@ -5376,7 +5376,7 @@ static void CreateRoamingTraderPokemonInternal(u8 whichPlayerMon, u8 whichInGame
             SetMonData(pokemon, MON_DATA_HELD_ITEM, &inGameTrade->heldItem);
         }
     }
-    CalculateMonStats(&gParties[B_TRAINER_1][0]);
+    CalculateMonStats(&gParties[B_TRAINER_OPPONENT_A][0]);
 }
 
 void CreateRoamingTraderPokemon(void)

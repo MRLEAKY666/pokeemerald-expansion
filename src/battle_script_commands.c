@@ -3749,7 +3749,7 @@ static void Cmd_dofaintanimation(void)
         else // permadeath on faint when battle type is none of the above
         {
             bool8 dead = TRUE;
-            SetMonData(&gParties[B_TRAINER_0][gBattlerPartyIndexes[battler]], MON_DATA_DEAD, &dead);
+            SetMonData(&gParties[B_TRAINER_PLAYER][gBattlerPartyIndexes[battler]], MON_DATA_DEAD, &dead);
         }
     }
     else
