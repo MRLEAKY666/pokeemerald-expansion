@@ -243,6 +243,8 @@ Route101_EventScript_BirchsBag::
 	fadescreen FADE_TO_BLACK
 	removeobject LOCALID_ROUTE101_ZIGZAGOON
 	setobjectxy LOCALID_PLAYER, 6, 13
+	setobjectxy LOCALID_FOLLOWING_POKEMON, 6, 14
+	applymovement LOCALID_FOLLOWING_POKEMON, Common_Movement_FaceLeft
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	special ChooseStarter

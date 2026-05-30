@@ -191,6 +191,8 @@ OldaleTown_Movement_Unknown2:
 OldaleTown_EventScript_FootprintsMan::
 	lock
 	faceplayer
+	goto_if_eq VAR_BEAST_SPECIES, SPECIES_HO_OH, OldaleTown_EventScript_NotBlockingPath2
+	goto_if_eq VAR_BEAST_SPECIES, SPECIES_NONE, OldaleTown_EventScript_NotBlockingPath2
 	goto_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_NotBlockingPath
 	msgbox OldaleTown_Text_DiscoveredFootprints, MSGBOX_DEFAULT
 	closemessage
@@ -212,7 +214,13 @@ OldaleTown_EventScript_BlockedPath::
 	end
 
 OldaleTown_EventScript_NotBlockingPath::
+	bufferspeciesname STR_VAR_2, VAR_BEAST_SPECIES
 	msgbox OldaleTown_Text_FinishedSketchingFootprints, MSGBOX_DEFAULT
+	release
+	end
+
+OldaleTown_EventScript_NotBlockingPath2::
+	msgbox OldaleTown_Text_FinishedSketchingFootprints2, MSGBOX_DEFAULT
 	release
 	end
 
@@ -381,8 +389,14 @@ OldaleTown_Text_DiscoveredFootprints:
 OldaleTown_Text_FinishedSketchingFootprints:
 	.string "I finished sketching the footprints of\n"
 	.string "a rare POKéMON.\p"
-	.string "But it turns out they were only my\n"
-	.string "own footprints…$"
+	.string "It turns out they belonged to the\n"
+	.string "POKéMON {STR_VAR_2}!$"
+
+OldaleTown_Text_FinishedSketchingFootprints2:
+	.string "I finished sketching the footprints of\n"
+	.string "a rare POKéMON.\p"
+	.string "Lot of rare POKéMON have been roaming\n"
+	.string "around HOENN lately!$"
 
 OldaleTown_Text_MayLetsGoBack:
 	.string "MAY: {PLAYER}{KUN}!\n"

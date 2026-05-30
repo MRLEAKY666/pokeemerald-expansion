@@ -5730,7 +5730,10 @@ static void FreeResetData_ReturnToOvOrDoEvolutions(void)
         gIsSurfingEncounter = FALSE;
         
         // added for birch aide2 premier balls
-        if ((VarGet(VAR_BIRCH_LAB_STATE) >= 5) && (!FlagGet(FLAG_BADGE01_GET)) && (gBattleOutcome == B_OUTCOME_CAUGHT)){
+        if ((VarGet(VAR_BIRCH_AIDE2_BALLS) >= 1) 
+             && (VarGet(VAR_BIRCH_LAB_STATE) >= 5) 
+             && (!FlagGet(FLAG_BADGE01_GET)) 
+             && (gBattleOutcome == B_OUTCOME_CAUGHT)){
             VarSet(VAR_BIRCH_AIDE2_BALLS, (VarGet(VAR_BIRCH_AIDE2_BALLS) + 1));
         }
         // added for birch aide2 premier balls

@@ -1761,7 +1761,7 @@
 #define FLAG_TEMP_NO_CATCHING                   FLAG_TEMP_C
 #define FLAG_TEMP_NO_RUNNING                    FLAG_TEMP_D
 #define FLAG_TEMP_SMART_WILD_AI                 FLAG_TEMP_F
-#define FLAG_PROGRESS_BASED_LEVEL_SCALING       FLAG_TEMP_19
+#define FLAG_PROGRESS_BASED_LEVEL_SCALING       FLAG_TEMP_8
 
 // FRLG flags
 
