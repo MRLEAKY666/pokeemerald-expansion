@@ -3432,6 +3432,19 @@ static void Task_BannedSpeciesWindowInput(u8 taskId)
     }
 }
 
+/* void SetPartyLevel(void)
+{
+    for (u32 i = 0; i < PARTY_SIZE; i++)
+    {
+        enum Species species = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_SPECIES);
+        if (species)
+        {
+            SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_EXP, &gExperienceTables[gSpeciesInfo[species].growthRate][30]);
+            CalculateMonStats(&gParties[B_TRAINER_PLAYER][i]);
+        }
+    }
+} */
+
 #undef tWindowId
 #undef tMenuTaskId
 #undef tArrowTaskId

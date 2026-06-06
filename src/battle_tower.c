@@ -1937,8 +1937,8 @@ u8 SetTentPtrsGetLevel(void)
     }
 
     level = GetHighestLevelInPlayerParty();
-    if (level < TENT_MIN_LEVEL)
-        level = TENT_MIN_LEVEL;
+    /* if (level < TENT_MIN_LEVEL)
+        level = TENT_MIN_LEVEL; */
 
     return level;
 }
