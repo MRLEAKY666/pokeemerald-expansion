@@ -2231,7 +2231,7 @@ static void Task_HandlePokedexInput(u8 taskId)
             PlaySE(SE_PIN);
             FreeWindowAndBgBuffers();
         }
-        else if (JOY_NEW(START_BUTTON))
+        else if (JOY_NEW(SELECT_BUTTON))
         {
             TryDestroyStatBars();
             TryDestroyStatBarsBg();
@@ -2241,7 +2241,7 @@ static void Task_HandlePokedexInput(u8 taskId)
             gTasks[taskId].func = Task_HandlePokedexStartMenuInput;
             PlaySE(SE_SELECT);
         }
-        else if (JOY_NEW(SELECT_BUTTON))
+        else if (JOY_NEW(START_BUTTON))
         {
             PlaySE(SE_SELECT);
             BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_BLACK);
@@ -2323,7 +2323,7 @@ static void Task_HandlePokedexStartMenuInput(u8 taskId)
         }
 
         //Exit menu when Start or B is pressed
-        if (JOY_NEW(START_BUTTON | B_BUTTON))
+        if (JOY_NEW(SELECT_BUTTON | B_BUTTON))
         {
             sPokedexView->menuIsOpen = FALSE;
             gTasks[taskId].func = Task_HandlePokedexInput;
@@ -7703,7 +7703,7 @@ static void Task_HandleSearchResultsInput(u8 taskId)
             PlaySE(SE_PIN);
             FreeWindowAndBgBuffers();
         }
-        else if (JOY_NEW(START_BUTTON))
+        else if (JOY_NEW(SELECT_BUTTON))
         {
             TryDestroyStatBars();
             TryDestroyStatBarsBg();
@@ -7713,7 +7713,7 @@ static void Task_HandleSearchResultsInput(u8 taskId)
             gTasks[taskId].func = Task_HandleSearchResultsStartMenuInput;
             PlaySE(SE_SELECT);
         }
-        else if (JOY_NEW(SELECT_BUTTON))
+        else if (JOY_NEW(START_BUTTON))
         {
             BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_BLACK);
             gTasks[taskId].tLoadScreenTaskId = LoadSearchMenu();
@@ -7794,7 +7794,7 @@ static void Task_HandleSearchResultsStartMenuInput(u8 taskId)
         }
 
         //Exit menu when Start or B is pressed
-        if (JOY_NEW(START_BUTTON | B_BUTTON))
+        if (JOY_NEW(SELECT_BUTTON | B_BUTTON))
         {
             sPokedexView->menuIsOpen = FALSE;
             gTasks[taskId].func = Task_HandleSearchResultsInput;
