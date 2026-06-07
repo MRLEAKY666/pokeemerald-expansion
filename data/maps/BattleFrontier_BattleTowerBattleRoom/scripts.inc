@@ -108,7 +108,9 @@ BattleFrontier_BattleTowerBattleRoom_EventScript_DefeatedOpponent::
 	tower_setbattlewon
 # 55 "data//maps/BattleFrontier_BattleTowerBattleRoom/scripts.pory"
 	switch VAR_RESULT
+# 56 "data//maps/BattleFrontier_BattleTowerBattleRoom/scripts.pory"
 	case FRONTIER_STAGES_PER_CHALLENGE, BattleFrontier_BattleTowerBattleRoom_EventScript_WarpToLobbyWon
+# 57 "data//maps/BattleFrontier_BattleTowerBattleRoom/scripts.pory"
 	applymovement LOCALID_TOWER_BATTLE_OPPONENT, BattleFrontier_BattleTowerBattleRoom_Movement_OpponentExit
 # 58 "data//maps/BattleFrontier_BattleTowerBattleRoom/scripts.pory"
 	waitmovement 0
