@@ -310,6 +310,14 @@ static const struct MapPreviewScreen sMapPreviewScreenData[MPS_COUNT] = {
         .tilesptr = sMoneanChamberMapPreviewTiles,
         .tilemapptr = sMoneanChamberMapPreviewTilemap,
         .palptr = sMoneanChamberMapPreviewPalette
+    },
+    [MPS_PETALBURG_WOODS] = {
+        .mapsec = MAPSEC_PETALBURG_WOODS,
+        .type = MPS_TYPE_FADE_IN,
+        .flagId = FLAG_VISITED_PETALBURG_WOODS,
+        .tilesptr = sViridianForestMapPreviewTiles,
+        .tilemapptr = sViridianForestMapPreviewTilemap,
+        .palptr = sViridianForestMapPreviewPalette
     }
 };
 

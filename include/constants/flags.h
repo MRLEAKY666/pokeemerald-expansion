@@ -75,7 +75,7 @@
 #define FLAG_ROOT_CELLAR_SHUCKLE_2    0x35 // previously Unused Flag
 #define FLAG_ROOT_CELLAR_SPINARAK_1    0x36 // previously Unused Flag
 #define FLAG_ROOT_CELLAR_SPINARAK_2    0x37 // previously Unused Flag
-#define FLAG_UNUSED_0x038    0x38 // Unused Flag
+#define FLAG_VISITED_PETALBURG_WOODS    0x38 // 
 #define FLAG_DEFEATED_CRATERED_CREST_HAXORUS    0x39 // previously Unused Flag
 #define FLAG_CRATERED_CREST_CLONE    0x3A // previously Unused Flag
 #define FLAG_FORTREE_CLIFFS_DEN_B_MON    0x3B //  Flag
