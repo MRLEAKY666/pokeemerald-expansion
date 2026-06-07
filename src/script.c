@@ -41,7 +41,6 @@ EWRAM_DATA u8 gMsgBoxIsCancelable = FALSE;
 
 extern ScrCmdFunc gScriptCmdTable[];
 extern ScrCmdFunc gScriptCmdTableEnd[];
-extern void *const gNullScriptPtr;
 
 void InitScriptStack(struct ScriptStack *stk)
 {
@@ -91,9 +90,6 @@ void StopScript(struct ScriptContext *ctx)
 
 bool8 RunScriptCommand(struct ScriptContext *ctx)
 {
-    if (ctx->mode == SCRIPT_MODE_STOPPED)
-        return FALSE;
-
     switch (ctx->mode)
     {
     case SCRIPT_MODE_STOPPED:
@@ -115,16 +111,10 @@ bool8 RunScriptCommand(struct ScriptContext *ctx)
             u8 cmdCode;
             ScrCmdFunc *func;
 
-            if (!ctx->scriptPtr)
+            if (ctx->scriptPtr == NULL)
             {
                 ctx->mode = SCRIPT_MODE_STOPPED;
                 return FALSE;
-            }
-
-            if (ctx->scriptPtr == gNullScriptPtr)
-            {
-                while (1)
-                    asm("svc 2"); // HALT
             }
 
             cmdCode = *(ctx->scriptPtr);
@@ -193,16 +183,26 @@ const u8 *ScriptPop(struct ScriptContext *ctx)
 
 void ScriptJump(struct ScriptContext *ctx, const u8 *ptr)
 {
+    assertf(ptr != NULL, "goto to NULL");
     ctx->scriptPtr = ptr;
 }
 
 void ScriptCall(struct ScriptContext *ctx, const u8 *ptr)
 {
-    assertf(!ScriptPush(ctx, ctx->scriptPtr),
-        "Failed to push %p to %p", ptr, ctx)
+    assertf(ptr != NULL, "call to NULL")
+    {
+        // HINT: Returning without having pushed the current location is
+        // equivalent to branching to a script that just contains
+        // 'return'.
+        return;
+    }
+
+    bool32 failed = ScriptPush(ctx, ctx->scriptPtr);
+    assertf(!failed, "could not push %p to %p", ptr, ctx)
     {
         return;
     }
+
     ctx->scriptPtr = ptr;
 }
 
